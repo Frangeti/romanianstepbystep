@@ -1,0 +1,1437 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lecție Română B2 — Comunicare și Tehnologie</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600&amp;family=DM+Sans:wght@300;400;500;600&amp;family=DM+Mono&amp;display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #F7F5F0;
+    --surface: #FFFFFF;
+    --surface2: #F0EDE8;
+    --text: #1A1814;
+    --text2: #6B6560;
+    --text3: #A09B95;
+    --purple: #4B3FCC;
+    --purple-light: #EAE7FA;
+    --purple-mid: #7B70E0;
+    --teal: #0F6E56;
+    --teal-light: #E1F5EE;
+    --coral: #C94B2A;
+    --coral-light: #FAECE7;
+    --amber: #8A5A0A;
+    --amber-light: #FDF3DC;
+    --border: rgba(26,24,20,0.1);
+    --border2: rgba(26,24,20,0.06);
+    --radius: 12px;
+    --radius-sm: 8px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    line-height: 1.7;
+  }
+
+  /* HEADER */
+  .header {
+    background: var(--purple);
+    color: #fff;
+    padding: 3rem 2rem 2.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .header::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 300px; height: 300px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.05);
+  }
+  .header::after {
+    content: '';
+    position: absolute;
+    bottom: -80px; left: 20%;
+    width: 200px; height: 200px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.04);
+  }
+  .header-inner { max-width: 820px; margin: 0 auto; position: relative; z-index: 1; }
+  .header .level-tag {
+    display: inline-block;
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.25);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 20px;
+    margin-bottom: 1rem;
+  }
+  .home-link {
+    display: inline-block;
+    color: rgba(255,255,255,0.76);
+    font-size: 13px;
+    text-decoration: none;
+    margin-bottom: .9rem;
+    transition: color .15s;
+  }
+  .home-link:hover { color: #fff; }
+  .header h1 {
+    font-family: 'Lora', serif;
+    font-size: clamp(28px, 5vw, 42px);
+    font-weight: 400;
+    line-height: 1.2;
+    margin-bottom: .5rem;
+  }
+  .header p {
+    font-size: 15px;
+    color: rgba(255,255,255,0.75);
+    max-width: 520px;
+  }
+  .header-meta {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+    flex-wrap: wrap;
+  }
+  .header-meta span {
+    font-size: 13px;
+    color: rgba(255,255,255,0.7);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .header-meta span::before {
+    content: '◆';
+    font-size: 8px;
+    opacity: .6;
+  }
+
+  /* LAYOUT */
+  .layout { display: flex; max-width: 820px; margin: 0 auto; gap: 0; }
+
+  /* SIDEBAR NAV */
+  .sidebar {
+    width: 200px;
+    flex-shrink: 0;
+    padding: 2rem 0 2rem 1rem;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+  }
+  .sidebar-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--text3);
+    margin-bottom: .75rem;
+    padding-left: .75rem;
+  }
+  .nav-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: .55rem .75rem;
+    border-radius: var(--radius-sm);
+    font-size: 13px;
+    color: var(--text2);
+    cursor: pointer;
+    border: none;
+    background: transparent;
+    width: 100%;
+    text-align: left;
+    transition: all .15s;
+    margin-bottom: 2px;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .nav-item:hover { background: var(--surface); color: var(--text); }
+  .nav-item.active { background: var(--purple-light); color: var(--purple); font-weight: 500; }
+  .nav-item .nav-icon { font-size: 14px; flex-shrink: 0; }
+  .nav-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--text3);
+    margin-left: auto;
+  }
+
+  /* MAIN CONTENT */
+  .main {
+    flex: 1;
+    padding: 2rem 1rem 2rem 1.5rem;
+    min-width: 0;
+  }
+
+  .section { display: none; }
+  .section.active { display: block; animation: fadeIn .2s ease; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* SECTION HEADER */
+  .section-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 1.75rem;
+    padding-bottom: 1.25rem;
+    border-bottom: 1px solid var(--border2);
+  }
+  .section-icon {
+    width: 44px; height: 44px;
+    border-radius: var(--radius-sm);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+  .icon-purple { background: var(--purple-light); }
+  .icon-teal { background: var(--teal-light); }
+  .icon-coral { background: var(--coral-light); }
+  .icon-amber { background: var(--amber-light); }
+  .section-header h2 {
+    font-family: 'Lora', serif;
+    font-size: 22px;
+    font-weight: 400;
+    margin-bottom: 2px;
+  }
+  .section-header p { font-size: 13px; color: var(--text2); }
+
+  /* CARDS */
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.25rem;
+    margin-bottom: 1.25rem;
+  }
+  .card-title {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    color: var(--text3);
+    margin-bottom: 1rem;
+  }
+
+  /* VOCAB GRID */
+  .vocab-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(175px, 1fr));
+    gap: 8px;
+    margin-bottom: 1.25rem;
+  }
+  .vocab-item {
+    background: var(--surface2);
+    border-radius: var(--radius-sm);
+    padding: .6rem .9rem;
+    border: 1px solid var(--border2);
+  }
+  .vocab-ro { font-size: 13px; font-weight: 500; color: var(--text); }
+  .vocab-en { font-size: 11px; color: var(--text3); margin-top: 1px; font-family: 'DM Mono', monospace; }
+
+  /* VERBS */
+  .verb-list { display: flex; flex-direction: column; gap: .6rem; }
+  .verb-row { display: flex; align-items: baseline; gap: .75rem; flex-wrap: wrap; }
+  .verb-chip {
+    background: var(--purple-light);
+    color: var(--purple);
+    border-radius: 20px;
+    padding: 3px 13px;
+    font-size: 13px;
+    font-weight: 500;
+    flex-shrink: 0;
+    font-family: 'DM Mono', monospace;
+  }
+  .verb-ex { font-size: 13px; color: var(--text2); font-style: italic; }
+
+  /* TEXT BOX */
+  .text-passage {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    margin-bottom: 1.25rem;
+    font-size: 15px;
+    line-height: 1.9;
+    position: relative;
+  }
+  .text-passage::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 1rem; bottom: 1rem;
+    width: 3px;
+    background: var(--purple);
+    border-radius: 0 2px 2px 0;
+  }
+  .text-passage p + p { margin-top: .85rem; }
+
+  /* EXPRESSIONS */
+  .expr-item {
+    padding: .75rem 0;
+    border-bottom: 1px solid var(--border2);
+  }
+  .expr-item:last-child { border-bottom: none; padding-bottom: 0; }
+  .expr-ro { font-size: 14px; font-weight: 500; color: var(--text); }
+  .expr-ex { font-size: 13px; color: var(--text2); margin-top: 3px; font-style: italic; }
+
+  /* GRAMMAR BOXES */
+  .grammar-rule {
+    background: var(--surface2);
+    border-radius: var(--radius-sm);
+    padding: .9rem 1rem;
+    margin-bottom: .75rem;
+    border-left: 3px solid var(--purple-mid);
+  }
+  .grammar-rule .rule-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--purple);
+    margin-bottom: .35rem;
+  }
+  .grammar-rule p { font-size: 14px; color: var(--text2); line-height: 1.75; }
+  .grammar-rule strong { color: var(--text); font-weight: 500; }
+
+  /* PROS/CONS */
+  .pros-cons { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.25rem; }
+  .pros-box, .cons-box {
+    border-radius: var(--radius);
+    padding: 1rem 1.25rem;
+  }
+  .pros-box { background: var(--teal-light); border: 1px solid rgba(15,110,86,.15); }
+  .cons-box { background: var(--coral-light); border: 1px solid rgba(201,75,42,.15); }
+  .pros-box h4 { font-size: 12px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--teal); margin-bottom: .6rem; }
+  .cons-box h4 { font-size: 12px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--coral); margin-bottom: .6rem; }
+  .pros-box li, .cons-box li { font-size: 13px; margin-left: 1.1rem; margin-bottom: .3rem; line-height: 1.6; color: var(--text); }
+
+  /* EXERCISE INPUTS */
+  .ex-item { margin-bottom: 1rem; }
+  .ex-item label { display: block; font-size: 14px; margin-bottom: .4rem; color: var(--text); }
+  .ex-item select, .ex-item input[type=text] {
+    width: 100%;
+    padding: 8px 12px;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border);
+    background: var(--bg);
+    color: var(--text);
+    font-size: 14px;
+    font-family: 'DM Sans', sans-serif;
+    outline: none;
+    transition: border-color .15s;
+  }
+  .ex-item select:focus, .ex-item input:focus { border-color: var(--purple-mid); }
+
+  /* BUTTONS */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 18px;
+    border-radius: var(--radius-sm);
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    transition: all .15s;
+    margin-top: .5rem;
+    margin-right: 6px;
+  }
+  .btn:hover { background: var(--surface2); }
+  .btn-primary { background: var(--purple); color: #fff; border-color: var(--purple); }
+  .btn-primary:hover { background: #3A30A8; }
+
+  /* FEEDBACK */
+  .feedback {
+    font-size: 13px;
+    padding: 8px 12px;
+    border-radius: var(--radius-sm);
+    margin-top: .75rem;
+    display: none;
+  }
+  .feedback.ok { background: var(--teal-light); color: var(--teal); display: block; }
+  .feedback.err { background: var(--coral-light); color: var(--coral); display: block; }
+
+  /* TOPIC CARDS */
+  .topic-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+    gap: 10px;
+    margin-bottom: 1.25rem;
+  }
+  .topic-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1rem;
+    cursor: pointer;
+    transition: all .15s;
+  }
+  .topic-card:hover { border-color: var(--purple-mid); transform: translateY(-2px); box-shadow: 0 4px 16px rgba(75,63,204,.08); }
+  .topic-icon { font-size: 22px; margin-bottom: .5rem; }
+  .topic-card h4 { font-size: 13px; font-weight: 600; margin-bottom: 4px; color: var(--text); }
+  .topic-card p { font-size: 12px; color: var(--text2); line-height: 1.5; }
+
+  /* MATCH ROWS */
+  .match-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: .75rem;
+    flex-wrap: wrap;
+  }
+  .match-label { font-size: 13px; font-weight: 500; min-width: 140px; color: var(--text); }
+  .match-row select {
+    padding: 6px 10px;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border);
+    background: var(--bg);
+    font-size: 13px;
+    font-family: 'DM Sans', sans-serif;
+    color: var(--text);
+    outline: none;
+  }
+
+  /* SCORE */
+  .score-display {
+    text-align: center;
+    padding: 1.5rem;
+    background: var(--purple-light);
+    border-radius: var(--radius);
+    margin-top: 1rem;
+  }
+  .score-num { font-family: 'Lora', serif; font-size: 48px; color: var(--purple); }
+  .score-label { font-size: 14px; color: var(--text2); margin-top: 4px; }
+
+  /* CONVERSATION QUESTIONS */
+  .conv-q {
+    background: var(--surface2);
+    border-radius: var(--radius-sm);
+    padding: .75rem 1rem;
+    font-size: 14px;
+    margin-bottom: .5rem;
+    border-left: 3px solid var(--purple-mid);
+    color: var(--text);
+  }
+
+  /* WRITING PROMPT */
+  .writing-box {
+    background: var(--amber-light);
+    border: 1px solid rgba(138,90,10,.15);
+    border-radius: var(--radius);
+    padding: 1.25rem;
+    margin-top: 1.25rem;
+  }
+  .writing-box h4 { font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: .06em; color: var(--amber); margin-bottom: .5rem; }
+  .writing-box p { font-size: 14px; color: var(--text); line-height: 1.75; }
+
+  /* FOOTER */
+  .footer {
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    padding: 1.5rem;
+    text-align: center;
+    font-size: 12px;
+    color: var(--text3);
+    margin-top: 2rem;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 640px) {
+    .sidebar { display: none; }
+    .main { padding: 1.25rem; }
+    .pros-cons { grid-template-columns: 1fr; }
+  }
+
+  h3 { font-size: 15px; font-weight: 600; margin-bottom: .75rem; margin-top: 1.25rem; color: var(--text); }
+  h3:first-child { margin-top: 0; }
+  .tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 20px;
+    margin-bottom: .75rem;
+  }
+  .tag-purple { background: var(--purple-light); color: var(--purple); }
+  .tag-teal { background: var(--teal-light); color: var(--teal); }
+  .tag-coral { background: var(--coral-light); color: var(--coral); }
+  .tag-amber { background: var(--amber-light); color: var(--amber); }
+
+  /* SITE THEME */
+  :root {
+    --navy: #1a2744;
+    --gold: #c9962a;
+    --gold-light: #f5e9c8;
+    --blue: #2d5a9e;
+    --blue-light: #e8eef8;
+    --green: #2a7a4b;
+    --green-light: #e4f2ea;
+    --purple: #534ab7;
+    --purple-light: #eeedfe;
+    --purple-mid: #2d5a9e;
+    --teal: #0f6e56;
+    --teal-light: #e1f5ee;
+    --coral: #c0392b;
+    --coral-light: #fdecea;
+    --amber: #7a5210;
+    --amber-light: #f5e9c8;
+    --bg: #f4f3f0;
+    --surface: #ffffff;
+    --surface2: #fbfaf7;
+    --text: #1a2744;
+    --text2: #6b7280;
+    --text3: #8d96a4;
+    --border: rgba(26, 39, 68, 0.12);
+    --border2: rgba(26, 39, 68, 0.08);
+    --radius: 10px;
+    --radius-sm: 8px;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+  }
+
+  a { color: inherit; text-decoration: none; }
+
+  .shell {
+    max-width: 1120px;
+    margin: 0 auto;
+    min-height: 100vh;
+    background: var(--surface);
+    border-left: 1px solid var(--border);
+    border-right: 1px solid var(--border);
+  }
+
+  .topbar {
+    min-height: 58px;
+    padding: 0 1.5rem;
+    background: var(--navy);
+    color: #fff;
+    border-bottom: 3px solid var(--gold);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .logo {
+    font-family: 'Lora', serif;
+    font-size: 19px;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  .logo span { color: var(--gold); }
+
+  .level-pills {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+
+  .pill {
+    padding: 4px 11px;
+    border-radius: 20px;
+    border: 1px solid transparent;
+    color: rgba(255, 255, 255, .64);
+    font-size: 11px;
+    font-weight: 600;
+  }
+
+  .pill.active {
+    background: var(--gold);
+    border-color: var(--gold);
+    color: var(--navy);
+  }
+
+  .tabs {
+    min-height: 42px;
+    padding: 0 1.5rem;
+    border-bottom: 1px solid var(--border);
+    background: #fff;
+    display: flex;
+    gap: 2px;
+    overflow-x: auto;
+  }
+
+  .tab {
+    padding: 12px 15px 10px;
+    border: 0;
+    border-bottom: 2px solid transparent;
+    background: transparent;
+    color: var(--text2);
+    font-size: 13px;
+    font-family: 'DM Sans', sans-serif;
+    white-space: nowrap;
+    cursor: pointer;
+  }
+
+  .tab:hover {
+    color: var(--text);
+  }
+
+  .tab.active {
+    color: var(--blue);
+    border-bottom-color: var(--blue);
+    font-weight: 600;
+  }
+
+  .layout {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    max-width: none;
+    min-height: calc(100vh - 103px);
+    margin: 0;
+  }
+
+  .sidebar {
+    width: auto;
+    background: #fff;
+    border-right: 1px solid var(--border);
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+  }
+
+  .sidebar-label {
+    padding: .45rem 1rem;
+    color: var(--text2);
+  }
+
+  .nav-item {
+    border-left: 3px solid transparent;
+    border-radius: 0;
+    margin: 0;
+    padding: 8px 1rem;
+    color: var(--text);
+  }
+
+  .nav-item:hover {
+    background: var(--bg);
+    color: var(--text);
+  }
+
+  .nav-item.active {
+    background: var(--blue-light);
+    border-left-color: var(--blue);
+    color: var(--blue);
+    font-weight: 600;
+  }
+
+  .nav-num {
+    color: var(--text3);
+  }
+
+  .main {
+    background: var(--bg);
+    padding: 1.5rem;
+  }
+
+  .header {
+    background: var(--surface);
+    color: var(--text);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.4rem 1.5rem;
+    margin-bottom: 1rem;
+    overflow: visible;
+  }
+
+  .header::before,
+  .header::after {
+    display: none;
+  }
+
+  .header-inner {
+    max-width: none;
+  }
+
+  .home-link {
+    color: var(--blue);
+    font-weight: 600;
+    margin-bottom: .6rem;
+  }
+
+  .home-link:hover {
+    color: var(--navy);
+  }
+
+  .header .level-tag {
+    background: var(--gold-light);
+    border-color: transparent;
+    color: var(--amber);
+  }
+
+  .header h1,
+  .section-header h2,
+  .score-num {
+    font-family: 'Lora', serif;
+  }
+
+  .header h1 {
+    color: var(--navy);
+    font-weight: 600;
+  }
+
+  .header p {
+    color: var(--text2);
+  }
+
+  .header-meta {
+    gap: 1rem;
+    margin-top: 1.1rem;
+  }
+
+  .header-meta span {
+    color: var(--text2);
+  }
+
+  .header-meta span::before {
+    color: var(--gold);
+    opacity: 1;
+  }
+
+  .section-header {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1rem 1.1rem;
+    margin-bottom: 1rem;
+  }
+
+  .section-header h2 {
+    color: var(--navy);
+    font-size: 21px;
+    font-weight: 600;
+  }
+
+  .section-header p {
+    color: var(--text2);
+  }
+
+  .section-icon {
+    width: 42px;
+    height: 42px;
+  }
+
+  .card,
+  .text-passage,
+  .topic-card,
+  .writing-box {
+    border-radius: var(--radius);
+    border-color: var(--border);
+  }
+
+  .card-title {
+    color: var(--text2);
+  }
+
+  .vocab-item,
+  .grammar-rule,
+  .conv-q {
+    background: var(--surface2);
+    border-color: var(--border2);
+  }
+
+  .vocab-ro,
+  .expr-ro,
+  .topic-card h4,
+  h3 {
+    color: var(--navy);
+  }
+
+  .text-passage::before,
+  .conv-q,
+  .grammar-rule {
+    border-left-color: var(--blue);
+  }
+
+  .text-passage::before {
+    background: var(--blue);
+  }
+
+  .verb-chip,
+  .tag-purple {
+    background: var(--blue-light);
+    color: var(--blue);
+  }
+
+  .tag-teal,
+  .feedback.ok {
+    background: var(--green-light);
+    color: var(--green);
+  }
+
+  .tag-coral,
+  .feedback.err {
+    background: var(--coral-light);
+    color: var(--coral);
+  }
+
+  .tag-amber,
+  .writing-box {
+    background: var(--gold-light);
+    color: var(--amber);
+  }
+
+  .btn-primary {
+    background: var(--navy);
+    border-color: var(--navy);
+  }
+
+  .btn-primary:hover {
+    background: var(--blue);
+    border-color: var(--blue);
+  }
+
+  .btn:hover,
+  .topic-card:hover {
+    border-color: var(--blue);
+    box-shadow: 0 4px 16px rgba(45, 90, 158, .08);
+  }
+
+  .footer {
+    background: var(--surface);
+    color: var(--text2);
+    margin-top: 0;
+  }
+
+  @media (max-width: 760px) {
+    .shell {
+      border: none;
+    }
+
+    .topbar {
+      align-items: flex-start;
+      flex-direction: column;
+      padding: 1rem;
+    }
+
+    .level-pills {
+      justify-content: flex-start;
+    }
+
+    .tabs {
+      padding: 0 1rem;
+    }
+
+    .layout {
+      grid-template-columns: 1fr;
+    }
+
+    .sidebar {
+      display: none;
+    }
+
+    .main {
+      padding: 1rem;
+    }
+
+    .header,
+    .section-header,
+    .card,
+    .text-passage,
+    .writing-box {
+      padding: 1rem;
+    }
+
+    .pros-cons {
+      grid-template-columns: 1fr;
+    }
+  }
+
+</style>
+</head>
+<body>
+
+<div class="shell">
+<header class="topbar">
+  <a class="logo" href="../../index.html">Română<span>StepByStep</span></a>
+  <nav class="level-pills" aria-label="Niveluri">
+    <span class="pill">A1</span>
+    <span class="pill">A2</span>
+    <span class="pill">B1</span>
+    <span class="pill active">B2</span>
+    <span class="pill">C1</span>
+  </nav>
+</header>
+
+<nav class="tabs" aria-label="Secțiuni lecție">
+  <a class="tab" href="../../index.html">Acasă</a>
+  <button class="tab lesson-tab active" onclick="showSection('vocab',this)">Vocabular</button>
+  <button class="tab lesson-tab" onclick="showSection('gramatica',this)">Gramatică</button>
+  <button class="tab lesson-tab" onclick="showSection('text',this)">Text</button>
+  <button class="tab lesson-tab" onclick="showSection('exercitii',this)">Exerciții</button>
+  <button class="tab lesson-tab" onclick="showSection('conversatie',this)">Conversație</button>
+  <button class="tab lesson-tab" onclick="showSection('teme',this)">Teme</button>
+</nav>
+
+<div class="layout">
+  <!-- SIDEBAR -->
+  <nav class="sidebar">
+    <div class="sidebar-label">Secțiuni</div>
+    <button class="nav-item active" onclick="showSection('vocab',this)">
+      <span class="nav-icon">📚</span> Vocabular <span class="nav-num">01</span>
+    </button>
+    <button class="nav-item" onclick="showSection('gramatica',this)">
+      <span class="nav-icon">✏️</span> Gramatică <span class="nav-num">02</span>
+    </button>
+    <button class="nav-item" onclick="showSection('text',this)">
+      <span class="nav-icon">📖</span> Text &amp; Întrebări <span class="nav-num">03</span>
+    </button>
+    <button class="nav-item" onclick="showSection('exercitii',this)">
+      <span class="nav-icon">🎯</span> Exerciții <span class="nav-num">04</span>
+    </button>
+    <button class="nav-item" onclick="showSection('conversatie',this)">
+      <span class="nav-icon">💬</span> Conversație <span class="nav-num">05</span>
+    </button>
+    <button class="nav-item" onclick="showSection('teme',this)">
+      <span class="nav-icon">🗂</span> Teme <span class="nav-num">06</span>
+    </button>
+  </nav>
+
+  <!-- MAIN -->
+  <main class="main">
+    <div class="header">
+      <div class="header-inner">
+        <a class="home-link" href="../../index.html">← Acasă</a><br>
+        <div class="level-tag">Nivel B2 · Limba Română</div>
+        <h1>Comunicare și Tehnologie</h1>
+        <p>Vocabular, gramatică, texte autentice, exerciții și teme de conversație</p>
+        <div class="header-meta">
+          <span>6 secțiuni</span>
+          <span>Exerciții interactive</span>
+          <span>Programare · IA · Aplicații mobile</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION 1: VOCABULAR -->
+    <div id="sec-vocab" class="section active">
+      <div class="section-header">
+        <div class="section-icon icon-purple">📚</div>
+        <div>
+          <h2>Vocabular esențial</h2>
+          <p>Dispozitive, aplicații digitale și expresii utile în context tehnologic</p>
+        </div>
+      </div>
+
+      <span class="tag tag-purple">Dispozitive și aparate</span>
+      <div class="vocab-grid">
+        <div class="vocab-item"><div class="vocab-ro">smartphone</div><div class="vocab-en">telefon inteligent</div></div>
+        <div class="vocab-item"><div class="vocab-ro">laptop</div><div class="vocab-en">calculator portabil</div></div>
+        <div class="vocab-item"><div class="vocab-ro">tabletă</div><div class="vocab-en">tablet</div></div>
+        <div class="vocab-item"><div class="vocab-ro">căști wireless</div><div class="vocab-en">wireless headphones</div></div>
+        <div class="vocab-item"><div class="vocab-ro">ceas inteligent</div><div class="vocab-en">smartwatch</div></div>
+        <div class="vocab-item"><div class="vocab-ro">imprimantă 3D</div><div class="vocab-en">3D printer</div></div>
+        <div class="vocab-item"><div class="vocab-ro">server</div><div class="vocab-en">server</div></div>
+        <div class="vocab-item"><div class="vocab-ro">router</div><div class="vocab-en">router / ruter</div></div>
+        <div class="vocab-item"><div class="vocab-ro">nor informatic (cloud)</div><div class="vocab-en">cloud storage</div></div>
+        <div class="vocab-item"><div class="vocab-ro">ecran tactil</div><div class="vocab-en">touchscreen</div></div>
+        <div class="vocab-item"><div class="vocab-ro">cameră web</div><div class="vocab-en">webcam</div></div>
+        <div class="vocab-item"><div class="vocab-ro">baterie externă</div><div class="vocab-en">power bank</div></div>
+      </div>
+
+      <span class="tag tag-teal">Aplicații și servicii digitale</span>
+      <div class="vocab-grid">
+        <div class="vocab-item"><div class="vocab-ro">aplicație mobilă</div><div class="vocab-en">mobile app</div></div>
+        <div class="vocab-item"><div class="vocab-ro">rețea socială</div><div class="vocab-en">social network</div></div>
+        <div class="vocab-item"><div class="vocab-ro">streaming video</div><div class="vocab-en">video streaming</div></div>
+        <div class="vocab-item"><div class="vocab-ro">inteligență artificială</div><div class="vocab-en">artificial intelligence</div></div>
+        <div class="vocab-item"><div class="vocab-ro">comerț electronic</div><div class="vocab-en">e-commerce</div></div>
+        <div class="vocab-item"><div class="vocab-ro">securitate cibernetică</div><div class="vocab-en">cybersecurity</div></div>
+        <div class="vocab-item"><div class="vocab-ro">actualizare (update)</div><div class="vocab-en">update / upgrade</div></div>
+        <div class="vocab-item"><div class="vocab-ro">descărcare / încărcare</div><div class="vocab-en">download / upload</div></div>
+        <div class="vocab-item"><div class="vocab-ro">parolă / autentificare</div><div class="vocab-en">password / login</div></div>
+        <div class="vocab-item"><div class="vocab-ro">notificare</div><div class="vocab-en">notification</div></div>
+        <div class="vocab-item"><div class="vocab-ro">copie de rezervă (backup)</div><div class="vocab-en">backup</div></div>
+        <div class="vocab-item"><div class="vocab-ro">interfață utilizator</div><div class="vocab-en">user interface (UI)</div></div>
+      </div>
+
+      <span class="tag tag-coral">Expresii utile</span>
+      <div class="card">
+        <div class="expr-item">
+          <div class="expr-ro">A fi conectat/ă la internet</div>
+          <div class="expr-ex">Fără să fiu conectată la internet, nu pot lucra de acasă.</div>
+        </div>
+        <div class="expr-item">
+          <div class="expr-ro">A instala / dezinstala o aplicație</div>
+          <div class="expr-ex">Am instalat o aplicație nouă pentru gestionarea timpului.</div>
+        </div>
+        <div class="expr-item">
+          <div class="expr-ro">A face un backup / o copie de rezervă</div>
+          <div class="expr-ex">Este important să faci backup zilnic pentru documentele importante.</div>
+        </div>
+        <div class="expr-item">
+          <div class="expr-ro">A salva în cloud</div>
+          <div class="expr-ex">Toate fotografiile mele sunt salvate în cloud.</div>
+        </div>
+        <div class="expr-item">
+          <div class="expr-ro">A partaja / distribui conținut</div>
+          <div class="expr-ex">Am partajat articolul cu colegii prin e-mail.</div>
+        </div>
+        <div class="expr-item">
+          <div class="expr-ro">A fi dependent/ă de tehnologie</div>
+          <div class="expr-ex">Mulți tineri sunt dependenți de rețelele sociale.</div>
+        </div>
+        <div class="expr-item">
+          <div class="expr-ro">A face cumpărături online</div>
+          <div class="expr-ex">Prefer să fac cumpărături online pentru că economisesc timp.</div>
+        </div>
+        <div class="expr-item">
+          <div class="expr-ro">Conexiunea a căzut / s-a întrerupt</div>
+          <div class="expr-ex">Scuze, conexiunea a căzut în mijlocul ședinței online.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION 2: GRAMATICA -->
+    <div id="sec-gramatica" class="section">
+      <div class="section-header">
+        <div class="section-icon icon-teal">✏️</div>
+        <div>
+          <h2>Gramatică</h2>
+          <p>Verbe din domeniul tehnologiei și structuri gramaticale frecvente</p>
+        </div>
+      </div>
+
+      <span class="tag tag-teal">Verbe frecvente în tehnologie</span>
+      <div class="card">
+        <div class="verb-list">
+          <div class="verb-row"><span class="verb-chip">a accesa</span><span class="verb-ex">Am accesat platforma de e-learning dimineața.</span></div>
+          <div class="verb-row"><span class="verb-chip">a actualiza</span><span class="verb-ex">Trebuie să actualizezi sistemul de operare regulat.</span></div>
+          <div class="verb-row"><span class="verb-chip">a conecta / a se conecta</span><span class="verb-ex">Conectează-te la rețeaua Wi-Fi a hotelului.</span></div>
+          <div class="verb-row"><span class="verb-chip">a descărca</span><span class="verb-ex">Am descărcat aplicația gratuit din AppStore.</span></div>
+          <div class="verb-row"><span class="verb-chip">a încărca (upload)</span><span class="verb-ex">Am încărcat fișierele pe server ieri.</span></div>
+          <div class="verb-row"><span class="verb-chip">a programa</span><span class="verb-ex">Programatorul a scris codul în Python.</span></div>
+          <div class="verb-row"><span class="verb-chip">a depana</span><span class="verb-ex">Tehnicianul a depanat problema în câteva minute.</span></div>
+          <div class="verb-row"><span class="verb-chip">a cripta / a decripta</span><span class="verb-ex">Mesajele sunt criptate pentru securitate maximă.</span></div>
+          <div class="verb-row"><span class="verb-chip">a automatiza</span><span class="verb-ex">Companiile automatizează procesele repetitive.</span></div>
+          <div class="verb-row"><span class="verb-chip">a partaja</span><span class="verb-ex">Partajează ecranul în timpul videoconferinței.</span></div>
+          <div class="verb-row"><span class="verb-chip">a stoca</span><span class="verb-ex">Datele sunt stocate pe servere securizate.</span></div>
+          <div class="verb-row"><span class="verb-chip">a procesa</span><span class="verb-ex">Procesorul procesează milioane de operații pe secundă.</span></div>
+        </div>
+      </div>
+
+      <span class="tag tag-purple">Structuri gramaticale</span>
+
+      <div class="grammar-rule">
+        <div class="rule-label">Modul conjunctiv — necesitate</div>
+        <p>Este important <strong>să actualizezi</strong> aplicațiile. / Trebuie <strong>să faci</strong> backup regulat. / Recomand <strong>să folosești</strong> o parolă complexă.</p>
+      </div>
+
+      <div class="grammar-rule">
+        <div class="rule-label">Pasivul — limbaj tehnic</div>
+        <p>Datele <strong>sunt salvate</strong> automat. / Aplicația <strong>a fost dezvoltată</strong> de o echipă din București. / Serverul <strong>va fi actualizat</strong> mâine.</p>
+      </div>
+
+      <div class="grammar-rule">
+        <div class="rule-label">Condițional-optativul — avantaje / dezavantaje</div>
+        <p>Dacă <strong>ar fi</strong> mai puțin dependenți de telefon, oamenii <strong>ar dormi</strong> mai bine. / Fără internet, viața <strong>ar fi</strong> mult mai dificilă.</p>
+      </div>
+
+      <div class="grammar-rule">
+        <div class="rule-label">Gerunziul — acțiuni simultane</div>
+        <p><strong>Folosind</strong> inteligența artificială, companiile economisesc timp. / <strong>Programând</strong> zilnic, devii mai bun în scurt timp.</p>
+      </div>
+
+      <h3 style="margin-top:1.5rem">Nominalizare — substantive din verbe</h3>
+      <div class="vocab-grid">
+        <div class="vocab-item"><div class="vocab-ro">a programa → programare</div></div>
+        <div class="vocab-item"><div class="vocab-ro">a conecta → conexiune</div></div>
+        <div class="vocab-item"><div class="vocab-ro">a descărca → descărcare</div></div>
+        <div class="vocab-item"><div class="vocab-ro">a stoca → stocare</div></div>
+        <div class="vocab-item"><div class="vocab-ro">a actualiza → actualizare</div></div>
+        <div class="vocab-item"><div class="vocab-ro">a automatiza → automatizare</div></div>
+        <div class="vocab-item"><div class="vocab-ro">a cripta → criptare</div></div>
+        <div class="vocab-item"><div class="vocab-ro">a procesa → procesare</div></div>
+      </div>
+    </div>
+
+    <!-- SECTION 3: TEXT -->
+    <div id="sec-text" class="section">
+      <div class="section-header">
+        <div class="section-icon icon-amber">📖</div>
+        <div>
+          <h2>Text de lectură</h2>
+          <p>Citește textul, apoi răspunde la întrebările de comprehensiune</p>
+        </div>
+      </div>
+
+      <div class="text-passage">
+        <p><strong>Tehnologia în viața de zi cu zi</strong></p>
+        <p>Trăim într-o epocă în care tehnologia digitală a transformat radical modul în care comunicăm, muncim și ne petrecem timpul liber. Smartphone-urile, aplicațiile mobile și inteligența artificială nu mai sunt privilegii ale câtorva, ci instrumente cotidiene folosite de milioane de oameni.</p>
+        <p>În România, numărul utilizatorilor de internet a crescut semnificativ în ultimul deceniu. Astăzi, mulți oameni folosesc aplicații pentru a face cumpărături online, a plăti facturi, a consulta un medic de la distanță sau a urma cursuri digitale. Munca de la distanță, sau „remote work", a devenit o realitate acceptată, mai ales după pandemia din 2020.</p>
+        <p>Totuși, această revoluție digitală ridică și întrebări importante. Cum protejăm datele personale? Cât timp petrecem în fața ecranelor? Ce se întâmplă cu locurile de muncă automatizate? Experții în securitate cibernetică avertizează că atacurile informatice devin tot mai frecvente și mai sofisticate. Pe de altă parte, inteligența artificială oferă soluții inovatoare în medicină, educație și cercetare.</p>
+        <p>Un lucru este cert: adaptarea la noile tehnologii nu mai este opțională. Competențele digitale — de la utilizarea unui editor de documente până la scrierea unui cod simplu — sunt din ce în ce mai căutate pe piața muncii.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Întrebări de comprehensiune</div>
+        <div class="ex-item">
+          <label>1. De ce nu mai sunt smartphone-urile un privilegiu, conform textului?</label>
+          <input type="text" placeholder="Scrie răspunsul tău...">
+        </div>
+        <div class="ex-item">
+          <label>2. Cum s-a schimbat piața muncii după 2020?</label>
+          <input type="text" placeholder="Scrie răspunsul tău...">
+        </div>
+        <div class="ex-item">
+          <label>3. Care sunt trei îngrijorări menționate în text?</label>
+          <input type="text" placeholder="Scrie răspunsul tău...">
+        </div>
+        <div class="ex-item">
+          <label>4. Ce înseamnă „competențe digitale" conform textului?</label>
+          <input type="text" placeholder="Scrie răspunsul tău...">
+        </div>
+        <div class="ex-item">
+          <label>5. Cu ce cuvânt din text putem înlocui „cotidiene"?</label>
+          <select>
+            <option value="">— alege —</option>
+            <option>de zi cu zi ✓</option>
+            <option>rare</option>
+            <option>scumpe</option>
+            <option>moderne</option>
+          </select>
+        </div>
+        <div class="ex-item">
+          <label>6. Găsește în text un sinonim pentru „frecvente".</label>
+          <input type="text" placeholder="Răspuns: ...">
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION 4: EXERCITII -->
+    <div id="sec-exercitii" class="section">
+      <div class="section-header">
+        <div class="section-icon icon-coral">🎯</div>
+        <div>
+          <h2>Exerciții</h2>
+          <p>Vocabular, gramatică și transformări — cu verificare automată</p>
+        </div>
+      </div>
+
+      <span class="tag tag-coral">Exercițiu 1 — Completează cu verbul corect</span>
+      <div class="card" id="ex1-card">
+        <p style="font-size:13px;color:var(--text2);margin-bottom:1rem">Alege verbul potrivit: <em>a actualiza, a stoca, a descărca, a partaja, a programa</em></p>
+        <div class="ex-item">
+          <label>1. Este recomandat să _______ aplicațiile regulat pentru a evita vulnerabilitățile.</label>
+          <select id="e1q1"><option value="">—</option><option value="actualizezi">actualizezi</option><option value="descarci">descarci</option><option value="stochezi">stochezi</option><option value="partajezi">partajezi</option></select>
+        </div>
+        <div class="ex-item">
+          <label>2. Poți _______ fotografiile în cloud și le vei avea pe orice dispozitiv.</label>
+          <select id="e1q2"><option value="">—</option><option value="stoca">stoca</option><option value="descărca">descărca</option><option value="actualiza">actualiza</option><option value="partaja">partaja</option></select>
+        </div>
+        <div class="ex-item">
+          <label>3. Am _______ aplicația de traducere gratuit din magazin.</label>
+          <select id="e1q3"><option value="">—</option><option value="descărcat">descărcat</option><option value="actualizat">actualizat</option><option value="stocat">stocat</option><option value="partajat">partajat</option></select>
+        </div>
+        <div class="ex-item">
+          <label>4. Poți _______ documentul cu echipa ta prin Google Drive.</label>
+          <select id="e1q4"><option value="">—</option><option value="partaja">partaja</option><option value="descărca">descărca</option><option value="actualiza">actualiza</option><option value="stoca">stoca</option></select>
+        </div>
+        <button class="btn btn-primary" onclick="checkEx1()">Verifică răspunsurile</button>
+        <div id="ex1-fb" class="feedback"></div>
+      </div>
+
+      <span class="tag tag-purple">Exercițiu 2 — Potrivire vocabular</span>
+      <div class="card">
+        <p style="font-size:13px;color:var(--text2);margin-bottom:1rem">Potrivește termenul cu definiția corespunzătoare.</p>
+        <div class="match-row"><span class="match-label">1. Securitate cibernetică</span><select id="m1"><option value="">—</option><option value="C">A</option><option value="A">B</option><option value="C">C</option><option value="D">D</option></select></div>
+        <div class="match-row"><span class="match-label">2. Backup</span><select id="m2"><option value="">—</option><option value="B">A</option><option value="B">B</option><option value="A">C</option><option value="D">D</option></select></div>
+        <div class="match-row"><span class="match-label">3. Interfață</span><select id="m3"><option value="">—</option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option></select></div>
+        <div class="match-row"><span class="match-label">4. Streaming</span><select id="m4"><option value="">—</option><option value="A">A</option><option value="D">B</option><option value="C">C</option><option value="D">D</option></select></div>
+        <div style="background:var(--surface2);border-radius:var(--radius-sm);padding:.75rem 1rem;margin:.75rem 0;font-size:13px;line-height:1.8;color:var(--text2)">
+          <strong style="color:var(--text)">A</strong> — Vizionarea conținutului fără descărcare completă<br>
+          <strong style="color:var(--text)">B</strong> — Copie de rezervă a datelor<br>
+          <strong style="color:var(--text)">C</strong> — Protecția sistemelor informatice împotriva atacurilor<br>
+          <strong style="color:var(--text)">D</strong> — Spațiu vizual prin care utilizatorul interacționează cu un program
+        </div>
+        <button class="btn btn-primary" onclick="checkEx2()">Verifică</button>
+        <div id="ex2-fb" class="feedback"></div>
+      </div>
+
+      <span class="tag tag-teal">Exercițiu 3 — Transformă la pasiv</span>
+      <div class="card">
+        <p style="font-size:13px;color:var(--text2);margin-bottom:1rem"><strong>Exemplu:</strong> „Programatorul a scris codul." → „Codul <em>a fost scris</em> de programator."</p>
+        <div class="ex-item">
+          <label>1. Compania a lansat aplicația luna trecută.</label>
+          <input type="text" placeholder="Aplicația ...">
+        </div>
+        <div class="ex-item">
+          <label>2. Sistemul stochează datele automat.</label>
+          <input type="text" placeholder="Datele ...">
+        </div>
+        <div class="ex-item">
+          <label>3. Hackerii au atacat serverul.</label>
+          <input type="text" placeholder="Serverul ...">
+        </div>
+        <div class="ex-item">
+          <label>4. Dezvoltatorul a creat o nouă funcționalitate.</label>
+          <input type="text" placeholder="O nouă funcționalitate ...">
+        </div>
+        <details style="margin-top:.75rem;font-size:13px;color:var(--text2)">
+          <summary style="cursor:pointer;font-weight:500;color:var(--purple)">Vezi răspunsurile corecte</summary>
+          <div style="margin-top:.6rem;line-height:2">
+            1. Aplicația <em>a fost lansată</em> de companie luna trecută.<br>
+            2. Datele <em>sunt stocate</em> automat de sistem.<br>
+            3. Serverul <em>a fost atacat</em> de hackeri.<br>
+            4. O nouă funcționalitate <em>a fost creată</em> de dezvoltator.
+          </div>
+        </details>
+      </div>
+
+      <span class="tag tag-amber">Exercițiu 4 — Condițional</span>
+      <div class="card">
+        <p style="font-size:13px;color:var(--text2);margin-bottom:1rem">Completează cu forma corectă a condiționalului:</p>
+        <div class="ex-item">
+          <label>1. Dacă nu _______ (a exista) internet, viața _______ (a fi) mult mai grea.</label>
+          <input type="text" placeholder="Dacă nu ar exista...">
+        </div>
+        <div class="ex-item">
+          <label>2. Fără telefon, eu _______ (a nu putea) lucra de acasă.</label>
+          <input type="text" placeholder="Eu ...">
+        </div>
+        <div class="ex-item">
+          <label>3. Dacă _______ (a ști) să programez, _______ (a câștiga) mai bine.</label>
+          <input type="text" placeholder="Dacă aș ști...">
+        </div>
+        <details style="margin-top:.75rem;font-size:13px;color:var(--text2)">
+          <summary style="cursor:pointer;font-weight:500;color:var(--purple)">Vezi răspunsurile corecte</summary>
+          <div style="margin-top:.6rem;line-height:2">
+            1. Dacă nu <em>ar exista</em> internet, viața <em>ar fi</em> mult mai grea.<br>
+            2. Fără telefon, eu <em>nu aș putea</em> lucra de acasă.<br>
+            3. Dacă <em>aș ști</em> să programez, <em>aș câștiga</em> mai bine.
+          </div>
+        </details>
+      </div>
+    </div>
+
+    <!-- SECTION 5: CONVERSATIE -->
+    <div id="sec-conversatie" class="section">
+      <div class="section-header">
+        <div class="section-icon icon-purple">💬</div>
+        <div>
+          <h2>Exerciții de conversație</h2>
+          <p>Avantaje și dezavantaje, expresii pentru dezbatere și întrebări de discutat</p>
+        </div>
+      </div>
+
+      <span class="tag tag-purple">Avantaje și dezavantaje ale tehnologiei</span>
+      <div class="pros-cons">
+        <div class="pros-box">
+          <h4>✓ Avantaje</h4>
+          <ul>
+            <li>Acces rapid la informații</li>
+            <li>Comunicare instantanee globală</li>
+            <li>Flexibilitate la locul de muncă</li>
+            <li>Servicii medicale la distanță</li>
+            <li>Educație online accesibilă</li>
+            <li>Automatizare și eficiență sporită</li>
+            <li>Reducerea distanțelor geografice</li>
+          </ul>
+        </div>
+        <div class="cons-box">
+          <h4>✗ Dezavantaje</h4>
+          <ul>
+            <li>Dependență digitală</li>
+            <li>Riscuri pentru securitatea datelor</li>
+            <li>Reducerea locurilor de muncă</li>
+            <li>Dezinformare și știri false</li>
+            <li>Izolare socială / suprasolicitare</li>
+            <li>Impactul ecologic al serverelor</li>
+            <li>Inegalitate digitală</li>
+          </ul>
+        </div>
+      </div>
+
+      <span class="tag tag-teal">Expresii pentru dezbatere</span>
+      <div class="card">
+        <div class="expr-item">
+          <div class="expr-ro">Pe de o parte... pe de altă parte...</div>
+          <div class="expr-ex">Folosit pentru a prezenta două perspective opuse.</div>
+        </div>
+        <div class="expr-item">
+          <div class="expr-ro">Deși / Cu toate că...</div>
+          <div class="expr-ex">Deși tehnologia aduce beneficii, există și riscuri serioase.</div>
+        </div>
+        <div class="expr-item">
+          <div class="expr-ro">Sunt de părere că / Consider că...</div>
+          <div class="expr-ex">Pentru a-ți exprima opinia personal.</div>
+        </div>
+        <div class="expr-item">
+          <div class="expr-ro">Nu sunt de acord cu ideea că...</div>
+          <div class="expr-ex">Nu sunt de acord cu ideea că IA va înlocui toți angajații.</div>
+        </div>
+        <div class="expr-item">
+          <div class="expr-ro">Este evident că / Este incontestabil că...</div>
+          <div class="expr-ex">Este evident că digitalizarea a schimbat piața muncii.</div>
+        </div>
+        <div class="expr-item">
+          <div class="expr-ro">Dacă luăm în considerare...</div>
+          <div class="expr-ex">Dacă luăm în considerare impactul ecologic, serverele consumă enorm.</div>
+        </div>
+        <div class="expr-item">
+          <div class="expr-ro">Un argument solid în favoarea... este că...</div>
+          <div class="expr-ex">Un argument solid în favoarea tehnologiei este că democratizează educația.</div>
+        </div>
+      </div>
+
+      <span class="tag tag-coral">Întrebări de conversație</span>
+      <div class="conv-q">1. Ce aplicație folosești cel mai mult și de ce?</div>
+      <div class="conv-q">2. Crezi că inteligența artificială va înlocui profesorii sau medicii în viitor?</div>
+      <div class="conv-q">3. Cum ți-ar schimba viața dacă ai renunța la rețelele sociale timp de o lună?</div>
+      <div class="conv-q">4. Ce competențe digitale crezi că sunt esențiale pe piața muncii de astăzi?</div>
+      <div class="conv-q">5. Cât de importantă este confidențialitatea datelor pentru tine?</div>
+      <div class="conv-q">6. Consideri că tehnologia ne face mai sociabili sau mai izolați? De ce?</div>
+      <div class="conv-q">7. Ce părere ai despre munca remote? Care sunt avantajele și dezavantajele?</div>
+      <div class="conv-q">8. Dacă ai putea crea o aplicație, ce problemă ar rezolva?</div>
+    </div>
+
+    <!-- SECTION 6: TEME -->
+    <div id="sec-teme" class="section">
+      <div class="section-header">
+        <div class="section-icon icon-teal">🗂</div>
+        <div>
+          <h2>Teme de discutat</h2>
+          <p>Subiecte aprofundate pentru discuție, dezbatere și eseu</p>
+        </div>
+      </div>
+
+      <span class="tag tag-teal">Teme principale</span>
+      <div class="topic-grid">
+        <div class="topic-card">
+          <div class="topic-icon">💻</div>
+          <h4>Programare și coding</h4>
+          <p>Limbaje, cariere, importanța programării în educație</p>
+        </div>
+        <div class="topic-card">
+          <div class="topic-icon">📱</div>
+          <h4>Aplicații mobile</h4>
+          <p>Dezvoltare, impact social, utilizare zilnică</p>
+        </div>
+        <div class="topic-card">
+          <div class="topic-icon">🤖</div>
+          <h4>Inteligența artificială</h4>
+          <p>Machine learning, etică, viitorul muncii</p>
+        </div>
+        <div class="topic-card">
+          <div class="topic-icon">🔒</div>
+          <h4>Securitate cibernetică</h4>
+          <p>Parole, date, atacuri informatice, protecție</p>
+        </div>
+        <div class="topic-card">
+          <div class="topic-icon">🏠</div>
+          <h4>Muncă remote</h4>
+          <p>Digitalizare, echilibru viață-muncă, productivitate</p>
+        </div>
+        <div class="topic-card">
+          <div class="topic-icon">🌐</div>
+          <h4>Rețele sociale</h4>
+          <p>Influenceri, dezinformare, sănătate mintală</p>
+        </div>
+        <div class="topic-card">
+          <div class="topic-icon">🛒</div>
+          <h4>Comerț electronic</h4>
+          <p>Shopping online, plăți digitale, tendințe</p>
+        </div>
+        <div class="topic-card">
+          <div class="topic-icon">🌱</div>
+          <h4>Tehnologie și mediu</h4>
+          <p>Consum energetic, deșeuri electronice, sustenabilitate</p>
+        </div>
+      </div>
+
+      <span class="tag tag-amber">Teme de eseu</span>
+      <div class="writing-box">
+        <h4>📝 Temă de scriere — 200–250 de cuvinte</h4>
+        <p>Scrie un eseu argumentativ pe una dintre temele de mai sus. Folosește structura:</p>
+        <p style="margin-top:.5rem"><strong>Introducere</strong> (prezentarea temei) → <strong>Argument pro</strong> (cu exemplu) → <strong>Argument contra</strong> (cu exemplu) → <strong>Concluzie</strong> (opinia ta)</p>
+        <p style="margin-top:.5rem">Aplică verbele și expresiile din lecție. Folosește cel puțin 3 conectori logici (deși, pe de altă parte, în concluzie...).</p>
+      </div>
+
+      <div class="card" style="margin-top:1.25rem">
+        <div class="card-title">Subiecte de dezbatere în grup</div>
+        <div class="conv-q" style="margin-bottom:.5rem">„Copiii sub 12 ani nu ar trebui să aibă smartphone." — Pro sau contra?</div>
+        <div class="conv-q" style="margin-bottom:.5rem">„Inteligența artificială este mai periculoasă decât utilă." — Ești de acord?</div>
+        <div class="conv-q" style="margin-bottom:.5rem">„Rețelele sociale ar trebui să fie interzise persoanelor sub 16 ani." — De ce da / nu?</div>
+        <div class="conv-q" style="margin-bottom:.5rem">„Programarea ar trebui predată obligatoriu în toate școlile." — Argumentează.</div>
+        <div class="conv-q">„Munca remote este mai productivă decât munca la birou." — Ce crezi?</div>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<div class="footer">
+  Lecție română · Nivel B2 · Comunicare și Tehnologie &nbsp;·&nbsp; Creat pentru uz didactic
+</div>
+</div>
+
+<script>
+function showSection(name, el) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nav-item, .lesson-tab').forEach(b => b.classList.remove('active'));
+  document.getElementById('sec-' + name).classList.add('active');
+  if (el) el.classList.add('active');
+  // sync all section navs
+  document.querySelectorAll('.nav-item').forEach(b => {
+    if (b.getAttribute('onclick') && b.getAttribute('onclick').includes("'" + name + "'")) b.classList.add('active');
+  });
+  document.querySelectorAll('.lesson-tab').forEach(b => {
+    if (b.getAttribute('onclick') && b.getAttribute('onclick').includes("'" + name + "'")) b.classList.add('active');
+  });
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function checkEx1() {
+  const answers = { e1q1: 'actualizezi', e1q2: 'stoca', e1q3: 'descărcat', e1q4: 'partaja' };
+  let score = 0;
+  Object.entries(answers).forEach(([id, val]) => {
+    if (document.getElementById(id).value === val) score++;
+  });
+  const fb = document.getElementById('ex1-fb');
+  if (score === 4) {
+    fb.className = 'feedback ok';
+    fb.textContent = '✓ Excelent! Toate 4 răspunsurile sunt corecte!';
+  } else {
+    fb.className = 'feedback err';
+    fb.textContent = 'Ai ' + score + ' din 4 corecte. Răspunsuri: actualizezi, stoca, descărcat, partaja.';
+  }
+}
+
+function checkEx2() {
+  const correct = { m1: 'C', m2: 'B', m3: 'D', m4: 'A' };
+  let score = 0;
+  Object.entries(correct).forEach(([id, val]) => {
+    if (document.getElementById(id).value === val) score++;
+  });
+  const fb = document.getElementById('ex2-fb');
+  if (score === 4) {
+    fb.className = 'feedback ok';
+    fb.textContent = '✓ Perfect! Toate potrivirile sunt corecte!';
+  } else {
+    fb.className = 'feedback err';
+    fb.textContent = 'Ai ' + score + ' din 4. Răspunsuri corecte: 1-C, 2-B, 3-D, 4-A.';
+  }
+}
+</script>
+</body>
+</html>

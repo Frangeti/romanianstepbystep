@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Română Step by Step</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600&amp;family=DM+Sans:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #1a2744;
+    --gold: #c9962a;
+    --gold-light: #f5e9c8;
+    --blue: #2d5a9e;
+    --blue-light: #e8eef8;
+    --green: #2a7a4b;
+    --green-light: #e4f2ea;
+    --purple: #534ab7;
+    --purple-light: #eeedfe;
+    --teal: #0f6e56;
+    --teal-light: #e1f5ee;
+    --paper: #ffffff;
+    --bg: #f4f3f0;
+    --text: #1a2744;
+    --muted: #6b7280;
+    --border: rgba(26, 39, 68, 0.12);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    min-height: 100vh;
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+  }
+
+  a { color: inherit; text-decoration: none; }
+
+  .shell {
+    max-width: 1120px;
+    margin: 0 auto;
+    min-height: 100vh;
+    background: var(--paper);
+    border-left: 1px solid var(--border);
+    border-right: 1px solid var(--border);
+  }
+
+  .topbar {
+    min-height: 58px;
+    padding: 0 1.5rem;
+    background: var(--navy);
+    color: #fff;
+    border-bottom: 3px solid var(--gold);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .logo {
+    font-family: 'Lora', serif;
+    font-size: 19px;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  .logo span { color: var(--gold); }
+
+  .level-pills {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+
+  .pill {
+    padding: 4px 11px;
+    border-radius: 20px;
+    border: 1px solid transparent;
+    color: rgba(255, 255, 255, .64);
+    font-size: 11px;
+    font-weight: 600;
+  }
+
+  .pill.active {
+    background: var(--gold);
+    border-color: var(--gold);
+    color: var(--navy);
+  }
+
+  .tabs {
+    min-height: 42px;
+    padding: 0 1.5rem;
+    border-bottom: 1px solid var(--border);
+    background: #fff;
+    display: flex;
+    gap: 2px;
+    overflow-x: auto;
+  }
+
+  .tab {
+    padding: 12px 15px 10px;
+    border-bottom: 2px solid transparent;
+    color: var(--muted);
+    font-size: 13px;
+    white-space: nowrap;
+  }
+
+  .tab.active {
+    color: var(--blue);
+    border-bottom-color: var(--blue);
+    font-weight: 600;
+  }
+
+  .layout {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    min-height: calc(100vh - 103px);
+  }
+
+  .sidebar {
+    background: #fff;
+    border-right: 1px solid var(--border);
+    padding: 1rem 0;
+  }
+
+  .sid-section { margin-bottom: .65rem; }
+
+  .sid-head {
+    padding: .45rem 1rem;
+    color: var(--muted);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+  }
+
+  .sid-item {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    padding: 8px 1rem;
+    border-left: 3px solid transparent;
+    color: var(--text);
+    font-size: 13px;
+  }
+
+  .sid-item.active {
+    background: var(--blue-light);
+    border-left-color: var(--blue);
+    color: var(--blue);
+    font-weight: 600;
+  }
+
+  .sid-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex: 0 0 8px;
+  }
+
+  .dot-blue { background: var(--blue); }
+  .dot-purple { background: var(--purple); }
+  .dot-teal { background: var(--teal); }
+  .dot-gold { background: var(--gold); }
+
+  .main {
+    background: var(--bg);
+    padding: 1.5rem;
+  }
+
+  .intro {
+    background: var(--paper);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.4rem 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--gold);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .11em;
+    text-transform: uppercase;
+    margin-bottom: .55rem;
+  }
+
+  .eyebrow::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--gold);
+  }
+
+  h1 {
+    font-family: 'Lora', serif;
+    font-size: clamp(28px, 4vw, 42px);
+    line-height: 1.12;
+    margin-bottom: .55rem;
+    color: var(--navy);
+  }
+
+  .intro p {
+    max-width: 680px;
+    color: var(--muted);
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+    margin-top: 1.2rem;
+  }
+
+  .stat {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: .85rem;
+    background: #fbfaf7;
+  }
+
+  .stat strong {
+    display: block;
+    color: var(--navy);
+    font-size: 18px;
+    margin-bottom: 2px;
+  }
+
+  .stat span {
+    color: var(--muted);
+    font-size: 12px;
+  }
+
+  .section-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin: 1.35rem 0 .75rem;
+  }
+
+  .section-title h2 {
+    color: var(--navy);
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+  }
+
+  .section-title span {
+    color: var(--muted);
+    font-size: 12px;
+  }
+
+  .lesson-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.35fr) minmax(240px, .65fr);
+    gap: 1rem;
+  }
+
+  .lesson-card,
+  .panel {
+    background: var(--paper);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  .lesson-head {
+    padding: 1rem 1.2rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .meta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: .55rem;
+  }
+
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    min-height: 22px;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 600;
+  }
+
+  .badge-b2 { background: var(--gold-light); color: #7a5210; }
+  .badge-tech { background: var(--purple-light); color: var(--purple); }
+  .badge-live { background: var(--green-light); color: var(--green); }
+
+  .lesson-title {
+    font-family: 'Lora', serif;
+    color: var(--navy);
+    font-size: 23px;
+    font-weight: 600;
+    margin-bottom: .25rem;
+  }
+
+  .lesson-desc {
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.6;
+  }
+
+  .lesson-body {
+    padding: 1.1rem 1.2rem 1.2rem;
+  }
+
+  .lesson-features {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+    margin-bottom: 1rem;
+  }
+
+  .feature {
+    min-height: 54px;
+    border-radius: 8px;
+    background: var(--bg);
+    border: 1px solid rgba(26, 39, 68, .08);
+    padding: .7rem .75rem;
+  }
+
+  .feature strong {
+    display: block;
+    font-size: 13px;
+    margin-bottom: 1px;
+  }
+
+  .feature span {
+    color: var(--muted);
+    font-size: 12px;
+  }
+
+  .open-lesson {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 38px;
+    padding: 9px 17px;
+    border-radius: 8px;
+    background: var(--navy);
+    color: #fff;
+    font-size: 13px;
+    font-weight: 600;
+    transition: background .15s, transform .15s;
+  }
+
+  .open-lesson:hover {
+    background: var(--blue);
+    transform: translateY(-1px);
+  }
+
+  .panel {
+    padding: 1rem;
+  }
+
+  .panel h3 {
+    color: var(--navy);
+    font-size: 14px;
+    margin-bottom: .8rem;
+  }
+
+  .track-list {
+    display: grid;
+    gap: 8px;
+  }
+
+  .track-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background: #fbfaf7;
+    padding: .75rem;
+    font-size: 13px;
+  }
+
+  .track-item small {
+    color: var(--muted);
+    font-size: 11px;
+  }
+
+  .soon {
+    color: var(--muted);
+    font-size: 12px;
+  }
+
+  .coming-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .coming-card {
+    background: var(--paper);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1rem;
+    min-height: 132px;
+  }
+
+  .coming-card .badge { margin-bottom: .7rem; }
+
+  .coming-card h3 {
+    color: var(--navy);
+    font-size: 15px;
+    margin-bottom: .35rem;
+  }
+
+  .coming-card p {
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.55;
+  }
+
+  .footer {
+    padding: 1.25rem 1.5rem;
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+    background: #fff;
+    font-size: 12px;
+    text-align: center;
+  }
+
+  @media (max-width: 760px) {
+    .shell { border: none; }
+    .topbar {
+      align-items: flex-start;
+      flex-direction: column;
+      padding: 1rem;
+    }
+    .level-pills { justify-content: flex-start; }
+    .tabs { padding: 0 1rem; }
+    .layout { grid-template-columns: 1fr; }
+    .sidebar { display: none; }
+    .main { padding: 1rem; }
+    .stats,
+    .lesson-grid,
+    .coming-grid,
+    .lesson-features {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+</head>
+<body>
+  <div class="shell">
+    <header class="topbar">
+      <a class="logo" href="index.html">Română<span>StepByStep</span></a>
+      <nav class="level-pills" aria-label="Niveluri">
+        <span class="pill">A1</span>
+        <span class="pill">A2</span>
+        <span class="pill">B1</span>
+        <span class="pill active">B2</span>
+        <span class="pill">C1</span>
+      </nav>
+    </header>
+
+    <nav class="tabs" aria-label="Categorii">
+      <a class="tab active" href="#lectii">Lecții</a>
+      <a class="tab" href="#gramatica">Gramatică</a>
+      <a class="tab" href="#vocabular">Vocabular</a>
+      <a class="tab" href="#lectura">Lectură</a>
+      <a class="tab" href="#conversatie">Conversație</a>
+      <a class="tab" href="#fise">Fișe PDF</a>
+    </nav>
+
+    <div class="layout">
+      <aside class="sidebar" aria-label="Meniu lecții">
+        <div class="sid-section">
+          <div class="sid-head">Niveluri</div>
+          <a class="sid-item" href="#a1"><span class="sid-dot dot-gold"></span>A1 Începător</a>
+          <a class="sid-item" href="#a2"><span class="sid-dot dot-teal"></span>A2 Elementar</a>
+          <a class="sid-item" href="#b1"><span class="sid-dot dot-purple"></span>B1 Intermediar</a>
+          <a class="sid-item active" href="#b2"><span class="sid-dot dot-blue"></span>B2 Avansat</a>
+        </div>
+        <div class="sid-section">
+          <div class="sid-head">Colecții</div>
+          <a class="sid-item" href="#lectii"><span class="sid-dot dot-purple"></span>Lecții complete</a>
+          <a class="sid-item" href="#lectura"><span class="sid-dot dot-teal"></span>Texte și dialoguri</a>
+          <a class="sid-item" href="#fise"><span class="sid-dot dot-gold"></span>Fișe de lucru</a>
+        </div>
+      </aside>
+
+      <main class="main">
+        <section class="intro">
+          <div class="eyebrow">Platformă de lecții</div>
+          <h1>Învață româna pas cu pas</h1>
+          <p>Lecții interactive pentru vocabular, gramatică, lectură și conversație. Prima lecție este pregătită pentru nivelul B2 și poate fi publicată direct pe GitHub Pages.</p>
+
+          <div class="stats" aria-label="Rezumat">
+            <div class="stat">
+              <strong>1</strong>
+              <span>lecție publicată</span>
+            </div>
+            <div class="stat">
+              <strong>B2</strong>
+              <span>nivel disponibil</span>
+            </div>
+            <div class="stat">
+              <strong>6</strong>
+              <span>secțiuni în lecție</span>
+            </div>
+          </div>
+        </section>
+
+        <section id="lectii">
+          <div class="section-title">
+            <h2>Lecția curentă</h2>
+            <span>Gata de deschis</span>
+          </div>
+
+          <div class="lesson-grid">
+            <article class="lesson-card">
+              <div class="lesson-head">
+                <div class="meta">
+                  <span class="badge badge-b2">Nivel B2</span>
+                  <span class="badge badge-tech">Tehnologie</span>
+                  <span class="badge badge-live">Activă</span>
+                </div>
+                <div class="lesson-title">Comunicare și Tehnologie</div>
+                <p class="lesson-desc">O lecție completă despre aplicații, inteligență artificială, securitate cibernetică, muncă remote și rețele sociale.</p>
+              </div>
+              <div class="lesson-body">
+                <div class="lesson-features">
+                  <div class="feature">
+                    <strong>Vocabular</strong>
+                    <span>termeni digitali și exemple</span>
+                  </div>
+                  <div class="feature">
+                    <strong>Gramatică</strong>
+                    <span>conectori și exprimarea opiniei</span>
+                  </div>
+                  <div class="feature">
+                    <strong>Text</strong>
+                    <span>lectură cu idei pro și contra</span>
+                  </div>
+                  <div class="feature">
+                    <strong>Exerciții</strong>
+                    <span>verificare interactivă</span>
+                  </div>
+                </div>
+                <a class="open-lesson" href="lessons/b2/tehnologie.html">Deschide lecția</a>
+              </div>
+            </article>
+
+            <aside class="panel">
+              <h3>Traseu recomandat</h3>
+              <div class="track-list">
+                <div class="track-item">
+                  <span>1. Vocabular tematic</span>
+                  <small>10 min</small>
+                </div>
+                <div class="track-item">
+                  <span>2. Gramatică aplicată</span>
+                  <small>12 min</small>
+                </div>
+                <div class="track-item">
+                  <span>3. Text și exerciții</span>
+                  <small>20 min</small>
+                </div>
+                <div class="track-item">
+                  <span>4. Conversație</span>
+                  <small>15 min</small>
+                </div>
+              </div>
+            </aside>
+          </div>
+        </section>
+
+        <section>
+          <div class="section-title">
+            <h2>Urmează</h2>
+            <span class="soon">spațiu pentru lecții noi</span>
+          </div>
+
+          <div class="coming-grid">
+            <article class="coming-card" id="vocabular">
+              <span class="badge badge-live">Vocabular</span>
+              <h3>Cuvinte pe teme</h3>
+              <p>Liste scurte cu termeni utili, traduceri și exemple naturale în propoziții.</p>
+            </article>
+            <article class="coming-card" id="gramatica">
+              <span class="badge badge-tech">Gramatică</span>
+              <h3>Conectori avansați</h3>
+              <p>Exerciții pentru argumentare, contrast și concluzie în texte de nivel B2.</p>
+            </article>
+            <article class="coming-card" id="lectura">
+              <span class="badge badge-b2">Lectură</span>
+              <h3>Texte și dialoguri</h3>
+              <p>O colecție separată pentru texte scurte, dialoguri și activități de înțelegere.</p>
+            </article>
+            <article class="coming-card" id="conversatie">
+              <span class="badge badge-live">Conversație</span>
+              <h3>Teme de dezbatere</h3>
+              <p>Întrebări ghidate pentru discuții, opinii personale și eseuri scurte.</p>
+            </article>
+            <article class="coming-card" id="fise">
+              <span class="badge badge-b2">Fișe PDF</span>
+              <h3>Materiale printabile</h3>
+              <p>Fișe de lucru pentru recapitulare, teme individuale și activități la clasă.</p>
+            </article>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <footer class="footer">
+      Română Step by Step · Site static pregătit pentru GitHub Pages
+    </footer>
+  </div>
+</body>
+</html>
