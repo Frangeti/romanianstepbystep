@@ -30,6 +30,7 @@
   body {
     min-height: 100vh;
     font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
     background: var(--bg);
     color: var(--text);
   }
@@ -37,17 +38,16 @@
   a { color: inherit; text-decoration: none; }
 
   .shell {
-    max-width: 1120px;
-    margin: 0 auto;
+    width: 100%;
+    max-width: none;
+    margin: 0;
     min-height: 100vh;
     background: var(--paper);
-    border-left: 1px solid var(--border);
-    border-right: 1px solid var(--border);
   }
 
   .topbar {
-    min-height: 58px;
-    padding: 0 1.5rem;
+    min-height: 66px;
+    padding: 0 clamp(1.25rem, 3vw, 2.75rem);
     background: var(--navy);
     color: #fff;
     border-bottom: 3px solid var(--gold);
@@ -59,7 +59,7 @@
 
   .logo {
     font-family: 'Lora', serif;
-    font-size: 19px;
+    font-size: 22px;
     font-weight: 600;
     white-space: nowrap;
   }
@@ -74,11 +74,11 @@
   }
 
   .pill {
-    padding: 4px 11px;
+    padding: 5px 13px;
     border-radius: 20px;
     border: 1px solid transparent;
     color: rgba(255, 255, 255, .64);
-    font-size: 11px;
+    font-size: 12px;
     font-weight: 600;
   }
 
@@ -89,8 +89,8 @@
   }
 
   .tabs {
-    min-height: 42px;
-    padding: 0 1.5rem;
+    min-height: 48px;
+    padding: 0 clamp(1.25rem, 3vw, 2.75rem);
     border-bottom: 1px solid var(--border);
     background: #fff;
     display: flex;
@@ -99,10 +99,10 @@
   }
 
   .tab {
-    padding: 12px 15px 10px;
+    padding: 14px 18px 12px;
     border-bottom: 2px solid transparent;
     color: var(--muted);
-    font-size: 13px;
+    font-size: 15px;
     white-space: nowrap;
   }
 
@@ -114,8 +114,8 @@
 
   .layout {
     display: grid;
-    grid-template-columns: 220px 1fr;
-    min-height: calc(100vh - 103px);
+    grid-template-columns: 260px 1fr;
+    min-height: calc(100vh - 114px);
   }
 
   .sidebar {
@@ -127,9 +127,9 @@
   .sid-section { margin-bottom: .65rem; }
 
   .sid-head {
-    padding: .45rem 1rem;
+    padding: .55rem 1.2rem;
     color: var(--muted);
-    font-size: 10px;
+    font-size: 11px;
     font-weight: 600;
     letter-spacing: .1em;
     text-transform: uppercase;
@@ -139,10 +139,10 @@
     display: flex;
     align-items: center;
     gap: 9px;
-    padding: 8px 1rem;
+    padding: 10px 1.2rem;
     border-left: 3px solid transparent;
     color: var(--text);
-    font-size: 13px;
+    font-size: 15px;
   }
 
   .sid-item.active {
@@ -166,15 +166,15 @@
 
   .main {
     background: var(--bg);
-    padding: 1.5rem;
+    padding: clamp(1.25rem, 3vw, 2.75rem);
   }
 
   .intro {
     background: var(--paper);
     border: 1px solid var(--border);
     border-radius: 10px;
-    padding: 1.4rem 1.5rem;
-    margin-bottom: 1rem;
+    padding: clamp(1.5rem, 3vw, 2.4rem);
+    margin-bottom: 1.25rem;
   }
 
   .eyebrow {
@@ -182,7 +182,7 @@
     align-items: center;
     gap: 8px;
     color: var(--gold);
-    font-size: 11px;
+    font-size: 12px;
     font-weight: 700;
     letter-spacing: .11em;
     text-transform: uppercase;
@@ -199,43 +199,43 @@
 
   h1 {
     font-family: 'Lora', serif;
-    font-size: clamp(28px, 4vw, 42px);
+    font-size: clamp(34px, 4.5vw, 56px);
     line-height: 1.12;
     margin-bottom: .55rem;
     color: var(--navy);
   }
 
   .intro p {
-    max-width: 680px;
+    max-width: 900px;
     color: var(--muted);
-    font-size: 15px;
+    font-size: 18px;
     line-height: 1.7;
   }
 
   .stats {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 10px;
-    margin-top: 1.2rem;
+    gap: 14px;
+    margin-top: 1.4rem;
   }
 
   .stat {
     border: 1px solid var(--border);
     border-radius: 8px;
-    padding: .85rem;
+    padding: 1rem;
     background: #fbfaf7;
   }
 
   .stat strong {
     display: block;
     color: var(--navy);
-    font-size: 18px;
+    font-size: 24px;
     margin-bottom: 2px;
   }
 
   .stat span {
     color: var(--muted);
-    font-size: 12px;
+    font-size: 14px;
   }
 
   .section-title {
@@ -243,12 +243,12 @@
     align-items: center;
     justify-content: space-between;
     gap: 1rem;
-    margin: 1.35rem 0 .75rem;
+    margin: 1.6rem 0 .9rem;
   }
 
   .section-title h2 {
     color: var(--navy);
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 700;
     letter-spacing: .06em;
     text-transform: uppercase;
@@ -256,13 +256,13 @@
 
   .section-title span {
     color: var(--muted);
-    font-size: 12px;
+    font-size: 14px;
   }
 
   .lesson-grid {
     display: grid;
-    grid-template-columns: minmax(0, 1.35fr) minmax(240px, .65fr);
-    gap: 1rem;
+    grid-template-columns: minmax(0, 1.4fr) minmax(320px, .6fr);
+    gap: 1.25rem;
   }
 
   .lesson-card,
@@ -274,14 +274,14 @@
   }
 
   .lesson-head {
-    padding: 1rem 1.2rem;
+    padding: 1.35rem 1.5rem;
     border-bottom: 1px solid var(--border);
   }
 
   .meta {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
     flex-wrap: wrap;
     margin-bottom: .55rem;
   }
@@ -289,10 +289,10 @@
   .badge {
     display: inline-flex;
     align-items: center;
-    min-height: 22px;
-    padding: 3px 10px;
+    min-height: 26px;
+    padding: 4px 12px;
     border-radius: 20px;
-    font-size: 11px;
+    font-size: 12px;
     font-weight: 600;
   }
 
@@ -303,57 +303,57 @@
   .lesson-title {
     font-family: 'Lora', serif;
     color: var(--navy);
-    font-size: 23px;
+    font-size: clamp(28px, 2.6vw, 38px);
     font-weight: 600;
     margin-bottom: .25rem;
   }
 
   .lesson-desc {
     color: var(--muted);
-    font-size: 13px;
+    font-size: 16px;
     line-height: 1.6;
   }
 
   .lesson-body {
-    padding: 1.1rem 1.2rem 1.2rem;
+    padding: 1.35rem 1.5rem 1.5rem;
   }
 
   .lesson-features {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 8px;
-    margin-bottom: 1rem;
+    gap: 12px;
+    margin-bottom: 1.2rem;
   }
 
   .feature {
-    min-height: 54px;
+    min-height: 72px;
     border-radius: 8px;
     background: var(--bg);
     border: 1px solid rgba(26, 39, 68, .08);
-    padding: .7rem .75rem;
+    padding: .9rem 1rem;
   }
 
   .feature strong {
     display: block;
-    font-size: 13px;
+    font-size: 16px;
     margin-bottom: 1px;
   }
 
   .feature span {
     color: var(--muted);
-    font-size: 12px;
+    font-size: 14px;
   }
 
   .open-lesson {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    min-height: 38px;
-    padding: 9px 17px;
+    min-height: 44px;
+    padding: 10px 20px;
     border-radius: 8px;
     background: var(--navy);
     color: #fff;
-    font-size: 13px;
+    font-size: 15px;
     font-weight: 600;
     transition: background .15s, transform .15s;
   }
@@ -364,18 +364,18 @@
   }
 
   .panel {
-    padding: 1rem;
+    padding: 1.25rem;
   }
 
   .panel h3 {
     color: var(--navy);
-    font-size: 14px;
+    font-size: 17px;
     margin-bottom: .8rem;
   }
 
   .track-list {
     display: grid;
-    gap: 8px;
+    gap: 10px;
   }
 
   .track-item {
@@ -386,55 +386,65 @@
     border-radius: 8px;
     border: 1px solid var(--border);
     background: #fbfaf7;
-    padding: .75rem;
-    font-size: 13px;
+    padding: .9rem 1rem;
+    font-size: 15px;
   }
 
   .track-item small {
     color: var(--muted);
-    font-size: 11px;
+    font-size: 13px;
   }
 
   .soon {
     color: var(--muted);
-    font-size: 12px;
+    font-size: 14px;
   }
 
   .coming-grid {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 10px;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 12px;
   }
 
   .coming-card {
     background: var(--paper);
     border: 1px solid var(--border);
     border-radius: 10px;
-    padding: 1rem;
-    min-height: 132px;
+    padding: 1.15rem;
+    min-height: 150px;
   }
 
   .coming-card .badge { margin-bottom: .7rem; }
 
   .coming-card h3 {
     color: var(--navy);
-    font-size: 15px;
+    font-size: 18px;
     margin-bottom: .35rem;
   }
 
   .coming-card p {
     color: var(--muted);
-    font-size: 12px;
+    font-size: 14px;
     line-height: 1.55;
   }
 
   .footer {
-    padding: 1.25rem 1.5rem;
+    padding: 1.4rem clamp(1.25rem, 3vw, 2.75rem);
     border-top: 1px solid var(--border);
     color: var(--muted);
     background: #fff;
-    font-size: 12px;
+    font-size: 14px;
     text-align: center;
+  }
+
+  @media (max-width: 1100px) {
+    .lesson-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .coming-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
   }
 
   @media (max-width: 760px) {

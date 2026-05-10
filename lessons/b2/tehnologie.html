@@ -273,6 +273,55 @@
   }
   .text-passage p + p { margin-top: .85rem; }
 
+  .audio-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1rem 1.15rem;
+    margin: 0 0 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .audio-play-btn {
+    min-height: 44px;
+    padding: 10px 18px;
+    border: 1px solid var(--navy);
+    border-radius: var(--radius-sm);
+    background: var(--navy);
+    color: #fff;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background .15s, border-color .15s, transform .15s;
+    white-space: nowrap;
+  }
+
+  .audio-play-btn:hover {
+    background: var(--blue);
+    border-color: var(--blue);
+    transform: translateY(-1px);
+  }
+
+  .audio-copy {
+    min-width: 0;
+  }
+
+  .audio-title {
+    color: var(--navy);
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.4;
+  }
+
+  .audio-status {
+    color: var(--text2);
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
   /* EXPRESSIONS */
   .expr-item {
     padding: .75rem 0;
@@ -504,22 +553,22 @@
   body {
     background: var(--bg);
     color: var(--text);
+    font-size: 16px;
   }
 
   a { color: inherit; text-decoration: none; }
 
   .shell {
-    max-width: 1120px;
-    margin: 0 auto;
+    width: 100%;
+    max-width: none;
+    margin: 0;
     min-height: 100vh;
     background: var(--surface);
-    border-left: 1px solid var(--border);
-    border-right: 1px solid var(--border);
   }
 
   .topbar {
-    min-height: 58px;
-    padding: 0 1.5rem;
+    min-height: 66px;
+    padding: 0 clamp(1.25rem, 3vw, 2.75rem);
     background: var(--navy);
     color: #fff;
     border-bottom: 3px solid var(--gold);
@@ -531,7 +580,7 @@
 
   .logo {
     font-family: 'Lora', serif;
-    font-size: 19px;
+    font-size: 22px;
     font-weight: 600;
     white-space: nowrap;
   }
@@ -546,11 +595,11 @@
   }
 
   .pill {
-    padding: 4px 11px;
+    padding: 5px 13px;
     border-radius: 20px;
     border: 1px solid transparent;
     color: rgba(255, 255, 255, .64);
-    font-size: 11px;
+    font-size: 12px;
     font-weight: 600;
   }
 
@@ -561,8 +610,8 @@
   }
 
   .tabs {
-    min-height: 42px;
-    padding: 0 1.5rem;
+    min-height: 48px;
+    padding: 0 clamp(1.25rem, 3vw, 2.75rem);
     border-bottom: 1px solid var(--border);
     background: #fff;
     display: flex;
@@ -571,12 +620,12 @@
   }
 
   .tab {
-    padding: 12px 15px 10px;
+    padding: 14px 18px 12px;
     border: 0;
     border-bottom: 2px solid transparent;
     background: transparent;
     color: var(--text2);
-    font-size: 13px;
+    font-size: 15px;
     font-family: 'DM Sans', sans-serif;
     white-space: nowrap;
     cursor: pointer;
@@ -594,9 +643,9 @@
 
   .layout {
     display: grid;
-    grid-template-columns: 220px 1fr;
+    grid-template-columns: 260px 1fr;
     max-width: none;
-    min-height: calc(100vh - 103px);
+    min-height: calc(100vh - 114px);
     margin: 0;
   }
 
@@ -611,16 +660,18 @@
   }
 
   .sidebar-label {
-    padding: .45rem 1rem;
+    padding: .55rem 1.2rem;
     color: var(--text2);
+    font-size: 11px;
   }
 
   .nav-item {
     border-left: 3px solid transparent;
     border-radius: 0;
     margin: 0;
-    padding: 8px 1rem;
+    padding: 10px 1.2rem;
     color: var(--text);
+    font-size: 15px;
   }
 
   .nav-item:hover {
@@ -641,7 +692,7 @@
 
   .main {
     background: var(--bg);
-    padding: 1.5rem;
+    padding: clamp(1.25rem, 3vw, 2.75rem);
   }
 
   .header {
@@ -649,8 +700,8 @@
     color: var(--text);
     border: 1px solid var(--border);
     border-radius: var(--radius);
-    padding: 1.4rem 1.5rem;
-    margin-bottom: 1rem;
+    padding: clamp(1.5rem, 3vw, 2.4rem);
+    margin-bottom: 1.25rem;
     overflow: visible;
   }
 
@@ -666,6 +717,7 @@
   .home-link {
     color: var(--blue);
     font-weight: 600;
+    font-size: 15px;
     margin-bottom: .6rem;
   }
 
@@ -687,11 +739,14 @@
 
   .header h1 {
     color: var(--navy);
+    font-size: clamp(34px, 4.5vw, 56px);
     font-weight: 600;
   }
 
   .header p {
     color: var(--text2);
+    font-size: 18px;
+    max-width: 900px;
   }
 
   .header-meta {
@@ -701,6 +756,7 @@
 
   .header-meta span {
     color: var(--text2);
+    font-size: 14px;
   }
 
   .header-meta span::before {
@@ -712,23 +768,103 @@
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: var(--radius);
-    padding: 1rem 1.1rem;
-    margin-bottom: 1rem;
+    padding: 1.15rem 1.25rem;
+    margin-bottom: 1.1rem;
   }
 
   .section-header h2 {
     color: var(--navy);
-    font-size: 21px;
+    font-size: 26px;
     font-weight: 600;
   }
 
   .section-header p {
     color: var(--text2);
+    font-size: 15px;
   }
 
   .section-icon {
-    width: 42px;
-    height: 42px;
+    width: 48px;
+    height: 48px;
+  }
+
+  .card,
+  .text-passage,
+  .writing-box {
+    padding: 1.35rem 1.5rem;
+  }
+
+  .card-title {
+    font-size: 14px;
+  }
+
+  .vocab-grid {
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 12px;
+  }
+
+  .vocab-item {
+    padding: .85rem 1rem;
+  }
+
+  .vocab-ro,
+  .verb-chip,
+  .expr-ro,
+  .match-label,
+  .btn {
+    font-size: 15px;
+  }
+
+  .vocab-en {
+    font-size: 13px;
+  }
+
+  .verb-ex,
+  .expr-ex,
+  .grammar-rule p,
+  .pros-box li,
+  .cons-box li,
+  .topic-card p,
+  .writing-box p {
+    font-size: 15px;
+  }
+
+  .text-passage {
+    font-size: 17px;
+  }
+
+  .grammar-rule {
+    padding: 1rem 1.1rem;
+  }
+
+  .ex-item label,
+  .ex-item select,
+  .ex-item input[type=text],
+  .match-row select {
+    font-size: 15px;
+  }
+
+  .topic-grid {
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 12px;
+  }
+
+  .topic-card {
+    padding: 1.15rem;
+  }
+
+  .topic-card h4,
+  h3 {
+    font-size: 17px;
+  }
+
+  .conv-q {
+    font-size: 16px;
+  }
+
+  .footer {
+    font-size: 14px;
+    padding: 1.4rem clamp(1.25rem, 3vw, 2.75rem);
   }
 
   .card,
@@ -848,8 +984,18 @@
     .section-header,
     .card,
     .text-passage,
+    .audio-card,
     .writing-box {
       padding: 1rem;
+    }
+
+    .audio-card {
+      align-items: stretch;
+      flex-direction: column;
+    }
+
+    .audio-play-btn {
+      width: 100%;
     }
 
     .pros-cons {
@@ -1081,6 +1227,15 @@
         <p>În România, numărul utilizatorilor de internet a crescut semnificativ în ultimul deceniu. Astăzi, mulți oameni folosesc aplicații pentru a face cumpărături online, a plăti facturi, a consulta un medic de la distanță sau a urma cursuri digitale. Munca de la distanță, sau „remote work", a devenit o realitate acceptată, mai ales după pandemia din 2020.</p>
         <p>Totuși, această revoluție digitală ridică și întrebări importante. Cum protejăm datele personale? Cât timp petrecem în fața ecranelor? Ce se întâmplă cu locurile de muncă automatizate? Experții în securitate cibernetică avertizează că atacurile informatice devin tot mai frecvente și mai sofisticate. Pe de altă parte, inteligența artificială oferă soluții inovatoare în medicină, educație și cercetare.</p>
         <p>Un lucru este cert: adaptarea la noile tehnologii nu mai este opțională. Competențele digitale — de la utilizarea unui editor de documente până la scrierea unui cod simplu — sunt din ce în ce mai căutate pe piața muncii.</p>
+      </div>
+
+      <div class="audio-card">
+        <button class="audio-play-btn" id="textAudioBtn" type="button" onclick="toggleTextAudio()">Redă audio</button>
+        <div class="audio-copy">
+          <div class="audio-title">Ascultă textul lecției</div>
+          <div class="audio-status" id="textAudioStatus">Audio pentru „Tehnologia în viața de zi cu zi”</div>
+        </div>
+        <audio id="textAudio" preload="metadata" src="../../assets/audio/tehnologie-text.mp3"></audio>
       </div>
 
       <div class="card">
@@ -1400,6 +1555,40 @@ function showSection(name, el) {
   });
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
+
+function toggleTextAudio() {
+  const audio = document.getElementById('textAudio');
+  const btn = document.getElementById('textAudioBtn');
+  const status = document.getElementById('textAudioStatus');
+  if (!audio || !btn || !status) return;
+
+  if (audio.paused) {
+    audio.play()
+      .then(() => {
+        btn.textContent = 'Pauză';
+        status.textContent = 'Se redă audio-ul textului.';
+      })
+      .catch(() => {
+        status.textContent = 'Audio-ul nu a putut fi redat. Verifică fișierul audio.';
+      });
+  } else {
+    audio.pause();
+    btn.textContent = 'Redă audio';
+    status.textContent = 'Audio pus pe pauză.';
+  }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  const audio = document.getElementById('textAudio');
+  const btn = document.getElementById('textAudioBtn');
+  const status = document.getElementById('textAudioStatus');
+  if (!audio || !btn || !status) return;
+
+  audio.addEventListener('ended', () => {
+    btn.textContent = 'Redă audio';
+    status.textContent = 'Audio finalizat.';
+  });
+});
 
 function checkEx1() {
   const answers = { e1q1: 'actualizezi', e1q2: 'stoca', e1q3: 'descărcat', e1q4: 'partaja' };
