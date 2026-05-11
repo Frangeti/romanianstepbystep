@@ -1553,8 +1553,14 @@ function showSection(name, el) {
   document.querySelectorAll('.lesson-tab').forEach(b => {
     if (b.getAttribute('onclick') && b.getAttribute('onclick').includes("'" + name + "'")) b.classList.add('active');
   });
+  if (location.hash !== '#' + name) history.replaceState(null, '', '#' + name);
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+  const section = location.hash.replace('#', '');
+  if (section && document.getElementById('sec-' + section)) showSection(section);
+});
 
 function toggleTextAudio() {
   const audio = document.getElementById('textAudio');

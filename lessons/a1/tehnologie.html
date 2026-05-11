@@ -1145,8 +1145,14 @@ function showSection(name, el) {
   document.getElementById('sec-' + name).classList.add('active');
   document.querySelectorAll('.nav-item').forEach(b => { if (b.getAttribute('onclick') && b.getAttribute('onclick').includes("'" + name + "'")) b.classList.add('active'); });
   document.querySelectorAll('.lesson-tab').forEach(b => { if (b.getAttribute('onclick') && b.getAttribute('onclick').includes("'" + name + "'")) b.classList.add('active'); });
+  if (location.hash !== '#' + name) history.replaceState(null, '', '#' + name);
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+  const section = location.hash.replace('#', '');
+  if (section && document.getElementById('sec-' + section)) showSection(section);
+});
 
 function checkEx1() {
   const answers = { e1q1: 'ascult', e1q2: 'primesc', e1q3: 'stau', e1q4: 'încarc', e1q5: 'descarc' };
