@@ -261,7 +261,7 @@
 
   .lesson-grid {
     display: grid;
-    grid-template-columns: minmax(0, 1.4fr) minmax(320px, .6fr);
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     gap: 1.25rem;
   }
 
@@ -473,7 +473,7 @@
     <header class="topbar">
       <a class="logo" href="index.html">Română<span>StepByStep</span></a>
       <nav class="level-pills" aria-label="Niveluri">
-        <span class="pill">A1</span>
+        <span class="pill active">A1</span>
         <span class="pill">A2</span>
         <span class="pill">B1</span>
         <span class="pill active">B2</span>
@@ -494,10 +494,10 @@
       <aside class="sidebar" aria-label="Meniu lecții">
         <div class="sid-section">
           <div class="sid-head">Niveluri</div>
-          <a class="sid-item" href="#a1"><span class="sid-dot dot-gold"></span>A1 Începător</a>
+          <a class="sid-item active" href="#a1"><span class="sid-dot dot-gold"></span>A1 Începător</a>
           <a class="sid-item" href="#a2"><span class="sid-dot dot-teal"></span>A2 Elementar</a>
           <a class="sid-item" href="#b1"><span class="sid-dot dot-purple"></span>B1 Intermediar</a>
-          <a class="sid-item active" href="#b2"><span class="sid-dot dot-blue"></span>B2 Avansat</a>
+          <a class="sid-item" href="#b2"><span class="sid-dot dot-blue"></span>B2 Avansat</a>
         </div>
         <div class="sid-section">
           <div class="sid-head">Colecții</div>
@@ -511,32 +511,65 @@
         <section class="intro">
           <div class="eyebrow">Platformă de lecții</div>
           <h1>Învață româna pas cu pas</h1>
-          <p>Lecții interactive pentru vocabular, gramatică, lectură și conversație. Prima lecție este pregătită pentru nivelul B2 și poate fi publicată direct pe GitHub Pages.</p>
+          <p>Lecții interactive pentru vocabular, gramatică, lectură și conversație. Materialele sunt organizate pe niveluri și pot fi publicate direct pe GitHub Pages.</p>
 
           <div class="stats" aria-label="Rezumat">
             <div class="stat">
-              <strong>1</strong>
-              <span>lecție publicată</span>
+              <strong>2</strong>
+              <span>lecții publicate</span>
             </div>
             <div class="stat">
-              <strong>B2</strong>
-              <span>nivel disponibil</span>
+              <strong>A1 · B2</strong>
+              <span>niveluri disponibile</span>
             </div>
             <div class="stat">
-              <strong>6</strong>
-              <span>secțiuni în lecție</span>
+              <strong>12</strong>
+              <span>secțiuni interactive</span>
             </div>
           </div>
         </section>
 
         <section id="lectii">
           <div class="section-title">
-            <h2>Lecția curentă</h2>
+            <h2>Lecții disponibile</h2>
             <span>Gata de deschis</span>
           </div>
 
           <div class="lesson-grid">
-            <article class="lesson-card">
+            <article class="lesson-card" id="a1">
+              <div class="lesson-head">
+                <div class="meta">
+                  <span class="badge badge-b2">Nivel A1</span>
+                  <span class="badge badge-tech">Tehnologie</span>
+                  <span class="badge badge-live">Activă</span>
+                </div>
+                <div class="lesson-title">Tehnologie și Dispozitive</div>
+                <p class="lesson-desc">O lecție pentru începători despre telefoane, laptopuri, aplicații, internet și verbe simple de zi cu zi.</p>
+              </div>
+              <div class="lesson-body">
+                <div class="lesson-features">
+                  <div class="feature">
+                    <strong>Vocabular A1</strong>
+                    <span>dispozitive și aplicații</span>
+                  </div>
+                  <div class="feature">
+                    <strong>Verbe</strong>
+                    <span>a primi, a trimite, a folosi</span>
+                  </div>
+                  <div class="feature">
+                    <strong>Text scurt</strong>
+                    <span>lectură simplă cu întrebări</span>
+                  </div>
+                  <div class="feature">
+                    <strong>Conversație</strong>
+                    <span>roluri și teme ușoare</span>
+                  </div>
+                </div>
+                <a class="open-lesson" href="lessons/a1/tehnologie.html">Deschide lecția</a>
+              </div>
+            </article>
+
+            <article class="lesson-card" id="b2">
               <div class="lesson-head">
                 <div class="meta">
                   <span class="badge badge-b2">Nivel B2</span>
