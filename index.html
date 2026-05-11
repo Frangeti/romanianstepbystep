@@ -272,6 +272,36 @@
     font-size: 14px;
   }
 
+  .level-section {
+    margin-bottom: 1.35rem;
+  }
+
+  .level-section.is-hidden,
+  .empty-level.is-hidden {
+    display: none;
+  }
+
+  .level-heading {
+    display: flex;
+    align-items: baseline;
+    gap: .75rem;
+    margin-bottom: .75rem;
+  }
+
+  .level-heading h3 {
+    color: var(--navy);
+    font-size: 20px;
+  }
+
+  .empty-level {
+    background: var(--paper);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    color: var(--muted);
+    padding: 1.2rem;
+    font-size: 15px;
+  }
+
   .lesson-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -441,6 +471,98 @@
     line-height: 1.55;
   }
 
+  .resource-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1rem;
+  }
+
+  .resource-card {
+    background: var(--paper);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    min-height: 100%;
+  }
+
+  .resource-cover {
+    min-height: 190px;
+    padding: 1.2rem;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: .35rem;
+    background: linear-gradient(135deg, var(--navy), var(--blue));
+  }
+
+  .cover-gold { background: linear-gradient(135deg, #7a5210, var(--gold)); }
+  .cover-blue { background: linear-gradient(135deg, var(--navy), var(--blue)); }
+  .cover-teal { background: linear-gradient(135deg, #0d4d40, var(--teal)); }
+  .cover-purple { background: linear-gradient(135deg, #312c72, var(--purple)); }
+
+  .cover-level {
+    width: max-content;
+    border: 1px solid rgba(255, 255, 255, .45);
+    border-radius: 20px;
+    padding: 4px 10px;
+    font-size: 12px;
+    font-weight: 700;
+  }
+
+  .resource-cover h3 {
+    max-width: 12ch;
+    font-family: 'Lora', serif;
+    font-size: 28px;
+    line-height: 1.08;
+  }
+
+  .resource-cover p {
+    max-width: 28ch;
+    font-size: 14px;
+    line-height: 1.45;
+    color: rgba(255, 255, 255, .82);
+  }
+
+  .resource-body {
+    padding: 1.05rem 1.15rem 1.2rem;
+  }
+
+  .resource-body .meta {
+    margin-bottom: .65rem;
+  }
+
+  .resource-body h3 {
+    color: var(--navy);
+    font-size: 19px;
+    margin-bottom: .3rem;
+  }
+
+  .resource-body p {
+    color: var(--muted);
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: .9rem;
+  }
+
+  .resource-status {
+    display: inline-flex;
+    align-items: center;
+    min-height: 38px;
+    padding: 8px 14px;
+    border-radius: 8px;
+    background: var(--blue-light);
+    color: var(--blue);
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  .resource-status.waiting {
+    background: #fbfaf7;
+    border: 1px solid var(--border);
+    color: var(--muted);
+  }
+
   .footer {
     padding: 1.4rem clamp(1.25rem, 3vw, 2.75rem);
     border-top: 1px solid var(--border);
@@ -455,7 +577,8 @@
       grid-template-columns: 1fr;
     }
 
-    .coming-grid {
+    .coming-grid,
+    .resource-grid {
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
   }
@@ -475,6 +598,7 @@
     .stats,
     .lesson-grid,
     .coming-grid,
+    .resource-grid,
     .lesson-features {
       grid-template-columns: 1fr;
     }
@@ -494,28 +618,25 @@
       </nav>
     </header>
 
-    <nav class="tabs" aria-label="Categorii">
-      <a class="tab active" href="#lectii">Lecții</a>
-      <a class="tab" href="#gramatica">Gramatică</a>
-      <a class="tab" href="#vocabular">Vocabular</a>
-      <a class="tab" href="#lectura">Lectură</a>
-      <a class="tab" href="#conversatie">Conversație</a>
-      <a class="tab" href="#fise">Fișe PDF</a>
+    <nav class="tabs" aria-label="Colecții">
+      <a class="tab active" href="#lectii" data-show-all-lessons>Lecții complete</a>
+      <a class="tab" href="#texte-dialoguri">Texte și dialoguri</a>
+      <a class="tab" href="#fise">Fișe de lucru</a>
     </nav>
 
     <div class="layout">
       <aside class="sidebar" aria-label="Meniu lecții">
         <div class="sid-section">
           <div class="sid-head">Niveluri</div>
-          <a class="sid-item active" href="#a1"><span class="sid-dot dot-gold"></span>A1 Începător</a>
-          <a class="sid-item" href="#a2"><span class="sid-dot dot-teal"></span>A2 Elementar</a>
-          <a class="sid-item" href="#b1"><span class="sid-dot dot-purple"></span>B1 Intermediar</a>
-          <a class="sid-item" href="#b2"><span class="sid-dot dot-blue"></span>B2 Avansat</a>
+          <a class="sid-item" href="#a1" data-level-filter="a1"><span class="sid-dot dot-gold"></span>A1 Începător</a>
+          <a class="sid-item" href="#a2" data-level-filter="a2"><span class="sid-dot dot-teal"></span>A2 Elementar</a>
+          <a class="sid-item" href="#b1" data-level-filter="b1"><span class="sid-dot dot-purple"></span>B1 Intermediar</a>
+          <a class="sid-item" href="#b2" data-level-filter="b2"><span class="sid-dot dot-blue"></span>B2 Avansat</a>
         </div>
         <div class="sid-section">
           <div class="sid-head">Colecții</div>
-          <a class="sid-item" href="#lectii"><span class="sid-dot dot-purple"></span>Lecții complete</a>
-          <a class="sid-item" href="#lectura"><span class="sid-dot dot-teal"></span>Texte și dialoguri</a>
+          <a class="sid-item active" href="#lectii" data-show-all-lessons><span class="sid-dot dot-purple"></span>Lecții complete</a>
+          <a class="sid-item" href="#texte-dialoguri"><span class="sid-dot dot-teal"></span>Texte și dialoguri</a>
           <a class="sid-item" href="#fise"><span class="sid-dot dot-gold"></span>Fișe de lucru</a>
         </div>
       </aside>
@@ -524,7 +645,7 @@
         <section class="intro">
           <div class="eyebrow">Platformă de lecții</div>
           <h1>Învață româna pas cu pas</h1>
-          <p>Lecții interactive pentru vocabular, gramatică, lectură și conversație. Materialele sunt organizate pe niveluri și pot fi publicate direct pe GitHub Pages.</p>
+          <p>Lecții interactive, texte cu audio și fișe PDF organizate clar pe niveluri, pregătite pentru publicare pe GitHub Pages.</p>
 
           <div class="stats" aria-label="Rezumat">
             <div class="stat">
@@ -536,140 +657,187 @@
               <span>niveluri disponibile</span>
             </div>
             <div class="stat">
-              <strong>12</strong>
-              <span>secțiuni interactive</span>
+              <strong>1</strong>
+              <span>material audio atașat</span>
             </div>
           </div>
         </section>
 
         <section id="lectii">
           <div class="section-title">
-            <h2>Lecții disponibile</h2>
-            <span>Gata de deschis</span>
+            <h2>Lecții complete</h2>
+            <span>organizate pe niveluri</span>
           </div>
 
-          <div class="lesson-grid">
-            <article class="lesson-card" id="a1">
-              <div class="lesson-head">
-                <div class="meta">
-                  <span class="badge badge-b2">Nivel A1</span>
-                  <span class="badge badge-tech">Tehnologie</span>
-                  <span class="badge badge-live">Activă</span>
+          <div class="level-section" id="a1" data-level-section="a1">
+            <div class="level-heading">
+              <span class="badge badge-b2">Nivel A1</span>
+              <h3>Începător</h3>
+            </div>
+            <div class="lesson-grid">
+              <article class="lesson-card">
+                <div class="lesson-head">
+                  <div class="meta">
+                    <span class="badge badge-b2">Nivel A1</span>
+                    <span class="badge badge-tech">Tehnologie</span>
+                    <span class="badge badge-live">Activă</span>
+                  </div>
+                  <div class="lesson-title">Tehnologie și Dispozitive</div>
+                  <p class="lesson-desc">O lecție pentru începători despre telefoane, laptopuri, aplicații, internet și verbe simple de zi cu zi.</p>
                 </div>
-                <div class="lesson-title">Tehnologie și Dispozitive</div>
-                <p class="lesson-desc">O lecție pentru începători despre telefoane, laptopuri, aplicații, internet și verbe simple de zi cu zi.</p>
-              </div>
-              <div class="lesson-body">
-                <div class="lesson-features">
-                  <div class="feature">
-                    <strong>Vocabular A1</strong>
-                    <span>dispozitive și aplicații</span>
+                <div class="lesson-body">
+                  <div class="lesson-features">
+                    <div class="feature">
+                      <strong>Vocabular A1</strong>
+                      <span>dispozitive și aplicații</span>
+                    </div>
+                    <div class="feature">
+                      <strong>Verbe</strong>
+                      <span>a primi, a trimite, a folosi</span>
+                    </div>
+                    <div class="feature">
+                      <strong>Text scurt</strong>
+                      <span>lectură simplă cu întrebări</span>
+                    </div>
+                    <div class="feature">
+                      <strong>Conversație</strong>
+                      <span>roluri și teme ușoare</span>
+                    </div>
                   </div>
-                  <div class="feature">
-                    <strong>Verbe</strong>
-                    <span>a primi, a trimite, a folosi</span>
-                  </div>
-                  <div class="feature">
-                    <strong>Text scurt</strong>
-                    <span>lectură simplă cu întrebări</span>
-                  </div>
-                  <div class="feature">
-                    <strong>Conversație</strong>
-                    <span>roluri și teme ușoare</span>
-                  </div>
+                  <a class="open-lesson" href="lessons/a1/tehnologie.html">Deschide lecția</a>
                 </div>
-                <a class="open-lesson" href="lessons/a1/tehnologie.html">Deschide lecția</a>
-              </div>
-            </article>
+              </article>
+            </div>
+          </div>
 
-            <article class="lesson-card" id="b2">
-              <div class="lesson-head">
-                <div class="meta">
-                  <span class="badge badge-b2">Nivel B2</span>
-                  <span class="badge badge-tech">Tehnologie</span>
-                  <span class="badge badge-live">Activă</span>
-                </div>
-                <div class="lesson-title">Comunicare și Tehnologie</div>
-                <p class="lesson-desc">O lecție completă despre aplicații, inteligență artificială, securitate cibernetică, muncă remote și rețele sociale.</p>
-              </div>
-              <div class="lesson-body">
-                <div class="lesson-features">
-                  <div class="feature">
-                    <strong>Vocabular</strong>
-                    <span>termeni digitali și exemple</span>
-                  </div>
-                  <div class="feature">
-                    <strong>Gramatică</strong>
-                    <span>conectori și exprimarea opiniei</span>
-                  </div>
-                  <div class="feature">
-                    <strong>Text</strong>
-                    <span>lectură cu idei pro și contra</span>
-                  </div>
-                  <div class="feature">
-                    <strong>Exerciții</strong>
-                    <span>verificare interactivă</span>
-                  </div>
-                </div>
-                <a class="open-lesson" href="lessons/b2/tehnologie.html">Deschide lecția</a>
-              </div>
-            </article>
+          <div class="empty-level is-hidden" data-empty-level>
+            Nu există încă lecții publicate pentru acest nivel.
+          </div>
 
-            <aside class="panel">
-              <h3>Traseu recomandat</h3>
-              <div class="track-list">
-                <div class="track-item">
-                  <span>1. Vocabular tematic</span>
-                  <small>10 min</small>
+          <div class="level-section" id="b2" data-level-section="b2">
+            <div class="level-heading">
+              <span class="badge badge-b2">Nivel B2</span>
+              <h3>Avansat</h3>
+            </div>
+            <div class="lesson-grid">
+              <article class="lesson-card">
+                <div class="lesson-head">
+                  <div class="meta">
+                    <span class="badge badge-b2">Nivel B2</span>
+                    <span class="badge badge-tech">Tehnologie</span>
+                    <span class="badge badge-live">Activă</span>
+                  </div>
+                  <div class="lesson-title">Comunicare și Tehnologie</div>
+                  <p class="lesson-desc">O lecție completă despre aplicații, inteligență artificială, securitate cibernetică, muncă remote și rețele sociale.</p>
                 </div>
-                <div class="track-item">
-                  <span>2. Gramatică aplicată</span>
-                  <small>12 min</small>
+                <div class="lesson-body">
+                  <div class="lesson-features">
+                    <div class="feature">
+                      <strong>Vocabular</strong>
+                      <span>termeni digitali și exemple</span>
+                    </div>
+                    <div class="feature">
+                      <strong>Gramatică</strong>
+                      <span>conectori și exprimarea opiniei</span>
+                    </div>
+                    <div class="feature">
+                      <strong>Text</strong>
+                      <span>lectură cu idei pro și contra</span>
+                    </div>
+                    <div class="feature">
+                      <strong>Exerciții</strong>
+                      <span>verificare interactivă</span>
+                    </div>
+                  </div>
+                  <a class="open-lesson" href="lessons/b2/tehnologie.html">Deschide lecția</a>
                 </div>
-                <div class="track-item">
-                  <span>3. Text și exerciții</span>
-                  <small>20 min</small>
-                </div>
-                <div class="track-item">
-                  <span>4. Conversație</span>
-                  <small>15 min</small>
-                </div>
-              </div>
-            </aside>
+              </article>
+            </div>
           </div>
         </section>
 
-        <section>
+        <section id="texte-dialoguri">
           <div class="section-title">
-            <h2>Urmează</h2>
-            <span class="soon">spațiu pentru lecții noi</span>
+            <h2>Texte și dialoguri</h2>
+            <span>materiale cu audio</span>
           </div>
 
-          <div class="coming-grid">
-            <article class="coming-card" id="vocabular">
-              <span class="badge badge-live">Vocabular</span>
-              <h3>Cuvinte pe teme</h3>
-              <p>Liste scurte cu termeni utili, traduceri și exemple naturale în propoziții.</p>
+          <div class="resource-grid">
+            <article class="resource-card">
+              <div class="resource-cover cover-blue">
+                <span class="cover-level">B2</span>
+                <h3>Comunicare și Tehnologie</h3>
+                <p>Text de lectură cu audio atașat</p>
+              </div>
+              <div class="resource-body">
+                <div class="meta">
+                  <span class="badge badge-b2">Text</span>
+                  <span class="badge badge-live">Audio</span>
+                </div>
+                <h3>Tehnologia în viața de zi cu zi</h3>
+                <p>Text B2 despre aplicații, comunicare digitală și schimbările aduse de tehnologie.</p>
+                <a class="open-lesson" href="lessons/b2/tehnologie.html#text">Deschide textul</a>
+              </div>
             </article>
-            <article class="coming-card" id="gramatica">
-              <span class="badge badge-tech">Gramatică</span>
-              <h3>Conectori avansați</h3>
-              <p>Exerciții pentru argumentare, contrast și concluzie în texte de nivel B2.</p>
+
+            <article class="resource-card">
+              <div class="resource-cover cover-teal">
+                <span class="cover-level">A1</span>
+                <h3>Texte și Dialoguri A1</h3>
+                <p>Fereastră pregătită pentru materiale cu audio</p>
+              </div>
+              <div class="resource-body">
+                <div class="meta">
+                  <span class="badge badge-b2">Dialog</span>
+                  <span class="badge badge-live">Audio</span>
+                </div>
+                <h3>Tehnologie și Dispozitive</h3>
+                <p>Aici vom atașa împreună texte scurte sau dialoguri A1, fiecare cu fișier audio.</p>
+                <span class="resource-status waiting">În pregătire</span>
+              </div>
             </article>
-            <article class="coming-card" id="lectura">
-              <span class="badge badge-b2">Lectură</span>
-              <h3>Texte și dialoguri</h3>
-              <p>O colecție separată pentru texte scurte, dialoguri și activități de înțelegere.</p>
+          </div>
+        </section>
+
+        <section id="fise">
+          <div class="section-title">
+            <h2>Fișe de lucru</h2>
+            <span>PDF-uri pe lecții și niveluri</span>
+          </div>
+
+          <div class="resource-grid">
+            <article class="resource-card">
+              <div class="resource-cover cover-gold">
+                <span class="cover-level">A1</span>
+                <h3>Tehnologie și Dispozitive</h3>
+                <p>Fișă de lucru PDF</p>
+              </div>
+              <div class="resource-body">
+                <div class="meta">
+                  <span class="badge badge-b2">PDF</span>
+                  <span class="badge badge-tech">A1</span>
+                </div>
+                <h3>Recapitulare A1</h3>
+                <p>Fișă pentru vocabular, verbe simple, text scurt și exerciții de bază.</p>
+                <span class="resource-status waiting">PDF în pregătire</span>
+              </div>
             </article>
-            <article class="coming-card" id="conversatie">
-              <span class="badge badge-live">Conversație</span>
-              <h3>Teme de dezbatere</h3>
-              <p>Întrebări ghidate pentru discuții, opinii personale și eseuri scurte.</p>
-            </article>
-            <article class="coming-card" id="fise">
-              <span class="badge badge-b2">Fișe PDF</span>
-              <h3>Materiale printabile</h3>
-              <p>Fișe de lucru pentru recapitulare, teme individuale și activități la clasă.</p>
+
+            <article class="resource-card">
+              <div class="resource-cover cover-purple">
+                <span class="cover-level">B2</span>
+                <h3>Comunicare și Tehnologie</h3>
+                <p>Fișă de lucru PDF</p>
+              </div>
+              <div class="resource-body">
+                <div class="meta">
+                  <span class="badge badge-b2">PDF</span>
+                  <span class="badge badge-tech">B2</span>
+                </div>
+                <h3>Recapitulare B2</h3>
+                <p>Fișă pentru vocabular digital, conectori, înțelegerea textului și argumentare.</p>
+                <span class="resource-status waiting">PDF în pregătire</span>
+              </div>
             </article>
           </div>
         </section>
@@ -680,5 +848,46 @@
       Română Step by Step · Site static pregătit pentru GitHub Pages
     </footer>
   </div>
+  <script>
+    const levelSections = document.querySelectorAll('[data-level-section]');
+    const emptyLevel = document.querySelector('[data-empty-level]');
+    const sidebarItems = document.querySelectorAll('.sid-item');
+    const levelFilters = document.querySelectorAll('[data-level-filter]');
+    const showAllLessonsLinks = document.querySelectorAll('[data-show-all-lessons]');
+
+    function setActiveMenu(item) {
+      sidebarItems.forEach(link => link.classList.remove('active'));
+      if (item) item.classList.add('active');
+    }
+
+    function showLessonsForLevel(level) {
+      let visibleCount = 0;
+      levelSections.forEach(section => {
+        const isMatch = section.dataset.levelSection === level;
+        section.classList.toggle('is-hidden', !isMatch);
+        if (isMatch) visibleCount++;
+      });
+      if (emptyLevel) emptyLevel.classList.toggle('is-hidden', visibleCount > 0);
+    }
+
+    function showAllLessonLevels() {
+      levelSections.forEach(section => section.classList.remove('is-hidden'));
+      if (emptyLevel) emptyLevel.classList.add('is-hidden');
+    }
+
+    levelFilters.forEach(link => {
+      link.addEventListener('click', () => {
+        showLessonsForLevel(link.dataset.levelFilter);
+        setActiveMenu(link);
+      });
+    });
+
+    showAllLessonsLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        showAllLessonLevels();
+        setActiveMenu(document.querySelector('.sid-item[data-show-all-lessons]'));
+      });
+    });
+  </script>
 </body>
 </html>
