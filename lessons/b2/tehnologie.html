@@ -1022,12 +1022,11 @@
 <nav class="tabs" aria-label="Secțiuni lecție">
   <a class="tab" href="../../index.html">Acasă</a>
   <button class="tab lesson-tab active" onclick="showSection('vocab',this)">Vocabular</button>
-  <button class="tab lesson-tab" onclick="showSection('gramatica',this)">Verbe</button>
+  <button class="tab lesson-tab" onclick="showSection('gramatica',this)">Gramatică</button>
   <button class="tab lesson-tab" onclick="showSection('text',this)">Text</button>
   <button class="tab lesson-tab" onclick="showSection('exercitii',this)">Exerciții</button>
   <button class="tab lesson-tab" onclick="showSection('conversatie',this)">Conversație</button>
   <button class="tab lesson-tab" onclick="showSection('teme',this)">Teme</button>
-  <button class="tab lesson-tab" onclick="showSection('test',this)">Test</button>
 </nav>
 
 <div class="layout">
@@ -1038,7 +1037,7 @@
       <span class="nav-icon">📚</span> Vocabular <span class="nav-num">01</span>
     </button>
     <button class="nav-item" onclick="showSection('gramatica',this)">
-      <span class="nav-icon">✏️</span> Verbe <span class="nav-num">02</span>
+      <span class="nav-icon">✏️</span> Gramatică <span class="nav-num">02</span>
     </button>
     <button class="nav-item" onclick="showSection('text',this)">
       <span class="nav-icon">📖</span> Text &amp; Întrebări <span class="nav-num">03</span>
@@ -1052,9 +1051,6 @@
     <button class="nav-item" onclick="showSection('teme',this)">
       <span class="nav-icon">🗂</span> Teme <span class="nav-num">06</span>
     </button>
-    <button class="nav-item" onclick="showSection('test',this)">
-      <span class="nav-icon">✓</span> Test <span class="nav-num">07</span>
-    </button>
   </nav>
 
   <!-- MAIN -->
@@ -1066,7 +1062,7 @@
         <h1>Comunicare și Tehnologie</h1>
         <p>Vocabular, gramatică, texte autentice, exerciții și teme de conversație</p>
         <div class="header-meta">
-          <span>7 secțiuni</span>
+          <span>6 secțiuni</span>
           <span>Exerciții interactive</span>
           <span>Programare · IA · Aplicații mobile</span>
         </div>
@@ -1157,7 +1153,7 @@
       <div class="section-header">
         <div class="section-icon icon-teal">✏️</div>
         <div>
-          <h2>Verbe și structuri</h2>
+          <h2>Gramatică</h2>
           <p>Verbe din domeniul tehnologiei și structuri gramaticale frecvente</p>
         </div>
       </div>
@@ -1536,39 +1532,6 @@
       </div>
     </div>
 
-    <!-- SECTION 7: TEST -->
-    <div id="sec-test" class="section">
-      <div class="section-header">
-        <div class="section-icon icon-amber">✓</div>
-        <div>
-          <h2>Test de verificare</h2>
-          <p>Întrebări finale din lecția B2 Comunicare și Tehnologie</p>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="card-title">Alege răspunsul corect</div>
-        <div class="ex-item">
-          <label>1. Ce verb înseamnă „to update”?</label>
-          <select id="lt1"><option value="">—</option><option value="a actualiza">a actualiza</option><option value="a partaja">a partaja</option><option value="a stoca">a stoca</option></select>
-        </div>
-        <div class="ex-item">
-          <label>2. Care este un risc menționat în lecție?</label>
-          <select id="lt2"><option value="">—</option><option value="atacurile informatice">atacurile informatice</option><option value="lipsa dicționarelor">lipsa dicționarelor</option><option value="transportul public">transportul public</option></select>
-        </div>
-        <div class="ex-item">
-          <label>3. Alege construcția pasivă corectă.</label>
-          <select id="lt3"><option value="">—</option><option value="Datele sunt salvate automat.">Datele sunt salvate automat.</option><option value="Eu salvez datele.">Eu salvez datele.</option><option value="Salvând datele, lucrez.">Salvând datele, lucrez.</option></select>
-        </div>
-        <div class="ex-item">
-          <label>4. Ce competențe sunt tot mai căutate pe piața muncii?</label>
-          <select id="lt4"><option value="">—</option><option value="competențele digitale">competențele digitale</option><option value="competențele sportive">competențele sportive</option><option value="competențele culinare">competențele culinare</option></select>
-        </div>
-        <button class="btn btn-primary" onclick="checkLessonTest()">Verifică testul</button>
-        <div id="lesson-test-fb" class="feedback"></div>
-      </div>
-    </div>
-
   </main>
 </div>
 
@@ -1590,14 +1553,8 @@ function showSection(name, el) {
   document.querySelectorAll('.lesson-tab').forEach(b => {
     if (b.getAttribute('onclick') && b.getAttribute('onclick').includes("'" + name + "'")) b.classList.add('active');
   });
-  if (location.hash !== '#' + name) history.replaceState(null, '', '#' + name);
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
-
-document.addEventListener('DOMContentLoaded', () => {
-  const section = location.hash.replace('#', '');
-  if (section && document.getElementById('sec-' + section)) showSection(section);
-});
 
 function toggleTextAudio() {
   const audio = document.getElementById('textAudio');
@@ -1665,21 +1622,6 @@ function checkEx2() {
   }
 }
 
-function checkLessonTest() {
-  const answers = {
-    lt1: 'a actualiza',
-    lt2: 'atacurile informatice',
-    lt3: 'Datele sunt salvate automat.',
-    lt4: 'competențele digitale'
-  };
-  let score = 0;
-  Object.entries(answers).forEach(([id, val]) => {
-    if (document.getElementById(id).value === val) score++;
-  });
-  const fb = document.getElementById('lesson-test-fb');
-  fb.className = 'feedback ' + (score === 4 ? 'ok' : 'err');
-  fb.textContent = score === 4 ? 'Perfect! Ai 4 din 4.' : 'Ai ' + score + ' din 4. Recitește lecția și încearcă din nou.';
-}
 </script>
 </body>
 </html>
