@@ -122,7 +122,7 @@
   .layout {
     display: grid;
     grid-template-columns: 260px 1fr;
-    min-height: calc(100vh - 114px);
+    min-height: calc(100vh - 66px);
   }
 
   .sidebar {
@@ -594,17 +594,15 @@
       <nav class="level-pills" id="topLevels" aria-label="Niveluri"></nav>
     </header>
 
-    <nav class="tabs" id="categoryTabs" aria-label="Categorii"></nav>
-
     <div class="layout">
       <aside class="sidebar" aria-label="Meniu lecții">
         <div class="sid-section">
-          <div class="sid-head">Niveluri</div>
-          <div id="levelMenu"></div>
+          <div class="sid-head">Lecții</div>
+          <div id="lessonMenu"></div>
         </div>
         <div class="sid-section">
-          <div class="sid-head">Teste</div>
-          <div id="testMenu"></div>
+          <div class="sid-head">Test de nivel</div>
+          <div id="levelTestMenu"></div>
         </div>
       </aside>
 
@@ -617,20 +615,8 @@
   </div>
 
 <script>
-const CATEGORY_LABELS = {
-  lectii: 'Lecții',
-  vocabular: 'Vocabular',
-  gramatica: 'Gramatică',
-  lectura: 'Lectură',
-  exercitii: 'Exerciții',
-  conversatie: 'Conversație',
-  teme: 'Teme',
-  teste: 'Teste'
-};
-
-const CATEGORY_ORDER = ['lectii', 'vocabular', 'gramatica', 'lectura', 'exercitii', 'conversatie', 'teme', 'teste'];
 const LEVELS = [
-  { key: 'all', label: 'Toate nivelurile', dot: 'dot-blue' },
+  { key: 'home', label: 'Home', dot: 'dot-blue' },
   { key: 'A1', label: 'A1 Începător', dot: 'dot-gold' },
   { key: 'A2', label: 'A2 Elementar', dot: 'dot-teal' },
   { key: 'B1', label: 'B1 Intermediar', dot: 'dot-purple' },
@@ -685,6 +671,39 @@ const LESSONS = [
   }
 ];
 
+const LEVEL_TESTS = {
+  A1: [
+    { q: 'Alege propoziția corectă.', options: ['Eu primesc un mesaj.', 'Eu primit un mesaj.', 'Eu primește un mesaj.'], answer: 0 },
+    { q: 'Ce cuvânt este un dispozitiv?', options: ['laptopul', 'repede', 'ieri'], answer: 0 },
+    { q: 'Completează: Telefonul are ___.', options: ['baterie', 'fereastră', 'scaun'], answer: 0 },
+    { q: 'Care verb înseamnă „to listen”?', options: ['a asculta', 'a vedea', 'a posta'], answer: 0 }
+  ],
+  A2: [
+    { q: 'Alege forma corectă: Ieri eu ___ un mesaj.', options: ['am trimis', 'trimit', 'trimite'], answer: 0 },
+    { q: 'Care expresie cere ajutor?', options: ['Mă poți ajuta?', 'Îmi place cafeaua.', 'Este luni.'], answer: 0 },
+    { q: 'Alege varianta potrivită: Aplicația este ___ decât înainte.', options: ['mai rapidă', 'rapid', 'repede'], answer: 0 },
+    { q: 'Care este un cuvânt legat de internet?', options: ['parolă', 'furculiță', 'grădină'], answer: 0 }
+  ],
+  B1: [
+    { q: 'Alege conectorul pentru cauză.', options: ['pentru că', 'deși', 'totuși'], answer: 0 },
+    { q: 'Care propoziție exprimă o opinie?', options: ['Cred că tehnologia ajută.', 'Telefonul este pe masă.', 'Este ora opt.'], answer: 0 },
+    { q: 'Alege forma corectă.', options: ['Dacă aș avea timp, aș învăța.', 'Dacă am timp, am învățat.', 'Dacă aveam timp, voi învăța.'], answer: 0 },
+    { q: 'Care cuvânt este sinonim cu „a distribui”?', options: ['a partaja', 'a șterge', 'a opri'], answer: 0 }
+  ],
+  B2: [
+    { q: 'Alege conectorul potrivit pentru contrast.', options: ['deși', 'deoarece', 'prin urmare'], answer: 0 },
+    { q: 'Care formulare este potrivită pentru opinie?', options: ['Sunt de părere că...', 'Pe masă este...', 'La ora trei...'], answer: 0 },
+    { q: 'Ce înseamnă „securitate cibernetică”?', options: ['protecția sistemelor digitale', 'vânzarea de telefoane', 'încărcarea bateriei'], answer: 0 },
+    { q: 'Alege propoziția cu pasiv.', options: ['Datele sunt salvate automat.', 'Eu salvez datele.', 'Salvez rapid.'], answer: 0 }
+  ],
+  C1: [
+    { q: 'Alege formularea cea mai academică.', options: ['Este incontestabil că digitalizarea influențează educația.', 'Telefonul e super tare.', 'Îmi place netul.'], answer: 0 },
+    { q: 'Care structură introduce o concesie?', options: ['Cu toate că', 'Prin urmare', 'În concluzie'], answer: 0 },
+    { q: 'Alege termenul potrivit pentru „data privacy”.', options: ['confidențialitatea datelor', 'viteza ecranului', 'luminozitatea parolei'], answer: 0 },
+    { q: 'Care propoziție este nuanțată argumentativ?', options: ['Beneficiile sunt evidente, însă riscurile nu pot fi ignorate.', 'Am telefon.', 'Internetul merge.'], answer: 0 }
+  ]
+};
+
 const SECTION_CATEGORY = {
   vocab: 'vocabular',
   vocabular: 'vocabular',
@@ -694,11 +713,12 @@ const SECTION_CATEGORY = {
   lectura: 'lectura',
   exercitii: 'exercitii',
   conversatie: 'conversatie',
-  teme: 'teme'
+  teme: 'teme',
+  test: 'test'
 };
 
 let catalog = LESSONS.map(lesson => ({ ...lesson, sections: lesson.fallbackSections }));
-let state = { level: 'all', category: 'lectii' };
+let state = { level: 'home' };
 
 function escapeHtml(value) {
   return String(value).replace(/[&<>"']/g, char => ({
@@ -715,7 +735,7 @@ function sectionLink(lesson, section) {
 }
 
 function getFilteredLessons() {
-  return catalog.filter(lesson => state.level === 'all' || lesson.level === state.level);
+  return state.level === 'home' ? catalog : catalog.filter(lesson => lesson.level === state.level);
 }
 
 function getAvailableLevels() {
@@ -737,7 +757,7 @@ async function hydrateCatalog() {
         return {
           key,
           category: SECTION_CATEGORY[key] || key,
-          title: header?.querySelector('h2')?.textContent.trim() || CATEGORY_LABELS[SECTION_CATEGORY[key]] || key,
+          title: header?.querySelector('h2')?.textContent.trim() || key,
           description: header?.querySelector('p')?.textContent.trim() || lesson.description
         };
       });
@@ -750,56 +770,49 @@ async function hydrateCatalog() {
   render();
 }
 
-function setCategory(category) {
-  state.category = category;
-  render();
-}
-
 function setLevel(level) {
   state.level = level;
   render();
 }
 
 function renderTopNav() {
-  const availableLevels = getAvailableLevels();
-  document.getElementById('topLevels').innerHTML = LEVELS.filter(level => level.key === 'all' || availableLevels.has(level.key)).map(level => `
-    <button class="pill ${state.level === level.key ? 'active' : ''}" type="button" onclick="setLevel('${level.key}')">${escapeHtml(level.key === 'all' ? 'Toate' : level.key)}</button>
-  `).join('');
-
-  document.getElementById('categoryTabs').innerHTML = CATEGORY_ORDER.map(category => `
-    <button class="tab ${state.category === category ? 'active' : ''}" type="button" onclick="setCategory('${category}')">${CATEGORY_LABELS[category]}</button>
+  document.getElementById('topLevels').innerHTML = LEVELS.map(level => `
+    <button class="pill ${state.level === level.key ? 'active' : ''}" type="button" onclick="setLevel('${level.key}')">${escapeHtml(level.key === 'home' ? 'Home' : level.key)}</button>
   `).join('');
 }
 
 function renderSidebar() {
-  const availableLevels = getAvailableLevels();
-  document.getElementById('levelMenu').innerHTML = LEVELS.filter(level => level.key === 'all' || availableLevels.has(level.key)).map(level => `
-    <button class="sid-item ${state.level === level.key ? 'active' : ''}" type="button" onclick="setLevel('${level.key}')">
-      <span class="sid-dot ${level.dot}"></span>${escapeHtml(level.label)}
-    </button>
-  `).join('');
+  const lessons = getFilteredLessons();
+  document.getElementById('lessonMenu').innerHTML = lessons.length ? lessons.map(lesson => `
+    <a class="sid-item" href="${lesson.path}">
+      <span class="sid-dot dot-blue"></span>${escapeHtml(lesson.level)} · ${escapeHtml(lesson.title)}
+    </a>
+  `).join('') : '<div class="empty-state">Nu există lecții.</div>';
 
-  const tests = getFilteredLessons();
-  document.getElementById('testMenu').innerHTML = tests.length ? tests.map(lesson => `
-    <button class="sid-item ${state.category === 'teste' ? 'active' : ''}" type="button" onclick="setCategory('teste')">
-      <span class="sid-dot dot-gold"></span>${escapeHtml(lesson.level)} · ${escapeHtml(lesson.title)}
-    </button>
-  `).join('') : '<div class="empty-state">Nu există teste pentru nivelul selectat.</div>';
+  if (state.level === 'home') {
+    document.getElementById('levelTestMenu').innerHTML = LEVELS
+      .filter(level => level.key !== 'home' && LEVEL_TESTS[level.key])
+      .map(level => `<button class="sid-item" type="button" onclick="setLevel('${level.key}')"><span class="sid-dot dot-gold"></span>Test general ${level.key}</button>`)
+      .join('');
+    return;
+  }
+
+  document.getElementById('levelTestMenu').innerHTML = LEVEL_TESTS[state.level]
+    ? `<button class="sid-item" type="button" onclick="renderLevelTest('${state.level}')"><span class="sid-dot dot-gold"></span>Test general ${state.level}</button>`
+    : '<div class="empty-state">Testul general nu este încă disponibil.</div>';
 }
 
 function renderIntro(lessons) {
-  const levels = [...new Set(catalog.map(lesson => lesson.level))].join(' · ');
-  const sectionCount = catalog.reduce((count, lesson) => count + lesson.sections.length, 0);
-  const levelText = state.level === 'all' ? 'toate nivelurile' : `nivelul ${state.level}`;
+  const heading = state.level === 'home' ? 'Română Step by Step' : `Nivel ${state.level}`;
+  const subline = state.level === 'home' ? 'Lecții disponibile' : `${lessons.length} lecții disponibile`;
   return `
     <section class="intro">
-      <div class="eyebrow">Platformă de lecții</div>
-      <h1>Învață româna pas cu pas</h1>
-      <p>Catalogul se actualizează din lecțiile adăugate în proiect. Folosește nivelurile din stânga și categoriile de sus pentru a vedea rapid vocabular, gramatică, lectură, conversație, exerciții sau teste.</p>
+      <div class="eyebrow">${escapeHtml(subline)}</div>
+      <h1>${escapeHtml(heading)}</h1>
       <div class="stats" aria-label="Rezumat">
-        <div class="stat"><strong>${lessons.length}</strong><span>lecții pentru ${escapeHtml(levelText)}</span></div>
-        <div class="stat"><strong>${escapeHtml(levels || '-')}</strong><span>niveluri disponibile</span></div>
-        <div class="stat"><strong>${sectionCount}</strong><span>secțiuni extrase automat</span></div>
+        <div class="stat"><strong>${lessons.length}</strong><span>lecții</span></div>
+        <div class="stat"><strong>${state.level === 'home' ? [...new Set(catalog.map(lesson => lesson.level))].join(' · ') : state.level}</strong><span>nivel</span></div>
+        <div class="stat"><strong>${state.level === 'home' ? Object.keys(LEVEL_TESTS).length : (LEVEL_TESTS[state.level] ? 1 : 0)}</strong><span>teste generale</span></div>
       </div>
     </section>
   `;
@@ -809,7 +822,7 @@ function renderLessonCard(lesson) {
   const features = lesson.sections.slice(0, 4).map(section => `
     <a class="feature" href="${sectionLink(lesson, section)}">
       <strong>${escapeHtml(section.title)}</strong>
-      <span>${escapeHtml(CATEGORY_LABELS[section.category] || section.category)}</span>
+      <span>${escapeHtml(section.category)}</span>
     </a>
   `).join('');
   return `
@@ -843,38 +856,12 @@ function renderLessons(lessons) {
   `;
 }
 
-function renderCollection(lessons) {
-  const items = lessons.flatMap(lesson => lesson.sections
-    .filter(section => section.category === state.category)
-    .map(section => ({ lesson, section })));
-
+function renderLessonTests(lessons) {
+  const withTests = lessons.filter(lesson => lesson.test && lesson.test.length);
   return `
     <section>
       <div class="section-title">
-        <h2>${CATEGORY_LABELS[state.category]}</h2>
-        <span>${items.length} secțiuni</span>
-      </div>
-      ${items.length ? `<div class="collection-grid">${items.map(({ lesson, section }) => `
-        <article class="collection-card">
-          <div class="meta">
-            <span class="badge badge-b2">Nivel ${escapeHtml(lesson.level)}</span>
-            <span class="badge badge-tech">${escapeHtml(lesson.topic)}</span>
-          </div>
-          <h3>${escapeHtml(section.title)}</h3>
-          <p>${escapeHtml(section.description)}</p>
-          <a class="open-lesson" href="${sectionLink(lesson, section)}">Deschide secțiunea</a>
-        </article>
-      `).join('')}</div>` : `<div class="empty-state">Nu există secțiuni de ${CATEGORY_LABELS[state.category].toLowerCase()} pentru nivelul selectat.</div>`}
-    </section>
-  `;
-}
-
-function renderTests(lessons) {
-  const withTests = lessons.filter(lesson => lesson.test?.length);
-  return `
-    <section>
-      <div class="section-title">
-        <h2>Teste finale</h2>
+        <h2>Teste de verificare din lecții</h2>
         <span>${withTests.length} teste</span>
       </div>
       ${withTests.length ? `<div class="test-grid">${withTests.map(renderTestCard).join('')}</div>` : '<div class="empty-state">Nu există teste pentru nivelul selectat.</div>'}
@@ -908,6 +895,35 @@ function renderTestCard(lesson) {
   `;
 }
 
+function renderLevelTestCard(level) {
+  const questions = LEVEL_TESTS[level] || [];
+  const items = questions.map((item, index) => `
+    <div class="quiz-question">
+      <p>${index + 1}. ${escapeHtml(item.q)}</p>
+      ${item.options.map((option, optionIndex) => `
+        <label class="quiz-option">
+          <input type="radio" name="level-${level}-q${index}" value="${optionIndex}">
+          ${escapeHtml(option)}
+        </label>
+      `).join('')}
+    </div>
+  `).join('');
+  return `
+    <section>
+      <div class="section-title">
+        <h2>Test general ${escapeHtml(level)}</h2>
+        <span>${questions.length} întrebări</span>
+      </div>
+      <article class="test-card">
+        <h3>Test de nivel · ${escapeHtml(level)}</h3>
+        ${items}
+        <button class="open-lesson" type="button" onclick="checkLevelTest('${level}')">Verifică testul</button>
+        <div class="quiz-result" id="result-level-${level}"></div>
+      </article>
+    </section>
+  `;
+}
+
 function checkTest(lessonId) {
   const lesson = catalog.find(item => item.id === lessonId);
   if (!lesson) return;
@@ -923,14 +939,34 @@ function checkTest(lessonId) {
     : `Ai ${score}/${lesson.test.length}. Recitește lecția și încearcă din nou.`;
 }
 
+function checkLevelTest(level) {
+  const questions = LEVEL_TESTS[level] || [];
+  let score = 0;
+  questions.forEach((question, index) => {
+    const selected = document.querySelector(`input[name="level-${level}-q${index}"]:checked`);
+    if (selected && Number(selected.value) === question.answer) score++;
+  });
+  const result = document.getElementById(`result-level-${level}`);
+  result.className = `quiz-result show ${score === questions.length ? 'ok' : 'err'}`;
+  result.textContent = score === questions.length
+    ? `Perfect: ${score}/${questions.length}.`
+    : `Ai ${score}/${questions.length}.`;
+}
+
+function renderLevelTest(level) {
+  state.level = level;
+  renderTopNav();
+  renderSidebar();
+  document.getElementById('app').innerHTML = renderIntro(getFilteredLessons()) + renderLevelTestCard(level);
+}
+
 function render() {
   const lessons = getFilteredLessons();
   renderTopNav();
   renderSidebar();
-  let content = renderIntro(lessons);
-  if (state.category === 'lectii') content += renderLessons(lessons);
-  else if (state.category === 'teste') content += renderTests(lessons);
-  else content += renderCollection(lessons);
+  let content = renderIntro(lessons) + renderLessons(lessons);
+  if (state.level !== 'home' && LEVEL_TESTS[state.level]) content += renderLevelTestCard(state.level);
+  content += renderLessonTests(lessons);
   document.getElementById('app').innerHTML = content;
 }
 

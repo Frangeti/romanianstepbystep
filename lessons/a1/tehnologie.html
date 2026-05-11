@@ -623,6 +623,7 @@
   <button class="tab lesson-tab" onclick="showSection('exercitii',this)">Exerciții</button>
   <button class="tab lesson-tab" onclick="showSection('conversatie',this)">Conversație</button>
   <button class="tab lesson-tab" onclick="showSection('teme',this)">Teme</button>
+  <button class="tab lesson-tab" onclick="showSection('test',this)">Test</button>
 </nav>
 
 <div class="layout">
@@ -634,6 +635,7 @@
     <button class="nav-item" onclick="showSection('exercitii',this)">🎯 Exerciții <span class="nav-num">04</span></button>
     <button class="nav-item" onclick="showSection('conversatie',this)">💬 Conversație <span class="nav-num">05</span></button>
     <button class="nav-item" onclick="showSection('teme',this)">🗂 Teme <span class="nav-num">06</span></button>
+    <button class="nav-item" onclick="showSection('test',this)">✓ Test <span class="nav-num">07</span></button>
   </nav>
 
   <main class="main">
@@ -645,7 +647,7 @@
         <h1>Tehnologie și Dispozitive</h1>
         <p class="header-sub">Primele cuvinte despre telefoane, calculatoare și internet — simplu și practic!</p>
         <div class="header-meta">
-          <span>6 secțiuni</span>
+          <span>7 secțiuni</span>
           <span>Exerciții interactive</span>
           <span>Dispozitive · Verbe · Conversație</span>
         </div>
@@ -1130,6 +1132,39 @@
       </div>
     </div>
 
+    <!-- SECTION 7: TEST -->
+    <div id="sec-test" class="section">
+      <div class="section-header">
+        <div class="section-icon icon-blue">✓</div>
+        <div>
+          <h2>Test de verificare</h2>
+          <p>Întrebări finale din lecția A1 Tehnologie și Dispozitive</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Alege răspunsul corect</div>
+        <div class="ex-item">
+          <label>1. Cum se spune „the phone” în română?</label>
+          <select id="lt1"><option value="">—</option><option value="telefonul">telefonul</option><option value="routerul">routerul</option><option value="căștile">căștile</option></select>
+        </div>
+        <div class="ex-item">
+          <label>2. Eu ___ un mesaj de la mama.</label>
+          <select id="lt2"><option value="">—</option><option value="văd">văd</option><option value="primesc">primesc</option><option value="stau">stau</option></select>
+        </div>
+        <div class="ex-item">
+          <label>3. Ce folosesc pentru a asculta muzică?</label>
+          <select id="lt3"><option value="">—</option><option value="căștile">căștile</option><option value="imprimanta">imprimanta</option><option value="routerul">routerul</option></select>
+        </div>
+        <div class="ex-item">
+          <label>4. Care verb înseamnă „to send”?</label>
+          <select id="lt4"><option value="">—</option><option value="a trimite">a trimite</option><option value="a încărca">a încărca</option><option value="a vedea">a vedea</option></select>
+        </div>
+        <button class="btn btn-primary" onclick="checkLessonTest()">Verifică testul</button>
+        <div id="lesson-test-fb" class="feedback"></div>
+      </div>
+    </div>
+
   </main>
 </div>
 
@@ -1179,6 +1214,15 @@ function checkAF() {
   const fb = document.getElementById('af-fb');
   fb.className = 'feedback ' + (score === 4 ? 'ok' : 'err');
   fb.textContent = score === 4 ? '⭐ Bravo! Ai citit textul cu atenție!' : 'Ai ' + score + ' din 4. Răspunsuri: A, F (ea postează fotografii), A, A.';
+}
+
+function checkLessonTest() {
+  const answers = { lt1: 'telefonul', lt2: 'primesc', lt3: 'căștile', lt4: 'a trimite' };
+  let score = 0;
+  Object.entries(answers).forEach(([id, val]) => { if (document.getElementById(id).value === val) score++; });
+  const fb = document.getElementById('lesson-test-fb');
+  fb.className = 'feedback ' + (score === 4 ? 'ok' : 'err');
+  fb.textContent = score === 4 ? 'Perfect! Ai 4 din 4.' : 'Ai ' + score + ' din 4. Recitește lecția și încearcă din nou.';
 }
 </script>
 </body>
