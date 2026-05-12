@@ -1,0 +1,1984 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unitatea 2 — Relații | Romanian Step by Step</title>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,300;1,8..60,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ── RESET & BASE ─────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  line-height: 1.7;
+  color: #1a1a2e;
+  background: #f9f8f5;
+}
+
+/* ── PALETTE ──────────────────────────────────────────────────────── */
+:root {
+  --navy:      #0d2b45;
+  --teal:      #1a6b7c;
+  --teal-mid:  #2a8fa3;
+  --teal-lite: #e0f2f5;
+  --teal-pale: #f0fafc;
+  --gold:      #c8932a;
+  --gold-lite: #fdf3e0;
+  --coral:     #c94f3a;
+  --coral-lite:#fdeee9;
+  --green:     #2a7a4b;
+  --green-lite:#e8f5ee;
+  --gray:      #f3f2ef;
+  --gray-mid:  #e8e6e0;
+  --gray-dark: #6b6860;
+  --text:      #1a1a2e;
+  --text-mid:  #4a4860;
+  --text-light:#8a8898;
+  --rule:      #dddad0;
+  --white:     #ffffff;
+  --radius:    10px;
+  --radius-sm: 6px;
+}
+
+/* ── HEADER / NAV ─────────────────────────────────────────────────── */
+.site-header {
+  background: var(--navy);
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 52px;
+  position: sticky; top: 0; z-index: 100;
+}
+.site-brand {
+  font-family: 'Source Serif 4', serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: #fff;
+  letter-spacing: .02em;
+}
+.site-brand span { color: var(--teal-mid); }
+.site-nav { display: flex; gap: 1.5rem; }
+.site-nav a {
+  font-size: 12px;
+  font-weight: 500;
+  color: rgba(255,255,255,.6);
+  text-decoration: none;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  transition: color .2s;
+}
+.site-nav a:hover { color: #fff; }
+
+/* ── UNIT COVER ───────────────────────────────────────────────────── */
+.unit-cover {
+  background: var(--navy);
+  color: #fff;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  min-height: 380px;
+  overflow: hidden;
+}
+.unit-cover-text {
+  padding: 3.5rem 3rem 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.unit-num {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+.unit-num-big {
+  font-family: 'Source Serif 4', serif;
+  font-size: 80px;
+  font-weight: 700;
+  line-height: 1;
+  color: rgba(255,255,255,.12);
+  letter-spacing: -.02em;
+}
+.unit-num-label {
+  display: flex;
+  flex-direction: column;
+}
+.unit-num-label .unit-word {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--teal-mid);
+  margin-bottom: 2px;
+}
+.unit-num-label .unit-title {
+  font-family: 'Source Serif 4', serif;
+  font-size: 42px;
+  font-weight: 600;
+  line-height: 1.1;
+  color: #fff;
+}
+.unit-quote {
+  font-family: 'Source Serif 4', serif;
+  font-size: 20px;
+  font-weight: 300;
+  font-style: italic;
+  line-height: 1.5;
+  color: rgba(255,255,255,.75);
+  border-left: 3px solid var(--teal-mid);
+  padding-left: 1.2rem;
+  margin: 1.5rem 0;
+}
+.unit-quote cite {
+  display: block;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  color: var(--teal-mid);
+  margin-top: .4rem;
+  letter-spacing: .05em;
+}
+.unit-cover-photo {
+  background: linear-gradient(135deg, #1a4060 0%, #0d2b45 100%);
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  padding: 1.5rem;
+  overflow: hidden;
+}
+.unit-cover-photo::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 80% at 60% 40%, rgba(26,107,124,.3) 0%, transparent 70%),
+    radial-gradient(circle at 20% 80%, rgba(200,147,42,.15) 0%, transparent 50%);
+}
+.unit-photo-illustration {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+}
+.unit-photo-illustration .big-icon {
+  font-size: 120px;
+  display: block;
+  text-align: center;
+  margin-bottom: .5rem;
+  filter: drop-shadow(0 8px 32px rgba(0,0,0,.3));
+}
+.unit-photo-caption {
+  font-size: 11px;
+  color: rgba(255,255,255,.4);
+  text-align: center;
+  letter-spacing: .04em;
+}
+
+/* ── OBJECTIVES BAR ───────────────────────────────────────────────── */
+.objectives-bar {
+  background: var(--teal);
+  padding: 1.5rem 3rem;
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+.objectives-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.6);
+  padding-top: 2px;
+}
+.objectives-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem .75rem;
+}
+.obj-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12.5px;
+  font-weight: 500;
+  color: #fff;
+}
+.obj-circle {
+  width: 16px; height: 16px;
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,.5);
+  flex-shrink: 0;
+}
+
+/* ── SYLLABUS TABLE ───────────────────────────────────────────────── */
+.syllabus-wrap {
+  background: var(--white);
+  border-bottom: 1px solid var(--rule);
+  overflow-x: auto;
+}
+.syllabus-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12.5px;
+}
+.syllabus-table th {
+  background: var(--navy);
+  color: rgba(255,255,255,.85);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  padding: 10px 14px;
+  text-align: left;
+  white-space: nowrap;
+}
+.syllabus-table .unit-row td {
+  background: var(--teal);
+  color: #fff;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  padding: 8px 14px;
+}
+.syllabus-table tr:not(.unit-row) td {
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--rule);
+  vertical-align: top;
+  line-height: 1.5;
+}
+.syllabus-table tr:not(.unit-row):nth-child(even) td {
+  background: var(--teal-pale);
+}
+.syllabus-table td:first-child {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--teal);
+  white-space: nowrap;
+}
+.syllabus-table .lesson-title { font-weight: 700; color: var(--navy); }
+.syllabus-table .lesson-obj { font-size: 11px; color: var(--text-light); margin-top: 1px; }
+.syllabus-table .g-tag { color: var(--teal); font-weight: 600; }
+.syllabus-table .speaking-hub { color: var(--coral); font-weight: 700; }
+.syllabus-table .key-skill { color: var(--teal-mid); font-weight: 600; }
+.syllabus-review {
+  background: var(--gray) !important;
+  font-size: 12px;
+}
+
+/* ── MAIN LAYOUT ──────────────────────────────────────────────────── */
+.lesson-page {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 2rem 4rem;
+}
+
+/* ── LESSON HEADER ────────────────────────────────────────────────── */
+.lesson-header {
+  background: var(--navy);
+  color: #fff;
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin: 0 -2rem 2rem;
+}
+.lesson-num-badge {
+  font-family: 'DM Mono', monospace;
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--teal-mid);
+}
+.lesson-header-title {
+  font-family: 'Source Serif 4', serif;
+  font-size: 22px;
+  font-weight: 400;
+}
+.lesson-header-sep { width: 1px; height: 28px; background: rgba(255,255,255,.2); }
+.lesson-header-obj {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12.5px;
+  color: rgba(255,255,255,.7);
+}
+.lesson-header-obj::before {
+  content: '';
+  display: block;
+  width: 14px; height: 14px;
+  border-radius: 50%;
+  border: 2px solid var(--teal-mid);
+  flex-shrink: 0;
+}
+.lesson-skills-bar {
+  padding: .75rem 2rem;
+  background: var(--gray);
+  display: flex;
+  gap: 1.5rem;
+  margin: 0 -2rem 1.5rem;
+  border-bottom: 1px solid var(--rule);
+  flex-wrap: wrap;
+}
+.skill-pill {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+  font-weight: 500;
+}
+.skill-pill .sk { font-weight: 700; font-size: 10px; letter-spacing: .06em; }
+.sk-g { color: var(--teal); }
+.sk-v { color: var(--coral); }
+.sk-p { color: var(--gold); }
+.sk-s { color: var(--green); }
+
+/* ── COLUMNS ──────────────────────────────────────────────────────── */
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+  margin-bottom: 2rem;
+}
+.one-col { margin-bottom: 2rem; }
+
+/* ── SECTION LABELS ───────────────────────────────────────────────── */
+.sec-label {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--teal);
+  margin-bottom: .6rem;
+  margin-top: 1.75rem;
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+}
+.sec-label::after {
+  content: '';
+  flex: 1;
+  height: 1.5px;
+  background: var(--teal-lite);
+}
+.sec-sub {
+  font-family: 'Source Serif 4', serif;
+  font-size: 17px;
+  font-weight: 400;
+  color: var(--navy);
+  margin-bottom: .75rem;
+}
+
+/* ── ACTIVITY LABELS ──────────────────────────────────────────────── */
+.act {
+  display: flex;
+  gap: .75rem;
+  margin-bottom: .9rem;
+  align-items: flex-start;
+}
+.act-letter {
+  width: 22px; height: 22px;
+  border-radius: 50%;
+  background: var(--teal);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+.act-letter.gold { background: var(--gold); }
+.act-letter.coral { background: var(--coral); }
+.act-letter.navy { background: var(--navy); }
+.act-body { flex: 1; font-size: 14px; color: var(--text); line-height: 1.65; }
+.act-body strong { font-weight: 600; color: var(--navy); }
+.act-body em { color: var(--teal-mid); font-style: italic; }
+
+/* ── AUDIO BADGE ──────────────────────────────────────────────────── */
+.audio-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .06em;
+  color: var(--teal);
+  background: var(--teal-lite);
+  border-radius: 20px;
+  padding: 2px 8px 2px 6px;
+  margin-right: 6px;
+  vertical-align: middle;
+}
+.audio-badge::before { content: '▶'; font-size: 8px; }
+
+.audio-card {
+  background: var(--white);
+  border: 1px solid var(--rule);
+  border-left: 4px solid var(--teal-mid);
+  border-radius: var(--radius);
+  padding: 1rem 1.25rem;
+  margin: 1rem 0 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.audio-play-btn {
+  border: 0;
+  border-radius: 999px;
+  background: var(--teal);
+  color: #fff;
+  font: inherit;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  padding: .65rem 1rem;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.audio-play-btn:hover { background: var(--navy); }
+.audio-copy { min-width: 0; }
+.audio-title {
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: .15rem;
+}
+.audio-status {
+  font-size: 12.5px;
+  color: var(--text-light);
+}
+
+/* ── SPEAK BADGE ──────────────────────────────────────────────────── */
+.speak-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .06em;
+  color: var(--coral);
+  background: var(--coral-lite);
+  border-radius: 20px;
+  padding: 2px 8px;
+  margin-right: 6px;
+}
+
+/* ── EXERCISE LISTS ───────────────────────────────────────────────── */
+ol.ex-list {
+  list-style: none;
+  counter-reset: ex;
+  margin: .5rem 0 .5rem .25rem;
+}
+ol.ex-list li {
+  counter-increment: ex;
+  display: flex;
+  gap: .6rem;
+  font-size: 14px;
+  line-height: 1.6;
+  padding: .35rem 0;
+  border-bottom: 1px solid var(--rule);
+  color: var(--text);
+}
+ol.ex-list li::before {
+  content: counter(ex);
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--teal);
+  min-width: 18px;
+  padding-top: 2px;
+}
+ol.ex-list li:last-child { border-bottom: none; }
+.blank {
+  display: inline-block;
+  min-width: 110px;
+  border-bottom: 1.5px solid var(--navy);
+  margin: 0 3px;
+  vertical-align: bottom;
+}
+.ans { color: var(--teal-mid); font-style: italic; font-size: 13px; }
+
+/* ── WORD BOX ─────────────────────────────────────────────────────── */
+.word-box {
+  background: var(--gray);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-sm);
+  padding: .6rem 1rem;
+  font-family: 'DM Mono', monospace;
+  font-size: 12.5px;
+  color: var(--navy);
+  margin-bottom: .75rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: .35rem .75rem;
+}
+.word-box span { padding: 1px 6px; }
+.word-box span + span::before { content: '·'; margin-right: .6rem; color: var(--text-light); }
+
+/* ── RULE BOX ─────────────────────────────────────────────────────── */
+.rule-box {
+  background: var(--teal-pale);
+  border-left: 4px solid var(--teal-mid);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  padding: .9rem 1.1rem;
+  margin: .75rem 0;
+}
+.rule-box-title {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--teal);
+  margin-bottom: .5rem;
+}
+.rule-box ol {
+  list-style: none;
+  counter-reset: rule;
+}
+.rule-box ol li {
+  counter-increment: rule;
+  font-size: 13.5px;
+  line-height: 1.6;
+  padding: .25rem 0;
+  display: flex;
+  gap: .6rem;
+}
+.rule-box ol li::before {
+  content: counter(rule);
+  background: var(--teal);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  border-radius: 50%;
+  width: 17px; height: 17px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.rule-box .choice { font-weight: 600; color: var(--navy); }
+.rule-box .strike { text-decoration: line-through; color: var(--text-light); font-weight: 400; }
+
+/* ── GLOSSARY BOX ─────────────────────────────────────────────────── */
+.glossary-box {
+  background: var(--gray);
+  border-radius: var(--radius-sm);
+  padding: .9rem 1.1rem;
+  margin: .75rem 0;
+}
+.glossary-box-title {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--text-light);
+  margin-bottom: .6rem;
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: .35rem;
+}
+.glossary-entry { font-size: 13px; line-height: 1.65; margin-bottom: .3rem; color: var(--text); }
+.glossary-entry strong { font-weight: 600; color: var(--navy); }
+
+/* ── READING TEXT ─────────────────────────────────────────────────── */
+.reading-article {
+  background: var(--white);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  overflow: hidden;
+  margin: .75rem 0;
+}
+.reading-article-header {
+  background: var(--teal);
+  color: #fff;
+  padding: .9rem 1.25rem;
+  font-family: 'Source Serif 4', serif;
+  font-size: 16px;
+  font-style: italic;
+}
+.reading-article-body {
+  padding: 1.1rem 1.25rem;
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--text);
+}
+.reading-article-body p + p { margin-top: .75rem; }
+.reading-article-body strong { font-weight: 600; color: var(--navy); }
+
+/* ── SPEAKING HUB ─────────────────────────────────────────────────── */
+.speaking-hub-box {
+  border: 2.5px solid var(--teal-mid);
+  border-radius: var(--radius);
+  padding: 1.25rem 1.5rem;
+  margin: 1rem 0;
+  position: relative;
+}
+.speaking-hub-box::before {
+  content: 'SPEAKING HUB';
+  position: absolute;
+  top: -10px; left: 14px;
+  background: var(--f9f8f5);
+  background: #f9f8f5;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .14em;
+  color: var(--teal-mid);
+  padding: 0 6px;
+}
+
+/* ── PRONUNCIATION ────────────────────────────────────────────────── */
+.pron-example {
+  font-family: 'DM Mono', monospace;
+  font-size: 13px;
+  background: var(--gold-lite);
+  border-left: 3px solid var(--gold);
+  padding: .6rem 1rem;
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  margin: .5rem 0;
+  color: var(--navy);
+}
+.stress { font-weight: 700; font-size: 15px; color: var(--coral); }
+
+/* ── VOCAB TABLE ──────────────────────────────────────────────────── */
+.vocab-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13.5px;
+  margin: .5rem 0;
+}
+.vocab-table th {
+  background: var(--navy);
+  color: rgba(255,255,255,.85);
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  padding: 7px 12px;
+  text-align: left;
+}
+.vocab-table td {
+  padding: 7px 12px;
+  border-bottom: 1px solid var(--rule);
+  vertical-align: top;
+  line-height: 1.55;
+}
+.vocab-table tr:nth-child(even) td { background: var(--teal-pale); }
+.vocab-table td:first-child { font-weight: 600; color: var(--navy); }
+.vocab-table td:last-child { color: var(--text-mid); font-size: 13px; }
+
+/* ── MATCH TABLE ──────────────────────────────────────────────────── */
+.match-wrap {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin: .5rem 0;
+}
+.match-col { display: flex; flex-direction: column; gap: .4rem; }
+.match-item {
+  background: var(--gray);
+  border-radius: var(--radius-sm);
+  padding: .55rem .9rem;
+  font-size: 13.5px;
+  border-left: 3px solid transparent;
+  transition: border-color .2s;
+}
+.match-item.teal { border-color: var(--teal); }
+.match-item.gold { border-color: var(--gold); }
+.match-item .num { font-family: 'DM Mono',monospace; font-size: 11px; color: var(--text-light); margin-right: 6px; }
+
+/* ── DIALOGUE BOX ─────────────────────────────────────────────────── */
+.dialogue-box {
+  background: var(--white);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  padding: 1.1rem 1.25rem;
+  margin: .5rem 0;
+}
+.dialogue-line {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: .5rem;
+  padding: .35rem 0;
+  border-bottom: 1px solid var(--rule);
+  font-size: 13.5px;
+}
+.dialogue-line:last-child { border-bottom: none; }
+.dialogue-speaker { font-weight: 700; color: var(--teal); font-size: 12px; }
+.dialogue-text { color: var(--text); line-height: 1.55; }
+.dialogue-text .blank { min-width: 80px; }
+
+/* ── WRITING BOX ──────────────────────────────────────────────────── */
+.writing-task {
+  background: var(--coral-lite);
+  border-left: 4px solid var(--coral);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  padding: 1rem 1.25rem;
+  margin: .75rem 0;
+}
+.writing-task-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--coral);
+  margin-bottom: .4rem;
+}
+.writing-lines {
+  margin-top: .75rem;
+  display: flex;
+  flex-direction: column;
+  gap: .6rem;
+}
+.writing-line {
+  border-bottom: 1px solid rgba(201,79,58,.25);
+  height: 24px;
+}
+
+/* ── KEY SKILL BOX ────────────────────────────────────────────────── */
+.key-skill-box {
+  background: var(--navy);
+  color: #fff;
+  border-radius: var(--radius-sm);
+  padding: .9rem 1.1rem;
+  margin: .75rem 0;
+}
+.key-skill-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--teal-mid);
+  margin-bottom: .4rem;
+}
+.key-skill-body { font-size: 13.5px; line-height: 1.6; color: rgba(255,255,255,.85); }
+
+/* ── UNIT REVIEW FOOTER ───────────────────────────────────────────── */
+.unit-review-bar {
+  background: var(--navy);
+  color: #fff;
+  padding: .75rem 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 12.5px;
+  flex-wrap: wrap;
+  margin: 2rem -2rem -4rem;
+}
+.review-label {
+  font-weight: 700;
+  background: rgba(255,255,255,.15);
+  padding: 3px 10px;
+  border-radius: 4px;
+  font-size: 11px;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+.review-item { color: rgba(255,255,255,.75); }
+.review-item strong { color: var(--teal-mid); }
+
+/* ── SECTION DIVIDER ──────────────────────────────────────────────── */
+.sec-divider {
+  border: none;
+  border-top: 1.5px solid var(--rule);
+  margin: 2rem 0;
+}
+
+/* ── BULLET LIST ──────────────────────────────────────────────────── */
+ul.bullet-list {
+  list-style: none;
+  margin: .4rem 0 .4rem .25rem;
+}
+ul.bullet-list li {
+  font-size: 14px;
+  line-height: 1.65;
+  padding: .25rem 0;
+  padding-left: 1.2rem;
+  position: relative;
+  color: var(--text);
+}
+ul.bullet-list li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: var(--teal);
+  font-weight: 700;
+}
+ul.bullet-list li em { color: var(--teal-mid); font-style: italic; }
+
+/* ── GRAMMAR EXAMPLE ──────────────────────────────────────────────── */
+.grammar-ex {
+  background: var(--teal-pale);
+  border-radius: var(--radius-sm);
+  padding: .6rem 1rem;
+  font-size: 13.5px;
+  font-style: italic;
+  color: var(--teal);
+  margin: .4rem 0;
+  border-left: 2px solid var(--teal-mid);
+}
+
+/* ── PAGE TAG ─────────────────────────────────────────────────────── */
+.page-tag {
+  display: inline-block;
+  background: var(--navy);
+  color: rgba(255,255,255,.7);
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  padding: 2px 7px;
+  border-radius: 3px;
+  vertical-align: middle;
+  margin-left: 4px;
+}
+
+/* ── RESPONSIVE ───────────────────────────────────────────────────── */
+@media (max-width: 760px) {
+  .unit-cover { grid-template-columns: 1fr; }
+  .unit-cover-photo { min-height: 200px; }
+  .objectives-bar { grid-template-columns: 1fr; gap: .75rem; padding: 1.25rem 1.5rem; }
+  .two-col { grid-template-columns: 1fr; gap: 1rem; }
+  .lesson-page { padding: 0 1.25rem 3rem; }
+  .lesson-header { margin: 0 -1.25rem 1.5rem; padding: 1rem 1.25rem; }
+  .lesson-skills-bar { margin: 0 -1.25rem 1.25rem; padding: .75rem 1.25rem; }
+  .unit-review-bar { margin: 2rem -1.25rem -3rem; padding: .75rem 1.25rem; }
+  .match-wrap { grid-template-columns: 1fr; }
+  .audio-card { align-items: flex-start; flex-direction: column; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     SITE HEADER
+════════════════════════════════════════════════════════════════════ -->
+<header class="site-header">
+  <a class="site-brand" href="../../index.html" style="text-decoration:none">Romanian <span>Step by Step</span></a>
+  <nav class="site-nav">
+    <a href="../../index.html#b1">Nivel B1</a>
+    <a href="../../index.html#lectii">Lecții</a>
+    <a href="#audio">Audio</a>
+    <a href="../../index.html#texte-dialoguri">Resurse</a>
+  </nav>
+</header>
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     UNIT COVER
+════════════════════════════════════════════════════════════════════ -->
+<div class="unit-cover">
+  <div class="unit-cover-text">
+    <div>
+      <div class="unit-num">
+        <div class="unit-num-big">2</div>
+        <div class="unit-num-label">
+          <span class="unit-word">Unitatea</span>
+          <span class="unit-title">Relații</span>
+        </div>
+      </div>
+      <blockquote class="unit-quote">
+        „Calitatea relațiilor noastre determină calitatea vieții noastre."
+        <cite>— Esther Perel</cite>
+      </blockquote>
+    </div>
+    <div style="font-size:13px;color:rgba(255,255,255,.5);line-height:1.8;">
+      Fotografie: O familie română la o reuniune de vară, Maramureș.
+    </div>
+  </div>
+  <div class="unit-cover-photo">
+    <div class="unit-photo-illustration">
+      <span class="big-icon">🤝</span>
+      <div class="unit-photo-caption">Relațiile interpersonale în cultura română</div>
+    </div>
+  </div>
+</div>
+
+<!-- OBJECTIVES BAR -->
+<div class="objectives-bar">
+  <div class="objectives-label">Obiective</div>
+  <div class="objectives-list">
+    <div class="obj-item"><span class="obj-circle"></span>să descrii tipuri de relații</div>
+    <div class="obj-item"><span class="obj-circle"></span>să vorbești despre familie și prieteni</div>
+    <div class="obj-item"><span class="obj-circle"></span>să exprimi sentimente și emoții</div>
+    <div class="obj-item"><span class="obj-circle"></span>să dai și să ceri sfaturi</div>
+    <div class="obj-item"><span class="obj-circle"></span>să scrii un mesaj informal</div>
+  </div>
+</div>
+
+<!-- SYLLABUS TABLE -->
+<div class="syllabus-wrap">
+  <table class="syllabus-table">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Lecție · Obiective</th>
+        <th>Gramatică</th>
+        <th>Vocabular</th>
+        <th>Pronunție</th>
+        <th>Citit · Ascultat</th>
+        <th>Vorbit · Scris</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="unit-row">
+        <td colspan="7">U2 &nbsp;·&nbsp; RELAȚII</td>
+      </tr>
+      <tr>
+        <td>2.1</td>
+        <td>
+          <div class="lesson-title">Familia mea <span class="page-tag">p2</span></div>
+          <div class="lesson-obj">Descrie relațiile de familie</div>
+        </td>
+        <td><span class="g-tag">pronumele posesive</span></td>
+        <td>familia, rudele</td>
+        <td>vocalele lungi</td>
+        <td>ascultă un podcast despre familie</td>
+        <td>prezintă-ți familia unui coleg</td>
+      </tr>
+      <tr>
+        <td>2.2</td>
+        <td>
+          <div class="lesson-title">Prietenii adevărați <span class="page-tag">p4</span></div>
+          <div class="lesson-obj">Vorbește despre prietenie și calitățile unui prieten bun</div>
+        </td>
+        <td><span class="g-tag">comparativul și superlativul</span></td>
+        <td>adjectivele personalității</td>
+        <td>accentul în cuvinte compuse</td>
+        <td>citește un articol despre prietenie</td>
+        <td>intervievează un coleg despre cel mai bun prieten</td>
+      </tr>
+      <tr>
+        <td>2.3</td>
+        <td>
+          <div class="lesson-title">Sentimente și emoții <span class="page-tag">p6</span></div>
+          <div class="lesson-obj">Exprimă sentimente și reacționează la emoțiile altora</div>
+        </td>
+        <td><span class="g-tag">verbele reflexive</span></td>
+        <td>emoții, verbe de sentiment</td>
+        <td>intonația în exclamații</td>
+        <td>citește mesaje dintr-un forum online</td>
+        <td>
+          <span class="speaking-hub">SPEAKING HUB</span><br>
+          simulare: conversație de sprijin
+        </td>
+      </tr>
+      <tr>
+        <td>2.4</td>
+        <td>
+          <div class="lesson-title">Cafeneaua Sfaturilor <span class="page-tag">p8</span></div>
+          <div class="lesson-obj">Cere și oferă sfaturi în situații cotidiene</div>
+        </td>
+        <td></td>
+        <td>expresii de sfat și sugestie</td>
+        <td>tonul sfaturilor</td>
+        <td>urmărește o conversație de sfat</td>
+        <td>joc de rol: da sfaturi unui prieten</td>
+      </tr>
+      <tr class="syllabus-review">
+        <td colspan="2"><strong>RECAPITULARE</strong> <span class="page-tag">p10</span></td>
+        <td colspan="5">
+          <strong>SCRIERE</strong> <span class="page-tag">p158</span> Scrie un mesaj informal unui prieten &nbsp;|&nbsp;
+          <span class="key-skill">KEY SKILL</span> Tonul în mesajele informale
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     LECȚIA 2.1
+════════════════════════════════════════════════════════════════════ -->
+<div class="lesson-page">
+
+<div class="lesson-header">
+  <span class="lesson-num-badge">2.1</span>
+  <span class="lesson-header-title">Familia mea</span>
+  <div class="lesson-header-sep"></div>
+  <span class="lesson-header-obj">Descrie relațiile de familie</span>
+</div>
+
+<div class="lesson-skills-bar">
+  <span class="skill-pill"><span class="sk sk-g">G</span> pronumele posesive</span>
+  <span class="skill-pill"><span class="sk sk-v">V</span> familia și rudele</span>
+  <span class="skill-pill"><span class="sk sk-p">P</span> vocalele lungi</span>
+</div>
+
+<div class="audio-card" id="audio">
+  <button class="audio-play-btn" id="lessonAudioBtn" type="button" onclick="toggleLessonAudio()">Redă audio</button>
+  <div class="audio-copy">
+    <div class="audio-title">Audio lecție B1 · Relații</div>
+    <div class="audio-status" id="lessonAudioStatus">Pregătit pentru fișierul audio: assets/audio/relatii-b1.mp3</div>
+  </div>
+  <audio id="lessonAudio" preload="metadata" src="../../assets/audio/relatii-b1.mp3"></audio>
+</div>
+
+<div class="two-col">
+
+<!-- LEFT COLUMN -->
+<div>
+
+  <div class="sec-label">Ascultare</div>
+
+  <div class="act">
+    <div class="act-letter">A</div>
+    <div class="act-body">Privește fotografia și discutați în perechi. Ce relație credeți că au persoanele din imagine? Ce fac?</div>
+  </div>
+
+  <div class="act">
+    <div class="act-letter">B</div>
+    <div class="act-body">
+      <span class="speak-badge">VORBIȚI</span> Lucrați în grupuri. Discutați întrebările.
+      <ol class="ex-list" style="margin-top:.5rem">
+        <li>Câți membri are familia ta? Cu cine locuiești?</li>
+        <li>Cât de des te întâlnești cu rudele tale?</li>
+        <li>Ce activități faceți împreună ca familie?</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="act">
+    <div class="act-letter">C</div>
+    <div class="act-body">
+      <span class="audio-badge">2.1</span><strong>ASCULTĂ CUVINTELE-CHEIE</strong> Ascultă o conversație între Andreea și bunica ei Elena despre reuniunea de familie. Răspunde la întrebări.
+      <ol class="ex-list" style="margin-top:.5rem">
+        <li>Câți oameni participă la reuniune?</li>
+        <li>Unde are loc reuniunea?</li>
+        <li>Ce surpriză a pregătit familia?</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="glossary-box">
+    <div class="glossary-box-title">Glosar</div>
+    <div class="glossary-entry"><strong>reuniune (s.f.)</strong> — întâlnire a membrilor unei familii sau grup</div>
+    <div class="glossary-entry"><strong>rudă (s.f.)</strong> — persoană legată prin sânge sau căsătorie</div>
+    <div class="glossary-entry"><strong>a se întoarce (v.)</strong> — a reveni la un loc sau o persoană</div>
+    <div class="glossary-entry"><strong>generație (s.f.)</strong> — totalitatea oamenilor de aceeași vârstă</div>
+  </div>
+
+  <div class="act">
+    <div class="act-letter gold">D</div>
+    <div class="act-body">
+      <span class="audio-badge">2.2</span><strong>ASCULTĂ DETALII</strong> Ascultă din nou. Completează propozițiile cu cuvântul corect.
+      <div class="word-box" style="margin-top:.5rem"><span>soț</span><span>nepoată</span><span>veri</span><span>cumnată</span><span>unchi</span><span>bunic</span></div>
+      <ol class="ex-list">
+        <li>Elena are trei <span class="blank"></span> care locuiesc în Ardeal.</li>
+        <li>Andreea este <span class="blank"></span> Elenei din partea fiului.</li>
+        <li>Mircea, <span class="blank"></span> Andreei, vine din Germania.</li>
+        <li>Noua <span class="blank"></span> a lui Cristi se numește Laura.</li>
+        <li>Cel mai bătrân <span class="blank"></span> al familiei are 92 de ani.</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="act">
+    <div class="act-letter coral">E</div>
+    <div class="act-body">
+      <span class="speak-badge">VORBIȚI</span> Lucrați în grupuri. Discutați.
+      <ol class="ex-list" style="margin-top:.5rem">
+        <li>Organizați reuniuni de familie? Cum sunt?</li>
+        <li>Cum este familia extinsă importantă în cultura românească?</li>
+      </ol>
+    </div>
+  </div>
+
+</div><!-- /left -->
+
+<!-- RIGHT COLUMN -->
+<div>
+
+  <div class="sec-label">Gramatică</div>
+  <div class="sec-sub">Pronumele posesive</div>
+
+  <div class="act">
+    <div class="act-letter">A</div>
+    <div class="act-body">
+      <span class="audio-badge">2.3</span><strong>DESCOPERĂ REGULA</strong> Completează întrebările cu cuvintele din casetă. Ascultă din nou și verifică.
+      <div class="word-box" style="margin-top:.5rem"><span>meu</span><span>mea</span><span>tău</span><span>ta</span><span>lui</span><span>ei</span><span>nostru</span><span>noastră</span></div>
+      <ol class="ex-list">
+        <li>Fratele <span class="blank"><span class="ans">meu</span></span> locuiește în Cluj.</li>
+        <li>Sora <span class="blank"></span> vine la reuniune.</li>
+        <li>Bunicul <span class="blank"></span> are 80 de ani.</li>
+        <li>Prietena <span class="blank"></span> este medic.</li>
+        <li>Casa <span class="blank"></span> este în centrul orașului.</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="rule-box">
+    <div class="rule-box-title">Pronumele posesive în română</div>
+    <ol>
+      <li>Pronumele posesiv se acordă cu <span class="choice">genul substantivului</span>, nu al posesorului: <em>fratele meu / sora mea</em>.</li>
+      <li>Se folosesc <span class="choice">după</span> substantiv, precedate de articol: <em>tatăl meu, mama mea</em>.</li>
+      <li>La plural: <em>frații mei, surorile mele, părinții noștri</em>.</li>
+      <li>Forma nearticulată: <em>un prieten al meu, o colegă a ta</em>.</li>
+    </ol>
+  </div>
+
+  <div class="act">
+    <div class="act-letter">B</div>
+    <div class="act-body">
+      Privește propozițiile din Exercițiul A. Ce gen are fiecare substantiv? Subliniază forma posesivă corectă.
+      <ol class="ex-list" style="margin-top:.5rem">
+        <li>Acesta este <em>prietenul meu / mea</em>. Îl cheamă Radu.</li>
+        <li>O cunosc pe <em>sora tău / ta</em> de la școală.</li>
+        <li><em>Mașina nostru / noastră</em> este în fața casei.</li>
+        <li><em>Copiii lor / lor</em> sunt la grădiniță.</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="act">
+    <div class="act-letter">C</div>
+    <div class="act-body">Mergi la <strong>Grammar Hub pagina 122</strong>.</div>
+  </div>
+
+  <div class="act">
+    <div class="act-letter coral">D</div>
+    <div class="act-body">
+      Rescrie propozițiile folosind pronumele posesiv corect.
+      <ol class="ex-list" style="margin-top:.5rem">
+        <li>Am vorbit cu fratele (eu). → <span class="blank" style="min-width:160px"></span></li>
+        <li>Bunica (ea) face cozonac. → <span class="blank" style="min-width:160px"></span></li>
+        <li>Copiii (noi) sunt în parc. → <span class="blank" style="min-width:160px"></span></li>
+        <li>Apartamentul (voi) este mare? → <span class="blank" style="min-width:160px"></span></li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="act">
+    <div class="act-letter navy">E</div>
+    <div class="act-body">
+      <span class="speak-badge">VORBIȚI</span> Lucrați în perechi. Puneți-vă întrebări despre familie folosind pronumele posesive.
+      <div class="grammar-ex">— Cum se numește sora ta? / — Sora mea se numește Maria. Dar fratele tău?</div>
+    </div>
+  </div>
+
+</div><!-- /right -->
+</div><!-- /two-col -->
+
+<div class="two-col">
+<div>
+  <div class="sec-label">Vocabular</div>
+  <div class="sec-sub">Familia și rudele</div>
+
+  <div class="act">
+    <div class="act-letter">A</div>
+    <div class="act-body">Mergi la <strong>Vocabulary Hub pagina 146</strong>.</div>
+  </div>
+
+  <div class="act">
+    <div class="act-letter">B</div>
+    <div class="act-body">
+      <span class="speak-badge">VORBIȚI</span> Lucrați în perechi. Răspundeți la întrebări.
+      <ol class="ex-list" style="margin-top:.5rem">
+        <li>Câți frați și surori ai?</li>
+        <li>Cum sunt relațiile cu vărul / verișoara ta?</li>
+        <li>Cine este cel mai în vârstă din familia ta?</li>
+      </ol>
+    </div>
+  </div>
+
+  <table class="vocab-table" style="margin-top:.75rem">
+    <thead><tr><th>Cuvânt</th><th>Categorie</th><th>Exemplu</th></tr></thead>
+    <tbody>
+      <tr><td>rudă</td><td>s.f.</td><td>Ea este o rudă apropiată.</td></tr>
+      <tr><td>nepot / nepoată</td><td>s.m./f.</td><td>Nepotul meu are cinci ani.</td></tr>
+      <tr><td>cumnat / cumnată</td><td>s.m./f.</td><td>Cumnata mea este avocată.</td></tr>
+      <tr><td>unchi / mătușă</td><td>s.m./f.</td><td>Mătușa vine din Iași.</td></tr>
+      <tr><td>fin / fină</td><td>s.m./f.</td><td>Suntem nașii finului nostru.</td></tr>
+      <tr><td>văr / verișoară</td><td>s.m./f.</td><td>Vărul meu locuiește în Franța.</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div>
+  <div class="sec-label">Pronunție</div>
+  <div class="sec-sub">Vocalele lungi</div>
+
+  <div class="act">
+    <div class="act-letter">A</div>
+    <div class="act-body">
+      <span class="audio-badge">2.4</span>Ascultă și repetă. Atenție la vocalele accentuate.
+      <div class="pron-example"><span class="stress">fă</span>-mi-lie &nbsp;·&nbsp; <span class="stress">ta</span>-tă &nbsp;·&nbsp; <span class="stress">ma</span>-mă &nbsp;·&nbsp; bu-<span class="stress">ni</span>-că</div>
+      <div class="pron-example">ne-<span class="stress">poa</span>-tă &nbsp;·&nbsp; <span class="stress">so</span>-ră &nbsp;·&nbsp; <span class="stress">fra</span>-te &nbsp;·&nbsp; cu-<span class="stress">mna</span>-tă</div>
+    </div>
+  </div>
+
+  <div class="act">
+    <div class="act-letter">B</div>
+    <div class="act-body">
+      <span class="audio-badge">2.5</span>Lucrați în perechi. Scrieți cuvintele din casetă la locul potrivit după numărul de silabe. Ascultați și verificați.
+      <div class="word-box" style="margin-top:.5rem"><span>mamă</span><span>bunic</span><span>mătușă</span><span>verișoară</span><span>cumnat</span><span>nepot</span></div>
+
+      <table style="width:100%;font-size:13px;border-collapse:collapse;margin-top:.5rem">
+        <tr>
+          <th style="background:var(--gray);padding:6px 10px;border:1px solid var(--rule);text-align:left;font-size:11px;letter-spacing:.06em">2 silabe</th>
+          <th style="background:var(--gray);padding:6px 10px;border:1px solid var(--rule);text-align:left;font-size:11px;letter-spacing:.06em">3 silabe</th>
+          <th style="background:var(--gray);padding:6px 10px;border:1px solid var(--rule);text-align:left;font-size:11px;letter-spacing:.06em">4 silabe</th>
+        </tr>
+        <tr>
+          <td style="padding:10px;border:1px solid var(--rule);height:48px;vertical-align:top;font-style:italic;font-size:13px;color:var(--teal)">mamă, cumnat, nepot</td>
+          <td style="padding:10px;border:1px solid var(--rule);height:48px;vertical-align:top"></td>
+          <td style="padding:10px;border:1px solid var(--rule);height:48px;vertical-align:top"></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="act">
+    <div class="act-letter">C</div>
+    <div class="act-body">
+      <span class="speak-badge">VORBIȚI</span> Lucrați în perechi. Pronunțați cuvintele din Exercițiul B și verificați pronunția partenerului.
+    </div>
+  </div>
+</div>
+</div><!-- /two-col -->
+
+<!-- SPEAKING -->
+<div class="sec-label">Vorbit</div>
+<div class="act">
+  <div class="act-letter">A</div>
+  <div class="act-body">
+    Adună informații despre familia colegilor tăi. Scrie șase întrebări folosind ideile de mai jos, apoi adaugă două întrebări proprii.
+    <ul class="bullet-list" style="margin-top:.5rem">
+      <li>structura familiei &nbsp;<em>— Câți membri are familia ta?</em></li>
+      <li>relațiile cu rudele &nbsp;<em>— Ești aproape de bunicii tăi?</em></li>
+      <li>tradiții de familie</li>
+      <li>amintiri din copilărie</li>
+      <li>locuința și orașul de origine</li>
+    </ul>
+  </div>
+</div>
+<div class="act">
+  <div class="act-letter">B</div>
+  <div class="act-body">
+    <span class="speak-badge">VORBIȚI</span> Lucrați cu un coleg pe care nu îl cunoașteți bine. Puneți-vă întrebările din Exercițiul A. Când ați terminat, spuneți grupului cel mai interesant lucru pe care l-ați aflat.
+  </div>
+</div>
+
+<div style="text-align:right;margin-top:1rem">
+  <span style="font-size:12px;font-weight:600;color:var(--teal);display:inline-flex;align-items:center;gap:6px;">
+    <span style="width:14px;height:14px;border-radius:50%;border:2px solid var(--teal);display:inline-block"></span>
+    Descrie relațiile de familie
+  </span>
+</div>
+
+<hr class="sec-divider">
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     LECȚIA 2.2
+════════════════════════════════════════════════════════════════════ -->
+
+<div class="lesson-header" style="margin-top:0">
+  <span class="lesson-num-badge">2.2</span>
+  <span class="lesson-header-title">Prietenii adevărați</span>
+  <div class="lesson-header-sep"></div>
+  <span class="lesson-header-obj">Vorbește despre prietenie și calitățile unui prieten bun</span>
+</div>
+
+<div class="lesson-skills-bar">
+  <span class="skill-pill"><span class="sk sk-v">V</span> adjectivele personalității</span>
+  <span class="skill-pill"><span class="sk sk-p">P</span> accentul în cuvinte compuse</span>
+  <span class="skill-pill"><span class="sk sk-g">G</span> comparativul și superlativul</span>
+</div>
+
+<div class="two-col">
+<div>
+  <div class="sec-label">Citire</div>
+
+  <div class="act">
+    <div class="act-letter">A</div>
+    <div class="act-body">
+      <span class="speak-badge">VORBIȚI</span> Lucrați în grupuri. Discutați întrebările.
+      <ol class="ex-list" style="margin-top:.5rem">
+        <li>Ce calități cauți la un prieten bun?</li>
+        <li>Cum ți-ai cunoscut cel mai bun prieten?</li>
+        <li>Crezi că prieteniile online sunt la fel de valoroase?</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="act">
+    <div class="act-letter">B</div>
+    <div class="act-body">
+      <strong>CITIRE RAPIDĂ</strong> Citește articolul <em>Secretul prieteniei durabile</em> repede. Care dintre cele trei sfaturi ți se pare cel mai important? De ce?
+    </div>
+  </div>
+
+  <div class="reading-article">
+    <div class="reading-article-header">🔗 Secretul prieteniei durabile</div>
+    <div class="reading-article-body">
+      <p>Psihologii spun că prieteniile adevărate nu se formează în câteva zile. Ele cer timp, efort și, mai ales, <strong>autenticitate</strong>. Dar ce anume face ca o prietenie să dureze ani, chiar decenii?</p>
+      <p>În primul rând, un prieten bun este <strong>loial</strong>. El sau ea este alături de tine nu numai în momentele fericite, ci și atunci când lucrurile merg prost. <em>Loialitatea</em> înseamnă să păstrezi secretele, să spui adevărul chiar și când doare și să fii prezent când este cu adevărat nevoie.</p>
+      <p>În al doilea rând, contează <strong>empatia</strong>. Un prieten empatic înțelege cum te simți fără să judece. El ascultă activ, pune întrebări sincere și nu se grăbește să ofere soluții înainte de a înțelege problema.</p>
+      <p>În fine, prieteniile durabile se hrănesc cu <strong>interese comune</strong>. Fie că este vorba de sport, muzică sau pur și simplu de plăcerea de a sta la o cafea — activitățile împărtășite creează amintiri și întăresc legăturile.</p>
+    </div>
+  </div>
+
+  <div class="act">
+    <div class="act-letter">C</div>
+    <div class="act-body">
+      <strong>CITIRE DETALIATĂ</strong> Citește din nou. Completează fiecare propoziție cu numele unui concept din articol.
+      <ol class="ex-list" style="margin-top:.5rem">
+        <li>Un prieten <span class="blank"></span> nu îți spune secretele altora.</li>
+        <li>Prieteniile nu se formează <span class="blank"></span>.</li>
+        <li>Un prieten <span class="blank"></span> înțelege emoțiile tale fără a judeca.</li>
+        <li><span class="blank"></span> comune ajută prietenia să dureze.</li>
+        <li>A fi <span class="blank"></span> înseamnă a fi prezent în momentele dificile.</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="act">
+    <div class="act-letter coral">D</div>
+    <div class="act-body">
+      <span class="speak-badge">VORBIȚI</span> Lucrați în perechi. Discutați.
+      <ol class="ex-list" style="margin-top:.5rem">
+        <li>Cunoști pe cineva care este un prieten loial? Dă un exemplu.</li>
+        <li>Este mai ușor să fii empatic cu prietenii sau cu familia? De ce?</li>
+        <li>Care sunt interesele pe care le împarți cu prietenii tăi?</li>
+      </ol>
+    </div>
+  </div>
+</div>
+
+<div>
+  <div class="sec-label">Pronunție</div>
+  <div class="sec-sub">Accentul în cuvinte compuse</div>
+
+  <div class="act">
+    <div class="act-letter">A</div>
+    <div class="act-body">
+      <span class="audio-badge">2.6</span>Ascultă și completează tabelul cu cuvintele din casetă.
+      <div class="word-box" style="margin-top:.5rem"><span>bine-crescut</span><span>rău-platnic</span><span>înalt-calificat</span><span>bun-simț</span></div>
+      <table style="width:100%;font-size:12.5px;border-collapse:collapse;margin-top:.5rem">
+        <tr>
+          <th style="background:var(--gray);padding:6px 10px;border:1px solid var(--rule);text-align:center;font-size:11px">accent pe primul element</th>
+          <th style="background:var(--gray);padding:6px 10px;border:1px solid var(--rule);text-align:center;font-size:11px">accent pe al doilea element</th>
+        </tr>
+        <tr>
+          <td style="padding:10px 10px;border:1px solid var(--rule);height:56px;vertical-align:top;color:var(--teal);font-style:italic">bine-crescut</td>
+          <td style="padding:10px 10px;border:1px solid var(--rule);height:56px;vertical-align:top"></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="act">
+    <div class="act-letter">B</div>
+    <div class="act-body">
+      <span class="audio-badge">2.7</span>Ascultă din nou și repetă cuvintele.
+    </div>
+  </div>
+
+  <hr class="sec-divider">
+
+  <div class="sec-label">Gramatică</div>
+  <div class="sec-sub">Comparativul și superlativul</div>
+
+  <div class="act">
+    <div class="act-letter">A</div>
+    <div class="act-body">
+      <span class="audio-badge">2.8</span><strong>DESCOPERĂ REGULA</strong> Ascultă o conversație între doi prieteni despre colegii lor. Completează propozițiile.
+      <ol class="ex-list" style="margin-top:.5rem">
+        <li>Radu este <span class="blank"></span> sincer decât Mihai.</li>
+        <li>Elena este <span class="blank"></span> amuzantă din grup.</li>
+        <li>Andrei nu este la fel de <span class="blank"></span> ca Dan.</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="rule-box">
+    <div class="rule-box-title">Comparativul și superlativul</div>
+    <ol>
+      <li>Comparativ de superioritate: <span class="choice">mai + adj. + decât</span>: <em>mai bun decât</em></li>
+      <li>Comparativ de egalitate: <span class="choice">la fel de + adj. + ca</span>: <em>la fel de loial ca</em></li>
+      <li>Comparativ de inferioritate: <span class="choice">mai puțin + adj. + decât</span></li>
+      <li>Superlativ relativ: <span class="choice">cel mai / cea mai + adj.</span>: <em>cel mai bun prieten</em></li>
+    </ol>
+  </div>
+
+  <div class="act">
+    <div class="act-letter">B</div>
+    <div class="act-body">
+      <span class="speak-badge">VORBIȚI</span> Lucrați în perechi. Comparați doi prieteni sau doi membri ai familiei folosind adjectivele de mai jos.
+      <div class="word-box" style="margin-top:.5rem"><span>amuzant</span><span>serios</span><span>sociabil</span><span>răbdător</span><span>creativ</span><span>organizat</span></div>
+      <div class="grammar-ex">— Sora mea este mai sociabilă decât fratele meu. El este cel mai serios din familie.</div>
+    </div>
+  </div>
+
+</div>
+</div><!-- /two-col -->
+
+<!-- VOCABULARY 2.2 -->
+<div class="sec-label">Vocabular</div>
+<div class="sec-sub">Adjectivele personalității</div>
+<div class="two-col">
+<div>
+  <div class="act">
+    <div class="act-letter">A</div>
+    <div class="act-body">
+      Potrivește adjectivele din articol cu descrierile de mai jos.
+      <div class="match-wrap" style="margin-top:.5rem">
+        <div class="match-col">
+          <div class="match-item teal"><span class="num">1</span>„Îți țin toate secretele și nu te judec."</div>
+          <div class="match-item teal"><span class="num">2</span>„Înțeleg cum te simți și ascult cu atenție."</div>
+          <div class="match-item teal"><span class="num">3</span>„Îți spun adevărul chiar dacă e greu de auzit."</div>
+          <div class="match-item teal"><span class="num">4</span>„Ești cel mai important pentru mine, mereu."</div>
+        </div>
+        <div class="match-col">
+          <div class="match-item gold">a. empatic</div>
+          <div class="match-item gold">b. sincer</div>
+          <div class="match-item gold">c. loial</div>
+          <div class="match-item gold">d. devotat</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div>
+  <div class="act">
+    <div class="act-letter">B</div>
+    <div class="act-body">
+      Mergi la <strong>Vocabulary Hub pagina 146</strong>.
+    </div>
+  </div>
+  <div class="act">
+    <div class="act-letter">C</div>
+    <div class="act-body">
+      <span class="speak-badge">VORBIȚI</span> Lucrați în perechi. Descrieți trei persoane pe care le cunoașteți folosind adjectivele din Exercițiul A. Partenerul pune întrebări suplimentare.
+    </div>
+  </div>
+</div>
+</div>
+
+<hr class="sec-divider">
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     LECȚIA 2.3
+════════════════════════════════════════════════════════════════════ -->
+
+<div class="lesson-header" style="margin-top:0">
+  <span class="lesson-num-badge">2.3</span>
+  <span class="lesson-header-title">Sentimente și emoții</span>
+  <div class="lesson-header-sep"></div>
+  <span class="lesson-header-obj">Exprimă sentimente și reacționează la emoțiile altora</span>
+</div>
+
+<div class="lesson-skills-bar">
+  <span class="skill-pill"><span class="sk sk-g">G</span> verbele reflexive</span>
+  <span class="skill-pill"><span class="sk sk-v">V</span> emoții și verbe de sentiment</span>
+  <span class="skill-pill"><span class="sk sk-p">P</span> intonația în exclamații</span>
+  <span class="skill-pill"><span class="sk sk-s">S</span> analiza unui text</span>
+</div>
+
+<div class="two-col">
+<div>
+  <div class="sec-label">Citire</div>
+
+  <div class="act">
+    <div class="act-letter">A</div>
+    <div class="act-body">
+      <span class="speak-badge">VORBIȚI</span> Lucrați în perechi. Discutați întrebările.
+      <ol class="ex-list" style="margin-top:.5rem">
+        <li>Ce faci când ești supărat/ă pe un prieten?</li>
+        <li>Îți este ușor să-ți exprimi emoțiile? De ce?</li>
+        <li>Scrii vreodată mesaje pentru a rezolva conflicte?</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="key-skill-box">
+    <div class="key-skill-label">Key Skill — Analiza unui text</div>
+    <div class="key-skill-body">
+      Înainte să citești un text, uită-te la titlu, imagine și structura generală. Întreabă-te: <em>Despre ce este textul? Cine îl scrie și cui îi este adresat? De ce este scris?</em> Acest lucru te ajută să înțelegi mai bine conținutul.
+    </div>
+  </div>
+
+  <div class="act">
+    <div class="act-letter">B</div>
+    <div class="act-body">
+      Privește mesajele de mai jos. Răspunde la întrebări înainte să citești în detaliu.
+      <ol class="ex-list" style="margin-top:.5rem">
+        <li>Cine sunt persoanele implicate?</li>
+        <li>Este o situație pozitivă sau negativă?</li>
+        <li>Ce emoții apar în mesaje?</li>
+        <li>Cum crezi că se rezolvă situația?</li>
+      </ol>
+    </div>
+  </div>
+
+  <!-- Forum posts -->
+  <div style="margin:.75rem 0;display:flex;flex-direction:column;gap:.6rem">
+    <div style="background:var(--white);border:1px solid var(--rule);border-radius:var(--radius);padding:1rem 1.25rem">
+      <div style="display:flex;justify-content:space-between;margin-bottom:.4rem">
+        <strong style="font-size:13px;color:var(--navy)">Ioana_M</strong>
+        <span style="font-size:11px;color:var(--text-light)">acum 2 ore</span>
+      </div>
+      <div style="font-size:13.5px;color:var(--text);line-height:1.65">
+        Am uitat aniversarea celei mai bune prietene. Ea nu mi-a spus nimic, dar mă simt <strong>vinovată</strong> și <strong>rușinată</strong>. Cum pot să îmi cer scuze sincer?
+      </div>
+    </div>
+    <div style="background:var(--teal-pale);border:1px solid var(--teal-lite);border-radius:var(--radius);padding:1rem 1.25rem;margin-left:1.5rem">
+      <div style="display:flex;justify-content:space-between;margin-bottom:.4rem">
+        <strong style="font-size:13px;color:var(--teal)">Alex_T</strong>
+        <span style="font-size:11px;color:var(--text-light)">acum 1 oră</span>
+      </div>
+      <div style="font-size:13.5px;color:var(--text);line-height:1.65">
+        Nu te <strong>îngrijora</strong> atât! Suntem cu toții oameni. Sună-o și spune-i direct cum te simți. Prietenii adevărați înțeleg.
+      </div>
+    </div>
+    <div style="background:var(--white);border:1px solid var(--rule);border-radius:var(--radius);padding:1rem 1.25rem">
+      <div style="display:flex;justify-content:space-between;margin-bottom:.4rem">
+        <strong style="font-size:13px;color:var(--navy)">Maria_C</strong>
+        <span style="font-size:11px;color:var(--text-light)">acum 45 min</span>
+      </div>
+      <div style="font-size:13.5px;color:var(--text);line-height:1.65">
+        Ești <strong>îngrijorată</strong> degeaba. Surprinde-o cu ceva special și arată-i că îți pasă. Gesturile contează mai mult decât cuvintele!
+      </div>
+    </div>
+  </div>
+
+  <div class="act">
+    <div class="act-letter coral">C</div>
+    <div class="act-body">
+      <strong>CITIRE DETALIATĂ</strong> Citește mesajele din nou. Răspunde la întrebări.
+      <ol class="ex-list" style="margin-top:.5rem">
+        <li>Ce a uitat Ioana?</li>
+        <li>Cum se simte Ioana față de situație?</li>
+        <li>Ce sfat dă Alex?</li>
+        <li>Ce propune Maria?</li>
+      </ol>
+    </div>
+  </div>
+
+</div>
+
+<div>
+  <div class="sec-label">Gramatică</div>
+  <div class="sec-sub">Verbele reflexive</div>
+
+  <div class="act">
+    <div class="act-letter">A</div>
+    <div class="act-body">
+      <strong>DESCOPERĂ REGULA</strong> Privește verbele subliniate în mesaje. Alege cuvântul corect pentru a completa regulile.
+      <div class="rule-box" style="margin-top:.5rem">
+        <div class="rule-box-title">Verbele reflexive în română</div>
+        <ol>
+          <li>Verbele reflexive folosesc pronumele reflexiv <span class="choice">mă / te / se / ne / vă / se</span> înaintea verbului.</li>
+          <li>Pronumele reflexiv se acordă cu <span class="choice">subiectul</span> propoziției.</li>
+          <li>La forma negativă: <span class="choice">nu</span> vine înaintea pronumelui: <em>nu mă îngrijorez</em>.</li>
+          <li>La întrebare: <span class="choice">pronumele</span> rămâne înaintea verbului: <em>Te simți bine?</em></li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <div class="act">
+    <div class="act-letter">B</div>
+    <div class="act-body">
+      <strong>EXERSEAZĂ</strong> Găsește și subliniază alt verb reflexiv în mesajele de pe forum.
+    </div>
+  </div>
+
+  <div class="act">
+    <div class="act-letter">C</div>
+    <div class="act-body">Mergi la <strong>Grammar Hub pagina 122</strong>.</div>
+  </div>
+
+  <div class="act">
+    <div class="act-letter coral">D</div>
+    <div class="act-body">
+      Rescrie propozițiile la persoana indicată.
+      <ol class="ex-list" style="margin-top:.5rem">
+        <li><em>Mă simt fericit.</em> (tu) → <span class="blank" style="min-width:160px"></span></li>
+        <li><em>Nu se îngrijorează.</em> (eu) → <span class="blank" style="min-width:160px"></span></li>
+        <li><em>Te bucuri de vacanță.</em> (el) → <span class="blank" style="min-width:160px"></span></li>
+        <li><em>Ne certăm rar.</em> (ei) → <span class="blank" style="min-width:160px"></span></li>
+      </ol>
+    </div>
+  </div>
+
+  <hr class="sec-divider">
+
+  <div class="sec-label">Vocabular</div>
+  <div class="sec-sub">Emoții și verbe de sentiment</div>
+
+  <div class="act">
+    <div class="act-letter">A</div>
+    <div class="act-body">
+      Potrivește verbele de sentiment cu reacțiile lor tipice.
+      <ol class="ex-list" style="margin-top:.5rem">
+        <li>a se bucura &nbsp;→&nbsp; <span class="blank"></span></li>
+        <li>a se întrista &nbsp;→&nbsp; <span class="blank"></span></li>
+        <li>a se enerva &nbsp;→&nbsp; <span class="blank"></span></li>
+        <li>a se rușina &nbsp;→&nbsp; <span class="blank"></span></li>
+        <li>a se îngrijora &nbsp;→&nbsp; <span class="blank"></span></li>
+      </ol>
+      <div class="word-box" style="margin-top:.5rem"><span>a aplauda</span><span>a plânge</span><span>a roși</span><span>a strânge din dinți</span><span>a nu dormi</span></div>
+    </div>
+  </div>
+
+  <div class="speaking-hub-box">
+    <div class="sec-label" style="margin-top:0">Speaking Hub</div>
+    <div class="act" style="margin-bottom:.5rem">
+      <div class="act-letter">A</div>
+      <div class="act-body">
+        Lucrați în perechi. Veți face o simulare de conversație de sprijin. Urmăriți instrucțiunile.
+        <ol class="ex-list" style="margin-top:.5rem">
+          <li>Studentul A: descrie o situație dificilă (reală sau imaginară) cu un prieten sau un membru al familiei.</li>
+          <li>Studentul B: ascultă activ și reacționează empatic. Pune cel puțin două întrebări.</li>
+        </ol>
+      </div>
+    </div>
+    <div class="act">
+      <div class="act-letter">B</div>
+      <div class="act-body">
+        <span class="speak-badge">DISCUTAȚI</span> Schimbați rolurile. Folosind notițele, spuneți grupului vostru ce ați aflat despre partener.
+      </div>
+    </div>
+  </div>
+
+</div>
+</div><!-- /two-col -->
+
+<hr class="sec-divider">
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     LECȚIA 2.4 — CAFENEAUA SFATURILOR
+════════════════════════════════════════════════════════════════════ -->
+
+<div class="lesson-header" style="margin-top:0;background:linear-gradient(90deg,#0d2b45 0%,#1a6b7c 100%)">
+  <span class="lesson-num-badge">2.4</span>
+  <span class="lesson-header-title">Cafeneaua Sfaturilor</span>
+  <div class="lesson-header-sep"></div>
+  <span class="lesson-header-obj">Cere și oferă sfaturi în situații cotidiene</span>
+</div>
+
+<div style="background:var(--gray);padding:.75rem 0;display:flex;gap:1.5rem;flex-wrap:wrap;margin-bottom:1.5rem;padding-left:.25rem">
+  <span class="skill-pill"><span class="sk sk-p">P</span> tonul sfaturilor și sugestiilor</span>
+</div>
+
+<div class="two-col">
+<div>
+
+  <!-- Characters intro -->
+  <div style="display:flex;gap:.75rem;margin-bottom:1.25rem;flex-wrap:wrap">
+    <div style="flex:1;min-width:80px;background:var(--white);border:1px solid var(--rule);border-radius:var(--radius);padding:.75rem;text-align:center">
+      <div style="font-size:28px;margin-bottom:4px">👩‍💼</div>
+      <div style="font-size:12px;font-weight:700;color:var(--navy)">DIANA</div>
+      <div style="font-size:11px;color:var(--text-light)">profesoară</div>
+    </div>
+    <div style="flex:1;min-width:80px;background:var(--white);border:1px solid var(--rule);border-radius:var(--radius);padding:.75rem;text-align:center">
+      <div style="font-size:28px;margin-bottom:4px">👨‍🎓</div>
+      <div style="font-size:12px;font-weight:700;color:var(--navy)">VICTOR</div>
+      <div style="font-size:11px;color:var(--text-light)">student</div>
+    </div>
+    <div style="flex:1;min-width:80px;background:var(--white);border:1px solid var(--rule);border-radius:var(--radius);padding:.75rem;text-align:center">
+      <div style="font-size:28px;margin-bottom:4px">👩‍🍳</div>
+      <div style="font-size:12px;font-weight:700;color:var(--navy)">RALUCA</div>
+      <div style="font-size:11px;color:var(--text-light)">bucătăreasă</div>
+    </div>
+    <div style="flex:1;min-width:80px;background:var(--white);border:1px solid var(--rule);border-radius:var(--radius);padding:.75rem;text-align:center">
+      <div style="font-size:28px;margin-bottom:4px">👨‍💻</div>
+      <div style="font-size:12px;font-weight:700;color:var(--navy)">BOGDAN</div>
+      <div style="font-size:11px;color:var(--text-light)">programator</div>
+    </div>
+  </div>
+
+  <!-- Comprehension -->
+  <div class="sec-label">Comprehensiune</div>
+
+  <div class="act">
+    <div class="act-letter">A</div>
+    <div class="act-body">
+      <span class="audio-badge">2.9</span>Urmărește prima parte a conversației. Completează paragrafele de mai jos.
+      <div class="dialogue-box" style="margin-top:.5rem">
+        <div class="dialogue-line">
+          <div class="dialogue-speaker">Diana:</div>
+          <div class="dialogue-text">Bună ziua! Eu sunt Diana. Sunt <span class="blank"></span> de meserie. Am o problemă cu o <span class="blank"></span> din clasă.</div>
+        </div>
+        <div class="dialogue-line">
+          <div class="dialogue-speaker">Victor:</div>
+          <div class="dialogue-text">Și eu am o situație complicată. Prietenul meu cel mai bun s-a <span class="blank"></span> cu logodnica lui și nu știu cum să îl <span class="blank"></span>.</div>
+        </div>
+        <div class="dialogue-line">
+          <div class="dialogue-speaker">Raluca:</div>
+          <div class="dialogue-text">Familia mea nu este de acord cu <span class="blank"></span> meu de a deschide un restaurant. Sunt <span class="blank"></span> și tristă.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="act">
+    <div class="act-letter">B</div>
+    <div class="act-body">
+      Scrie o întrebare despre fiecare personaj.
+      <div class="grammar-ex">De ce este Diana îngrijorată? / Ce problemă are Victor?</div>
+    </div>
+  </div>
+
+  <div class="act">
+    <div class="act-letter">C</div>
+    <div class="act-body">
+      <span class="speak-badge">VORBIȚI</span> Lucrați în perechi. Testați-vă memoria! Închideți cartea și puneți-vă întrebările din Exercițiul B.
+    </div>
+  </div>
+
+  <div class="act">
+    <div class="act-letter navy">D</div>
+    <div class="act-body">
+      <span class="audio-badge">2.10</span>Urmărește a doua parte și subliniați forma verbală corectă.
+      <ol class="ex-list" style="margin-top:.5rem">
+        <li>Diana <em>vorbește / a vorbit</em> deja cu eleva.</li>
+        <li>Victor <em>știe / nu știe</em> ce să facă.</li>
+        <li>Raluca <em>va deschide / nu va deschide</em> restaurantul.</li>
+        <li>Bogdan <em>ajută / nu ajută</em> echipa cu sfaturi.</li>
+      </ol>
+    </div>
+  </div>
+
+</div>
+
+<div>
+  <div class="sec-label">Limbaj funcțional</div>
+  <div class="sec-sub">Cere și oferă sfaturi</div>
+
+  <div class="act">
+    <div class="act-letter">A</div>
+    <div class="act-body">
+      Completează expresiile cu cuvintele din casetă.
+      <div class="word-box" style="margin-top:.5rem"><span>dacă</span><span>loc</span><span>ai</span><span>sfatul</span><span>ce</span><span>bine</span><span>mai</span><span>încercat</span></div>
+
+      <table class="vocab-table" style="margin-top:.5rem">
+        <thead>
+          <tr>
+            <th>A cere un sfat</th>
+            <th>A oferi un sfat</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Ce <span class="blank"></span> în locul meu?</td>
+            <td>Dacă aș fi în <span class="blank"></span> tău, aș...</td>
+          </tr>
+          <tr>
+            <td>Poți să-mi dai un <span class="blank"></span>?</td>
+            <td>De ce nu <span class="blank"></span> să...?</td>
+          </tr>
+          <tr>
+            <td>Nu știu <span class="blank"></span> să fac.</td>
+            <td>Ar fi <span class="blank"></span> să...</td>
+          </tr>
+          <tr>
+            <td><span class="blank"></span> vreo idee?</td>
+            <td>Poate că ar trebui să...</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="act">
+    <div class="act-letter">B</div>
+    <div class="act-body">
+      <span class="audio-badge">2.11</span>Urmărește din nou. Verifică răspunsurile de la Exercițiul A.
+    </div>
+  </div>
+
+  <hr class="sec-divider">
+
+  <div class="sec-label">Pronunție</div>
+  <div class="sec-sub">Tonul sfaturilor și sugestiilor</div>
+
+  <div class="act">
+    <div class="act-letter">A</div>
+    <div class="act-body">
+      <span class="audio-badge">2.12</span>Urmărește o parte din conversație. Citește în același timp ca Diana și Victor. Copiază tonul și intonația.
+      <div class="dialogue-box" style="margin-top:.5rem">
+        <div class="dialogue-line">
+          <div class="dialogue-speaker">Diana:</div>
+          <div class="dialogue-text" style="text-decoration:underline;text-decoration-style:dotted">Nu știu ce să fac. Ai vreo idee?</div>
+        </div>
+        <div class="dialogue-line">
+          <div class="dialogue-speaker">Victor:</div>
+          <div class="dialogue-text" style="text-decoration:underline;text-decoration-style:dotted">Dacă aș fi în locul tău, aș vorbi direct cu ea. E important să fii sincer.</div>
+        </div>
+        <div class="dialogue-line">
+          <div class="dialogue-speaker">Diana:</div>
+          <div class="dialogue-text" style="text-decoration:underline;text-decoration-style:dotted">Ai dreptate. Mulțumesc, e un sfat bun!</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="act">
+    <div class="act-letter">B</div>
+    <div class="act-body">
+      <span class="speak-badge">VORBIȚI</span> Lucrați în perechi. Exersați conversația. Ascultați și verificați pronunția partenerului.
+    </div>
+  </div>
+
+  <div class="sec-label" style="margin-top:1.5rem">Vorbit</div>
+
+  <div class="act">
+    <div class="act-letter">A</div>
+    <div class="act-body">
+      Mergeți în jurul clasei. Prezentați-vă tuturor colegilor și cereți un sfat pentru una dintre situațiile lui Diana, Victor sau Raluca.
+      <div class="grammar-ex">A: Bună, mă numesc Sven. Prietenul meu s-a despărțit. Ce aș putea face pentru el?<br>B: Bună, sunt Ahmed. Poate că ar trebui să îl suni și să îl inviți la o cafea.</div>
+    </div>
+  </div>
+
+  <div class="act">
+    <div class="act-letter">B</div>
+    <div class="act-body">
+      <span class="speak-badge">VORBIȚI</span> Pregătește o prezentare „selfie" de 60 de secunde despre o relație importantă din viața ta. Include:
+      <ul class="bullet-list" style="margin-top:.4rem">
+        <li>cine este persoana și ce relație aveți</li>
+        <li>de cât timp vă cunoașteți</li>
+        <li>ce calități apreciezi la ea</li>
+        <li>o amintire sau o experiență comună</li>
+      </ul>
+    </div>
+  </div>
+
+  <div style="text-align:right;margin-top:1rem">
+    <span style="font-size:12px;font-weight:600;color:var(--teal);display:inline-flex;align-items:center;gap:6px;">
+      <span style="width:14px;height:14px;border-radius:50%;border:2px solid var(--teal);display:inline-block"></span>
+      Cere și oferă sfaturi în situații cotidiene
+    </span>
+  </div>
+
+</div>
+</div><!-- /two-col -->
+
+<hr class="sec-divider">
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     WRITING — MESAJ INFORMAL
+════════════════════════════════════════════════════════════════════ -->
+
+<div class="sec-label">Scriere</div>
+<div class="sec-sub">Scrie un mesaj informal unui prieten <span class="page-tag">p158</span></div>
+
+<div class="two-col">
+<div>
+  <div class="act">
+    <div class="act-letter">A</div>
+    <div class="act-body">
+      Citește mesajul de mai jos. Răspunde la întrebări.
+      <ol class="ex-list" style="margin-top:.5rem">
+        <li>Cine scrie mesajul și cui?</li>
+        <li>Care este scopul mesajului?</li>
+        <li>Ce ton folosește autorul? (formal / informal)</li>
+        <li>Ce expresii indică tonul informal?</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="reading-article">
+    <div class="reading-article-header">✉ Mesaj de la Ioana</div>
+    <div class="reading-article-body">
+      <p>Bună Cristina!</p>
+      <p>Sper că ești bine! Știu că n-am mai vorbit de ceva vreme și îmi pare rău pentru asta. Am fost super ocupată cu munca.</p>
+      <p>Vreau să-ți spun că <strong>îmi pare rău</strong> că am uitat ziua ta. Mă simt atât de vinovată! Ești cea mai bună prietenă a mea și nu meritai asta.</p>
+      <p>Ca să repar situația, aș vrea să te invit la cina mea preferată, la <em>La Mama</em>. Ce zici de vineri seara?</p>
+      <p>Te aștept! 😊<br><em>Ioana</em></p>
+    </div>
+  </div>
+
+</div>
+<div>
+
+  <div class="key-skill-box">
+    <div class="key-skill-label">Key Skill — Tonul în mesajele informale</div>
+    <div class="key-skill-body">
+      Mesajele informale folosesc:<br>
+      • salutări simple: <em>Bună / Salut / Hei</em><br>
+      • contracții și abrevieri: <em>n-am, să-ți, c-ai</em><br>
+      • expresii familiare: <em>super, mega, tare</em><br>
+      • emoticoane și semne de punctuație expresive<br>
+      • structuri conversaționale: <em>Ce zici de...? Știi că...?</em>
+    </div>
+  </div>
+
+  <div class="writing-task">
+    <div class="writing-task-label">✍ Temă de scriere — 80–100 de cuvinte</div>
+    <div style="font-size:14px;color:var(--text);line-height:1.65;margin-top:.5rem">
+      Scrie un mesaj informal unui prieten sau o prietenă. Alege una dintre situații:
+      <ul class="bullet-list" style="margin-top:.4rem">
+        <li>Cere-ți scuze pentru ceva ce ai uitat.</li>
+        <li>Invită-l/o la un eveniment special.</li>
+        <li>Mulțumește-i pentru un sfat primit.</li>
+      </ul>
+      Folosește: salutare, scop, detalii, încheiere.
+    </div>
+    <div class="writing-lines">
+      <div class="writing-line"></div>
+      <div class="writing-line"></div>
+      <div class="writing-line"></div>
+      <div class="writing-line"></div>
+      <div class="writing-line"></div>
+      <div class="writing-line"></div>
+      <div class="writing-line"></div>
+    </div>
+  </div>
+
+</div>
+</div><!-- /two-col -->
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     UNIT REVIEW BAR
+════════════════════════════════════════════════════════════════════ -->
+<div class="unit-review-bar">
+  <span class="review-label">Recapitulare</span>
+  <span class="review-item">Pagina 10</span>
+  <span class="review-item" style="margin:0 .5rem;color:rgba(255,255,255,.3)">|</span>
+  <span class="review-item"><strong>Scriere</strong> (p158) Scrie un mesaj informal unui prieten</span>
+  <span class="review-item" style="margin:0 .5rem;color:rgba(255,255,255,.3)">|</span>
+  <span class="review-item"><strong style="color:var(--teal-mid)">KEY SKILL</strong> Tonul în mesajele informale</span>
+</div>
+
+</div><!-- /lesson-page -->
+
+<script>
+function toggleLessonAudio() {
+  const audio = document.getElementById('lessonAudio');
+  const btn = document.getElementById('lessonAudioBtn');
+  const status = document.getElementById('lessonAudioStatus');
+  if (!audio || !btn || !status) return;
+
+  if (audio.paused) {
+    audio.play()
+      .then(() => {
+        btn.textContent = 'Pauză';
+        status.textContent = 'Se redă audio-ul lecției.';
+      })
+      .catch(() => {
+        status.textContent = 'Adaugă fișierul audio la assets/audio/relatii-b1.mp3, apoi butonul va reda înregistrarea.';
+      });
+  } else {
+    audio.pause();
+    btn.textContent = 'Redă audio';
+    status.textContent = 'Audio pus pe pauză.';
+  }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  const audio = document.getElementById('lessonAudio');
+  const btn = document.getElementById('lessonAudioBtn');
+  const status = document.getElementById('lessonAudioStatus');
+  if (!audio || !btn || !status) return;
+
+  audio.addEventListener('ended', () => {
+    btn.textContent = 'Redă audio';
+    status.textContent = 'Audio terminat.';
+  });
+});
+</script>
+</body>
+</html>
