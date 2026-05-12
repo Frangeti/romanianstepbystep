@@ -435,6 +435,31 @@
   }
   .grammar-rule p { font-size: 14px; color: var(--text2); line-height: 1.75; }
   .grammar-rule strong { color: var(--text); font-weight: 500; }
+  .grammar-rule ul {
+    color: var(--text2);
+    font-size: 14px;
+    line-height: 1.75;
+    margin-left: 1.15rem;
+  }
+  .mini-table {
+    border-collapse: collapse;
+    font-size: 13px;
+    margin-top: .7rem;
+    width: 100%;
+  }
+  .mini-table th,
+  .mini-table td {
+    border-bottom: 1px solid var(--border2);
+    padding: .45rem .55rem;
+    text-align: left;
+    vertical-align: top;
+  }
+  .mini-table th {
+    color: var(--purple);
+    font-size: 11px;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+  }
 
   .pros-cons {
     display: grid;
@@ -660,44 +685,46 @@
 
         <span class="tag tag-purple">Familia și rudele</span>
         <div class="vocab-grid">
-          <div class="vocab-item"><div class="vocab-ro">rudă</div><div class="vocab-en">persoană din familie</div></div>
-          <div class="vocab-item"><div class="vocab-ro">nepot / nepoată</div><div class="vocab-en">copilul fiului / fiicei sau al fratelui / surorii</div></div>
-          <div class="vocab-item"><div class="vocab-ro">cumnat / cumnată</div><div class="vocab-en">ruda prin căsătorie</div></div>
-          <div class="vocab-item"><div class="vocab-ro">unchi / mătușă</div><div class="vocab-en">fratele / sora părinților</div></div>
-          <div class="vocab-item"><div class="vocab-ro">fin / fină</div><div class="vocab-en">persoană botezată sau cununată de nași</div></div>
-          <div class="vocab-item"><div class="vocab-ro">văr / verișoară</div><div class="vocab-en">copilul unchiului sau al mătușii</div></div>
-          <div class="vocab-item"><div class="vocab-ro">familie extinsă</div><div class="vocab-en">rudele din afara familiei apropiate</div></div>
-          <div class="vocab-item"><div class="vocab-ro">reuniune de familie</div><div class="vocab-en">întâlnire cu rudele</div></div>
+          <div class="vocab-item"><div class="vocab-ro">rudă</div><div class="vocab-en">relative</div></div>
+          <div class="vocab-item"><div class="vocab-ro">nepot / nepoată</div><div class="vocab-en">grandson / granddaughter; nephew / niece</div></div>
+          <div class="vocab-item"><div class="vocab-ro">cumnat / cumnată</div><div class="vocab-en">brother-in-law / sister-in-law</div></div>
+          <div class="vocab-item"><div class="vocab-ro">unchi / mătușă</div><div class="vocab-en">uncle / aunt</div></div>
+          <div class="vocab-item"><div class="vocab-ro">fin / fină</div><div class="vocab-en">godson / goddaughter</div></div>
+          <div class="vocab-item"><div class="vocab-ro">văr / verișoară</div><div class="vocab-en">male cousin / female cousin</div></div>
+          <div class="vocab-item"><div class="vocab-ro">familie extinsă</div><div class="vocab-en">extended family</div></div>
+          <div class="vocab-item"><div class="vocab-ro">reuniune de familie</div><div class="vocab-en">family reunion</div></div>
         </div>
 
         <span class="tag tag-teal">Personalitate și prietenie</span>
         <div class="vocab-grid">
-          <div class="vocab-item"><div class="vocab-ro">loial</div><div class="vocab-en">care rămâne alături de cineva</div></div>
-          <div class="vocab-item"><div class="vocab-ro">sincer</div><div class="vocab-en">care spune adevărul</div></div>
-          <div class="vocab-item"><div class="vocab-ro">empatic</div><div class="vocab-en">care înțelege emoțiile altora</div></div>
-          <div class="vocab-item"><div class="vocab-ro">devotat</div><div class="vocab-en">foarte atașat și implicat</div></div>
-          <div class="vocab-item"><div class="vocab-ro">răbdător</div><div class="vocab-en">care poate aștepta calm</div></div>
-          <div class="vocab-item"><div class="vocab-ro">sociabil</div><div class="vocab-en">care comunică ușor cu oamenii</div></div>
+          <div class="vocab-item"><div class="vocab-ro">loial</div><div class="vocab-en">loyal</div></div>
+          <div class="vocab-item"><div class="vocab-ro">sincer</div><div class="vocab-en">honest / sincere</div></div>
+          <div class="vocab-item"><div class="vocab-ro">empatic</div><div class="vocab-en">empathetic</div></div>
+          <div class="vocab-item"><div class="vocab-ro">devotat</div><div class="vocab-en">devoted</div></div>
+          <div class="vocab-item"><div class="vocab-ro">răbdător</div><div class="vocab-en">patient</div></div>
+          <div class="vocab-item"><div class="vocab-ro">sociabil</div><div class="vocab-en">sociable</div></div>
+          <div class="vocab-item"><div class="vocab-ro">de încredere</div><div class="vocab-en">trustworthy</div></div>
+          <div class="vocab-item"><div class="vocab-ro">grijuliu</div><div class="vocab-en">caring / thoughtful</div></div>
         </div>
 
         <span class="tag tag-coral">Sentimente și reacții</span>
         <div class="card">
           <div class="verb-list">
-            <div class="verb-row"><span class="verb-chip">a se bucura</span><span class="verb-ex">Mă bucur când prietenii mei reușesc.</span></div>
-            <div class="verb-row"><span class="verb-chip">a se întrista</span><span class="verb-ex">Ea se întristează când cineva o ignoră.</span></div>
-            <div class="verb-row"><span class="verb-chip">a se enerva</span><span class="verb-ex">Ne enervăm când nu suntem ascultați.</span></div>
-            <div class="verb-row"><span class="verb-chip">a se rușina</span><span class="verb-ex">Mă rușinez când uit ceva important.</span></div>
-            <div class="verb-row"><span class="verb-chip">a se îngrijora</span><span class="verb-ex">Părinții se îngrijorează pentru copiii lor.</span></div>
+            <div class="verb-row"><span class="verb-chip">a se bucura</span><span class="verb-ex">to be happy · Mă bucur când prietenii mei reușesc. = I am happy when my friends succeed.</span></div>
+            <div class="verb-row"><span class="verb-chip">a se întrista</span><span class="verb-ex">to become sad · Ea se întristează când cineva o ignoră. = She becomes sad when someone ignores her.</span></div>
+            <div class="verb-row"><span class="verb-chip">a se enerva</span><span class="verb-ex">to get angry · Ne enervăm când nu suntem ascultați. = We get angry when we are not listened to.</span></div>
+            <div class="verb-row"><span class="verb-chip">a se rușina</span><span class="verb-ex">to feel embarrassed · Mă rușinez când uit ceva important. = I feel embarrassed when I forget something important.</span></div>
+            <div class="verb-row"><span class="verb-chip">a se îngrijora</span><span class="verb-ex">to worry · Părinții se îngrijorează pentru copiii lor. = Parents worry about their children.</span></div>
           </div>
         </div>
 
         <span class="tag tag-amber">Expresii utile</span>
         <div class="card">
-          <div class="expr-item"><div class="expr-ro">A fi apropiat de cineva</div><div class="expr-ex">Sunt foarte apropiată de sora mea.</div></div>
-          <div class="expr-item"><div class="expr-ro">A păstra un secret</div><div class="expr-ex">Un prieten loial știe să păstreze un secret.</div></div>
-          <div class="expr-item"><div class="expr-ro">A-și cere scuze sincer</div><div class="expr-ex">Mi-am cerut scuze sincer pentru greșeală.</div></div>
-          <div class="expr-item"><div class="expr-ro">A da un sfat / a cere un sfat</div><div class="expr-ex">I-am cerut un sfat mamei mele.</div></div>
-          <div class="expr-item"><div class="expr-ro">Dacă aș fi în locul tău...</div><div class="expr-ex">Dacă aș fi în locul tău, aș vorbi direct cu el.</div></div>
+          <div class="expr-item"><div class="expr-ro">A fi apropiat de cineva</div><div class="expr-ex">to be close to someone · Sunt foarte apropiată de sora mea. = I am very close to my sister.</div></div>
+          <div class="expr-item"><div class="expr-ro">A păstra un secret</div><div class="expr-ex">to keep a secret · Un prieten loial știe să păstreze un secret. = A loyal friend knows how to keep a secret.</div></div>
+          <div class="expr-item"><div class="expr-ro">A-și cere scuze sincer</div><div class="expr-ex">to apologize sincerely · Mi-am cerut scuze sincer pentru greșeală. = I apologized sincerely for the mistake.</div></div>
+          <div class="expr-item"><div class="expr-ro">A da un sfat / a cere un sfat</div><div class="expr-ex">to give advice / to ask for advice · I-am cerut un sfat mamei mele. = I asked my mother for advice.</div></div>
+          <div class="expr-item"><div class="expr-ro">Dacă aș fi în locul tău...</div><div class="expr-ex">If I were in your place... · Dacă aș fi în locul tău, aș vorbi direct cu el. = If I were you, I would speak to him directly.</div></div>
         </div>
       </div>
 
@@ -712,35 +739,87 @@
 
         <span class="tag tag-teal">Pronumele posesive</span>
         <div class="grammar-rule">
-          <div class="rule-label">Acord cu substantivul</div>
-          <p>Pronumele posesiv se acordă cu substantivul: <strong>fratele meu</strong>, <strong>sora mea</strong>, <strong>părinții mei</strong>, <strong>surorile mele</strong>.</p>
+          <div class="rule-label">1. Ce arată posesivul?</div>
+          <p>Pronumele posesiv arată cui aparține o persoană sau un lucru. În română, forma posesivului se schimbă după substantivul posedat, nu după persoana care posedă.</p>
+          <ul>
+            <li><strong>fratele meu</strong> = my brother</li>
+            <li><strong>sora mea</strong> = my sister</li>
+            <li><strong>părinții mei</strong> = my parents</li>
+            <li><strong>surorile mele</strong> = my sisters</li>
+          </ul>
         </div>
         <div class="grammar-rule">
-          <div class="rule-label">Poziție</div>
-          <p>De obicei vine după substantivul articulat: <strong>mama mea</strong>, <strong>bunicul tău</strong>, <strong>casa noastră</strong>. Cu articol posesiv: <strong>un prieten al meu</strong>, <strong>o colegă a ta</strong>.</p>
+          <div class="rule-label">2. Unde stă posesivul?</div>
+          <p>În română, posesivul stă de obicei după substantivul articulat.</p>
+          <ul>
+            <li><strong>mama mea</strong>, nu <em>mea mamă</em></li>
+            <li><strong>prietenul tău</strong>, nu <em>tău prieten</em></li>
+            <li><strong>familia noastră</strong>, nu <em>noastră familie</em></li>
+          </ul>
         </div>
 
         <div class="card">
-          <div class="card-title">Exemple rapide</div>
-          <div class="vocab-grid">
-            <div class="vocab-item"><div class="vocab-ro">tatăl meu</div><div class="vocab-en">masculin singular</div></div>
-            <div class="vocab-item"><div class="vocab-ro">mama mea</div><div class="vocab-en">feminin singular</div></div>
-            <div class="vocab-item"><div class="vocab-ro">frații noștri</div><div class="vocab-en">masculin plural</div></div>
-            <div class="vocab-item"><div class="vocab-ro">surorile noastre</div><div class="vocab-en">feminin plural</div></div>
-          </div>
+          <div class="card-title">Forme importante</div>
+          <table class="mini-table">
+            <tr><th>Substantiv</th><th>Eu</th><th>Tu</th><th>Noi</th></tr>
+            <tr><td>masculin singular: fratele</td><td>fratele meu</td><td>fratele tău</td><td>fratele nostru</td></tr>
+            <tr><td>feminin singular: sora</td><td>sora mea</td><td>sora ta</td><td>sora noastră</td></tr>
+            <tr><td>masculin plural: frații</td><td>frații mei</td><td>frații tăi</td><td>frații noștri</td></tr>
+            <tr><td>feminin plural: surorile</td><td>surorile mele</td><td>surorile tale</td><td>surorile noastre</td></tr>
+          </table>
+        </div>
+
+        <div class="grammar-rule">
+          <div class="rule-label">3. Cu articol posesiv: al, a, ai, ale</div>
+          <p>Când substantivul nu este articulat sau când spunem „un/o prieten(ă) de-al/de-a mea”, folosim articolul posesiv.</p>
+          <ul>
+            <li><strong>un prieten al meu</strong> = a friend of mine</li>
+            <li><strong>o colegă a ta</strong> = a colleague of yours</li>
+            <li><strong>doi veri ai noștri</strong> = two cousins of ours</li>
+            <li><strong>niște rude ale ei</strong> = some relatives of hers</li>
+          </ul>
         </div>
 
         <span class="tag tag-purple">Comparativul și superlativul</span>
         <div class="grammar-rule">
-          <div class="rule-label">Comparativ</div>
-          <p><strong>mai + adjectiv + decât</strong>: Prietena mea este mai răbdătoare decât mine. / <strong>la fel de + adjectiv + ca</strong>: Andrei este la fel de sincer ca Radu.</p>
+          <div class="rule-label">1. Comparativ de superioritate</div>
+          <p>Folosim structura <strong>mai + adjectiv + decât</strong> când comparăm două persoane sau lucruri.</p>
+          <ul>
+            <li><strong>Maria este mai răbdătoare decât Ana.</strong> = Maria is more patient than Ana.</li>
+            <li><strong>Fratele meu este mai sociabil decât mine.</strong> = My brother is more sociable than me.</li>
+          </ul>
         </div>
         <div class="grammar-rule">
-          <div class="rule-label">Superlativ relativ</div>
-          <p><strong>cel mai / cea mai + adjectiv</strong>: El este cel mai loial prieten al meu. / Ea este cea mai empatică persoană din grup.</p>
+          <div class="rule-label">2. Comparativ de egalitate</div>
+          <p>Folosim <strong>la fel de + adjectiv + ca</strong> când două persoane au aceeași calitate.</p>
+          <ul>
+            <li><strong>Andrei este la fel de sincer ca Radu.</strong> = Andrei is as honest as Radu.</li>
+            <li><strong>Sora mea este la fel de calmă ca mama.</strong> = My sister is as calm as my mother.</li>
+          </ul>
+        </div>
+        <div class="grammar-rule">
+          <div class="rule-label">3. Comparativ de inferioritate</div>
+          <p>Folosim <strong>mai puțin + adjectiv + decât</strong>. În conversație, putem folosi și o propoziție simplă cu „nu este la fel de...”.</p>
+          <ul>
+            <li><strong>El este mai puțin răbdător decât ea.</strong> = He is less patient than her.</li>
+            <li><strong>El nu este la fel de răbdător ca ea.</strong> = He is not as patient as her.</li>
+          </ul>
+        </div>
+        <div class="grammar-rule">
+          <div class="rule-label">4. Superlativ relativ</div>
+          <p>Folosim <strong>cel mai / cea mai / cei mai / cele mai + adjectiv</strong> pentru cea mai mare calitate dintr-un grup.</p>
+          <ul>
+            <li><strong>El este cel mai loial prieten al meu.</strong> = He is my most loyal friend.</li>
+            <li><strong>Ea este cea mai empatică persoană din grup.</strong> = She is the most empathetic person in the group.</li>
+            <li><strong>Ei sunt cei mai buni colegi.</strong> = They are the best colleagues.</li>
+          </ul>
         </div>
 
         <span class="tag tag-coral">Verbele reflexive</span>
+        <div class="grammar-rule">
+          <div class="rule-label">Structură simplă</div>
+          <p>Verbele reflexive au un pronume mic înaintea verbului: <strong>mă, te, se, ne, vă, se</strong>. Pentru B1, folosește-le mai ales cu emoții și relații.</p>
+        </div>
         <div class="card">
           <div class="verb-list">
             <div class="verb-row"><span class="verb-chip">eu mă simt</span><span class="verb-ex">Mă simt vinovată.</span></div>
@@ -800,7 +879,7 @@
             <label>5. Ce cuvânt din text înseamnă „sinceritate, naturalețe”?</label>
             <select>
               <option value="">— alege —</option>
-              <option>autenticitate ✓</option>
+              <option>autenticitate</option>
               <option>loialitate</option>
               <option>sprijin</option>
               <option>amintiri</option>
@@ -818,9 +897,9 @@
           </div>
         </div>
 
-        <span class="tag tag-coral">Exercițiu 1 — Alege cuvântul corect</span>
+        <span class="tag tag-coral">Exercițiu 1 — Vocabular: alege cuvântul corect</span>
         <div class="card">
-          <p style="font-size:13px;color:var(--text2);margin-bottom:1rem">Alege: <em>loial, empatic, sincer, răbdător</em></p>
+          <p style="font-size:13px;color:var(--text2);margin-bottom:1rem">Alege: <em>loial, empatic, sincer, răbdător, sociabil</em></p>
           <div class="ex-item">
             <label>1. Un prieten care spune adevărul este _______.</label>
             <select id="e1q1"><option value="">—</option><option value="sincer">sincer</option><option value="răbdător">răbdător</option><option value="empatic">empatic</option></select>
@@ -833,31 +912,153 @@
             <label>3. Un prieten care nu te abandonează este _______.</label>
             <select id="e1q3"><option value="">—</option><option value="loial">loial</option><option value="sociabil">sociabil</option><option value="răbdător">răbdător</option></select>
           </div>
+          <div class="ex-item">
+            <label>4. O persoană care vorbește ușor cu oamenii este _______.</label>
+            <select id="e1q4"><option value="">—</option><option value="răbdătoare">răbdătoare</option><option value="sociabilă">sociabilă</option><option value="loială">loială</option></select>
+          </div>
+          <div class="ex-item">
+            <label>5. O persoană care poate aștepta calm este _______.</label>
+            <select id="e1q5"><option value="">—</option><option value="răbdătoare">răbdătoare</option><option value="sinceră">sinceră</option><option value="empatică">empatică</option></select>
+          </div>
           <button class="btn" onclick="checkEx1()">Verifică răspunsurile</button>
           <div id="ex1-fb" class="feedback"></div>
         </div>
 
-        <span class="tag tag-purple">Exercițiu 2 — Pronume posesive</span>
+        <span class="tag tag-blue">Exercițiu 2 — Vocabular: traducere</span>
         <div class="card">
+          <p style="font-size:13px;color:var(--text2);margin-bottom:1rem">Scrie echivalentul în engleză.</p>
           <div class="ex-item">
-            <label>1. Acesta este fratele _______ (eu).</label>
-            <input type="text" placeholder="meu">
+            <label>1. rudă</label>
+            <input type="text" placeholder="Scrie traducerea...">
           </div>
           <div class="ex-item">
-            <label>2. O cunosc pe sora _______ (tu).</label>
-            <input type="text" placeholder="ta">
+            <label>2. cumnată</label>
+            <input type="text" placeholder="Scrie traducerea...">
           </div>
           <div class="ex-item">
-            <label>3. Copiii _______ (noi) sunt în parc.</label>
-            <input type="text" placeholder="noștri">
+            <label>3. de încredere</label>
+            <input type="text" placeholder="Scrie traducerea...">
+          </div>
+          <div class="ex-item">
+            <label>4. reuniune de familie</label>
+            <input type="text" placeholder="Scrie traducerea...">
           </div>
           <details>
             <summary>Vezi răspunsurile corecte</summary>
-            <div style="margin-top:.6rem;line-height:1.9">1. fratele <em>meu</em><br>2. sora <em>ta</em><br>3. copiii <em>noștri</em></div>
+            <div style="margin-top:.6rem;line-height:1.9">1. relative<br>2. sister-in-law<br>3. trustworthy<br>4. family reunion</div>
           </details>
         </div>
 
-        <span class="tag tag-teal">Exercițiu 3 — Potrivește sfatul</span>
+        <span class="tag tag-teal">Exercițiu 3 — Vocabular: completează propoziția</span>
+        <div class="card">
+          <p style="font-size:13px;color:var(--text2);margin-bottom:1rem">Alege: <em>secret, sfat, rude, scuze, verișoară</em></p>
+          <div class="ex-item">
+            <label>1. La reuniunea de familie vin multe _______.</label>
+            <input type="text" placeholder="Scrie răspunsul...">
+          </div>
+          <div class="ex-item">
+            <label>2. Prietenul meu știe să păstreze un _______.</label>
+            <input type="text" placeholder="Scrie răspunsul...">
+          </div>
+          <div class="ex-item">
+            <label>3. Când greșesc, îmi cer _______.</label>
+            <input type="text" placeholder="Scrie răspunsul...">
+          </div>
+          <div class="ex-item">
+            <label>4. Am cerut un _______ de la sora mea.</label>
+            <input type="text" placeholder="Scrie răspunsul...">
+          </div>
+          <details>
+            <summary>Vezi răspunsurile corecte</summary>
+            <div style="margin-top:.6rem;line-height:1.9">1. rude<br>2. secret<br>3. scuze<br>4. sfat</div>
+          </details>
+        </div>
+
+        <span class="tag tag-purple">Exercițiu 4 — Pronume posesive</span>
+        <div class="card">
+          <div class="ex-item">
+            <label>1. Acesta este fratele _______ (eu).</label>
+            <input type="text" placeholder="Scrie răspunsul...">
+          </div>
+          <div class="ex-item">
+            <label>2. O cunosc pe sora _______ (tu).</label>
+            <input type="text" placeholder="Scrie răspunsul...">
+          </div>
+          <div class="ex-item">
+            <label>3. Copiii _______ (noi) sunt în parc.</label>
+            <input type="text" placeholder="Scrie răspunsul...">
+          </div>
+          <div class="ex-item">
+            <label>4. Am vorbit cu părinții _______ (ea).</label>
+            <input type="text" placeholder="Scrie răspunsul...">
+          </div>
+          <div class="ex-item">
+            <label>5. Prietenele _______ (voi) sunt foarte amabile.</label>
+            <input type="text" placeholder="Scrie răspunsul...">
+          </div>
+          <details>
+            <summary>Vezi răspunsurile corecte</summary>
+            <div style="margin-top:.6rem;line-height:1.9">1. fratele <em>meu</em><br>2. sora <em>ta</em><br>3. copiii <em>noștri</em><br>4. părinții <em>ei</em><br>5. prietenele <em>voastre</em></div>
+          </details>
+        </div>
+
+        <span class="tag tag-purple">Exercițiu 5 — Posesiv: alege forma corectă</span>
+        <div class="card">
+          <div class="ex-item">
+            <label>1. Mama _______ este profesoară.</label>
+            <select id="p1"><option value="">—</option><option value="meu">meu</option><option value="mea">mea</option><option value="mei">mei</option></select>
+          </div>
+          <div class="ex-item">
+            <label>2. Frații _______ locuiesc în Brașov.</label>
+            <select id="p2"><option value="">—</option><option value="nostru">nostru</option><option value="noștri">noștri</option><option value="noastră">noastră</option></select>
+          </div>
+          <div class="ex-item">
+            <label>3. O prietenă _______ vine diseară.</label>
+            <select id="p3"><option value="">—</option><option value="al meu">al meu</option><option value="a mea">a mea</option><option value="ai mei">ai mei</option></select>
+          </div>
+          <button class="btn" onclick="checkPossessive()">Verifică</button>
+          <div id="poss-fb" class="feedback"></div>
+        </div>
+
+        <span class="tag tag-amber">Exercițiu 6 — Gradul de comparație</span>
+        <div class="card">
+          <p style="font-size:13px;color:var(--text2);margin-bottom:1rem">Completează cu o structură simplă: <em>mai... decât</em>, <em>la fel de... ca</em>, <em>cel/cea mai...</em>.</p>
+          <div class="ex-item">
+            <label>1. Ana este _______ răbdătoare _______ Maria.</label>
+            <input type="text" placeholder="Scrie răspunsul...">
+          </div>
+          <div class="ex-item">
+            <label>2. Fratele meu este _______ sociabil _______ mine.</label>
+            <input type="text" placeholder="Scrie răspunsul...">
+          </div>
+          <div class="ex-item">
+            <label>3. Elena este _______ sinceră persoană din grup.</label>
+            <input type="text" placeholder="Scrie răspunsul...">
+          </div>
+          <details>
+            <summary>Vezi răspunsurile corecte</summary>
+            <div style="margin-top:.6rem;line-height:1.9">Exemple: 1. mai... decât / la fel de... ca<br>2. mai... decât / la fel de... ca<br>3. cea mai</div>
+          </details>
+        </div>
+
+        <span class="tag tag-amber">Exercițiu 7 — Compară două persoane</span>
+        <div class="card">
+          <p style="font-size:13px;color:var(--text2);margin-bottom:1rem">Scrie propoziții simple despre două persoane din familia ta sau din grupul tău.</p>
+          <div class="ex-item">
+            <label>1. Folosește „mai ... decât”.</label>
+            <input type="text" placeholder="Scrie propoziția ta...">
+          </div>
+          <div class="ex-item">
+            <label>2. Folosește „la fel de ... ca”.</label>
+            <input type="text" placeholder="Scrie propoziția ta...">
+          </div>
+          <div class="ex-item">
+            <label>3. Folosește „cel mai” sau „cea mai”.</label>
+            <input type="text" placeholder="Scrie propoziția ta...">
+          </div>
+        </div>
+
+        <span class="tag tag-teal">Exercițiu 8 — Potrivește sfatul</span>
         <div class="card">
           <div class="match-row"><span class="match-label">1. Am uitat ziua prietenei mele.</span><select id="m1"><option value="">—</option><option value="B">Cere-ți scuze sincer.</option><option value="A">Cumpără un laptop.</option><option value="C">Nu răspunde la mesaje.</option></select></div>
           <div class="match-row"><span class="match-label">2. Prietenul meu este trist.</span><select id="m2"><option value="">—</option><option value="A">Ascultă-l și întreabă-l ce simte.</option><option value="B">Ignoră-l.</option><option value="C">Spune-i că exagerează.</option></select></div>
@@ -866,19 +1067,19 @@
           <div id="ex2-fb" class="feedback"></div>
         </div>
 
-        <span class="tag tag-amber">Exercițiu 4 — Verbe reflexive</span>
+        <span class="tag tag-coral">Exercițiu 9 — Verbe reflexive</span>
         <div class="card">
           <div class="ex-item">
             <label>1. Eu _______ (a se simți) vinovat.</label>
-            <input type="text" placeholder="mă simt">
+            <input type="text" placeholder="Scrie răspunsul...">
           </div>
           <div class="ex-item">
             <label>2. Tu _______ (a se bucura) pentru prietena ta.</label>
-            <input type="text" placeholder="te bucuri">
+            <input type="text" placeholder="Scrie răspunsul...">
           </div>
           <div class="ex-item">
             <label>3. Ei _______ (a se împăca) repede.</label>
-            <input type="text" placeholder="se împacă">
+            <input type="text" placeholder="Scrie răspunsul...">
           </div>
           <details>
             <summary>Vezi răspunsurile corecte</summary>
@@ -1047,12 +1248,12 @@ function showFeedback(id, ok, message) {
 }
 
 function checkEx1() {
-  const answers = { e1q1: 'sincer', e1q2: 'empatic', e1q3: 'loial' };
+  const answers = { e1q1: 'sincer', e1q2: 'empatic', e1q3: 'loial', e1q4: 'sociabilă', e1q5: 'răbdătoare' };
   let correct = 0;
   Object.entries(answers).forEach(([id, answer]) => {
     if (document.getElementById(id)?.value === answer) correct++;
   });
-  showFeedback('ex1-fb', correct === 3, correct === 3 ? 'Perfect. Toate răspunsurile sunt corecte.' : `Ai ${correct}/3 corecte. Mai încearcă.`);
+  showFeedback('ex1-fb', correct === 5, correct === 5 ? 'Perfect. Toate răspunsurile sunt corecte.' : `Ai ${correct}/5 corecte. Mai încearcă.`);
 }
 
 function checkEx2() {
@@ -1062,6 +1263,15 @@ function checkEx2() {
     if (document.getElementById(id)?.value === answer) correct++;
   });
   showFeedback('ex2-fb', correct === 3, correct === 3 ? 'Excelent. Sfaturile sunt potrivite.' : `Ai ${correct}/3 corecte. Recitește situațiile.`);
+}
+
+function checkPossessive() {
+  const answers = { p1: 'mea', p2: 'noștri', p3: 'a mea' };
+  let correct = 0;
+  Object.entries(answers).forEach(([id, answer]) => {
+    if (document.getElementById(id)?.value === answer) correct++;
+  });
+  showFeedback('poss-fb', correct === 3, correct === 3 ? 'Foarte bine. Formele posesive sunt corecte.' : `Ai ${correct}/3 corecte. Verifică genul și numărul substantivului.`);
 }
 
 document.addEventListener('DOMContentLoaded', () => {
