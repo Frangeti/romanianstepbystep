@@ -49,7 +49,20 @@
   .grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 5px 12px;
+    gap: 8px 18px;
+  }
+  .sentence-grid {
+    margin: 6px 0 10px;
+  }
+  .sentence-item {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+  .sentence-space {
+    display: block;
+    border-bottom: 1px solid #8792a7;
+    height: 28px;
+    margin-top: 4px;
   }
   table {
     width: 100%;
@@ -92,11 +105,24 @@
     background:
       linear-gradient(#ffffff 21px, #d9dfeb 22px);
     background-size: 100% 22px;
-    min-height: 52px;
+    min-height: 88px;
     margin: 4px 0 6px;
   }
   .small { font-size: 11px; color: #6b7280; }
   .page-break { page-break-before: always; }
+  .exercise {
+    break-inside: avoid;
+    page-break-inside: avoid;
+    margin-bottom: 8px;
+  }
+  h2, h3 {
+    break-after: avoid;
+    page-break-after: avoid;
+  }
+  table, tr, ol, .options, .grid, .write-lines {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
 </style>
 </head>
 <body>
@@ -104,153 +130,185 @@
   <div class="meta">Romanian Step by Step · Temă pentru acasă · Gramatică și vocabular</div>
 
   <h2>1. Vocabular digital</h2>
-  <h3>1.a. Completează propozițiile cu termenul potrivit.</h3>
-  <div class="options"><strong>Opțiuni:</strong> autentificare · notificare · copie de rezervă · interfață utilizator · securitate cibernetică · comerț electronic</div>
-  <ol>
-    <li>Pentru a intra în cont, aplicația cere o <span class="line"></span> în doi pași.</li>
-    <li>Am primit o <span class="line"></span> despre actualizarea sistemului.</li>
-    <li>Firma face periodic o <span class="line"></span> pentru toate datele importante.</li>
-    <li>O <span class="line"></span> clară ajută utilizatorii să găsească rapid funcțiile aplicației.</li>
-    <li>Atacurile online au crescut, de aceea companiile investesc în <span class="line"></span>.</li>
-    <li>Mulți clienți preferă <span class="line"></span>, pentru că pot cumpăra rapid de acasă.</li>
-  </ol>
+  <div class="exercise">
+    <h3>1.a. Completează propozițiile cu termenul potrivit.</h3>
+    <div class="options"><strong>Opțiuni:</strong> autentificare · notificare · copie de rezervă · interfață utilizator · securitate cibernetică · comerț electronic</div>
+    <ol>
+      <li>Pentru a intra în cont, aplicația cere o <span class="line"></span> în doi pași.</li>
+      <li>Am primit o <span class="line"></span> despre actualizarea sistemului.</li>
+      <li>Firma face periodic o <span class="line"></span> pentru toate datele importante.</li>
+      <li>O <span class="line"></span> clară ajută utilizatorii să găsească rapid funcțiile aplicației.</li>
+      <li>Atacurile online au crescut, de aceea companiile investesc în <span class="line"></span>.</li>
+      <li>Mulți clienți preferă <span class="line"></span>, pentru că pot cumpăra rapid de acasă.</li>
+    </ol>
+  </div>
 
-  <h3>1.b. Explică termenii în română, apoi scrie câte un exemplu.</h3>
-  <table>
-    <tr><th>Termen</th><th>Explicație</th><th>Exemplu</th></tr>
-    <tr><td>inteligență artificială</td><td></td><td></td></tr>
-    <tr><td>stocare în cloud</td><td></td><td></td></tr>
-    <tr><td>streaming video</td><td></td><td></td></tr>
-    <tr><td>rețea socială</td><td></td><td></td></tr>
-  </table>
+  <div class="exercise">
+    <h3>1.b. Explică termenii în română, apoi scrie câte un exemplu.</h3>
+    <table>
+      <tr><th>Termen</th><th>Explicație</th><th>Exemplu</th></tr>
+      <tr><td>inteligență artificială</td><td></td><td></td></tr>
+      <tr><td>stocare în cloud</td><td></td><td></td></tr>
+      <tr><td>streaming video</td><td></td><td></td></tr>
+      <tr><td>rețea socială</td><td></td><td></td></tr>
+    </table>
+  </div>
 
   <h2>2. Verbe studiate: sens și folosire</h2>
-  <h3>2.a. Alege verbul corect și adaptează-l la context.</h3>
-  <div class="options"><strong>Verbe:</strong> a accesa · a actualiza · a descărca · a încărca · a partaja · a stoca · a procesa · a depana</div>
-  <ol>
-    <li>Ieri am <span class="line"></span> raportul pe serverul companiei.</li>
-    <li>Este recomandat să <span class="line"></span> aplicațiile regulat.</li>
-    <li>Nu pot <span class="line"></span> platforma, pentru că parola nu funcționează.</li>
-    <li>Calculatorul <span class="line"></span> datele foarte repede.</li>
-    <li>Tehnicianul a <span class="line"></span> problema de conexiune.</li>
-    <li>Poți <span class="line"></span> documentul cu echipa prin e-mail.</li>
-  </ol>
+  <div class="exercise">
+    <h3>2.a. Alege verbul corect și adaptează-l la context.</h3>
+    <div class="options"><strong>Verbe:</strong> a accesa · a actualiza · a descărca · a încărca · a partaja · a stoca · a procesa · a depana</div>
+    <ol>
+      <li>Ieri am <span class="line"></span> raportul pe serverul companiei.</li>
+      <li>Este recomandat să <span class="line"></span> aplicațiile regulat.</li>
+      <li>Nu pot <span class="line"></span> platforma, pentru că parola nu funcționează.</li>
+      <li>Calculatorul <span class="line"></span> datele foarte repede.</li>
+      <li>Tehnicianul a <span class="line"></span> problema de conexiune.</li>
+      <li>Poți <span class="line"></span> documentul cu echipa prin e-mail.</li>
+    </ol>
+  </div>
 
-  <h3>2.b. Scrie câte o propoziție cu fiecare verb.</h3>
-  <div class="grid">
-    <div>a automatiza <span class="answer-space"></span></div>
-    <div>a cripta <span class="answer-space"></span></div>
-    <div>a decripta <span class="answer-space"></span></div>
-    <div>a programa <span class="answer-space"></span></div>
-    <div>a se conecta <span class="answer-space"></span></div>
-    <div>a face backup <span class="answer-space"></span></div>
+  <div class="exercise">
+    <h3>2.b. Scrie câte o propoziție cu fiecare verb.</h3>
+    <div class="grid sentence-grid">
+      <div class="sentence-item">a automatiza <span class="sentence-space"></span></div>
+      <div class="sentence-item">a cripta <span class="sentence-space"></span></div>
+      <div class="sentence-item">a decripta <span class="sentence-space"></span></div>
+      <div class="sentence-item">a programa <span class="sentence-space"></span></div>
+      <div class="sentence-item">a se conecta <span class="sentence-space"></span></div>
+      <div class="sentence-item">a face backup <span class="sentence-space"></span></div>
+    </div>
   </div>
 
   <div class="page-break"></div>
   <h2>3. Conjugarea corectă a verbelor studiate</h2>
-  <h3>3.a. Completează cu forma corectă la prezent sau perfect compus.</h3>
-  <ol>
-    <li>Eu <span class="short-line"></span> (a accesa, prezent) platforma în fiecare dimineață.</li>
-    <li>Noi <span class="short-line"></span> (a actualiza, perfect compus) sistemul aseară.</li>
-    <li>Tu <span class="short-line"></span> (a descărca, prezent) prea multe fișiere.</li>
-    <li>Ei <span class="short-line"></span> (a stoca, prezent) datele pe servere securizate.</li>
-    <li>Compania <span class="short-line"></span> (a automatiza, perfect compus) procesul de facturare.</li>
-    <li>Voi <span class="short-line"></span> (a partaja, prezent) ecranul în ședință?</li>
-  </ol>
+  <div class="exercise">
+    <h3>3.a. Completează cu forma corectă la prezent sau perfect compus.</h3>
+    <ol>
+      <li>Eu <span class="short-line"></span> (a accesa, prezent) platforma în fiecare dimineață.</li>
+      <li>Noi <span class="short-line"></span> (a actualiza, perfect compus) sistemul aseară.</li>
+      <li>Tu <span class="short-line"></span> (a descărca, prezent) prea multe fișiere.</li>
+      <li>Ei <span class="short-line"></span> (a stoca, prezent) datele pe servere securizate.</li>
+      <li>Compania <span class="short-line"></span> (a automatiza, perfect compus) procesul de facturare.</li>
+      <li>Voi <span class="short-line"></span> (a partaja, prezent) ecranul în ședință?</li>
+    </ol>
+  </div>
 
-  <h3>3.b. Transformă propozițiile la timpul indicat.</h3>
-  <ol>
-    <li>Eu actualizez aplicația. → perfect compus: <span class="answer-space"></span></li>
-    <li>Noi stocăm documentele în cloud. → viitor: <span class="answer-space"></span></li>
-    <li>Ei criptează mesajele. → perfect compus: <span class="answer-space"></span></li>
-    <li>Tu programezi o funcție nouă. → viitor: <span class="answer-space"></span></li>
-    <li>Serverul procesează informațiile. → perfect compus: <span class="answer-space"></span></li>
-  </ol>
+  <div class="exercise">
+    <h3>3.b. Transformă propozițiile la timpul indicat.</h3>
+    <ol>
+      <li>Eu actualizez aplicația. → perfect compus: <span class="answer-space"></span></li>
+      <li>Noi stocăm documentele în cloud. → viitor: <span class="answer-space"></span></li>
+      <li>Ei criptează mesajele. → perfect compus: <span class="answer-space"></span></li>
+      <li>Tu programezi o funcție nouă. → viitor: <span class="answer-space"></span></li>
+      <li>Serverul procesează informațiile. → perfect compus: <span class="answer-space"></span></li>
+    </ol>
+  </div>
 
   <h2>4. Conjunctivul — necesitate și recomandare</h2>
-  <h3>4.a. Completează cu forma corectă la conjunctiv.</h3>
-  <ol>
-    <li>Este important să <span class="short-line"></span> (a actualiza) aplicațiile regulat.</li>
-    <li>Trebuie să <span class="short-line"></span> (a face) backup pentru documentele importante.</li>
-    <li>Recomand să <span class="short-line"></span> (a folosi) o parolă complexă.</li>
-    <li>Este necesar să <span class="short-line"></span> (a verifica) setările de confidențialitate.</li>
-    <li>Ar fi bine să <span class="short-line"></span> (a evita) rețelele Wi-Fi nesecurizate.</li>
-  </ol>
+  <div class="exercise">
+    <h3>4.a. Completează cu forma corectă la conjunctiv.</h3>
+    <ol>
+      <li>Este important să <span class="short-line"></span> (a actualiza) aplicațiile regulat.</li>
+      <li>Trebuie să <span class="short-line"></span> (a face) backup pentru documentele importante.</li>
+      <li>Recomand să <span class="short-line"></span> (a folosi) o parolă complexă.</li>
+      <li>Este necesar să <span class="short-line"></span> (a verifica) setările de confidențialitate.</li>
+      <li>Ar fi bine să <span class="short-line"></span> (a evita) rețelele Wi-Fi nesecurizate.</li>
+    </ol>
+  </div>
 
-  <h3>4.b. Scrie recomandări pentru siguranța online folosind „trebuie să”, „este important să”, „recomand să”.</h3>
-  <div class="write-lines"></div>
+  <div class="exercise">
+    <h3>4.b. Scrie recomandări pentru siguranța online folosind „trebuie să”, „este important să”, „recomand să”.</h3>
+    <div class="write-lines"></div>
+  </div>
 
   <h2>5. Pasivul — limbaj tehnic</h2>
-  <h3>5.a. Transformă propozițiile la pasiv.</h3>
-  <ol>
-    <li>Programatorii au dezvoltat aplicația. <span class="answer-space"></span></li>
-    <li>Sistemul salvează datele automat. <span class="answer-space"></span></li>
-    <li>Echipa va actualiza serverul mâine. <span class="answer-space"></span></li>
-    <li>Compania a criptat mesajele utilizatorilor. <span class="answer-space"></span></li>
-    <li>Tehnicianul a depanat problema. <span class="answer-space"></span></li>
-  </ol>
+  <div class="exercise">
+    <h3>5.a. Transformă propozițiile la pasiv.</h3>
+    <ol>
+      <li>Programatorii au dezvoltat aplicația. <span class="answer-space"></span></li>
+      <li>Sistemul salvează datele automat. <span class="answer-space"></span></li>
+      <li>Echipa va actualiza serverul mâine. <span class="answer-space"></span></li>
+      <li>Compania a criptat mesajele utilizatorilor. <span class="answer-space"></span></li>
+      <li>Tehnicianul a depanat problema. <span class="answer-space"></span></li>
+    </ol>
+  </div>
 
-  <h3>5.b. Completează cu forma pasivă potrivită.</h3>
-  <div class="options"><strong>Modele:</strong> este salvată · sunt stocate · a fost dezvoltată · vor fi actualizate · sunt criptate</div>
-  <ol>
-    <li>Aplicația <span class="line"></span> de o echipă din București.</li>
-    <li>Parolele <span class="line"></span> pentru securitate maximă.</li>
-    <li>Datele personale <span class="line"></span> pe servere securizate.</li>
-    <li>Copiile de rezervă <span class="line"></span> automat în cloud.</li>
-    <li>Serverele <span class="line"></span> în weekend.</li>
-  </ol>
+  <div class="exercise">
+    <h3>5.b. Completează cu forma pasivă potrivită.</h3>
+    <div class="options"><strong>Modele:</strong> este salvată · sunt stocate · a fost dezvoltată · vor fi actualizate · sunt criptate</div>
+    <ol>
+      <li>Aplicația <span class="line"></span> de o echipă din București.</li>
+      <li>Parolele <span class="line"></span> pentru securitate maximă.</li>
+      <li>Datele personale <span class="line"></span> pe servere securizate.</li>
+      <li>Copiile de rezervă <span class="line"></span> automat în cloud.</li>
+      <li>Serverele <span class="line"></span> în weekend.</li>
+    </ol>
+  </div>
 
   <h2>6. Condițional-optativul — ipoteze, avantaje și dezavantaje</h2>
-  <h3>6.a. Completează propozițiile cu forma corectă.</h3>
-  <ol>
-    <li>Fără internet, viața <span class="short-line"></span> (a fi) mult mai dificilă.</li>
-    <li>Dacă oamenii ar folosi mai puțin telefonul, <span class="short-line"></span> (a dormi) mai bine.</li>
-    <li>Eu <span class="short-line"></span> (a instala) aplicația, dacă ar fi mai sigură.</li>
-    <li>Noi <span class="short-line"></span> (a lucra) mai eficient cu o conexiune mai bună.</li>
-    <li>Companiile <span class="short-line"></span> (a economisi) timp prin automatizare.</li>
-  </ol>
+  <div class="exercise">
+    <h3>6.a. Completează propozițiile cu forma corectă.</h3>
+    <ol>
+      <li>Fără internet, viața <span class="short-line"></span> (a fi) mult mai dificilă.</li>
+      <li>Dacă oamenii ar folosi mai puțin telefonul, <span class="short-line"></span> (a dormi) mai bine.</li>
+      <li>Eu <span class="short-line"></span> (a instala) aplicația, dacă ar fi mai sigură.</li>
+      <li>Noi <span class="short-line"></span> (a lucra) mai eficient cu o conexiune mai bună.</li>
+      <li>Companiile <span class="short-line"></span> (a economisi) timp prin automatizare.</li>
+    </ol>
+  </div>
 
-  <h3>6.b. Scrie 4 fraze despre avantajele și dezavantajele tehnologiei folosind condițional-optativul.</h3>
-  <div class="write-lines"></div>
+  <div class="exercise">
+    <h3>6.b. Scrie 4 fraze despre avantajele și dezavantajele tehnologiei folosind condițional-optativul.</h3>
+    <div class="write-lines"></div>
+  </div>
 
   <h2>7. Gerunziul — acțiuni simultane</h2>
-  <h3>7.a. Transformă propozițiile folosind gerunziul.</h3>
-  <ol>
-    <li>Folosesc inteligența artificială și economisesc timp. <span class="answer-space"></span></li>
-    <li>Programez zilnic și devin mai bun. <span class="answer-space"></span></li>
-    <li>Actualizez aplicațiile și evit problemele de securitate. <span class="answer-space"></span></li>
-    <li>Partajez ecranul și explic soluția colegilor. <span class="answer-space"></span></li>
-  </ol>
+  <div class="exercise">
+    <h3>7.a. Transformă propozițiile folosind gerunziul.</h3>
+    <ol>
+      <li>Folosesc inteligența artificială și economisesc timp. <span class="answer-space"></span></li>
+      <li>Programez zilnic și devin mai bun. <span class="answer-space"></span></li>
+      <li>Actualizez aplicațiile și evit problemele de securitate. <span class="answer-space"></span></li>
+      <li>Partajez ecranul și explic soluția colegilor. <span class="answer-space"></span></li>
+    </ol>
+  </div>
 
-  <h3>7.b. Completează cu gerunziul verbului din paranteză.</h3>
-  <ol>
-    <li><span class="short-line"></span> (a utiliza) o parolă complexă, îți protejezi contul.</li>
-    <li><span class="short-line"></span> (a descărca) fișiere din surse nesigure, riști să primești viruși.</li>
-    <li><span class="short-line"></span> (a automatiza) sarcinile repetitive, compania economisește timp.</li>
-    <li><span class="short-line"></span> (a salva) documentele în cloud, le poți accesa de oriunde.</li>
-  </ol>
+  <div class="exercise">
+    <h3>7.b. Completează cu gerunziul verbului din paranteză.</h3>
+    <ol>
+      <li><span class="short-line"></span> (a utiliza) o parolă complexă, îți protejezi contul.</li>
+      <li><span class="short-line"></span> (a descărca) fișiere din surse nesigure, riști să primești viruși.</li>
+      <li><span class="short-line"></span> (a automatiza) sarcinile repetitive, compania economisește timp.</li>
+      <li><span class="short-line"></span> (a salva) documentele în cloud, le poți accesa de oriunde.</li>
+    </ol>
+  </div>
 
   <div class="page-break"></div>
   <h2>8. Nominalizarea — substantive din verbe</h2>
-  <h3>8.a. Transformă verbele în substantive.</h3>
-  <table>
-    <tr><th>Verb</th><th>Substantiv</th><th>Propoziție cu substantivul</th></tr>
-    <tr><td>a programa</td><td></td><td></td></tr>
-    <tr><td>a conecta</td><td></td><td></td></tr>
-    <tr><td>a descărca</td><td></td><td></td></tr>
-    <tr><td>a stoca</td><td></td><td></td></tr>
-    <tr><td>a actualiza</td><td></td><td></td></tr>
-    <tr><td>a automatiza</td><td></td><td></td></tr>
-    <tr><td>a cripta</td><td></td><td></td></tr>
-    <tr><td>a procesa</td><td></td><td></td></tr>
-  </table>
+  <div class="exercise">
+    <h3>8.a. Transformă verbele în substantive.</h3>
+    <table>
+      <tr><th>Verb</th><th>Substantiv</th><th>Propoziție cu substantivul</th></tr>
+      <tr><td>a programa</td><td></td><td></td></tr>
+      <tr><td>a conecta</td><td></td><td></td></tr>
+      <tr><td>a descărca</td><td></td><td></td></tr>
+      <tr><td>a stoca</td><td></td><td></td></tr>
+      <tr><td>a actualiza</td><td></td><td></td></tr>
+      <tr><td>a automatiza</td><td></td><td></td></tr>
+      <tr><td>a cripta</td><td></td><td></td></tr>
+      <tr><td>a procesa</td><td></td><td></td></tr>
+    </table>
+  </div>
 
-  <h3>8.b. Rescrie propozițiile folosind nominalizarea.</h3>
-  <ol>
-    <li>Trebuie să actualizăm sistemul. → <span class="answer-space"></span></li>
-    <li>Compania vrea să automatizeze procesul. → <span class="answer-space"></span></li>
-    <li>Este important să stocăm datele în siguranță. → <span class="answer-space"></span></li>
-    <li>Programatorul începe să proceseze informațiile. → <span class="answer-space"></span></li>
-  </ol>
+  <div class="exercise">
+    <h3>8.b. Rescrie propozițiile folosind nominalizarea.</h3>
+    <ol>
+      <li>Trebuie să actualizăm sistemul. → <span class="answer-space"></span></li>
+      <li>Compania vrea să automatizeze procesul. → <span class="answer-space"></span></li>
+      <li>Este important să stocăm datele în siguranță. → <span class="answer-space"></span></li>
+      <li>Programatorul începe să proceseze informațiile. → <span class="answer-space"></span></li>
+    </ol>
+  </div>
 </body>
 </html>
