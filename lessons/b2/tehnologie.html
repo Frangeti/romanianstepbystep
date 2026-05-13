@@ -966,6 +966,8 @@
 
     .tabs {
       padding: 0 1rem;
+      flex-wrap: wrap;
+      overflow-x: visible;
     }
 
     .layout {
@@ -973,7 +975,13 @@
     }
 
     .sidebar {
-      display: none;
+      display: block;
+      position: static;
+      width: auto;
+      height: auto;
+      padding: 1rem;
+      border-right: 0;
+      border-bottom: 1px solid var(--border2);
     }
 
     .main {

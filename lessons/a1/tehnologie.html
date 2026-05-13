@@ -584,9 +584,17 @@
     }
 
     .level-pills { justify-content: flex-start; }
-    .tabs { padding: 0 1rem; }
+    .tabs { padding: 0 1rem; flex-wrap: wrap; overflow-x: visible; }
     .layout { grid-template-columns: 1fr; }
-    .sidebar { display: none; }
+    .sidebar {
+      display: block;
+      position: static;
+      width: auto;
+      height: auto;
+      padding: 1rem;
+      border-right: 0;
+      border-bottom: 1px solid var(--border2);
+    }
     .main { padding: 1rem; }
 
     .header,
