@@ -1,0 +1,968 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Romanian Step by Step A1 — Test de nivel</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600&family=DM+Sans:wght@300;400;500;600&family=DM+Mono&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #1a2744;
+    --gold: #c9962a;
+    --gold-light: #f5e9c8;
+    --blue: #2d5a9e;
+    --blue-light: #e8eef8;
+    --green: #2a7a4b;
+    --green-light: #e4f2ea;
+    --purple: #534ab7;
+    --purple-light: #eeedfe;
+    --coral: #c0392b;
+    --coral-light: #fdecea;
+    --bg: #f4f3f0;
+    --surface: #ffffff;
+    --surface2: #fbfaf7;
+    --text: #1a2744;
+    --text2: #6b7280;
+    --text3: #8d96a4;
+    --border: rgba(26, 39, 68, 0.12);
+    --border2: rgba(26, 39, 68, 0.08);
+    --radius: 10px;
+    --radius-sm: 8px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    line-height: 1.7;
+    min-height: 100vh;
+  }
+  a { color: inherit; text-decoration: none; }
+  .shell { min-height: 100vh; background: var(--surface); }
+  .topbar {
+    min-height: 66px;
+    padding: 0 clamp(1.25rem, 3vw, 2.75rem);
+    background: var(--navy);
+    border-bottom: 3px solid var(--gold);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+  .logo {
+    color: #fff;
+    font-family: 'Lora', serif;
+    font-size: 22px;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  .logo span { color: var(--gold); }
+  .level-pills { display: flex; gap: 4px; flex-wrap: wrap; }
+  .pill {
+    border-radius: 20px;
+    color: rgba(255,255,255,.64);
+    font-size: 12px;
+    font-weight: 600;
+    padding: 5px 13px;
+  }
+  .pill.active { background: var(--gold); color: var(--navy); }
+  .tabs {
+    min-height: 48px;
+    padding: 0 clamp(1.25rem, 3vw, 2.75rem);
+    border-bottom: 1px solid var(--border);
+    background: #fff;
+    display: flex;
+    gap: 2px;
+    overflow-x: auto;
+  }
+  .tab {
+    border: 0;
+    border-bottom: 2px solid transparent;
+    background: transparent;
+    color: var(--text2);
+    cursor: pointer;
+    font: inherit;
+    font-size: 15px;
+    padding: 14px 18px 12px;
+    white-space: nowrap;
+  }
+  .tab.active {
+    color: var(--blue);
+    border-bottom-color: var(--blue);
+    font-weight: 600;
+  }
+  .layout {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    min-height: calc(100vh - 114px);
+  }
+  .sidebar {
+    background: #fff;
+    border-right: 1px solid var(--border);
+    height: 100vh;
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+  }
+  .sidebar-label {
+    color: var(--text2);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .1em;
+    padding: .55rem 1.2rem;
+    text-transform: uppercase;
+  }
+  .nav-item {
+    width: 100%;
+    border: 0;
+    border-left: 3px solid transparent;
+    background: transparent;
+    color: var(--text);
+    cursor: pointer;
+    display: flex;
+    gap: 9px;
+    align-items: center;
+    padding: 10px 1.2rem;
+    text-align: left;
+    font: inherit;
+    font-size: 15px;
+  }
+  .nav-item.active {
+    background: var(--blue-light);
+    border-left-color: var(--blue);
+    color: var(--blue);
+    font-weight: 600;
+  }
+  .nav-num {
+    margin-left: auto;
+    color: var(--text3);
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+  }
+  .main {
+    background: var(--bg);
+    padding: clamp(1.25rem, 3vw, 2.75rem);
+  }
+  .header,
+  .section-header,
+  .card,
+  .result-panel {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+  }
+  .header {
+    padding: clamp(1.5rem, 3vw, 2.4rem);
+    margin-bottom: 1.25rem;
+  }
+  .home-link {
+    color: var(--blue);
+    display: inline-block;
+    font-weight: 600;
+    margin-bottom: .6rem;
+  }
+  .level-tag {
+    display: inline-block;
+    background: var(--gold-light);
+    border-radius: 20px;
+    color: #7a5210;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .12em;
+    margin-bottom: .9rem;
+    padding: 4px 12px;
+    text-transform: uppercase;
+  }
+  .header h1 {
+    color: var(--navy);
+    font-family: 'Lora', serif;
+    font-size: clamp(34px, 4.5vw, 56px);
+    line-height: 1.12;
+    margin-bottom: .5rem;
+  }
+  .header p {
+    color: var(--text2);
+    font-size: 18px;
+    max-width: 900px;
+  }
+  .header-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1.1rem;
+  }
+  .header-meta span {
+    color: var(--text2);
+    font-size: 14px;
+  }
+  .section { display: none; }
+  .section.active { display: block; animation: fadeIn .2s ease; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+  .section-header {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    padding: 1.15rem 1.25rem;
+    margin-bottom: 1.1rem;
+  }
+  .section-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: var(--radius-sm);
+    background: var(--blue-light);
+    display: grid;
+    place-items: center;
+    font-size: 22px;
+    flex: 0 0 auto;
+  }
+  .section-header h2 {
+    color: var(--navy);
+    font-family: 'Lora', serif;
+    font-size: 26px;
+  }
+  .section-header p { color: var(--text2); font-size: 15px; }
+  .card {
+    padding: 1.35rem 1.5rem;
+    margin-bottom: 1.1rem;
+  }
+  .card-title {
+    color: var(--blue);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: .08em;
+    margin-bottom: .85rem;
+    text-transform: uppercase;
+  }
+  .text-card {
+    background: var(--blue-light);
+    border-left: 4px solid var(--blue);
+    border-radius: var(--radius-sm);
+    color: var(--text);
+    margin: .65rem 0 .9rem;
+    padding: .85rem 1rem;
+  }
+  .question {
+    border-top: 1px solid var(--border2);
+    padding: 1rem 0;
+  }
+  .question:first-of-type { border-top: 0; padding-top: 0; }
+  .question p { font-weight: 600; margin-bottom: .5rem; }
+  .options {
+    display: grid;
+    gap: .4rem;
+  }
+  label.option {
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    display: flex;
+    gap: .55rem;
+    align-items: flex-start;
+    padding: .65rem .75rem;
+    background: #fff;
+  }
+  label.option:hover { background: var(--surface2); }
+  input[type="radio"] { margin-top: .25rem; }
+  input[type="text"],
+  textarea {
+    width: 100%;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    background: #fff;
+    color: var(--text);
+    font: inherit;
+    padding: .7rem .8rem;
+  }
+  textarea { min-height: 150px; resize: vertical; }
+  .fill-grid {
+    display: grid;
+    gap: .75rem;
+  }
+  .fill-row {
+    display: grid;
+    grid-template-columns: auto minmax(180px, 1fr);
+    align-items: center;
+    gap: .65rem;
+  }
+  .form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: .8rem;
+  }
+  .form-field label {
+    display: block;
+    color: var(--text2);
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: .25rem;
+  }
+  .audio-box {
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--surface2);
+    padding: 1rem;
+    margin: .8rem 0 1rem;
+  }
+  .audio-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .6rem;
+    align-items: center;
+    margin-top: .75rem;
+  }
+  .audio-actions input[type="file"] {
+    max-width: 260px;
+    font-size: 13px;
+  }
+  audio { width: 100%; margin-top: .75rem; }
+  .hidden-transcript,
+  .teacher-text {
+    display: none;
+    margin-top: .8rem;
+  }
+  .hidden-transcript.revealed,
+  .teacher-text.open { display: block; }
+  .locked-note {
+    color: var(--text2);
+    font-size: 14px;
+    margin-top: .45rem;
+  }
+  .btn {
+    border: 1px solid var(--navy);
+    border-radius: var(--radius-sm);
+    background: var(--navy);
+    color: #fff;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 42px;
+    padding: .6rem 1rem;
+    font: inherit;
+    font-size: 14px;
+    font-weight: 700;
+  }
+  .btn:hover { background: var(--blue); border-color: var(--blue); }
+  .btn.secondary {
+    background: #fff;
+    color: var(--navy);
+  }
+  .btn.secondary:hover {
+    background: var(--blue-light);
+    border-color: var(--blue);
+    color: var(--blue);
+  }
+  .submit-bar {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    margin: 1.25rem 0;
+    padding: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: .75rem;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .score-pill {
+    border-radius: 999px;
+    background: var(--gold-light);
+    color: #7a5210;
+    display: inline-flex;
+    font-weight: 700;
+    min-height: 38px;
+    align-items: center;
+    padding: .45rem .9rem;
+  }
+  .result-panel {
+    display: none;
+    padding: 1.25rem;
+    margin-top: 1.25rem;
+  }
+  .result-panel.visible { display: block; }
+  .answer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: .8rem;
+    margin-top: .9rem;
+  }
+  .answer-box {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: .85rem;
+  }
+  .answer-box h4 { color: var(--navy); margin-bottom: .35rem; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: .8rem;
+  }
+  th, td {
+    border: 1px solid var(--border);
+    padding: .65rem;
+    text-align: left;
+    vertical-align: top;
+  }
+  th { background: var(--blue-light); color: var(--navy); }
+  .dialogue {
+    background: #fff;
+    border: 1px dashed var(--border);
+    border-radius: var(--radius-sm);
+    padding: 1rem;
+    margin-top: .7rem;
+  }
+  .footer {
+    border-top: 1px solid var(--border);
+    color: var(--text3);
+    font-size: 12px;
+    margin-top: 2rem;
+    padding: 1.3rem;
+    text-align: center;
+  }
+  .correct { border-color: rgba(42,122,75,.35) !important; background: var(--green-light) !important; }
+  .incorrect { border-color: rgba(192,57,43,.35) !important; background: var(--coral-light) !important; }
+  @media (max-width: 760px) {
+    .topbar { align-items: flex-start; flex-direction: column; padding: 1rem; }
+    .layout { grid-template-columns: 1fr; }
+    .sidebar { position: static; height: auto; border-right: 0; border-bottom: 1px solid var(--border); }
+    .main { padding: 1rem; }
+    .form-grid,
+    .fill-row { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="shell">
+  <header class="topbar">
+    <a class="logo" href="../../index.html">Romanian <span>Step by Step</span></a>
+    <nav class="level-pills" aria-label="Niveluri">
+      <span class="pill active">A1</span>
+      <span class="pill">A2</span>
+      <span class="pill">B1</span>
+      <span class="pill">B2</span>
+      <span class="pill">C1</span>
+    </nav>
+  </header>
+
+  <nav class="tabs" aria-label="Secțiuni test">
+    <a class="tab" href="../../index.html#teste">Teste de nivel</a>
+    <button class="tab active" onclick="showSection('citire', this)">Citire</button>
+    <button class="tab" onclick="showSection('ascultare', this)">Ascultare</button>
+    <button class="tab" onclick="showSection('gramatica', this)">Gramatică</button>
+    <button class="tab" onclick="showSection('scriere', this)">Scriere</button>
+    <button class="tab" onclick="showSection('oral', this)">Oral</button>
+    <button class="tab" onclick="showSection('rezultate', this)">Rezultate</button>
+  </nav>
+
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="sidebar-label">Secțiuni</div>
+      <button class="nav-item active" onclick="showSection('citire', this)">📖 Înțelegerea textului scris <span class="nav-num">01</span></button>
+      <button class="nav-item" onclick="showSection('ascultare', this)">🎧 Înțelegerea textului audiat <span class="nav-num">02</span></button>
+      <button class="nav-item" onclick="showSection('gramatica', this)">✏️ Gramatică și vocabular <span class="nav-num">03</span></button>
+      <button class="nav-item" onclick="showSection('scriere', this)">📝 Scriere <span class="nav-num">04</span></button>
+      <button class="nav-item" onclick="showSection('oral', this)">💬 Exprimare orală <span class="nav-num">05</span></button>
+      <button class="nav-item" onclick="showSection('rezultate', this)">✅ Rezultate <span class="nav-num">06</span></button>
+    </aside>
+
+    <main class="main">
+      <div class="header">
+        <a class="home-link" href="../../index.html#teste">← Înapoi la teste</a><br>
+        <span class="level-tag">Nivel A1 · CECRL</span>
+        <h1>Test de Limba Română - Nivel A1</h1>
+        <p>Conform Cadrului European Comun de Referință pentru Limbi. Structură inspirată din examenele de tip Goethe Institut.</p>
+        <div class="header-meta">
+          <span>Timp total: aproximativ 90 de minute</span>
+          <span>100 puncte</span>
+          <span>Promovare recomandată: minimum 60 puncte</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Instrucțiuni generale</div>
+        <p>Scrie clar și citeț. La exercițiile cu alegere multiplă există un singur răspuns corect. Nu folosi dicționarul.</p>
+        <p class="locked-note">La secțiunea de ascultare poți încărca audio-uri local. Textele pentru audiție rămân ascunse pentru cursant până la verificarea întregului test.</p>
+      </div>
+
+      <section id="sec-citire" class="section active">
+        <div class="section-header">
+          <div class="section-icon">📖</div>
+          <div>
+            <h2>Secțiunea 1 - Înțelegerea textului scris</h2>
+            <p>Timp recomandat: 20 minute</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">Exercițiul 1 - Citește mesajele și alege varianta corectă</div>
+          <div class="question" data-question="r1">
+            <div class="text-card">„Bună, Maria! Astăzi ajung acasă la ora 18:00. Putem merge la supermarket după aceea. Andrei”</div>
+            <p>Unde merg Maria și Andrei?</p>
+            <div class="options">
+              <label class="option"><input type="radio" name="r1" value="a"> a) La restaurant</label>
+              <label class="option"><input type="radio" name="r1" value="b"> b) La supermarket</label>
+              <label class="option"><input type="radio" name="r1" value="c"> c) La școală</label>
+            </div>
+          </div>
+          <div class="question" data-question="r2">
+            <div class="text-card">„Muzeul este deschis de marți până duminică între orele 10:00-18:00.”</div>
+            <p>Când este muzeul închis?</p>
+            <div class="options">
+              <label class="option"><input type="radio" name="r2" value="a"> a) Luni</label>
+              <label class="option"><input type="radio" name="r2" value="b"> b) Marți</label>
+              <label class="option"><input type="radio" name="r2" value="c"> c) Sâmbătă</label>
+            </div>
+          </div>
+          <div class="question" data-question="r3">
+            <div class="text-card">„Camera 12 este la etajul doi.”</div>
+            <p>Unde este camera?</p>
+            <div class="options">
+              <label class="option"><input type="radio" name="r3" value="a"> a) La parter</label>
+              <label class="option"><input type="radio" name="r3" value="b"> b) La etajul unu</label>
+              <label class="option"><input type="radio" name="r3" value="c"> c) La etajul doi</label>
+            </div>
+          </div>
+          <div class="question" data-question="r4">
+            <div class="text-card">„Astăzi vremea este rece și plouă.”</div>
+            <p>Cum este vremea?</p>
+            <div class="options">
+              <label class="option"><input type="radio" name="r4" value="a"> a) Este soare</label>
+              <label class="option"><input type="radio" name="r4" value="b"> b) Este frig și plouă</label>
+              <label class="option"><input type="radio" name="r4" value="c"> c) Este foarte cald</label>
+            </div>
+          </div>
+          <div class="question" data-question="r5">
+            <div class="text-card">„Trenul spre Brașov pleacă la ora 14:30 de la linia 4.”</div>
+            <p>De unde pleacă trenul?</p>
+            <div class="options">
+              <label class="option"><input type="radio" name="r5" value="a"> a) Linia 2</label>
+              <label class="option"><input type="radio" name="r5" value="b"> b) Linia 3</label>
+              <label class="option"><input type="radio" name="r5" value="c"> c) Linia 4</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">Exercițiul 2 - Citește textul și răspunde</div>
+          <div class="text-card">
+            Mă numesc Elena și am 22 de ani. Sunt studentă la București. Locuiesc într-un apartament mic împreună cu o colegă. În timpul liber îmi place să citesc și să merg în parc. În weekend merg des la părinții mei.
+          </div>
+          <div class="question" data-question="r6">
+            <p>Elena are:</p>
+            <div class="options">
+              <label class="option"><input type="radio" name="r6" value="a"> a) 20 de ani</label>
+              <label class="option"><input type="radio" name="r6" value="b"> b) 22 de ani</label>
+              <label class="option"><input type="radio" name="r6" value="c"> c) 32 de ani</label>
+            </div>
+          </div>
+          <div class="question" data-question="r7">
+            <p>Elena locuiește:</p>
+            <div class="options">
+              <label class="option"><input type="radio" name="r7" value="a"> a) la hotel</label>
+              <label class="option"><input type="radio" name="r7" value="b"> b) într-o casă mare</label>
+              <label class="option"><input type="radio" name="r7" value="c"> c) într-un apartament</label>
+            </div>
+          </div>
+          <div class="question" data-question="r8">
+            <p>În timpul liber îi place:</p>
+            <div class="options">
+              <label class="option"><input type="radio" name="r8" value="a"> a) să citească</label>
+              <label class="option"><input type="radio" name="r8" value="b"> b) să gătească</label>
+              <label class="option"><input type="radio" name="r8" value="c"> c) să danseze</label>
+            </div>
+          </div>
+          <div class="question" data-question="r9">
+            <p>În weekend Elena:</p>
+            <div class="options">
+              <label class="option"><input type="radio" name="r9" value="a"> a) merge la muncă</label>
+              <label class="option"><input type="radio" name="r9" value="b"> b) merge la părinți</label>
+              <label class="option"><input type="radio" name="r9" value="c"> c) merge la școală</label>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="sec-ascultare" class="section">
+        <div class="section-header">
+          <div class="section-icon">🎧</div>
+          <div>
+            <h2>Secțiunea 2 - Înțelegerea textului audiat</h2>
+            <p>Timp recomandat: 15 minute. Textele se citesc de două ori.</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">Exercițiul 1</div>
+          <div class="audio-box" data-listening="1">
+            <strong>Audio pentru audiție</strong>
+            <div class="audio-actions">
+              <input type="file" accept="audio/*" onchange="loadAudio(this, 'audio1')">
+              <button class="btn secondary" type="button" onclick="toggleTeacherText('teacher1')">Adaugă textul</button>
+              <button class="btn secondary" type="button" onclick="showLockedMessage()">Text ascuns</button>
+            </div>
+            <audio id="audio1" controls></audio>
+            <div id="teacher1" class="teacher-text">
+              <textarea id="teacherText1">„Bună dimineața! Eu sunt Mihai. Astăzi merg la serviciu cu autobuzul. După muncă merg la sală, iar seara mă întâlnesc cu prietenii la o cafenea.”</textarea>
+              <button class="btn secondary" type="button" onclick="saveTranscript('teacherText1', 'transcript1')">Salvează textul</button>
+            </div>
+            <p class="locked-note">Textul pentru audiție este ascuns până la verificarea finală.</p>
+            <div id="transcript1" class="hidden-transcript text-card">„Bună dimineața! Eu sunt Mihai. Astăzi merg la serviciu cu autobuzul. După muncă merg la sală, iar seara mă întâlnesc cu prietenii la o cafenea.”</div>
+          </div>
+          <div class="question" data-question="l1">
+            <p>Cum merge Mihai la serviciu?</p>
+            <div class="options">
+              <label class="option"><input type="radio" name="l1" value="a"> a) Cu trenul</label>
+              <label class="option"><input type="radio" name="l1" value="b"> b) Cu autobuzul</label>
+              <label class="option"><input type="radio" name="l1" value="c"> c) Cu mașina</label>
+            </div>
+          </div>
+          <div class="question" data-question="l2">
+            <p>Unde merge după muncă?</p>
+            <div class="options">
+              <label class="option"><input type="radio" name="l2" value="a"> a) La sală</label>
+              <label class="option"><input type="radio" name="l2" value="b"> b) Acasă</label>
+              <label class="option"><input type="radio" name="l2" value="c"> c) La cinema</label>
+            </div>
+          </div>
+          <div class="question" data-question="l3">
+            <p>Cu cine se întâlnește seara?</p>
+            <div class="options">
+              <label class="option"><input type="radio" name="l3" value="a"> a) Cu familia</label>
+              <label class="option"><input type="radio" name="l3" value="b"> b) Cu colegii</label>
+              <label class="option"><input type="radio" name="l3" value="c"> c) Cu prietenii</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">Exercițiul 2</div>
+          <div class="audio-box" data-listening="2">
+            <strong>Audio pentru audiție</strong>
+            <div class="audio-actions">
+              <input type="file" accept="audio/*" onchange="loadAudio(this, 'audio2')">
+              <button class="btn secondary" type="button" onclick="toggleTeacherText('teacher2')">Adaugă textul</button>
+              <button class="btn secondary" type="button" onclick="showLockedMessage()">Text ascuns</button>
+            </div>
+            <audio id="audio2" controls></audio>
+            <div id="teacher2" class="teacher-text">
+              <textarea id="teacherText2">„Atenție! Magazinul se închide astăzi la ora 17:00. Mâine programul începe la ora 09:00.”</textarea>
+              <button class="btn secondary" type="button" onclick="saveTranscript('teacherText2', 'transcript2')">Salvează textul</button>
+            </div>
+            <p class="locked-note">Textul pentru audiție este ascuns până la verificarea finală.</p>
+            <div id="transcript2" class="hidden-transcript text-card">„Atenție! Magazinul se închide astăzi la ora 17:00. Mâine programul începe la ora 09:00.”</div>
+          </div>
+          <div class="question" data-question="l4">
+            <p>La ce oră se închide magazinul astăzi?</p>
+            <div class="options">
+              <label class="option"><input type="radio" name="l4" value="a"> a) 16:00</label>
+              <label class="option"><input type="radio" name="l4" value="b"> b) 17:00</label>
+              <label class="option"><input type="radio" name="l4" value="c"> c) 18:00</label>
+            </div>
+          </div>
+          <div class="question" data-question="l5">
+            <p>La ce oră se deschide mâine?</p>
+            <div class="options">
+              <label class="option"><input type="radio" name="l5" value="a"> a) 08:00</label>
+              <label class="option"><input type="radio" name="l5" value="b"> b) 09:00</label>
+              <label class="option"><input type="radio" name="l5" value="c"> c) 10:00</label>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="sec-gramatica" class="section">
+        <div class="section-header">
+          <div class="section-icon">✏️</div>
+          <div>
+            <h2>Secțiunea 3 - Gramatică și vocabular</h2>
+            <p>Timp recomandat: 20 minute</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">Exercițiul 1 - Alege varianta corectă</div>
+          <div id="grammarChoices"></div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">Exercițiul 2 - Completează spațiile libere</div>
+          <p><strong>Cuvinte:</strong> casă, numesc, merge, luni, apă</p>
+          <div class="fill-grid">
+            <div class="fill-row"><span>1. Mă</span><input type="text" data-fill="f1" aria-label="Mă numesc Andrei"> <span>Andrei.</span></div>
+            <div class="fill-row"><span>2. Mama</span><input type="text" data-fill="f2" aria-label="Mama merge la serviciu"> <span>la serviciu.</span></div>
+            <div class="fill-row"><span>3. Astăzi este</span><input type="text" data-fill="f3" aria-label="Astăzi este luni"></div>
+            <div class="fill-row"><span>4. Beau un pahar cu</span><input type="text" data-fill="f4" aria-label="Beau un pahar cu apă"></div>
+            <div class="fill-row"><span>5. Eu stau într-o</span><input type="text" data-fill="f5" aria-label="Eu stau într-o casă mare"> <span>mare.</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="sec-scriere" class="section">
+        <div class="section-header">
+          <div class="section-icon">📝</div>
+          <div>
+            <h2>Secțiunea 4 - Scriere</h2>
+            <p>Timp recomandat: 15 minute</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">Exercițiul 1 - Completează formularul</div>
+          <div class="form-grid">
+            <div class="form-field"><label>Prenume:</label><input type="text"></div>
+            <div class="form-field"><label>Nume:</label><input type="text"></div>
+            <div class="form-field"><label>Vârsta:</label><input type="text"></div>
+            <div class="form-field"><label>Oraș:</label><input type="text"></div>
+            <div class="form-field"><label>Telefon:</label><input type="text"></div>
+            <div class="form-field"><label>Profesie:</label><input type="text"></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">Exercițiul 2 - Scrie un mesaj scurt</div>
+          <p>Scrie unui prieten un mesaj de 30-40 de cuvinte. Spune:</p>
+          <ul>
+            <li>cum te numești;</li>
+            <li>unde locuiești;</li>
+            <li>ce limbi vorbești;</li>
+            <li>ce hobby ai.</li>
+          </ul>
+          <textarea aria-label="Mesaj scurt"></textarea>
+        </div>
+      </section>
+
+      <section id="sec-oral" class="section">
+        <div class="section-header">
+          <div class="section-icon">💬</div>
+          <div>
+            <h2>Secțiunea 5 - Exprimare orală</h2>
+            <p>Timp recomandat: 10-15 minute</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">Partea 1 - Prezentare personală</div>
+          <p>Prezintă-te: nume, vârstă, țară, oraș, profesie/student, limbi vorbite, hobby-uri.</p>
+        </div>
+        <div class="card">
+          <div class="card-title">Partea 2 - Întrebări și răspunsuri</div>
+          <p>Răspunde la întrebările examinatorului:</p>
+          <ul>
+            <li>Unde locuiești?</li>
+            <li>Ce faci în timpul liber?</li>
+            <li>Ai frați sau surori?</li>
+            <li>Ce mâncare îți place?</li>
+            <li>Cum mergi la serviciu sau la școală?</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="card-title">Partea 3 - Dialog scurt</div>
+          <p><strong>Situație:</strong> Ești într-o cafenea. Comandă o băutură și ceva de mâncare.</p>
+          <div class="dialogue">
+            <p>- Bună ziua!</p>
+            <p>- Bună ziua! Ce doriți?</p>
+            <p>- Aș dori un ceai și un sandviș, vă rog.</p>
+            <p>- Sigur.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="sec-rezultate" class="section">
+        <div class="section-header">
+          <div class="section-icon">✅</div>
+          <div>
+            <h2>Rezultate și barem</h2>
+            <p>Verifică testul complet. Textele de ascultare și răspunsurile apar după verificare.</p>
+          </div>
+        </div>
+        <div class="submit-bar">
+          <div>
+            <strong>Verificare finală</strong>
+            <p class="locked-note">Citire, ascultare, gramatică și vocabular se corectează automat. Scrierea și oralul se evaluează manual după criteriile de mai jos.</p>
+          </div>
+          <button class="btn" type="button" onclick="checkTest()">Verifică întregul test</button>
+        </div>
+
+        <div id="resultPanel" class="result-panel">
+          <h3>Rezultat automat</h3>
+          <p id="scoreSummary" class="score-pill">Test neverificat</p>
+          <div class="answer-grid">
+            <div class="answer-box">
+              <h4>Secțiunea 1</h4>
+              <p><strong>Exercițiul 1:</strong> 1.b, 2.a, 3.c, 4.b, 5.c</p>
+              <p><strong>Exercițiul 2:</strong> 1.b, 2.c, 3.a, 4.b</p>
+            </div>
+            <div class="answer-box">
+              <h4>Secțiunea 2</h4>
+              <p><strong>Exercițiul 1:</strong> 1.b, 2.a, 3.c</p>
+              <p><strong>Exercițiul 2:</strong> 1.b, 2.b</p>
+            </div>
+            <div class="answer-box">
+              <h4>Secțiunea 3</h4>
+              <p><strong>Exercițiul 1:</strong> 1.b, 2.a, 3.a, 4.c, 5.a, 6.b, 7.a, 8.a, 9.a, 10.c</p>
+              <p><strong>Exercițiul 2:</strong> 1. numesc, 2. merge, 3. luni, 4. apă, 5. casă</p>
+            </div>
+          </div>
+
+          <h3 style="margin-top:1.2rem">Texte pentru audiție</h3>
+          <div id="finalTranscript1" class="text-card"></div>
+          <div id="finalTranscript2" class="text-card"></div>
+
+          <h3 style="margin-top:1.2rem">Criterii de evaluare</h3>
+          <table>
+            <thead>
+              <tr><th>Secțiune</th><th>Punctaj</th><th>Criterii principale</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Înțelegerea textului scris</td><td>25 puncte</td><td>Identificarea informațiilor simple din texte scurte.</td></tr>
+              <tr><td>Înțelegerea textului audiat</td><td>20 puncte</td><td>Înțelegerea informațiilor uzuale: ore, locuri, activități.</td></tr>
+              <tr><td>Gramatică și vocabular</td><td>25 puncte</td><td>Folosirea corectă a verbelor, substantivelor, adjectivelor și prepozițiilor de bază.</td></tr>
+              <tr><td>Scriere</td><td>15 puncte</td><td>Formulare clară, vocabular simplu, propoziții scurte și corecte.</td></tr>
+              <tr><td>Exprimare orală</td><td>15 puncte</td><td>Pronunție, răspunsuri simple, fluență elementară.</td></tr>
+            </tbody>
+          </table>
+          <p><strong>Total:</strong> 100 puncte</p>
+          <p><strong>Promovare recomandată:</strong> minimum 60 puncte.</p>
+        </div>
+      </section>
+
+      <div class="footer">Test de limba română - Nivel A1 | CECRL | Format online</div>
+    </main>
+  </div>
+</div>
+
+<script>
+const answers = {
+  r1: 'b', r2: 'a', r3: 'c', r4: 'b', r5: 'c',
+  r6: 'b', r7: 'c', r8: 'a', r9: 'b',
+  l1: 'b', l2: 'a', l3: 'c', l4: 'b', l5: 'b',
+  g1: 'b', g2: 'a', g3: 'a', g4: 'c', g5: 'a',
+  g6: 'b', g7: 'a', g8: 'a', g9: 'a', g10: 'c'
+};
+
+const fillAnswers = {
+  f1: 'numesc',
+  f2: 'merge',
+  f3: 'luni',
+  f4: 'apă',
+  f5: 'casă'
+};
+
+const grammarItems = [
+  ['Eu ___ student.', [['a', 'este'], ['b', 'sunt'], ['c', 'ești']]],
+  ['Noi ___ în București.', [['a', 'locuim'], ['b', 'locuiește'], ['c', 'locuiți']]],
+  ['Maria și Ana ___ cafea.', [['a', 'beau'], ['b', 'bem'], ['c', 'bei']]],
+  ['Tu ___ română?', [['a', 'vorbește'], ['b', 'vorbesc'], ['c', 'vorbești']]],
+  ['El merge ___ școală.', [['a', 'la'], ['b', 'pe'], ['c', 'cu']]],
+  ['Avem două ___.', [['a', 'carte'], ['b', 'cărți'], ['c', 'cartă']]],
+  ['Astăzi este foarte ___.', [['a', 'cald'], ['b', 'calde'], ['c', 'calzi']]],
+  ['Eu nu ___ cafea dimineața.', [['a', 'beau'], ['b', 'bea'], ['c', 'bem']]],
+  ['Unde ___ acum?', [['a', 'ești'], ['b', 'sunt'], ['c', 'este']]],
+  ['Noi ___ fotbal în parc.', [['a', 'joc'], ['b', 'joacă'], ['c', 'jucăm']]]
+];
+
+function buildGrammar() {
+  const root = document.getElementById('grammarChoices');
+  grammarItems.forEach((item, index) => {
+    const id = 'g' + (index + 1);
+    const div = document.createElement('div');
+    div.className = 'question';
+    div.dataset.question = id;
+    div.innerHTML = `<p>${index + 1}. ${item[0]}</p><div class="options">${
+      item[1].map(([value, label]) => `<label class="option"><input type="radio" name="${id}" value="${value}"> ${value}) ${label}</label>`).join('')
+    }</div>`;
+    root.appendChild(div);
+  });
+}
+
+function showSection(name, el) {
+  document.querySelectorAll('.section').forEach(section => section.classList.remove('active'));
+  document.querySelectorAll('.nav-item, .tab').forEach(button => button.classList.remove('active'));
+  const section = document.getElementById('sec-' + name);
+  if (section) section.classList.add('active');
+  document.querySelectorAll('.nav-item, .tab').forEach(button => {
+    const action = button.getAttribute('onclick') || '';
+    if (action.includes("'" + name + "'")) button.classList.add('active');
+  });
+  if (el) el.classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function normalize(value) {
+  return value.trim().toLowerCase().replace(/\s+/g, ' ');
+}
+
+function loadAudio(input, audioId) {
+  const file = input.files && input.files[0];
+  if (!file) return;
+  const audio = document.getElementById(audioId);
+  audio.src = URL.createObjectURL(file);
+  audio.load();
+}
+
+function toggleTeacherText(id) {
+  document.getElementById(id)?.classList.toggle('open');
+}
+
+function saveTranscript(textareaId, transcriptId) {
+  const textarea = document.getElementById(textareaId);
+  const transcript = document.getElementById(transcriptId);
+  if (textarea && transcript) transcript.textContent = textarea.value;
+}
+
+function showLockedMessage() {
+  alert('Textul pentru audiție este ascuns pentru cursant și va apărea după verificarea finală.');
+}
+
+function markQuestion(id, correct) {
+  const q = document.querySelector(`[data-question="${id}"]`);
+  if (!q) return;
+  q.classList.remove('correct', 'incorrect');
+  q.classList.add(correct ? 'correct' : 'incorrect');
+}
+
+function checkTest() {
+  let reading = 0;
+  let listening = 0;
+  let grammar = 0;
+
+  Object.entries(answers).forEach(([id, answer]) => {
+    const selected = document.querySelector(`input[name="${id}"]:checked`);
+    const ok = selected?.value === answer;
+    markQuestion(id, ok);
+    if (ok && id.startsWith('r')) reading++;
+    if (ok && id.startsWith('l')) listening++;
+    if (ok && id.startsWith('g')) grammar++;
+  });
+
+  Object.entries(fillAnswers).forEach(([id, answer]) => {
+    const input = document.querySelector(`[data-fill="${id}"]`);
+    const ok = normalize(input?.value || '') === answer;
+    if (input) {
+      input.classList.remove('correct', 'incorrect');
+      input.classList.add(ok ? 'correct' : 'incorrect');
+    }
+    if (ok) grammar++;
+  });
+
+  const readingPoints = Math.round((reading / 9) * 25);
+  const listeningPoints = Math.round((listening / 5) * 20);
+  const grammarPoints = Math.round((grammar / 15) * 25);
+  const autoTotal = readingPoints + listeningPoints + grammarPoints;
+
+  document.querySelectorAll('.hidden-transcript').forEach(box => box.classList.add('revealed'));
+  document.getElementById('finalTranscript1').textContent = document.getElementById('transcript1').textContent;
+  document.getElementById('finalTranscript2').textContent = document.getElementById('transcript2').textContent;
+  document.getElementById('scoreSummary').textContent =
+    `Corectare automată: ${autoTotal}/70 puncte. Citire: ${readingPoints}/25, Ascultare: ${listeningPoints}/20, Gramatică și vocabular: ${grammarPoints}/25. Scrierea și oralul se adaugă manual: 30 puncte.`;
+  document.getElementById('resultPanel').classList.add('visible');
+  showSection('rezultate');
+}
+
+buildGrammar();
+</script>
+</body>
+</html>
