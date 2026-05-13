@@ -290,10 +290,10 @@
     align-items: center;
     margin-top: .75rem;
   }
-  .audio-actions input[type="file"] { max-width: 260px; font-size: 13px; }
+  .audio-actions input[type="file"] { display: none; }
   audio { width: 100%; margin-top: .75rem; }
-  .hidden-transcript, .teacher-text { display: none; margin-top: .8rem; }
-  .hidden-transcript.revealed, .teacher-text.open { display: block; }
+  .hidden-transcript { display: none; margin-top: .8rem; }
+  .hidden-transcript.revealed { display: block; }
   .locked-note { color: var(--text2); font-size: 14px; margin-top: .45rem; }
   .btn {
     border: 1px solid var(--navy);
@@ -426,13 +426,6 @@
         </div>
       </div>
 
-      <div class="card">
-        <div class="card-title">Instrucțiuni generale</div>
-        <p>Scrie clar și citeț. La exercițiile cu alegere multiplă există un singur răspuns corect. Nu folosi dicționarul.</p>
-        <p>Competențe urmărite la nivelul A2: înțelegerea unor texte scurte despre viața cotidiană, exprimarea unor nevoi simple, descrierea experiențelor personale, formularea unor cereri, invitații, explicații și răspunsuri în situații obișnuite.</p>
-        <p class="locked-note">La secțiunea de ascultare poți încărca audio-uri local. Textele pentru audiție rămân ascunse pentru cursant până la verificarea întregului test.</p>
-      </div>
-
       <section id="sec-citire" class="section active">
         <div class="section-header">
           <div class="section-icon">📖</div>
@@ -470,15 +463,10 @@
           <div class="audio-box">
             <strong>Audio pentru audiție</strong>
             <div class="audio-actions">
-              <input type="file" accept="audio/*" onchange="loadAudio(this, 'audio1')">
-              <button class="btn secondary" type="button" onclick="toggleTeacherText('teacher1')">Adaugă textul</button>
-              <button class="btn secondary" type="button" onclick="showLockedMessage()">Text ascuns</button>
+              <label class="btn secondary" for="audioFile1">Ascultare audio</label>
+              <input id="audioFile1" type="file" accept="audio/*" onchange="loadAudio(this, 'audio1')">
             </div>
             <audio id="audio1" controls></audio>
-            <div id="teacher1" class="teacher-text">
-              <textarea id="teacherText1">„Bună, Sorin! Sunt Raluca. Te sun pentru întâlnirea de mâine. Nu mai putem merge la restaurantul de lângă gară, pentru că este închis. Am rezervat o masă la restaurantul din centru, pe strada Mihai Eminescu, la ora 19:00. Dacă ai întrebări, sună-mă după ora 16:00.”</textarea>
-              <button class="btn secondary" type="button" onclick="saveTranscript('teacherText1', 'transcript1')">Salvează textul</button>
-            </div>
             <p class="locked-note">Textul pentru audiție este ascuns până la verificarea finală.</p>
             <div id="transcript1" class="hidden-transcript text-card">„Bună, Sorin! Sunt Raluca. Te sun pentru întâlnirea de mâine. Nu mai putem merge la restaurantul de lângă gară, pentru că este închis. Am rezervat o masă la restaurantul din centru, pe strada Mihai Eminescu, la ora 19:00. Dacă ai întrebări, sună-mă după ora 16:00.”</div>
           </div>
@@ -490,15 +478,10 @@
           <div class="audio-box">
             <strong>Audio pentru audiție</strong>
             <div class="audio-actions">
-              <input type="file" accept="audio/*" onchange="loadAudio(this, 'audio2')">
-              <button class="btn secondary" type="button" onclick="toggleTeacherText('teacher2')">Adaugă textul</button>
-              <button class="btn secondary" type="button" onclick="showLockedMessage()">Text ascuns</button>
+              <label class="btn secondary" for="audioFile2">Ascultare audio</label>
+              <input id="audioFile2" type="file" accept="audio/*" onchange="loadAudio(this, 'audio2')">
             </div>
             <audio id="audio2" controls></audio>
-            <div id="teacher2" class="teacher-text">
-              <textarea id="teacherText2">„Stimați călători, trenul InterRegio spre Brașov va pleca astăzi cu o întârziere de 25 de minute. Plecarea se va face de la linia 6, nu de la linia 4. Vă rugăm să urmăriți afișajele din gară pentru informații actualizate.”</textarea>
-              <button class="btn secondary" type="button" onclick="saveTranscript('teacherText2', 'transcript2')">Salvează textul</button>
-            </div>
             <p class="locked-note">Textul pentru audiție este ascuns până la verificarea finală.</p>
             <div id="transcript2" class="hidden-transcript text-card">„Stimați călători, trenul InterRegio spre Brașov va pleca astăzi cu o întârziere de 25 de minute. Plecarea se va face de la linia 6, nu de la linia 4. Vă rugăm să urmăriți afișajele din gară pentru informații actualizate.”</div>
           </div>
@@ -510,18 +493,10 @@
           <div class="audio-box">
             <strong>Audio pentru audiție</strong>
             <div class="audio-actions">
-              <input type="file" accept="audio/*" onchange="loadAudio(this, 'audio3')">
-              <button class="btn secondary" type="button" onclick="toggleTeacherText('teacher3')">Adaugă textul</button>
-              <button class="btn secondary" type="button" onclick="showLockedMessage()">Text ascuns</button>
+              <label class="btn secondary" for="audioFile3">Ascultare audio</label>
+              <input id="audioFile3" type="file" accept="audio/*" onchange="loadAudio(this, 'audio3')">
             </div>
             <audio id="audio3" controls></audio>
-            <div id="teacher3" class="teacher-text">
-              <textarea id="teacherText3">— Bună ziua! Aș vrea să fac o programare la dentist.
-— Sigur. Avem liber miercuri la ora 11:30 sau joi la ora 15:00.
-— Joi este mai bine pentru mine. Pot veni după serviciu.
-— Perfect. Am notat: joi, ora 15:00, pe numele dumneavoastră.</textarea>
-              <button class="btn secondary" type="button" onclick="saveTranscript('teacherText3', 'transcript3')">Salvează textul</button>
-            </div>
             <p class="locked-note">Textul pentru audiție este ascuns până la verificarea finală.</p>
             <div id="transcript3" class="hidden-transcript text-card">— Bună ziua! Aș vrea să fac o programare la dentist.<br>— Sigur. Avem liber miercuri la ora 11:30 sau joi la ora 15:00.<br>— Joi este mai bine pentru mine. Pot veni după serviciu.<br>— Perfect. Am notat: joi, ora 15:00, pe numele dumneavoastră.</div>
           </div>
@@ -818,32 +793,32 @@ function optionMarkup(id, choices) {
   return choices.map(([value, label]) => `<label class="option"><input type="radio" name="${id}" value="${value}"> ${value}) ${label}</label>`).join('');
 }
 
-function buildQuestion(root, id, prompt, choices, extra = '') {
+function buildQuestion(root, id, number, prompt, choices, extra = '') {
   const div = document.createElement('div');
   div.className = 'question';
   div.dataset.question = id;
-  div.innerHTML = `${extra}<p>${prompt}</p><div class="options">${optionMarkup(id, choices)}</div>`;
+  div.innerHTML = `${extra}<p>${number}. ${prompt}</p><div class="options">${optionMarkup(id, choices)}</div>`;
   root.appendChild(div);
 }
 
 function buildContent() {
   const noticesRoot = document.getElementById('readingNotices');
-  readingNotices.forEach((item, index) => buildQuestion(noticesRoot, 'r' + (index + 1), item[1], item[2], `<div class="notice-card">${item[0]}</div>`));
+  readingNotices.forEach((item, index) => buildQuestion(noticesRoot, 'r' + (index + 1), index + 1, item[1], item[2], `<div class="notice-card">${item[0]}</div>`));
 
   const textRoot = document.getElementById('readingTextQuestions');
-  readingTextQuestions.forEach((item, index) => buildQuestion(textRoot, 'r' + (index + 6), item[0], item[1]));
+  readingTextQuestions.forEach((item, index) => buildQuestion(textRoot, 'r' + (index + 6), index + 1, item[0], item[1]));
 
   let listeningIndex = 1;
   Object.entries(listeningGroups).forEach(([rootId, questions]) => {
     const root = document.getElementById(rootId);
-    questions.forEach(item => {
-      buildQuestion(root, 'l' + listeningIndex, item[0], item[1]);
+    questions.forEach((item, index) => {
+      buildQuestion(root, 'l' + listeningIndex, index + 1, item[0], item[1]);
       listeningIndex++;
     });
   });
 
   const grammarRoot = document.getElementById('grammarChoices');
-  grammarItems.forEach((item, index) => buildQuestion(grammarRoot, 'g' + (index + 1), `${index + 1}. ${item[0]}`, item[1]));
+  grammarItems.forEach((item, index) => buildQuestion(grammarRoot, 'g' + (index + 1), index + 1, item[0], item[1]));
 }
 
 function showSection(name, el) {
@@ -869,20 +844,6 @@ function loadAudio(input, audioId) {
   const audio = document.getElementById(audioId);
   audio.src = URL.createObjectURL(file);
   audio.load();
-}
-
-function toggleTeacherText(id) {
-  document.getElementById(id)?.classList.toggle('open');
-}
-
-function saveTranscript(textareaId, transcriptId) {
-  const textarea = document.getElementById(textareaId);
-  const transcript = document.getElementById(transcriptId);
-  if (textarea && transcript) transcript.textContent = textarea.value;
-}
-
-function showLockedMessage() {
-  alert('Textul pentru audiție este ascuns pentru cursant și va apărea după verificarea finală.');
 }
 
 function markQuestion(id, correct) {
