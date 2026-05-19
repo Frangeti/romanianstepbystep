@@ -7,28 +7,27 @@
 <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600&amp;family=DM+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #f6f4ef;
+    --bg: #F8F6FF;
     --surface: #ffffff;
-    --surface2: #f0eee7;
-    --text: #1d2430;
-    --text2: #667085;
-    --text3: #9aa1ad;
-    --teal: #0f6e56;
-    --teal-light: #e1f5ee;
-    --blue: #2457a6;
-    --blue-light: #e8eef8;
-    --coral: #b84a35;
-    --coral-light: #fae9e5;
-    --gold: #a66f14;
-    --gold-light: #f7edd7;
-    --green: #247a4f;
-    --green-light: #e2f3ea;
-    --red: #b42318;
-    --red-light: #fde7e5;
-    --border: rgba(29, 36, 48, .11);
-    --border2: rgba(29, 36, 48, .07);
-    --radius: 12px;
-    --radius-sm: 8px;
+    --surface2: #F0EDF9;
+    --text: #1C1733;
+    --text2: #5E5880;
+    --text3: #A09BBF;
+    --purple: #5B4FD9;
+    --purple-light: #EAE8FC;
+    --purple-mid: #8C83E8;
+    --green: #1D8C5A;
+    --green-light: #DFFAEE;
+    --orange: #C2560A;
+    --orange-light: #FEF0E4;
+    --blue: #1565C0;
+    --blue-light: #E3F0FD;
+    --pink: #A02060;
+    --pink-light: #FCE8F3;
+    --border: rgba(28,23,51,0.1);
+    --border2: rgba(28,23,51,0.06);
+    --radius: 14px;
+    --radius-sm: 9px;
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -38,22 +37,32 @@
     background: var(--bg);
     color: var(--text);
     font-family: 'DM Sans', sans-serif;
-    line-height: 1.65;
+    line-height: 1.75;
   }
 
   a { color: inherit; text-decoration: none; }
 
   .header {
-    background: #0f3d45;
+    background: linear-gradient(135deg, #5B4FD9 0%, #7B6FE8 100%);
     color: #fff;
-    padding: 1.1rem 1.25rem 1.35rem;
-    position: sticky;
-    top: 0;
-    z-index: 20;
-    border-bottom: 3px solid #d7a33d;
+    padding: 2.5rem 1.5rem 2rem;
+    position: relative;
+    overflow: hidden;
   }
 
-  .header-inner { max-width: 1040px; margin: 0 auto; }
+  .header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-image: radial-gradient(circle, rgba(255,255,255,0.12) 1px, transparent 1px);
+    background-size: 30px 30px;
+    pointer-events: none;
+  }
+
+  .header-inner { max-width: 820px; margin: 0 auto; position: relative; z-index: 1; }
 
   .topline {
     display: flex;
@@ -72,8 +81,8 @@
     min-height: 26px;
     padding: 4px 12px;
     border-radius: 20px;
-    background: rgba(255,255,255,.14);
-    border: 1px solid rgba(255,255,255,.22);
+    background: rgba(255,255,255,.2);
+    border: 1px solid rgba(255,255,255,.3);
     font-size: 12px;
     font-weight: 700;
     letter-spacing: .08em;
@@ -81,14 +90,14 @@
   }
 
   h1 {
-    font-family: 'Lora', serif;
-    font-size: clamp(30px, 4.5vw, 48px);
-    line-height: 1.15;
+    font-family: 'DM Sans', sans-serif;
+    font-size: clamp(26px, 5vw, 38px);
+    line-height: 1.2;
     margin-bottom: .35rem;
-    font-weight: 600;
+    font-weight: 800;
   }
 
-  .header p { max-width: 720px; color: rgba(255,255,255,.76); font-size: 15px; }
+  .header p { max-width: 520px; color: rgba(255,255,255,.8); font-size: 15px; }
 
   .header-meta { display: flex; gap: 1.25rem; margin-top: 1.25rem; flex-wrap: wrap; }
   .header-meta span {
@@ -101,9 +110,9 @@
   }
 
   .lesson-tabs {
-    max-width: 1040px;
+    max-width: 820px;
     margin: 0 auto;
-    padding: 0 1.35rem;
+    padding: 0 1rem;
     display: flex;
     gap: 2px;
     overflow-x: auto;
@@ -124,32 +133,33 @@
   }
 
   .lesson-tab.active {
-    color: var(--teal);
-    border-bottom-color: var(--teal);
+    color: var(--purple);
+    border-bottom-color: var(--purple);
     font-weight: 700;
   }
 
   .layout {
-    max-width: 1040px;
+    max-width: 820px;
     margin: 0 auto;
-    display: grid;
-    grid-template-columns: 210px 1fr;
-    gap: 1.25rem;
-    padding: 1.35rem;
+    display: flex;
   }
 
   .sidebar {
+    width: 190px;
+    flex-shrink: 0;
+    padding: 1.5rem 0 2rem .75rem;
     position: sticky;
-    top: 154px;
-    align-self: start;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: .8rem;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+    background: transparent;
+    border: 0;
+    border-radius: 0;
   }
 
   .sidebar-label {
-    padding: .35rem .45rem .6rem;
+    margin-bottom: .6rem;
+    padding-left: .75rem;
     color: var(--text3);
     font-size: 10px;
     font-weight: 700;
@@ -162,7 +172,7 @@
     align-items: center;
     gap: 8px;
     width: 100%;
-    padding: .6rem .55rem;
+    padding: .55rem .75rem;
     border: 0;
     border-radius: var(--radius-sm);
     background: transparent;
@@ -173,41 +183,50 @@
     cursor: pointer;
   }
 
-  .nav-item.active { background: var(--teal-light); color: var(--teal); font-weight: 700; }
+  .nav-item:hover { background: var(--surface); color: var(--text); }
+  .nav-item.active { background: var(--purple-light); color: var(--purple); font-weight: 700; }
   .nav-num { margin-left: auto; color: var(--text3); font-size: 11px; }
 
-  .main { min-width: 0; }
+  .main { flex: 1; padding: 1.75rem 1rem 2rem 1.5rem; min-width: 0; }
 
   .section { display: none; }
   .section.active { display: block; animation: fadeUp .18s ease; }
   @keyframes fadeUp { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
 
   .section-header {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 1.25rem;
-    margin-bottom: 1rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.1rem;
+    border-bottom: 1px solid var(--border2);
   }
 
   .section-header h2 {
-    font-size: 22px;
-    margin-bottom: .25rem;
+    font-size: 21px;
+    font-weight: 800;
+    margin-bottom: 2px;
     color: var(--text);
   }
 
-  .section-header p { color: var(--text2); font-size: 14px; }
+  .section-header p { color: var(--text2); font-size: 13px; }
 
   .time-chip {
     display: inline-flex;
+    justify-content: center;
     align-items: center;
-    padding: 3px 10px;
-    border-radius: 999px;
-    background: var(--gold-light);
-    color: var(--gold);
-    font-size: 12px;
-    font-weight: 700;
-    margin-bottom: .65rem;
+    width: 46px;
+    height: 46px;
+    border-radius: var(--radius-sm);
+    background: var(--purple-light);
+    color: var(--purple);
+    font-size: 0;
+    flex: 0 0 46px;
+  }
+
+  .time-chip::before {
+    content: '📚';
+    font-size: 22px;
   }
 
   .card {
@@ -293,11 +312,11 @@
   .vocab-card:hover { transform: translateY(-2px); border-color: rgba(15,110,86,.35); }
   .vocab-ro { font-weight: 700; color: var(--text); }
   .vocab-de { color: var(--text2); font-size: 13px; }
-  .vocab-ex { display: none; color: var(--teal); font-size: 13px; margin-top: .45rem; }
+  .vocab-ex { display: none; color: var(--purple); font-size: 13px; margin-top: .45rem; }
   .vocab-card.open .vocab-ex { display: block; }
 
   .phrase-table { width: 100%; border-collapse: collapse; font-size: 14px; }
-  .phrase-table th { background: var(--teal-light); color: var(--teal); padding: .65rem; text-align: left; }
+  .phrase-table th { background: var(--purple-light); color: var(--purple); padding: .65rem; text-align: left; }
   .phrase-table td { padding: .65rem; border-bottom: 1px solid var(--border2); vertical-align: top; }
   .phrase-table tr:last-child td { border-bottom: 0; }
 
@@ -317,7 +336,7 @@
 
   .verb-box strong {
     display: block;
-    color: var(--teal);
+    color: var(--purple);
     margin-bottom: .35rem;
   }
 
@@ -325,12 +344,12 @@
 
   .dialogue { display: grid; gap: .75rem; }
   .line {
-    border-left: 4px solid var(--teal);
+    border-left: 4px solid var(--purple);
     background: var(--surface2);
     border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
     padding: .75rem .9rem;
   }
-  .speaker { font-weight: 700; color: var(--teal); }
+  .speaker { font-weight: 700; color: var(--purple); }
   .translation { color: var(--text2); font-size: 13px; margin-top: .2rem; }
 
   .question, .fill-item, .match-row {
@@ -357,7 +376,7 @@
   }
 
   .answer-btn.correct { background: var(--green-light); border-color: rgba(36,122,79,.35); color: var(--green); font-weight: 700; }
-  .answer-btn.wrong { background: var(--red-light); border-color: rgba(180,35,24,.3); color: var(--red); font-weight: 700; }
+  .answer-btn.wrong { background: var(--orange-light); border-color: rgba(194,86,10,.3); color: var(--orange); font-weight: 700; }
 
   input, select, textarea {
     width: 100%;
@@ -371,7 +390,7 @@
   }
 
   textarea { min-height: 150px; resize: vertical; }
-  input:focus, select:focus, textarea:focus { border-color: var(--teal); }
+  input:focus, select:focus, textarea:focus { border-color: var(--purple-mid); }
 
   .inline-input {
     display: inline-block;
@@ -386,9 +405,9 @@
     align-items: center;
     justify-content: center;
     min-height: 42px;
-    border: 1.5px solid var(--teal);
+    border: 1.5px solid var(--purple);
     border-radius: var(--radius-sm);
-    background: var(--teal);
+    background: var(--purple);
     color: #fff;
     cursor: pointer;
     font: inherit;
@@ -397,7 +416,7 @@
     margin: .35rem .4rem .35rem 0;
   }
 
-  .btn.secondary { background: var(--surface); color: var(--teal); }
+  .btn.secondary { background: var(--surface); color: var(--purple); }
 
   .feedback {
     display: none;
@@ -408,7 +427,7 @@
     font-weight: 600;
   }
   .feedback.ok { display: block; background: var(--green-light); color: var(--green); }
-  .feedback.err { display: block; background: var(--red-light); color: var(--red); }
+  .feedback.err { display: block; background: var(--orange-light); color: var(--orange); }
   .feedback.info { display: block; background: var(--blue-light); color: var(--blue); }
 
   .match-grid {
@@ -420,7 +439,7 @@
   .match-row strong { display: block; margin-bottom: .45rem; }
 
   .score-card {
-    background: linear-gradient(135deg, #0f6e56, #2457a6);
+    background: linear-gradient(135deg, #5B4FD9 0%, #7B6FE8 100%);
     color: #fff;
     border: 0;
   }
@@ -428,7 +447,7 @@
   .score-value { font-size: 42px; font-weight: 800; line-height: 1; margin: .35rem 0; }
 
   .footer {
-    max-width: 1040px;
+    max-width: 820px;
     margin: 0 auto;
     padding: 1.25rem 1.35rem 2rem;
     color: var(--text2);
@@ -437,17 +456,15 @@
   }
 
   @media (max-width: 820px) {
-    .header { position: static; }
-    .layout { grid-template-columns: 1fr; padding: 1rem; }
-    .sidebar { position: static; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 4px; }
-    .sidebar-label { grid-column: 1 / -1; }
+    .layout { display: block; }
+    .sidebar { display: none; }
+    .main { padding: 1.25rem 1rem 2rem; }
     .match-grid { grid-template-columns: 1fr; }
     .image-grid, .verb-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   }
 
   @media (max-width: 560px) {
     .topline { align-items: flex-start; flex-direction: column; }
-    .sidebar { grid-template-columns: 1fr; }
     .image-grid, .verb-grid { grid-template-columns: 1fr; }
     .phrase-table, .phrase-table tbody, .phrase-table tr, .phrase-table td, .phrase-table th { display: block; width: 100%; }
     .phrase-table th:nth-child(2) { display: none; }
@@ -458,15 +475,15 @@
   <header class="header">
     <div class="header-inner">
       <div class="topline">
-        <a class="home-link" href="../../index.html">← Înapoi la lecții</a>
+        <a class="home-link" href="../../index.html">← Zurück zu den Lektionen</a>
         <span class="level-tag">Nivel A2 · 30 minute</span>
       </div>
       <h1>Vacanța cu prietenele</h1>
-      <p>Lecție A2 pentru fete de 14 ani: vocabular de bază, imagini, exemple scurte și exerciții cu „a merge”, „a sta la” și „a face”.</p>
+      <p>A2-Lektion für 14-jährige Mädchen: Basiswortschatz, Bilder, kurze Beispiele und Übungen mit „a merge”, „a sta la” und „a face”.</p>
       <div class="header-meta">
-        <span>Vocabular de bază</span>
-        <span>Exerciții interactive</span>
-        <span>Traduceri în germană</span>
+        <span>Basiswortschatz</span>
+        <span>Interaktive Übungen</span>
+        <span>Deutschsprachige Anleitung</span>
       </div>
     </div>
   </header>
@@ -500,7 +517,7 @@
         <div class="section-header">
           <span class="time-chip">Vocabular · 10 min</span>
           <h2>Vocabular de bază pentru vacanță</h2>
-          <p>Privește imaginile, apoi apasă pe un card pentru a vedea o propoziție exemplu.</p>
+          <p>Sieh dir die Bilder an. Klicke dann auf eine Karte, um einen Beispielsatz zu sehen.</p>
         </div>
 
         <div class="image-grid" aria-label="Imagini pentru vocabular">
@@ -511,7 +528,7 @@
         </div>
 
         <div class="card">
-          <div class="card-title">Cuvinte tematice</div>
+          <div class="card-title">Thematischer Wortschatz</div>
           <div id="vocabContainer"></div>
         </div>
 
@@ -537,11 +554,11 @@
         <div class="section-header">
           <span class="time-chip">Reguli · 5 min</span>
           <h2>Verbe utile în vacanță</h2>
-          <p>Observă forma verbelor și construiește propoziții scurte.</p>
+          <p>Sieh dir die Verbformen an und bilde kurze Sätze.</p>
         </div>
 
         <div class="card">
-          <div class="card-title">Modele de propoziții</div>
+          <div class="card-title">Satzmodelle</div>
           <div class="verb-grid">
             <div class="verb-box"><strong>a merge la</strong><p>Eu merg la mare. Tu mergi la munte. Ea merge la piscină. Noi mergem în centru.</p></div>
             <div class="verb-box"><strong>a sta la</strong><p>Eu stau la hotel. Noi stăm la pensiune. Ele stau la bunici.</p></div>
@@ -550,7 +567,7 @@
         </div>
 
         <div class="card">
-          <div class="card-title">Construcții de bază</div>
+          <div class="card-title">Grundstrukturen</div>
           <table class="phrase-table">
             <tbody>
               <tr><td><strong>merg la + loc</strong></td><td>merg la mare, merg la munte, merg la piscină</td></tr>
@@ -566,7 +583,7 @@
         <div class="section-header">
           <span class="time-chip">Text & Dialog · 5 min</span>
           <h2>Vacanța Marei</h2>
-          <p>Citește textul scurt și dialogul dintre două prietene.</p>
+          <p>Lies den kurzen Text und den Dialog zwischen zwei Freundinnen.</p>
         </div>
 
         <div class="card">
@@ -593,27 +610,27 @@
         <div class="section-header">
           <span class="time-chip">Exerciții · 12 min</span>
           <h2>Exerciții</h2>
-          <p>Traducere, construcție de propoziții și întrebări simple, cu verificare automată.</p>
+          <p>Übe Übersetzung, Satzbau und einfache Fragen mit automatischer Kontrolle.</p>
         </div>
 
-        <span class="theme-title">Exercițiu 1 — Traducere simplă</span>
+        <span class="theme-title">Übung 1 — Einfache Übersetzung</span>
         <div class="card" id="quizContainer"></div>
 
-        <span class="theme-title">Exercițiu 2 — Construiește propoziții</span>
+        <span class="theme-title">Übung 2 — Sätze bilden</span>
         <div class="card">
-          <div class="fill-item">1. Eu <input class="inline-input" id="fill1" type="text" autocomplete="off"> la mare cu familia.<div class="hint">Indiciu: a merge, persoana I singular.</div></div>
-          <div class="fill-item">2. Noi <input class="inline-input" id="fill2" type="text" autocomplete="off"> la o pensiune mică.<div class="hint">Indiciu: a sta la, persoana I plural.</div></div>
-          <div class="fill-item">3. Pe plajă, eu <input class="inline-input" id="fill3" type="text" autocomplete="off"> poze cu telefonul.<div class="hint">Indiciu: a face, persoana I singular.</div></div>
-          <div class="fill-item">4. Seara, noi <input class="inline-input" id="fill4" type="text" autocomplete="off"> în centru.<div class="hint">Indiciu: a merge, persoana I plural.</div></div>
-          <button class="btn" onclick="checkFill()">Verifică</button>
+          <div class="fill-item">1. Eu <input class="inline-input" id="fill1" type="text" autocomplete="off"> la mare cu familia.<div class="hint">Tipp: a merge, 1. Person Singular.</div></div>
+          <div class="fill-item">2. Noi <input class="inline-input" id="fill2" type="text" autocomplete="off"> la o pensiune mică.<div class="hint">Tipp: a sta la, 1. Person Plural.</div></div>
+          <div class="fill-item">3. Pe plajă, eu <input class="inline-input" id="fill3" type="text" autocomplete="off"> poze cu telefonul.<div class="hint">Tipp: a face, 1. Person Singular.</div></div>
+          <div class="fill-item">4. Seara, noi <input class="inline-input" id="fill4" type="text" autocomplete="off"> în centru.<div class="hint">Tipp: a merge, 1. Person Plural.</div></div>
+          <button class="btn" onclick="checkFill()">Überprüfen</button>
           <div id="fillFeedback" class="feedback"></div>
         </div>
 
-        <span class="theme-title">Exercițiu 3 — Întrebări simple</span>
+        <span class="theme-title">Übung 3 — Einfache Fragen</span>
         <div class="card">
           <div id="matchContainer" class="match-grid"></div>
-          <button class="btn" onclick="checkMatch()">Verifică</button>
-          <button class="btn secondary" onclick="renderMatch()">Amestecă din nou</button>
+          <button class="btn" onclick="checkMatch()">Überprüfen</button>
+          <button class="btn secondary" onclick="renderMatch()">Neu mischen</button>
           <div id="matchFeedback" class="feedback"></div>
         </div>
       </section>
@@ -621,34 +638,34 @@
       <section id="sec-conversatie" class="section">
         <div class="section-header">
           <span class="time-chip">Conversație · 5 min</span>
-          <h2>Întrebări pentru discuție</h2>
-          <p>Răspunde oral, cu propoziții scurte.</p>
+          <h2>Fragen für das Gespräch</h2>
+          <p>Antworte mündlich mit kurzen Sätzen.</p>
         </div>
         <div class="card">
-          <div class="fill-item"><strong>1. Unde mergi în vacanță?</strong><div class="hint">Model: Eu merg la mare.</div></div>
-          <div class="fill-item"><strong>2. Cu cine mergi?</strong><div class="hint">Model: Merg cu familia / cu prietena mea.</div></div>
-          <div class="fill-item"><strong>3. Unde stai?</strong><div class="hint">Model: Stau la hotel / la pensiune / la bunici.</div></div>
-          <div class="fill-item"><strong>4. Ce faci pe plajă?</strong><div class="hint">Model: Fac poze și fac plajă.</div></div>
-          <div class="fill-item"><strong>5. Ce cumperi în vacanță?</strong><div class="hint">Model: Cumpăr un suvenir.</div></div>
+          <div class="fill-item"><strong>1. Unde mergi în vacanță?</strong><div class="hint">Beispiel: Eu merg la mare.</div></div>
+          <div class="fill-item"><strong>2. Cu cine mergi?</strong><div class="hint">Beispiel: Merg cu familia / cu prietena mea.</div></div>
+          <div class="fill-item"><strong>3. Unde stai?</strong><div class="hint">Beispiel: Stau la hotel / la pensiune / la bunici.</div></div>
+          <div class="fill-item"><strong>4. Ce faci pe plajă?</strong><div class="hint">Beispiel: Fac poze și fac plajă.</div></div>
+          <div class="fill-item"><strong>5. Ce cumperi în vacanță?</strong><div class="hint">Beispiel: Cumpăr un suvenir.</div></div>
         </div>
       </section>
 
       <section id="sec-teme" class="section">
         <div class="section-header">
           <span class="time-chip">Teme · 5 min</span>
-          <h2>Temă de scriere</h2>
-          <p>Scrie 4–6 propoziții despre o vacanță ideală. Folosește „merg”, „stau la” și „fac”.</p>
+          <h2>Schreibaufgabe</h2>
+          <p>Schreibe 4–6 Sätze über ideale Ferien. Verwende „merg”, „stau la” und „fac”.</p>
         </div>
         <div class="card">
           <label for="freeText"><strong>Meine Ferien auf Rumänisch:</strong></label>
           <textarea id="freeText" placeholder="Exemplu: Eu merg la mare cu prietenele mele. Stau la hotel. Fac poze și fac plajă..."></textarea>
-          <button class="btn" onclick="checkWriting()">Verificare AI</button>
+          <button class="btn" onclick="checkWriting()">KI-Kontrolle</button>
           <div id="aiFeedback" class="feedback info"></div>
         </div>
         <div class="card score-card">
-          <div class="card-title">Scor final</div>
+          <div class="card-title">Endpunktzahl</div>
           <div class="score-value" id="finalScore">0 / 18</div>
-          <p id="scoreText">Rezolvă exercițiile pentru a vedea scorul final.</p>
+          <p id="scoreText">Löse die Übungen, um deine Endpunktzahl zu sehen.</p>
         </div>
       </section>
 
@@ -656,11 +673,11 @@
         <div class="section-header">
           <span class="time-chip">Fișe · opțional</span>
           <h2>Fișe de lucru</h2>
-          <p>Materiale suplimentare pentru această lecție.</p>
+          <p>Zusätzliche Materialien für diese Lektion.</p>
         </div>
         <div class="card">
-          <div class="card-title">Fișă în pregătire</div>
-          <p>Fișa PDF pentru „Vacanța cu prietenele” va include vocabularul, modelele cu verbe și exerciții de traducere.</p>
+          <div class="card-title">Arbeitsblatt in Vorbereitung</div>
+          <p>Das PDF-Arbeitsblatt zu „Vacanța cu prietenele” wird Wortschatz, Verbmodelle und Übersetzungsübungen enthalten.</p>
         </div>
       </section>
 
@@ -668,11 +685,11 @@
         <div class="section-header">
           <span class="time-chip">Teste · opțional</span>
           <h2>Teste</h2>
-          <p>Teste pentru această lecție.</p>
+          <p>Tests für diese Lektion.</p>
         </div>
         <div class="card">
-          <div class="card-title">Test A2 — în pregătire</div>
-          <p>Aici va fi adăugat testul pentru lecția „Vacanța cu prietenele”.</p>
+          <div class="card-title">A2-Test in Vorbereitung</div>
+          <p>Hier wird später der Test zur Lektion „Vacanța cu prietenele” ergänzt.</p>
         </div>
       </section>
     </main>
@@ -804,7 +821,7 @@ function checkFill() {
   scores.fill = score;
   const fb = document.getElementById('fillFeedback');
   fb.className = 'feedback ' + (score === 4 ? 'ok' : 'err');
-  fb.textContent = score === 4 ? 'Foarte bine! Toate propozițiile sunt corecte.' : `Ai ${score} din 4. Răspunsuri: merg, stăm, fac, mergem.`;
+  fb.textContent = score === 4 ? 'Sehr gut! Alle Sätze sind richtig.' : `Du hast ${score} von 4 Punkten. Lösungen: merg, stăm, fac, mergem.`;
   updateFinalScore();
 }
 
@@ -820,7 +837,7 @@ function renderMatch() {
     <div class="match-row">
       <strong>${pair[0]}</strong>
       <select data-answer="${pair[1]}" id="match${index}">
-        <option value="">Alege traducerea</option>
+        <option value="">Übersetzung wählen</option>
         ${options.map(option => `<option value="${option}">${option}</option>`).join('')}
       </select>
     </div>
@@ -838,7 +855,7 @@ function checkMatch() {
   scores.match = score;
   const fb = document.getElementById('matchFeedback');
   fb.className = 'feedback ' + (score === 6 ? 'ok' : 'err');
-  fb.textContent = score === 6 ? 'Perfect! Ai asociat toate expresiile corect.' : `Ai ${score} din 6. Mai verifică traducerile marcate.`;
+  fb.textContent = score === 6 ? 'Perfekt! Du hast alle Fragen richtig zugeordnet.' : `Du hast ${score} von 6 Punkten. Prüfe die markierten Übersetzungen noch einmal.`;
   updateFinalScore();
 }
 
@@ -878,10 +895,10 @@ function checkWriting() {
 function updateFinalScore() {
   const total = scores.quiz + scores.fill + scores.match + scores.write;
   document.getElementById('finalScore').textContent = total + ' / 18';
-  let text = 'Continuă exercițiile pentru un scor complet.';
-  if (total >= 16) text = 'Excelent! Ești pregătit(ă) să vorbești despre o vacanță la nivel A2.';
-  else if (total >= 11) text = 'Bine lucrat! Mai repetă vocabularul și expresiile pentru bilete.';
-  else if (total > 0) text = 'Ai început bine. Revino la vocabular și încearcă din nou exercițiile.';
+  let text = 'Bearbeite die Übungen weiter, um eine vollständige Punktzahl zu bekommen.';
+  if (total >= 16) text = 'Ausgezeichnet! Du kannst schon gut auf A2-Niveau über Ferien sprechen.';
+  else if (total >= 11) text = 'Gut gemacht! Wiederhole noch einmal den Wortschatz und die kurzen Fragen.';
+  else if (total > 0) text = 'Guter Anfang. Geh noch einmal zum Wortschatz zurück und versuche die Übungen erneut.';
   document.getElementById('scoreText').textContent = text;
 }
 
