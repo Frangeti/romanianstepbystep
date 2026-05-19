@@ -90,34 +90,42 @@
 
   .header p { max-width: 720px; color: rgba(255,255,255,.76); font-size: 15px; }
 
-  .progress-wrap {
-    margin-top: 1rem;
-    display: grid;
-    grid-template-columns: 1fr auto;
-    align-items: center;
-    gap: .8rem;
+  .header-meta { display: flex; gap: 1.25rem; margin-top: 1.25rem; flex-wrap: wrap; }
+  .header-meta span {
+    font-size: 13px;
+    color: rgba(255,255,255,.75);
+    background: rgba(255,255,255,.12);
+    border-radius: 20px;
+    padding: 3px 12px;
+    font-weight: 600;
   }
 
-  .progress-track {
-    height: 9px;
-    border-radius: 999px;
-    background: rgba(255,255,255,.2);
-    overflow: hidden;
+  .lesson-tabs {
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 0 1.35rem;
+    display: flex;
+    gap: 2px;
+    overflow-x: auto;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
   }
 
-  .progress-bar {
-    height: 100%;
-    width: 16.66%;
-    border-radius: inherit;
-    background: #f4c15d;
-    transition: width .2s ease;
+  .lesson-tab {
+    padding: 13px 14px 11px;
+    border: 0;
+    border-bottom: 2px solid transparent;
+    background: transparent;
+    color: var(--text2);
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 14px;
+    white-space: nowrap;
   }
 
-  .progress-label {
-    min-width: 86px;
-    text-align: right;
-    font-size: 12px;
-    color: rgba(255,255,255,.78);
+  .lesson-tab.active {
+    color: var(--teal);
+    border-bottom-color: var(--teal);
     font-weight: 700;
   }
 
@@ -210,6 +218,41 @@
     margin-bottom: 1rem;
   }
 
+  .image-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 10px;
+    margin-bottom: 1rem;
+  }
+
+  .image-card {
+    min-height: 150px;
+    border-radius: var(--radius);
+    overflow: hidden;
+    position: relative;
+    background: var(--surface2);
+  }
+
+  .image-card img {
+    width: 100%;
+    height: 100%;
+    min-height: 150px;
+    object-fit: cover;
+    display: block;
+  }
+
+  .image-card span {
+    position: absolute;
+    left: 10px;
+    bottom: 10px;
+    padding: 4px 9px;
+    border-radius: 999px;
+    background: rgba(15, 61, 69, .86);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 700;
+  }
+
   .card-title {
     color: var(--text3);
     font-size: 11px;
@@ -257,6 +300,28 @@
   .phrase-table th { background: var(--teal-light); color: var(--teal); padding: .65rem; text-align: left; }
   .phrase-table td { padding: .65rem; border-bottom: 1px solid var(--border2); vertical-align: top; }
   .phrase-table tr:last-child td { border-bottom: 0; }
+
+  .verb-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+    margin-bottom: 1rem;
+  }
+
+  .verb-box {
+    border: 1px solid var(--border2);
+    border-radius: var(--radius-sm);
+    background: #fbfaf7;
+    padding: .9rem;
+  }
+
+  .verb-box strong {
+    display: block;
+    color: var(--teal);
+    margin-bottom: .35rem;
+  }
+
+  .verb-box p { color: var(--text2); font-size: 14px; }
 
   .dialogue { display: grid; gap: .75rem; }
   .line {
@@ -362,19 +427,28 @@
   .score-card .card-title, .score-card p { color: rgba(255,255,255,.78); }
   .score-value { font-size: 42px; font-weight: 800; line-height: 1; margin: .35rem 0; }
 
+  .footer {
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 1.25rem 1.35rem 2rem;
+    color: var(--text2);
+    font-size: 13px;
+    text-align: center;
+  }
+
   @media (max-width: 820px) {
     .header { position: static; }
     .layout { grid-template-columns: 1fr; padding: 1rem; }
     .sidebar { position: static; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 4px; }
     .sidebar-label { grid-column: 1 / -1; }
     .match-grid { grid-template-columns: 1fr; }
+    .image-grid, .verb-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   }
 
   @media (max-width: 560px) {
     .topline { align-items: flex-start; flex-direction: column; }
-    .progress-wrap { grid-template-columns: 1fr; }
-    .progress-label { text-align: left; }
     .sidebar { grid-template-columns: 1fr; }
+    .image-grid, .verb-grid { grid-template-columns: 1fr; }
     .phrase-table, .phrase-table tbody, .phrase-table tr, .phrase-table td, .phrase-table th { display: block; width: 100%; }
     .phrase-table th:nth-child(2) { display: none; }
   }
@@ -387,32 +461,53 @@
         <a class="home-link" href="../../index.html">← Înapoi la lecții</a>
         <span class="level-tag">Nivel A2 · 30 minute</span>
       </div>
-      <h1>Vacanța</h1>
-      <p>Lecție interactivă despre transport, cazare, bilete, activități și obiective turistice, cu explicații pentru vorbitori de germană.</p>
-      <div class="progress-wrap" aria-label="Progres lecție">
-        <div class="progress-track"><div class="progress-bar" id="progressBar"></div></div>
-        <div class="progress-label" id="progressLabel">1 / 6</div>
+      <h1>Vacanța cu prietenele</h1>
+      <p>Lecție A2 pentru fete de 14 ani: vocabular de bază, imagini, exemple scurte și exerciții cu „a merge”, „a sta la” și „a face”.</p>
+      <div class="header-meta">
+        <span>Vocabular de bază</span>
+        <span>Exerciții interactive</span>
+        <span>Traduceri în germană</span>
       </div>
     </div>
   </header>
 
+  <nav class="lesson-tabs" aria-label="Secțiuni lecție">
+    <button class="lesson-tab active" onclick="showSection('vocab', this)">Vocabular</button>
+    <button class="lesson-tab" onclick="showSection('verbe', this)">Reguli</button>
+    <button class="lesson-tab" onclick="showSection('text', this)">Text</button>
+    <button class="lesson-tab" onclick="showSection('exercitii', this)">Exerciții</button>
+    <button class="lesson-tab" onclick="showSection('conversatie', this)">Conversație</button>
+    <button class="lesson-tab" onclick="showSection('teme', this)">Teme</button>
+    <button class="lesson-tab" onclick="showSection('fise', this)">Fișe de lucru</button>
+    <button class="lesson-tab" onclick="showSection('teste', this)">Teste</button>
+  </nav>
+
   <div class="layout">
     <aside class="sidebar" aria-label="Navigare lecție">
       <div class="sidebar-label">Secțiuni</div>
-      <button class="nav-item active" onclick="showSection('vocab', this)"><span>Vocabular</span><span class="nav-num">10'</span></button>
-      <button class="nav-item" onclick="showSection('dialog', this)"><span>Dialog</span><span class="nav-num">3'</span></button>
-      <button class="nav-item" onclick="showSection('quiz', this)"><span>Übung 1</span><span class="nav-num">5'</span></button>
-      <button class="nav-item" onclick="showSection('fill', this)"><span>Übung 2</span><span class="nav-num">5'</span></button>
-      <button class="nav-item" onclick="showSection('match', this)"><span>Übung 3</span><span class="nav-num">5'</span></button>
-      <button class="nav-item" onclick="showSection('write', this)"><span>Übung 4</span><span class="nav-num">5'</span></button>
+      <button class="nav-item active" onclick="showSection('vocab', this)"><span>📚 Vocabular</span><span class="nav-num">01</span></button>
+      <button class="nav-item" onclick="showSection('verbe', this)"><span>✏️ Reguli</span><span class="nav-num">02</span></button>
+      <button class="nav-item" onclick="showSection('text', this)"><span>📖 Text &amp; Dialog</span><span class="nav-num">03</span></button>
+      <button class="nav-item" onclick="showSection('exercitii', this)"><span>🎯 Exerciții</span><span class="nav-num">04</span></button>
+      <button class="nav-item" onclick="showSection('conversatie', this)"><span>💬 Conversație</span><span class="nav-num">05</span></button>
+      <button class="nav-item" onclick="showSection('teme', this)"><span>🗂 Teme</span><span class="nav-num">06</span></button>
+      <button class="nav-item" onclick="showSection('fise', this)"><span>📄 Fișe de lucru</span><span class="nav-num">07</span></button>
+      <button class="nav-item" onclick="showSection('teste', this)"><span>✅ Teste</span><span class="nav-num">08</span></button>
     </aside>
 
     <main class="main">
       <section id="sec-vocab" class="section active">
         <div class="section-header">
           <span class="time-chip">Vocabular · 10 min</span>
-          <h2>30 de cuvinte pentru vacanță</h2>
-          <p>Apasă pe un card pentru a vedea o propoziție exemplu.</p>
+          <h2>Vocabular de bază pentru vacanță</h2>
+          <p>Privește imaginile, apoi apasă pe un card pentru a vedea o propoziție exemplu.</p>
+        </div>
+
+        <div class="image-grid" aria-label="Imagini pentru vocabular">
+          <div class="image-card"><img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&amp;fit=crop&amp;w=700&amp;q=80" alt="Plajă la mare"><span>la mare</span></div>
+          <div class="image-card"><img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&amp;fit=crop&amp;w=700&amp;q=80" alt="Cameră de vacanță"><span>la pensiune</span></div>
+          <div class="image-card"><img src="https://images.unsplash.com/photo-1526772662000-3f88f10405ff?auto=format&amp;fit=crop&amp;w=700&amp;q=80" alt="Călătorie cu rucsac"><span>cu rucsacul</span></div>
+          <div class="image-card"><img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&amp;fit=crop&amp;w=700&amp;q=80" alt="Munți în vacanță"><span>la munte</span></div>
         </div>
 
         <div class="card">
@@ -425,70 +520,96 @@
           <table class="phrase-table">
             <thead><tr><th>Română</th><th>Deutsch</th></tr></thead>
             <tbody>
-              <tr><td>Aș dori un bilet dus-întors.</td><td>Ich möchte eine Hin- und Rückfahrkarte.</td></tr>
-              <tr><td>La ce oră pleacă trenul?</td><td>Um wie viel Uhr fährt der Zug ab?</td></tr>
-              <tr><td>Am o rezervare pe numele...</td><td>Ich habe eine Reservierung auf den Namen...</td></tr>
-              <tr><td>Cât costă intrarea?</td><td>Wie viel kostet der Eintritt?</td></tr>
+              <tr><td>Merg la mare cu prietenele mele.</td><td>Ich fahre mit meinen Freundinnen ans Meer.</td></tr>
+              <tr><td>Stăm la o pensiune mică.</td><td>Wir wohnen in einer kleinen Pension.</td></tr>
+              <tr><td>Facem poze pe plajă.</td><td>Wir machen Fotos am Strand.</td></tr>
+              <tr><td>Vreau să cumpăr un suvenir.</td><td>Ich möchte ein Souvenir kaufen.</td></tr>
               <tr><td>Unde este stația de autobuz?</td><td>Wo ist die Bushaltestelle?</td></tr>
-              <tr><td>Vreau să vizitez centrul vechi.</td><td>Ich möchte die Altstadt besichtigen.</td></tr>
-              <tr><td>Camera are mic dejun inclus?</td><td>Ist das Frühstück im Zimmerpreis inbegriffen?</td></tr>
-              <tr><td>Ne puteți recomanda un tur?</td><td>Können Sie uns eine Führung empfehlen?</td></tr>
+              <tr><td>Cât costă biletul?</td><td>Wie viel kostet die Fahrkarte?</td></tr>
+              <tr><td>Ce activități facem azi?</td><td>Welche Aktivitäten machen wir heute?</td></tr>
+              <tr><td>Seara ne plimbăm în centru.</td><td>Abends spazieren wir im Zentrum.</td></tr>
             </tbody>
           </table>
         </div>
       </section>
 
-      <section id="sec-dialog" class="section">
+      <section id="sec-verbe" class="section">
         <div class="section-header">
-          <span class="time-chip">Dialog · 3 min</span>
-          <h2>La aeroport și la casa de bilete</h2>
-          <p>Citește dialogul și observă formulele utile pentru o călătorie.</p>
+          <span class="time-chip">Reguli · 5 min</span>
+          <h2>Verbe utile în vacanță</h2>
+          <p>Observă forma verbelor și construiește propoziții scurte.</p>
         </div>
+
         <div class="card">
+          <div class="card-title">Modele de propoziții</div>
+          <div class="verb-grid">
+            <div class="verb-box"><strong>a merge la</strong><p>Eu merg la mare. Tu mergi la munte. Ea merge la piscină. Noi mergem în centru.</p></div>
+            <div class="verb-box"><strong>a sta la</strong><p>Eu stau la hotel. Noi stăm la pensiune. Ele stau la bunici.</p></div>
+            <div class="verb-box"><strong>a face</strong><p>Eu fac poze. Noi facem plajă. Ele fac o excursie.</p></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">Construcții de bază</div>
+          <table class="phrase-table">
+            <tbody>
+              <tr><td><strong>merg la + loc</strong></td><td>merg la mare, merg la munte, merg la piscină</td></tr>
+              <tr><td><strong>stau la + cazare/persoană</strong></td><td>stau la hotel, stau la pensiune, stau la bunici</td></tr>
+              <tr><td><strong>fac + activitate</strong></td><td>fac poze, fac plajă, fac o excursie</td></tr>
+              <tr><td><strong>întrebare</strong></td><td>Unde mergi? Unde stai? Ce faci?</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="sec-text" class="section">
+        <div class="section-header">
+          <span class="time-chip">Text & Dialog · 5 min</span>
+          <h2>Vacanța Marei</h2>
+          <p>Citește textul scurt și dialogul dintre două prietene.</p>
+        </div>
+
+        <div class="card">
+          <div class="card-title">Text de lectură — A2</div>
+          <p>Mara are 14 ani. Vara aceasta merge la mare cu familia și cu prietena ei, Ioana. Ele stau la o pensiune aproape de plajă. Dimineața fac plajă și înoată. După-amiaza merg în centru, cumpără suveniruri și fac poze. Seara se plimbă pe faleză și mănâncă înghețată.</p>
+        </div>
+
+        <div class="card">
+          <div class="card-title">Dialog model</div>
           <div class="dialogue">
-            <div class="line"><div><span class="speaker">Andrei:</span> Bună ziua! Aș dori un bilet spre Brașov, vă rog.</div><div class="translation">Guten Tag! Ich möchte bitte eine Fahrkarte nach Brașov.</div></div>
-            <div class="line"><div><span class="speaker">Casiera:</span> Dus sau dus-întors?</div><div class="translation">Einfach oder hin und zurück?</div></div>
-            <div class="line"><div><span class="speaker">Andrei:</span> Dus-întors. Plec vineri și mă întorc duminică seara.</div><div class="translation">Hin und zurück. Ich fahre am Freitag und komme am Sonntagabend zurück.</div></div>
-            <div class="line"><div><span class="speaker">Casiera:</span> Trenul pleacă la ora 9:20 de la linia 3.</div><div class="translation">Der Zug fährt um 9:20 Uhr von Gleis 3 ab.</div></div>
-            <div class="line"><div><span class="speaker">Andrei:</span> Perfect. Cât costă biletul?</div><div class="translation">Perfekt. Wie viel kostet die Fahrkarte?</div></div>
-            <div class="line"><div><span class="speaker">Casiera:</span> 86 de lei. Aveți reducere pentru student?</div><div class="translation">86 Lei. Haben Sie eine Ermäßigung für Studierende?</div></div>
-            <div class="line"><div><span class="speaker">Andrei:</span> Nu, dar am o rezervare la hotel în centru.</div><div class="translation">Nein, aber ich habe eine Hotelreservierung im Zentrum.</div></div>
-            <div class="line"><div><span class="speaker">Casiera:</span> Atunci vă recomand să luați un taxi sau autobuzul 4 de la gară.</div><div class="translation">Dann empfehle ich Ihnen, ein Taxi oder den Bus 4 vom Bahnhof zu nehmen.</div></div>
+            <div class="line"><div><span class="speaker">Mara:</span> Unde mergem în vacanță vara aceasta?</div><div class="translation">Wohin fahren wir diesen Sommer in den Ferien?</div></div>
+            <div class="line"><div><span class="speaker">Ioana:</span> Eu vreau să merg la mare, la Constanța.</div><div class="translation">Ich möchte ans Meer fahren, nach Constanța.</div></div>
+            <div class="line"><div><span class="speaker">Mara:</span> Super! Stăm la hotel sau la pensiune?</div><div class="translation">Super! Wohnen wir im Hotel oder in einer Pension?</div></div>
+            <div class="line"><div><span class="speaker">Ioana:</span> Stăm la o pensiune aproape de plajă.</div><div class="translation">Wir wohnen in einer Pension in der Nähe vom Strand.</div></div>
+            <div class="line"><div><span class="speaker">Mara:</span> Ce activități facem acolo?</div><div class="translation">Welche Aktivitäten machen wir dort?</div></div>
+            <div class="line"><div><span class="speaker">Ioana:</span> Facem plajă, facem poze și ne plimbăm seara.</div><div class="translation">Wir sonnen uns, machen Fotos und gehen abends spazieren.</div></div>
+            <div class="line"><div><span class="speaker">Mara:</span> Mergem și în centru?</div><div class="translation">Gehen wir auch ins Zentrum?</div></div>
+            <div class="line"><div><span class="speaker">Ioana:</span> Da, mergem în centru și cumpărăm suveniruri.</div><div class="translation">Ja, wir gehen ins Zentrum und kaufen Souvenirs.</div></div>
           </div>
         </div>
       </section>
 
-      <section id="sec-quiz" class="section">
+      <section id="sec-exercitii" class="section">
         <div class="section-header">
-          <span class="time-chip">Übung 1 · 5 min</span>
-          <h2>Alege răspunsul corect</h2>
-          <p>Primești feedback imediat după fiecare alegere.</p>
+          <span class="time-chip">Exerciții · 12 min</span>
+          <h2>Exerciții</h2>
+          <p>Traducere, construcție de propoziții și întrebări simple, cu verificare automată.</p>
         </div>
-        <div class="card" id="quizContainer"></div>
-      </section>
 
-      <section id="sec-fill" class="section">
-        <div class="section-header">
-          <span class="time-chip">Übung 2 · 5 min</span>
-          <h2>Completează propozițiile</h2>
-          <p>Folosește cuvintele: cazare, bilet, ghid, plajă.</p>
-        </div>
+        <span class="theme-title">Exercițiu 1 — Traducere simplă</span>
+        <div class="card" id="quizContainer"></div>
+
+        <span class="theme-title">Exercițiu 2 — Construiește propoziții</span>
         <div class="card">
-          <div class="fill-item">1. Am cumpărat un <input class="inline-input" id="fill1" type="text" autocomplete="off"> dus-întors spre Sibiu.<div class="hint">Indiciu: îl cumperi la casă sau online.</div></div>
-          <div class="fill-item">2. La hotel, am întrebat dacă micul dejun este inclus în <input class="inline-input" id="fill2" type="text" autocomplete="off">.<div class="hint">Indiciu: locul unde dormi în vacanță.</div></div>
-          <div class="fill-item">3. Vara, mergem la mare și stăm mult pe <input class="inline-input" id="fill3" type="text" autocomplete="off">.<div class="hint">Indiciu: nisip, apă, soare.</div></div>
-          <div class="fill-item">4. Pentru muzeu, am rezervat un tur cu <input class="inline-input" id="fill4" type="text" autocomplete="off"> local.<div class="hint">Indiciu: persoana care explică obiectivele turistice.</div></div>
+          <div class="fill-item">1. Eu <input class="inline-input" id="fill1" type="text" autocomplete="off"> la mare cu familia.<div class="hint">Indiciu: a merge, persoana I singular.</div></div>
+          <div class="fill-item">2. Noi <input class="inline-input" id="fill2" type="text" autocomplete="off"> la o pensiune mică.<div class="hint">Indiciu: a sta la, persoana I plural.</div></div>
+          <div class="fill-item">3. Pe plajă, eu <input class="inline-input" id="fill3" type="text" autocomplete="off"> poze cu telefonul.<div class="hint">Indiciu: a face, persoana I singular.</div></div>
+          <div class="fill-item">4. Seara, noi <input class="inline-input" id="fill4" type="text" autocomplete="off"> în centru.<div class="hint">Indiciu: a merge, persoana I plural.</div></div>
           <button class="btn" onclick="checkFill()">Verifică</button>
           <div id="fillFeedback" class="feedback"></div>
         </div>
-      </section>
 
-      <section id="sec-match" class="section">
-        <div class="section-header">
-          <span class="time-chip">Übung 3 · 5 min</span>
-          <h2>Asociere română–germană</h2>
-          <p>Alege traducerea potrivită pentru fiecare expresie.</p>
-        </div>
+        <span class="theme-title">Exercițiu 3 — Întrebări simple</span>
         <div class="card">
           <div id="matchContainer" class="match-grid"></div>
           <button class="btn" onclick="checkMatch()">Verifică</button>
@@ -497,15 +618,30 @@
         </div>
       </section>
 
-      <section id="sec-write" class="section">
+      <section id="sec-conversatie" class="section">
         <div class="section-header">
-          <span class="time-chip">Übung 4 · 5 min</span>
-          <h2>Scriere liberă cu verificare AI</h2>
-          <p>Scrie 5–7 propoziții despre o vacanță. Feedbackul apare în germană și corectează blând maximum 2–3 greșeli.</p>
+          <span class="time-chip">Conversație · 5 min</span>
+          <h2>Întrebări pentru discuție</h2>
+          <p>Răspunde oral, cu propoziții scurte.</p>
+        </div>
+        <div class="card">
+          <div class="fill-item"><strong>1. Unde mergi în vacanță?</strong><div class="hint">Model: Eu merg la mare.</div></div>
+          <div class="fill-item"><strong>2. Cu cine mergi?</strong><div class="hint">Model: Merg cu familia / cu prietena mea.</div></div>
+          <div class="fill-item"><strong>3. Unde stai?</strong><div class="hint">Model: Stau la hotel / la pensiune / la bunici.</div></div>
+          <div class="fill-item"><strong>4. Ce faci pe plajă?</strong><div class="hint">Model: Fac poze și fac plajă.</div></div>
+          <div class="fill-item"><strong>5. Ce cumperi în vacanță?</strong><div class="hint">Model: Cumpăr un suvenir.</div></div>
+        </div>
+      </section>
+
+      <section id="sec-teme" class="section">
+        <div class="section-header">
+          <span class="time-chip">Teme · 5 min</span>
+          <h2>Temă de scriere</h2>
+          <p>Scrie 4–6 propoziții despre o vacanță ideală. Folosește „merg”, „stau la” și „fac”.</p>
         </div>
         <div class="card">
           <label for="freeText"><strong>Meine Ferien auf Rumänisch:</strong></label>
-          <textarea id="freeText" placeholder="Exemplu: Vara trecută am fost la mare. Am călătorit cu trenul..."></textarea>
+          <textarea id="freeText" placeholder="Exemplu: Eu merg la mare cu prietenele mele. Stau la hotel. Fac poze și fac plajă..."></textarea>
           <button class="btn" onclick="checkWriting()">Verificare AI</button>
           <div id="aiFeedback" class="feedback info"></div>
         </div>
@@ -515,81 +651,100 @@
           <p id="scoreText">Rezolvă exercițiile pentru a vedea scorul final.</p>
         </div>
       </section>
+
+      <section id="sec-fise" class="section">
+        <div class="section-header">
+          <span class="time-chip">Fișe · opțional</span>
+          <h2>Fișe de lucru</h2>
+          <p>Materiale suplimentare pentru această lecție.</p>
+        </div>
+        <div class="card">
+          <div class="card-title">Fișă în pregătire</div>
+          <p>Fișa PDF pentru „Vacanța cu prietenele” va include vocabularul, modelele cu verbe și exerciții de traducere.</p>
+        </div>
+      </section>
+
+      <section id="sec-teste" class="section">
+        <div class="section-header">
+          <span class="time-chip">Teste · opțional</span>
+          <h2>Teste</h2>
+          <p>Teste pentru această lecție.</p>
+        </div>
+        <div class="card">
+          <div class="card-title">Test A2 — în pregătire</div>
+          <p>Aici va fi adăugat testul pentru lecția „Vacanța cu prietenele”.</p>
+        </div>
+      </section>
     </main>
   </div>
 
+  <div class="footer">
+    Romanian Step by Step · Nivel A2 · Vacanța cu prietenele · Creat pentru uz didactic
+  </div>
+
 <script>
-const sections = ['vocab', 'dialog', 'quiz', 'fill', 'match', 'write'];
+const sections = ['vocab', 'verbe', 'text', 'exercitii', 'conversatie', 'teme', 'fise', 'teste'];
 const scores = { quiz: 0, fill: 0, match: 0, write: 0 };
 
 const vocabGroups = [
-  { title: 'Mijloace de transport', words: [
-    ['avion', 'Flugzeug', 'Mergem cu avionul la Roma.'],
-    ['tren', 'Zug', 'Trenul pleacă la ora zece.'],
-    ['autobuz', 'Bus', 'Luăm autobuzul până în centru.'],
-    ['mașină', 'Auto', 'Închiriem o mașină pentru trei zile.'],
-    ['taxi', 'Taxi', 'Chemăm un taxi de la aeroport.'],
-    ['feribot', 'Fähre', 'Feribotul merge spre insulă.']
+  { title: 'Locuri', words: [
+    ['mare', 'Meer', 'Eu merg la mare vara.'],
+    ['munte', 'Berge', 'Noi mergem la munte în weekend.'],
+    ['plajă', 'Strand', 'Pe plajă fac poze.'],
+    ['piscină', 'Schwimmbad/Pool', 'După-amiaza mergem la piscină.'],
+    ['centru', 'Zentrum', 'Seara mergem în centru.'],
+    ['parc', 'Park', 'Ne plimbăm în parc.']
   ]},
   { title: 'Cazare', words: [
-    ['hotel', 'Hotel', 'Hotelul este aproape de gară.'],
+    ['hotel', 'Hotel', 'Stăm la hotel trei nopți.'],
     ['pensiune', 'Pension', 'Stăm la o pensiune mică.'],
-    ['cameră', 'Zimmer', 'Camera are balcon.'],
-    ['rezervare', 'Reservierung', 'Am o rezervare pentru două nopți.'],
-    ['recepție', 'Rezeption', 'Întrebăm la recepție despre mic dejun.'],
-    ['mic dejun', 'Frühstück', 'Micul dejun este inclus.']
+    ['cameră', 'Zimmer', 'Camera mea este curată.'],
+    ['balcon', 'Balkon', 'Camera are balcon.'],
+    ['mic dejun', 'Frühstück', 'Dimineața luăm micul dejun.'],
+    ['bagaj', 'Gepäck', 'Bagajul meu este mic.']
   ]},
-  { title: 'Bilete', words: [
-    ['bilet', 'Fahrkarte/Ticket', 'Am cumpărat un bilet online.'],
-    ['dus-întors', 'hin und zurück', 'Vreau un bilet dus-întors.'],
-    ['reducere', 'Ermäßigung', 'Studenții au reducere.'],
-    ['orar', 'Fahrplan', 'Verificăm orarul trenurilor.'],
-    ['linie', 'Gleis/Linie', 'Trenul pleacă de la linia 2.'],
-    ['intrare', 'Eintritt', 'Intrarea la muzeu costă 20 de lei.']
+  { title: 'Drum', words: [
+    ['tren', 'Zug', 'Mergem cu trenul la mare.'],
+    ['autobuz', 'Bus', 'Luăm autobuzul spre centru.'],
+    ['mașină', 'Auto', 'Mergem cu mașina la munte.'],
+    ['bilet', 'Ticket/Fahrkarte', 'Cumpăr un bilet online.'],
+    ['stație', 'Haltestelle', 'Stația este aproape.'],
+    ['hartă', 'Karte', 'Avem o hartă pe telefon.']
   ]},
   { title: 'Activități', words: [
-    ['a vizita', 'besichtigen', 'Vrem să vizităm castelul.'],
-    ['a face plajă', 'sich sonnen', 'Dimineața facem plajă.'],
-    ['a face poze', 'Fotos machen', 'Facem poze în centru.'],
-    ['a se plimba', 'spazieren gehen', 'Seara ne plimbăm pe faleză.'],
-    ['a rezerva', 'reservieren', 'Rezervăm o masă la restaurant.'],
-    ['a cumpăra suveniruri', 'Souvenirs kaufen', 'Cumpărăm suveniruri pentru familie.']
-  ]},
-  { title: 'Obiective turistice', words: [
-    ['muzeu', 'Museum', 'Muzeul este deschis până la șase.'],
-    ['castel', 'Schloss/Burg', 'Castelul este foarte vechi.'],
-    ['plajă', 'Strand', 'Plaja este curată și liniștită.'],
-    ['centru vechi', 'Altstadt', 'Centrul vechi are multe cafenele.'],
-    ['ghid', 'Reiseleiter', 'Ghidul vorbește română și germană.'],
-    ['hartă', 'Karte/Stadtplan', 'Avem o hartă a orașului.']
+    ['a merge', 'gehen/fahren', 'Eu merg la mare.'],
+    ['a sta la', 'wohnen/bleiben bei', 'Noi stăm la hotel.'],
+    ['a face poze', 'Fotos machen', 'Fac poze cu prietenele mele.'],
+    ['a face plajă', 'sich sonnen', 'Facem plajă dimineața.'],
+    ['a se plimba', 'spazieren gehen', 'Ne plimbăm seara.'],
+    ['a cumpăra', 'kaufen', 'Cumpăr un suvenir pentru mama.']
   ]}
 ];
 
 const quiz = [
-  { q: 'Ce spui când vrei să cumperi un bilet pentru plecare și întoarcere?', a: 'Aș dori un bilet dus-întors.', options: ['Aș dori un bilet dus-întors.', 'Aș dori o cameră cu balcon.', 'Aș dori o hartă.'] },
-  { q: 'Unde vorbești de obicei cu recepționerul?', a: 'La hotel.', options: ['La hotel.', 'În tren.', 'Pe plajă.'] },
-  { q: 'Ce obiect te ajută să găsești străzile?', a: 'harta', options: ['linia', 'harta', 'reducerea'] },
-  { q: 'Ce faci într-un muzeu?', a: 'Vizitez expoziții.', options: ['Fac plajă.', 'Vizitez expoziții.', 'Prind avionul.'] },
-  { q: 'Care este traducerea pentru „Ermäßigung”?', a: 'reducere', options: ['rezervare', 'reducere', 'intrare'] }
+  { q: 'Ich fahre ans Meer.', a: 'Eu merg la mare.', options: ['Eu merg la mare.', 'Eu stau la hotel.', 'Eu fac poze.'] },
+  { q: 'Wir wohnen in einer Pension.', a: 'Noi stăm la pensiune.', options: ['Noi facem plajă.', 'Noi stăm la pensiune.', 'Noi mergem cu trenul.'] },
+  { q: 'Sie macht Fotos.', a: 'Ea face poze.', options: ['Ea cumpără bilet.', 'Ea merge la munte.', 'Ea face poze.'] },
+  { q: 'Where do you go in the evening? / Wohin gehst du abends?', a: 'Unde mergi seara?', options: ['Unde mergi seara?', 'Unde stai la hotel?', 'Ce faci în bagaj?'] },
+  { q: 'What activities do we do? / Welche Aktivitäten machen wir?', a: 'Ce activități facem?', options: ['Cât costă camera?', 'Ce activități facem?', 'Unde este bagajul?'] }
 ];
 
 const matchPairs = [
-  ['cameră cu mic dejun', 'Zimmer mit Frühstück'],
-  ['stație de autobuz', 'Bushaltestelle'],
-  ['tur cu ghid', 'Führung mit Reiseleiter'],
-  ['bilet online', 'Online-Ticket'],
-  ['centru vechi', 'Altstadt'],
-  ['a face poze', 'Fotos machen']
+  ['Unde mergi în vacanță?', 'Wohin fährst du in den Ferien?'],
+  ['Unde stai?', 'Wo wohnst du?'],
+  ['Cu cine mergi?', 'Mit wem fährst du?'],
+  ['Ce faci pe plajă?', 'Was machst du am Strand?'],
+  ['Mergem în centru?', 'Gehen wir ins Zentrum?'],
+  ['Facem poze?', 'Machen wir Fotos?']
 ];
 
 function showSection(name, el) {
   document.querySelectorAll('.section').forEach(section => section.classList.remove('active'));
   document.getElementById('sec-' + name).classList.add('active');
-  document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
-  if (el) el.classList.add('active');
-  const index = sections.indexOf(name) + 1;
-  document.getElementById('progressBar').style.width = (index / sections.length * 100) + '%';
-  document.getElementById('progressLabel').textContent = index + ' / ' + sections.length;
+  document.querySelectorAll('.nav-item, .lesson-tab').forEach(item => {
+    const onclick = item.getAttribute('onclick') || '';
+    item.classList.toggle('active', onclick.includes("'" + name + "'"));
+  });
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
@@ -637,19 +792,19 @@ function answerQuiz(index, button, value) {
 }
 
 function checkFill() {
-  const answers = ['bilet', 'cazare', 'plajă', 'ghid'];
+  const answers = ['merg', 'stăm', 'fac', 'mergem'];
   let score = 0;
   answers.forEach((answer, index) => {
     const input = document.getElementById('fill' + (index + 1));
     const value = input.value.trim().toLowerCase();
-    const ok = value === answer || (answer === 'plajă' && value === 'plaja');
+    const ok = value === answer || (answer === 'stăm' && value === 'stam');
     input.style.borderColor = ok ? 'rgba(36,122,79,.65)' : 'rgba(180,35,24,.55)';
     if (ok) score++;
   });
   scores.fill = score;
   const fb = document.getElementById('fillFeedback');
   fb.className = 'feedback ' + (score === 4 ? 'ok' : 'err');
-  fb.textContent = score === 4 ? 'Foarte bine! Toate completările sunt corecte.' : `Ai ${score} din 4. Răspunsuri: bilet, cazare, plajă, ghid.`;
+  fb.textContent = score === 4 ? 'Foarte bine! Toate propozițiile sunt corecte.' : `Ai ${score} din 4. Răspunsuri: merg, stăm, fac, mergem.`;
   updateFinalScore();
 }
 
@@ -691,19 +846,20 @@ function checkWriting() {
   const text = document.getElementById('freeText').value.trim();
   const words = text ? text.split(/\s+/).length : 0;
   const lower = text.toLowerCase();
-  const usefulWords = ['vacanță', 'vacanta', 'hotel', 'bilet', 'tren', 'avion', 'plajă', 'plaja', 'muzeu', 'vizitat', 'cazare', 'rezervare'];
+  const usefulWords = ['merg', 'mergem', 'stau', 'stăm', 'stam', 'fac', 'facem', 'mare', 'munte', 'hotel', 'pensiune', 'plajă', 'plaja', 'poze'];
   const hits = usefulWords.filter(word => lower.includes(word)).length;
   let points = 0;
-  if (words >= 25) points++;
-  if (hits >= 2) points++;
+  if (words >= 22) points++;
+  if (hits >= 3) points++;
   if (/[.!?]/.test(text)) points++;
   scores.write = points;
 
   const tips = [];
-  if (words < 25) tips.push('Schreibe noch 2–3 Sätze dazu, damit der Text vollständiger wirkt.');
-  if (hits < 2) tips.push('Benutze mindestens zwei Wörter aus der Lektion, zum Beispiel „bilet”, „hotel”, „plajă” oder „muzeu”.');
+  if (words < 22) tips.push('Schreibe noch 1–2 Sätze dazu, damit der Text vollständiger wirkt.');
+  if (hits < 3) tips.push('Benutze die Verben aus der Lektion: „merg”, „stau la” und „fac”.');
   if (lower.includes('la marele')) tips.push('Kleine Korrektur: besser „la mare”, nicht „la marele”.');
   if (lower.includes('am mers cu avion')) tips.push('Kleine Korrektur: „am mers cu avionul” klingt natürlicher.');
+  if (lower.includes('stau hotel')) tips.push('Kleine Korrektur: besser „stau la hotel”.');
   if (!/[.!?]/.test(text)) tips.push('Setze Punkte am Satzende, damit dein Text klarer wird.');
 
   const fb = document.getElementById('aiFeedback');
@@ -712,7 +868,7 @@ function checkWriting() {
     fb.textContent = 'Schreib zuerst einen kurzen Text. Danach bekommst du freundliches Feedback.';
     scores.write = 0;
   } else {
-    const praise = hits >= 2 ? 'Sehr gut: Du benutzt passendes Urlaubsvokabular.' : 'Guter Anfang: Das Thema ist erkennbar.';
+    const praise = hits >= 3 ? 'Sehr gut: Du benutzt die wichtigen Verben und passendes Urlaubsvokabular.' : 'Guter Anfang: Das Thema ist erkennbar.';
     const correction = tips.slice(0, 3).join(' ');
     fb.textContent = `${praise} ${points === 3 ? 'Dein Text ist klar, passend für A2 und gut strukturiert.' : correction}`;
   }
