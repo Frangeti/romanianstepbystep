@@ -392,39 +392,37 @@
   }
 
   #a1 .lesson-grid {
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: .9rem;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: .8rem;
   }
 
   #a1 .lesson-card {
     background: rgba(255, 255, 255, .86);
+    cursor: pointer;
   }
 
   #a1 .lesson-head {
-    min-height: 190px;
+    min-height: 118px;
     border-bottom: 0;
-    padding: 1.25rem;
+    padding: 1.1rem;
     display: flex;
     flex-direction: column;
+    justify-content: center;
   }
 
-  #a1 .meta {
-    margin-bottom: auto;
-  }
-
+  #a1 .meta,
   #a1 .meta .badge-tech,
   #a1 .meta .badge-live {
     display: none;
   }
 
   #a1 .lesson-title {
-    font-size: clamp(24px, 2.1vw, 30px);
-    margin: 1.3rem 0 .45rem;
+    font-size: clamp(22px, 2vw, 28px);
+    margin: 0;
   }
 
   #a1 .lesson-desc {
-    font-size: 15px;
-    line-height: 1.55;
+    display: none;
   }
 
   #a1 .lesson-body {
@@ -806,7 +804,7 @@
               <h3>Începător</h3>
             </div>
             <div class="lesson-grid">
-              <article class="lesson-card">
+              <article class="lesson-card" data-lesson-link="lessons/a1/lectia-01-salutari.html" tabindex="0" role="link">
                 <div class="lesson-head">
                   <div class="meta">
                     <span class="badge badge-b2">Nivel A1</span>
@@ -838,7 +836,7 @@
                   <span class="resource-status">Lecție inclusă în A1</span>
                 </div>
               </article>
-              <article class="lesson-card">
+              <article class="lesson-card" data-lesson-link="lessons/a1/lectia-02-ce-faci.html" tabindex="0" role="link">
                 <div class="lesson-head">
                   <div class="meta">
                     <span class="badge badge-b2">Nivel A1</span>
@@ -870,7 +868,7 @@
                   <span class="resource-status">Lecție inclusă în A1</span>
                 </div>
               </article>
-              <article class="lesson-card">
+              <article class="lesson-card" data-lesson-link="lessons/a1/lectia-03-multumesc.html" tabindex="0" role="link">
                 <div class="lesson-head">
                   <div class="meta">
                     <span class="badge badge-b2">Nivel A1</span>
@@ -902,7 +900,7 @@
                   <span class="resource-status">Lecție inclusă în A1</span>
                 </div>
               </article>
-              <article class="lesson-card">
+              <article class="lesson-card" data-lesson-link="lessons/a1/lectia-04-scuze.html" tabindex="0" role="link">
                 <div class="lesson-head">
                   <div class="meta">
                     <span class="badge badge-b2">Nivel A1</span>
@@ -934,7 +932,7 @@
                   <span class="resource-status">Lecție inclusă în A1</span>
                 </div>
               </article>
-              <article class="lesson-card">
+              <article class="lesson-card" data-lesson-link="lessons/a1/lectia-05-persoane.html" tabindex="0" role="link">
                 <div class="lesson-head">
                   <div class="meta">
                     <span class="badge badge-b2">Nivel A1</span>
@@ -966,7 +964,7 @@
                   <span class="resource-status">Lecție inclusă în A1</span>
                 </div>
               </article>
-              <article class="lesson-card">
+              <article class="lesson-card" data-lesson-link="lessons/a1/lectia-06-prezentari.html" tabindex="0" role="link">
                 <div class="lesson-head">
                   <div class="meta">
                     <span class="badge badge-b2">Nivel A1</span>
@@ -998,7 +996,7 @@
                   <span class="resource-status">Lecție inclusă în A1</span>
                 </div>
               </article>
-              <article class="lesson-card">
+              <article class="lesson-card" data-lesson-link="lessons/a1/lectia-07-numerele.html" tabindex="0" role="link">
                 <div class="lesson-head">
                   <div class="meta">
                     <span class="badge badge-b2">Nivel A1</span>
@@ -1030,7 +1028,7 @@
                   <span class="resource-status">Lecție inclusă în A1</span>
                 </div>
               </article>
-              <article class="lesson-card">
+              <article class="lesson-card" data-lesson-link="lessons/a1/lectia-08-de-unde-esti.html" tabindex="0" role="link">
                 <div class="lesson-head">
                   <div class="meta">
                     <span class="badge badge-b2">Nivel A1</span>
@@ -1062,7 +1060,7 @@
                   <span class="resource-status">Lecție inclusă în A1</span>
                 </div>
               </article>
-              <article class="lesson-card">
+              <article class="lesson-card" data-lesson-link="lessons/a1/lectia-09-nationalitati.html" tabindex="0" role="link">
                 <div class="lesson-head">
                   <div class="meta">
                     <span class="badge badge-b2">Nivel A1</span>
@@ -1094,7 +1092,7 @@
                   <span class="resource-status">Lecție inclusă în A1</span>
                 </div>
               </article>
-              <article class="lesson-card">
+              <article class="lesson-card" data-lesson-link="lessons/a1/lectia-10-limbi.html" tabindex="0" role="link">
                 <div class="lesson-head">
                   <div class="meta">
                     <span class="badge badge-b2">Nivel A1</span>
@@ -1573,6 +1571,20 @@
           setActiveMenu(link);
         });
       }
+    });
+
+    document.querySelectorAll('[data-lesson-link]').forEach(card => {
+      const openCard = () => {
+        window.location.href = card.dataset.lessonLink;
+      };
+
+      card.addEventListener('click', openCard);
+      card.addEventListener('keydown', event => {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          openCard();
+        }
+      });
     });
   </script>
 </body>
