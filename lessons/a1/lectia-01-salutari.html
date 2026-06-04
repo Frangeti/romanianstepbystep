@@ -235,6 +235,25 @@
   }
   .example-list li .ro { font-weight: 600; color: var(--dark); font-size: 1rem; }
   .example-list li .de { color: var(--muted); font-size: 0.88rem; margin-top: 3px; }
+  .example-list.dialog-list li {
+    padding: 0;
+    overflow: hidden;
+  }
+  .dialog-row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 12px;
+    padding: 11px 14px;
+    border-bottom: 1px solid var(--border);
+  }
+  .dialog-row:last-child { border-bottom: 0; }
+  .dialog-row .ro,
+  .dialog-row .de {
+    margin: 0;
+  }
+  .dialog-row .de {
+    font-size: 1rem;
+  }
 
   /* PRONUNCIATION */
   .pronuntie-box {
@@ -457,6 +476,10 @@
     .image-match { grid-template-columns: repeat(3, 1fr); }
     .lesson-header { flex-direction: column; }
     .lesson-number { font-size: 1.4rem; }
+    .dialog-row {
+      grid-template-columns: 1fr;
+      gap: 2px;
+    }
   }
 
 
@@ -558,10 +581,37 @@
   </div>
 
   <div class="section-title"><span class="icon">💬</span> Beispielsätze – Exemple</div>
-  <ul class="example-list">
-    <li><div class="ro">– Bună dimineața, Maria! – Bună dimineața, Paul!</div><div class="de">– Guten Morgen, Maria! – Guten Morgen, Paul!</div></li>
-    <li><div class="ro">– La revedere! – Pe curând!</div><div class="de">– Auf Wiedersehen! – Bis bald!</div></li>
-    <li><div class="ro">– Weekend plăcut! – Mulțumesc, și ție!</div><div class="de">– Schönes Wochenende! – Danke, ebenfalls!</div></li>
+  <ul class="example-list dialog-list">
+    <li>
+      <div class="dialog-row">
+        <div class="ro">– Bună dimineața, Maria!</div>
+        <div class="de">– Guten Morgen, Maria!</div>
+      </div>
+      <div class="dialog-row">
+        <div class="ro">– Bună dimineața, Paul!</div>
+        <div class="de">– Guten Morgen, Paul!</div>
+      </div>
+    </li>
+    <li>
+      <div class="dialog-row">
+        <div class="ro">– La revedere!</div>
+        <div class="de">– Auf Wiedersehen!</div>
+      </div>
+      <div class="dialog-row">
+        <div class="ro">– Pe curând!</div>
+        <div class="de">– Bis bald!</div>
+      </div>
+    </li>
+    <li>
+      <div class="dialog-row">
+        <div class="ro">– Weekend plăcut!</div>
+        <div class="de">– Schönes Wochenende!</div>
+      </div>
+      <div class="dialog-row">
+        <div class="ro">– Mulțumesc, și ție!</div>
+        <div class="de">– Danke, ebenfalls!</div>
+      </div>
+    </li>
   </ul>
 
   <div class="section-title"><span class="icon">🃏</span> Zuordnungsübung – Asociere</div>
