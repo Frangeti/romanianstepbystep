@@ -391,6 +391,46 @@
     transform: translateY(-2px);
   }
 
+  #a1 .lesson-grid {
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: .9rem;
+  }
+
+  #a1 .lesson-card {
+    background: rgba(255, 255, 255, .86);
+  }
+
+  #a1 .lesson-head {
+    min-height: 190px;
+    border-bottom: 0;
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+  }
+
+  #a1 .meta {
+    margin-bottom: auto;
+  }
+
+  #a1 .meta .badge-tech,
+  #a1 .meta .badge-live {
+    display: none;
+  }
+
+  #a1 .lesson-title {
+    font-size: clamp(24px, 2.1vw, 30px);
+    margin: 1.3rem 0 .45rem;
+  }
+
+  #a1 .lesson-desc {
+    font-size: 15px;
+    line-height: 1.55;
+  }
+
+  #a1 .lesson-body {
+    display: none;
+  }
+
   .lesson-head {
     padding: 1.35rem 1.5rem;
     border-bottom: 1px solid var(--border);
@@ -774,7 +814,7 @@
                     <span class="badge badge-live">Activă</span>
                   </div>
                   <div class="lesson-title">L1 · Salutări</div>
-                  <p class="lesson-desc">Begrüßungen, Abschiedsformeln, gute Wünsche und erste Ausspracheübungen pentru vorbitori de germană.</p>
+                  <p class="lesson-desc">Salutări și formule de despărțire pentru primele conversații.</p>
                 </div>
                 <div class="lesson-body">
                   <div class="lesson-features">
@@ -806,7 +846,7 @@
                     <span class="badge badge-live">Activă</span>
                   </div>
                   <div class="lesson-title">L2 · Ce faci?</div>
-                  <p class="lesson-desc">Fragen nach dem Befinden, răspunsuri simple și diferența dintre forma informală și cea formală.</p>
+                  <p class="lesson-desc">Întrebări și răspunsuri simple despre cum te simți.</p>
                 </div>
                 <div class="lesson-body">
                   <div class="lesson-features">
@@ -838,7 +878,7 @@
                     <span class="badge badge-live">Activă</span>
                   </div>
                   <div class="lesson-title">L3 · Mulțumesc</div>
-                  <p class="lesson-desc">Danke, Bitte, răspunsuri politicoase și expresii utile pentru conversații foarte scurte.</p>
+                  <p class="lesson-desc">Expresii politicoase pentru mulțumiri și rugăminți.</p>
                 </div>
                 <div class="lesson-body">
                   <div class="lesson-features">
@@ -870,7 +910,7 @@
                     <span class="badge badge-live">Activă</span>
                   </div>
                   <div class="lesson-title">L4 · Scuze</div>
-                  <p class="lesson-desc">Entschuldigung, scuze formale și informale și răspunsuri simple la o scuză.</p>
+                  <p class="lesson-desc">Scuze, formule de iertare și răspunsuri scurte.</p>
                 </div>
                 <div class="lesson-body">
                   <div class="lesson-features">
@@ -902,7 +942,7 @@
                     <span class="badge badge-live">Activă</span>
                   </div>
                   <div class="lesson-title">L5 · Persoane</div>
-                  <p class="lesson-desc">Pronume personale, familie, persoane și verbul esențial „a fi” explicat în germană.</p>
+                  <p class="lesson-desc">Pronume, persoane, familie și verbul „a fi”.</p>
                 </div>
                 <div class="lesson-body">
                   <div class="lesson-features">
@@ -934,7 +974,7 @@
                     <span class="badge badge-live">Activă</span>
                   </div>
                   <div class="lesson-title">L6 · Prezentări</div>
-                  <p class="lesson-desc">Sich vorstellen, nach dem Namen fragen și folosirea verbului reflexiv „a se numi”.</p>
+                  <p class="lesson-desc">Cum te prezinți și cum întrebi numele cuiva.</p>
                 </div>
                 <div class="lesson-body">
                   <div class="lesson-features">
@@ -966,7 +1006,7 @@
                     <span class="badge badge-live">Activă</span>
                   </div>
                   <div class="lesson-title">L7 · Numerele</div>
-                  <p class="lesson-desc">Zahlen 0-20, vârsta, numere de telefon și verbul „a avea” pentru nivel începător.</p>
+                  <p class="lesson-desc">Numerele de bază, vârsta și verbul „a avea”.</p>
                 </div>
                 <div class="lesson-body">
                   <div class="lesson-features">
@@ -998,7 +1038,7 @@
                     <span class="badge badge-live">Activă</span>
                   </div>
                   <div class="lesson-title">L8 · De unde ești?</div>
-                  <p class="lesson-desc">Herkunft, țări, orașe, geografie de bază și verbul „a veni” pentru conversații simple.</p>
+                  <p class="lesson-desc">Țări, orașe și întrebări despre origine.</p>
                 </div>
                 <div class="lesson-body">
                   <div class="lesson-features">
@@ -1030,7 +1070,7 @@
                     <span class="badge badge-live">Activă</span>
                   </div>
                   <div class="lesson-title">L9 · Naționalități</div>
-                  <p class="lesson-desc">Nationalitäten în masculin și feminin, cu exemple pentru român, german, austriac și altele.</p>
+                  <p class="lesson-desc">Naționalități în forme masculine și feminine.</p>
                 </div>
                 <div class="lesson-body">
                   <div class="lesson-features">
@@ -1062,7 +1102,7 @@
                     <span class="badge badge-live">Activă</span>
                   </div>
                   <div class="lesson-title">L10 · Ce limbă vorbești?</div>
-                  <p class="lesson-desc">Sprachen, verbul „a vorbi”, negația simplă și expresii pentru „vorbesc puțin română”.</p>
+                  <p class="lesson-desc">Limbi, verbul „a vorbi” și propoziții scurte.</p>
                 </div>
                 <div class="lesson-body">
                   <div class="lesson-features">
