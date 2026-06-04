@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rumänisch A1 für Deutschsprachige</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600&amp;family=DM+Sans:wght@300;400;500;700&amp;display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #18303b;
+    --text: #243943;
+    --muted: #6d8188;
+    --paper: #ffffff;
+    --bg: #fffaf0;
+    --mint: #23b99a;
+    --mint-light: #dff8f0;
+    --coral: #ff6f61;
+    --sun: #ffc857;
+    --sun-light: #fff5cf;
+    --sky: #3aa8d8;
+    --sky-light: #e5f6fb;
+    --berry: #8766d8;
+    --berry-light: #f1edff;
+    --border: rgba(24, 48, 59, 0.1);
+    --shadow: 0 18px 45px rgba(24, 48, 59, 0.08);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    min-height: 100vh;
+    font-family: 'DM Sans', sans-serif;
+    color: var(--text);
+    background:
+      radial-gradient(circle at top left, rgba(255, 200, 87, .24), transparent 34rem),
+      linear-gradient(180deg, #fffaf0 0%, #f4fbf8 64%, #ffffff 100%);
+    line-height: 1.65;
+  }
+
+  a { color: inherit; text-decoration: none; }
+
+  .topbar {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    min-height: 72px;
+    padding: 0 clamp(1rem, 3vw, 3rem);
+    background: rgba(255, 255, 255, .84);
+    border-bottom: 1px solid var(--border);
+    backdrop-filter: blur(18px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .brand {
+    font-family: 'Lora', serif;
+    color: var(--ink);
+    font-size: clamp(20px, 2vw, 25px);
+    font-weight: 600;
+  }
+
+  .brand span { color: var(--coral); }
+
+  .back-link {
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: #fff;
+    color: var(--muted);
+    padding: 8px 14px;
+    font-size: 14px;
+    font-weight: 700;
+  }
+
+  .lesson-nav {
+    padding: .7rem clamp(1rem, 3vw, 3rem);
+    background: rgba(255, 255, 255, .72);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+  }
+
+  .nav-link {
+    flex: 0 0 auto;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: #fff;
+    color: var(--muted);
+    padding: 7px 12px;
+    font-size: 13px;
+    font-weight: 700;
+  }
+
+  .nav-link.active,
+  .nav-link:hover {
+    background: var(--ink);
+    border-color: var(--ink);
+    color: #fff;
+  }
+
+  .wrap {
+    width: min(980px, calc(100% - 2rem));
+    margin: 0 auto;
+    padding: clamp(1.2rem, 3vw, 2.6rem) 0 4rem;
+  }
+
+  .hero {
+    margin-bottom: 1.4rem;
+    border: 1px solid rgba(255, 255, 255, .78);
+    border-radius: 8px;
+    background:
+      linear-gradient(135deg, rgba(255, 255, 255, .94), rgba(255, 255, 255, .7)),
+      linear-gradient(135deg, var(--sun-light), var(--mint-light));
+    box-shadow: var(--shadow);
+    padding: clamp(1.5rem, 4vw, 3rem);
+  }
+
+  .eyebrow {
+    color: var(--mint);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    margin-bottom: .5rem;
+  }
+
+  h1 {
+    max-width: 760px;
+    color: var(--ink);
+    font-family: 'Lora', serif;
+    font-size: clamp(34px, 5vw, 58px);
+    line-height: 1.08;
+    margin-bottom: .6rem;
+  }
+
+  .hero p {
+    max-width: 720px;
+    color: var(--muted);
+    font-size: 18px;
+  }
+
+  .lesson {
+    scroll-margin-top: 150px;
+    background: var(--paper);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    box-shadow: 0 10px 26px rgba(24, 48, 59, .06);
+    padding: clamp(1.2rem, 3vw, 2rem);
+    margin-bottom: 1rem;
+  }
+
+  .lesson-head {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 1.1rem;
+  }
+
+  .number {
+    flex: 0 0 auto;
+    min-width: 54px;
+    min-height: 54px;
+    border-radius: 8px;
+    background: var(--ink);
+    color: var(--sun);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+  }
+
+  h2 {
+    color: var(--ink);
+    font-family: 'Lora', serif;
+    font-size: clamp(26px, 3vw, 36px);
+    line-height: 1.15;
+  }
+
+  .subtitle {
+    color: var(--muted);
+    margin-top: .25rem;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: .8rem;
+  }
+
+  .box {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: #f7fcfa;
+    padding: .9rem 1rem;
+  }
+
+  .box strong {
+    display: block;
+    color: var(--ink);
+    margin-bottom: .25rem;
+  }
+
+  .box span,
+  .box ul {
+    color: var(--muted);
+    font-size: 15px;
+  }
+
+  .box ul {
+    list-style-position: inside;
+  }
+
+  .actions {
+    display: flex;
+    gap: .7rem;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+  }
+
+  .speak-btn {
+    border: 0;
+    border-radius: 8px;
+    background: var(--ink);
+    color: #fff;
+    cursor: pointer;
+    padding: 10px 15px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 700;
+  }
+
+  .speak-btn:hover {
+    background: var(--coral);
+  }
+
+  @media (max-width: 720px) {
+    .topbar {
+      align-items: flex-start;
+      flex-direction: column;
+      padding: 1rem;
+      position: static;
+    }
+
+    .grid {
+      grid-template-columns: 1fr;
+    }
+
+    .lesson {
+      scroll-margin-top: 1rem;
+    }
+  }
+</style>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="../../index.html">Romanian <span>Step by Step</span></a>
+    <a class="back-link" href="../../index.html#a1">Înapoi la A1</a>
+  </header>
+
+  <nav class="lesson-nav" aria-label="A1 Lektionen">
+    <a class="nav-link" href="#lesson-1">L1</a>
+    <a class="nav-link" href="#lesson-2">L2</a>
+    <a class="nav-link" href="#lesson-3">L3</a>
+    <a class="nav-link" href="#lesson-4">L4</a>
+    <a class="nav-link" href="#lesson-5">L5</a>
+    <a class="nav-link" href="#lesson-6">L6</a>
+    <a class="nav-link" href="#lesson-7">L7</a>
+    <a class="nav-link" href="#lesson-8">L8</a>
+    <a class="nav-link" href="#lesson-9">L9</a>
+    <a class="nav-link" href="#lesson-10">L10</a>
+  </nav>
+
+  <main class="wrap">
+    <section class="hero">
+      <div class="eyebrow">Nivel A1 · Deutschsprachige</div>
+      <h1>Rumänisch für Deutschsprachige</h1>
+      <p>10 lecții A1 pentru început: salutări, politețe, persoane, prezentări, numere, țări, naționalități și limbi.</p>
+    </section>
+
+    <section class="lesson" id="lesson-1">
+      <div class="lesson-head"><div class="number">L1</div><div><h2>Salutări – Begrüßungen</h2><p class="subtitle">Wie man auf Rumänisch Hallo und Auf Wiedersehen sagt.</p></div></div>
+      <div class="grid">
+        <div class="box"><strong>Vokabular</strong><span>Bună, Salut, Bună dimineața, Bună ziua, Noapte bună, La revedere.</span></div>
+        <div class="box"><strong>Pronunție</strong><span>ă, â, î, ș și ț.</span></div>
+        <div class="box"><strong>Exemple</strong><span>Weekend plăcut! Mulțumesc, și ție!</span></div>
+        <div class="box"><strong>Exerciții</strong><span>Zuordnung, Multiple Choice și imagini.</span></div>
+      </div>
+      <div class="actions"><button class="speak-btn" onclick="speak('Bună dimineața')">Ascultă</button><button class="speak-btn" onclick="speak('La revedere')">Repetă</button></div>
+    </section>
+
+    <section class="lesson" id="lesson-2">
+      <div class="lesson-head"><div class="number">L2</div><div><h2>Ce faci? – Wie geht's?</h2><p class="subtitle">Fragen nach dem Befinden und Antworten.</p></div></div>
+      <div class="grid">
+        <div class="box"><strong>Întrebări</strong><span>Ce faci? Ce mai faci? Ce faceți? Ce mai faceți?</span></div>
+        <div class="box"><strong>Răspunsuri</strong><span>Bine, foarte bine, minunat, așa și așa, rău.</span></div>
+        <div class="box"><strong>Formalitate</strong><span>tu vs. dumneavoastră.</span></div>
+        <div class="box"><strong>Pronunție</strong><span>ci = tschi, ce = tsche.</span></div>
+      </div>
+      <div class="actions"><button class="speak-btn" onclick="speak('Ce faci?')">Ascultă</button><button class="speak-btn" onclick="speak('Foarte bine, mulțumesc')">Răspuns</button></div>
+    </section>
+
+    <section class="lesson" id="lesson-3">
+      <div class="lesson-head"><div class="number">L3</div><div><h2>Mulțumesc – Danke & Bitte</h2><p class="subtitle">Höflichkeit auf Rumänisch.</p></div></div>
+      <div class="grid">
+        <div class="box"><strong>Danke</strong><span>Mulțumesc, Mulțumesc frumos, Mulțumesc din suflet.</span></div>
+        <div class="box"><strong>Antworten</strong><span>Cu plăcere, Cu drag, Pentru nimic.</span></div>
+        <div class="box"><strong>Bitte</strong><span>Te rog (du), Vă rog (Sie).</span></div>
+        <div class="box"><strong>Pronunție</strong><span>ț ca deutsches z, -esc ca esk.</span></div>
+      </div>
+      <div class="actions"><button class="speak-btn" onclick="speak('Mulțumesc frumos')">Ascultă</button><button class="speak-btn" onclick="speak('Cu plăcere')">Răspuns</button></div>
+    </section>
+
+    <section class="lesson" id="lesson-4">
+      <div class="lesson-head"><div class="number">L4</div><div><h2>Scuze – Entschuldigung</h2><p class="subtitle">Sich entschuldigen und reagieren.</p></div></div>
+      <div class="grid">
+        <div class="box"><strong>Scuze</strong><span>Scuze, Scuză-mă, Scuzați-mă, Pardon.</span></div>
+        <div class="box"><strong>Reacții</strong><span>Nicio problemă, Nu face nimic.</span></div>
+        <div class="box"><strong>Expresie cheie</strong><span>Îmi pare rău.</span></div>
+        <div class="box"><strong>Pronunție</strong><span>î inițial și sc înainte de u.</span></div>
+      </div>
+      <div class="actions"><button class="speak-btn" onclick="speak('Îmi pare rău')">Ascultă</button><button class="speak-btn" onclick="speak('Nicio problemă')">Răspuns</button></div>
+    </section>
+
+    <section class="lesson" id="lesson-5">
+      <div class="lesson-head"><div class="number">L5</div><div><h2>Persoane – Personen</h2><p class="subtitle">Personalpronomen, Familie und a fi.</p></div></div>
+      <div class="grid">
+        <div class="box"><strong>Pronume</strong><span>eu, tu, el, ea, noi, voi, ei, ele, dumneavoastră.</span></div>
+        <div class="box"><strong>Verb</strong><span>a fi: sunt, ești, este, suntem, sunteți.</span></div>
+        <div class="box"><strong>Familie</strong><span>mamă, tată, femeie, bărbat, fată, băiat.</span></div>
+        <div class="box"><strong>Exemplu</strong><span>Eu sunt student. Tu ești profesoară.</span></div>
+      </div>
+      <div class="actions"><button class="speak-btn" onclick="speak('Eu sunt Maria')">Ascultă</button><button class="speak-btn" onclick="speak('Noi suntem prieteni')">Repetă</button></div>
+    </section>
+
+    <section class="lesson" id="lesson-6">
+      <div class="lesson-head"><div class="number">L6</div><div><h2>Prezentări – Vorstellung</h2><p class="subtitle">Sich vorstellen und nach dem Namen fragen.</p></div></div>
+      <div class="grid">
+        <div class="box"><strong>Nume</strong><span>Mă numesc, numele meu este, prenumele, numele de familie.</span></div>
+        <div class="box"><strong>Întrebări</strong><span>Cum te numești? Cum vă numiți?</span></div>
+        <div class="box"><strong>Verb</strong><span>a se numi: mă numesc, te numești, se numește.</span></div>
+        <div class="box"><strong>Dialog</strong><span>Mă bucur să te cunosc. Îmi pare bine.</span></div>
+      </div>
+      <div class="actions"><button class="speak-btn" onclick="speak('Mă numesc Ana')">Ascultă</button><button class="speak-btn" onclick="speak('Cum te numești')">Întrebare</button></div>
+    </section>
+
+    <section class="lesson" id="lesson-7">
+      <div class="lesson-head"><div class="number">L7</div><div><h2>Numerele – Zahlen</h2><p class="subtitle">Zahlen 0-20 und a avea.</p></div></div>
+      <div class="grid">
+        <div class="box"><strong>Numere</strong><span>zero, unu, doi, trei, patru, cinci, șase, șapte, opt, nouă, zece, douăzeci.</span></div>
+        <div class="box"><strong>Verb</strong><span>a avea: am, ai, are, avem, aveți, au.</span></div>
+        <div class="box"><strong>Vârstă</strong><span>Câți ani ai? Am douăzeci de ani.</span></div>
+        <div class="box"><strong>Pronunție</strong><span>șase, șapte, cinci, nouă.</span></div>
+      </div>
+      <div class="actions"><button class="speak-btn" onclick="speak('Câți ani ai?')">Ascultă</button><button class="speak-btn" onclick="speak('Eu am douăzeci de ani')">Răspuns</button></div>
+    </section>
+
+    <section class="lesson" id="lesson-8">
+      <div class="lesson-head"><div class="number">L8</div><div><h2>De unde ești? – Woher kommst du?</h2><p class="subtitle">Herkunft, Länder und Geographie.</p></div></div>
+      <div class="grid">
+        <div class="box"><strong>Herkunft</strong><span>De unde ești? Sunt din România.</span></div>
+        <div class="box"><strong>Țări</strong><span>România, Germania, Austria, Elveția.</span></div>
+        <div class="box"><strong>Verb</strong><span>a veni: vin, vii, vine, venim, veniți.</span></div>
+        <div class="box"><strong>Geografie</strong><span>țara, orașul, satul, capitala.</span></div>
+      </div>
+      <div class="actions"><button class="speak-btn" onclick="speak('De unde ești?')">Ascultă</button><button class="speak-btn" onclick="speak('Sunt din România')">Răspuns</button></div>
+    </section>
+
+    <section class="lesson" id="lesson-9">
+      <div class="lesson-head"><div class="number">L9</div><div><h2>Naționalități – Nationalitäten</h2><p class="subtitle">Maskulin und feminin.</p></div></div>
+      <div class="grid">
+        <div class="box"><strong>Forme</strong><span>român / româncă, german / germancă, austriac / austriacă.</span></div>
+        <div class="box"><strong>Endungen</strong><span>-an, -că, -oaică.</span></div>
+        <div class="box"><strong>Întrebare</strong><span>Ce naționalitate ești?</span></div>
+        <div class="box"><strong>Exemplu</strong><span>El este francez. Ea este franțuzoaică.</span></div>
+      </div>
+      <div class="actions"><button class="speak-btn" onclick="speak('Ce naționalitate ești?')">Ascultă</button><button class="speak-btn" onclick="speak('Eu sunt româncă')">Răspuns</button></div>
+    </section>
+
+    <section class="lesson" id="lesson-10">
+      <div class="lesson-head"><div class="number">L10</div><div><h2>Ce limbă vorbești? – Welche Sprache sprichst du?</h2><p class="subtitle">Sprachen und a vorbi.</p></div></div>
+      <div class="grid">
+        <div class="box"><strong>Limbi</strong><span>limbă, limbă străină, română, germană.</span></div>
+        <div class="box"><strong>Verb</strong><span>a vorbi: vorbesc, vorbești, vorbește, vorbim, vorbiți.</span></div>
+        <div class="box"><strong>Negație</strong><span>Eu nu vorbesc germană.</span></div>
+        <div class="box"><strong>Final</strong><span>Felicitări! Ai terminat seria A1.</span></div>
+      </div>
+      <div class="actions"><button class="speak-btn" onclick="speak('Eu vorbesc puțin română')">Ascultă</button><button class="speak-btn" onclick="speak('Ce limbă vorbești?')">Întrebare</button></div>
+    </section>
+  </main>
+
+  <script>
+    const links = document.querySelectorAll('.nav-link');
+
+    function setActiveLink() {
+      const current = window.location.hash || '#lesson-1';
+      links.forEach(link => link.classList.toggle('active', link.getAttribute('href') === current));
+    }
+
+    links.forEach(link => link.addEventListener('click', () => {
+      setTimeout(setActiveLink, 0);
+    }));
+
+    window.addEventListener('hashchange', setActiveLink);
+    setActiveLink();
+
+    function speak(text) {
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = 'ro-RO';
+        utterance.rate = 0.85;
+        window.speechSynthesis.speak(utterance);
+      }
+    }
+  </script>
+</body>
+</html>
