@@ -166,6 +166,32 @@
   .vocab-card .ro { font-weight: 600; color: var(--dark); font-size: 1rem; flex: 1; }
   .vocab-card .de { color: var(--blue); font-size: 0.9rem; flex: 1; }
   .vocab-card .emoji { font-size: 1.4rem; }
+  .audio-btn {
+    width: 34px;
+    height: 34px;
+    border: 1px solid #c9e6f5;
+    border-radius: 50%;
+    background: #eef9ff;
+    color: var(--blue);
+    cursor: pointer;
+    flex: 0 0 34px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    transition: all .15s;
+  }
+  .audio-btn:hover {
+    background: var(--dark);
+    border-color: var(--dark);
+    color: #fff;
+    transform: scale(1.06);
+  }
+  .audio-btn.is-playing {
+    background: var(--green);
+    border-color: var(--green);
+    color: #fff;
+  }
 
   /* VERBS */
   .verb-box {
@@ -471,24 +497,24 @@
     </ul>
   </div>
 
-  <div class="section-title"><span class="icon">📚</span> Vokabular mit Übersetzung</div>
+  <div class="section-title"><span class="icon">📚</span> Vokabular mit Übersetzung – Vocabular cu traducere</div>
   <div class="vocab-grid">
-    <div class="vocab-card"><span class="emoji">👋</span><span class="ro">Bună!</span><span class="de">Hallo!</span></div>
-    <div class="vocab-card"><span class="emoji">✌️</span><span class="ro">Salut!</span><span class="de">Grüß dich!</span></div>
-    <div class="vocab-card"><span class="emoji">🌅</span><span class="ro">Bună dimineața!</span><span class="de">Guten Morgen!</span></div>
-    <div class="vocab-card"><span class="emoji">☀️</span><span class="ro">Bună ziua!</span><span class="de">Guten Tag!</span></div>
-    <div class="vocab-card"><span class="emoji">🌆</span><span class="ro">Bună seara!</span><span class="de">Guten Abend!</span></div>
-    <div class="vocab-card"><span class="emoji">🌙</span><span class="ro">Noapte bună!</span><span class="de">Gute Nacht!</span></div>
-    <div class="vocab-card"><span class="emoji">👋</span><span class="ro">La revedere!</span><span class="de">Auf Wiedersehen!</span></div>
-    <div class="vocab-card"><span class="emoji">🤗</span><span class="ro">Pe curând!</span><span class="de">Bis bald!</span></div>
-    <div class="vocab-card"><span class="emoji">📅</span><span class="ro">Pe mâine!</span><span class="de">Bis morgen!</span></div>
-    <div class="vocab-card"><span class="emoji">🗓️</span><span class="ro">Pe săptămâna viitoare!</span><span class="de">Bis nächste Woche!</span></div>
-    <div class="vocab-card"><span class="emoji">✨</span><span class="ro">Numai bine!</span><span class="de">Alles Gute!</span></div>
-    <div class="vocab-card"><span class="emoji">🍀</span><span class="ro">Succes!</span><span class="de">Viel Erfolg!</span></div>
-    <div class="vocab-card"><span class="emoji">🎲</span><span class="ro">Baftă!</span><span class="de">Viel Glück!</span></div>
-    <div class="vocab-card"><span class="emoji">🏖️</span><span class="ro">Weekend plăcut!</span><span class="de">Schönes Wochenende!</span></div>
-    <div class="vocab-card"><span class="emoji">🚗</span><span class="ro">Drum bun!</span><span class="de">Gute Fahrt!</span></div>
-    <div class="vocab-card"><span class="emoji">🙏</span><span class="ro">Bine ați venit!</span><span class="de">Herzlich willkommen!</span></div>
+    <div class="vocab-card"><span class="emoji">👋</span><span class="ro">Bună!</span><span class="de">Hallo!</span><button class="audio-btn" type="button" aria-label="Ascultă Bună" data-audio-src="../../assets/audio/a1/lectia-01/buna.mp3" onclick="playVocabAudio(this, 'Bună')">▶</button></div>
+    <div class="vocab-card"><span class="emoji">✌️</span><span class="ro">Salut!</span><span class="de">Grüß dich!</span><button class="audio-btn" type="button" aria-label="Ascultă Salut" data-audio-src="../../assets/audio/a1/lectia-01/salut.mp3" onclick="playVocabAudio(this, 'Salut')">▶</button></div>
+    <div class="vocab-card"><span class="emoji">🌅</span><span class="ro">Bună dimineața!</span><span class="de">Guten Morgen!</span><button class="audio-btn" type="button" aria-label="Ascultă Bună dimineața" data-audio-src="../../assets/audio/a1/lectia-01/buna-dimineata.mp3" onclick="playVocabAudio(this, 'Bună dimineața')">▶</button></div>
+    <div class="vocab-card"><span class="emoji">☀️</span><span class="ro">Bună ziua!</span><span class="de">Guten Tag!</span><button class="audio-btn" type="button" aria-label="Ascultă Bună ziua" data-audio-src="../../assets/audio/a1/lectia-01/buna-ziua.mp3" onclick="playVocabAudio(this, 'Bună ziua')">▶</button></div>
+    <div class="vocab-card"><span class="emoji">🌆</span><span class="ro">Bună seara!</span><span class="de">Guten Abend!</span><button class="audio-btn" type="button" aria-label="Ascultă Bună seara" data-audio-src="../../assets/audio/a1/lectia-01/buna-seara.mp3" onclick="playVocabAudio(this, 'Bună seara')">▶</button></div>
+    <div class="vocab-card"><span class="emoji">🌙</span><span class="ro">Noapte bună!</span><span class="de">Gute Nacht!</span><button class="audio-btn" type="button" aria-label="Ascultă Noapte bună" data-audio-src="../../assets/audio/a1/lectia-01/noapte-buna.mp3" onclick="playVocabAudio(this, 'Noapte bună')">▶</button></div>
+    <div class="vocab-card"><span class="emoji">👋</span><span class="ro">La revedere!</span><span class="de">Auf Wiedersehen!</span><button class="audio-btn" type="button" aria-label="Ascultă La revedere" data-audio-src="../../assets/audio/a1/lectia-01/la-revedere.mp3" onclick="playVocabAudio(this, 'La revedere')">▶</button></div>
+    <div class="vocab-card"><span class="emoji">🤗</span><span class="ro">Pe curând!</span><span class="de">Bis bald!</span><button class="audio-btn" type="button" aria-label="Ascultă Pe curând" data-audio-src="../../assets/audio/a1/lectia-01/pe-curand.mp3" onclick="playVocabAudio(this, 'Pe curând')">▶</button></div>
+    <div class="vocab-card"><span class="emoji">📅</span><span class="ro">Pe mâine!</span><span class="de">Bis morgen!</span><button class="audio-btn" type="button" aria-label="Ascultă Pe mâine" data-audio-src="../../assets/audio/a1/lectia-01/pe-maine.mp3" onclick="playVocabAudio(this, 'Pe mâine')">▶</button></div>
+    <div class="vocab-card"><span class="emoji">🗓️</span><span class="ro">Pe săptămâna viitoare!</span><span class="de">Bis nächste Woche!</span><button class="audio-btn" type="button" aria-label="Ascultă Pe săptămâna viitoare" data-audio-src="../../assets/audio/a1/lectia-01/pe-saptamana-viitoare.mp3" onclick="playVocabAudio(this, 'Pe săptămâna viitoare')">▶</button></div>
+    <div class="vocab-card"><span class="emoji">✨</span><span class="ro">Numai bine!</span><span class="de">Alles Gute!</span><button class="audio-btn" type="button" aria-label="Ascultă Numai bine" data-audio-src="../../assets/audio/a1/lectia-01/numai-bine.mp3" onclick="playVocabAudio(this, 'Numai bine')">▶</button></div>
+    <div class="vocab-card"><span class="emoji">🍀</span><span class="ro">Succes!</span><span class="de">Viel Erfolg!</span><button class="audio-btn" type="button" aria-label="Ascultă Succes" data-audio-src="../../assets/audio/a1/lectia-01/succes.mp3" onclick="playVocabAudio(this, 'Succes')">▶</button></div>
+    <div class="vocab-card"><span class="emoji">🎲</span><span class="ro">Baftă!</span><span class="de">Viel Glück!</span><button class="audio-btn" type="button" aria-label="Ascultă Baftă" data-audio-src="../../assets/audio/a1/lectia-01/bafta.mp3" onclick="playVocabAudio(this, 'Baftă')">▶</button></div>
+    <div class="vocab-card"><span class="emoji">🏖️</span><span class="ro">Weekend plăcut!</span><span class="de">Schönes Wochenende!</span><button class="audio-btn" type="button" aria-label="Ascultă Weekend plăcut" data-audio-src="../../assets/audio/a1/lectia-01/weekend-placut.mp3" onclick="playVocabAudio(this, 'Weekend plăcut')">▶</button></div>
+    <div class="vocab-card"><span class="emoji">🚗</span><span class="ro">Drum bun!</span><span class="de">Gute Fahrt!</span><button class="audio-btn" type="button" aria-label="Ascultă Drum bun" data-audio-src="../../assets/audio/a1/lectia-01/drum-bun.mp3" onclick="playVocabAudio(this, 'Drum bun')">▶</button></div>
+    <div class="vocab-card"><span class="emoji">🙏</span><span class="ro">Bine ați venit!</span><span class="de">Herzlich willkommen!</span><button class="audio-btn" type="button" aria-label="Ascultă Bine ați venit" data-audio-src="../../assets/audio/a1/lectia-01/bine-ati-venit.mp3" onclick="playVocabAudio(this, 'Bine ați venit')">▶</button></div>
   </div>
 
   <div class="section-title"><span class="icon">🔊</span> Aussprache – Pronunție</div>
@@ -504,30 +530,30 @@
     </div>
     <div class="sound-rule">
       <div class="letter">ș</div>
-      <div class="desc">Wie deutsches <strong>"sch"</strong>. Beispiel: <span class="example-word">seara</span> → "se-ARA"</div>
+      <div class="desc">Wie deutsches <strong>"sch"</strong>. Beispiel: <span class="example-word">șah</span> → "schah"</div>
     </div>
     <div class="sound-rule">
       <div class="letter">ț</div>
-      <div class="desc">Wie deutsches <strong>"z"</strong> (scharf). Beispiel: <span class="example-word">seară</span> – das <em>ă</em> am Ende</div>
+      <div class="desc">Wie deutsches <strong>"z"</strong> (scharf). Beispiel: <span class="example-word">țară</span> = Land</div>
     </div>
   </div>
 
   <div class="section-title"><span class="icon">🎧</span> Hören & Wiederholen – Ascultare</div>
   <div class="listening-tip"><span class="tip-icon">💡</span><div>Lies jeden Ausdruck laut vor. Achte besonders auf die Betonung der letzten Silbe bei <em>Bună dimineața!</em> → bu-NĂ di-mi-ne-AȚA</div></div>
   <div class="listen-pair">
-    <button class="play-btn" onclick="speak('Bună dimineața')">▶</button>
+    <button class="play-btn" data-audio-src="../../assets/audio/a1/lectia-01/buna-dimineata.mp3" onclick="playVocabAudio(this, 'Bună dimineața')">▶</button>
     <div><div class="word-ro">Bună dimineața!</div><div class="phonetic">BU-nă di-mi-NE-aţa</div></div>
   </div>
   <div class="listen-pair">
-    <button class="play-btn" onclick="speak('Bună ziua')">▶</button>
+    <button class="play-btn" data-audio-src="../../assets/audio/a1/lectia-01/buna-ziua.mp3" onclick="playVocabAudio(this, 'Bună ziua')">▶</button>
     <div><div class="word-ro">Bună ziua!</div><div class="phonetic">BU-nă ZI-ua</div></div>
   </div>
   <div class="listen-pair">
-    <button class="play-btn" onclick="speak('Noapte bună')">▶</button>
+    <button class="play-btn" data-audio-src="../../assets/audio/a1/lectia-01/noapte-buna.mp3" onclick="playVocabAudio(this, 'Noapte bună')">▶</button>
     <div><div class="word-ro">Noapte bună!</div><div class="phonetic">NO-ap-te BU-nă</div></div>
   </div>
   <div class="listen-pair">
-    <button class="play-btn" onclick="speak('La revedere')">▶</button>
+    <button class="play-btn" data-audio-src="../../assets/audio/a1/lectia-01/la-revedere.mp3" onclick="playVocabAudio(this, 'La revedere')">▶</button>
     <div><div class="word-ro">La revedere!</div><div class="phonetic">la re-ve-DE-re</div></div>
   </div>
 
@@ -738,6 +764,36 @@ function matchWord(option, exId) {
 }
 
 // ==================== SPEECH ====================
+let activeVocabularyAudio = null;
+function playVocabAudio(button, text) {
+  const src = button.dataset.audioSrc;
+
+  document.querySelectorAll('.audio-btn').forEach(btn => btn.classList.remove('is-playing'));
+  window.speechSynthesis?.cancel();
+
+  if (activeVocabularyAudio) {
+    activeVocabularyAudio.pause();
+    activeVocabularyAudio = null;
+  }
+
+  if (src) {
+    const audio = new Audio(src);
+    activeVocabularyAudio = audio;
+    button.classList.add('is-playing');
+    audio.addEventListener('ended', () => button.classList.remove('is-playing'));
+    audio.addEventListener('error', () => {
+      button.classList.remove('is-playing');
+      speak(text);
+    });
+    audio.play().catch(() => {
+      button.classList.remove('is-playing');
+      speak(text);
+    });
+  } else {
+    speak(text);
+  }
+}
+
 function speak(text) {
   if ('speechSynthesis' in window) {
     window.speechSynthesis.cancel();
