@@ -80,23 +80,23 @@
 
   .logo span { color: #cbd9e2; }
 
-  .level-pills {
+  .main-nav {
     display: flex;
     gap: 8px;
     flex-wrap: wrap;
     justify-content: flex-end;
   }
 
-  .pill {
+  .main-nav-link {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    min-width: 42px;
+    min-width: 68px;
     min-height: 36px;
     padding: 7px 14px;
-    border-radius: 999px;
+    border-radius: 8px;
     border: 1px solid rgba(255, 255, 255, .28);
-    background: rgba(255, 255, 255, .12);
+    background: transparent;
     color: rgba(255, 255, 255, .78);
     cursor: pointer;
     font-family: 'Atkinson Hyperlegible', sans-serif;
@@ -105,55 +105,22 @@
     transition: background .18s, border-color .18s, color .18s, transform .18s;
   }
 
-  .pill:hover {
+  .main-nav-link:hover {
     border-color: rgba(255, 255, 255, .62);
     color: #fff;
     transform: translateY(-1px);
   }
 
-  .pill.active {
+  .main-nav-link.active {
     background: var(--gold);
     border-color: var(--gold);
     color: var(--ink);
   }
 
-  .tabs {
-    min-height: 58px;
-    padding: 0 clamp(1.1rem, 3vw, 3.5rem);
-    border-bottom: 1px solid rgba(255, 255, 255, .24);
-    background: var(--ink);
-    display: flex;
-    gap: 10px;
-    overflow-x: auto;
-  }
-
-  .tab {
-    padding: 17px 6px 14px;
-    border: 0;
-    border-bottom: 2px solid transparent;
-    background: transparent;
-    color: rgba(255,255,255,0.68);
-    cursor: pointer;
-    font-family: 'Atkinson Hyperlegible', sans-serif;
-    font-size: 15px;
-    white-space: nowrap;
-    transition: color .18s, border-color .18s;
-  }
-
-  .tab:hover {
-    color: var(--gold);
-  }
-
-  .tab.active {
-    color: var(--gold);
-    border-bottom-color: var(--gold);
-    font-weight: 600;
-  }
-
   .layout {
     display: grid;
     grid-template-columns: 248px 1fr;
-    min-height: calc(100vh - 134px);
+    min-height: calc(100vh - 76px);
   }
 
   .sidebar {
@@ -812,8 +779,7 @@
       padding: 1rem;
       position: static;
     }
-    .level-pills { justify-content: flex-start; }
-    .tabs { padding: 0 1rem; }
+    .main-nav { justify-content: flex-start; }
     .layout { grid-template-columns: 1fr; }
     .sidebar { display: none; }
     .main { padding: 1rem; }
@@ -845,23 +811,12 @@
   <div class="shell">
     <header class="topbar">
       <a class="logo" href="index.html">Romanian <span>Step by Step</span></a>
-      <nav class="level-pills" aria-label="Niveluri">
-        <a class="pill" href="#a1" data-level-filter="a1">A1</a>
+      <nav class="main-nav" aria-label="Meniu principal">
+        <a class="main-nav-link" href="index.html">Acasă</a>
+        <a class="main-nav-link active" href="#lectii" data-show-all-lessons>Lecții</a>
+        <a class="main-nav-link" href="#teste">Teste</a>
       </nav>
     </header>
-
-    <nav class="tabs" aria-label="Instrumente de lucru">
-      <a class="tab active" href="#lectii" data-show-all-lessons>Lecții complete</a>
-      <a class="tab" href="#glosar">Glosar</a>
-      <a class="tab" href="#tabele-gramaticale">Tabele gramaticale</a>
-      <a class="tab" href="#ghid-pronuntie">Ghid de pronunție</a>
-      <a class="tab" href="#recapitulare">Exerciții de recapitulare</a>
-      <a class="tab" href="#exercitii-vocabular">Exerciții de vocabular</a>
-      <a class="tab" href="#exercitii-gramatica">Exerciții de gramatică</a>
-      <a class="tab" href="#fise-vocabular">Fișe vocabular</a>
-      <a class="tab" href="#verbe-conjugate">Verbe conjugate</a>
-      <a class="tab" href="#teste">Teste</a>
-    </nav>
 
     <div class="layout">
       <aside class="sidebar" aria-label="Meniu lecții">
@@ -1420,8 +1375,7 @@
     const levelSections = document.querySelectorAll('[data-level-section]');
     const emptyLevel = document.querySelector('[data-empty-level]');
     const sidebarItems = document.querySelectorAll('.sid-item');
-    const tabLinks = document.querySelectorAll('.tabs .tab');
-    const topLevelPills = document.querySelectorAll('.level-pills .pill');
+    const topNavLinks = document.querySelectorAll('.main-nav-link[href^="#"]');
     const levelFilters = document.querySelectorAll('[data-level-filter]');
     const showAllLessonsLinks = document.querySelectorAll('[data-show-all-lessons]');
 
@@ -1430,14 +1384,12 @@
       if (item) item.classList.add('active');
     }
 
-    function setActiveTab(hash) {
-      tabLinks.forEach(link => link.classList.toggle('active', link.getAttribute('href') === hash));
+    function setActiveTopNav(hash) {
+      topNavLinks.forEach(link => link.classList.toggle('active', link.getAttribute('href') === hash));
     }
 
     function setActiveLevel(level) {
-      topLevelPills.forEach(link => {
-        link.classList.toggle('active', link.dataset.levelFilter === level);
-      });
+      setActiveTopNav('#lectii');
       sidebarItems.forEach(link => {
         if (link.dataset.levelFilter) {
           link.classList.toggle('active', link.dataset.levelFilter === level);
@@ -1448,7 +1400,11 @@
     }
 
     function clearActiveLevels() {
-      topLevelPills.forEach(link => link.classList.remove('active'));
+      sidebarItems.forEach(link => {
+        if (link.dataset.levelFilter) {
+          link.classList.remove('active');
+        }
+      });
     }
 
     function showLessonsForLevel(level) {
@@ -1470,7 +1426,6 @@
       link.addEventListener('click', () => {
         showLessonsForLevel(link.dataset.levelFilter);
         setActiveLevel(link.dataset.levelFilter);
-        setActiveTab('#lectii');
       });
     });
 
@@ -1479,14 +1434,14 @@
         showAllLessonLevels();
         clearActiveLevels();
         setActiveMenu(document.querySelector('.sid-item[data-show-all-lessons]'));
-        setActiveTab('#lectii');
+        setActiveTopNav('#lectii');
       });
     });
 
-    tabLinks.forEach(link => {
+    topNavLinks.forEach(link => {
       link.addEventListener('click', () => {
         const hash = link.getAttribute('href');
-        setActiveTab(hash);
+        setActiveTopNav(hash);
         clearActiveLevels();
 
         if (link.dataset.showAllLessons !== undefined) {
@@ -1501,7 +1456,7 @@
       if (!link.dataset.levelFilter) {
         link.addEventListener('click', () => {
           const hash = link.getAttribute('href');
-          setActiveTab(hash);
+          setActiveTopNav(hash === '#teste' ? '#teste' : '#lectii');
           clearActiveLevels();
 
           if (link.dataset.showAllLessons !== undefined) {
