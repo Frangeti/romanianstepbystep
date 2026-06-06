@@ -300,7 +300,8 @@
   }
 
   .level-section.is-hidden,
-  .empty-level.is-hidden {
+  .empty-level.is-hidden,
+  .main > section.is-view-hidden {
     display: none;
   }
 
@@ -1378,6 +1379,7 @@
     const topNavLinks = document.querySelectorAll('.main-nav-link[href^="#"]');
     const levelFilters = document.querySelectorAll('[data-level-filter]');
     const showAllLessonsLinks = document.querySelectorAll('[data-show-all-lessons]');
+    const mainSections = document.querySelectorAll('.main > section');
 
     function setActiveMenu(item) {
       sidebarItems.forEach(link => link.classList.remove('active'));
@@ -1407,6 +1409,12 @@
       });
     }
 
+    function showOnlyMainSection(hash) {
+      mainSections.forEach(section => {
+        section.classList.toggle('is-view-hidden', '#' + section.id !== hash);
+      });
+    }
+
     function showLessonsForLevel(level) {
       let visibleCount = 0;
       levelSections.forEach(section => {
@@ -1424,6 +1432,7 @@
 
     levelFilters.forEach(link => {
       link.addEventListener('click', () => {
+        showOnlyMainSection('#lectii');
         showLessonsForLevel(link.dataset.levelFilter);
         setActiveLevel(link.dataset.levelFilter);
       });
@@ -1431,6 +1440,7 @@
 
     showAllLessonsLinks.forEach(link => {
       link.addEventListener('click', () => {
+        showOnlyMainSection('#lectii');
         showAllLessonLevels();
         clearActiveLevels();
         setActiveMenu(document.querySelector('.sid-item[data-show-all-lessons]'));
@@ -1443,6 +1453,7 @@
         const hash = link.getAttribute('href');
         setActiveTopNav(hash);
         clearActiveLevels();
+        showOnlyMainSection(hash);
 
         if (link.dataset.showAllLessons !== undefined) {
           showAllLessonLevels();
@@ -1458,6 +1469,7 @@
           const hash = link.getAttribute('href');
           setActiveTopNav(hash === '#teste' ? '#teste' : '#lectii');
           clearActiveLevels();
+          showOnlyMainSection(hash);
 
           if (link.dataset.showAllLessons !== undefined) {
             showAllLessonLevels();
@@ -1467,6 +1479,16 @@
         });
       }
     });
+
+    if (window.location.hash) {
+      const hash = window.location.hash;
+      const targetSection = document.querySelector(`.main > section${hash}`);
+      if (targetSection) {
+        showOnlyMainSection(hash);
+        setActiveMenu(document.querySelector(`.sid-item[href="${hash}"]`));
+        setActiveTopNav(hash === '#teste' ? '#teste' : '#lectii');
+      }
+    }
 
     document.querySelectorAll('[data-lesson-link]').forEach(card => {
       const openCard = () => {
