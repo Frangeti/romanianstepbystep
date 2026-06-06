@@ -355,6 +355,53 @@
     margin-bottom: 1rem;
   }
 
+  .lesson-category {
+    margin-top: 1.15rem;
+  }
+
+  .lesson-category:first-of-type {
+    margin-top: 0;
+  }
+
+  .lesson-category-head {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 1rem;
+    margin: 0 0 .8rem;
+    padding: .95rem 1rem;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, .74);
+  }
+
+  .lesson-category-head h4 {
+    color: var(--ink);
+    font-size: 17px;
+    line-height: 1.2;
+  }
+
+  .lesson-category-head span {
+    color: var(--muted);
+    font-size: 13px;
+    white-space: nowrap;
+  }
+
+  .language-placeholder {
+    background: var(--paper);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1rem;
+    color: var(--muted);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .language-placeholder strong {
+    display: block;
+    color: var(--ink);
+    margin-bottom: .25rem;
+  }
+
   #a1 .lesson-grid {
     grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
     gap: 1rem;
@@ -798,6 +845,16 @@
       grid-template-columns: 1fr;
     }
 
+    .lesson-category-head {
+      align-items: flex-start;
+      flex-direction: column;
+      gap: .35rem;
+    }
+
+    .lesson-category-head span {
+      white-space: normal;
+    }
+
     #a1 .lesson-card {
       min-height: 138px;
     }
@@ -875,7 +932,12 @@
               <span class="badge badge-b2">Nivel A1</span>
               <h3>Începător</h3>
             </div>
-            <div class="lesson-grid">
+            <div class="lesson-category">
+              <div class="lesson-category-head">
+                <h4>Lecții de limba română din germană</h4>
+                <span>10 lecții disponibile</span>
+              </div>
+              <div class="lesson-grid">
               <article class="lesson-card" data-lesson-link="lessons/a1/lectia-01-salutari.html" data-lesson-no="01" tabindex="0" role="link">
                 <div class="lesson-head">
                   <div class="meta">
@@ -1196,6 +1258,29 @@
                   <span class="resource-status">Lecție inclusă în A1</span>
                 </div>
               </article>
+              </div>
+            </div>
+
+            <div class="lesson-category">
+              <div class="lesson-category-head">
+                <h4>Lecții de limba română din engleză</h4>
+                <span>în pregătire</span>
+              </div>
+              <div class="language-placeholder">
+                <strong>A1 Romanian from English</strong>
+                Lecțiile pentru vorbitori de engleză vor fi adăugate aici.
+              </div>
+            </div>
+
+            <div class="lesson-category">
+              <div class="lesson-category-head">
+                <h4>Lecții de limba română din spaniolă</h4>
+                <span>în pregătire</span>
+              </div>
+              <div class="language-placeholder">
+                <strong>A1 Rumano desde español</strong>
+                Lecțiile pentru vorbitori de spaniolă vor fi adăugate aici.
+              </div>
             </div>
           </div>
 
