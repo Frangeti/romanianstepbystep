@@ -7,26 +7,35 @@
 <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=DM+Mono&display=swap" rel="stylesheet">
 <style>
   :root {
-    --gold: #eef9ff;
-    --ink: #4f9fc7;
+    --level-a: #c79a64;
+    --level-a-soft: #f5eadb;
+    --level-a-pale: #fbf5ec;
+    --level-b: #7f9f8a;
+    --level-b-soft: #e8f1ea;
+    --level-b-pale: #f4f8f4;
+    --level-c: #8f9fbd;
+    --level-c-soft: #eceff7;
+    --level-c-pale: #f7f8fb;
+    --gold: #fbf5ec;
+    --ink: #7f9f8a;
     --text: #2a2018;
     --muted: #7a6a55;
     --paper: #ffffff;
     --bg: #fdfaf4;
-    --mist: #f0f7ff;
-    --mint: #8cc9df;
-    --mint-light: #e9f8ff;
-    --coral: #357fa4;
-    --coral-light: #eaf6ff;
-    --sun: #c8e8f3;
-    --sun-light: #eef9ff;
-    --sky: #8cc9df;
-    --sky-light: #e5f6fb;
-    --berry: #357fa4;
-    --berry-light: #eaf6ff;
-    --border: #d7ecf8;
-    --shadow: 0 18px 45px rgba(79, 159, 199, 0.12);
-    --shadow-sm: 0 8px 24px rgba(79, 159, 199, 0.08);
+    --mist: #f4f8f4;
+    --mint: var(--level-b);
+    --mint-light: var(--level-b-soft);
+    --coral: var(--level-a);
+    --coral-light: var(--level-a-soft);
+    --sun: var(--level-a);
+    --sun-light: var(--level-a-soft);
+    --sky: var(--level-c);
+    --sky-light: var(--level-c-soft);
+    --berry: var(--level-c);
+    --berry-light: var(--level-c-soft);
+    --border: #e7ddce;
+    --shadow: 0 18px 45px rgba(127, 159, 138, 0.12);
+    --shadow-sm: 0 8px 24px rgba(127, 159, 138, 0.08);
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -73,7 +82,7 @@
     letter-spacing: .01em;
   }
 
-  .logo span { color: #c8e8f3; }
+  .logo span { color: var(--level-a-soft); }
 
   .level-pills {
     display: flex;
@@ -205,10 +214,10 @@
     flex: 0 0 8px;
   }
 
-  .dot-blue { background: var(--sky); }
-  .dot-purple { background: var(--berry); }
-  .dot-teal { background: var(--mint); }
-  .dot-gold { background: var(--sun); }
+  .dot-blue { background: var(--level-c); }
+  .dot-purple { background: var(--level-c); }
+  .dot-teal { background: var(--level-b); }
+  .dot-gold { background: var(--level-a); }
 
   .main {
     background: transparent;
@@ -258,7 +267,7 @@
     font-size: clamp(30px, 4vw, 48px);
     line-height: 1.12;
     margin-bottom: .45rem;
-    color: #357fa4;
+    color: #7f9f8a;
     max-width: none;
     white-space: nowrap;
     position: relative;
@@ -388,7 +397,7 @@
   }
 
   #a1 .lesson-card {
-    --accent: var(--mint);
+    --accent: var(--level-a);
     min-height: 164px;
     padding: 1.05rem;
     background:
@@ -402,16 +411,16 @@
     box-shadow: 0 14px 34px rgba(24, 48, 59, .07);
   }
 
-  #a1 .lesson-card:nth-child(1) { --accent: #4f9fc7; }
-  #a1 .lesson-card:nth-child(2) { --accent: #3aa8d8; }
-  #a1 .lesson-card:nth-child(3) { --accent: #357fa4; }
-  #a1 .lesson-card:nth-child(4) { --accent: #8cc9df; }
-  #a1 .lesson-card:nth-child(5) { --accent: #4f9fc7; }
-  #a1 .lesson-card:nth-child(6) { --accent: #12b7c8; }
-  #a1 .lesson-card:nth-child(7) { --accent: #357fa4; }
-  #a1 .lesson-card:nth-child(8) { --accent: #3aa8d8; }
-  #a1 .lesson-card:nth-child(9) { --accent: #4f9fc7; }
-  #a1 .lesson-card:nth-child(10) { --accent: #8cc9df; }
+  #a1 .lesson-card:nth-child(1) { --accent: #c79a64; }
+  #a1 .lesson-card:nth-child(2) { --accent: #b98c56; }
+  #a1 .lesson-card:nth-child(3) { --accent: #d0aa78; }
+  #a1 .lesson-card:nth-child(4) { --accent: #bb925f; }
+  #a1 .lesson-card:nth-child(5) { --accent: #c79a64; }
+  #a1 .lesson-card:nth-child(6) { --accent: #d4b184; }
+  #a1 .lesson-card:nth-child(7) { --accent: #b98c56; }
+  #a1 .lesson-card:nth-child(8) { --accent: #c9a06f; }
+  #a1 .lesson-card:nth-child(9) { --accent: #d0aa78; }
+  #a1 .lesson-card:nth-child(10) { --accent: #bb925f; }
 
   #a1 .lesson-card::before {
     content: attr(data-lesson-no);
@@ -530,6 +539,23 @@
   .badge-b2 { background: var(--sun-light); color: var(--ink); }
   .badge-tech { background: var(--berry-light); color: var(--berry); }
   .badge-live { background: var(--mint-light); color: var(--ink); }
+
+  #a1 .badge-b2,
+  #a2 .badge-b2 {
+    background: var(--level-a-soft);
+    color: #8a663e;
+  }
+
+  #b1 .badge-b2,
+  #b2 .badge-b2 {
+    background: var(--level-b-soft);
+    color: #5f7b67;
+  }
+
+  #c1 .badge-b2 {
+    background: var(--level-c-soft);
+    color: #6e7b9c;
+  }
 
   .lesson-title {
     font-family: 'Atkinson Hyperlegible', sans-serif;
@@ -694,7 +720,7 @@
   .cover-blue,
   .cover-teal,
   .cover-purple {
-    background: linear-gradient(135deg, #4f9fc7, #8cc9df);
+    background: linear-gradient(135deg, #8f9fbd, #b8c1d8);
     color: #fff;
   }
 

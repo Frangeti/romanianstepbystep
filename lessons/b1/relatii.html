@@ -13,17 +13,17 @@
     --text: #1A1814;
     --text2: #6B6560;
     --text3: #A09B95;
-    --purple: #4B3FCC;
-    --purple-light: #EAE7FA;
-    --purple-mid: #7B70E0;
-    --teal: #0F6E56;
-    --teal-light: #E1F5EE;
+    --purple: #7f9f8a;
+    --purple-light: #f4f8f4;
+    --purple-mid: #a8bcae;
+    --teal: #5f7b67;
+    --teal-light: #f4f8f4;
     --coral: #C94B2A;
     --coral-light: #FAECE7;
-    --amber: #8A5A0A;
-    --amber-light: #FDF3DC;
-    --blue: #1668A8;
-    --blue-light: #E5F0FA;
+    --amber: #5f7b67;
+    --amber-light: #f4f8f4;
+    --blue: #5f7b67;
+    --blue-light: #f4f8f4;
     --border: rgba(26,24,20,0.1);
     --border2: rgba(26,24,20,0.06);
     --radius: 12px;
@@ -608,22 +608,22 @@
 
   /* Site theme shared with the A1/B2 lesson pages */
   :root {
-    --navy: #1a2744;
+    --navy: #7f9f8a;
     --gold: #c9962a;
-    --gold-light: #f5e9c8;
-    --blue: #2d5a9e;
-    --blue-light: #e8eef8;
+    --gold-light: #f4f8f4;
+    --blue: #5f7b67;
+    --blue-light: #f4f8f4;
     --green: #2a7a4b;
     --green-light: #e4f2ea;
-    --purple: #534ab7;
-    --purple-light: #eeedfe;
-    --purple-mid: #2d5a9e;
-    --teal: #0f6e56;
-    --teal-light: #e1f5ee;
+    --purple: #7f9f8a;
+    --purple-light: #f4f8f4;
+    --purple-mid: #a8bcae;
+    --teal: #5f7b67;
+    --teal-light: #f4f8f4;
     --coral: #c0392b;
     --coral-light: #fdecea;
-    --amber: #7a5210;
-    --amber-light: #f5e9c8;
+    --amber: #5f7b67;
+    --amber-light: #f4f8f4;
     --bg: #f4f3f0;
     --surface: #ffffff;
     --surface2: #fbfaf7;
@@ -1004,170 +1004,169 @@
     .pros-cons,
     .match-row { grid-template-columns: 1fr; }
   }
+/* Unified Romanian Step by Step theme */
+:root {
+  --gold: #f4f8f4;
+  --navy: #7f9f8a;
+  --purple: #7f9f8a;
+  --purple-mid: #a8bcae;
+  --blue: #5f7b67;
+  --teal: #5f7b67;
+  --amber: #5f7b67;
+  --bg: #fdfaf4;
+  --surface: #ffffff;
+  --surface2: #f4f8f4;
+  --purple-light: #f4f8f4;
+  --blue-light: #f4f8f4;
+  --teal-light: #f4f8f4;
+  --gold-light: #f4f8f4;
+  --amber-light: #f4f8f4;
+  --text: #2a2018;
+  --text2: #7a6a55;
+  --text3: #9a8d80;
+  --border: #dce8de;
+  --border2: #dce8de;
+  --radius: 12px;
+  --radius-sm: 8px;
+}
 
-  /* Unified Romanian Step by Step theme */
-  :root {
-    --gold: #eef9ff;
-    --navy: #4f9fc7;
-    --purple: #4f9fc7;
-    --purple-mid: #8cc9df;
-    --blue: #357fa4;
-    --teal: #357fa4;
-    --amber: #357fa4;
-    --bg: #fdfaf4;
-    --surface: #ffffff;
-    --surface2: #f0f7ff;
-    --purple-light: #e5f6fb;
-    --blue-light: #e5f6fb;
-    --teal-light: #e9f8ff;
-    --gold-light: #eef9ff;
-    --amber-light: #eef9ff;
-    --text: #2a2018;
-    --text2: #7a6a55;
-    --text3: #9a8d80;
-    --border: #d7ecf8;
-    --border2: #e5f6fb;
-    --radius: 12px;
-    --radius-sm: 8px;
-  }
+body {
+  background: var(--bg) !important;
+  color: var(--text) !important;
+  font-family: 'Atkinson Hyperlegible', sans-serif !important;
+}
 
-  body {
-    background: var(--bg) !important;
-    color: var(--text) !important;
-    font-family: 'Atkinson Hyperlegible', sans-serif !important;
-  }
+h1, h2, h3,
+.logo,
+.header h1,
+.hero h1,
+.section-header h2,
+.score-num {
+  font-family: 'Atkinson Hyperlegible', sans-serif !important;
+}
 
-  h1, h2, h3,
-  .logo,
-  .header h1,
-  .hero h1,
-  .section-header h2,
-  .score-num {
-    font-family: 'Atkinson Hyperlegible', sans-serif !important;
-  }
+.header,
+.topbar {
+  background: #7f9f8a !important;
+  color: #f4f8f4 !important;
+  border-bottom: 1px solid rgba(255,255,255,0.24) !important;
+  box-shadow: none !important;
+}
 
-  .header,
-  .topbar {
-    background: #4f9fc7 !important;
-    color: #eef9ff !important;
-    border-bottom: 1px solid rgba(255,255,255,0.24) !important;
-    box-shadow: none !important;
-  }
+.header::before,
+.header::after {
+  display: none !important;
+}
 
-  .header::before,
-  .header::after {
-    display: none !important;
-  }
+.header p,
+.header-meta span,
+.home-link,
+.logo span {
+  color: rgba(255,255,255,0.82) !important;
+}
 
-  .header p,
-  .header-meta span,
-  .home-link,
-  .logo,
-  .logo span {
-    color: rgba(255,255,255,0.82) !important;
-  }
+.logo,
+.header h1 {
+  color: #f4f8f4 !important;
+}
 
-  .logo,
-  .header h1 {
-    color: #eef9ff !important;
-  }
+.level-tag,
+.header .level-tag,
+.pill.active {
+  background: #f4f8f4 !important;
+  border-color: #f4f8f4 !important;
+  color: #5f7b67 !important;
+}
 
-  .level-tag,
-  .header .level-tag,
-  .pill.active {
-    background: #eef9ff !important;
-    border-color: #eef9ff !important;
-    color: #4f9fc7 !important;
-  }
+.tabs,
+.lesson-tabs {
+  background: #7f9f8a !important;
+  border-bottom: 1px solid rgba(255,255,255,0.24) !important;
+}
 
-  .tabs,
-  .lesson-tabs {
-    background: #4f9fc7 !important;
-    border-bottom: 1px solid rgba(255,255,255,0.24) !important;
-  }
+.tab,
+.lesson-tab,
+.pill {
+  color: rgba(255,255,255,0.72) !important;
+}
 
-  .tab,
-  .lesson-tab,
-  .pill {
-    color: rgba(255,255,255,0.72) !important;
-  }
+.tab.active,
+.lesson-tab.active,
+.tab:hover,
+.lesson-tab:hover,
+.pill:hover {
+  color: #f4f8f4 !important;
+  border-bottom-color: #f4f8f4 !important;
+}
 
-  .tab.active,
-  .lesson-tab.active,
-  .tab:hover,
-  .lesson-tab:hover,
-  .pill:hover {
-    color: #eef9ff !important;
-    border-bottom-color: #eef9ff !important;
-  }
+.sidebar,
+.side-nav,
+.nav-panel,
+.shell,
+.lesson-card,
+.card,
+.section,
+.panel,
+.question-card,
+.exercise-card,
+.info-card,
+.dialog-box,
+.vocab-card,
+.phrase-card,
+.quiz-card,
+.result-card {
+  background: #ffffff !important;
+  border-color: #dce8de !important;
+  border-radius: 8px !important;
+}
 
-  .sidebar,
-  .side-nav,
-  .nav-panel,
-  .shell,
-  .lesson-card,
-  .card,
-  .section,
-  .panel,
-  .question-card,
-  .exercise-card,
-  .info-card,
-  .dialog-box,
-  .vocab-card,
-  .phrase-card,
-  .quiz-card,
-  .result-card {
-    background: #ffffff !important;
-    border-color: #d7ecf8 !important;
-    border-radius: 8px !important;
-  }
+.nav-item.active,
+.nav-item:hover,
+.section-card,
+.note,
+.tip,
+.info-box,
+.grammar-box,
+.translation-box,
+.example-box,
+.question-header,
+.table-wrap,
+.results-box {
+  background: #f4f8f4 !important;
+  border-color: #dce8de !important;
+}
 
-  .nav-item.active,
-  .nav-item:hover,
-  .section-card,
-  .note,
-  .tip,
-  .info-box,
-  .grammar-box,
-  .translation-box,
-  .example-box,
-  .question-header,
-  .table-wrap,
-  .results-box {
-    background: #f0f7ff !important;
-    border-color: #d7ecf8 !important;
-  }
+.nav-item.active,
+.nav-item:hover,
+.section-header h2,
+.card h2,
+.card h3,
+.lesson-card h3,
+.question-number,
+.score-num {
+  color: #5f7b67 !important;
+}
 
-  .nav-item.active,
-  .nav-item:hover,
-  .section-header h2,
-  .card h2,
-  .card h3,
-  .lesson-card h3,
-  .question-number,
-  .score-num {
-    color: #4f9fc7 !important;
-  }
+.btn,
+.btn-primary,
+.submit-btn,
+.check-btn,
+button.primary {
+  background: #7f9f8a !important;
+  border-color: #7f9f8a !important;
+  color: #f4f8f4 !important;
+  border-radius: 8px !important;
+}
 
-  .btn,
-  .btn-primary,
-  .submit-btn,
-  .check-btn,
-  button.primary {
-    background: #4f9fc7 !important;
-    border-color: #4f9fc7 !important;
-    color: #eef9ff !important;
-    border-radius: 8px !important;
-  }
+.btn:hover,
+.btn-primary:hover,
+.submit-btn:hover,
+.check-btn:hover,
+button.primary:hover {
+  background: #a8bcae !important;
+  border-color: #a8bcae !important;
+}
 
-  .btn:hover,
-  .btn-primary:hover,
-  .submit-btn:hover,
-  .check-btn:hover,
-  button.primary:hover {
-    background: #8cc9df !important;
-    border-color: #8cc9df !important;
-  }
 </style>
 </head>
 <body>
