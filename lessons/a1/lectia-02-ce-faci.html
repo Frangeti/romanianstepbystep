@@ -581,6 +581,22 @@
         <button class="mc-btn" data-correct="false">La fel?</button>
       </div>
     </div>
+    <div class="mc-question">
+      <p>3. „Nu prea bine" bedeutet:</p>
+      <div class="mc-options">
+        <button class="mc-btn" data-correct="true">Nicht so gut</button>
+        <button class="mc-btn" data-correct="false">Sehr gut</button>
+        <button class="mc-btn" data-correct="false">Wunderbar</button>
+      </div>
+    </div>
+    <div class="mc-question">
+      <p>4. Wie sagt man „Gleichfalls" auf Rumänisch?</p>
+      <div class="mc-options">
+        <button class="mc-btn" data-correct="false">Rău</button>
+        <button class="mc-btn" data-correct="false">Minunat</button>
+        <button class="mc-btn" data-correct="true">La fel</button>
+      </div>
+    </div>
   </div>
 
   <div class="section-title"><span class="icon">🏗️</span> Sätze bauen – Construire de propoziții</div>
@@ -598,6 +614,23 @@
       <button class="check-btn" onclick="checkSentence('sb1')">Prüfen</button>
       <button class="reset-btn" onclick="resetSentence('sb1')">↺ Zurücksetzen</button>
       <div id="fb-sb1" class="feedback" style="display:none"></div>
+    </div>
+  </div>
+
+  <div class="section-title"><span class="icon">🖼️</span> Bilder & Wörter – Asociere cu pictograme</div>
+  <div class="exercise-block" id="img-ex-2">
+    <h4>Klicke auf das Bild, dann auf das passende Wort</h4>
+    <div class="image-match">
+      <div class="img-card" data-word="Bine" onclick="selectImg(this,'img-ex-2')"><span class="emoji-big">😊</span><span class="word-label">?</span></div>
+      <div class="img-card" data-word="Minunat" onclick="selectImg(this,'img-ex-2')"><span class="emoji-big">🤩</span><span class="word-label">?</span></div>
+      <div class="img-card" data-word="Așa și așa" onclick="selectImg(this,'img-ex-2')"><span class="emoji-big">😐</span><span class="word-label">?</span></div>
+      <div class="img-card" data-word="Rău" onclick="selectImg(this,'img-ex-2')"><span class="emoji-big">😢</span><span class="word-label">?</span></div>
+    </div>
+    <div class="word-options" id="word-opts-2">
+      <div class="word-option" onclick="matchWord(this,'img-ex-2')">Așa și așa</div>
+      <div class="word-option" onclick="matchWord(this,'img-ex-2')">Bine</div>
+      <div class="word-option" onclick="matchWord(this,'img-ex-2')">Rău</div>
+      <div class="word-option" onclick="matchWord(this,'img-ex-2')">Minunat</div>
     </div>
   </div>
 </section>
