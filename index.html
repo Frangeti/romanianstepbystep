@@ -8,25 +8,25 @@
 <style>
   :root {
     --gold: #eef9ff;
-    --ink: #1f8fd1;
+    --ink: #4f9fc7;
     --text: #2a2018;
     --muted: #7a6a55;
     --paper: #ffffff;
     --bg: #fdfaf4;
     --mist: #f0f7ff;
-    --mint: #57c7f2;
+    --mint: #8cc9df;
     --mint-light: #e9f8ff;
-    --coral: #176ea6;
+    --coral: #357fa4;
     --coral-light: #eaf6ff;
-    --sun: #a8ddf5;
+    --sun: #c8e8f3;
     --sun-light: #eef9ff;
-    --sky: #57c7f2;
+    --sky: #8cc9df;
     --sky-light: #e5f6fb;
-    --berry: #176ea6;
+    --berry: #357fa4;
     --berry-light: #eaf6ff;
     --border: #d7ecf8;
-    --shadow: 0 18px 45px rgba(31, 143, 209, 0.12);
-    --shadow-sm: 0 8px 24px rgba(31, 143, 209, 0.08);
+    --shadow: 0 18px 45px rgba(79, 159, 199, 0.12);
+    --shadow-sm: 0 8px 24px rgba(79, 159, 199, 0.08);
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -73,7 +73,7 @@
     letter-spacing: .01em;
   }
 
-  .logo span { color: var(--gold); }
+  .logo span { color: #c8e8f3; }
 
   .level-pills {
     display: flex;
@@ -228,10 +228,7 @@
   }
 
   .intro-copy {
-    display: grid;
-    grid-template-columns: minmax(280px, 0.9fr) minmax(280px, 1.1fr);
-    align-items: center;
-    gap: clamp(1rem, 3vw, 2.4rem);
+    display: block;
   }
 
   .eyebrow {
@@ -258,11 +255,12 @@
 
   h1 {
     font-family: 'Atkinson Hyperlegible', sans-serif;
-    font-size: clamp(30px, 3.8vw, 48px);
+    font-size: clamp(30px, 4vw, 48px);
     line-height: 1.12;
-    margin-bottom: 0;
-    color: #176ea6;
-    max-width: 13ch;
+    margin-bottom: .45rem;
+    color: #357fa4;
+    max-width: none;
+    white-space: nowrap;
     position: relative;
     z-index: 1;
   }
@@ -404,16 +402,16 @@
     box-shadow: 0 14px 34px rgba(24, 48, 59, .07);
   }
 
-  #a1 .lesson-card:nth-child(1) { --accent: #1f8fd1; }
+  #a1 .lesson-card:nth-child(1) { --accent: #4f9fc7; }
   #a1 .lesson-card:nth-child(2) { --accent: #3aa8d8; }
-  #a1 .lesson-card:nth-child(3) { --accent: #176ea6; }
-  #a1 .lesson-card:nth-child(4) { --accent: #57c7f2; }
-  #a1 .lesson-card:nth-child(5) { --accent: #1f8fd1; }
+  #a1 .lesson-card:nth-child(3) { --accent: #357fa4; }
+  #a1 .lesson-card:nth-child(4) { --accent: #8cc9df; }
+  #a1 .lesson-card:nth-child(5) { --accent: #4f9fc7; }
   #a1 .lesson-card:nth-child(6) { --accent: #12b7c8; }
-  #a1 .lesson-card:nth-child(7) { --accent: #176ea6; }
+  #a1 .lesson-card:nth-child(7) { --accent: #357fa4; }
   #a1 .lesson-card:nth-child(8) { --accent: #3aa8d8; }
-  #a1 .lesson-card:nth-child(9) { --accent: #1f8fd1; }
-  #a1 .lesson-card:nth-child(10) { --accent: #57c7f2; }
+  #a1 .lesson-card:nth-child(9) { --accent: #4f9fc7; }
+  #a1 .lesson-card:nth-child(10) { --accent: #8cc9df; }
 
   #a1 .lesson-card::before {
     content: attr(data-lesson-no);
@@ -594,7 +592,7 @@
 
   .open-lesson:hover {
     background: var(--berry);
-    box-shadow: 0 16px 28px rgba(31, 143, 209, .22);
+    box-shadow: 0 16px 28px rgba(79, 159, 199, .22);
     transform: translateY(-1px);
   }
 
@@ -696,7 +694,7 @@
   .cover-blue,
   .cover-teal,
   .cover-purple {
-    background: linear-gradient(135deg, #1f8fd1, #57c7f2);
+    background: linear-gradient(135deg, #4f9fc7, #8cc9df);
     color: #fff;
   }
 
@@ -798,8 +796,11 @@
     .sidebar { display: none; }
     .main { padding: 1rem; }
     .intro::after { display: none; }
-    .intro-copy { grid-template-columns: 1fr; }
-    h1 { max-width: none; }
+    .intro-copy { display: block; }
+    h1 {
+      max-width: none;
+      white-space: normal;
+    }
     .stats,
     .lesson-grid,
     .coming-grid,
