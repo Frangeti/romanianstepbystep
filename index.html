@@ -187,6 +187,37 @@
     color: var(--ink);
   }
 
+  .language-tools {
+    display: none;
+    margin: .15rem 0 .55rem 1.75rem;
+    padding: .35rem 0 .35rem .7rem;
+    border-left: 1px solid var(--border);
+  }
+
+  .language-tools.is-open {
+    display: block;
+  }
+
+  .sid-tools-head {
+    padding: .35rem .55rem .25rem;
+    color: var(--muted);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+  }
+
+  .sid-item.tool-item {
+    min-height: 32px;
+    padding: 6px .6rem;
+    color: var(--muted);
+    font-size: 13px;
+  }
+
+  .sid-item.tool-item.active {
+    color: var(--ink);
+  }
+
   .sid-dot {
     width: 8px;
     height: 8px;
@@ -382,11 +413,9 @@
 
   .lesson-category-head {
     display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    gap: 1rem;
+    align-items: center;
     margin: 0 0 .8rem;
-    padding: .95rem 1rem;
+    padding: .8rem 1rem;
     border: 1px solid var(--border);
     border-radius: 8px;
     background: rgba(255, 255, 255, .74);
@@ -396,27 +425,6 @@
     color: var(--ink);
     font-size: 17px;
     line-height: 1.2;
-  }
-
-  .lesson-category-head span {
-    color: var(--muted);
-    font-size: 13px;
-    white-space: nowrap;
-  }
-
-  .language-placeholder {
-    background: var(--paper);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 1rem;
-    color: var(--muted);
-    box-shadow: var(--shadow-sm);
-  }
-
-  .language-placeholder strong {
-    display: block;
-    color: var(--ink);
-    margin-bottom: .25rem;
   }
 
   #a1 .lesson-grid {
@@ -868,10 +876,6 @@
       gap: .35rem;
     }
 
-    .lesson-category-head span {
-      white-space: normal;
-    }
-
     #a1 .lesson-card {
       min-height: 138px;
     }
@@ -887,9 +891,10 @@
     <header class="topbar">
       <a class="logo" href="index.html">Romanian <span>Step by Step</span></a>
       <nav class="main-nav" aria-label="Meniu principal">
-        <a class="main-nav-link" href="index.html">Acasă</a>
-        <a class="main-nav-link active" href="#lectii" data-show-all-lessons>Lecții</a>
-        <a class="main-nav-link" href="#teste">Teste</a>
+        <a class="main-nav-link active" href="#acasa">Acasă</a>
+        <a class="main-nav-link" href="#a1-germana" data-language-category="germana">Germană</a>
+        <a class="main-nav-link" href="#a1-engleza" data-language-category="engleza">Engleză</a>
+        <a class="main-nav-link" href="#a1-spaniola" data-language-category="spaniola">Spaniolă</a>
       </nav>
     </header>
 
@@ -899,32 +904,55 @@
           <div class="sid-head">Niveluri</div>
           <a class="sid-item" href="#a1" data-level-filter="a1"><span class="sid-dot dot-gold"></span>A1 Începător</a>
           <div class="sid-sublist" aria-label="Subcategorii A1">
-            <a class="sid-item subitem" href="#a1-germana"><span class="sid-dot dot-teal"></span>Germană</a>
-            <a class="sid-item subitem" href="#a1-engleza"><span class="sid-dot dot-teal"></span>Engleză</a>
-            <a class="sid-item subitem" href="#a1-spaniola"><span class="sid-dot dot-teal"></span>Spaniolă</a>
+            <a class="sid-item subitem" href="#a1-germana" data-language-category="germana"><span class="sid-dot dot-teal"></span>Germană</a>
+            <div class="language-tools" data-language-tools="germana">
+              <div class="sid-tools-head">Instrumente de lucru</div>
+              <a class="sid-item tool-item" href="#glosar" data-language-tool="germana"><span class="sid-dot dot-teal"></span>Glosar</a>
+              <a class="sid-item tool-item" href="#tabele-gramaticale" data-language-tool="germana"><span class="sid-dot dot-teal"></span>Tabele gramaticale</a>
+              <a class="sid-item tool-item" href="#ghid-pronuntie" data-language-tool="germana"><span class="sid-dot dot-teal"></span>Ghid de pronunție</a>
+              <a class="sid-item tool-item" href="#recapitulare" data-language-tool="germana"><span class="sid-dot dot-gold"></span>Exerciții de recapitulare</a>
+              <a class="sid-item tool-item" href="#exercitii-vocabular" data-language-tool="germana"><span class="sid-dot dot-gold"></span>Exerciții de vocabular</a>
+              <a class="sid-item tool-item" href="#exercitii-gramatica" data-language-tool="germana"><span class="sid-dot dot-gold"></span>Exerciții de gramatică</a>
+              <a class="sid-item tool-item" href="#fise-vocabular" data-language-tool="germana"><span class="sid-dot dot-blue"></span>Fișe vocabular</a>
+              <a class="sid-item tool-item" href="#verbe-conjugate" data-language-tool="germana"><span class="sid-dot dot-blue"></span>Verbe conjugate</a>
+              <a class="sid-item tool-item" href="#teste" data-language-tool="germana"><span class="sid-dot dot-blue"></span>Teste</a>
+            </div>
+            <a class="sid-item subitem" href="#a1-engleza" data-language-category="engleza"><span class="sid-dot dot-teal"></span>Engleză</a>
+            <div class="language-tools" data-language-tools="engleza">
+              <div class="sid-tools-head">Instrumente de lucru</div>
+              <a class="sid-item tool-item" href="#glosar" data-language-tool="engleza"><span class="sid-dot dot-teal"></span>Glosar</a>
+              <a class="sid-item tool-item" href="#tabele-gramaticale" data-language-tool="engleza"><span class="sid-dot dot-teal"></span>Tabele gramaticale</a>
+              <a class="sid-item tool-item" href="#ghid-pronuntie" data-language-tool="engleza"><span class="sid-dot dot-teal"></span>Ghid de pronunție</a>
+              <a class="sid-item tool-item" href="#recapitulare" data-language-tool="engleza"><span class="sid-dot dot-gold"></span>Exerciții de recapitulare</a>
+              <a class="sid-item tool-item" href="#exercitii-vocabular" data-language-tool="engleza"><span class="sid-dot dot-gold"></span>Exerciții de vocabular</a>
+              <a class="sid-item tool-item" href="#exercitii-gramatica" data-language-tool="engleza"><span class="sid-dot dot-gold"></span>Exerciții de gramatică</a>
+              <a class="sid-item tool-item" href="#fise-vocabular" data-language-tool="engleza"><span class="sid-dot dot-blue"></span>Fișe vocabular</a>
+              <a class="sid-item tool-item" href="#verbe-conjugate" data-language-tool="engleza"><span class="sid-dot dot-blue"></span>Verbe conjugate</a>
+              <a class="sid-item tool-item" href="#teste" data-language-tool="engleza"><span class="sid-dot dot-blue"></span>Teste</a>
+            </div>
+            <a class="sid-item subitem" href="#a1-spaniola" data-language-category="spaniola"><span class="sid-dot dot-teal"></span>Spaniolă</a>
+            <div class="language-tools" data-language-tools="spaniola">
+              <div class="sid-tools-head">Instrumente de lucru</div>
+              <a class="sid-item tool-item" href="#glosar" data-language-tool="spaniola"><span class="sid-dot dot-teal"></span>Glosar</a>
+              <a class="sid-item tool-item" href="#tabele-gramaticale" data-language-tool="spaniola"><span class="sid-dot dot-teal"></span>Tabele gramaticale</a>
+              <a class="sid-item tool-item" href="#ghid-pronuntie" data-language-tool="spaniola"><span class="sid-dot dot-teal"></span>Ghid de pronunție</a>
+              <a class="sid-item tool-item" href="#recapitulare" data-language-tool="spaniola"><span class="sid-dot dot-gold"></span>Exerciții de recapitulare</a>
+              <a class="sid-item tool-item" href="#exercitii-vocabular" data-language-tool="spaniola"><span class="sid-dot dot-gold"></span>Exerciții de vocabular</a>
+              <a class="sid-item tool-item" href="#exercitii-gramatica" data-language-tool="spaniola"><span class="sid-dot dot-gold"></span>Exerciții de gramatică</a>
+              <a class="sid-item tool-item" href="#fise-vocabular" data-language-tool="spaniola"><span class="sid-dot dot-blue"></span>Fișe vocabular</a>
+              <a class="sid-item tool-item" href="#verbe-conjugate" data-language-tool="spaniola"><span class="sid-dot dot-blue"></span>Verbe conjugate</a>
+              <a class="sid-item tool-item" href="#teste" data-language-tool="spaniola"><span class="sid-dot dot-blue"></span>Teste</a>
+            </div>
           </div>
-        </div>
-        <div class="sid-section">
-          <div class="sid-head">Instrumente de lucru</div>
-          <a class="sid-item active" href="#lectii" data-show-all-lessons><span class="sid-dot dot-purple"></span>Lecții complete</a>
-          <a class="sid-item" href="#glosar"><span class="sid-dot dot-teal"></span>Glosar</a>
-          <a class="sid-item" href="#tabele-gramaticale"><span class="sid-dot dot-teal"></span>Tabele gramaticale</a>
-          <a class="sid-item" href="#ghid-pronuntie"><span class="sid-dot dot-teal"></span>Ghid de pronunție</a>
-          <a class="sid-item" href="#recapitulare"><span class="sid-dot dot-gold"></span>Exerciții de recapitulare</a>
-          <a class="sid-item" href="#exercitii-vocabular"><span class="sid-dot dot-gold"></span>Exerciții de vocabular</a>
-          <a class="sid-item" href="#exercitii-gramatica"><span class="sid-dot dot-gold"></span>Exerciții de gramatică</a>
-          <a class="sid-item" href="#fise-vocabular"><span class="sid-dot dot-blue"></span>Fișe vocabular</a>
-          <a class="sid-item" href="#verbe-conjugate"><span class="sid-dot dot-blue"></span>Verbe conjugate</a>
-          <a class="sid-item" href="#teste"><span class="sid-dot dot-blue"></span>Teste</a>
         </div>
       </aside>
 
       <main class="main">
-        <section class="intro">
+        <section class="intro" id="acasa">
           <div class="eyebrow">Platformă de lecții</div>
           <div class="intro-copy">
             <h1>Învață româna pas cu pas</h1>
-            <p>Lecții A1 și instrumente de lucru pentru vocabular, gramatică, pronunție și recapitulare.</p>
+            <p>Lecții A1 organizate clar pentru învățare pas cu pas.</p>
           </div>
 
           <div class="stats" aria-label="Rezumat">
@@ -956,8 +984,7 @@
             </div>
             <div class="lesson-category" id="a1-germana">
               <div class="lesson-category-head">
-                <h4>Lecții de limba română din germană</h4>
-                <span>10 lecții disponibile</span>
+                <h4>Germană</h4>
               </div>
               <div class="lesson-grid">
               <article class="lesson-card" data-lesson-link="lessons/a1/lectia-01-salutari.html" data-lesson-no="01" tabindex="0" role="link">
@@ -1285,24 +1312,16 @@
 
             <div class="lesson-category" id="a1-engleza">
               <div class="lesson-category-head">
-                <h4>Lecții de limba română din engleză</h4>
-                <span>în pregătire</span>
+                <h4>Engleză</h4>
               </div>
-              <div class="language-placeholder">
-                <strong>A1 Romanian from English</strong>
-                Lecțiile pentru vorbitori de engleză vor fi adăugate aici.
-              </div>
+              <div class="lesson-grid" data-language-lessons="engleza"></div>
             </div>
 
             <div class="lesson-category" id="a1-spaniola">
               <div class="lesson-category-head">
-                <h4>Lecții de limba română din spaniolă</h4>
-                <span>în pregătire</span>
+                <h4>Spaniolă</h4>
               </div>
-              <div class="language-placeholder">
-                <strong>A1 Rumano desde español</strong>
-                Lecțiile pentru vorbitori de spaniolă vor fi adăugate aici.
-              </div>
+              <div class="lesson-grid" data-language-lessons="spaniola"></div>
             </div>
           </div>
 
@@ -1487,6 +1506,7 @@
     const levelFilters = document.querySelectorAll('[data-level-filter]');
     const showAllLessonsLinks = document.querySelectorAll('[data-show-all-lessons]');
     const mainSections = document.querySelectorAll('.main > section');
+    const languageToolMenus = document.querySelectorAll('[data-language-tools]');
 
     function setActiveMenu(item) {
       sidebarItems.forEach(link => link.classList.remove('active'));
@@ -1497,8 +1517,13 @@
       topNavLinks.forEach(link => link.classList.toggle('active', link.getAttribute('href') === hash));
     }
 
+    function getLanguageHash(language) {
+      if (!language) return '#acasa';
+      return `#a1-${language}`;
+    }
+
     function setActiveLevel(level) {
-      setActiveTopNav('#lectii');
+      setActiveTopNav('#acasa');
       sidebarItems.forEach(link => {
         if (link.dataset.levelFilter) {
           link.classList.toggle('active', link.dataset.levelFilter === level);
@@ -1522,6 +1547,16 @@
       });
     }
 
+    function closeLanguageTools() {
+      languageToolMenus.forEach(menu => menu.classList.remove('is-open'));
+    }
+
+    function openLanguageTools(language) {
+      languageToolMenus.forEach(menu => {
+        menu.classList.toggle('is-open', menu.dataset.languageTools === language);
+      });
+    }
+
     function showLessonsForLevel(level) {
       let visibleCount = 0;
       levelSections.forEach(section => {
@@ -1539,6 +1574,7 @@
 
     levelFilters.forEach(link => {
       link.addEventListener('click', () => {
+        closeLanguageTools();
         showOnlyMainSection('#lectii');
         showLessonsForLevel(link.dataset.levelFilter);
         setActiveLevel(link.dataset.levelFilter);
@@ -1547,23 +1583,32 @@
 
     showAllLessonsLinks.forEach(link => {
       link.addEventListener('click', () => {
+        closeLanguageTools();
         showOnlyMainSection('#lectii');
         showAllLessonLevels();
         clearActiveLevels();
         setActiveMenu(document.querySelector('.sid-item[data-show-all-lessons]'));
-        setActiveTopNav('#lectii');
+        setActiveTopNav('#acasa');
       });
     });
 
     topNavLinks.forEach(link => {
       link.addEventListener('click', () => {
         const hash = link.getAttribute('href');
+        const language = link.dataset.languageCategory;
         setActiveTopNav(hash);
         clearActiveLevels();
-        showOnlyMainSection(hash);
+        showOnlyMainSection(language ? '#lectii' : hash);
 
         if (link.dataset.showAllLessons !== undefined) {
           showAllLessonLevels();
+        }
+
+        if (language) {
+          showAllLessonLevels();
+          openLanguageTools(language);
+        } else {
+          closeLanguageTools();
         }
 
         setActiveMenu(document.querySelector(`.sid-item[href="${hash}"]`));
@@ -1574,13 +1619,20 @@
       if (!link.dataset.levelFilter) {
         link.addEventListener('click', () => {
           const hash = link.getAttribute('href');
-          const isA1Category = link.classList.contains('subitem');
-          setActiveTopNav(hash === '#teste' ? '#teste' : '#lectii');
+          const language = link.dataset.languageCategory || link.dataset.languageTool;
+          const isA1Category = Boolean(link.dataset.languageCategory);
+          setActiveTopNav(language ? getLanguageHash(language) : '#acasa');
           clearActiveLevels();
           showOnlyMainSection(isA1Category ? '#lectii' : hash);
 
           if (link.dataset.showAllLessons !== undefined || isA1Category) {
             showAllLessonLevels();
+          }
+
+          if (language) {
+            openLanguageTools(language);
+          } else {
+            closeLanguageTools();
           }
 
           setActiveMenu(link);
@@ -1593,14 +1645,29 @@
       const targetSection = document.querySelector(`.main > section${hash}`);
       if (targetSection) {
         showOnlyMainSection(hash);
-        setActiveMenu(document.querySelector(`.sid-item[href="${hash}"]`));
-        setActiveTopNav(hash === '#teste' ? '#teste' : '#lectii');
+        const matchingLink = document.querySelector(`.sid-item[href="${hash}"]`);
+        const language = matchingLink?.dataset.languageTool;
+        if (language) {
+          openLanguageTools(language);
+        } else {
+          closeLanguageTools();
+        }
+        setActiveMenu(matchingLink);
+        setActiveTopNav(language ? getLanguageHash(language) : hash);
       } else if (hash.startsWith('#a1-')) {
         showOnlyMainSection('#lectii');
         showAllLessonLevels();
-        setActiveMenu(document.querySelector(`.sid-item[href="${hash}"]`));
-        setActiveTopNav('#lectii');
+        const languageLink = document.querySelector(`.sid-item[href="${hash}"]`);
+        if (languageLink?.dataset.languageCategory) {
+          openLanguageTools(languageLink.dataset.languageCategory);
+        }
+        setActiveMenu(languageLink);
+        setActiveTopNav(hash);
       }
+    } else {
+      showOnlyMainSection('#acasa');
+      setActiveTopNav('#acasa');
+      closeLanguageTools();
     }
 
     document.querySelectorAll('[data-lesson-link]').forEach(card => {
