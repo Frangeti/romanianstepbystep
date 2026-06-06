@@ -611,11 +611,48 @@
     </div>
   </div>
 
+  <div class="section-title"><span class="icon">🃏</span> Zuordnungsübung – Asociere</div>
+  <div class="exercise-block">
+    <h4>Verbinde die Wörter mit ihrer deutschen Bedeutung</h4>
+    <div class="matching-game" id="match-l10">
+      <div class="match-col">
+        <div class="match-item" data-pair="1">limbă</div>
+        <div class="match-item" data-pair="2">germană</div>
+        <div class="match-item" data-pair="3">puțin</div>
+        <div class="match-item" data-pair="4">a vorbi</div>
+      </div>
+      <div class="match-col">
+        <div class="match-item" data-pair="3">ein bisschen</div>
+        <div class="match-item" data-pair="1">Sprache</div>
+        <div class="match-item" data-pair="4">sprechen</div>
+        <div class="match-item" data-pair="2">Deutsch</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-title"><span class="icon">🖼️</span> Bilder & Wörter – Asociere cu pictograme</div>
+  <div class="exercise-block" id="img-ex-10">
+    <h4>Klicke auf das Bild, dann auf das passende Wort</h4>
+    <div class="image-match">
+      <div class="img-card" data-word="limbă" onclick="selectImg(this,'img-ex-10')"><span class="emoji-big">🗣️</span><span class="word-label">?</span></div>
+      <div class="img-card" data-word="română" onclick="selectImg(this,'img-ex-10')"><span class="emoji-big">🇷🇴</span><span class="word-label">?</span></div>
+      <div class="img-card" data-word="germană" onclick="selectImg(this,'img-ex-10')"><span class="emoji-big">🇩🇪</span><span class="word-label">?</span></div>
+      <div class="img-card" data-word="puțin" onclick="selectImg(this,'img-ex-10')"><span class="emoji-big">🤏</span><span class="word-label">?</span></div>
+    </div>
+    <div class="word-options">
+      <div class="word-option" onclick="matchWord(this,'img-ex-10')">germană</div>
+      <div class="word-option" onclick="matchWord(this,'img-ex-10')">limbă</div>
+      <div class="word-option" onclick="matchWord(this,'img-ex-10')">puțin</div>
+      <div class="word-option" onclick="matchWord(this,'img-ex-10')">română</div>
+    </div>
+  </div>
+
   <div style="background:linear-gradient(135deg,#1f8fd1,#57c7f2);border-radius:16px;padding:28px 32px;margin-top:32px;text-align:center;">
     <div style="font-size:2rem;margin-bottom:8px">🎉</div>
     <div style="font-family:'Playfair Display',serif;color:var(--gold);font-size:1.6rem;font-weight:900;margin-bottom:8px">Felicitări! Herzlichen Glückwunsch!</div>
     <div style="color:rgba(255,255,255,0.86);font-size:0.95rem">Du hast alle 10 Lektionen des Niveaus A1 abgeschlossen!<br>Ai terminat toate cele 10 lecții de nivel A1!</div>
   </div>
+
 </section>
   </main>
 <script>

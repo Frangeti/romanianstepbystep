@@ -596,6 +596,41 @@
       </div>
     </div>
   </div>
+
+  <div class="section-title"><span class="icon">🏗️</span> Sätze bauen – Construire de propoziții</div>
+  <div class="exercise-block">
+    <h4>Bringe die Wörter in die richtige Reihenfolge:</h4>
+    <div id="sb-l9" class="sentence-builder" data-answer="Eu sunt româncă">
+      <p style="font-size:0.85rem;color:var(--muted);margin-bottom:8px">Bilde den Satz: „Ich bin Rumänin."</p>
+      <div class="word-bank">
+        <div class="word-token" onclick="placeWord(this,'sb-l9')">sunt</div>
+        <div class="word-token" onclick="placeWord(this,'sb-l9')">româncă</div>
+        <div class="word-token" onclick="placeWord(this,'sb-l9')">Eu</div>
+      </div>
+      <div class="sentence-drop" id="drop-sb-l9"></div>
+      <button class="check-btn" onclick="checkSentence('sb-l9')">Prüfen</button>
+      <button class="reset-btn" onclick="resetSentence('sb-l9')">↺ Zurücksetzen</button>
+      <div id="fb-sb-l9" class="feedback" style="display:none"></div>
+    </div>
+  </div>
+
+  <div class="section-title"><span class="icon">🖼️</span> Bilder & Wörter – Asociere cu pictograme</div>
+  <div class="exercise-block" id="img-ex-9">
+    <h4>Klicke auf das Bild, dann auf das passende Wort</h4>
+    <div class="image-match">
+      <div class="img-card" data-word="român" onclick="selectImg(this,'img-ex-9')"><span class="emoji-big">🇷🇴</span><span class="word-label">?</span></div>
+      <div class="img-card" data-word="german" onclick="selectImg(this,'img-ex-9')"><span class="emoji-big">🇩🇪</span><span class="word-label">?</span></div>
+      <div class="img-card" data-word="austriac" onclick="selectImg(this,'img-ex-9')"><span class="emoji-big">🇦🇹</span><span class="word-label">?</span></div>
+      <div class="img-card" data-word="elvețian" onclick="selectImg(this,'img-ex-9')"><span class="emoji-big">🇨🇭</span><span class="word-label">?</span></div>
+    </div>
+    <div class="word-options">
+      <div class="word-option" onclick="matchWord(this,'img-ex-9')">german</div>
+      <div class="word-option" onclick="matchWord(this,'img-ex-9')">elvețian</div>
+      <div class="word-option" onclick="matchWord(this,'img-ex-9')">român</div>
+      <div class="word-option" onclick="matchWord(this,'img-ex-9')">austriac</div>
+    </div>
+  </div>
+
 </section>
   </main>
 <script>

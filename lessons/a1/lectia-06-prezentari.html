@@ -605,6 +605,43 @@
       <div id="fb-sb6" class="feedback" style="display:none"></div>
     </div>
   </div>
+
+  <div class="section-title"><span class="icon">🃏</span> Zuordnungsübung – Asociere</div>
+  <div class="exercise-block">
+    <h4>Verbinde die Wörter mit ihrer deutschen Bedeutung</h4>
+    <div class="matching-game" id="match-l6">
+      <div class="match-col">
+        <div class="match-item" data-pair="1">mă numesc</div>
+        <div class="match-item" data-pair="2">prenumele</div>
+        <div class="match-item" data-pair="3">îmi pare bine</div>
+        <div class="match-item" data-pair="4">numele de familie</div>
+      </div>
+      <div class="match-col">
+        <div class="match-item" data-pair="3">freut mich</div>
+        <div class="match-item" data-pair="1">ich heiße</div>
+        <div class="match-item" data-pair="4">Nachname</div>
+        <div class="match-item" data-pair="2">Vorname</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-title"><span class="icon">🖼️</span> Bilder & Wörter – Asociere cu pictograme</div>
+  <div class="exercise-block" id="img-ex-6">
+    <h4>Klicke auf das Bild, dann auf das passende Wort</h4>
+    <div class="image-match">
+      <div class="img-card" data-word="mă numesc" onclick="selectImg(this,'img-ex-6')"><span class="emoji-big">👤</span><span class="word-label">?</span></div>
+      <div class="img-card" data-word="Cum te numești?" onclick="selectImg(this,'img-ex-6')"><span class="emoji-big">❓</span><span class="word-label">?</span></div>
+      <div class="img-card" data-word="îmi pare bine" onclick="selectImg(this,'img-ex-6')"><span class="emoji-big">🤝</span><span class="word-label">?</span></div>
+      <div class="img-card" data-word="prenumele" onclick="selectImg(this,'img-ex-6')"><span class="emoji-big">📛</span><span class="word-label">?</span></div>
+    </div>
+    <div class="word-options">
+      <div class="word-option" onclick="matchWord(this,'img-ex-6')">Cum te numești?</div>
+      <div class="word-option" onclick="matchWord(this,'img-ex-6')">mă numesc</div>
+      <div class="word-option" onclick="matchWord(this,'img-ex-6')">prenumele</div>
+      <div class="word-option" onclick="matchWord(this,'img-ex-6')">îmi pare bine</div>
+    </div>
+  </div>
+
 </section>
   </main>
 <script>

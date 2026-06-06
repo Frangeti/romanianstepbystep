@@ -614,6 +614,45 @@
       <div class="word-option" onclick="matchWord(this,'img-ex-7')">trei</div>
     </div>
   </div>
+
+  <div class="section-title"><span class="icon">🃏</span> Zuordnungsübung – Asociere</div>
+  <div class="exercise-block">
+    <h4>Verbinde die Wörter mit ihrer deutschen Bedeutung</h4>
+    <div class="matching-game" id="match-l7">
+      <div class="match-col">
+        <div class="match-item" data-pair="1">trei</div>
+        <div class="match-item" data-pair="2">cinci</div>
+        <div class="match-item" data-pair="3">nouă</div>
+        <div class="match-item" data-pair="4">douăzeci</div>
+      </div>
+      <div class="match-col">
+        <div class="match-item" data-pair="3">neun</div>
+        <div class="match-item" data-pair="1">drei</div>
+        <div class="match-item" data-pair="4">zwanzig</div>
+        <div class="match-item" data-pair="2">fünf</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-title"><span class="icon">🏗️</span> Sätze bauen – Construire de propoziții</div>
+  <div class="exercise-block">
+    <h4>Bringe die Wörter in die richtige Reihenfolge:</h4>
+    <div id="sb-l7" class="sentence-builder" data-answer="Eu am douăzeci de ani">
+      <p style="font-size:0.85rem;color:var(--muted);margin-bottom:8px">Bilde den Satz: „Ich bin zwanzig Jahre alt."</p>
+      <div class="word-bank">
+        <div class="word-token" onclick="placeWord(this,'sb-l7')">ani</div>
+        <div class="word-token" onclick="placeWord(this,'sb-l7')">douăzeci</div>
+        <div class="word-token" onclick="placeWord(this,'sb-l7')">Eu</div>
+        <div class="word-token" onclick="placeWord(this,'sb-l7')">de</div>
+        <div class="word-token" onclick="placeWord(this,'sb-l7')">am</div>
+      </div>
+      <div class="sentence-drop" id="drop-sb-l7"></div>
+      <button class="check-btn" onclick="checkSentence('sb-l7')">Prüfen</button>
+      <button class="reset-btn" onclick="resetSentence('sb-l7')">↺ Zurücksetzen</button>
+      <div id="fb-sb-l7" class="feedback" style="display:none"></div>
+    </div>
+  </div>
+
 </section>
   </main>
 <script>

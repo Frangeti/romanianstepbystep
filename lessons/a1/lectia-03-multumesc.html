@@ -606,6 +606,42 @@
       </div>
     </div>
   </div>
+
+  <div class="section-title"><span class="icon">🏗️</span> Sätze bauen – Construire de propoziții</div>
+  <div class="exercise-block">
+    <h4>Bringe die Wörter in die richtige Reihenfolge:</h4>
+    <div id="sb-l3" class="sentence-builder" data-answer="Mulțumesc frumos Cu plăcere">
+      <p style="font-size:0.85rem;color:var(--muted);margin-bottom:8px">Dialog: „Vielen Dank – Gern geschehen"</p>
+      <div class="word-bank">
+        <div class="word-token" onclick="placeWord(this,'sb-l3')">plăcere</div>
+        <div class="word-token" onclick="placeWord(this,'sb-l3')">Mulțumesc</div>
+        <div class="word-token" onclick="placeWord(this,'sb-l3')">Cu</div>
+        <div class="word-token" onclick="placeWord(this,'sb-l3')">frumos</div>
+      </div>
+      <div class="sentence-drop" id="drop-sb-l3"></div>
+      <button class="check-btn" onclick="checkSentence('sb-l3')">Prüfen</button>
+      <button class="reset-btn" onclick="resetSentence('sb-l3')">↺ Zurücksetzen</button>
+      <div id="fb-sb-l3" class="feedback" style="display:none"></div>
+    </div>
+  </div>
+
+  <div class="section-title"><span class="icon">🖼️</span> Bilder & Wörter – Asociere cu pictograme</div>
+  <div class="exercise-block" id="img-ex-3">
+    <h4>Klicke auf das Bild, dann auf das passende Wort</h4>
+    <div class="image-match">
+      <div class="img-card" data-word="Mulțumesc" onclick="selectImg(this,'img-ex-3')"><span class="emoji-big">🙏</span><span class="word-label">?</span></div>
+      <div class="img-card" data-word="Cu plăcere" onclick="selectImg(this,'img-ex-3')"><span class="emoji-big">😊</span><span class="word-label">?</span></div>
+      <div class="img-card" data-word="Cu drag" onclick="selectImg(this,'img-ex-3')"><span class="emoji-big">💚</span><span class="word-label">?</span></div>
+      <div class="img-card" data-word="Vă rog" onclick="selectImg(this,'img-ex-3')"><span class="emoji-big">🤝</span><span class="word-label">?</span></div>
+    </div>
+    <div class="word-options">
+      <div class="word-option" onclick="matchWord(this,'img-ex-3')">Cu plăcere</div>
+      <div class="word-option" onclick="matchWord(this,'img-ex-3')">Mulțumesc</div>
+      <div class="word-option" onclick="matchWord(this,'img-ex-3')">Vă rog</div>
+      <div class="word-option" onclick="matchWord(this,'img-ex-3')">Cu drag</div>
+    </div>
+  </div>
+
 </section>
   </main>
 <script>
