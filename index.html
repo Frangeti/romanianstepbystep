@@ -170,6 +170,23 @@
     font-weight: 600;
   }
 
+  .sid-sublist {
+    margin: .2rem 0 .45rem 17px;
+    padding-left: .65rem;
+    border-left: 1px solid var(--border);
+  }
+
+  .sid-item.subitem {
+    min-height: 34px;
+    padding: 7px .65rem;
+    color: var(--muted);
+    font-size: 14px;
+  }
+
+  .sid-item.subitem.active {
+    color: var(--ink);
+  }
+
   .sid-dot {
     width: 8px;
     height: 8px;
@@ -881,6 +898,11 @@
         <div class="sid-section">
           <div class="sid-head">Niveluri</div>
           <a class="sid-item" href="#a1" data-level-filter="a1"><span class="sid-dot dot-gold"></span>A1 Începător</a>
+          <div class="sid-sublist" aria-label="Subcategorii A1">
+            <a class="sid-item subitem" href="#a1-germana"><span class="sid-dot dot-teal"></span>Germană</a>
+            <a class="sid-item subitem" href="#a1-engleza"><span class="sid-dot dot-teal"></span>Engleză</a>
+            <a class="sid-item subitem" href="#a1-spaniola"><span class="sid-dot dot-teal"></span>Spaniolă</a>
+          </div>
         </div>
         <div class="sid-section">
           <div class="sid-head">Instrumente de lucru</div>
@@ -932,7 +954,7 @@
               <span class="badge badge-b2">Nivel A1</span>
               <h3>Începător</h3>
             </div>
-            <div class="lesson-category">
+            <div class="lesson-category" id="a1-germana">
               <div class="lesson-category-head">
                 <h4>Lecții de limba română din germană</h4>
                 <span>10 lecții disponibile</span>
@@ -1261,7 +1283,7 @@
               </div>
             </div>
 
-            <div class="lesson-category">
+            <div class="lesson-category" id="a1-engleza">
               <div class="lesson-category-head">
                 <h4>Lecții de limba română din engleză</h4>
                 <span>în pregătire</span>
@@ -1272,7 +1294,7 @@
               </div>
             </div>
 
-            <div class="lesson-category">
+            <div class="lesson-category" id="a1-spaniola">
               <div class="lesson-category-head">
                 <h4>Lecții de limba română din spaniolă</h4>
                 <span>în pregătire</span>
@@ -1552,11 +1574,12 @@
       if (!link.dataset.levelFilter) {
         link.addEventListener('click', () => {
           const hash = link.getAttribute('href');
+          const isA1Category = link.classList.contains('subitem');
           setActiveTopNav(hash === '#teste' ? '#teste' : '#lectii');
           clearActiveLevels();
-          showOnlyMainSection(hash);
+          showOnlyMainSection(isA1Category ? '#lectii' : hash);
 
-          if (link.dataset.showAllLessons !== undefined) {
+          if (link.dataset.showAllLessons !== undefined || isA1Category) {
             showAllLessonLevels();
           }
 
@@ -1572,6 +1595,11 @@
         showOnlyMainSection(hash);
         setActiveMenu(document.querySelector(`.sid-item[href="${hash}"]`));
         setActiveTopNav(hash === '#teste' ? '#teste' : '#lectii');
+      } else if (hash.startsWith('#a1-')) {
+        showOnlyMainSection('#lectii');
+        showAllLessonLevels();
+        setActiveMenu(document.querySelector(`.sid-item[href="${hash}"]`));
+        setActiveTopNav('#lectii');
       }
     }
 
