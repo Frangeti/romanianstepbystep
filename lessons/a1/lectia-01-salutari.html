@@ -488,6 +488,15 @@
   .home-link, .next-link { color: var(--gold); text-decoration: none; font-weight: 700; font-size: .9rem; }
   .next-link { color: rgba(255,255,255,0.9); margin-left: 12px; }
   .lesson-nav { display: none; }
+
+  @media print {
+    body { background: #fff; color: #000; }
+    .page-top { display: none !important; }
+    .print-hide { display: none !important; }
+    .exercise-block { page-break-inside: avoid; break-inside: avoid; }
+    .exercise-block h4 { page-break-after: avoid; break-after: avoid; }
+    .section-title { page-break-after: avoid; break-after: avoid; }
+  }
 </style>
 </head>
 <body>
@@ -540,8 +549,8 @@
     <div class="vocab-card"><span class="emoji">🙏</span><span class="ro">Bine ați venit!</span><span class="de">Herzlich willkommen!</span><button class="audio-btn" type="button" aria-label="Ascultă Bine ați venit" data-audio-src="../../assets/audio/a1/lectia-01/bine-ati-venit.mp3" onclick="playVocabAudio(this, 'Bine ați venit')">▶</button></div>
   </div>
 
-  <div class="section-title"><span class="icon">🔊</span> Aussprache – Pronunție</div>
-  <div class="pronuntie-box">
+  <div class="section-title print-hide"><span class="icon">🔊</span> Aussprache – Pronunție</div>
+  <div class="pronuntie-box print-hide">
     <h4>Besondere rumänische Buchstaben</h4>
     <div class="sound-rule">
       <div class="letter">ă</div>
