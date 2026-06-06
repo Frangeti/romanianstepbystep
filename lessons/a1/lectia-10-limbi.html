@@ -7,17 +7,17 @@
 <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=DM+Mono&display=swap" rel="stylesheet">
 <style>
   :root {
-    --gold: #fbf5ec;
-    --dark: #c79a64;
+    --gold: #f5f7f8;
+    --dark: #2f4a60;
     --cream: #f5f0e8;
     --red: #c0392b;
-    --blue: #8a663e;
+    --blue: #263d52;
     --green: #2d7a4f;
     --bg: #fdfaf4;
     --card: #fff;
-    --border: #e7ddce;
-    --text: #2a2018;
-    --muted: #7a6a55;
+    --border: #d8e2e8;
+    --text: #1f2f3b;
+    --muted: #6f7c84;
     --shadow: 0 4px 24px rgba(0,0,0,0.08);
     --radius: 12px;
   }
@@ -106,7 +106,7 @@
 
   /* LERNZIELE BOX */
   .lernziele {
-    background: linear-gradient(135deg, #c79a64 0%, #d8b98f 100%);
+    background: linear-gradient(135deg, #2f4a60 0%, #6f8ea3 100%);
     border-left: 4px solid var(--gold);
     border-radius: var(--radius);
     padding: 20px 24px;
@@ -195,7 +195,7 @@
   .conjugation-table td:nth-child(1) { color: var(--muted); width: 28%; }
   .conjugation-table td:nth-child(2) { font-weight: 600; color: var(--dark); width: 36%; }
   .conjugation-table td:nth-child(3) { color: var(--blue); width: 36%; }
-  .conjugation-table tr:hover td { background: #faf6ee; }
+  .conjugation-table tr:hover td { background: #f5f7f8; }
 
   /* EXAMPLES */
   .example-list { list-style: none; }
@@ -232,7 +232,7 @@
 
   /* PRONUNCIATION */
   .pronuntie-box {
-    background: #f0f7ff;
+    background: #e9f1f5;
     border: 1px solid #c5d9ee;
     border-radius: var(--radius);
     padding: 20px;
@@ -281,7 +281,7 @@
     transition: all 0.15s;
     color: var(--text);
   }
-  .mc-btn:hover { border-color: var(--gold); background: #faf6ee; }
+  .mc-btn:hover { border-color: var(--gold); background: #f5f7f8; }
   .mc-btn.correct { border-color: var(--green); background: #e8f5ee; color: var(--green); font-weight: 600; }
   .mc-btn.wrong { border-color: var(--red); background: #fdecea; color: var(--red); }
 
@@ -304,7 +304,7 @@
     font-weight: 500;
   }
   .match-item:hover { border-color: var(--blue); }
-  .match-item.selected { border-color: var(--blue); background: #edf4fb; }
+  .match-item.selected { border-color: var(--blue); background: #e9f1f5; }
   .match-item.matched { border-color: var(--green); background: #e8f5ee; color: var(--green); font-weight: 600; pointer-events: none; }
   .match-item.wrong-match { border-color: var(--red); background: #fdecea; animation: shake 0.3s; }
 
@@ -322,8 +322,8 @@
     transition: all 0.15s;
     user-select: none;
   }
-  .word-token:hover { background: #d8b98f; transform: translateY(-1px); }
-  .word-token.used { background: #c8bfb0; color: #888; cursor: default; transform: none; }
+  .word-token:hover { background: #6f8ea3; transform: translateY(-1px); }
+  .word-token.used { background: #cbd5dc; color: #888; cursor: default; transform: none; }
   .sentence-drop {
     min-height: 50px;
     border: 2px dashed var(--border);
@@ -343,7 +343,7 @@
     font-weight: 600;
     cursor: pointer;
   }
-  .placed-token:hover { background: #1e4a73; }
+  .placed-token:hover { background: #263d52; }
   .check-btn {
     padding: 10px 24px;
     background: var(--dark);
@@ -357,7 +357,7 @@
     transition: all 0.15s;
     margin-right: 8px;
   }
-  .check-btn:hover { background: #d8b98f; }
+  .check-btn:hover { background: #6f8ea3; }
   .reset-btn {
     padding: 10px 24px;
     background: white;
@@ -385,7 +385,7 @@
     transition: all 0.15s;
   }
   .img-card:hover { border-color: var(--gold); box-shadow: 0 2px 12px rgba(200,169,126,0.25); }
-  .img-card.selected { border-color: var(--blue); background: #edf4fb; }
+  .img-card.selected { border-color: var(--blue); background: #e9f1f5; }
   .img-card.matched { border-color: var(--green); background: #e8f5ee; }
   .img-card .emoji-big { font-size: 2.2rem; display: block; margin-bottom: 6px; }
   .img-card .word-label { font-size: 0.78rem; color: var(--muted); }
@@ -406,12 +406,12 @@
 
   /* LISTENING HINT */
   .listening-tip {
-    background: linear-gradient(135deg, #fff8ee, #fff3dd);
+    background: linear-gradient(135deg, #f5f7f8, #e9f1f5);
     border: 1px solid #e8c878;
     border-radius: 10px;
     padding: 14px 18px;
     font-size: 0.88rem;
-    color: #7a5a20;
+    color: #263d52;
     display: flex; align-items: flex-start; gap: 10px;
     margin-bottom: 8px;
   }
@@ -436,7 +436,7 @@
     display: flex; align-items: center; justify-content: center;
     transition: all 0.15s;
   }
-  .listen-pair .play-btn:hover { background: #d8b98f; transform: scale(1.1); }
+  .listen-pair .play-btn:hover { background: #6f8ea3; transform: scale(1.1); }
   .listen-pair .word-ro { font-weight: 700; font-size: 1.05rem; }
   .listen-pair .phonetic { color: var(--muted); font-size: 0.88rem; font-style: italic; }
 
@@ -647,7 +647,7 @@
     </div>
   </div>
 
-  <div style="background:linear-gradient(135deg,#c79a64,#d8b98f);border-radius:16px;padding:28px 32px;margin-top:32px;text-align:center;">
+  <div style="background:linear-gradient(135deg,#2f4a60,#6f8ea3);border-radius:16px;padding:28px 32px;margin-top:32px;text-align:center;">
     <div style="font-size:2rem;margin-bottom:8px">🎉</div>
     <div style="font-family:'Atkinson Hyperlegible',sans-serif;color:var(--gold);font-size:1.6rem;font-weight:900;margin-bottom:8px">Felicitări! Herzlichen Glückwunsch!</div>
     <div style="color:rgba(255,255,255,0.86);font-size:0.95rem">Du hast alle 10 Lektionen des Niveaus A1 abgeschlossen!<br>Ai terminat toate cele 10 lecții de nivel A1!</div>

@@ -7,35 +7,31 @@
 <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=DM+Mono&display=swap" rel="stylesheet">
 <style>
   :root {
-    --level-a: #c79a64;
-    --level-a-soft: #f5eadb;
-    --level-a-pale: #fbf5ec;
-    --level-b: #7f9f8a;
-    --level-b-soft: #e8f1ea;
-    --level-b-pale: #f4f8f4;
-    --level-c: #8f9fbd;
-    --level-c-soft: #eceff7;
-    --level-c-pale: #f7f8fb;
-    --gold: #fbf5ec;
-    --ink: #7f9f8a;
-    --text: #2a2018;
-    --muted: #7a6a55;
+    --navy: #263d52;
+    --navy-soft: #2f4a60;
+    --blue-grey: #6f8ea3;
+    --blue-pale: #e9f1f5;
+    --blue-wash: #f5f7f8;
+    --gold: #f5f7f8;
+    --ink: var(--navy);
+    --text: #1f2f3b;
+    --muted: #6f7c84;
     --paper: #ffffff;
     --bg: #fdfaf4;
-    --mist: #f4f8f4;
-    --mint: var(--level-b);
-    --mint-light: var(--level-b-soft);
-    --coral: var(--level-a);
-    --coral-light: var(--level-a-soft);
-    --sun: var(--level-a);
-    --sun-light: var(--level-a-soft);
-    --sky: var(--level-c);
-    --sky-light: var(--level-c-soft);
-    --berry: var(--level-c);
-    --berry-light: var(--level-c-soft);
-    --border: #e7ddce;
-    --shadow: 0 18px 45px rgba(127, 159, 138, 0.12);
-    --shadow-sm: 0 8px 24px rgba(127, 159, 138, 0.08);
+    --mist: var(--blue-wash);
+    --mint: var(--blue-grey);
+    --mint-light: var(--blue-pale);
+    --coral: var(--navy-soft);
+    --coral-light: var(--blue-pale);
+    --sun: var(--navy-soft);
+    --sun-light: var(--blue-pale);
+    --sky: var(--blue-grey);
+    --sky-light: var(--blue-pale);
+    --berry: var(--navy-soft);
+    --berry-light: var(--blue-pale);
+    --border: #d8e2e8;
+    --shadow: 0 18px 45px rgba(47, 74, 96, 0.12);
+    --shadow-sm: 0 8px 24px rgba(47, 74, 96, 0.08);
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -82,7 +78,7 @@
     letter-spacing: .01em;
   }
 
-  .logo span { color: var(--level-a-soft); }
+  .logo span { color: #cbd9e2; }
 
   .level-pills {
     display: flex;
@@ -214,10 +210,10 @@
     flex: 0 0 8px;
   }
 
-  .dot-blue { background: var(--level-c); }
-  .dot-purple { background: var(--level-c); }
-  .dot-teal { background: var(--level-b); }
-  .dot-gold { background: var(--level-a); }
+  .dot-blue,
+  .dot-purple,
+  .dot-teal,
+  .dot-gold { background: var(--blue-grey); }
 
   .main {
     background: transparent;
@@ -226,7 +222,7 @@
 
   .intro {
     background:
-      linear-gradient(135deg, #ffffff 0%, #f0f7ff 100%);
+      linear-gradient(135deg, #ffffff 0%, #e9f1f5 100%);
     border: 1px solid var(--border);
     border-radius: 8px;
     box-shadow: var(--shadow);
@@ -267,7 +263,7 @@
     font-size: clamp(30px, 4vw, 48px);
     line-height: 1.12;
     margin-bottom: .45rem;
-    color: #7f9f8a;
+    color: var(--navy);
     max-width: none;
     white-space: nowrap;
     position: relative;
@@ -381,7 +377,7 @@
   .lesson-card:hover,
   .resource-card:hover,
   .coming-card:hover {
-    border-color: #c9e6f5;
+    border-color: #d8e2e8;
     box-shadow: var(--shadow);
     transform: translateY(-2px);
   }
@@ -397,7 +393,7 @@
   }
 
   #a1 .lesson-card {
-    --accent: var(--level-a);
+    --accent: var(--navy-soft);
     min-height: 164px;
     padding: 1.05rem;
     background:
@@ -411,16 +407,16 @@
     box-shadow: 0 14px 34px rgba(24, 48, 59, .07);
   }
 
-  #a1 .lesson-card:nth-child(1) { --accent: #c79a64; }
-  #a1 .lesson-card:nth-child(2) { --accent: #b98c56; }
-  #a1 .lesson-card:nth-child(3) { --accent: #d0aa78; }
-  #a1 .lesson-card:nth-child(4) { --accent: #bb925f; }
-  #a1 .lesson-card:nth-child(5) { --accent: #c79a64; }
-  #a1 .lesson-card:nth-child(6) { --accent: #d4b184; }
-  #a1 .lesson-card:nth-child(7) { --accent: #b98c56; }
-  #a1 .lesson-card:nth-child(8) { --accent: #c9a06f; }
-  #a1 .lesson-card:nth-child(9) { --accent: #d0aa78; }
-  #a1 .lesson-card:nth-child(10) { --accent: #bb925f; }
+  #a1 .lesson-card:nth-child(1) { --accent: #2f4a60; }
+  #a1 .lesson-card:nth-child(2) { --accent: #39576d; }
+  #a1 .lesson-card:nth-child(3) { --accent: #45687f; }
+  #a1 .lesson-card:nth-child(4) { --accent: #536f83; }
+  #a1 .lesson-card:nth-child(5) { --accent: #2f4a60; }
+  #a1 .lesson-card:nth-child(6) { --accent: #39576d; }
+  #a1 .lesson-card:nth-child(7) { --accent: #45687f; }
+  #a1 .lesson-card:nth-child(8) { --accent: #536f83; }
+  #a1 .lesson-card:nth-child(9) { --accent: #2f4a60; }
+  #a1 .lesson-card:nth-child(10) { --accent: #39576d; }
 
   #a1 .lesson-card::before {
     content: attr(data-lesson-no);
@@ -542,19 +538,19 @@
 
   #a1 .badge-b2,
   #a2 .badge-b2 {
-    background: var(--level-a-soft);
-    color: #8a663e;
+    background: var(--blue-pale);
+    color: var(--navy);
   }
 
   #b1 .badge-b2,
   #b2 .badge-b2 {
-    background: var(--level-b-soft);
-    color: #5f7b67;
+    background: var(--blue-pale);
+    color: var(--navy);
   }
 
   #c1 .badge-b2 {
-    background: var(--level-c-soft);
-    color: #6e7b9c;
+    background: var(--blue-pale);
+    color: var(--navy);
   }
 
   .lesson-title {
@@ -720,7 +716,7 @@
   .cover-blue,
   .cover-teal,
   .cover-purple {
-    background: linear-gradient(135deg, #8f9fbd, #b8c1d8);
+    background: linear-gradient(135deg, #5f7790, #8fa2b3);
     color: #fff;
   }
 
@@ -777,7 +773,7 @@
     padding: 8px 14px;
     border-radius: 8px;
     background: var(--sky-light);
-    color: #16799d;
+    color: #263d52;
     font-size: 14px;
     font-weight: 600;
   }
