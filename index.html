@@ -391,23 +391,95 @@
     transform: translateY(-2px);
   }
 
+  #a1 .level-heading {
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+
   #a1 .lesson-grid {
-    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
-    gap: .8rem;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 1rem;
   }
 
   #a1 .lesson-card {
-    background: rgba(255, 255, 255, .86);
+    --accent: var(--mint);
+    min-height: 164px;
+    padding: 1.05rem;
+    background:
+      linear-gradient(145deg, rgba(255, 255, 255, .96), rgba(255, 255, 255, .78)),
+      linear-gradient(145deg, color-mix(in srgb, var(--accent) 16%, white), #fff);
+    border: 1px solid rgba(24, 48, 59, .08);
+    border-radius: 8px;
     cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 14px 34px rgba(24, 48, 59, .07);
+  }
+
+  #a1 .lesson-card:nth-child(1) { --accent: #23b99a; }
+  #a1 .lesson-card:nth-child(2) { --accent: #3aa8d8; }
+  #a1 .lesson-card:nth-child(3) { --accent: #ff9f43; }
+  #a1 .lesson-card:nth-child(4) { --accent: #ff6f61; }
+  #a1 .lesson-card:nth-child(5) { --accent: #8766d8; }
+  #a1 .lesson-card:nth-child(6) { --accent: #12b7c8; }
+  #a1 .lesson-card:nth-child(7) { --accent: #ffc857; }
+  #a1 .lesson-card:nth-child(8) { --accent: #2f80ed; }
+  #a1 .lesson-card:nth-child(9) { --accent: #ef5da8; }
+  #a1 .lesson-card:nth-child(10) { --accent: #16a383; }
+
+  #a1 .lesson-card::before {
+    content: attr(data-lesson-no);
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    width: 42px;
+    height: 34px;
+    border-radius: 8px;
+    background: color-mix(in srgb, var(--accent) 16%, white);
+    color: color-mix(in srgb, var(--accent) 76%, var(--ink));
+    display: grid;
+    place-items: center;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: .04em;
+  }
+
+  #a1 .lesson-card::after {
+    content: "→";
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    width: 34px;
+    height: 34px;
+    border-radius: 8px;
+    background: var(--ink);
+    color: #fff;
+    display: grid;
+    place-items: center;
+    font-size: 18px;
+    line-height: 1;
+    opacity: .9;
+    transform: translateX(0);
+    transition: transform .18s ease, background .18s ease;
+  }
+
+  #a1 .lesson-card:hover {
+    border-color: color-mix(in srgb, var(--accent) 32%, white);
+    box-shadow: 0 22px 52px rgba(24, 48, 59, .12);
+  }
+
+  #a1 .lesson-card:hover::after {
+    background: var(--accent);
+    transform: translateX(2px);
   }
 
   #a1 .lesson-head {
-    min-height: 118px;
+    min-height: 100%;
     border-bottom: 0;
-    padding: 1.1rem;
+    padding: 3.75rem 0 0;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-end;
   }
 
   #a1 .meta,
@@ -417,8 +489,25 @@
   }
 
   #a1 .lesson-title {
-    font-size: clamp(22px, 2vw, 28px);
+    font-family: 'DM Sans', sans-serif;
+    font-size: clamp(21px, 1.8vw, 26px);
+    font-weight: 750;
+    line-height: 1.08;
+    letter-spacing: 0;
     margin: 0;
+    max-width: 11ch;
+  }
+
+  #a1 .lesson-title::after {
+    content: attr(data-topic);
+    display: block;
+    margin-top: .55rem;
+    color: var(--muted);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .08em;
+    line-height: 1.2;
+    text-transform: uppercase;
   }
 
   #a1 .lesson-desc {
@@ -728,6 +817,14 @@
     .lesson-features {
       grid-template-columns: 1fr;
     }
+
+    #a1 .lesson-card {
+      min-height: 138px;
+    }
+
+    #a1 .lesson-title {
+      max-width: 16ch;
+    }
   }
 </style>
 </head>
@@ -804,14 +901,14 @@
               <h3>Începător</h3>
             </div>
             <div class="lesson-grid">
-              <article class="lesson-card" data-lesson-link="lessons/a1/lectia-01-salutari.html" tabindex="0" role="link">
+              <article class="lesson-card" data-lesson-link="lessons/a1/lectia-01-salutari.html" data-lesson-no="01" tabindex="0" role="link">
                 <div class="lesson-head">
                   <div class="meta">
                     <span class="badge badge-b2">Nivel A1</span>
                     <span class="badge badge-tech">Deutsch</span>
                     <span class="badge badge-live">Activă</span>
                   </div>
-                  <div class="lesson-title">L1 · Salutări</div>
+                  <div class="lesson-title" data-topic="Begrüßungen">Salutări</div>
                   <p class="lesson-desc">Salutări și formule de despărțire pentru primele conversații.</p>
                 </div>
                 <div class="lesson-body">
@@ -836,14 +933,14 @@
                   <span class="resource-status">Lecție inclusă în A1</span>
                 </div>
               </article>
-              <article class="lesson-card" data-lesson-link="lessons/a1/lectia-02-ce-faci.html" tabindex="0" role="link">
+              <article class="lesson-card" data-lesson-link="lessons/a1/lectia-02-ce-faci.html" data-lesson-no="02" tabindex="0" role="link">
                 <div class="lesson-head">
                   <div class="meta">
                     <span class="badge badge-b2">Nivel A1</span>
                     <span class="badge badge-tech">Deutsch</span>
                     <span class="badge badge-live">Activă</span>
                   </div>
-                  <div class="lesson-title">L2 · Ce faci?</div>
+                  <div class="lesson-title" data-topic="Wie geht es?">Ce faci?</div>
                   <p class="lesson-desc">Întrebări și răspunsuri simple despre cum te simți.</p>
                 </div>
                 <div class="lesson-body">
@@ -868,14 +965,14 @@
                   <span class="resource-status">Lecție inclusă în A1</span>
                 </div>
               </article>
-              <article class="lesson-card" data-lesson-link="lessons/a1/lectia-03-multumesc.html" tabindex="0" role="link">
+              <article class="lesson-card" data-lesson-link="lessons/a1/lectia-03-multumesc.html" data-lesson-no="03" tabindex="0" role="link">
                 <div class="lesson-head">
                   <div class="meta">
                     <span class="badge badge-b2">Nivel A1</span>
                     <span class="badge badge-tech">Deutsch</span>
                     <span class="badge badge-live">Activă</span>
                   </div>
-                  <div class="lesson-title">L3 · Mulțumesc</div>
+                  <div class="lesson-title" data-topic="Danke & Bitte">Mulțumesc</div>
                   <p class="lesson-desc">Expresii politicoase pentru mulțumiri și rugăminți.</p>
                 </div>
                 <div class="lesson-body">
@@ -900,14 +997,14 @@
                   <span class="resource-status">Lecție inclusă în A1</span>
                 </div>
               </article>
-              <article class="lesson-card" data-lesson-link="lessons/a1/lectia-04-scuze.html" tabindex="0" role="link">
+              <article class="lesson-card" data-lesson-link="lessons/a1/lectia-04-scuze.html" data-lesson-no="04" tabindex="0" role="link">
                 <div class="lesson-head">
                   <div class="meta">
                     <span class="badge badge-b2">Nivel A1</span>
                     <span class="badge badge-tech">Deutsch</span>
                     <span class="badge badge-live">Activă</span>
                   </div>
-                  <div class="lesson-title">L4 · Scuze</div>
+                  <div class="lesson-title" data-topic="Entschuldigung">Scuze</div>
                   <p class="lesson-desc">Scuze, formule de iertare și răspunsuri scurte.</p>
                 </div>
                 <div class="lesson-body">
@@ -932,14 +1029,14 @@
                   <span class="resource-status">Lecție inclusă în A1</span>
                 </div>
               </article>
-              <article class="lesson-card" data-lesson-link="lessons/a1/lectia-05-persoane.html" tabindex="0" role="link">
+              <article class="lesson-card" data-lesson-link="lessons/a1/lectia-05-persoane.html" data-lesson-no="05" tabindex="0" role="link">
                 <div class="lesson-head">
                   <div class="meta">
                     <span class="badge badge-b2">Nivel A1</span>
                     <span class="badge badge-tech">Deutsch</span>
                     <span class="badge badge-live">Activă</span>
                   </div>
-                  <div class="lesson-title">L5 · Persoane</div>
+                  <div class="lesson-title" data-topic="Personen">Persoane</div>
                   <p class="lesson-desc">Pronume, persoane, familie și verbul „a fi”.</p>
                 </div>
                 <div class="lesson-body">
@@ -964,14 +1061,14 @@
                   <span class="resource-status">Lecție inclusă în A1</span>
                 </div>
               </article>
-              <article class="lesson-card" data-lesson-link="lessons/a1/lectia-06-prezentari.html" tabindex="0" role="link">
+              <article class="lesson-card" data-lesson-link="lessons/a1/lectia-06-prezentari.html" data-lesson-no="06" tabindex="0" role="link">
                 <div class="lesson-head">
                   <div class="meta">
                     <span class="badge badge-b2">Nivel A1</span>
                     <span class="badge badge-tech">Deutsch</span>
                     <span class="badge badge-live">Activă</span>
                   </div>
-                  <div class="lesson-title">L6 · Prezentări</div>
+                  <div class="lesson-title" data-topic="Vorstellung">Prezentări</div>
                   <p class="lesson-desc">Cum te prezinți și cum întrebi numele cuiva.</p>
                 </div>
                 <div class="lesson-body">
@@ -996,14 +1093,14 @@
                   <span class="resource-status">Lecție inclusă în A1</span>
                 </div>
               </article>
-              <article class="lesson-card" data-lesson-link="lessons/a1/lectia-07-numerele.html" tabindex="0" role="link">
+              <article class="lesson-card" data-lesson-link="lessons/a1/lectia-07-numerele.html" data-lesson-no="07" tabindex="0" role="link">
                 <div class="lesson-head">
                   <div class="meta">
                     <span class="badge badge-b2">Nivel A1</span>
                     <span class="badge badge-tech">Deutsch</span>
                     <span class="badge badge-live">Activă</span>
                   </div>
-                  <div class="lesson-title">L7 · Numerele</div>
+                  <div class="lesson-title" data-topic="Zahlen">Numerele</div>
                   <p class="lesson-desc">Numerele de bază, vârsta și verbul „a avea”.</p>
                 </div>
                 <div class="lesson-body">
@@ -1028,14 +1125,14 @@
                   <span class="resource-status">Lecție inclusă în A1</span>
                 </div>
               </article>
-              <article class="lesson-card" data-lesson-link="lessons/a1/lectia-08-de-unde-esti.html" tabindex="0" role="link">
+              <article class="lesson-card" data-lesson-link="lessons/a1/lectia-08-de-unde-esti.html" data-lesson-no="08" tabindex="0" role="link">
                 <div class="lesson-head">
                   <div class="meta">
                     <span class="badge badge-b2">Nivel A1</span>
                     <span class="badge badge-tech">Deutsch</span>
                     <span class="badge badge-live">Activă</span>
                   </div>
-                  <div class="lesson-title">L8 · De unde ești?</div>
+                  <div class="lesson-title" data-topic="Herkunft">De unde ești?</div>
                   <p class="lesson-desc">Țări, orașe și întrebări despre origine.</p>
                 </div>
                 <div class="lesson-body">
@@ -1060,14 +1157,14 @@
                   <span class="resource-status">Lecție inclusă în A1</span>
                 </div>
               </article>
-              <article class="lesson-card" data-lesson-link="lessons/a1/lectia-09-nationalitati.html" tabindex="0" role="link">
+              <article class="lesson-card" data-lesson-link="lessons/a1/lectia-09-nationalitati.html" data-lesson-no="09" tabindex="0" role="link">
                 <div class="lesson-head">
                   <div class="meta">
                     <span class="badge badge-b2">Nivel A1</span>
                     <span class="badge badge-tech">Deutsch</span>
                     <span class="badge badge-live">Activă</span>
                   </div>
-                  <div class="lesson-title">L9 · Naționalități</div>
+                  <div class="lesson-title" data-topic="Nationalitäten">Naționalități</div>
                   <p class="lesson-desc">Naționalități în forme masculine și feminine.</p>
                 </div>
                 <div class="lesson-body">
@@ -1092,14 +1189,14 @@
                   <span class="resource-status">Lecție inclusă în A1</span>
                 </div>
               </article>
-              <article class="lesson-card" data-lesson-link="lessons/a1/lectia-10-limbi.html" tabindex="0" role="link">
+              <article class="lesson-card" data-lesson-link="lessons/a1/lectia-10-limbi.html" data-lesson-no="10" tabindex="0" role="link">
                 <div class="lesson-head">
                   <div class="meta">
                     <span class="badge badge-b2">Nivel A1</span>
                     <span class="badge badge-tech">Deutsch</span>
                     <span class="badge badge-live">Activă</span>
                   </div>
-                  <div class="lesson-title">L10 · Ce limbă vorbești?</div>
+                  <div class="lesson-title" data-topic="Sprachen">Ce limbă vorbești?</div>
                   <p class="lesson-desc">Limbi, verbul „a vorbi” și propoziții scurte.</p>
                 </div>
                 <div class="lesson-body">
