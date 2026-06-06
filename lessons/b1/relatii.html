@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Romanian Step by Step B1 — Relații</title>
-<link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600&amp;family=DM+Sans:wght@300;400;500;600&amp;family=DM+Mono&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Sans+3:wght@300;400;600;700&family=DM+Mono&display=swap" rel="stylesheet">
 <style>
   :root {
     --bg: #F7F5F0;
@@ -1003,6 +1003,170 @@
     .audio-play-btn { width: 100%; }
     .pros-cons,
     .match-row { grid-template-columns: 1fr; }
+  }
+
+  /* Unified Romanian Step by Step theme */
+  :root {
+    --gold: #eef9ff;
+    --navy: #1f8fd1;
+    --purple: #1f8fd1;
+    --purple-mid: #57c7f2;
+    --blue: #176ea6;
+    --teal: #176ea6;
+    --amber: #176ea6;
+    --bg: #fdfaf4;
+    --surface: #ffffff;
+    --surface2: #f0f7ff;
+    --purple-light: #e5f6fb;
+    --blue-light: #e5f6fb;
+    --teal-light: #e9f8ff;
+    --gold-light: #eef9ff;
+    --amber-light: #eef9ff;
+    --text: #2a2018;
+    --text2: #7a6a55;
+    --text3: #9a8d80;
+    --border: #d7ecf8;
+    --border2: #e5f6fb;
+    --radius: 12px;
+    --radius-sm: 8px;
+  }
+
+  body {
+    background: var(--bg) !important;
+    color: var(--text) !important;
+    font-family: 'Source Sans 3', sans-serif !important;
+  }
+
+  h1, h2, h3,
+  .logo,
+  .header h1,
+  .hero h1,
+  .section-header h2,
+  .score-num {
+    font-family: 'Playfair Display', serif !important;
+  }
+
+  .header,
+  .topbar {
+    background: #1f8fd1 !important;
+    color: #eef9ff !important;
+    border-bottom: 1px solid rgba(255,255,255,0.24) !important;
+    box-shadow: none !important;
+  }
+
+  .header::before,
+  .header::after {
+    display: none !important;
+  }
+
+  .header p,
+  .header-meta span,
+  .home-link,
+  .logo,
+  .logo span {
+    color: rgba(255,255,255,0.82) !important;
+  }
+
+  .logo,
+  .header h1 {
+    color: #eef9ff !important;
+  }
+
+  .level-tag,
+  .header .level-tag,
+  .pill.active {
+    background: #eef9ff !important;
+    border-color: #eef9ff !important;
+    color: #1f8fd1 !important;
+  }
+
+  .tabs,
+  .lesson-tabs {
+    background: #1f8fd1 !important;
+    border-bottom: 1px solid rgba(255,255,255,0.24) !important;
+  }
+
+  .tab,
+  .lesson-tab,
+  .pill {
+    color: rgba(255,255,255,0.72) !important;
+  }
+
+  .tab.active,
+  .lesson-tab.active,
+  .tab:hover,
+  .lesson-tab:hover,
+  .pill:hover {
+    color: #eef9ff !important;
+    border-bottom-color: #eef9ff !important;
+  }
+
+  .sidebar,
+  .side-nav,
+  .nav-panel,
+  .shell,
+  .lesson-card,
+  .card,
+  .section,
+  .panel,
+  .question-card,
+  .exercise-card,
+  .info-card,
+  .dialog-box,
+  .vocab-card,
+  .phrase-card,
+  .quiz-card,
+  .result-card {
+    background: #ffffff !important;
+    border-color: #d7ecf8 !important;
+    border-radius: 8px !important;
+  }
+
+  .nav-item.active,
+  .nav-item:hover,
+  .section-card,
+  .note,
+  .tip,
+  .info-box,
+  .grammar-box,
+  .translation-box,
+  .example-box,
+  .question-header,
+  .table-wrap,
+  .results-box {
+    background: #f0f7ff !important;
+    border-color: #d7ecf8 !important;
+  }
+
+  .nav-item.active,
+  .nav-item:hover,
+  .section-header h2,
+  .card h2,
+  .card h3,
+  .lesson-card h3,
+  .question-number,
+  .score-num {
+    color: #1f8fd1 !important;
+  }
+
+  .btn,
+  .btn-primary,
+  .submit-btn,
+  .check-btn,
+  button.primary {
+    background: #1f8fd1 !important;
+    border-color: #1f8fd1 !important;
+    color: #eef9ff !important;
+    border-radius: 8px !important;
+  }
+
+  .btn:hover,
+  .btn-primary:hover,
+  .submit-btn:hover,
+  .check-btn:hover,
+  button.primary:hover {
+    background: #57c7f2 !important;
+    border-color: #57c7f2 !important;
   }
 </style>
 </head>
