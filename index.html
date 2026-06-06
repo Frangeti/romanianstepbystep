@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Romanian Step by Step</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&amp;family=Source+Sans+3:wght@300;400;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=DM+Mono&display=swap" rel="stylesheet">
 <style>
   :root {
     --gold: #eef9ff;
@@ -33,7 +33,7 @@
 
   body {
     min-height: 100vh;
-    font-family: 'Source Sans 3', sans-serif;
+    font-family: 'Atkinson Hyperlegible', sans-serif;
     font-size: 16px;
     background: var(--bg);
     color: var(--text);
@@ -66,7 +66,7 @@
   }
 
   .logo {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Atkinson Hyperlegible', sans-serif;
     font-size: clamp(20px, 2vw, 25px);
     font-weight: 600;
     white-space: nowrap;
@@ -94,7 +94,7 @@
     background: rgba(255, 255, 255, .12);
     color: rgba(255, 255, 255, .78);
     cursor: pointer;
-    font-family: 'Source Sans 3', sans-serif;
+    font-family: 'Atkinson Hyperlegible', sans-serif;
     font-size: 13px;
     font-weight: 600;
     transition: background .18s, border-color .18s, color .18s, transform .18s;
@@ -129,7 +129,7 @@
     background: transparent;
     color: rgba(255,255,255,0.68);
     cursor: pointer;
-    font-family: 'Source Sans 3', sans-serif;
+    font-family: 'Atkinson Hyperlegible', sans-serif;
     font-size: 15px;
     white-space: nowrap;
     transition: color .18s, border-color .18s;
@@ -181,7 +181,7 @@
     background: transparent;
     color: var(--text);
     cursor: pointer;
-    font-family: 'Source Sans 3', sans-serif;
+    font-family: 'Atkinson Hyperlegible', sans-serif;
     font-size: 15px;
     text-align: left;
     transition: background .18s, color .18s;
@@ -217,21 +217,28 @@
 
   .intro {
     background:
-      linear-gradient(135deg, #1f8fd1 0%, #57c7f2 100%);
-    border: 1px solid rgba(255, 255, 255, .35);
+      linear-gradient(135deg, #ffffff 0%, #f0f7ff 100%);
+    border: 1px solid var(--border);
     border-radius: 8px;
     box-shadow: var(--shadow);
-    padding: clamp(1.6rem, 4vw, 3.6rem);
+    padding: clamp(1.35rem, 3vw, 2.5rem);
     margin-bottom: 1.4rem;
     position: relative;
     overflow: hidden;
+  }
+
+  .intro-copy {
+    display: grid;
+    grid-template-columns: minmax(280px, 0.9fr) minmax(280px, 1.1fr);
+    align-items: center;
+    gap: clamp(1rem, 3vw, 2.4rem);
   }
 
   .eyebrow {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    color: var(--gold);
+    color: var(--ink);
     font-size: 12px;
     font-weight: 700;
     letter-spacing: .11em;
@@ -246,25 +253,25 @@
     width: 8px;
     height: 8px;
     border-radius: 50%;
-    background: var(--gold);
+    background: var(--ink);
   }
 
   h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(36px, 5.2vw, 68px);
-    line-height: 1.06;
-    margin-bottom: .7rem;
-    color: var(--gold);
-    max-width: 12ch;
+    font-family: 'Atkinson Hyperlegible', sans-serif;
+    font-size: clamp(30px, 3.8vw, 48px);
+    line-height: 1.12;
+    margin-bottom: 0;
+    color: #176ea6;
+    max-width: 13ch;
     position: relative;
     z-index: 1;
   }
 
   .intro p {
-    max-width: 640px;
-    color: rgba(255,255,255,0.82);
+    max-width: 560px;
+    color: var(--muted);
     font-size: 18px;
-    line-height: 1.7;
+    line-height: 1.55;
     position: relative;
     z-index: 1;
   }
@@ -279,21 +286,21 @@
   }
 
   .stat {
-    border: 1px solid rgba(255, 255, 255, .42);
+    border: 1px solid var(--border);
     border-radius: 8px;
     padding: 1rem;
-    background: rgba(255, 255, 255, .14);
+    background: #fff;
   }
 
   .stat strong {
     display: block;
-    color: var(--gold);
+    color: var(--ink);
     font-size: 24px;
     margin-bottom: 2px;
   }
 
   .stat span {
-    color: rgba(255,255,255,0.78);
+    color: var(--muted);
     font-size: 14px;
   }
 
@@ -470,7 +477,7 @@
   }
 
   #a1 .lesson-title {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Atkinson Hyperlegible', sans-serif;
     font-size: clamp(21px, 1.8vw, 26px);
     font-weight: 750;
     line-height: 1.08;
@@ -527,7 +534,7 @@
   .badge-live { background: var(--mint-light); color: var(--ink); }
 
   .lesson-title {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Atkinson Hyperlegible', sans-serif;
     color: var(--ink);
     font-size: clamp(28px, 2.6vw, 38px);
     font-weight: 600;
@@ -704,7 +711,7 @@
 
   .resource-cover h3 {
     max-width: 12ch;
-    font-family: 'Playfair Display', serif;
+    font-family: 'Atkinson Hyperlegible', sans-serif;
     font-size: 28px;
     line-height: 1.08;
   }
@@ -791,6 +798,7 @@
     .sidebar { display: none; }
     .main { padding: 1rem; }
     .intro::after { display: none; }
+    .intro-copy { grid-template-columns: 1fr; }
     h1 { max-width: none; }
     .stats,
     .lesson-grid,
@@ -852,8 +860,10 @@
       <main class="main">
         <section class="intro">
           <div class="eyebrow">Platformă de lecții</div>
-          <h1>Învață româna pas cu pas</h1>
-          <p>Lecții interactive, texte cu audio, dialoguri și teste, organizate pe niveluri de limbă.</p>
+          <div class="intro-copy">
+            <h1>Învață româna pas cu pas</h1>
+            <p>Lecții interactive, texte cu audio, dialoguri și teste, organizate pe niveluri de limbă.</p>
+          </div>
 
           <div class="stats" aria-label="Rezumat">
             <div class="stat">
