@@ -210,6 +210,26 @@
   .example-list li .ro { font-weight: 600; color: var(--dark); font-size: 1rem; }
   .example-list li .de { color: var(--muted); font-size: 0.88rem; margin-top: 3px; }
 
+  .example-list.dialog-list li {
+    padding: 0;
+    overflow: hidden;
+  }
+  .dialog-row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 12px;
+    padding: 11px 14px;
+    border-bottom: 1px solid var(--border);
+  }
+  .dialog-row:last-child { border-bottom: 0; }
+  .dialog-row .ro,
+  .dialog-row .de {
+    margin: 0;
+  }
+  .dialog-row .de {
+    font-size: 1rem;
+  }
+
   /* PRONUNCIATION */
   .pronuntie-box {
     background: #f0f7ff;
@@ -431,6 +451,10 @@
     .image-match { grid-template-columns: repeat(3, 1fr); }
     .lesson-header { flex-direction: column; }
     .lesson-number { font-size: 1.4rem; }
+    .dialog-row {
+      grid-template-columns: 1fr;
+      gap: 2px;
+    }
   }
 
 
@@ -520,10 +544,33 @@
   <div class="listen-pair"><button class="play-btn" onclick="speak('Noi suntem prieteni')">▶</button><div><div class="word-ro">Noi suntem prieteni.</div><div class="phonetic">NOI SUN-tem pri-E-teni</div></div></div>
 
   <div class="section-title"><span class="icon">💬</span> Beispielsätze</div>
-  <ul class="example-list">
-    <li><div class="ro">Eu sunt student. Tu ești profesoară.</div><div class="de">Ich bin Student. Du bist Lehrerin.</div></li>
-    <li><div class="ro">El este bărbat. Ea este femeie.</div><div class="de">Er ist Mann. Sie ist Frau.</div></li>
-    <li><div class="ro">Noi suntem prieteni buni.</div><div class="de">Wir sind gute Freunde.</div></li>
+  <ul class="example-list dialog-list">
+    <li>
+      <div class="dialog-row">
+        <div class="ro">Eu sunt student.</div>
+        <div class="de">Ich bin Student.</div>
+      </div>
+      <div class="dialog-row">
+        <div class="ro">Tu ești profesoară.</div>
+        <div class="de">Du bist Lehrerin.</div>
+      </div>
+    </li>
+    <li>
+      <div class="dialog-row">
+        <div class="ro">El este bărbat.</div>
+        <div class="de">Er ist Mann.</div>
+      </div>
+      <div class="dialog-row">
+        <div class="ro">Ea este femeie.</div>
+        <div class="de">Sie ist Frau.</div>
+      </div>
+    </li>
+    <li>
+      <div class="dialog-row">
+        <div class="ro">Noi suntem prieteni buni.</div>
+        <div class="de">Wir sind gute Freunde.</div>
+      </div>
+    </li>
   </ul>
 
   <div class="section-title"><span class="icon">✅</span> Multiple Choice</div>

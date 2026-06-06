@@ -210,6 +210,26 @@
   .example-list li .ro { font-weight: 600; color: var(--dark); font-size: 1rem; }
   .example-list li .de { color: var(--muted); font-size: 0.88rem; margin-top: 3px; }
 
+  .example-list.dialog-list li {
+    padding: 0;
+    overflow: hidden;
+  }
+  .dialog-row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 12px;
+    padding: 11px 14px;
+    border-bottom: 1px solid var(--border);
+  }
+  .dialog-row:last-child { border-bottom: 0; }
+  .dialog-row .ro,
+  .dialog-row .de {
+    margin: 0;
+  }
+  .dialog-row .de {
+    font-size: 1rem;
+  }
+
   /* PRONUNCIATION */
   .pronuntie-box {
     background: #f0f7ff;
@@ -431,6 +451,10 @@
     .image-match { grid-template-columns: repeat(3, 1fr); }
     .lesson-header { flex-direction: column; }
     .lesson-number { font-size: 1.4rem; }
+    .dialog-row {
+      grid-template-columns: 1fr;
+      gap: 2px;
+    }
   }
 
 
@@ -497,10 +521,37 @@
   </div>
 
   <div class="section-title"><span class="icon">💬</span> Beispielsätze</div>
-  <ul class="example-list">
-    <li><div class="ro">– Cum te numești? – Mă numesc Elena. Încântată!</div><div class="de">– Wie heißt du? – Ich heiße Elena. Angenehm!</div></li>
-    <li><div class="ro">– Cum vă numiți? – Numele meu este Radu Ionescu.</div><div class="de">– Wie heißen Sie? – Mein Name ist Radu Ionescu.</div></li>
-    <li><div class="ro">– Mă bucur să te cunosc! – Și eu, asemenea!</div><div class="de">– Freut mich, dich kennenzulernen! – Mich auch, ebenso!</div></li>
+  <ul class="example-list dialog-list">
+    <li>
+      <div class="dialog-row">
+        <div class="ro">– Cum te numești?</div>
+        <div class="de">– Wie heißt du?</div>
+      </div>
+      <div class="dialog-row">
+        <div class="ro">– Mă numesc Elena. Încântată!</div>
+        <div class="de">– Ich heiße Elena. Angenehm!</div>
+      </div>
+    </li>
+    <li>
+      <div class="dialog-row">
+        <div class="ro">– Cum vă numiți?</div>
+        <div class="de">– Wie heißen Sie?</div>
+      </div>
+      <div class="dialog-row">
+        <div class="ro">– Numele meu este Radu Ionescu.</div>
+        <div class="de">– Mein Name ist Radu Ionescu.</div>
+      </div>
+    </li>
+    <li>
+      <div class="dialog-row">
+        <div class="ro">– Mă bucur să te cunosc!</div>
+        <div class="de">– Freut mich, dich kennenzulernen!</div>
+      </div>
+      <div class="dialog-row">
+        <div class="ro">– Și eu, asemenea!</div>
+        <div class="de">– Mich auch, ebenso!</div>
+      </div>
+    </li>
   </ul>
 
   <div class="section-title"><span class="icon">🔊</span> Aussprache</div>

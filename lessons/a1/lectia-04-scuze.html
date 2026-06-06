@@ -210,6 +210,26 @@
   .example-list li .ro { font-weight: 600; color: var(--dark); font-size: 1rem; }
   .example-list li .de { color: var(--muted); font-size: 0.88rem; margin-top: 3px; }
 
+  .example-list.dialog-list li {
+    padding: 0;
+    overflow: hidden;
+  }
+  .dialog-row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 12px;
+    padding: 11px 14px;
+    border-bottom: 1px solid var(--border);
+  }
+  .dialog-row:last-child { border-bottom: 0; }
+  .dialog-row .ro,
+  .dialog-row .de {
+    margin: 0;
+  }
+  .dialog-row .de {
+    font-size: 1rem;
+  }
+
   /* PRONUNCIATION */
   .pronuntie-box {
     background: #f0f7ff;
@@ -431,6 +451,10 @@
     .image-match { grid-template-columns: repeat(3, 1fr); }
     .lesson-header { flex-direction: column; }
     .lesson-number { font-size: 1.4rem; }
+    .dialog-row {
+      grid-template-columns: 1fr;
+      gap: 2px;
+    }
   }
 
 
@@ -501,10 +525,37 @@
   <div class="listen-pair"><button class="play-btn" onclick="speak('Scuzați-mă')">▶</button><div><div class="word-ro">Scuzați-mă</div><div class="phonetic">sku-ZA-tzi mă</div></div></div>
 
   <div class="section-title"><span class="icon">💬</span> Beispielsätze</div>
-  <ul class="example-list">
-    <li><div class="ro">– Scuze! Îmi pare rău. – Nicio problemă!</div><div class="de">– Entschuldigung! Es tut mir leid. – Kein Problem!</div></li>
-    <li><div class="ro">– Pardon, nu am înțeles. – Nu face nimic.</div><div class="de">– Pardon, ich habe nicht verstanden. – Macht nichts.</div></li>
-    <li><div class="ro">– Mă iertați, vă rog! – Cu plăcere.</div><div class="de">– Verzeihen Sie, bitte! – Gern.</div></li>
+  <ul class="example-list dialog-list">
+    <li>
+      <div class="dialog-row">
+        <div class="ro">– Scuze! Îmi pare rău.</div>
+        <div class="de">– Entschuldigung! Es tut mir leid.</div>
+      </div>
+      <div class="dialog-row">
+        <div class="ro">– Nicio problemă!</div>
+        <div class="de">– Kein Problem!</div>
+      </div>
+    </li>
+    <li>
+      <div class="dialog-row">
+        <div class="ro">– Pardon, nu am înțeles.</div>
+        <div class="de">– Pardon, ich habe nicht verstanden.</div>
+      </div>
+      <div class="dialog-row">
+        <div class="ro">– Nu face nimic.</div>
+        <div class="de">– Macht nichts.</div>
+      </div>
+    </li>
+    <li>
+      <div class="dialog-row">
+        <div class="ro">– Mă iertați, vă rog!</div>
+        <div class="de">– Verzeihen Sie, bitte!</div>
+      </div>
+      <div class="dialog-row">
+        <div class="ro">– Cu plăcere.</div>
+        <div class="de">– Gern.</div>
+      </div>
+    </li>
   </ul>
 
   <div class="section-title"><span class="icon">✅</span> Multiple Choice</div>

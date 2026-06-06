@@ -210,6 +210,26 @@
   .example-list li .ro { font-weight: 600; color: var(--dark); font-size: 1rem; }
   .example-list li .de { color: var(--muted); font-size: 0.88rem; margin-top: 3px; }
 
+  .example-list.dialog-list li {
+    padding: 0;
+    overflow: hidden;
+  }
+  .dialog-row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 12px;
+    padding: 11px 14px;
+    border-bottom: 1px solid var(--border);
+  }
+  .dialog-row:last-child { border-bottom: 0; }
+  .dialog-row .ro,
+  .dialog-row .de {
+    margin: 0;
+  }
+  .dialog-row .de {
+    font-size: 1rem;
+  }
+
   /* PRONUNCIATION */
   .pronuntie-box {
     background: #f0f7ff;
@@ -431,6 +451,10 @@
     .image-match { grid-template-columns: repeat(3, 1fr); }
     .lesson-header { flex-direction: column; }
     .lesson-number { font-size: 1.4rem; }
+    .dialog-row {
+      grid-template-columns: 1fr;
+      gap: 2px;
+    }
   }
 
 
@@ -492,10 +516,37 @@
   </div>
 
   <div class="section-title"><span class="icon">💬</span> Beispielsätze</div>
-  <ul class="example-list">
-    <li><div class="ro">– Ce naționalitate ești? – Eu sunt român.</div><div class="de">– Welche Nationalität hast du? – Ich bin Rumäne.</div></li>
-    <li><div class="ro">– Ești germancă? – Da, sunt din München.</div><div class="de">– Bist du Deutsche? – Ja, ich bin aus München.</div></li>
-    <li><div class="ro">El este francez. Ea este franțuzoaică.</div><div class="de">Er ist Franzose. Sie ist Französin.</div></li>
+  <ul class="example-list dialog-list">
+    <li>
+      <div class="dialog-row">
+        <div class="ro">– Ce naționalitate ești?</div>
+        <div class="de">– Welche Nationalität hast du?</div>
+      </div>
+      <div class="dialog-row">
+        <div class="ro">– Eu sunt român.</div>
+        <div class="de">– Ich bin Rumäne.</div>
+      </div>
+    </li>
+    <li>
+      <div class="dialog-row">
+        <div class="ro">– Ești germancă?</div>
+        <div class="de">– Bist du Deutsche?</div>
+      </div>
+      <div class="dialog-row">
+        <div class="ro">– Da, sunt din München.</div>
+        <div class="de">– Ja, ich bin aus München.</div>
+      </div>
+    </li>
+    <li>
+      <div class="dialog-row">
+        <div class="ro">El este francez.</div>
+        <div class="de">Er ist Franzose.</div>
+      </div>
+      <div class="dialog-row">
+        <div class="ro">Ea este franțuzoaică.</div>
+        <div class="de">Sie ist Französin.</div>
+      </div>
+    </li>
   </ul>
 
   <div class="section-title"><span class="icon">✅</span> Multiple Choice</div>

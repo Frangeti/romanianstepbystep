@@ -210,6 +210,26 @@
   .example-list li .ro { font-weight: 600; color: var(--dark); font-size: 1rem; }
   .example-list li .de { color: var(--muted); font-size: 0.88rem; margin-top: 3px; }
 
+  .example-list.dialog-list li {
+    padding: 0;
+    overflow: hidden;
+  }
+  .dialog-row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 12px;
+    padding: 11px 14px;
+    border-bottom: 1px solid var(--border);
+  }
+  .dialog-row:last-child { border-bottom: 0; }
+  .dialog-row .ro,
+  .dialog-row .de {
+    margin: 0;
+  }
+  .dialog-row .de {
+    font-size: 1rem;
+  }
+
   /* PRONUNCIATION */
   .pronuntie-box {
     background: #f0f7ff;
@@ -431,6 +451,10 @@
     .image-match { grid-template-columns: repeat(3, 1fr); }
     .lesson-header { flex-direction: column; }
     .lesson-number { font-size: 1.4rem; }
+    .dialog-row {
+      grid-template-columns: 1fr;
+      gap: 2px;
+    }
   }
 
 
@@ -505,10 +529,37 @@
   <div class="listen-pair"><button class="play-btn" onclick="speak('Așa și așa')">▶</button><div><div class="word-ro">Așa și așa</div><div class="phonetic">a-SHA shi a-SHA</div></div></div>
 
   <div class="section-title"><span class="icon">💬</span> Beispielsätze</div>
-  <ul class="example-list">
-    <li><div class="ro">– Ce faci, Ana? – Bine, mulțumesc! Și tu?</div><div class="de">– Wie geht's, Ana? – Gut, danke! Und du?</div></li>
-    <li><div class="ro">– Ce mai faceți, doamnă Ionescu? – Foarte bine, vă mulțumesc!</div><div class="de">– Wie geht es Ihnen, Frau Ionescu? – Sehr gut, danke!</div></li>
-    <li><div class="ro">– Bine. Și tu? – La fel, mulțumesc.</div><div class="de">– Gut. Und du? – Gleichfalls, danke.</div></li>
+  <ul class="example-list dialog-list">
+    <li>
+      <div class="dialog-row">
+        <div class="ro">– Ce faci, Ana?</div>
+        <div class="de">– Wie geht's, Ana?</div>
+      </div>
+      <div class="dialog-row">
+        <div class="ro">– Bine, mulțumesc! Și tu?</div>
+        <div class="de">– Gut, danke! Und du?</div>
+      </div>
+    </li>
+    <li>
+      <div class="dialog-row">
+        <div class="ro">– Ce mai faceți, doamnă Ionescu?</div>
+        <div class="de">– Wie geht es Ihnen, Frau Ionescu?</div>
+      </div>
+      <div class="dialog-row">
+        <div class="ro">– Foarte bine, vă mulțumesc!</div>
+        <div class="de">– Sehr gut, danke!</div>
+      </div>
+    </li>
+    <li>
+      <div class="dialog-row">
+        <div class="ro">– Bine. Și tu?</div>
+        <div class="de">– Gut. Und du?</div>
+      </div>
+      <div class="dialog-row">
+        <div class="ro">– La fel, mulțumesc.</div>
+        <div class="de">– Gleichfalls, danke.</div>
+      </div>
+    </li>
   </ul>
 
   <div class="section-title"><span class="icon">✅</span> Multiple Choice</div>

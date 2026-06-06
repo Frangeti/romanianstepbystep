@@ -210,6 +210,26 @@
   .example-list li .ro { font-weight: 600; color: var(--dark); font-size: 1rem; }
   .example-list li .de { color: var(--muted); font-size: 0.88rem; margin-top: 3px; }
 
+  .example-list.dialog-list li {
+    padding: 0;
+    overflow: hidden;
+  }
+  .dialog-row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 12px;
+    padding: 11px 14px;
+    border-bottom: 1px solid var(--border);
+  }
+  .dialog-row:last-child { border-bottom: 0; }
+  .dialog-row .ro,
+  .dialog-row .de {
+    margin: 0;
+  }
+  .dialog-row .de {
+    font-size: 1rem;
+  }
+
   /* PRONUNCIATION */
   .pronuntie-box {
     background: #f0f7ff;
@@ -431,6 +451,10 @@
     .image-match { grid-template-columns: repeat(3, 1fr); }
     .lesson-header { flex-direction: column; }
     .lesson-number { font-size: 1.4rem; }
+    .dialog-row {
+      grid-template-columns: 1fr;
+      gap: 2px;
+    }
   }
 
 
@@ -502,10 +526,37 @@
   <div class="listen-pair"><button class="play-btn" onclick="speak('Te rog')">▶</button><div><div class="word-ro">Te rog</div><div class="phonetic">te ROG</div></div></div>
 
   <div class="section-title"><span class="icon">💬</span> Beispielsätze</div>
-  <ul class="example-list">
-    <li><div class="ro">– Mulțumesc frumos! – Cu plăcere!</div><div class="de">– Vielen Dank! – Gern geschehen!</div></li>
-    <li><div class="ro">– Te rog, un pahar cu apă. – Poftim!</div><div class="de">– Bitte ein Glas Wasser. – Hier bitte!</div></li>
-    <li><div class="ro">– Vă mulțumesc mult. – Pentru nimic!</div><div class="de">– Vielen Dank. – Nicht dafür!</div></li>
+  <ul class="example-list dialog-list">
+    <li>
+      <div class="dialog-row">
+        <div class="ro">– Mulțumesc frumos!</div>
+        <div class="de">– Vielen Dank!</div>
+      </div>
+      <div class="dialog-row">
+        <div class="ro">– Cu plăcere!</div>
+        <div class="de">– Gern geschehen!</div>
+      </div>
+    </li>
+    <li>
+      <div class="dialog-row">
+        <div class="ro">– Te rog, un pahar cu apă.</div>
+        <div class="de">– Bitte ein Glas Wasser.</div>
+      </div>
+      <div class="dialog-row">
+        <div class="ro">– Poftim!</div>
+        <div class="de">– Hier bitte!</div>
+      </div>
+    </li>
+    <li>
+      <div class="dialog-row">
+        <div class="ro">– Vă mulțumesc mult.</div>
+        <div class="de">– Vielen Dank.</div>
+      </div>
+      <div class="dialog-row">
+        <div class="ro">– Pentru nimic!</div>
+        <div class="de">– Nicht dafür!</div>
+      </div>
+    </li>
   </ul>
 
   <div class="section-title"><span class="icon">✅</span> Multiple Choice</div>

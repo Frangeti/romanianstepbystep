@@ -210,6 +210,26 @@
   .example-list li .ro { font-weight: 600; color: var(--dark); font-size: 1rem; }
   .example-list li .de { color: var(--muted); font-size: 0.88rem; margin-top: 3px; }
 
+  .example-list.dialog-list li {
+    padding: 0;
+    overflow: hidden;
+  }
+  .dialog-row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 12px;
+    padding: 11px 14px;
+    border-bottom: 1px solid var(--border);
+  }
+  .dialog-row:last-child { border-bottom: 0; }
+  .dialog-row .ro,
+  .dialog-row .de {
+    margin: 0;
+  }
+  .dialog-row .de {
+    font-size: 1rem;
+  }
+
   /* PRONUNCIATION */
   .pronuntie-box {
     background: #f0f7ff;
@@ -431,6 +451,10 @@
     .image-match { grid-template-columns: repeat(3, 1fr); }
     .lesson-header { flex-direction: column; }
     .lesson-number { font-size: 1.4rem; }
+    .dialog-row {
+      grid-template-columns: 1fr;
+      gap: 2px;
+    }
   }
 
 
@@ -512,10 +536,33 @@
   <div class="listen-pair"><button class="play-btn" onclick="speak('Ce limbă vorbești')">▶</button><div><div class="word-ro">Ce limbă vorbești?</div><div class="phonetic">tsche LIM-bă vor-BESH-ti</div></div></div>
 
   <div class="section-title"><span class="icon">💬</span> Beispielsätze</div>
-  <ul class="example-list">
-    <li><div class="ro">– Ce limbă vorbești? – Eu vorbesc germană și puțin română.</div><div class="de">– Welche Sprache sprichst du? – Ich spreche Deutsch und ein bisschen Rumänisch.</div></li>
-    <li><div class="ro">– Vorbiți română? – Da, vorbesc puțin românește.</div><div class="de">– Sprechen Sie Rumänisch? – Ja, ich spreche ein bisschen Rumänisch.</div></li>
-    <li><div class="ro">Ea vorbește trei limbi: română, germană și engleză.</div><div class="de">Sie spricht drei Sprachen: Rumänisch, Deutsch und Englisch.</div></li>
+  <ul class="example-list dialog-list">
+    <li>
+      <div class="dialog-row">
+        <div class="ro">– Ce limbă vorbești?</div>
+        <div class="de">– Welche Sprache sprichst du?</div>
+      </div>
+      <div class="dialog-row">
+        <div class="ro">– Eu vorbesc germană și puțin română.</div>
+        <div class="de">– Ich spreche Deutsch und ein bisschen Rumänisch.</div>
+      </div>
+    </li>
+    <li>
+      <div class="dialog-row">
+        <div class="ro">– Vorbiți română?</div>
+        <div class="de">– Sprechen Sie Rumänisch?</div>
+      </div>
+      <div class="dialog-row">
+        <div class="ro">– Da, vorbesc puțin românește.</div>
+        <div class="de">– Ja, ich spreche ein bisschen Rumänisch.</div>
+      </div>
+    </li>
+    <li>
+      <div class="dialog-row">
+        <div class="ro">Ea vorbește trei limbi: română, germană și engleză.</div>
+        <div class="de">Sie spricht drei Sprachen: Rumänisch, Deutsch und Englisch.</div>
+      </div>
+    </li>
   </ul>
 
   <div class="section-title"><span class="icon">✅</span> Multiple Choice</div>
