@@ -210,9 +210,29 @@
   .example-list li .ro { font-weight: 600; color: var(--dark); font-size: 1rem; }
   .example-list li .de { color: var(--muted); font-size: 0.88rem; margin-top: 3px; }
 
+  .example-list.dialog-list {
+    counter-reset: dialog-example;
+  }
   .example-list.dialog-list li {
-    padding: 0;
+    padding: 0 0 0 34px;
     overflow: hidden;
+    position: relative;
+  }
+  .example-list.dialog-list li::before {
+    counter-increment: dialog-example;
+    content: counter(dialog-example, lower-alpha);
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 34px;
+    height: 100%;
+    padding-top: 11px;
+    display: flex;
+    justify-content: center;
+    background: #f5f7f8;
+    border-right: 1px solid var(--border);
+    color: var(--dark);
+    font-weight: 700;
   }
   .dialog-row {
     display: grid;
