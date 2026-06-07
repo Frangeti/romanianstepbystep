@@ -166,6 +166,33 @@
   .vocab-card .ro { font-weight: 600; color: var(--dark); font-size: 1rem; flex: 1; }
   .vocab-card .de { color: var(--blue); font-size: 0.9rem; flex: 1; }
   .vocab-card .emoji { font-size: 1.4rem; }
+.audio-btn {
+  width: 34px;
+  height: 34px;
+  border: 1px solid #d8e2e8;
+  border-radius: 50%;
+  background: #f5f7f8;
+  color: var(--blue);
+  cursor: pointer;
+  flex: 0 0 34px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  transition: all .15s;
+}
+.audio-btn:hover {
+  background: var(--dark);
+  border-color: var(--dark);
+  color: #fff;
+  transform: scale(1.06);
+}
+.audio-btn.is-playing {
+  background: var(--green);
+  border-color: var(--green);
+  color: #fff;
+}
+
 
   /* VERBS */
   .verb-box {
@@ -515,22 +542,22 @@
 
   <div class="section-title"><span class="icon">📚</span> Vokabular</div>
   <div class="vocab-grid">
-    <div class="vocab-card"><span class="emoji">🙋‍♂️</span><span class="ro">eu</span><span class="de">ich</span></div>
-    <div class="vocab-card"><span class="emoji">🙋</span><span class="ro">tu</span><span class="de">du</span></div>
-    <div class="vocab-card"><span class="emoji">👦</span><span class="ro">el</span><span class="de">er</span></div>
-    <div class="vocab-card"><span class="emoji">👧</span><span class="ro">ea</span><span class="de">sie (sing.)</span></div>
-    <div class="vocab-card"><span class="emoji">👫</span><span class="ro">noi</span><span class="de">wir</span></div>
-    <div class="vocab-card"><span class="emoji">👥</span><span class="ro">voi</span><span class="de">ihr</span></div>
-    <div class="vocab-card"><span class="emoji">👨‍👩‍👦</span><span class="ro">ei / ele</span><span class="de">sie (pl.)</span></div>
-    <div class="vocab-card"><span class="emoji">🎩</span><span class="ro">dumneavoastră</span><span class="de">Sie (formell)</span></div>
-    <div class="vocab-card"><span class="emoji">👩</span><span class="ro">femeie</span><span class="de">Frau</span></div>
-    <div class="vocab-card"><span class="emoji">👨</span><span class="ro">bărbat</span><span class="de">Mann</span></div>
-    <div class="vocab-card"><span class="emoji">👧</span><span class="ro">fată</span><span class="de">Mädchen</span></div>
-    <div class="vocab-card"><span class="emoji">👦</span><span class="ro">băiat</span><span class="de">Junge</span></div>
-    <div class="vocab-card"><span class="emoji">👩‍❤️‍👨</span><span class="ro">soț / soție</span><span class="de">Mann / Frau (Ehepaar)</span></div>
-    <div class="vocab-card"><span class="emoji">👩</span><span class="ro">mamă</span><span class="de">Mutter</span></div>
-    <div class="vocab-card"><span class="emoji">👨</span><span class="ro">tată</span><span class="de">Vater</span></div>
-    <div class="vocab-card"><span class="emoji">👦</span><span class="ro">fiu / fiică</span><span class="de">Sohn / Tochter</span></div>
+    <div class="vocab-card"><span class="emoji">🙋‍♂️</span><span class="ro">eu</span><span class="de">ich</span><button class="audio-btn" type="button" aria-label="Ascultă eu" data-audio-src="../../assets/audio/a1/lectia-05/eu.mp3" onclick="playVocabAudio(this, 'eu')">▶</button></div>
+    <div class="vocab-card"><span class="emoji">🙋</span><span class="ro">tu</span><span class="de">du</span><button class="audio-btn" type="button" aria-label="Ascultă tu" data-audio-src="../../assets/audio/a1/lectia-05/tu.mp3" onclick="playVocabAudio(this, 'tu')">▶</button></div>
+    <div class="vocab-card"><span class="emoji">👦</span><span class="ro">el</span><span class="de">er</span><button class="audio-btn" type="button" aria-label="Ascultă el" data-audio-src="../../assets/audio/a1/lectia-05/el.mp3" onclick="playVocabAudio(this, 'el')">▶</button></div>
+    <div class="vocab-card"><span class="emoji">👧</span><span class="ro">ea</span><span class="de">sie (sing.)</span><button class="audio-btn" type="button" aria-label="Ascultă ea" data-audio-src="../../assets/audio/a1/lectia-05/ea.mp3" onclick="playVocabAudio(this, 'ea')">▶</button></div>
+    <div class="vocab-card"><span class="emoji">👫</span><span class="ro">noi</span><span class="de">wir</span><button class="audio-btn" type="button" aria-label="Ascultă noi" data-audio-src="../../assets/audio/a1/lectia-05/noi.mp3" onclick="playVocabAudio(this, 'noi')">▶</button></div>
+    <div class="vocab-card"><span class="emoji">👥</span><span class="ro">voi</span><span class="de">ihr</span><button class="audio-btn" type="button" aria-label="Ascultă voi" data-audio-src="../../assets/audio/a1/lectia-05/voi.mp3" onclick="playVocabAudio(this, 'voi')">▶</button></div>
+    <div class="vocab-card"><span class="emoji">👨‍👩‍👦</span><span class="ro">ei / ele</span><span class="de">sie (pl.)</span><button class="audio-btn" type="button" aria-label="Ascultă ei / ele" data-audio-src="../../assets/audio/a1/lectia-05/ei-ele.mp3" onclick="playVocabAudio(this, 'ei / ele')">▶</button></div>
+    <div class="vocab-card"><span class="emoji">🎩</span><span class="ro">dumneavoastră</span><span class="de">Sie (formell)</span><button class="audio-btn" type="button" aria-label="Ascultă dumneavoastră" data-audio-src="../../assets/audio/a1/lectia-05/dumneavoastra.mp3" onclick="playVocabAudio(this, 'dumneavoastră')">▶</button></div>
+    <div class="vocab-card"><span class="emoji">👩</span><span class="ro">femeie</span><span class="de">Frau</span><button class="audio-btn" type="button" aria-label="Ascultă femeie" data-audio-src="../../assets/audio/a1/lectia-05/femeie.mp3" onclick="playVocabAudio(this, 'femeie')">▶</button></div>
+    <div class="vocab-card"><span class="emoji">👨</span><span class="ro">bărbat</span><span class="de">Mann</span><button class="audio-btn" type="button" aria-label="Ascultă bărbat" data-audio-src="../../assets/audio/a1/lectia-05/barbat.mp3" onclick="playVocabAudio(this, 'bărbat')">▶</button></div>
+    <div class="vocab-card"><span class="emoji">👧</span><span class="ro">fată</span><span class="de">Mädchen</span><button class="audio-btn" type="button" aria-label="Ascultă fată" data-audio-src="../../assets/audio/a1/lectia-05/fata.mp3" onclick="playVocabAudio(this, 'fată')">▶</button></div>
+    <div class="vocab-card"><span class="emoji">👦</span><span class="ro">băiat</span><span class="de">Junge</span><button class="audio-btn" type="button" aria-label="Ascultă băiat" data-audio-src="../../assets/audio/a1/lectia-05/baiat.mp3" onclick="playVocabAudio(this, 'băiat')">▶</button></div>
+    <div class="vocab-card"><span class="emoji">👩‍❤️‍👨</span><span class="ro">soț / soție</span><span class="de">Mann / Frau (Ehepaar)</span><button class="audio-btn" type="button" aria-label="Ascultă soț / soție" data-audio-src="../../assets/audio/a1/lectia-05/sot-sotie.mp3" onclick="playVocabAudio(this, 'soț / soție')">▶</button></div>
+    <div class="vocab-card"><span class="emoji">👩</span><span class="ro">mamă</span><span class="de">Mutter</span><button class="audio-btn" type="button" aria-label="Ascultă mamă" data-audio-src="../../assets/audio/a1/lectia-05/mama.mp3" onclick="playVocabAudio(this, 'mamă')">▶</button></div>
+    <div class="vocab-card"><span class="emoji">👨</span><span class="ro">tată</span><span class="de">Vater</span><button class="audio-btn" type="button" aria-label="Ascultă tată" data-audio-src="../../assets/audio/a1/lectia-05/tata.mp3" onclick="playVocabAudio(this, 'tată')">▶</button></div>
+    <div class="vocab-card"><span class="emoji">👦</span><span class="ro">fiu / fiică</span><span class="de">Sohn / Tochter</span><button class="audio-btn" type="button" aria-label="Ascultă fiu / fiică" data-audio-src="../../assets/audio/a1/lectia-05/fiu-fiica.mp3" onclick="playVocabAudio(this, 'fiu / fiică')">▶</button></div>
   </div>
 
   <div class="section-title"><span class="icon">🔤</span> Hauptverb – Verbul principal</div>
@@ -811,6 +838,36 @@ function matchWord(option, exId) {
 }
 
 // ==================== SPEECH ====================
+let activeVocabularyAudio = null;
+function playVocabAudio(button, text) {
+  const src = button.dataset.audioSrc;
+
+  document.querySelectorAll('.audio-btn, .play-btn').forEach(btn => btn.classList.remove('is-playing'));
+  window.speechSynthesis?.cancel();
+
+  if (activeVocabularyAudio) {
+    activeVocabularyAudio.pause();
+    activeVocabularyAudio = null;
+  }
+
+  if (src) {
+    const audio = new Audio(src);
+    activeVocabularyAudio = audio;
+    button.classList.add('is-playing');
+    audio.addEventListener('ended', () => button.classList.remove('is-playing'));
+    audio.addEventListener('error', () => {
+      button.classList.remove('is-playing');
+      speak(text);
+    });
+    audio.play().catch(() => {
+      button.classList.remove('is-playing');
+      speak(text);
+    });
+  } else {
+    speak(text);
+  }
+}
+
 function speak(text) {
   if ('speechSynthesis' in window) {
     window.speechSynthesis.cancel();

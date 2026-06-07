@@ -166,6 +166,33 @@
   .vocab-card .ro { font-weight: 600; color: var(--dark); font-size: 1rem; flex: 1; }
   .vocab-card .de { color: var(--blue); font-size: 0.9rem; flex: 1; }
   .vocab-card .emoji { font-size: 1.4rem; }
+.audio-btn {
+  width: 34px;
+  height: 34px;
+  border: 1px solid #d8e2e8;
+  border-radius: 50%;
+  background: #f5f7f8;
+  color: var(--blue);
+  cursor: pointer;
+  flex: 0 0 34px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  transition: all .15s;
+}
+.audio-btn:hover {
+  background: var(--dark);
+  border-color: var(--dark);
+  color: #fff;
+  transform: scale(1.06);
+}
+.audio-btn.is-playing {
+  background: var(--green);
+  border-color: var(--green);
+  color: #fff;
+}
+
 
   /* VERBS */
   .verb-box {
@@ -516,16 +543,16 @@
 
   <div class="section-title"><span class="icon">📚</span> Vokabular</div>
   <div class="vocab-grid">
-    <div class="vocab-card"><span class="emoji">🗣️</span><span class="ro">limbă</span><span class="de">Sprache</span></div>
-    <div class="vocab-card"><span class="emoji">🌍</span><span class="ro">limbă străină</span><span class="de">Fremdsprache</span></div>
-    <div class="vocab-card"><span class="emoji">🇷🇴</span><span class="ro">română / românește</span><span class="de">Rumänisch</span></div>
-    <div class="vocab-card"><span class="emoji">🇩🇪</span><span class="ro">germană</span><span class="de">Deutsch</span></div>
-    <div class="vocab-card"><span class="emoji">🗣️</span><span class="ro">a vorbi</span><span class="de">sprechen</span></div>
-    <div class="vocab-card"><span class="emoji">❓</span><span class="ro">Ce limbă vorbești?</span><span class="de">Welche Sprache sprichst du?</span></div>
-    <div class="vocab-card"><span class="emoji">🤏</span><span class="ro">puțin</span><span class="de">ein bisschen</span></div>
-    <div class="vocab-card"><span class="emoji">🚫</span><span class="ro">eu nu vorbesc</span><span class="de">ich spreche nicht</span></div>
-    <div class="vocab-card"><span class="emoji">📢</span><span class="ro">eu vorbesc română</span><span class="de">ich spreche Rumänisch</span></div>
-    <div class="vocab-card"><span class="emoji">💬</span><span class="ro">eu vorbesc puțin română</span><span class="de">ich spreche ein wenig Rumänisch</span></div>
+    <div class="vocab-card"><span class="emoji">🗣️</span><span class="ro">limbă</span><span class="de">Sprache</span><button class="audio-btn" type="button" aria-label="Ascultă limbă" data-audio-src="../../assets/audio/a1/lectia-10/limba.mp3" onclick="playVocabAudio(this, 'limbă')">▶</button></div>
+    <div class="vocab-card"><span class="emoji">🌍</span><span class="ro">limbă străină</span><span class="de">Fremdsprache</span><button class="audio-btn" type="button" aria-label="Ascultă limbă străină" data-audio-src="../../assets/audio/a1/lectia-10/limba-straina.mp3" onclick="playVocabAudio(this, 'limbă străină')">▶</button></div>
+    <div class="vocab-card"><span class="emoji">🇷🇴</span><span class="ro">română / românește</span><span class="de">Rumänisch</span><button class="audio-btn" type="button" aria-label="Ascultă română / românește" data-audio-src="../../assets/audio/a1/lectia-10/romana-romaneste.mp3" onclick="playVocabAudio(this, 'română / românește')">▶</button></div>
+    <div class="vocab-card"><span class="emoji">🇩🇪</span><span class="ro">germană</span><span class="de">Deutsch</span><button class="audio-btn" type="button" aria-label="Ascultă germană" data-audio-src="../../assets/audio/a1/lectia-10/germana.mp3" onclick="playVocabAudio(this, 'germană')">▶</button></div>
+    <div class="vocab-card"><span class="emoji">🗣️</span><span class="ro">a vorbi</span><span class="de">sprechen</span><button class="audio-btn" type="button" aria-label="Ascultă a vorbi" data-audio-src="../../assets/audio/a1/lectia-10/a-vorbi.mp3" onclick="playVocabAudio(this, 'a vorbi')">▶</button></div>
+    <div class="vocab-card"><span class="emoji">❓</span><span class="ro">Ce limbă vorbești?</span><span class="de">Welche Sprache sprichst du?</span><button class="audio-btn" type="button" aria-label="Ascultă Ce limbă vorbești?" data-audio-src="../../assets/audio/a1/lectia-10/ce-limba-vorbesti.mp3" onclick="playVocabAudio(this, 'Ce limbă vorbești?')">▶</button></div>
+    <div class="vocab-card"><span class="emoji">🤏</span><span class="ro">puțin</span><span class="de">ein bisschen</span><button class="audio-btn" type="button" aria-label="Ascultă puțin" data-audio-src="../../assets/audio/a1/lectia-10/putin.mp3" onclick="playVocabAudio(this, 'puțin')">▶</button></div>
+    <div class="vocab-card"><span class="emoji">🚫</span><span class="ro">eu nu vorbesc</span><span class="de">ich spreche nicht</span><button class="audio-btn" type="button" aria-label="Ascultă eu nu vorbesc" data-audio-src="../../assets/audio/a1/lectia-10/eu-nu-vorbesc.mp3" onclick="playVocabAudio(this, 'eu nu vorbesc')">▶</button></div>
+    <div class="vocab-card"><span class="emoji">📢</span><span class="ro">eu vorbesc română</span><span class="de">ich spreche Rumänisch</span><button class="audio-btn" type="button" aria-label="Ascultă eu vorbesc română" data-audio-src="../../assets/audio/a1/lectia-10/eu-vorbesc-romana.mp3" onclick="playVocabAudio(this, 'eu vorbesc română')">▶</button></div>
+    <div class="vocab-card"><span class="emoji">💬</span><span class="ro">eu vorbesc puțin română</span><span class="de">ich spreche ein wenig Rumänisch</span><button class="audio-btn" type="button" aria-label="Ascultă eu vorbesc puțin română" data-audio-src="../../assets/audio/a1/lectia-10/eu-vorbesc-putin-romana.mp3" onclick="playVocabAudio(this, 'eu vorbesc puțin română')">▶</button></div>
   </div>
 
   <div class="section-title"><span class="icon">🔤</span> Hauptverb</div>
@@ -809,6 +836,36 @@ function matchWord(option, exId) {
 }
 
 // ==================== SPEECH ====================
+let activeVocabularyAudio = null;
+function playVocabAudio(button, text) {
+  const src = button.dataset.audioSrc;
+
+  document.querySelectorAll('.audio-btn, .play-btn').forEach(btn => btn.classList.remove('is-playing'));
+  window.speechSynthesis?.cancel();
+
+  if (activeVocabularyAudio) {
+    activeVocabularyAudio.pause();
+    activeVocabularyAudio = null;
+  }
+
+  if (src) {
+    const audio = new Audio(src);
+    activeVocabularyAudio = audio;
+    button.classList.add('is-playing');
+    audio.addEventListener('ended', () => button.classList.remove('is-playing'));
+    audio.addEventListener('error', () => {
+      button.classList.remove('is-playing');
+      speak(text);
+    });
+    audio.play().catch(() => {
+      button.classList.remove('is-playing');
+      speak(text);
+    });
+  } else {
+    speak(text);
+  }
+}
+
 function speak(text) {
   if ('speechSynthesis' in window) {
     window.speechSynthesis.cancel();

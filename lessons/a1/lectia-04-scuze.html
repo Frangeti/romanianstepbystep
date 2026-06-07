@@ -166,6 +166,33 @@
   .vocab-card .ro { font-weight: 600; color: var(--dark); font-size: 1rem; flex: 1; }
   .vocab-card .de { color: var(--blue); font-size: 0.9rem; flex: 1; }
   .vocab-card .emoji { font-size: 1.4rem; }
+.audio-btn {
+  width: 34px;
+  height: 34px;
+  border: 1px solid #d8e2e8;
+  border-radius: 50%;
+  background: #f5f7f8;
+  color: var(--blue);
+  cursor: pointer;
+  flex: 0 0 34px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  transition: all .15s;
+}
+.audio-btn:hover {
+  background: var(--dark);
+  border-color: var(--dark);
+  color: #fff;
+  transform: scale(1.06);
+}
+.audio-btn.is-playing {
+  background: var(--green);
+  border-color: var(--green);
+  color: #fff;
+}
+
 
   /* VERBS */
   .verb-box {
@@ -515,15 +542,15 @@
 
   <div class="section-title"><span class="icon">📚</span> Vokabular</div>
   <div class="vocab-grid">
-    <div class="vocab-card"><span class="emoji">🙏</span><span class="ro">Scuze</span><span class="de">Entschuldigung</span></div>
-    <div class="vocab-card"><span class="emoji">🙏</span><span class="ro">Scuză-mă</span><span class="de">Entschuldige mich (du)</span></div>
-    <div class="vocab-card"><span class="emoji">🤝</span><span class="ro">Scuzați-mă</span><span class="de">Entschuldigen Sie mich</span></div>
-    <div class="vocab-card"><span class="emoji">🤷</span><span class="ro">Pardon</span><span class="de">Pardon</span></div>
-    <div class="vocab-card"><span class="emoji">💙</span><span class="ro">Iertare</span><span class="de">Verzeihung</span></div>
-    <div class="vocab-card"><span class="emoji">💙</span><span class="ro">Mă iertați</span><span class="de">Verzeihen Sie</span></div>
-    <div class="vocab-card"><span class="emoji">😔</span><span class="ro">Îmi pare rău</span><span class="de">Es tut mir leid</span></div>
-    <div class="vocab-card"><span class="emoji">👍</span><span class="ro">Nicio problemă</span><span class="de">Kein Problem</span></div>
-    <div class="vocab-card"><span class="emoji">👌</span><span class="ro">Nu face nimic</span><span class="de">Macht nichts</span></div>
+    <div class="vocab-card"><span class="emoji">🙏</span><span class="ro">Scuze</span><span class="de">Entschuldigung</span><button class="audio-btn" type="button" aria-label="Ascultă Scuze" data-audio-src="../../assets/audio/a1/lectia-04/scuze.mp3" onclick="playVocabAudio(this, 'Scuze')">▶</button></div>
+    <div class="vocab-card"><span class="emoji">🙏</span><span class="ro">Scuză-mă</span><span class="de">Entschuldige mich (du)</span><button class="audio-btn" type="button" aria-label="Ascultă Scuză-mă" data-audio-src="../../assets/audio/a1/lectia-04/scuza-ma.mp3" onclick="playVocabAudio(this, 'Scuză-mă')">▶</button></div>
+    <div class="vocab-card"><span class="emoji">🤝</span><span class="ro">Scuzați-mă</span><span class="de">Entschuldigen Sie mich</span><button class="audio-btn" type="button" aria-label="Ascultă Scuzați-mă" data-audio-src="../../assets/audio/a1/lectia-04/scuzati-ma.mp3" onclick="playVocabAudio(this, 'Scuzați-mă')">▶</button></div>
+    <div class="vocab-card"><span class="emoji">🤷</span><span class="ro">Pardon</span><span class="de">Pardon</span><button class="audio-btn" type="button" aria-label="Ascultă Pardon" data-audio-src="../../assets/audio/a1/lectia-04/pardon.mp3" onclick="playVocabAudio(this, 'Pardon')">▶</button></div>
+    <div class="vocab-card"><span class="emoji">💙</span><span class="ro">Iertare</span><span class="de">Verzeihung</span><button class="audio-btn" type="button" aria-label="Ascultă Iertare" data-audio-src="../../assets/audio/a1/lectia-04/iertare.mp3" onclick="playVocabAudio(this, 'Iertare')">▶</button></div>
+    <div class="vocab-card"><span class="emoji">💙</span><span class="ro">Mă iertați</span><span class="de">Verzeihen Sie</span><button class="audio-btn" type="button" aria-label="Ascultă Mă iertați" data-audio-src="../../assets/audio/a1/lectia-04/ma-iertati.mp3" onclick="playVocabAudio(this, 'Mă iertați')">▶</button></div>
+    <div class="vocab-card"><span class="emoji">😔</span><span class="ro">Îmi pare rău</span><span class="de">Es tut mir leid</span><button class="audio-btn" type="button" aria-label="Ascultă Îmi pare rău" data-audio-src="../../assets/audio/a1/lectia-04/imi-pare-rau.mp3" onclick="playVocabAudio(this, 'Îmi pare rău')">▶</button></div>
+    <div class="vocab-card"><span class="emoji">👍</span><span class="ro">Nicio problemă</span><span class="de">Kein Problem</span><button class="audio-btn" type="button" aria-label="Ascultă Nicio problemă" data-audio-src="../../assets/audio/a1/lectia-04/nicio-problema.mp3" onclick="playVocabAudio(this, 'Nicio problemă')">▶</button></div>
+    <div class="vocab-card"><span class="emoji">👌</span><span class="ro">Nu face nimic</span><span class="de">Macht nichts</span><button class="audio-btn" type="button" aria-label="Ascultă Nu face nimic" data-audio-src="../../assets/audio/a1/lectia-04/nu-face-nimic.mp3" onclick="playVocabAudio(this, 'Nu face nimic')">▶</button></div>
   </div>
 
   <div class="section-title"><span class="icon">🔊</span> Aussprache</div>
@@ -799,6 +826,36 @@ function matchWord(option, exId) {
 }
 
 // ==================== SPEECH ====================
+let activeVocabularyAudio = null;
+function playVocabAudio(button, text) {
+  const src = button.dataset.audioSrc;
+
+  document.querySelectorAll('.audio-btn, .play-btn').forEach(btn => btn.classList.remove('is-playing'));
+  window.speechSynthesis?.cancel();
+
+  if (activeVocabularyAudio) {
+    activeVocabularyAudio.pause();
+    activeVocabularyAudio = null;
+  }
+
+  if (src) {
+    const audio = new Audio(src);
+    activeVocabularyAudio = audio;
+    button.classList.add('is-playing');
+    audio.addEventListener('ended', () => button.classList.remove('is-playing'));
+    audio.addEventListener('error', () => {
+      button.classList.remove('is-playing');
+      speak(text);
+    });
+    audio.play().catch(() => {
+      button.classList.remove('is-playing');
+      speak(text);
+    });
+  } else {
+    speak(text);
+  }
+}
+
 function speak(text) {
   if ('speechSynthesis' in window) {
     window.speechSynthesis.cancel();

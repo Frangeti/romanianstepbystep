@@ -166,6 +166,33 @@
   .vocab-card .ro { font-weight: 600; color: var(--dark); font-size: 1rem; flex: 1; }
   .vocab-card .de { color: var(--blue); font-size: 0.9rem; flex: 1; }
   .vocab-card .emoji { font-size: 1.4rem; }
+.audio-btn {
+  width: 34px;
+  height: 34px;
+  border: 1px solid #d8e2e8;
+  border-radius: 50%;
+  background: #f5f7f8;
+  color: var(--blue);
+  cursor: pointer;
+  flex: 0 0 34px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  transition: all .15s;
+}
+.audio-btn:hover {
+  background: var(--dark);
+  border-color: var(--dark);
+  color: #fff;
+  transform: scale(1.06);
+}
+.audio-btn.is-playing {
+  background: var(--green);
+  border-color: var(--green);
+  color: #fff;
+}
+
 
   /* VERBS */
   .verb-box {
@@ -515,16 +542,16 @@
 
   <div class="section-title"><span class="icon">📚</span> Vokabular</div>
   <div class="vocab-grid">
-    <div class="vocab-card"><span class="emoji">🙏</span><span class="ro">Mulțumesc</span><span class="de">Danke</span></div>
-    <div class="vocab-card"><span class="emoji">🙏</span><span class="ro">Mulțumesc frumos</span><span class="de">Vielen Dank</span></div>
-    <div class="vocab-card"><span class="emoji">💝</span><span class="ro">Mulțumesc din suflet</span><span class="de">Von Herzen Dank</span></div>
-    <div class="vocab-card"><span class="emoji">😊</span><span class="ro">Cu plăcere</span><span class="de">Gern geschehen</span></div>
-    <div class="vocab-card"><span class="emoji">💚</span><span class="ro">Cu drag</span><span class="de">Mit Vergnügen</span></div>
-    <div class="vocab-card"><span class="emoji">🤷</span><span class="ro">Pentru nimic</span><span class="de">Nicht dafür!</span></div>
-    <div class="vocab-card"><span class="emoji">🙋</span><span class="ro">Te rog</span><span class="de">Bitte (du)</span></div>
-    <div class="vocab-card"><span class="emoji">🤝</span><span class="ro">Vă rog</span><span class="de">Bitte (Sie)</span></div>
-    <div class="vocab-card"><span class="emoji">😊</span><span class="ro">Și eu mulțumesc</span><span class="de">Ich danke auch</span></div>
-    <div class="vocab-card"><span class="emoji">↔️</span><span class="ro">Asemenea</span><span class="de">Ebenso</span></div>
+    <div class="vocab-card"><span class="emoji">🙏</span><span class="ro">Mulțumesc</span><span class="de">Danke</span><button class="audio-btn" type="button" aria-label="Ascultă Mulțumesc" data-audio-src="../../assets/audio/a1/lectia-03/multumesc.mp3" onclick="playVocabAudio(this, 'Mulțumesc')">▶</button></div>
+    <div class="vocab-card"><span class="emoji">🙏</span><span class="ro">Mulțumesc frumos</span><span class="de">Vielen Dank</span><button class="audio-btn" type="button" aria-label="Ascultă Mulțumesc frumos" data-audio-src="../../assets/audio/a1/lectia-03/multumesc-frumos.mp3" onclick="playVocabAudio(this, 'Mulțumesc frumos')">▶</button></div>
+    <div class="vocab-card"><span class="emoji">💝</span><span class="ro">Mulțumesc din suflet</span><span class="de">Von Herzen Dank</span><button class="audio-btn" type="button" aria-label="Ascultă Mulțumesc din suflet" data-audio-src="../../assets/audio/a1/lectia-03/multumesc-din-suflet.mp3" onclick="playVocabAudio(this, 'Mulțumesc din suflet')">▶</button></div>
+    <div class="vocab-card"><span class="emoji">😊</span><span class="ro">Cu plăcere</span><span class="de">Gern geschehen</span><button class="audio-btn" type="button" aria-label="Ascultă Cu plăcere" data-audio-src="../../assets/audio/a1/lectia-03/cu-placere.mp3" onclick="playVocabAudio(this, 'Cu plăcere')">▶</button></div>
+    <div class="vocab-card"><span class="emoji">💚</span><span class="ro">Cu drag</span><span class="de">Mit Vergnügen</span><button class="audio-btn" type="button" aria-label="Ascultă Cu drag" data-audio-src="../../assets/audio/a1/lectia-03/cu-drag.mp3" onclick="playVocabAudio(this, 'Cu drag')">▶</button></div>
+    <div class="vocab-card"><span class="emoji">🤷</span><span class="ro">Pentru nimic</span><span class="de">Nicht dafür!</span><button class="audio-btn" type="button" aria-label="Ascultă Pentru nimic" data-audio-src="../../assets/audio/a1/lectia-03/pentru-nimic.mp3" onclick="playVocabAudio(this, 'Pentru nimic')">▶</button></div>
+    <div class="vocab-card"><span class="emoji">🙋</span><span class="ro">Te rog</span><span class="de">Bitte (du)</span><button class="audio-btn" type="button" aria-label="Ascultă Te rog" data-audio-src="../../assets/audio/a1/lectia-03/te-rog.mp3" onclick="playVocabAudio(this, 'Te rog')">▶</button></div>
+    <div class="vocab-card"><span class="emoji">🤝</span><span class="ro">Vă rog</span><span class="de">Bitte (Sie)</span><button class="audio-btn" type="button" aria-label="Ascultă Vă rog" data-audio-src="../../assets/audio/a1/lectia-03/va-rog.mp3" onclick="playVocabAudio(this, 'Vă rog')">▶</button></div>
+    <div class="vocab-card"><span class="emoji">😊</span><span class="ro">Și eu mulțumesc</span><span class="de">Ich danke auch</span><button class="audio-btn" type="button" aria-label="Ascultă Și eu mulțumesc" data-audio-src="../../assets/audio/a1/lectia-03/si-eu-multumesc.mp3" onclick="playVocabAudio(this, 'Și eu mulțumesc')">▶</button></div>
+    <div class="vocab-card"><span class="emoji">↔️</span><span class="ro">Asemenea</span><span class="de">Ebenso</span><button class="audio-btn" type="button" aria-label="Ascultă Asemenea" data-audio-src="../../assets/audio/a1/lectia-03/asemenea.mp3" onclick="playVocabAudio(this, 'Asemenea')">▶</button></div>
   </div>
 
   <div class="section-title"><span class="icon">🔊</span> Aussprache</div>
@@ -857,6 +884,36 @@ function matchWord(option, exId) {
 }
 
 // ==================== SPEECH ====================
+let activeVocabularyAudio = null;
+function playVocabAudio(button, text) {
+  const src = button.dataset.audioSrc;
+
+  document.querySelectorAll('.audio-btn, .play-btn').forEach(btn => btn.classList.remove('is-playing'));
+  window.speechSynthesis?.cancel();
+
+  if (activeVocabularyAudio) {
+    activeVocabularyAudio.pause();
+    activeVocabularyAudio = null;
+  }
+
+  if (src) {
+    const audio = new Audio(src);
+    activeVocabularyAudio = audio;
+    button.classList.add('is-playing');
+    audio.addEventListener('ended', () => button.classList.remove('is-playing'));
+    audio.addEventListener('error', () => {
+      button.classList.remove('is-playing');
+      speak(text);
+    });
+    audio.play().catch(() => {
+      button.classList.remove('is-playing');
+      speak(text);
+    });
+  } else {
+    speak(text);
+  }
+}
+
 function speak(text) {
   if ('speechSynthesis' in window) {
     window.speechSynthesis.cancel();

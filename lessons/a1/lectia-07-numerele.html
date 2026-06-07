@@ -166,6 +166,33 @@
   .vocab-card .ro { font-weight: 600; color: var(--dark); font-size: 1rem; flex: 1; }
   .vocab-card .de { color: var(--blue); font-size: 0.9rem; flex: 1; }
   .vocab-card .emoji { font-size: 1.4rem; }
+.audio-btn {
+  width: 34px;
+  height: 34px;
+  border: 1px solid #d8e2e8;
+  border-radius: 50%;
+  background: #f5f7f8;
+  color: var(--blue);
+  cursor: pointer;
+  flex: 0 0 34px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  transition: all .15s;
+}
+.audio-btn:hover {
+  background: var(--dark);
+  border-color: var(--dark);
+  color: #fff;
+  transform: scale(1.06);
+}
+.audio-btn.is-playing {
+  background: var(--green);
+  border-color: var(--green);
+  color: #fff;
+}
+
 
   /* VERBS */
   .verb-box {
@@ -516,22 +543,22 @@
 
   <div class="section-title"><span class="icon">🔢</span> Zahlen 0–20</div>
   <div class="vocab-grid">
-    <div class="vocab-card"><span class="emoji">0️⃣</span><span class="ro">zero</span><span class="de">null</span></div>
-    <div class="vocab-card"><span class="emoji">1️⃣</span><span class="ro">unu</span><span class="de">eins</span></div>
-    <div class="vocab-card"><span class="emoji">2️⃣</span><span class="ro">doi</span><span class="de">zwei</span></div>
-    <div class="vocab-card"><span class="emoji">3️⃣</span><span class="ro">trei</span><span class="de">drei</span></div>
-    <div class="vocab-card"><span class="emoji">4️⃣</span><span class="ro">patru</span><span class="de">vier</span></div>
-    <div class="vocab-card"><span class="emoji">5️⃣</span><span class="ro">cinci</span><span class="de">fünf</span></div>
-    <div class="vocab-card"><span class="emoji">6️⃣</span><span class="ro">șase</span><span class="de">sechs</span></div>
-    <div class="vocab-card"><span class="emoji">7️⃣</span><span class="ro">șapte</span><span class="de">sieben</span></div>
-    <div class="vocab-card"><span class="emoji">8️⃣</span><span class="ro">opt</span><span class="de">acht</span></div>
-    <div class="vocab-card"><span class="emoji">9️⃣</span><span class="ro">nouă</span><span class="de">neun</span></div>
-    <div class="vocab-card"><span class="emoji">🔟</span><span class="ro">zece</span><span class="de">zehn</span></div>
-    <div class="vocab-card"><span class="emoji">1️⃣1️⃣</span><span class="ro">unsprezece</span><span class="de">elf</span></div>
-    <div class="vocab-card"><span class="emoji">1️⃣2️⃣</span><span class="ro">doisprezece</span><span class="de">zwölf</span></div>
-    <div class="vocab-card"><span class="emoji">1️⃣5️⃣</span><span class="ro">cincisprezece</span><span class="de">fünfzehn</span></div>
-    <div class="vocab-card"><span class="emoji">2️⃣0️⃣</span><span class="ro">douăzeci</span><span class="de">zwanzig</span></div>
-    <div class="vocab-card"><span class="emoji">📅</span><span class="ro">an / ani</span><span class="de">Jahr / Jahre</span></div>
+    <div class="vocab-card"><span class="emoji">0️⃣</span><span class="ro">zero</span><span class="de">null</span><button class="audio-btn" type="button" aria-label="Ascultă zero" data-audio-src="../../assets/audio/a1/lectia-07/zero.mp3" onclick="playVocabAudio(this, 'zero')">▶</button></div>
+    <div class="vocab-card"><span class="emoji">1️⃣</span><span class="ro">unu</span><span class="de">eins</span><button class="audio-btn" type="button" aria-label="Ascultă unu" data-audio-src="../../assets/audio/a1/lectia-07/unu.mp3" onclick="playVocabAudio(this, 'unu')">▶</button></div>
+    <div class="vocab-card"><span class="emoji">2️⃣</span><span class="ro">doi</span><span class="de">zwei</span><button class="audio-btn" type="button" aria-label="Ascultă doi" data-audio-src="../../assets/audio/a1/lectia-07/doi.mp3" onclick="playVocabAudio(this, 'doi')">▶</button></div>
+    <div class="vocab-card"><span class="emoji">3️⃣</span><span class="ro">trei</span><span class="de">drei</span><button class="audio-btn" type="button" aria-label="Ascultă trei" data-audio-src="../../assets/audio/a1/lectia-07/trei.mp3" onclick="playVocabAudio(this, 'trei')">▶</button></div>
+    <div class="vocab-card"><span class="emoji">4️⃣</span><span class="ro">patru</span><span class="de">vier</span><button class="audio-btn" type="button" aria-label="Ascultă patru" data-audio-src="../../assets/audio/a1/lectia-07/patru.mp3" onclick="playVocabAudio(this, 'patru')">▶</button></div>
+    <div class="vocab-card"><span class="emoji">5️⃣</span><span class="ro">cinci</span><span class="de">fünf</span><button class="audio-btn" type="button" aria-label="Ascultă cinci" data-audio-src="../../assets/audio/a1/lectia-07/cinci.mp3" onclick="playVocabAudio(this, 'cinci')">▶</button></div>
+    <div class="vocab-card"><span class="emoji">6️⃣</span><span class="ro">șase</span><span class="de">sechs</span><button class="audio-btn" type="button" aria-label="Ascultă șase" data-audio-src="../../assets/audio/a1/lectia-07/sase.mp3" onclick="playVocabAudio(this, 'șase')">▶</button></div>
+    <div class="vocab-card"><span class="emoji">7️⃣</span><span class="ro">șapte</span><span class="de">sieben</span><button class="audio-btn" type="button" aria-label="Ascultă șapte" data-audio-src="../../assets/audio/a1/lectia-07/sapte.mp3" onclick="playVocabAudio(this, 'șapte')">▶</button></div>
+    <div class="vocab-card"><span class="emoji">8️⃣</span><span class="ro">opt</span><span class="de">acht</span><button class="audio-btn" type="button" aria-label="Ascultă opt" data-audio-src="../../assets/audio/a1/lectia-07/opt.mp3" onclick="playVocabAudio(this, 'opt')">▶</button></div>
+    <div class="vocab-card"><span class="emoji">9️⃣</span><span class="ro">nouă</span><span class="de">neun</span><button class="audio-btn" type="button" aria-label="Ascultă nouă" data-audio-src="../../assets/audio/a1/lectia-07/noua.mp3" onclick="playVocabAudio(this, 'nouă')">▶</button></div>
+    <div class="vocab-card"><span class="emoji">🔟</span><span class="ro">zece</span><span class="de">zehn</span><button class="audio-btn" type="button" aria-label="Ascultă zece" data-audio-src="../../assets/audio/a1/lectia-07/zece.mp3" onclick="playVocabAudio(this, 'zece')">▶</button></div>
+    <div class="vocab-card"><span class="emoji">1️⃣1️⃣</span><span class="ro">unsprezece</span><span class="de">elf</span><button class="audio-btn" type="button" aria-label="Ascultă unsprezece" data-audio-src="../../assets/audio/a1/lectia-07/unsprezece.mp3" onclick="playVocabAudio(this, 'unsprezece')">▶</button></div>
+    <div class="vocab-card"><span class="emoji">1️⃣2️⃣</span><span class="ro">doisprezece</span><span class="de">zwölf</span><button class="audio-btn" type="button" aria-label="Ascultă doisprezece" data-audio-src="../../assets/audio/a1/lectia-07/doisprezece.mp3" onclick="playVocabAudio(this, 'doisprezece')">▶</button></div>
+    <div class="vocab-card"><span class="emoji">1️⃣5️⃣</span><span class="ro">cincisprezece</span><span class="de">fünfzehn</span><button class="audio-btn" type="button" aria-label="Ascultă cincisprezece" data-audio-src="../../assets/audio/a1/lectia-07/cincisprezece.mp3" onclick="playVocabAudio(this, 'cincisprezece')">▶</button></div>
+    <div class="vocab-card"><span class="emoji">2️⃣0️⃣</span><span class="ro">douăzeci</span><span class="de">zwanzig</span><button class="audio-btn" type="button" aria-label="Ascultă douăzeci" data-audio-src="../../assets/audio/a1/lectia-07/douazeci.mp3" onclick="playVocabAudio(this, 'douăzeci')">▶</button></div>
+    <div class="vocab-card"><span class="emoji">📅</span><span class="ro">an / ani</span><span class="de">Jahr / Jahre</span><button class="audio-btn" type="button" aria-label="Ascultă an / ani" data-audio-src="../../assets/audio/a1/lectia-07/an-ani.mp3" onclick="playVocabAudio(this, 'an / ani')">▶</button></div>
   </div>
 
   <div class="section-title"><span class="icon">🔤</span> Hauptverb</div>
@@ -809,6 +836,36 @@ function matchWord(option, exId) {
 }
 
 // ==================== SPEECH ====================
+let activeVocabularyAudio = null;
+function playVocabAudio(button, text) {
+  const src = button.dataset.audioSrc;
+
+  document.querySelectorAll('.audio-btn, .play-btn').forEach(btn => btn.classList.remove('is-playing'));
+  window.speechSynthesis?.cancel();
+
+  if (activeVocabularyAudio) {
+    activeVocabularyAudio.pause();
+    activeVocabularyAudio = null;
+  }
+
+  if (src) {
+    const audio = new Audio(src);
+    activeVocabularyAudio = audio;
+    button.classList.add('is-playing');
+    audio.addEventListener('ended', () => button.classList.remove('is-playing'));
+    audio.addEventListener('error', () => {
+      button.classList.remove('is-playing');
+      speak(text);
+    });
+    audio.play().catch(() => {
+      button.classList.remove('is-playing');
+      speak(text);
+    });
+  } else {
+    speak(text);
+  }
+}
+
 function speak(text) {
   if ('speechSynthesis' in window) {
     window.speechSynthesis.cancel();
