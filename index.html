@@ -348,6 +348,7 @@
   }
 
   .level-section.is-hidden,
+  .lesson-category.is-hidden,
   .empty-level.is-hidden,
   .main > section.is-view-hidden {
     display: none;
@@ -1507,6 +1508,7 @@
     const showAllLessonsLinks = document.querySelectorAll('[data-show-all-lessons]');
     const mainSections = document.querySelectorAll('.main > section');
     const languageToolMenus = document.querySelectorAll('[data-language-tools]');
+    const lessonCategories = document.querySelectorAll('.lesson-category[id^="a1-"]');
 
     function setActiveMenu(item) {
       sidebarItems.forEach(link => link.classList.remove('active'));
@@ -1569,14 +1571,23 @@
 
     function showAllLessonLevels() {
       levelSections.forEach(section => section.classList.remove('is-hidden'));
+      lessonCategories.forEach(category => category.classList.remove('is-hidden'));
       if (emptyLevel) emptyLevel.classList.add('is-hidden');
+    }
+
+    function showLanguageCategory(language) {
+      const selectedId = getLanguageHash(language).slice(1);
+      lessonCategories.forEach(category => {
+        category.classList.toggle('is-hidden', category.id !== selectedId);
+      });
+      showLessonsForLevel('a1');
     }
 
     levelFilters.forEach(link => {
       link.addEventListener('click', () => {
         closeLanguageTools();
         showOnlyMainSection('#lectii');
-        showLessonsForLevel(link.dataset.levelFilter);
+        showAllLessonLevels();
         setActiveLevel(link.dataset.levelFilter);
       });
     });
@@ -1606,6 +1617,7 @@
 
         if (language) {
           showAllLessonLevels();
+          showLanguageCategory(language);
           openLanguageTools(language);
         } else {
           closeLanguageTools();
@@ -1630,6 +1642,9 @@
           }
 
           if (language) {
+            if (isA1Category) {
+              showLanguageCategory(language);
+            }
             openLanguageTools(language);
           } else {
             closeLanguageTools();
@@ -1659,7 +1674,9 @@
         showAllLessonLevels();
         const languageLink = document.querySelector(`.sid-item[href="${hash}"]`);
         if (languageLink?.dataset.languageCategory) {
-          openLanguageTools(languageLink.dataset.languageCategory);
+          const language = languageLink.dataset.languageCategory;
+          showLanguageCategory(language);
+          openLanguageTools(language);
         }
         setActiveMenu(languageLink);
         setActiveTopNav(hash);
