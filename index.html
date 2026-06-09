@@ -223,6 +223,25 @@
     color: var(--ink);
   }
 
+  .home-tools .sid-item.home-language {
+    color: var(--navy);
+    font-weight: 800;
+  }
+
+  .home-tools .sid-item.home-level {
+    color: var(--coral);
+    font-weight: 800;
+  }
+
+  .home-tools .sid-item.home-tool {
+    color: #1f5f3a;
+    font-weight: 700;
+  }
+
+  .home-tools .dot-navy { background: var(--navy); }
+  .home-tools .dot-coral { background: var(--coral); }
+  .home-tools .dot-green { background: #1f5f3a; }
+
   .sid-dot {
     width: 8px;
     height: 8px;
@@ -910,7 +929,20 @@
       <aside class="sidebar" aria-label="Meniu lecții">
         <div class="sid-section">
           <div class="sid-head">Categorie</div>
-          <div class="language-tools is-open" data-language-tools="germana">
+          <div class="language-tools home-tools is-open" data-home-tools>
+            <a class="sid-item subitem home-language" href="#acasa" data-home-link><span class="sid-dot dot-navy"></span>Limba română</a>
+            <a class="sid-item subitem home-level" href="#romana-a1-incepator" data-home-section="romana-a1-incepator"><span class="sid-dot dot-coral"></span>Nivelul A1 Începător</a>
+            <div class="sid-tools-head">Instrumente de lucru</div>
+            <a class="sid-item tool-item home-tool" href="#romana-lectii" data-home-section="romana-lectii"><span class="sid-dot dot-green"></span>1. Lecții de limba română</a>
+            <a class="sid-item tool-item home-tool" href="#romana-lectii-pdf" data-home-section="romana-lectii-pdf"><span class="sid-dot dot-green"></span>2. Lecții de limba română PDF</a>
+            <a class="sid-item tool-item home-tool" href="#romana-dictionar" data-home-section="romana-dictionar"><span class="sid-dot dot-green"></span>3. Dicționar</a>
+            <a class="sid-item tool-item home-tool" href="#romana-pronuntie" data-home-section="romana-pronuntie"><span class="sid-dot dot-green"></span>4. Pronunție</a>
+            <a class="sid-item tool-item home-tool" href="#romana-vocabular" data-home-section="romana-vocabular"><span class="sid-dot dot-green"></span>5. Vocabular</a>
+            <a class="sid-item tool-item home-tool" href="#romana-gramatica" data-home-section="romana-gramatica"><span class="sid-dot dot-green"></span>6. Gramatică</a>
+            <a class="sid-item tool-item home-tool" href="#romana-verbe" data-home-section="romana-verbe"><span class="sid-dot dot-green"></span>7. Verbe</a>
+            <a class="sid-item tool-item home-tool" href="#romana-teste" data-home-section="romana-teste"><span class="sid-dot dot-green"></span>8. Teste</a>
+          </div>
+          <div class="language-tools" data-language-tools="germana">
             <a class="sid-item subitem" href="#a1-germana" data-language-category="germana" data-language-section="a1-germana"><span class="sid-dot dot-gold"></span>A1 Începător</a>
             <div class="sid-tools-head">Instrumente de lucru</div>
             <a class="sid-item tool-item" href="#a1-germana" data-language-tool="germana" data-language-section="a1-germana"><span class="sid-dot dot-teal"></span>1. Lecții</a>
@@ -970,6 +1002,103 @@
               <strong data-stat="audio-count">49</strong>
               <span>materiale audio atașate</span>
             </div>
+          </div>
+        </section>
+
+        <section id="romana-a1-incepator">
+          <div class="section-title">
+            <h2>Limba română · Nivelul A1 Începător</h2>
+            <span>categorie pregătită</span>
+          </div>
+          <div class="resource-grid">
+            <article class="resource-card">
+              <div class="resource-body">
+                <div class="meta"><span class="badge badge-b2">A1</span><span class="badge badge-live">În pregătire</span></div>
+                <h3>Materiale în limba română</h3>
+                <p>Categoria este pregătită pentru lecții, fișe, dicționar, pronunție, vocabular, gramatică, verbe și teste.</p>
+                <span class="resource-status waiting">În pregătire</span>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section id="romana-lectii">
+          <div class="section-title">
+            <h2>Lecții de limba română</h2>
+            <span>conținut viitor</span>
+          </div>
+          <div class="resource-grid">
+            <article class="resource-card"><div class="resource-body"><div class="meta"><span class="badge badge-b2">A1</span><span class="badge badge-live">În pregătire</span></div><h3>Lecții A1</h3><p>Spațiu pregătit pentru lecții numai în limba română.</p><span class="resource-status waiting">În pregătire</span></div></article>
+          </div>
+        </section>
+
+        <section id="romana-lectii-pdf">
+          <div class="section-title">
+            <h2>Lecții de limba română PDF</h2>
+            <span>fișe viitoare</span>
+          </div>
+          <div class="resource-grid">
+            <article class="resource-card"><div class="resource-body"><div class="meta"><span class="badge badge-b2">A1</span><span class="badge badge-live">În pregătire</span></div><h3>PDF A1</h3><p>Spațiu pregătit pentru fișe PDF numai în limba română.</p><span class="resource-status waiting">În pregătire</span></div></article>
+          </div>
+        </section>
+
+        <section id="romana-dictionar">
+          <div class="section-title">
+            <h2>Dicționar</h2>
+            <span>cuvinte în română</span>
+          </div>
+          <div class="resource-grid">
+            <article class="resource-card"><div class="resource-body"><div class="meta"><span class="badge badge-b2">A1</span><span class="badge badge-live">În pregătire</span></div><h3>Dicționar A1</h3><p>Spațiu pregătit pentru dicționar numai în limba română.</p><span class="resource-status waiting">În pregătire</span></div></article>
+          </div>
+        </section>
+
+        <section id="romana-pronuntie">
+          <div class="section-title">
+            <h2>Pronunție</h2>
+            <span>sunete românești</span>
+          </div>
+          <div class="resource-grid">
+            <article class="resource-card"><div class="resource-body"><div class="meta"><span class="badge badge-b2">A1</span><span class="badge badge-live">În pregătire</span></div><h3>Pronunție A1</h3><p>Spațiu pregătit pentru materiale de pronunție în limba română.</p><span class="resource-status waiting">În pregătire</span></div></article>
+          </div>
+        </section>
+
+        <section id="romana-vocabular">
+          <div class="section-title">
+            <h2>Vocabular</h2>
+            <span>teme și cuvinte</span>
+          </div>
+          <div class="resource-grid">
+            <article class="resource-card"><div class="resource-body"><div class="meta"><span class="badge badge-b2">A1</span><span class="badge badge-live">În pregătire</span></div><h3>Vocabular A1</h3><p>Spațiu pregătit pentru vocabular numai în limba română.</p><span class="resource-status waiting">În pregătire</span></div></article>
+          </div>
+        </section>
+
+        <section id="romana-gramatica">
+          <div class="section-title">
+            <h2>Gramatică</h2>
+            <span>reguli simple</span>
+          </div>
+          <div class="resource-grid">
+            <article class="resource-card"><div class="resource-body"><div class="meta"><span class="badge badge-b2">A1</span><span class="badge badge-live">În pregătire</span></div><h3>Gramatică A1</h3><p>Spațiu pregătit pentru gramatică numai în limba română.</p><span class="resource-status waiting">În pregătire</span></div></article>
+          </div>
+        </section>
+
+        <section id="romana-verbe">
+          <div class="section-title">
+            <h2>Verbe</h2>
+            <span>conjugări</span>
+          </div>
+          <div class="resource-grid">
+            <article class="resource-card"><div class="resource-body"><div class="meta"><span class="badge badge-b2">A1</span><span class="badge badge-live">În pregătire</span></div><h3>Verbe A1</h3><p>Spațiu pregătit pentru verbe și exemple numai în limba română.</p><span class="resource-status waiting">În pregătire</span></div></article>
+          </div>
+        </section>
+
+        <section id="romana-teste">
+          <div class="section-title">
+            <h2>Teste</h2>
+            <span>verificări A1</span>
+          </div>
+          <div class="resource-grid">
+            <article class="resource-card"><div class="resource-body"><div class="meta"><span class="badge badge-b2">A1</span><span class="badge badge-live">În pregătire</span></div><h3>Teste A1</h3><p>Spațiu pregătit pentru teste numai în limba română.</p><span class="resource-status waiting">În pregătire</span></div></article>
           </div>
         </section>
 
@@ -1639,6 +1768,7 @@
     const showAllLessonsLinks = document.querySelectorAll('[data-show-all-lessons]');
     const mainSections = document.querySelectorAll('.main > section');
     const languageToolMenus = document.querySelectorAll('[data-language-tools]');
+    const homeTools = document.querySelector('[data-home-tools]');
     const languageCategoryLinks = document.querySelectorAll('.sid-item[data-language-category]');
     const lessonCategories = document.querySelectorAll('.lesson-category[id^="a1-"]');
 
@@ -1686,22 +1816,32 @@
     }
 
     function openLanguageTools(language) {
+      if (homeTools) homeTools.classList.remove('is-open');
       languageToolMenus.forEach(menu => {
         menu.classList.toggle('is-open', menu.dataset.languageTools === language);
       });
     }
 
     function showAllSidebarLanguages() {
+      if (homeTools) homeTools.classList.add('is-open');
       languageCategoryLinks.forEach(link => link.classList.remove('is-sidebar-hidden'));
       languageToolMenus.forEach(menu => menu.classList.remove('is-sidebar-hidden'));
     }
 
     function showOnlySidebarLanguage(language) {
+      if (homeTools) homeTools.classList.remove('is-open');
       languageCategoryLinks.forEach(link => {
         link.classList.toggle('is-sidebar-hidden', link.dataset.languageCategory !== language);
       });
       languageToolMenus.forEach(menu => {
         menu.classList.toggle('is-sidebar-hidden', menu.dataset.languageTools !== language);
+      });
+    }
+
+    function showHomeSidebar() {
+      if (homeTools) homeTools.classList.add('is-open');
+      languageToolMenus.forEach(menu => {
+        if (menu !== homeTools) menu.classList.remove('is-open');
       });
     }
 
@@ -1772,7 +1912,7 @@
           showOnlySidebarLanguage(language);
           openLanguageTools(language);
         } else {
-          showAllSidebarLanguages();
+          showHomeSidebar();
           closeLanguageTools();
         }
 
@@ -1786,6 +1926,7 @@
           const hash = link.getAttribute('href');
           const language = link.dataset.languageCategory || link.dataset.languageTool;
           const languageSection = link.dataset.languageSection;
+          const homeSection = link.dataset.homeSection;
           const isA1Category = Boolean(link.dataset.languageCategory);
           setActiveTopNav(language ? getLanguageHash(language) : '#acasa');
           clearActiveLevels();
@@ -1801,8 +1942,10 @@
             }
             showOnlySidebarLanguage(language);
             openLanguageTools(language);
+          } else if (homeSection) {
+            showHomeSidebar();
           } else {
-            showAllSidebarLanguages();
+            showHomeSidebar();
             closeLanguageTools();
           }
 
@@ -1821,12 +1964,14 @@
         if (language) {
           showOnlySidebarLanguage(language);
           openLanguageTools(language);
+        } else if (matchingLink?.dataset.homeSection || matchingLink?.dataset.homeLink) {
+          showHomeSidebar();
         } else {
-          showAllSidebarLanguages();
+          showHomeSidebar();
           closeLanguageTools();
         }
         setActiveMenu(matchingLink);
-        setActiveTopNav(language ? getLanguageHash(language) : hash);
+        setActiveTopNav(language ? getLanguageHash(language) : (matchingLink?.dataset.homeSection || matchingLink?.dataset.homeLink ? '#acasa' : hash));
       } else if (hash.startsWith('#a1-')) {
         showOnlyMainSection('#lectii');
         showAllLessonLevels();
@@ -1843,7 +1988,7 @@
     } else {
       showOnlyMainSection('#acasa');
       setActiveTopNav('#acasa');
-      showAllSidebarLanguages();
+      showHomeSidebar();
       closeLanguageTools();
     }
 
