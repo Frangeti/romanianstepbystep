@@ -124,13 +124,20 @@
   }
 
   .sidebar {
-    background: rgba(255, 255, 255, .56);
-    border-right: 1px solid var(--border);
-    padding: 1.15rem .9rem;
+    background: #eef7fb;
+    border-right: 1px solid #cfe4ed;
+    padding: 1.25rem 1rem;
     backdrop-filter: blur(12px);
   }
 
-  .sid-section { margin-bottom: .65rem; }
+  .sid-section {
+    margin-bottom: .65rem;
+    padding: .45rem;
+    border: 1px solid rgba(159, 199, 215, .7);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, .62);
+    box-shadow: 0 12px 28px rgba(38, 61, 82, .08);
+  }
 
   .sid-head {
     padding: .6rem .65rem;
@@ -144,11 +151,11 @@
   .sid-item {
     display: flex;
     align-items: center;
-    gap: 9px;
+    gap: 10px;
     width: 100%;
-    min-height: 42px;
-    padding: 10px .75rem;
-    border: 0;
+    min-height: 40px;
+    padding: 9px .75rem;
+    border: 1px solid transparent;
     border-radius: 8px;
     background: transparent;
     color: var(--text);
@@ -156,18 +163,21 @@
     font-family: 'Atkinson Hyperlegible', sans-serif;
     font-size: 15px;
     text-align: left;
-    transition: background .18s, color .18s;
+    transition: background .18s, border-color .18s, box-shadow .18s, color .18s, transform .18s;
   }
 
   .sid-item:hover {
-    background: var(--sky-light);
+    background: #f8fcfd;
+    border-color: #bfdde8;
+    transform: translateX(2px);
   }
 
   .sid-item.active {
-    background: #fff;
-    box-shadow: var(--shadow-sm);
+    background: #ffffff;
+    border-color: #a9cedd;
+    box-shadow: 0 8px 20px rgba(38, 61, 82, .1);
     color: var(--ink);
-    font-weight: 600;
+    font-weight: 800;
   }
 
   .sid-sublist {
@@ -177,8 +187,8 @@
   }
 
   .sid-item.subitem {
-    min-height: 34px;
-    padding: 7px .65rem;
+    min-height: 38px;
+    padding: 8px .75rem;
     color: var(--muted);
     font-size: 14px;
   }
@@ -189,9 +199,11 @@
 
   .language-tools {
     display: none;
-    margin: .15rem 0 .55rem 1.75rem;
-    padding: .35rem 0 .35rem .7rem;
-    border-left: 1px solid var(--border);
+    margin: .15rem 0 .55rem;
+    padding: .25rem;
+    border-left: 0;
+    border-radius: 8px;
+    background: rgba(226, 243, 249, .78);
   }
 
   .language-tools.is-open {
@@ -213,19 +225,21 @@
   }
 
   .sid-item.tool-item {
-    min-height: 32px;
-    padding: 6px .6rem;
-    color: var(--muted);
+    min-height: 36px;
+    padding: 7px .75rem;
+    color: #315a68;
     font-size: 13px;
   }
 
   .sid-item.tool-item.active {
-    color: var(--ink);
+    border-color: #b5dce7;
+    color: #244f5e;
   }
 
   .home-tools .sid-item.home-language {
     color: var(--navy);
     font-weight: 800;
+    font-size: 15px;
   }
 
   .home-tools {
@@ -239,8 +253,13 @@
     font-weight: 800;
   }
 
+  .language-tools .sid-item[data-language-category] {
+    color: var(--coral);
+    font-weight: 800;
+  }
+
   .home-tools .sid-item.home-tool {
-    color: #1f5f3a;
+    color: #236044;
     font-weight: 700;
     white-space: nowrap;
   }
@@ -254,10 +273,11 @@
   .home-tools .dot-green { background: #1f5f3a; }
 
   .sid-dot {
-    width: 8px;
-    height: 8px;
+    width: 7px;
+    height: 7px;
     border-radius: 50%;
-    flex: 0 0 8px;
+    flex: 0 0 7px;
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, .82);
   }
 
   .dot-blue,
@@ -952,7 +972,7 @@
             <a class="sid-item tool-item home-tool" href="#romana-teste" data-home-section="romana-teste"><span class="sid-dot dot-green"></span>8. Teste</a>
           </div>
           <div class="language-tools" data-language-tools="germana">
-            <a class="sid-item subitem" href="#a1-germana" data-language-category="germana" data-language-section="a1-germana"><span class="sid-dot dot-gold"></span>A1 Începător</a>
+            <a class="sid-item subitem" href="#a1-germana" data-language-category="germana" data-language-section="a1-germana">A1 Începător</a>
             <a class="sid-item tool-item" href="#a1-germana" data-language-tool="germana" data-language-section="a1-germana"><span class="sid-dot dot-teal"></span>1. Lecții</a>
             <a class="sid-item tool-item" href="#lectii-pdf" data-language-tool="germana"><span class="sid-dot dot-teal"></span>2. Lecții PDF</a>
             <a class="sid-item tool-item" href="#ghid-pronuntie" data-language-tool="germana"><span class="sid-dot dot-teal"></span>3. Pronunție</a>
@@ -960,10 +980,10 @@
             <a class="sid-item tool-item" href="#exercitii-gramatica" data-language-tool="germana"><span class="sid-dot dot-gold"></span>5. Gramatică</a>
             <a class="sid-item tool-item" href="#verbe-conjugate" data-language-tool="germana"><span class="sid-dot dot-blue"></span>6. Verbe</a>
             <a class="sid-item tool-item" href="#teste" data-language-tool="germana"><span class="sid-dot dot-blue"></span>7. Teste</a>
-            <a class="sid-item subitem" href="#a1-germana-copii" data-language-category="germana" data-language-section="a1-germana-copii"><span class="sid-dot dot-gold"></span>A1 Începător copii</a>
+            <a class="sid-item subitem" href="#a1-germana-copii" data-language-category="germana" data-language-section="a1-germana-copii">A1 Începător copii</a>
           </div>
           <div class="language-tools" data-language-tools="engleza">
-            <a class="sid-item subitem" href="#a1-engleza" data-language-category="engleza" data-language-section="a1-engleza"><span class="sid-dot dot-gold"></span>A1 Începător</a>
+            <a class="sid-item subitem" href="#a1-engleza" data-language-category="engleza" data-language-section="a1-engleza">A1 Începător</a>
             <a class="sid-item tool-item" href="#a1-engleza" data-language-tool="engleza" data-language-section="a1-engleza"><span class="sid-dot dot-teal"></span>1. Lecții</a>
             <a class="sid-item tool-item" href="#lectii-pdf" data-language-tool="engleza"><span class="sid-dot dot-teal"></span>2. Lecții PDF</a>
             <a class="sid-item tool-item" href="#ghid-pronuntie" data-language-tool="engleza"><span class="sid-dot dot-teal"></span>3. Pronunție</a>
@@ -971,10 +991,10 @@
             <a class="sid-item tool-item" href="#exercitii-gramatica" data-language-tool="engleza"><span class="sid-dot dot-gold"></span>5. Gramatică</a>
             <a class="sid-item tool-item" href="#verbe-conjugate" data-language-tool="engleza"><span class="sid-dot dot-blue"></span>6. Verbe</a>
             <a class="sid-item tool-item" href="#teste" data-language-tool="engleza"><span class="sid-dot dot-blue"></span>7. Teste</a>
-            <a class="sid-item subitem" href="#a1-engleza-copii" data-language-category="engleza" data-language-section="a1-engleza-copii"><span class="sid-dot dot-gold"></span>A1 Începător copii</a>
+            <a class="sid-item subitem" href="#a1-engleza-copii" data-language-category="engleza" data-language-section="a1-engleza-copii">A1 Începător copii</a>
           </div>
           <div class="language-tools" data-language-tools="spaniola">
-            <a class="sid-item subitem" href="#a1-spaniola" data-language-category="spaniola" data-language-section="a1-spaniola"><span class="sid-dot dot-gold"></span>A1 Începător</a>
+            <a class="sid-item subitem" href="#a1-spaniola" data-language-category="spaniola" data-language-section="a1-spaniola">A1 Începător</a>
             <a class="sid-item tool-item" href="#a1-spaniola" data-language-tool="spaniola" data-language-section="a1-spaniola"><span class="sid-dot dot-teal"></span>1. Lecții</a>
             <a class="sid-item tool-item" href="#lectii-pdf" data-language-tool="spaniola"><span class="sid-dot dot-teal"></span>2. Lecții PDF</a>
             <a class="sid-item tool-item" href="#ghid-pronuntie" data-language-tool="spaniola"><span class="sid-dot dot-teal"></span>3. Pronunție</a>
@@ -982,7 +1002,7 @@
             <a class="sid-item tool-item" href="#exercitii-gramatica" data-language-tool="spaniola"><span class="sid-dot dot-gold"></span>5. Gramatică</a>
             <a class="sid-item tool-item" href="#verbe-conjugate" data-language-tool="spaniola"><span class="sid-dot dot-blue"></span>6. Verbe</a>
             <a class="sid-item tool-item" href="#teste" data-language-tool="spaniola"><span class="sid-dot dot-blue"></span>7. Teste</a>
-            <a class="sid-item subitem" href="#a1-spaniola-copii" data-language-category="spaniola" data-language-section="a1-spaniola-copii"><span class="sid-dot dot-gold"></span>A1 Începător copii</a>
+            <a class="sid-item subitem" href="#a1-spaniola-copii" data-language-category="spaniola" data-language-section="a1-spaniola-copii">A1 Începător copii</a>
           </div>
         </div>
       </aside>
