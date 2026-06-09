@@ -119,7 +119,7 @@
 
   .layout {
     display: grid;
-    grid-template-columns: 248px 1fr;
+    grid-template-columns: 320px 1fr;
     min-height: calc(100vh - 76px);
   }
 
@@ -228,6 +228,12 @@
     font-weight: 800;
   }
 
+  .home-tools {
+    margin-left: 0;
+    padding-left: 0;
+    border-left: 0;
+  }
+
   .home-tools .sid-item.home-level {
     color: var(--coral);
     font-weight: 800;
@@ -236,6 +242,11 @@
   .home-tools .sid-item.home-tool {
     color: #1f5f3a;
     font-weight: 700;
+    white-space: nowrap;
+  }
+
+  .home-tools .sid-dot {
+    margin-top: 0;
   }
 
   .home-tools .dot-navy { background: var(--navy); }
@@ -930,8 +941,8 @@
         <div class="sid-section">
           <div class="sid-head">Categorie</div>
           <div class="language-tools home-tools is-open" data-home-tools>
-            <a class="sid-item subitem home-language" href="#acasa" data-home-link><span class="sid-dot dot-navy"></span>Limba română</a>
-            <a class="sid-item subitem home-level" href="#romana-a1-incepator" data-home-section="romana-a1-incepator"><span class="sid-dot dot-coral"></span>Nivelul A1 Începător</a>
+            <a class="sid-item subitem home-language" href="#acasa" data-home-link>Limba română</a>
+            <a class="sid-item subitem home-level" href="#romana-a1-incepator" data-home-section="romana-a1-incepator">Nivelul A1 Începător</a>
             <div class="sid-tools-head">Instrumente de lucru</div>
             <a class="sid-item tool-item home-tool" href="#romana-lectii" data-home-section="romana-lectii"><span class="sid-dot dot-green"></span>1. Lecții de limba română</a>
             <a class="sid-item tool-item home-tool" href="#romana-lectii-pdf" data-home-section="romana-lectii-pdf"><span class="sid-dot dot-green"></span>2. Lecții de limba română PDF</a>
