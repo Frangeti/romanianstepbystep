@@ -170,6 +170,66 @@
     border-bottom: 1px solid var(--border);
   }
   .story-line:last-child { border-bottom: 0; }
+  .visual-board {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 10px;
+  }
+  .visual-tile {
+    background: #f5f7f8;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 10px;
+    text-align: center;
+  }
+  .visual-tile strong {
+    display: block;
+    color: var(--dark);
+    font-size: .95rem;
+  }
+  .visual-tile span {
+    display: block;
+    color: var(--muted);
+    font-size: .82rem;
+    margin-top: 2px;
+  }
+  .dialog-cards {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+  .dialog-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 16px;
+    display: grid;
+    gap: 10px;
+  }
+  .dialog-card h4 {
+    color: var(--dark);
+    font-size: .95rem;
+    text-transform: none;
+    letter-spacing: 0;
+    margin: 0;
+  }
+  .dialog-bubble {
+    border-radius: 10px;
+    padding: 10px 12px;
+    background: #e9f1f5;
+    color: var(--dark);
+    font-weight: 700;
+  }
+  .dialog-bubble.answer {
+    background: #f5f7f8;
+    color: var(--text);
+  }
+  .mini-note {
+    color: var(--muted);
+    font-size: .88rem;
+    margin-bottom: 10px;
+  }
   .exercise-block {
     padding: 20px 24px;
     margin-bottom: 16px;
@@ -313,7 +373,8 @@
   }
   @media (max-width: 700px) {
     .lesson-header, .page-top-inner { align-items: flex-start; flex-direction: column; }
-    .mission-grid, .vocab-grid, .matching-game, .story-line { grid-template-columns: 1fr; }
+    .mission-grid, .vocab-grid, .matching-game, .story-line, .dialog-cards { grid-template-columns: 1fr; }
+    .visual-board { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .vocab-card { grid-template-columns: auto 1fr auto; }
     .vocab-card .de { grid-column: 2 / 3; }
     .image-match { grid-template-columns: repeat(2, 1fr); }
@@ -334,317 +395,320 @@
   <main class="container">
     <section class="lesson active">
       <div class="lesson-header">
-        <div class="lesson-number">KIDS</div>
+        <div class="lesson-number">JOC</div>
         <div class="lesson-title-block">
-          <h1>Lectie pentru copii – Wiederholung A1</h1>
-          <div class="subtitle">Recapitulare jucăușă din lecțiile A1 1-10</div>
+          <h1>Lectie pentru copii – conversații și jocuri</h1>
+          <div class="subtitle">Nume, vârstă, politețe, familie și locuință</div>
         </div>
       </div>
 
       <div class="lernziele">
-        <h3>🎯 Misiunea România-Germania</h3>
+        <h3>🎯 Ce poate spune copilul la final?</h3>
         <ul>
-          <li>Recapitulăm A1 ca într-un joc: salut, nume, vârstă, țară, limbă</li>
-          <li>Folosim numai România și Germania, cu propoziții scurte și clare</li>
-          <li>Repetăm verbele-cheie: a fi, a avea, a se numi, a veni, a vorbi</li>
-          <li>Rezolvăm 12 provocări interactive, de trei ori mai multe exerciții</li>
+          <li>Cum se numește, de unde este și câți ani are</li>
+          <li>Cum spune „mulțumesc”, „te rog” și „îmi pare rău”</li>
+          <li>Cine este în familia lui și câți frați sau surori are</li>
+          <li>Unde locuiește: casă, bloc, etaj, cameră</li>
         </ul>
       </div>
 
-      <div class="section-title"><span class="icon">🧭</span> Misiunile lecției</div>
+      <div class="section-title"><span class="icon">🎲</span> Harta jocurilor</div>
       <div class="mission-grid">
-        <div class="mission-card"><strong>1. Deschide poarta</strong><span>Salută în română și răspunde simplu.</span></div>
-        <div class="mission-card"><strong>2. Fă pașaportul</strong><span>Spune numele, vârsta și cine ești.</span></div>
-        <div class="mission-card"><strong>3. Alege harta</strong><span>Folosește doar România și Germania.</span></div>
-        <div class="mission-card"><strong>4. Pornește microfonul</strong><span>Spune ce limbă vorbești și ce limbă înveți.</span></div>
+        <div class="mission-card"><strong>1. Cine sunt?</strong><span>Nume, vârstă, țară, limbă.</span></div>
+        <div class="mission-card"><strong>2. Vorbesc frumos</strong><span>Mulțumesc, te rog, scuze.</span></div>
+        <div class="mission-card"><strong>3. Familia mea</strong><span>Mamă, tată, frate, soră.</span></div>
+        <div class="mission-card"><strong>4. Unde locuiesc?</strong><span>Casă, bloc, etaj, cameră.</span></div>
       </div>
 
-      <div class="section-title"><span class="icon">📚</span> Vocabular de recapitulare</div>
+      <div class="section-title"><span class="icon">🖼️</span> Planșă vizuală</div>
+      <div class="story-card">
+        <div class="visual-board">
+          <div class="visual-tile"><span class="emoji-big">🪪</span><strong>nume</strong><span>Mă numesc...</span></div>
+          <div class="visual-tile"><span class="emoji-big">🔢</span><strong>vârstă</strong><span>Am ... ani.</span></div>
+          <div class="visual-tile"><span class="emoji-big">👨‍👩‍👧‍👦</span><strong>familie</strong><span>Am un frate.</span></div>
+          <div class="visual-tile"><span class="emoji-big">🏢</span><strong>locuință</strong><span>Locuiesc la etajul 2.</span></div>
+        </div>
+      </div>
+
+      <div class="section-title"><span class="icon">📚</span> Cuvinte utile</div>
       <div class="vocab-grid">
         <div class="vocab-card"><span class="emoji">👋</span><span class="ro">Bună!</span><span class="de">Hallo!</span><button class="audio-btn" type="button" onclick="speak('Bună')">▶</button></div>
-        <div class="vocab-card"><span class="emoji">🌙</span><span class="ro">Noapte bună!</span><span class="de">Gute Nacht!</span><button class="audio-btn" type="button" onclick="speak('Noapte bună')">▶</button></div>
-        <div class="vocab-card"><span class="emoji">🙂</span><span class="ro">Ce faci?</span><span class="de">Wie geht es dir?</span><button class="audio-btn" type="button" onclick="speak('Ce faci?')">▶</button></div>
-        <div class="vocab-card"><span class="emoji">✅</span><span class="ro">Foarte bine.</span><span class="de">Sehr gut.</span><button class="audio-btn" type="button" onclick="speak('Foarte bine')">▶</button></div>
-        <div class="vocab-card"><span class="emoji">🙏</span><span class="ro">Mulțumesc!</span><span class="de">Danke!</span><button class="audio-btn" type="button" onclick="speak('Mulțumesc')">▶</button></div>
-        <div class="vocab-card"><span class="emoji">🙋</span><span class="ro">Scuză-mă!</span><span class="de">Entschuldigung!</span><button class="audio-btn" type="button" onclick="speak('Scuză-mă')">▶</button></div>
         <div class="vocab-card"><span class="emoji">🪪</span><span class="ro">Mă numesc Ana.</span><span class="de">Ich heiße Ana.</span><button class="audio-btn" type="button" onclick="speak('Mă numesc Ana')">▶</button></div>
-        <div class="vocab-card"><span class="emoji">🔢</span><span class="ro">Am opt ani.</span><span class="de">Ich bin acht Jahre alt.</span><button class="audio-btn" type="button" onclick="speak('Am opt ani')">▶</button></div>
         <div class="vocab-card"><span class="emoji">🇷🇴</span><span class="ro">Sunt din România.</span><span class="de">Ich komme aus Rumänien.</span><button class="audio-btn" type="button" onclick="speak('Sunt din România')">▶</button></div>
         <div class="vocab-card"><span class="emoji">🇩🇪</span><span class="ro">Sunt din Germania.</span><span class="de">Ich komme aus Deutschland.</span><button class="audio-btn" type="button" onclick="speak('Sunt din Germania')">▶</button></div>
-        <div class="vocab-card"><span class="emoji">🗣️</span><span class="ro">Vorbesc germană.</span><span class="de">Ich spreche Deutsch.</span><button class="audio-btn" type="button" onclick="speak('Vorbesc germană')">▶</button></div>
-        <div class="vocab-card"><span class="emoji">📘</span><span class="ro">Învăț română.</span><span class="de">Ich lerne Rumänisch.</span><button class="audio-btn" type="button" onclick="speak('Învăț română')">▶</button></div>
+        <div class="vocab-card"><span class="emoji">🔢</span><span class="ro">Am nouă ani.</span><span class="de">Ich bin neun Jahre alt.</span><button class="audio-btn" type="button" onclick="speak('Am nouă ani')">▶</button></div>
+        <div class="vocab-card"><span class="emoji">🙏</span><span class="ro">Mulțumesc!</span><span class="de">Danke!</span><button class="audio-btn" type="button" onclick="speak('Mulțumesc')">▶</button></div>
+        <div class="vocab-card"><span class="emoji">🤲</span><span class="ro">Te rog.</span><span class="de">Bitte.</span><button class="audio-btn" type="button" onclick="speak('Te rog')">▶</button></div>
+        <div class="vocab-card"><span class="emoji">💛</span><span class="ro">Îmi pare rău.</span><span class="de">Es tut mir leid.</span><button class="audio-btn" type="button" onclick="speak('Îmi pare rău')">▶</button></div>
+        <div class="vocab-card"><span class="emoji">👦</span><span class="ro">Am un frate.</span><span class="de">Ich habe einen Bruder.</span><button class="audio-btn" type="button" onclick="speak('Am un frate')">▶</button></div>
+        <div class="vocab-card"><span class="emoji">👧</span><span class="ro">Am o soră.</span><span class="de">Ich habe eine Schwester.</span><button class="audio-btn" type="button" onclick="speak('Am o soră')">▶</button></div>
+        <div class="vocab-card"><span class="emoji">🏠</span><span class="ro">Locuiesc la casă.</span><span class="de">Ich wohne in einem Haus.</span><button class="audio-btn" type="button" onclick="speak('Locuiesc la casă')">▶</button></div>
+        <div class="vocab-card"><span class="emoji">🏢</span><span class="ro">Locuiesc la bloc.</span><span class="de">Ich wohne in einem Wohnblock.</span><button class="audio-btn" type="button" onclick="speak('Locuiesc la bloc')">▶</button></div>
       </div>
 
-      <div class="section-title"><span class="icon">💬</span> Poveste creativă</div>
-      <div class="story-card">
-        <div class="story-line"><div class="ro">Bună! Eu sunt Ana. Sunt din România.</div><div class="de">Hallo! Ich bin Ana. Ich komme aus Rumänien.</div></div>
-        <div class="story-line"><div class="ro">Salut! Eu sunt Tom. Sunt din Germania.</div><div class="de">Hallo! Ich bin Tom. Ich komme aus Deutschland.</div></div>
-        <div class="story-line"><div class="ro">Ana vorbește română și învață germană.</div><div class="de">Ana spricht Rumänisch und lernt Deutsch.</div></div>
-        <div class="story-line"><div class="ro">Tom vorbește germană și învață română.</div><div class="de">Tom spricht Deutsch und lernt Rumänisch.</div></div>
-        <div class="story-line"><div class="ro">Ei fac o hartă mică: România plus Germania.</div><div class="de">Sie machen eine kleine Karte: Rumänien plus Deutschland.</div></div>
-        <div class="story-line"><div class="ro">La final spun: Mulțumesc și pe curând!</div><div class="de">Am Ende sagen sie: Danke und bis bald!</div></div>
+      <div class="section-title"><span class="icon">💬</span> Conversații model</div>
+      <div class="dialog-cards">
+        <div class="dialog-card">
+          <h4>Întâlnire</h4>
+          <div class="dialog-bubble">– Cum te numești?</div>
+          <div class="dialog-bubble answer">– Mă numesc Ana.</div>
+          <button class="play-btn" type="button" onclick="speak('Cum te numești? Mă numesc Ana.')">▶</button>
+        </div>
+        <div class="dialog-card">
+          <h4>Țară și vârstă</h4>
+          <div class="dialog-bubble">– De unde ești? Câți ani ai?</div>
+          <div class="dialog-bubble answer">– Sunt din Germania. Am zece ani.</div>
+          <button class="play-btn" type="button" onclick="speak('De unde ești? Câți ani ai? Sunt din Germania. Am zece ani.')">▶</button>
+        </div>
+        <div class="dialog-card">
+          <h4>Politețe</h4>
+          <div class="dialog-bubble">– Îmi dai cartea, te rog?</div>
+          <div class="dialog-bubble answer">– Da. Mulțumesc! Cu plăcere.</div>
+          <button class="play-btn" type="button" onclick="speak('Îmi dai cartea, te rog? Da. Mulțumesc. Cu plăcere.')">▶</button>
+        </div>
+        <div class="dialog-card">
+          <h4>Familie și casă</h4>
+          <div class="dialog-bubble">– Ai frați sau surori? Unde locuiești?</div>
+          <div class="dialog-bubble answer">– Am un frate. Locuiesc la bloc, la etajul doi.</div>
+          <button class="play-btn" type="button" onclick="speak('Ai frați sau surori? Unde locuiești? Am un frate. Locuiesc la bloc, la etajul doi.')">▶</button>
+        </div>
       </div>
 
-      <div class="section-title"><span class="icon">✅</span> 12 provocări interactive</div>
+      <div class="section-title"><span class="icon">🎮</span> Jocuri de conversație</div>
 
       <div class="exercise-block">
-        <h4>1. Quiz: salutări</h4>
+        <h4>1. Alege răspunsul: nume</h4>
         <div class="mc-question">
-          <p>Ce spui când întâlnești pe cineva?</p>
+          <p>Întrebarea este: „Cum te numești?”</p>
           <div class="mc-options">
-            <button class="mc-btn" data-correct="true">Bună!</button>
-            <button class="mc-btn" data-correct="false">Noapte bună!</button>
             <button class="mc-btn" data-correct="false">Am opt ani.</button>
-          </div>
-        </div>
-        <div class="mc-question">
-          <p>Ce înseamnă „La revedere”?</p>
-          <div class="mc-options">
-            <button class="mc-btn" data-correct="false">Danke</button>
-            <button class="mc-btn" data-correct="true">Auf Wiedersehen</button>
-            <button class="mc-btn" data-correct="false">Ich heiße</button>
-          </div>
-        </div>
-        <div class="mc-question">
-          <p>Când spui „Noapte bună”?</p>
-          <div class="mc-options">
-            <button class="mc-btn" data-correct="false">Dimineața</button>
-            <button class="mc-btn" data-correct="false">La prânz</button>
-            <button class="mc-btn" data-correct="true">Seara, înainte de somn</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="exercise-block">
-        <h4>2. Quiz: politețe</h4>
-        <div class="mc-question">
-          <p>„Danke” în română este:</p>
-          <div class="mc-options">
-            <button class="mc-btn" data-correct="true">Mulțumesc</button>
-            <button class="mc-btn" data-correct="false">Scuză-mă</button>
-            <button class="mc-btn" data-correct="false">Bine</button>
-          </div>
-        </div>
-        <div class="mc-question">
-          <p>„Entschuldigung” în română este:</p>
-          <div class="mc-options">
-            <button class="mc-btn" data-correct="false">Te rog</button>
-            <button class="mc-btn" data-correct="true">Scuză-mă</button>
-            <button class="mc-btn" data-correct="false">Pe curând</button>
-          </div>
-        </div>
-        <div class="mc-question">
-          <p>Ce poți spune după „Mulțumesc”?</p>
-          <div class="mc-options">
-            <button class="mc-btn" data-correct="false">Am nouă ani</button>
-            <button class="mc-btn" data-correct="true">Cu plăcere</button>
-            <button class="mc-btn" data-correct="false">Sunt din Germania</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="exercise-block">
-        <h4>3. Quiz: pașaportul personajului</h4>
-        <div class="mc-question">
-          <p>„Ich heiße Ana” în română este:</p>
-          <div class="mc-options">
-            <button class="mc-btn" data-correct="false">Am Ana.</button>
             <button class="mc-btn" data-correct="true">Mă numesc Ana.</button>
-            <button class="mc-btn" data-correct="false">Vin Ana.</button>
+            <button class="mc-btn" data-correct="false">Locuiesc la bloc.</button>
           </div>
         </div>
         <div class="mc-question">
-          <p>„Ich bin acht Jahre alt” în română este:</p>
+          <p>Întrebarea este: „De unde ești?”</p>
           <div class="mc-options">
-            <button class="mc-btn" data-correct="true">Am opt ani.</button>
-            <button class="mc-btn" data-correct="false">Sunt opt.</button>
-            <button class="mc-btn" data-correct="false">Vorbesc opt.</button>
+            <button class="mc-btn" data-correct="true">Sunt din România.</button>
+            <button class="mc-btn" data-correct="false">Mă numesc Tom.</button>
+            <button class="mc-btn" data-correct="false">Am o soră.</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="exercise-block">
+        <h4>2. Alege răspunsul: politețe</h4>
+        <div class="mc-question">
+          <p>Cum ceri frumos o carte?</p>
+          <div class="mc-options">
+            <button class="mc-btn" data-correct="false">Îmi pare rău cartea.</button>
+            <button class="mc-btn" data-correct="true">Îmi dai cartea, te rog?</button>
+            <button class="mc-btn" data-correct="false">Am cartea ani.</button>
           </div>
         </div>
         <div class="mc-question">
-          <p>„Ich bin ein Kind” în română este:</p>
+          <p>Ai lovit ușor masa. Ce spui?</p>
           <div class="mc-options">
-            <button class="mc-btn" data-correct="false">Eu am copil.</button>
-            <button class="mc-btn" data-correct="false">Eu vin copil.</button>
-            <button class="mc-btn" data-correct="true">Eu sunt copil.</button>
+            <button class="mc-btn" data-correct="true">Îmi pare rău.</button>
+            <button class="mc-btn" data-correct="false">Sunt din Germania.</button>
+            <button class="mc-btn" data-correct="false">Am doi frați.</button>
           </div>
         </div>
       </div>
 
       <div class="exercise-block">
-        <h4>4. Potrivește: salutări și politețe</h4>
-        <div class="matching-game" id="match-kids-1">
-          <div class="match-col">
-            <div class="match-item" data-pair="1">Bună!</div>
-            <div class="match-item" data-pair="2">Mulțumesc!</div>
-            <div class="match-item" data-pair="3">Scuză-mă!</div>
-            <div class="match-item" data-pair="4">La revedere!</div>
-            <div class="match-item" data-pair="5">Pe curând!</div>
-          </div>
-          <div class="match-col">
-            <div class="match-item" data-pair="3">Entschuldigung!</div>
-            <div class="match-item" data-pair="1">Hallo!</div>
-            <div class="match-item" data-pair="5">Bis bald!</div>
-            <div class="match-item" data-pair="2">Danke!</div>
-            <div class="match-item" data-pair="4">Auf Wiedersehen!</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="exercise-block">
-        <h4>5. Potrivește: România și Germania</h4>
-        <div class="matching-game" id="match-kids-2">
-          <div class="match-col">
-            <div class="match-item" data-pair="1">România</div>
-            <div class="match-item" data-pair="2">Germania</div>
-            <div class="match-item" data-pair="3">română</div>
-            <div class="match-item" data-pair="4">germană</div>
-            <div class="match-item" data-pair="5">Sunt din Germania.</div>
-          </div>
-          <div class="match-col">
-            <div class="match-item" data-pair="4">Deutsch</div>
-            <div class="match-item" data-pair="1">Rumänien</div>
-            <div class="match-item" data-pair="5">Ich komme aus Deutschland.</div>
-            <div class="match-item" data-pair="3">Rumänisch</div>
-            <div class="match-item" data-pair="2">Deutschland</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="exercise-block">
-        <h4>6. Construiește: țara</h4>
-        <div id="sb-kids-country" data-answer="Eu sunt din Germania">
-          <p style="font-size:.85rem;color:var(--muted);margin-bottom:8px">Construiește: „Ich komme aus Deutschland.”</p>
-          <div class="word-bank">
-            <div class="word-token" onclick="placeWord(this,'sb-kids-country')">Germania</div>
-            <div class="word-token" onclick="placeWord(this,'sb-kids-country')">sunt</div>
-            <div class="word-token" onclick="placeWord(this,'sb-kids-country')">Eu</div>
-            <div class="word-token" onclick="placeWord(this,'sb-kids-country')">din</div>
-          </div>
-          <div class="sentence-drop" id="drop-sb-kids-country"></div>
-          <button class="check-btn" onclick="checkSentence('sb-kids-country')">Verifică</button>
-          <button class="reset-btn" onclick="resetSentence('sb-kids-country')">↺ Reia</button>
-          <div id="fb-sb-kids-country" class="feedback"></div>
-        </div>
-      </div>
-
-      <div class="exercise-block">
-        <h4>7. Construiește: limba</h4>
-        <div id="sb-kids-language" data-answer="Eu vorbesc germană">
-          <p style="font-size:.85rem;color:var(--muted);margin-bottom:8px">Construiește: „Ich spreche Deutsch.”</p>
-          <div class="word-bank">
-            <div class="word-token" onclick="placeWord(this,'sb-kids-language')">vorbesc</div>
-            <div class="word-token" onclick="placeWord(this,'sb-kids-language')">germană</div>
-            <div class="word-token" onclick="placeWord(this,'sb-kids-language')">Eu</div>
-          </div>
-          <div class="sentence-drop" id="drop-sb-kids-language"></div>
-          <button class="check-btn" onclick="checkSentence('sb-kids-language')">Verifică</button>
-          <button class="reset-btn" onclick="resetSentence('sb-kids-language')">↺ Reia</button>
-          <div id="fb-sb-kids-language" class="feedback"></div>
-        </div>
-      </div>
-
-      <div class="exercise-block">
-        <h4>8. Construiește: lecția magică</h4>
-        <div id="sb-kids-learn" data-answer="Eu învăț română">
-          <p style="font-size:.85rem;color:var(--muted);margin-bottom:8px">Construiește: „Ich lerne Rumänisch.”</p>
-          <div class="word-bank">
-            <div class="word-token" onclick="placeWord(this,'sb-kids-learn')">română</div>
-            <div class="word-token" onclick="placeWord(this,'sb-kids-learn')">Eu</div>
-            <div class="word-token" onclick="placeWord(this,'sb-kids-learn')">învăț</div>
-          </div>
-          <div class="sentence-drop" id="drop-sb-kids-learn"></div>
-          <button class="check-btn" onclick="checkSentence('sb-kids-learn')">Verifică</button>
-          <button class="reset-btn" onclick="resetSentence('sb-kids-learn')">↺ Reia</button>
-          <div id="fb-sb-kids-learn" class="feedback"></div>
-        </div>
-      </div>
-
-      <div class="exercise-block" id="img-kids-1">
-        <h4>9. Imagine și cuvânt: baza A1</h4>
-        <div class="image-match">
-          <div class="img-card" data-word="salut" onclick="selectImg(this,'img-kids-1')"><span class="emoji-big">👋</span><span class="word-label">?</span></div>
-          <div class="img-card" data-word="copil" onclick="selectImg(this,'img-kids-1')"><span class="emoji-big">🧒</span><span class="word-label">?</span></div>
-          <div class="img-card" data-word="numere" onclick="selectImg(this,'img-kids-1')"><span class="emoji-big">🔢</span><span class="word-label">?</span></div>
-          <div class="img-card" data-word="limbă" onclick="selectImg(this,'img-kids-1')"><span class="emoji-big">🗣️</span><span class="word-label">?</span></div>
-        </div>
-        <div class="word-options">
-          <div class="word-option" onclick="matchWord(this,'img-kids-1')">limbă</div>
-          <div class="word-option" onclick="matchWord(this,'img-kids-1')">salut</div>
-          <div class="word-option" onclick="matchWord(this,'img-kids-1')">numere</div>
-          <div class="word-option" onclick="matchWord(this,'img-kids-1')">copil</div>
-        </div>
-      </div>
-
-      <div class="exercise-block" id="img-kids-2">
-        <h4>10. Imagine și cuvânt: harta</h4>
-        <div class="image-match">
-          <div class="img-card" data-word="România" onclick="selectImg(this,'img-kids-2')"><span class="emoji-big">🇷🇴</span><span class="word-label">?</span></div>
-          <div class="img-card" data-word="Germania" onclick="selectImg(this,'img-kids-2')"><span class="emoji-big">🇩🇪</span><span class="word-label">?</span></div>
-          <div class="img-card" data-word="română" onclick="selectImg(this,'img-kids-2')"><span class="emoji-big">📘</span><span class="word-label">?</span></div>
-          <div class="img-card" data-word="germană" onclick="selectImg(this,'img-kids-2')"><span class="emoji-big">📗</span><span class="word-label">?</span></div>
-        </div>
-        <div class="word-options">
-          <div class="word-option" onclick="matchWord(this,'img-kids-2')">germană</div>
-          <div class="word-option" onclick="matchWord(this,'img-kids-2')">România</div>
-          <div class="word-option" onclick="matchWord(this,'img-kids-2')">română</div>
-          <div class="word-option" onclick="matchWord(this,'img-kids-2')">Germania</div>
-        </div>
-      </div>
-
-      <div class="exercise-block">
-        <h4>11. Detectivul de propoziții</h4>
-        <div class="mc-question">
-          <p>Ana este din România. Ce propoziție se potrivește?</p>
-          <div class="mc-options">
-            <button class="mc-btn" data-correct="true">Ana este din România.</button>
-            <button class="mc-btn" data-correct="false">Ana este din Germania.</button>
-            <button class="mc-btn" data-correct="false">Ana vorbește numai germană.</button>
-          </div>
-        </div>
-        <div class="mc-question">
-          <p>Tom este din Germania. Ce propoziție se potrivește?</p>
-          <div class="mc-options">
-            <button class="mc-btn" data-correct="false">Tom este din România.</button>
-            <button class="mc-btn" data-correct="true">Tom este din Germania.</button>
-            <button class="mc-btn" data-correct="false">Tom are România.</button>
-          </div>
-        </div>
-        <div class="mc-question">
-          <p>Tom învață română. Ce înseamnă?</p>
-          <div class="mc-options">
-            <button class="mc-btn" data-correct="false">Tom lernt Deutsch.</button>
-            <button class="mc-btn" data-correct="true">Tom lernt Rumänisch.</button>
-            <button class="mc-btn" data-correct="false">Tom kommt aus Rumänien.</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="exercise-block">
-        <h4>12. Dialogul final</h4>
-        <div class="matching-game" id="match-kids-dialog">
+        <h4>3. Potrivește întrebarea cu răspunsul</h4>
+        <div class="matching-game" id="match-conv-questions">
           <div class="match-col">
             <div class="match-item" data-pair="1">Cum te numești?</div>
-            <div class="match-item" data-pair="2">Mă numesc Tom.</div>
-            <div class="match-item" data-pair="3">De unde ești?</div>
-            <div class="match-item" data-pair="4">Sunt din Germania.</div>
-            <div class="match-item" data-pair="5">Ce limbă vorbești?</div>
-            <div class="match-item" data-pair="6">Vorbesc germană.</div>
+            <div class="match-item" data-pair="2">Câți ani ai?</div>
+            <div class="match-item" data-pair="3">Ai frați sau surori?</div>
+            <div class="match-item" data-pair="4">Unde locuiești?</div>
+            <div class="match-item" data-pair="5">De unde ești?</div>
           </div>
           <div class="match-col">
-            <div class="match-item" data-pair="4">Ich komme aus Deutschland.</div>
-            <div class="match-item" data-pair="1">Wie heißt du?</div>
-            <div class="match-item" data-pair="6">Ich spreche Deutsch.</div>
-            <div class="match-item" data-pair="3">Woher kommst du?</div>
-            <div class="match-item" data-pair="2">Ich heiße Tom.</div>
-            <div class="match-item" data-pair="5">Welche Sprache sprichst du?</div>
+            <div class="match-item" data-pair="4">Locuiesc la bloc.</div>
+            <div class="match-item" data-pair="1">Mă numesc Ana.</div>
+            <div class="match-item" data-pair="5">Sunt din România.</div>
+            <div class="match-item" data-pair="3">Am un frate și o soră.</div>
+            <div class="match-item" data-pair="2">Am nouă ani.</div>
           </div>
+        </div>
+      </div>
+
+      <div class="exercise-block">
+        <h4>4. Potrivește politețea</h4>
+        <div class="matching-game" id="match-politeness">
+          <div class="match-col">
+            <div class="match-item" data-pair="1">Mulțumesc!</div>
+            <div class="match-item" data-pair="2">Te rog.</div>
+            <div class="match-item" data-pair="3">Îmi pare rău.</div>
+            <div class="match-item" data-pair="4">Cu plăcere.</div>
+          </div>
+          <div class="match-col">
+            <div class="match-item" data-pair="3">Es tut mir leid.</div>
+            <div class="match-item" data-pair="1">Danke!</div>
+            <div class="match-item" data-pair="4">Gern geschehen.</div>
+            <div class="match-item" data-pair="2">Bitte.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="exercise-block">
+        <h4>5. Construiește: vârsta</h4>
+        <div id="sb-age" data-answer="Eu am nouă ani">
+          <p class="mini-note">Construiește: „Ich bin neun Jahre alt.”</p>
+          <div class="word-bank">
+            <div class="word-token" onclick="placeWord(this,'sb-age')">ani</div>
+            <div class="word-token" onclick="placeWord(this,'sb-age')">Eu</div>
+            <div class="word-token" onclick="placeWord(this,'sb-age')">nouă</div>
+            <div class="word-token" onclick="placeWord(this,'sb-age')">am</div>
+          </div>
+          <div class="sentence-drop" id="drop-sb-age"></div>
+          <button class="check-btn" onclick="checkSentence('sb-age')">Verifică</button>
+          <button class="reset-btn" onclick="resetSentence('sb-age')">↺ Reia</button>
+          <div id="fb-sb-age" class="feedback"></div>
+        </div>
+      </div>
+
+      <div class="exercise-block">
+        <h4>6. Construiește: familia</h4>
+        <div id="sb-family" data-answer="Eu am un frate și o soră">
+          <p class="mini-note">Construiește: „Ich habe einen Bruder und eine Schwester.”</p>
+          <div class="word-bank">
+            <div class="word-token" onclick="placeWord(this,'sb-family')">soră</div>
+            <div class="word-token" onclick="placeWord(this,'sb-family')">un</div>
+            <div class="word-token" onclick="placeWord(this,'sb-family')">Eu</div>
+            <div class="word-token" onclick="placeWord(this,'sb-family')">și</div>
+            <div class="word-token" onclick="placeWord(this,'sb-family')">o</div>
+            <div class="word-token" onclick="placeWord(this,'sb-family')">frate</div>
+            <div class="word-token" onclick="placeWord(this,'sb-family')">am</div>
+          </div>
+          <div class="sentence-drop" id="drop-sb-family"></div>
+          <button class="check-btn" onclick="checkSentence('sb-family')">Verifică</button>
+          <button class="reset-btn" onclick="resetSentence('sb-family')">↺ Reia</button>
+          <div id="fb-sb-family" class="feedback"></div>
+        </div>
+      </div>
+
+      <div class="exercise-block">
+        <h4>7. Construiește: locuința</h4>
+        <div id="sb-home" data-answer="Eu locuiesc la bloc la etajul doi">
+          <p class="mini-note">Construiește: „Ich wohne im Wohnblock im zweiten Stock.”</p>
+          <div class="word-bank">
+            <div class="word-token" onclick="placeWord(this,'sb-home')">etajul</div>
+            <div class="word-token" onclick="placeWord(this,'sb-home')">la</div>
+            <div class="word-token" onclick="placeWord(this,'sb-home')">Eu</div>
+            <div class="word-token" onclick="placeWord(this,'sb-home')">doi</div>
+            <div class="word-token" onclick="placeWord(this,'sb-home')">bloc</div>
+            <div class="word-token" onclick="placeWord(this,'sb-home')">la</div>
+            <div class="word-token" onclick="placeWord(this,'sb-home')">locuiesc</div>
+          </div>
+          <div class="sentence-drop" id="drop-sb-home"></div>
+          <button class="check-btn" onclick="checkSentence('sb-home')">Verifică</button>
+          <button class="reset-btn" onclick="resetSentence('sb-home')">↺ Reia</button>
+          <div id="fb-sb-home" class="feedback"></div>
+        </div>
+      </div>
+
+      <div class="exercise-block" id="img-family-home">
+        <h4>8. Imagine și cuvânt: familie și casă</h4>
+        <div class="image-match">
+          <div class="img-card" data-word="mamă" onclick="selectImg(this,'img-family-home')"><span class="emoji-big">👩</span><span class="word-label">?</span></div>
+          <div class="img-card" data-word="frate" onclick="selectImg(this,'img-family-home')"><span class="emoji-big">👦</span><span class="word-label">?</span></div>
+          <div class="img-card" data-word="casă" onclick="selectImg(this,'img-family-home')"><span class="emoji-big">🏠</span><span class="word-label">?</span></div>
+          <div class="img-card" data-word="bloc" onclick="selectImg(this,'img-family-home')"><span class="emoji-big">🏢</span><span class="word-label">?</span></div>
+        </div>
+        <div class="word-options">
+          <div class="word-option" onclick="matchWord(this,'img-family-home')">bloc</div>
+          <div class="word-option" onclick="matchWord(this,'img-family-home')">mamă</div>
+          <div class="word-option" onclick="matchWord(this,'img-family-home')">casă</div>
+          <div class="word-option" onclick="matchWord(this,'img-family-home')">frate</div>
+        </div>
+      </div>
+
+      <div class="exercise-block" id="img-conversation">
+        <h4>9. Imagine și cuvânt: conversație</h4>
+        <div class="image-match">
+          <div class="img-card" data-word="mulțumesc" onclick="selectImg(this,'img-conversation')"><span class="emoji-big">🙏</span><span class="word-label">?</span></div>
+          <div class="img-card" data-word="te rog" onclick="selectImg(this,'img-conversation')"><span class="emoji-big">🤲</span><span class="word-label">?</span></div>
+          <div class="img-card" data-word="îmi pare rău" onclick="selectImg(this,'img-conversation')"><span class="emoji-big">💛</span><span class="word-label">?</span></div>
+          <div class="img-card" data-word="ani" onclick="selectImg(this,'img-conversation')"><span class="emoji-big">🎂</span><span class="word-label">?</span></div>
+        </div>
+        <div class="word-options">
+          <div class="word-option" onclick="matchWord(this,'img-conversation')">te rog</div>
+          <div class="word-option" onclick="matchWord(this,'img-conversation')">ani</div>
+          <div class="word-option" onclick="matchWord(this,'img-conversation')">mulțumesc</div>
+          <div class="word-option" onclick="matchWord(this,'img-conversation')">îmi pare rău</div>
+        </div>
+      </div>
+
+      <div class="exercise-block">
+        <h4>10. Dialog amestecat</h4>
+        <div class="matching-game" id="match-dialog-full">
+          <div class="match-col">
+            <div class="match-item" data-pair="1">– Bună! Cum te numești?</div>
+            <div class="match-item" data-pair="2">– Câți ani ai?</div>
+            <div class="match-item" data-pair="3">– Ai frați?</div>
+            <div class="match-item" data-pair="4">– Unde locuiești?</div>
+            <div class="match-item" data-pair="5">– Îmi dai creionul, te rog?</div>
+          </div>
+          <div class="match-col">
+            <div class="match-item" data-pair="4">– Locuiesc la casă.</div>
+            <div class="match-item" data-pair="1">– Bună! Mă numesc Ana.</div>
+            <div class="match-item" data-pair="5">– Da. Poftim!</div>
+            <div class="match-item" data-pair="3">– Da, am doi frați.</div>
+            <div class="match-item" data-pair="2">– Am opt ani.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="exercise-block">
+        <h4>11. Mini-scenarii</h4>
+        <div class="mc-question">
+          <p>Un copil întreabă: „Ai surori?” Ce răspuns este corect?</p>
+          <div class="mc-options">
+            <button class="mc-btn" data-correct="false">Locuiesc la etajul trei.</button>
+            <button class="mc-btn" data-correct="true">Da, am o soră.</button>
+            <button class="mc-btn" data-correct="false">Mulțumesc frumos.</button>
+          </div>
+        </div>
+        <div class="mc-question">
+          <p>Un copil întreabă: „Unde locuiești?” Ce răspuns este corect?</p>
+          <div class="mc-options">
+            <button class="mc-btn" data-correct="true">Locuiesc la bloc, la etajul trei.</button>
+            <button class="mc-btn" data-correct="false">Mă numesc opt ani.</button>
+            <button class="mc-btn" data-correct="false">Sunt frate și soră.</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="exercise-block">
+        <h4>12. Pașaportul de conversație</h4>
+        <div id="sb-passport" data-answer="Mă numesc Ana am nouă ani și locuiesc la casă">
+          <p class="mini-note">Construiește o prezentare completă.</p>
+          <div class="word-bank">
+            <div class="word-token" onclick="placeWord(this,'sb-passport')">casă</div>
+            <div class="word-token" onclick="placeWord(this,'sb-passport')">Ana</div>
+            <div class="word-token" onclick="placeWord(this,'sb-passport')">am</div>
+            <div class="word-token" onclick="placeWord(this,'sb-passport')">locuiesc</div>
+            <div class="word-token" onclick="placeWord(this,'sb-passport')">și</div>
+            <div class="word-token" onclick="placeWord(this,'sb-passport')">Mă</div>
+            <div class="word-token" onclick="placeWord(this,'sb-passport')">la</div>
+            <div class="word-token" onclick="placeWord(this,'sb-passport')">numesc</div>
+            <div class="word-token" onclick="placeWord(this,'sb-passport')">ani</div>
+            <div class="word-token" onclick="placeWord(this,'sb-passport')">nouă</div>
+          </div>
+          <div class="sentence-drop" id="drop-sb-passport"></div>
+          <button class="check-btn" onclick="checkSentence('sb-passport')">Verifică</button>
+          <button class="reset-btn" onclick="resetSentence('sb-passport')">↺ Reia</button>
+          <div id="fb-sb-passport" class="feedback"></div>
         </div>
       </div>
 
       <div class="final-box">
-        <strong>Bravo! Ai terminat misiunea România-Germania.</strong>
-        <span>Acum poți saluta, te poți prezenta, poți spune vârsta, țara și limba, folosind România și Germania.</span>
+        <strong>Bravo! Ai terminat lecția de conversații.</strong>
+        <span>Acum poți vorbi despre tine, familie, politețe și locuință în propoziții scurte.</span>
       </div>
     </section>
   </main>
