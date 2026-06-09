@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fișă de lucru A1 · Lecția 2 Ce faci?</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --coral-light: #F5C4B3;
+    --coral:       #F0997B;
+    --coral-dark:  #D85A30;
+    --coral-text:  #4A1B0C;
+    --blue-light:  #85B7EB;
+    --blue:        #378ADD;
+    --blue-dark:   #185FA5;
+    --blue-text:   #042C53;
+    --green-light: #A8C97A;
+    --green:       #639922;
+    --green-dark:  #3B6D11;
+    --green-text:  #173404;
+    --bg:          #FDFAF7;
+    --line:        #E2D8CE;
+    --body-text:   #2E2018;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Source Serif 4', Georgia, serif;
+    background: #EAEAE0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    padding: 2rem;
+  }
+
+  .page {
+    width: 210mm;
+    min-height: 297mm;
+    background: var(--bg);
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.18);
+  }
+
+  .top-stripe {
+    height: 6px;
+    background: linear-gradient(to right, var(--coral) 0%, var(--coral) 33.3%, var(--blue) 33.3%, var(--blue) 66.6%, var(--green) 66.6%, var(--green) 100%);
+  }
+
+  .header {
+    padding: 18px 24px 14px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    border-bottom: 1.5px solid var(--line);
+    gap: 12px;
+  }
+
+  .header-left { flex: 1; }
+
+  .level-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--coral);
+    color: var(--coral-text);
+    font-family: 'Playfair Display', serif;
+    font-size: 13px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 20px;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+  }
+
+  .sheet-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    color: var(--body-text);
+    line-height: 1.15;
+  }
+
+  .sheet-subtitle {
+    font-size: 12px;
+    color: #8A7060;
+    font-style: italic;
+    margin-top: 3px;
+  }
+
+  .header-meta {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 5px;
+    min-width: 130px;
+  }
+
+  .meta-field {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    color: #8A7060;
+    width: 100%;
+    justify-content: flex-end;
+  }
+
+  .meta-line {
+    border-bottom: 1px solid var(--line);
+    width: 80px;
+    display: inline-block;
+  }
+
+  .body { padding: 18px 24px 0; }
+  .section { margin-bottom: 18px; }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+
+  .section-num {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 13px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .num-coral { background: var(--coral); color: var(--coral-text); }
+  .num-blue  { background: var(--blue);  color: #fff; }
+  .num-green { background: var(--green); color: #fff; }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 14px;
+    color: var(--body-text);
+  }
+
+  .section-instr {
+    font-size: 11.5px;
+    color: #6B5040;
+    font-style: italic;
+    margin-left: 36px;
+    margin-bottom: 10px;
+  }
+
+  .ex-line {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+    margin-bottom: 9px;
+    margin-left: 36px;
+    font-size: 12.5px;
+    color: var(--body-text);
+  }
+
+  .ex-num {
+    font-size: 10px;
+    color: #AAA;
+    min-width: 14px;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .blank {
+    display: inline-block;
+    border-bottom: 1.2px solid var(--coral-dark);
+    min-width: 90px;
+    height: 14px;
+    vertical-align: baseline;
+  }
+
+  .blank-long { min-width: 150px; }
+
+  .match-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px 24px;
+    margin-left: 36px;
+  }
+
+  .match-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12.5px;
+    color: var(--body-text);
+  }
+
+  .match-letter {
+    width: 20px;
+    height: 20px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    font-weight: 600;
+    flex-shrink: 0;
+  }
+
+  .ml-coral { background: var(--coral-light); color: var(--coral-text); }
+  .ml-blue  { background: #D6E8F9; color: var(--blue-dark); }
+
+  .image-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-left: 36px;
+  }
+
+  .image-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .img-placeholder {
+    width: 100%;
+    aspect-ratio: 1;
+    border: 1.5px dashed var(--green);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #F0F5E8;
+    color: var(--green-dark);
+    font-size: 22px;
+  }
+
+  .img-label-line {
+    width: 100%;
+    border-bottom: 1px solid var(--green-dark);
+    height: 13px;
+  }
+
+  .word-bank {
+    margin-left: 36px;
+    background: #FEF6F1;
+    border: 1px solid var(--coral-light);
+    border-radius: 8px;
+    padding: 8px 12px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 14px;
+    align-items: center;
+  }
+
+  .word-bank-label {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: var(--coral-dark);
+    font-weight: 600;
+    width: 100%;
+    margin-bottom: 2px;
+  }
+
+  .word-chip {
+    font-size: 12px;
+    color: var(--coral-text);
+    background: var(--coral-light);
+    padding: 2px 9px;
+    border-radius: 12px;
+  }
+
+  .tf-table {
+    width: calc(100% - 36px);
+    margin-left: 36px;
+    border-collapse: collapse;
+    font-size: 12px;
+  }
+
+  .tf-table th {
+    background: var(--blue);
+    color: #fff;
+    padding: 6px 10px;
+    text-align: left;
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 11px;
+  }
+
+  .tf-table td {
+    padding: 7px 10px;
+    border-bottom: 1px solid var(--line);
+    color: var(--body-text);
+  }
+
+  .tf-table tr:nth-child(even) td { background: #EEF4FB; }
+
+  .tf-circle {
+    width: 18px;
+    height: 18px;
+    border: 1.5px solid var(--blue);
+    border-radius: 50%;
+    display: inline-block;
+  }
+
+  .notes-box {
+    margin: 14px 24px 0;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 10px 14px;
+    background: #F9F6F2;
+  }
+
+  .notes-label {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: #AAA;
+    margin-bottom: 8px;
+    font-weight: 600;
+  }
+
+  .notes-lines { display: flex; flex-direction: column; gap: 10px; }
+  .notes-line { border-bottom: 1px solid var(--line); height: 14px; width: 100%; }
+
+  .footer {
+    margin-top: 14px;
+    padding: 10px 24px 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1.5px solid var(--line);
+  }
+
+  .footer-site {
+    font-size: 10px;
+    color: #B0A090;
+    font-style: italic;
+  }
+
+  .score-box {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    color: #8A7060;
+  }
+
+  .score-field {
+    border: 1.5px solid var(--line);
+    border-radius: 6px;
+    width: 48px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    color: #CCC;
+  }
+
+  .bottom-stripe {
+    height: 4px;
+    background: linear-gradient(to right, var(--coral) 0%, var(--coral) 33.3%, var(--blue) 33.3%, var(--blue) 66.6%, var(--green) 66.6%, var(--green) 100%);
+  }
+
+  .divider {
+    height: 1px;
+    background: var(--line);
+    margin: 0 24px 18px;
+  }
+
+  @media print {
+    body { background: white; padding: 0; }
+    .page { box-shadow: none; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="top-stripe"></div>
+
+  <div class="header">
+    <div class="header-left">
+      <div class="level-badge">◆ Nivel A1</div>
+      <div class="sheet-title">Lecția 2 · Ce faci?</div>
+      <div class="sheet-subtitle">Rumänisch aus Deutsch · Fragen nach dem Befinden</div>
+    </div>
+    <div class="header-meta">
+      <div class="meta-field">Nume: <span class="meta-line"></span></div>
+      <div class="meta-field">Data: <span class="meta-line"></span></div>
+      <div class="meta-field">Clasa: <span class="meta-line"></span></div>
+    </div>
+  </div>
+
+  <div class="body">
+    <div class="section">
+      <div class="section-header">
+        <div class="section-num num-coral">1</div>
+        <div class="section-title">Completează dialogul</div>
+      </div>
+      <div class="section-instr">Alege din casetă și scrie răspunsul potrivit pe linie.</div>
+
+      <div class="word-bank">
+        <div class="word-bank-label">Cuvinte ajutătoare</div>
+        <span class="word-chip">Bine</span>
+        <span class="word-chip">Foarte bine</span>
+        <span class="word-chip">Minunat</span>
+        <span class="word-chip">Așa și așa</span>
+        <span class="word-chip">Nu prea bine</span>
+      </div>
+
+      <div class="ex-line"><span class="ex-num">1.</span> — Ce faci? — &nbsp;<span class="blank blank-long"></span>.</div>
+      <div class="ex-line"><span class="ex-num">2.</span> — Ce mai faci? — &nbsp;<span class="blank blank-long"></span>.</div>
+      <div class="ex-line"><span class="ex-num">3.</span> — Ce faceți? — &nbsp;<span class="blank blank-long"></span>.</div>
+      <div class="ex-line"><span class="ex-num">4.</span> — Ce mai faceți? — &nbsp;<span class="blank blank-long"></span>.</div>
+      <div class="ex-line"><span class="ex-num">5.</span> — Ce faci azi? — &nbsp;<span class="blank blank-long"></span>.</div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section">
+      <div class="section-header">
+        <div class="section-num num-blue">2</div>
+        <div class="section-title">Asociază expresia cu traducerea germană</div>
+      </div>
+      <div class="section-instr">Unește expresia românească din coloana A cu traducerea potrivită din coloana B.</div>
+
+      <div class="match-grid">
+        <div class="match-item"><div class="match-letter ml-coral">A1</div> Ce faci?</div>
+        <div class="match-item"><div class="match-letter ml-blue">B1</div> Wunderbar</div>
+
+        <div class="match-item"><div class="match-letter ml-coral">A2</div> Ce faceți?</div>
+        <div class="match-item"><div class="match-letter ml-blue">B2</div> Ebenso</div>
+
+        <div class="match-item"><div class="match-letter ml-coral">A3</div> Minunat</div>
+        <div class="match-item"><div class="match-letter ml-blue">B3</div> Wie geht's?</div>
+
+        <div class="match-item"><div class="match-letter ml-coral">A4</div> Asemenea</div>
+        <div class="match-item"><div class="match-letter ml-blue">B4</div> Wie geht es Ihnen?</div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section">
+      <div class="section-header">
+        <div class="section-num num-green">3</div>
+        <div class="section-title">Scrie starea sub imagine</div>
+      </div>
+      <div class="section-instr">Folosește expresii din lecția 2: Bine, Foarte bine, Așa și așa, Rău.</div>
+
+      <div class="image-grid">
+        <div class="image-box">
+          <div class="img-placeholder">😊</div>
+          <div class="img-label-line"></div>
+        </div>
+        <div class="image-box">
+          <div class="img-placeholder">😁</div>
+          <div class="img-label-line"></div>
+        </div>
+        <div class="image-box">
+          <div class="img-placeholder">😐</div>
+          <div class="img-label-line"></div>
+        </div>
+        <div class="image-box">
+          <div class="img-placeholder">😢</div>
+          <div class="img-label-line"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section">
+      <div class="section-header">
+        <div class="section-num num-blue">4</div>
+        <div class="section-title">Adevărat (A) sau Fals (F)?</div>
+      </div>
+      <div class="section-instr">Citește propozițiile și încercuiește răspunsul corect.</div>
+
+      <table class="tf-table">
+        <thead>
+          <tr>
+            <th style="width:60%">Propoziție</th>
+            <th style="width:20%; text-align:center;">Adevărat</th>
+            <th style="width:20%; text-align:center;">Fals</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>„Ce faci?” se folosește informal, cu „tu”.</td>
+            <td style="text-align:center;"><div class="tf-circle"></div></td>
+            <td style="text-align:center;"><div class="tf-circle"></div></td>
+          </tr>
+          <tr>
+            <td>„Ce faceți?” este o formă politicoasă.</td>
+            <td style="text-align:center;"><div class="tf-circle"></div></td>
+            <td style="text-align:center;"><div class="tf-circle"></div></td>
+          </tr>
+          <tr>
+            <td>„Nu prea bine” înseamnă „Sehr gut”.</td>
+            <td style="text-align:center;"><div class="tf-circle"></div></td>
+            <td style="text-align:center;"><div class="tf-circle"></div></td>
+          </tr>
+          <tr>
+            <td>„La fel” înseamnă „Gleichfalls”.</td>
+            <td style="text-align:center;"><div class="tf-circle"></div></td>
+            <td style="text-align:center;"><div class="tf-circle"></div></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="notes-box">
+    <div class="notes-label">Notițe / Observații</div>
+    <div class="notes-lines">
+      <div class="notes-line"></div>
+      <div class="notes-line"></div>
+      <div class="notes-line"></div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="footer-site">Romanian Step by Step · Fișă de lucru A1 · Lecția 2</div>
+    <div class="score-box">
+      Punctaj:
+      <div class="score-field">__ / 20</div>
+    </div>
+  </div>
+
+  <div class="bottom-stripe"></div>
+</div>
+</body>
+</html>
