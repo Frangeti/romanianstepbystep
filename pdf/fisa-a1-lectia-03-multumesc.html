@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fișă de lucru A1 · Lecția 3 Mulțumesc</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --coral-light: #F5C4B3;
+      --coral: #F0997B;
+      --coral-dark: #D85A30;
+      --coral-text: #4A1B0C;
+      --blue-light: #85B7EB;
+      --blue: #378ADD;
+      --blue-dark: #185FA5;
+      --blue-text: #042C53;
+      --green-light: #A8C97A;
+      --green: #639922;
+      --green-dark: #3B6D11;
+      --green-text: #173404;
+      --bg: #FDFAF7;
+      --line: #E2D8CE;
+      --body-text: #2E2018;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Source Serif 4', Georgia, serif;
+      background: #EAEAE0;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
+      padding: 2rem;
+    }
+
+    .page {
+      width: 210mm;
+      min-height: 297mm;
+      background: var(--bg);
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.18);
+    }
+
+    .top-stripe {
+      height: 6px;
+      background: linear-gradient(to right, var(--coral) 0%, var(--coral) 33.3%, var(--blue) 33.3%, var(--blue) 66.6%, var(--green) 66.6%, var(--green) 100%);
+    }
+
+    .header {
+      padding: 18px 24px 14px;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      border-bottom: 1.5px solid var(--line);
+      gap: 12px;
+    }
+
+    .header-left { flex: 1; }
+
+    .level-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--coral);
+      color: var(--coral-text);
+      font-family: 'Playfair Display', serif;
+      font-size: 13px;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 20px;
+      letter-spacing: 0.5px;
+      margin-bottom: 6px;
+    }
+
+    .sheet-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      color: var(--body-text);
+      line-height: 1.15;
+    }
+
+    .sheet-subtitle {
+      font-size: 12px;
+      color: #8A7060;
+      font-style: italic;
+      margin-top: 3px;
+    }
+
+    .header-meta {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 5px;
+      min-width: 130px;
+    }
+
+    .meta-field {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      color: #8A7060;
+      width: 100%;
+      justify-content: flex-end;
+    }
+
+    .meta-line {
+      border-bottom: 1px solid var(--line);
+      width: 80px;
+      display: inline-block;
+    }
+
+    .body { padding: 18px 24px 0; }
+    .section { margin-bottom: 18px; }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .section-num {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 13px;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .num-coral { background: var(--coral); color: var(--coral-text); }
+    .num-blue { background: var(--blue); color: #fff; }
+    .num-green { background: var(--green); color: #fff; }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 14px;
+      color: var(--body-text);
+    }
+
+    .section-instr {
+      font-size: 11.5px;
+      color: #6B5040;
+      font-style: italic;
+      margin-left: 36px;
+      margin-bottom: 10px;
+    }
+
+    .ex-line {
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+      margin-bottom: 9px;
+      margin-left: 36px;
+      font-size: 12.5px;
+      color: var(--body-text);
+    }
+
+    .ex-num {
+      font-size: 10px;
+      color: #AAA;
+      min-width: 14px;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .blank {
+      display: inline-block;
+      border-bottom: 1.2px solid var(--coral-dark);
+      min-width: 90px;
+      height: 14px;
+      vertical-align: baseline;
+    }
+
+    .blank-long { min-width: 140px; }
+
+    .match-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px 24px;
+      margin-left: 36px;
+    }
+
+    .match-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12.5px;
+      color: var(--body-text);
+    }
+
+    .match-letter {
+      width: 20px;
+      height: 20px;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      font-weight: 600;
+      flex-shrink: 0;
+    }
+
+    .ml-coral { background: var(--coral-light); color: var(--coral-text); }
+    .ml-blue { background: #D6E8F9; color: var(--blue-dark); }
+
+    .word-bank {
+      margin-left: 36px;
+      background: #FEF6F1;
+      border: 1px solid var(--coral-light);
+      border-radius: 8px;
+      padding: 8px 12px;
+      margin-bottom: 10px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px 14px;
+      align-items: center;
+      font-size: 12px;
+      color: var(--body-text);
+    }
+
+    .mini-box {
+      margin-left: 36px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 10px 12px;
+      background: #fff;
+      font-size: 12px;
+      color: var(--body-text);
+      line-height: 1.4;
+    }
+
+    .footer-site {
+      text-align: center;
+      font-size: 10px;
+      color: #8A7060;
+      padding: 18px 0 28px;
+      letter-spacing: 0.3px;
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="top-stripe"></div>
+
+    <header class="header">
+      <div class="header-left">
+        <div class="level-badge">◆ Nivel A1</div>
+        <h1 class="sheet-title">Fișă de lucru · Lecția 3: Mulțumesc</h1>
+        <p class="sheet-subtitle">Exerciții pentru salutări, politețe și expresii simple de mulțumire.</p>
+      </div>
+      <div class="header-meta">
+        <div class="meta-field">Nume <span class="meta-line"></span></div>
+        <div class="meta-field">Data <span class="meta-line"></span></div>
+        <div class="meta-field">Clasa <span class="meta-line"></span></div>
+      </div>
+    </header>
+
+    <section class="body">
+      <article class="section">
+        <div class="section-header">
+          <div class="section-num num-coral">1</div>
+          <div>
+            <div class="section-title">Vocabular și expresii</div>
+            <div class="section-instr">Completează cu cuvintele potrivite din banca de cuvinte.</div>
+          </div>
+        </div>
+
+        <div class="word-bank">
+          <strong>Banca de cuvinte:</strong> mulțumesc · te rog · vă rog · cu plăcere · pentru nimic · frumos
+        </div>
+
+        <div class="ex-line"><span class="ex-num">1.</span> ___ frumos pentru ajutor! </div>
+        <div class="ex-line"><span class="ex-num">2.</span> ___ , poți să-mi dai apa? </div>
+        <div class="ex-line"><span class="ex-num">3.</span> ___ , domnule profesor, o foaie de hârtie. </div>
+        <div class="ex-line"><span class="ex-num">4.</span> — Mulțumesc! — ___! </div>
+        <div class="ex-line"><span class="ex-num">5.</span> — Vă mulțumesc mult. — ___, nicio problemă. </div>
+        <div class="ex-line"><span class="ex-num">6.</span> Așa e mai bine, ___! </div>
+      </article>
+
+      <article class="section">
+        <div class="section-header">
+          <div class="section-num num-blue">2</div>
+          <div>
+            <div class="section-title">Potrivește expresiile</div>
+            <div class="section-instr">Asociază expresia românească cu traducerea în germană.</div>
+          </div>
+        </div>
+
+        <div class="match-grid">
+          <div class="match-item"><span class="match-letter ml-coral">A</span> Mulțumesc</div>
+          <div class="match-item"><span class="match-letter ml-blue">1</span> Danke</div>
+          <div class="match-item"><span class="match-letter ml-coral">B</span> Te rog</div>
+          <div class="match-item"><span class="match-letter ml-blue">2</span> Bitte (du)</div>
+          <div class="match-item"><span class="match-letter ml-coral">C</span> Vă rog</div>
+          <div class="match-item"><span class="match-letter ml-blue">3</span> Bitte (Sie)</div>
+          <div class="match-item"><span class="match-letter ml-coral">D</span> Cu plăcere</div>
+          <div class="match-item"><span class="match-letter ml-blue">4</span> Gern geschehen</div>
+        </div>
+      </article>
+
+      <article class="section">
+        <div class="section-header">
+          <div class="section-num num-green">3</div>
+          <div>
+            <div class="section-title">Dialog scurt</div>
+            <div class="section-instr">Completează răspunsurile potrivite.</div>
+          </div>
+        </div>
+
+        <div class="mini-box">
+          A: Mulțumesc frumos pentru cafea!<br />
+          B: <span class="blank blank-long"></span><br />
+          A: Te rog, îmi dai și un pahar cu apă?<br />
+          B: Da, sigur, aici <span class="blank blank-long"></span><br />
+          A: Vă mulțumesc mult.<br />
+          B: <span class="blank blank-long"></span>
+        </div>
+      </article>
+
+      <article class="section">
+        <div class="section-header">
+          <div class="section-num num-coral">4</div>
+          <div>
+            <div class="section-title">Alege varianta corectă</div>
+            <div class="section-instr">Bifează răspunsul potrivit.</div>
+          </div>
+        </div>
+
+        <div class="ex-line"><span class="ex-num">1.</span> „Mulțumesc” înseamnă: <span class="blank"></span>  Danke / Buna / Merg</div>
+        <div class="ex-line"><span class="ex-num">2.</span> „Vă rog” este forma de politețe pentru: <span class="blank"></span>  tu / voi / dumneavoastră</div>
+        <div class="ex-line"><span class="ex-num">3.</span> „Cu plăcere” înseamnă: <span class="blank"></span>  Gern geschehen / Pentru nimic / Asemenea</div>
+        <div class="ex-line"><span class="ex-num">4.</span> „Pentru nimic” corespunde lui: <span class="blank"></span>  Nicht dafür / Bitte / Danke</div>
+      </article>
+
+      <article class="section">
+        <div class="section-header">
+          <div class="section-num num-blue">5</div>
+          <div>
+            <div class="section-title">Scrie răspunsul tău</div>
+            <div class="section-instr">Formulează două propoziții simple, folosind expresii din lecție.</div>
+          </div>
+        </div>
+
+        <div class="ex-line"><span class="ex-num">1.</span> ________ </div>
+        <div class="ex-line"><span class="ex-num">2.</span> ________ </div>
+      </article>
+    </section>
+
+    <footer class="footer-site">Romanian Step by Step · Fișă de lucru A1 · Lecția 3</footer>
+  </main>
+</body>
+</html>
