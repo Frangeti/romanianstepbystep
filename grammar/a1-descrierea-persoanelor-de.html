@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A1 · Descrierea persoanelor · Exerciții DE</title>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #263d52;
+    --blue: #6f8ea3;
+    --blue-pale: #e9f4f8;
+    --coral: #ff6f61;
+    --paper: #ffffff;
+    --bg: #fdfaf4;
+    --border: #d8e2e8;
+    --text: #1f2f3b;
+    --muted: #6f7c84;
+    --ok: #2d7a4f;
+    --bad: #c0392b;
+    --shadow: 0 16px 42px rgba(38, 61, 82, .12);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Atkinson Hyperlegible', sans-serif;
+    line-height: 1.55;
+  }
+
+  a { color: inherit; text-decoration: none; }
+
+  .topbar {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: var(--navy);
+    color: #f5f7f8;
+    border-bottom: 1px solid rgba(255, 255, 255, .2);
+  }
+
+  .topbar-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 14px 22px;
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    align-items: center;
+  }
+
+  .home-link,
+  .download-link {
+    display: inline-flex;
+    align-items: center;
+    min-height: 34px;
+    padding: 7px 12px;
+    border: 1px solid rgba(255, 255, 255, .26);
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 700;
+  }
+
+  .download-link { background: #f5f7f8; color: var(--navy); }
+
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 28px 20px 64px;
+  }
+
+  .hero {
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 22px;
+    padding: clamp(1.4rem, 3vw, 2.6rem);
+    border: 1px solid #cfe4ed;
+    border-radius: 8px;
+    background:
+      linear-gradient(135deg, rgba(255, 255, 255, .97), rgba(232, 243, 248, .98)),
+      radial-gradient(circle at 92% 14%, rgba(255, 111, 97, .18), transparent 30%);
+    box-shadow: var(--shadow);
+  }
+
+  .hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-top: 5px solid var(--coral);
+    pointer-events: none;
+  }
+
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 30px;
+    padding: 5px 12px;
+    border: 1px solid #cfe4ed;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, .82);
+    color: #376f8c;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+  }
+
+  .eyebrow::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--coral);
+    box-shadow: 0 0 0 4px rgba(255, 111, 97, .14);
+  }
+
+  h1 {
+    max-width: 850px;
+    margin: 14px 0 8px;
+    color: var(--navy);
+    font-size: clamp(32px, 4vw, 52px);
+    line-height: 1.08;
+  }
+
+  .hero p {
+    max-width: 760px;
+    margin: 0;
+    color: #4b6372;
+    font-size: 18px;
+  }
+
+  .quick-grid,
+  .exercise-grid,
+  .photo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 14px;
+  }
+
+  .card,
+  .exercise,
+  .photo-card {
+    background: var(--paper);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    box-shadow: 0 8px 22px rgba(38, 61, 82, .07);
+  }
+
+  .card { padding: 16px; }
+
+  .card h3,
+  .exercise h3 {
+    margin: 0 0 10px;
+    color: var(--navy);
+    font-size: 18px;
+  }
+
+  .pill-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .pill {
+    display: inline-flex;
+    padding: 6px 10px;
+    border-radius: 999px;
+    background: var(--blue-pale);
+    color: #315a68;
+    font-size: 14px;
+    font-weight: 700;
+  }
+
+  .section-title {
+    margin: 28px 0 12px;
+    color: var(--navy);
+    font-size: 24px;
+  }
+
+  .section-note {
+    margin: -6px 0 14px;
+    color: var(--muted);
+  }
+
+  .exercise {
+    padding: 16px;
+  }
+
+  .question {
+    margin: 0 0 10px;
+    font-weight: 700;
+  }
+
+  .options {
+    display: grid;
+    gap: 8px;
+  }
+
+  button.option,
+  .check-btn,
+  .reset-btn {
+    min-height: 38px;
+    border: 1px solid #cfe4ed;
+    border-radius: 8px;
+    background: #f8fcfd;
+    color: var(--navy);
+    cursor: pointer;
+    font: inherit;
+    font-weight: 700;
+    text-align: left;
+    padding: 8px 11px;
+  }
+
+  button.option:hover,
+  .check-btn:hover,
+  .reset-btn:hover {
+    border-color: #8ebed2;
+    background: #eef7fb;
+  }
+
+  button.option.correct { border-color: var(--ok); background: #e9f6ee; color: var(--ok); }
+  button.option.wrong { border-color: var(--bad); background: #fdeceb; color: var(--bad); }
+
+  .match-list {
+    display: grid;
+    gap: 10px;
+  }
+
+  .match-row {
+    display: grid;
+    grid-template-columns: 1fr minmax(170px, .8fr);
+    gap: 10px;
+    align-items: center;
+  }
+
+  .match-row label {
+    padding: 10px 12px;
+    border-radius: 8px;
+    background: var(--blue-pale);
+    color: var(--navy);
+    font-weight: 700;
+  }
+
+  select,
+  input[type="text"] {
+    width: 100%;
+    min-height: 38px;
+    border: 1px solid #cfe4ed;
+    border-radius: 8px;
+    background: #fff;
+    color: var(--text);
+    font: inherit;
+    padding: 7px 10px;
+  }
+
+  .feedback {
+    display: none;
+    margin-top: 10px;
+    padding: 9px 11px;
+    border-radius: 8px;
+    font-weight: 700;
+  }
+
+  .feedback.ok { display: block; background: #e9f6ee; color: var(--ok); }
+  .feedback.err { display: block; background: #fdeceb; color: var(--bad); }
+
+  .photo-card {
+    overflow: hidden;
+  }
+
+  .portrait {
+    min-height: 190px;
+    display: grid;
+    place-items: end center;
+    padding-top: 18px;
+    background:
+      linear-gradient(160deg, rgba(255,255,255,.2), rgba(255,255,255,0)),
+      var(--photo-bg, #dceef5);
+  }
+
+  .person {
+    position: relative;
+    width: 130px;
+    height: 156px;
+  }
+
+  .head {
+    position: absolute;
+    left: 36px;
+    top: 10px;
+    width: 58px;
+    height: 66px;
+    border-radius: 42% 42% 46% 46%;
+    background: var(--skin, #e7b78f);
+    z-index: 2;
+  }
+
+  .hair {
+    position: absolute;
+    left: 28px;
+    top: 0;
+    width: 74px;
+    height: 54px;
+    border-radius: 45% 45% 35% 35%;
+    background: var(--hair, #4b2d1f);
+    z-index: 3;
+  }
+
+  .short .hair { height: 34px; border-radius: 42% 42% 20% 20%; }
+  .long .hair { height: 88px; border-radius: 44% 44% 35% 35%; }
+  .curly .hair { height: 62px; border-radius: 50%; box-shadow: -12px 12px 0 var(--hair), 12px 10px 0 var(--hair); }
+
+  .body {
+    position: absolute;
+    left: 19px;
+    bottom: 0;
+    width: 92px;
+    height: 88px;
+    border-radius: 28px 28px 0 0;
+    background: var(--shirt, #6f8ea3);
+  }
+
+  .eye {
+    position: absolute;
+    top: 39px;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--eyes, #2f4a60);
+    z-index: 4;
+  }
+
+  .eye.left { left: 52px; }
+  .eye.right { right: 52px; }
+
+  .photo-body {
+    padding: 14px;
+  }
+
+  .photo-body h3 {
+    margin: 0 0 8px;
+    color: var(--navy);
+  }
+
+  .sentence {
+    padding: 11px 12px;
+    border-radius: 8px;
+    background: #f8fcfd;
+    border: 1px solid #d5e8ef;
+    color: #315a68;
+    font-weight: 700;
+  }
+
+  .actions {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 12px;
+  }
+
+  .print-box {
+    margin-top: 26px;
+    padding: 16px;
+    border: 1px solid #cfe4ed;
+    border-radius: 8px;
+    background: #fff;
+  }
+
+  @media print {
+    .topbar,
+    .actions,
+    button,
+    .download-link {
+      display: none !important;
+    }
+
+    body { background: #fff; }
+    .container { padding: 0; }
+    .hero,
+    .card,
+    .exercise,
+    .photo-card,
+    .print-box {
+      box-shadow: none;
+      break-inside: avoid;
+    }
+  }
+
+  @media (max-width: 680px) {
+    .topbar-inner { align-items: flex-start; flex-direction: column; }
+    .match-row { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="home-link" href="../index.html#exercitii-gramatica">Romanian Step by Step · Gramatică A1</a>
+      <a class="download-link" href="../pdf/a1-descrierea-persoanelor-de.pdf">Descarcă PDF</a>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <span class="eyebrow">A1 · Germană · Gramatică și vocabular</span>
+      <h1>Descrierea persoanelor</h1>
+      <p>Exerciții interactive pentru memorarea vocabularului despre aspect fizic, păr, ochi, vârstă și trăsături. Alege traducerea corectă, potrivește română-germană și descrie persoanele din imagini.</p>
+    </section>
+
+    <section>
+      <h2 class="section-title">Vocabular de bază</h2>
+      <div class="quick-grid">
+        <article class="card">
+          <h3>Aspect general</h3>
+          <div class="pill-row">
+            <span class="pill">înalt · groß</span>
+            <span class="pill">scund · klein</span>
+            <span class="pill">slab · schlank</span>
+            <span class="pill">plinuț · mollig</span>
+            <span class="pill">tânăr · jung</span>
+            <span class="pill">în vârstă · alt</span>
+          </div>
+        </article>
+        <article class="card">
+          <h3>Păr și ochi</h3>
+          <div class="pill-row">
+            <span class="pill">păr blond · blonde Haare</span>
+            <span class="pill">păr șaten · braune Haare</span>
+            <span class="pill">păr negru · schwarze Haare</span>
+            <span class="pill">ochi albaștri · blaue Augen</span>
+            <span class="pill">ochi verzi · grüne Augen</span>
+            <span class="pill">ochi căprui · braune Augen</span>
+          </div>
+        </article>
+        <article class="card">
+          <h3>Structuri utile</h3>
+          <div class="pill-row">
+            <span class="pill">El este...</span>
+            <span class="pill">Ea este...</span>
+            <span class="pill">El are...</span>
+            <span class="pill">Ea are...</span>
+            <span class="pill">Poartă ochelari.</span>
+            <span class="pill">Are părul lung.</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="section-title">1. Alege traducerea corectă</h2>
+      <p class="section-note">Apasă pe răspunsul corect. Răspunsurile se colorează automat.</p>
+      <div class="exercise-grid">
+        <article class="exercise quiz">
+          <h3>Traducere RO → DE</h3>
+          <p class="question">1. „înalt” în germană este:</p>
+          <div class="options">
+            <button class="option" data-correct="true">groß</button>
+            <button class="option" data-correct="false">klein</button>
+            <button class="option" data-correct="false">jung</button>
+          </div>
+        </article>
+        <article class="exercise quiz">
+          <h3>Traducere RO → DE</h3>
+          <p class="question">2. „ochi verzi” în germană este:</p>
+          <div class="options">
+            <button class="option" data-correct="false">blaue Augen</button>
+            <button class="option" data-correct="true">grüne Augen</button>
+            <button class="option" data-correct="false">braune Haare</button>
+          </div>
+        </article>
+        <article class="exercise quiz">
+          <h3>Traducere DE → RO</h3>
+          <p class="question">3. „schwarze Haare” în română este:</p>
+          <div class="options">
+            <button class="option" data-correct="false">păr blond</button>
+            <button class="option" data-correct="false">păr șaten</button>
+            <button class="option" data-correct="true">păr negru</button>
+          </div>
+        </article>
+        <article class="exercise quiz">
+          <h3>Traducere DE → RO</h3>
+          <p class="question">4. „Sie trägt eine Brille.” în română este:</p>
+          <div class="options">
+            <button class="option" data-correct="true">Ea poartă ochelari.</button>
+            <button class="option" data-correct="false">Ea are părul lung.</button>
+            <button class="option" data-correct="false">Ea este scundă.</button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="section-title">2. Potrivește română-germană</h2>
+      <p class="section-note">Alege traducerea corectă din listă, apoi apasă „Verifică”.</p>
+      <article class="exercise">
+        <div class="match-list" id="match-vocab">
+          <div class="match-row">
+            <label>păr lung</label>
+            <select data-answer="lange Haare">
+              <option value="">Alege...</option>
+              <option>kurze Haare</option>
+              <option>lange Haare</option>
+              <option>blaue Augen</option>
+            </select>
+          </div>
+          <div class="match-row">
+            <label>ochi căprui</label>
+            <select data-answer="braune Augen">
+              <option value="">Alege...</option>
+              <option>braune Augen</option>
+              <option>braune Haare</option>
+              <option>grüne Augen</option>
+            </select>
+          </div>
+          <div class="match-row">
+            <label>scund</label>
+            <select data-answer="klein">
+              <option value="">Alege...</option>
+              <option>jung</option>
+              <option>groß</option>
+              <option>klein</option>
+            </select>
+          </div>
+          <div class="match-row">
+            <label>păr creț</label>
+            <select data-answer="lockige Haare">
+              <option value="">Alege...</option>
+              <option>glatte Haare</option>
+              <option>lockige Haare</option>
+              <option>kurze Haare</option>
+            </select>
+          </div>
+          <div class="match-row">
+            <label>în vârstă</label>
+            <select data-answer="alt">
+              <option value="">Alege...</option>
+              <option>jung</option>
+              <option>alt</option>
+              <option>schlank</option>
+            </select>
+          </div>
+        </div>
+        <div class="actions">
+          <button class="check-btn" onclick="checkSelects('match-vocab', 'fb-match')">Verifică</button>
+          <button class="reset-btn" onclick="resetSelects('match-vocab', 'fb-match')">Reset</button>
+        </div>
+        <div class="feedback" id="fb-match"></div>
+      </article>
+    </section>
+
+    <section>
+      <h2 class="section-title">3. Descrie persoanele</h2>
+      <p class="section-note">Privește imaginea și alege descrierea corectă.</p>
+      <div class="photo-grid">
+        <article class="photo-card quiz">
+          <div class="portrait" style="--photo-bg:#dceef5;--hair:#d8b45f;--skin:#e8b990;--shirt:#6f8ea3;--eyes:#3e80a0;">
+            <div class="person long"><div class="hair"></div><div class="head"></div><div class="eye left"></div><div class="eye right"></div><div class="body"></div></div>
+          </div>
+          <div class="photo-body">
+            <h3>Persoana 1</h3>
+            <p class="question">Care descriere este corectă?</p>
+            <div class="options">
+              <button class="option" data-correct="true">Ea are părul blond și ochii albaștri.</button>
+              <button class="option" data-correct="false">El are părul negru și ochii căprui.</button>
+              <button class="option" data-correct="false">Ea are părul scurt și creț.</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="photo-card quiz">
+          <div class="portrait" style="--photo-bg:#eef0f7;--hair:#2f2520;--skin:#c88962;--shirt:#ff6f61;--eyes:#4a2d1e;">
+            <div class="person short"><div class="hair"></div><div class="head"></div><div class="eye left"></div><div class="eye right"></div><div class="body"></div></div>
+          </div>
+          <div class="photo-body">
+            <h3>Persoana 2</h3>
+            <p class="question">Alege propoziția corectă:</p>
+            <div class="options">
+              <button class="option" data-correct="false">Ea este înaltă și are părul blond.</button>
+              <button class="option" data-correct="true">El are părul scurt și negru.</button>
+              <button class="option" data-correct="false">El are ochii verzi și părul lung.</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="photo-card quiz">
+          <div class="portrait" style="--photo-bg:#e8f4ee;--hair:#5a3928;--skin:#d9a77f;--shirt:#7fb7cf;--eyes:#2d7a4f;">
+            <div class="person curly"><div class="hair"></div><div class="head"></div><div class="eye left"></div><div class="eye right"></div><div class="body"></div></div>
+          </div>
+          <div class="photo-body">
+            <h3>Persoana 3</h3>
+            <p class="question">Ce descriere se potrivește?</p>
+            <div class="options">
+              <button class="option" data-correct="false">Ea are părul drept și blond.</button>
+              <button class="option" data-correct="false">El poartă ochelari.</button>
+              <button class="option" data-correct="true">Ea are părul creț și ochii verzi.</button>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="section-title">4. Completează descrierea</h2>
+      <p class="section-note">Scrie cuvintele lipsă în română. Folosește: <strong>înalt, ochii, părul, ochelari, blond</strong>.</p>
+      <article class="exercise" id="fill-ex">
+        <p class="sentence">1. El este <input type="text" data-answer="înalt" aria-label="Răspuns 1">.</p>
+        <p class="sentence">2. Ea are <input type="text" data-answer="părul" aria-label="Răspuns 2"> <input type="text" data-answer="blond" aria-label="Răspuns 3">.</p>
+        <p class="sentence">3. El are <input type="text" data-answer="ochii" aria-label="Răspuns 4"> căprui.</p>
+        <p class="sentence">4. Ea poartă <input type="text" data-answer="ochelari" aria-label="Răspuns 5">.</p>
+        <div class="actions">
+          <button class="check-btn" onclick="checkInputs('fill-ex', 'fb-fill')">Verifică</button>
+          <button class="reset-btn" onclick="resetInputs('fill-ex', 'fb-fill')">Reset</button>
+        </div>
+        <div class="feedback" id="fb-fill"></div>
+      </article>
+    </section>
+
+    <section class="print-box">
+      <h2 class="section-title">Mini-model pentru descriere</h2>
+      <p><strong>Română:</strong> Ea este tânără. Are părul blond și ochii albaștri. Este înaltă și poartă ochelari.</p>
+      <p><strong>Deutsch:</strong> Sie ist jung. Sie hat blonde Haare und blaue Augen. Sie ist groß und trägt eine Brille.</p>
+    </section>
+  </main>
+
+<script>
+  document.querySelectorAll('.quiz .option').forEach(button => {
+    button.addEventListener('click', () => {
+      const group = button.closest('.options');
+      if (group.querySelector('.correct') || group.querySelector('.wrong')) return;
+      if (button.dataset.correct === 'true') {
+        button.classList.add('correct');
+      } else {
+        button.classList.add('wrong');
+        group.querySelectorAll('.option').forEach(option => {
+          if (option.dataset.correct === 'true') option.classList.add('correct');
+        });
+      }
+    });
+  });
+
+  function checkSelects(containerId, feedbackId) {
+    const selects = document.querySelectorAll('#' + containerId + ' select');
+    let score = 0;
+    selects.forEach(select => {
+      const correct = select.value === select.dataset.answer;
+      select.style.borderColor = correct ? 'var(--ok)' : 'var(--bad)';
+      if (correct) score++;
+    });
+    showFeedback(feedbackId, score === selects.length, `${score}/${selects.length} corecte`);
+  }
+
+  function resetSelects(containerId, feedbackId) {
+    document.querySelectorAll('#' + containerId + ' select').forEach(select => {
+      select.value = '';
+      select.style.borderColor = '';
+    });
+    hideFeedback(feedbackId);
+  }
+
+  function normalize(value) {
+    return value.trim().toLowerCase();
+  }
+
+  function checkInputs(containerId, feedbackId) {
+    const inputs = document.querySelectorAll('#' + containerId + ' input');
+    let score = 0;
+    inputs.forEach(input => {
+      const correct = normalize(input.value) === normalize(input.dataset.answer);
+      input.style.borderColor = correct ? 'var(--ok)' : 'var(--bad)';
+      if (correct) score++;
+    });
+    showFeedback(feedbackId, score === inputs.length, `${score}/${inputs.length} corecte`);
+  }
+
+  function resetInputs(containerId, feedbackId) {
+    document.querySelectorAll('#' + containerId + ' input').forEach(input => {
+      input.value = '';
+      input.style.borderColor = '';
+    });
+    hideFeedback(feedbackId);
+  }
+
+  function showFeedback(id, ok, message) {
+    const feedback = document.getElementById(id);
+    feedback.className = ok ? 'feedback ok' : 'feedback err';
+    feedback.textContent = ok ? `Perfect! ${message}.` : `Mai încearcă. ${message}.`;
+  }
+
+  function hideFeedback(id) {
+    const feedback = document.getElementById(id);
+    feedback.className = 'feedback';
+    feedback.textContent = '';
+  }
+</script>
+</body>
+</html>
