@@ -370,6 +370,40 @@
     background: #fff;
   }
 
+  .photo-slot {
+    min-height: 210px;
+    display: grid;
+    place-items: center;
+    padding: 18px;
+    border-bottom: 1px solid var(--border);
+    background:
+      linear-gradient(135deg, rgba(255,255,255,.72), rgba(233,244,248,.9)),
+      repeating-linear-gradient(45deg, rgba(111,142,163,.14) 0 10px, rgba(255,255,255,.2) 10px 20px);
+    color: #376f8c;
+    font-weight: 700;
+    text-align: center;
+  }
+
+  .writing-list {
+    display: grid;
+    gap: 10px;
+  }
+
+  .writing-row {
+    display: grid;
+    grid-template-columns: minmax(150px, .8fr) 1fr;
+    gap: 10px;
+    align-items: center;
+  }
+
+  .writing-row label {
+    padding: 10px 12px;
+    border-radius: 8px;
+    background: var(--blue-pale);
+    color: var(--navy);
+    font-weight: 700;
+  }
+
   @media print {
     .topbar,
     .actions,
@@ -408,221 +442,133 @@
     <section class="hero">
       <span class="eyebrow">A1 · Germană · Gramatică și vocabular</span>
       <h1>Descrierea persoanelor</h1>
-      <p>Exerciții interactive pentru memorarea vocabularului despre aspect fizic, păr, ochi, vârstă și trăsături. Alege traducerea corectă, potrivește română-germană și descrie persoanele din imagini.</p>
+      <p>Fișă interactivă amplă pentru vocabular: descriere fizică, descriere comportamentală, traduceri, descrieri după fotografie, forme de feminin, plural și acord substantiv-adjectiv.</p>
     </section>
 
     <section>
-      <h2 class="section-title">Vocabular de bază</h2>
+      <h2 class="section-title">Vocabular lucrat</h2>
       <div class="quick-grid">
         <article class="card">
-          <h3>Aspect general</h3>
+          <h3>Descriere fizică</h3>
           <div class="pill-row">
-            <span class="pill">înalt · groß</span>
-            <span class="pill">scund · klein</span>
-            <span class="pill">slab · schlank</span>
-            <span class="pill">plinuț · mollig</span>
-            <span class="pill">tânăr · jung</span>
-            <span class="pill">în vârstă · alt</span>
+            <span class="pill">înalt · groß</span><span class="pill">scund · klein</span><span class="pill">slab · schlank</span><span class="pill">plinuț · mollig</span><span class="pill">tânăr · jung</span><span class="pill">în vârstă · alt</span><span class="pill">frumos · schön</span><span class="pill">păr blond · blonde Haare</span><span class="pill">păr șaten · braune Haare</span><span class="pill">păr negru · schwarze Haare</span><span class="pill">păr lung · lange Haare</span><span class="pill">păr scurt · kurze Haare</span><span class="pill">păr drept · glatte Haare</span><span class="pill">păr creț · lockige Haare</span><span class="pill">ochi albaștri · blaue Augen</span><span class="pill">ochi verzi · grüne Augen</span><span class="pill">ochi căprui · braune Augen</span><span class="pill">ochelari · Brille</span>
           </div>
         </article>
         <article class="card">
-          <h3>Păr și ochi</h3>
+          <h3>Descriere comportamentală</h3>
           <div class="pill-row">
-            <span class="pill">păr blond · blonde Haare</span>
-            <span class="pill">păr șaten · braune Haare</span>
-            <span class="pill">păr negru · schwarze Haare</span>
-            <span class="pill">ochi albaștri · blaue Augen</span>
-            <span class="pill">ochi verzi · grüne Augen</span>
-            <span class="pill">ochi căprui · braune Augen</span>
-          </div>
-        </article>
-        <article class="card">
-          <h3>Structuri utile</h3>
-          <div class="pill-row">
-            <span class="pill">El este...</span>
-            <span class="pill">Ea este...</span>
-            <span class="pill">El are...</span>
-            <span class="pill">Ea are...</span>
-            <span class="pill">Poartă ochelari.</span>
-            <span class="pill">Are părul lung.</span>
+            <span class="pill">prietenos · freundlich</span><span class="pill">amabil · nett</span><span class="pill">calm · ruhig</span><span class="pill">serios · ernst</span><span class="pill">vesel · fröhlich</span><span class="pill">harnic · fleißig</span><span class="pill">inteligent · intelligent</span><span class="pill">curajos · mutig</span><span class="pill">timid · schüchtern</span><span class="pill">vorbăreț · gesprächig</span><span class="pill">răbdător · geduldig</span><span class="pill">politicos · höflich</span>
           </div>
         </article>
       </div>
     </section>
 
     <section>
-      <h2 class="section-title">1. Alege traducerea corectă</h2>
-      <p class="section-note">Apasă pe răspunsul corect. Răspunsurile se colorează automat.</p>
+      <h2 class="section-title">1. Română → Germană: descriere fizică</h2>
+      <p class="section-note">Alege traducerea corectă pentru fiecare cuvânt.</p>
       <div class="exercise-grid">
-        <article class="exercise quiz">
-          <h3>Traducere RO → DE</h3>
-          <p class="question">1. „înalt” în germană este:</p>
-          <div class="options">
-            <button class="option" data-correct="true">groß</button>
-            <button class="option" data-correct="false">klein</button>
-            <button class="option" data-correct="false">jung</button>
-          </div>
-        </article>
-        <article class="exercise quiz">
-          <h3>Traducere RO → DE</h3>
-          <p class="question">2. „ochi verzi” în germană este:</p>
-          <div class="options">
-            <button class="option" data-correct="false">blaue Augen</button>
-            <button class="option" data-correct="true">grüne Augen</button>
-            <button class="option" data-correct="false">braune Haare</button>
-          </div>
-        </article>
-        <article class="exercise quiz">
-          <h3>Traducere DE → RO</h3>
-          <p class="question">3. „schwarze Haare” în română este:</p>
-          <div class="options">
-            <button class="option" data-correct="false">păr blond</button>
-            <button class="option" data-correct="false">păr șaten</button>
-            <button class="option" data-correct="true">păr negru</button>
-          </div>
-        </article>
-        <article class="exercise quiz">
-          <h3>Traducere DE → RO</h3>
-          <p class="question">4. „Sie trägt eine Brille.” în română este:</p>
-          <div class="options">
-            <button class="option" data-correct="true">Ea poartă ochelari.</button>
-            <button class="option" data-correct="false">Ea are părul lung.</button>
-            <button class="option" data-correct="false">Ea este scundă.</button>
-          </div>
-        </article>
+        <article class="exercise quiz"><h3>1</h3><p class="question">înalt</p><div class="options"><button class="option" data-correct="true">groß</button><button class="option" data-correct="false">klein</button><button class="option" data-correct="false">ruhig</button></div></article>
+        <article class="exercise quiz"><h3>2</h3><p class="question">scund</p><div class="options"><button class="option" data-correct="false">alt</button><button class="option" data-correct="true">klein</button><button class="option" data-correct="false">schlank</button></div></article>
+        <article class="exercise quiz"><h3>3</h3><p class="question">slab</p><div class="options"><button class="option" data-correct="false">mollig</button><button class="option" data-correct="true">schlank</button><button class="option" data-correct="false">jung</button></div></article>
+        <article class="exercise quiz"><h3>4</h3><p class="question">plinuț</p><div class="options"><button class="option" data-correct="true">mollig</button><button class="option" data-correct="false">groß</button><button class="option" data-correct="false">freundlich</button></div></article>
+        <article class="exercise quiz"><h3>5</h3><p class="question">tânăr</p><div class="options"><button class="option" data-correct="false">alt</button><button class="option" data-correct="false">ernst</button><button class="option" data-correct="true">jung</button></div></article>
+        <article class="exercise quiz"><h3>6</h3><p class="question">în vârstă</p><div class="options"><button class="option" data-correct="true">alt</button><button class="option" data-correct="false">kurz</button><button class="option" data-correct="false">schön</button></div></article>
+        <article class="exercise quiz"><h3>7</h3><p class="question">păr lung</p><div class="options"><button class="option" data-correct="false">kurze Haare</button><button class="option" data-correct="true">lange Haare</button><button class="option" data-correct="false">blaue Augen</button></div></article>
+        <article class="exercise quiz"><h3>8</h3><p class="question">păr creț</p><div class="options"><button class="option" data-correct="false">glatte Haare</button><button class="option" data-correct="false">braune Augen</button><button class="option" data-correct="true">lockige Haare</button></div></article>
+        <article class="exercise quiz"><h3>9</h3><p class="question">ochi verzi</p><div class="options"><button class="option" data-correct="true">grüne Augen</button><button class="option" data-correct="false">blaue Augen</button><button class="option" data-correct="false">blonde Haare</button></div></article>
+        <article class="exercise quiz"><h3>10</h3><p class="question">ochelari</p><div class="options"><button class="option" data-correct="false">Augen</button><button class="option" data-correct="true">Brille</button><button class="option" data-correct="false">Haare</button></div></article>
       </div>
     </section>
 
     <section>
-      <h2 class="section-title">2. Potrivește română-germană</h2>
-      <p class="section-note">Alege traducerea corectă din listă, apoi apasă „Verifică”.</p>
-      <article class="exercise">
-        <div class="match-list" id="match-vocab">
-          <div class="match-row">
-            <label>păr lung</label>
-            <select data-answer="lange Haare">
-              <option value="">Alege...</option>
-              <option>kurze Haare</option>
-              <option>lange Haare</option>
-              <option>blaue Augen</option>
-            </select>
-          </div>
-          <div class="match-row">
-            <label>ochi căprui</label>
-            <select data-answer="braune Augen">
-              <option value="">Alege...</option>
-              <option>braune Augen</option>
-              <option>braune Haare</option>
-              <option>grüne Augen</option>
-            </select>
-          </div>
-          <div class="match-row">
-            <label>scund</label>
-            <select data-answer="klein">
-              <option value="">Alege...</option>
-              <option>jung</option>
-              <option>groß</option>
-              <option>klein</option>
-            </select>
-          </div>
-          <div class="match-row">
-            <label>păr creț</label>
-            <select data-answer="lockige Haare">
-              <option value="">Alege...</option>
-              <option>glatte Haare</option>
-              <option>lockige Haare</option>
-              <option>kurze Haare</option>
-            </select>
-          </div>
-          <div class="match-row">
-            <label>în vârstă</label>
-            <select data-answer="alt">
-              <option value="">Alege...</option>
-              <option>jung</option>
-              <option>alt</option>
-              <option>schlank</option>
-            </select>
-          </div>
-        </div>
-        <div class="actions">
-          <button class="check-btn" onclick="checkSelects('match-vocab', 'fb-match')">Verifică</button>
-          <button class="reset-btn" onclick="resetSelects('match-vocab', 'fb-match')">Reset</button>
-        </div>
-        <div class="feedback" id="fb-match"></div>
-      </article>
+      <h2 class="section-title">2. Română → Germană: descriere comportamentală</h2>
+      <p class="section-note">Alege traducerea corectă pentru fiecare trăsătură.</p>
+      <div class="exercise-grid">
+        <article class="exercise quiz"><h3>1</h3><p class="question">prietenos</p><div class="options"><button class="option" data-correct="true">freundlich</button><button class="option" data-correct="false">ernst</button><button class="option" data-correct="false">alt</button></div></article>
+        <article class="exercise quiz"><h3>2</h3><p class="question">amabil</p><div class="options"><button class="option" data-correct="false">mutig</button><button class="option" data-correct="true">nett</button><button class="option" data-correct="false">klein</button></div></article>
+        <article class="exercise quiz"><h3>3</h3><p class="question">calm</p><div class="options"><button class="option" data-correct="true">ruhig</button><button class="option" data-correct="false">fröhlich</button><button class="option" data-correct="false">blond</button></div></article>
+        <article class="exercise quiz"><h3>4</h3><p class="question">serios</p><div class="options"><button class="option" data-correct="false">gesprächig</button><button class="option" data-correct="false">höflich</button><button class="option" data-correct="true">ernst</button></div></article>
+        <article class="exercise quiz"><h3>5</h3><p class="question">vesel</p><div class="options"><button class="option" data-correct="true">fröhlich</button><button class="option" data-correct="false">ruhig</button><button class="option" data-correct="false">schlank</button></div></article>
+        <article class="exercise quiz"><h3>6</h3><p class="question">harnic</p><div class="options"><button class="option" data-correct="false">schüchtern</button><button class="option" data-correct="true">fleißig</button><button class="option" data-correct="false">mollig</button></div></article>
+        <article class="exercise quiz"><h3>7</h3><p class="question">inteligent</p><div class="options"><button class="option" data-correct="true">intelligent</button><button class="option" data-correct="false">geduldig</button><button class="option" data-correct="false">kurz</button></div></article>
+        <article class="exercise quiz"><h3>8</h3><p class="question">curajos</p><div class="options"><button class="option" data-correct="false">nett</button><button class="option" data-correct="true">mutig</button><button class="option" data-correct="false">braun</button></div></article>
+        <article class="exercise quiz"><h3>9</h3><p class="question">timid</p><div class="options"><button class="option" data-correct="true">schüchtern</button><button class="option" data-correct="false">freundlich</button><button class="option" data-correct="false">groß</button></div></article>
+        <article class="exercise quiz"><h3>10</h3><p class="question">politicos</p><div class="options"><button class="option" data-correct="false">jung</button><button class="option" data-correct="false">lockig</button><button class="option" data-correct="true">höflich</button></div></article>
+      </div>
     </section>
 
     <section>
-      <h2 class="section-title">3. Descrie persoanele</h2>
-      <p class="section-note">Privește imaginea și alege descrierea corectă.</p>
+      <h2 class="section-title">3. Descriere cu poză: alege varianta corectă</h2>
+      <p class="section-note">Am lăsat spații pentru poze. Tu poți înlocui ulterior fiecare casetă cu fotografia potrivită.</p>
       <div class="photo-grid">
-        <article class="photo-card quiz">
-          <div class="portrait" style="--photo-bg:#dceef5;--hair:#d8b45f;--skin:#e8b990;--shirt:#6f8ea3;--eyes:#3e80a0;">
-            <div class="person long"><div class="hair"></div><div class="head"></div><div class="eye left"></div><div class="eye right"></div><div class="body"></div></div>
-          </div>
-          <div class="photo-body">
-            <h3>Persoana 1</h3>
-            <p class="question">Care descriere este corectă?</p>
-            <div class="options">
-              <button class="option" data-correct="true">Ea are părul blond și ochii albaștri.</button>
-              <button class="option" data-correct="false">El are părul negru și ochii căprui.</button>
-              <button class="option" data-correct="false">Ea are părul scurt și creț.</button>
-            </div>
-          </div>
-        </article>
-
-        <article class="photo-card quiz">
-          <div class="portrait" style="--photo-bg:#eef0f7;--hair:#2f2520;--skin:#c88962;--shirt:#ff6f61;--eyes:#4a2d1e;">
-            <div class="person short"><div class="hair"></div><div class="head"></div><div class="eye left"></div><div class="eye right"></div><div class="body"></div></div>
-          </div>
-          <div class="photo-body">
-            <h3>Persoana 2</h3>
-            <p class="question">Alege propoziția corectă:</p>
-            <div class="options">
-              <button class="option" data-correct="false">Ea este înaltă și are părul blond.</button>
-              <button class="option" data-correct="true">El are părul scurt și negru.</button>
-              <button class="option" data-correct="false">El are ochii verzi și părul lung.</button>
-            </div>
-          </div>
-        </article>
-
-        <article class="photo-card quiz">
-          <div class="portrait" style="--photo-bg:#e8f4ee;--hair:#5a3928;--skin:#d9a77f;--shirt:#7fb7cf;--eyes:#2d7a4f;">
-            <div class="person curly"><div class="hair"></div><div class="head"></div><div class="eye left"></div><div class="eye right"></div><div class="body"></div></div>
-          </div>
-          <div class="photo-body">
-            <h3>Persoana 3</h3>
-            <p class="question">Ce descriere se potrivește?</p>
-            <div class="options">
-              <button class="option" data-correct="false">Ea are părul drept și blond.</button>
-              <button class="option" data-correct="false">El poartă ochelari.</button>
-              <button class="option" data-correct="true">Ea are părul creț și ochii verzi.</button>
-            </div>
-          </div>
-        </article>
+        <article class="photo-card quiz"><div class="photo-slot">Adaugă poza 1<br>femeie, păr blond, ochi albaștri</div><div class="photo-body"><h3>Poza 1</h3><div class="options"><button class="option" data-correct="true">Ea are părul blond și ochii albaștri.</button><button class="option" data-correct="false">El are părul negru și ochii căprui.</button><button class="option" data-correct="false">Ea are părul scurt și creț.</button></div></div></article>
+        <article class="photo-card quiz"><div class="photo-slot">Adaugă poza 2<br>bărbat, păr scurt, ochelari</div><div class="photo-body"><h3>Poza 2</h3><div class="options"><button class="option" data-correct="false">Ea este înaltă și are părul blond.</button><button class="option" data-correct="true">El are părul scurt și poartă ochelari.</button><button class="option" data-correct="false">El are părul lung și creț.</button></div></div></article>
+        <article class="photo-card quiz"><div class="photo-slot">Adaugă poza 3<br>femeie veselă, păr creț</div><div class="photo-body"><h3>Poza 3</h3><div class="options"><button class="option" data-correct="false">Ea este serioasă și are părul drept.</button><button class="option" data-correct="true">Ea este veselă și are părul creț.</button><button class="option" data-correct="false">El este timid și în vârstă.</button></div></div></article>
       </div>
     </section>
 
     <section>
-      <h2 class="section-title">4. Completează descrierea</h2>
-      <p class="section-note">Scrie cuvintele lipsă în română. Folosește: <strong>înalt, ochii, părul, ochelari, blond</strong>.</p>
-      <article class="exercise" id="fill-ex">
-        <p class="sentence">1. El este <input type="text" data-answer="înalt" aria-label="Răspuns 1">.</p>
-        <p class="sentence">2. Ea are <input type="text" data-answer="părul" aria-label="Răspuns 2"> <input type="text" data-answer="blond" aria-label="Răspuns 3">.</p>
-        <p class="sentence">3. El are <input type="text" data-answer="ochii" aria-label="Răspuns 4"> căprui.</p>
-        <p class="sentence">4. Ea poartă <input type="text" data-answer="ochelari" aria-label="Răspuns 5">.</p>
-        <div class="actions">
-          <button class="check-btn" onclick="checkInputs('fill-ex', 'fb-fill')">Verifică</button>
-          <button class="reset-btn" onclick="resetInputs('fill-ex', 'fb-fill')">Reset</button>
+      <h2 class="section-title">4. Germană → Română: scrie traducerea</h2>
+      <article class="exercise" id="de-ro">
+        <div class="writing-list">
+          <div class="writing-row"><label>groß</label><input type="text" data-answer="înalt"></div>
+          <div class="writing-row"><label>klein</label><input type="text" data-answer="scund"></div>
+          <div class="writing-row"><label>blonde Haare</label><input type="text" data-answer="păr blond"></div>
+          <div class="writing-row"><label>braune Augen</label><input type="text" data-answer="ochi căprui"></div>
+          <div class="writing-row"><label>freundlich</label><input type="text" data-answer="prietenos"></div>
+          <div class="writing-row"><label>schüchtern</label><input type="text" data-answer="timid"></div>
         </div>
-        <div class="feedback" id="fb-fill"></div>
+        <div class="actions"><button class="check-btn" onclick="checkInputs('de-ro', 'fb-de-ro')">Verifică</button><button class="reset-btn" onclick="resetInputs('de-ro', 'fb-de-ro')">Reset</button></div>
+        <div class="feedback" id="fb-de-ro"></div>
       </article>
+    </section>
+
+    <section>
+      <h2 class="section-title">5. Scrie forma de feminin</h2>
+      <article class="exercise" id="feminin">
+        <div class="writing-list">
+          <div class="writing-row"><label>înalt</label><input type="text" data-answer="înaltă"></div>
+          <div class="writing-row"><label>scund</label><input type="text" data-answer="scundă"></div>
+          <div class="writing-row"><label>frumos</label><input type="text" data-answer="frumoasă"></div>
+          <div class="writing-row"><label>prietenos</label><input type="text" data-answer="prietenoasă"></div>
+          <div class="writing-row"><label>serios</label><input type="text" data-answer="serioasă"></div>
+          <div class="writing-row"><label>curajos</label><input type="text" data-answer="curajoasă"></div>
+        </div>
+        <div class="actions"><button class="check-btn" onclick="checkInputs('feminin', 'fb-feminin')">Verifică</button><button class="reset-btn" onclick="resetInputs('feminin', 'fb-feminin')">Reset</button></div>
+        <div class="feedback" id="fb-feminin"></div>
+      </article>
+    </section>
+
+    <section>
+      <h2 class="section-title">6. Scrie forma de plural</h2>
+      <article class="exercise" id="plural">
+        <div class="writing-list">
+          <div class="writing-row"><label>băiat înalt</label><input type="text" data-answer="băieți înalți"></div>
+          <div class="writing-row"><label>fată frumoasă</label><input type="text" data-answer="fete frumoase"></div>
+          <div class="writing-row"><label>copil prietenos</label><input type="text" data-answer="copii prietenoși"></div>
+          <div class="writing-row"><label>persoană calmă</label><input type="text" data-answer="persoane calme"></div>
+          <div class="writing-row"><label>ochi albastru</label><input type="text" data-answer="ochi albaștri"></div>
+        </div>
+        <div class="actions"><button class="check-btn" onclick="checkInputs('plural', 'fb-plural')">Verifică</button><button class="reset-btn" onclick="resetInputs('plural', 'fb-plural')">Reset</button></div>
+        <div class="feedback" id="fb-plural"></div>
+      </article>
+    </section>
+
+    <section>
+      <h2 class="section-title">7. Acord: alege adjectivul corect</h2>
+      <p class="section-note">Primești un substantiv și trei adjective. Alege forma corectă.</p>
+      <div class="exercise-grid">
+        <article class="exercise quiz"><h3>fată</h3><p class="question">fată ...</p><div class="options"><button class="option" data-correct="false">înalt</button><button class="option" data-correct="true">înaltă</button><button class="option" data-correct="false">înalți</button></div></article>
+        <article class="exercise quiz"><h3>băiat</h3><p class="question">băiat ...</p><div class="options"><button class="option" data-correct="true">prietenos</button><button class="option" data-correct="false">prietenoasă</button><button class="option" data-correct="false">prietenoase</button></div></article>
+        <article class="exercise quiz"><h3>persoane</h3><p class="question">persoane ...</p><div class="options"><button class="option" data-correct="false">calm</button><button class="option" data-correct="false">calmă</button><button class="option" data-correct="true">calme</button></div></article>
+        <article class="exercise quiz"><h3>ochi</h3><p class="question">ochi ...</p><div class="options"><button class="option" data-correct="true">albaștri</button><button class="option" data-correct="false">albastră</button><button class="option" data-correct="false">albastru</button></div></article>
+      </div>
     </section>
 
     <section class="print-box">
-      <h2 class="section-title">Mini-model pentru descriere</h2>
-      <p><strong>Română:</strong> Ea este tânără. Are părul blond și ochii albaștri. Este înaltă și poartă ochelari.</p>
-      <p><strong>Deutsch:</strong> Sie ist jung. Sie hat blonde Haare und blaue Augen. Sie ist groß und trägt eine Brille.</p>
+      <h2 class="section-title">Model</h2>
+      <p><strong>Română:</strong> Ea este tânără și prietenoasă. Are părul blond și ochii albaștri. Este înaltă și poartă ochelari.</p>
+      <p><strong>Deutsch:</strong> Sie ist jung und freundlich. Sie hat blonde Haare und blaue Augen. Sie ist groß und trägt eine Brille.</p>
     </section>
   </main>
 
