@@ -175,6 +175,42 @@
     font-weight: 700;
   }
 
+  .vocab-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 8px;
+  }
+
+  .vocab-card {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-height: 58px;
+    padding: 10px 14px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--paper);
+    box-shadow: 0 4px 16px rgba(38, 61, 82, .06);
+  }
+
+  .vocab-card .emoji {
+    flex: 0 0 30px;
+    font-size: 1.35rem;
+  }
+
+  .vocab-card .ro {
+    flex: 1;
+    color: var(--navy);
+    font-size: 1rem;
+    font-weight: 700;
+  }
+
+  .vocab-card .de {
+    flex: 1;
+    color: #376f8c;
+    font-size: .95rem;
+  }
+
   .section-title {
     margin: 28px 0 12px;
     color: var(--navy);
@@ -447,19 +483,37 @@
 
     <section>
       <h2 class="section-title">Vocabular lucrat</h2>
-      <div class="quick-grid">
-        <article class="card">
-          <h3>Descriere fizică</h3>
-          <div class="pill-row">
-            <span class="pill">înalt · groß</span><span class="pill">scund · klein</span><span class="pill">slab · schlank</span><span class="pill">plinuț · mollig</span><span class="pill">tânăr · jung</span><span class="pill">în vârstă · alt</span><span class="pill">frumos · schön</span><span class="pill">păr blond · blonde Haare</span><span class="pill">păr șaten · braune Haare</span><span class="pill">păr negru · schwarze Haare</span><span class="pill">păr lung · lange Haare</span><span class="pill">păr scurt · kurze Haare</span><span class="pill">păr drept · glatte Haare</span><span class="pill">păr creț · lockige Haare</span><span class="pill">ochi albaștri · blaue Augen</span><span class="pill">ochi verzi · grüne Augen</span><span class="pill">ochi căprui · braune Augen</span><span class="pill">ochelari · Brille</span>
-          </div>
-        </article>
-        <article class="card">
-          <h3>Descriere comportamentală</h3>
-          <div class="pill-row">
-            <span class="pill">prietenos · freundlich</span><span class="pill">amabil · nett</span><span class="pill">calm · ruhig</span><span class="pill">serios · ernst</span><span class="pill">vesel · fröhlich</span><span class="pill">harnic · fleißig</span><span class="pill">inteligent · intelligent</span><span class="pill">curajos · mutig</span><span class="pill">timid · schüchtern</span><span class="pill">vorbăreț · gesprächig</span><span class="pill">răbdător · geduldig</span><span class="pill">politicos · höflich</span>
-          </div>
-        </article>
+      <div class="vocab-grid">
+        <div class="vocab-card"><span class="emoji">📏</span><span class="ro">înalt</span><span class="de">groß</span></div>
+        <div class="vocab-card"><span class="emoji">📐</span><span class="ro">scund</span><span class="de">klein</span></div>
+        <div class="vocab-card"><span class="emoji">🧍</span><span class="ro">slab</span><span class="de">schlank</span></div>
+        <div class="vocab-card"><span class="emoji">🙂</span><span class="ro">plinuț</span><span class="de">mollig</span></div>
+        <div class="vocab-card"><span class="emoji">🌱</span><span class="ro">tânăr</span><span class="de">jung</span></div>
+        <div class="vocab-card"><span class="emoji">⌛</span><span class="ro">în vârstă</span><span class="de">alt</span></div>
+        <div class="vocab-card"><span class="emoji">✨</span><span class="ro">frumos</span><span class="de">schön</span></div>
+        <div class="vocab-card"><span class="emoji">🟡</span><span class="ro">păr blond</span><span class="de">blonde Haare</span></div>
+        <div class="vocab-card"><span class="emoji">🟤</span><span class="ro">păr șaten</span><span class="de">braune Haare</span></div>
+        <div class="vocab-card"><span class="emoji">⚫</span><span class="ro">păr negru</span><span class="de">schwarze Haare</span></div>
+        <div class="vocab-card"><span class="emoji">〰️</span><span class="ro">păr lung</span><span class="de">lange Haare</span></div>
+        <div class="vocab-card"><span class="emoji">✂️</span><span class="ro">păr scurt</span><span class="de">kurze Haare</span></div>
+        <div class="vocab-card"><span class="emoji">➖</span><span class="ro">păr drept</span><span class="de">glatte Haare</span></div>
+        <div class="vocab-card"><span class="emoji">➰</span><span class="ro">păr creț</span><span class="de">lockige Haare</span></div>
+        <div class="vocab-card"><span class="emoji">🔵</span><span class="ro">ochi albaștri</span><span class="de">blaue Augen</span></div>
+        <div class="vocab-card"><span class="emoji">🟢</span><span class="ro">ochi verzi</span><span class="de">grüne Augen</span></div>
+        <div class="vocab-card"><span class="emoji">🟤</span><span class="ro">ochi căprui</span><span class="de">braune Augen</span></div>
+        <div class="vocab-card"><span class="emoji">👓</span><span class="ro">ochelari</span><span class="de">Brille</span></div>
+        <div class="vocab-card"><span class="emoji">🤝</span><span class="ro">prietenos</span><span class="de">freundlich</span></div>
+        <div class="vocab-card"><span class="emoji">😊</span><span class="ro">amabil</span><span class="de">nett</span></div>
+        <div class="vocab-card"><span class="emoji">🌿</span><span class="ro">calm</span><span class="de">ruhig</span></div>
+        <div class="vocab-card"><span class="emoji">📘</span><span class="ro">serios</span><span class="de">ernst</span></div>
+        <div class="vocab-card"><span class="emoji">😄</span><span class="ro">vesel</span><span class="de">fröhlich</span></div>
+        <div class="vocab-card"><span class="emoji">✍️</span><span class="ro">harnic</span><span class="de">fleißig</span></div>
+        <div class="vocab-card"><span class="emoji">🧠</span><span class="ro">inteligent</span><span class="de">intelligent</span></div>
+        <div class="vocab-card"><span class="emoji">🛡️</span><span class="ro">curajos</span><span class="de">mutig</span></div>
+        <div class="vocab-card"><span class="emoji">🙈</span><span class="ro">timid</span><span class="de">schüchtern</span></div>
+        <div class="vocab-card"><span class="emoji">💬</span><span class="ro">vorbăreț</span><span class="de">gesprächig</span></div>
+        <div class="vocab-card"><span class="emoji">⏳</span><span class="ro">răbdător</span><span class="de">geduldig</span></div>
+        <div class="vocab-card"><span class="emoji">🙏</span><span class="ro">politicos</span><span class="de">höflich</span></div>
       </div>
     </section>
 
