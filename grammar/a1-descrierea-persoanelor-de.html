@@ -420,6 +420,20 @@
     text-align: center;
   }
 
+  .photo-slot.has-image {
+    min-height: 0;
+    padding: 0;
+    background: #f8fcfd;
+  }
+
+  .photo-slot img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    object-position: center top;
+  }
+
   .writing-list {
     display: grid;
     gap: 10px;
@@ -553,11 +567,11 @@
 
     <section>
       <h2 class="section-title">3. Descriere cu poză: alege varianta corectă</h2>
-      <p class="section-note">Am lăsat spații pentru poze. Tu poți înlocui ulterior fiecare casetă cu fotografia potrivită.</p>
+      <p class="section-note">Privește poza și alege descrierea corectă.</p>
       <div class="photo-grid">
-        <article class="photo-card quiz"><div class="photo-slot">Adaugă poza 1<br>femeie, păr blond, ochi albaștri</div><div class="photo-body"><h3>Poza 1</h3><div class="options"><button class="option" data-correct="true">Ea are părul blond și ochii albaștri.</button><button class="option" data-correct="false">El are părul negru și ochii căprui.</button><button class="option" data-correct="false">Ea are părul scurt și creț.</button></div></div></article>
-        <article class="photo-card quiz"><div class="photo-slot">Adaugă poza 2<br>bărbat, păr scurt, ochelari</div><div class="photo-body"><h3>Poza 2</h3><div class="options"><button class="option" data-correct="false">Ea este înaltă și are părul blond.</button><button class="option" data-correct="true">El are părul scurt și poartă ochelari.</button><button class="option" data-correct="false">El are părul lung și creț.</button></div></div></article>
-        <article class="photo-card quiz"><div class="photo-slot">Adaugă poza 3<br>femeie veselă, păr creț</div><div class="photo-body"><h3>Poza 3</h3><div class="options"><button class="option" data-correct="false">Ea este serioasă și are părul drept.</button><button class="option" data-correct="true">Ea este veselă și are părul creț.</button><button class="option" data-correct="false">El este timid și în vârstă.</button></div></div></article>
+        <article class="photo-card quiz"><div class="photo-slot has-image"><img src="../assets/images/descrierea-persoanelor-poza-1.jpg" alt="Poza 1: femeie cu păr blond și ochi albaștri"></div><div class="photo-body"><h3>Poza 1</h3><div class="options"><button class="option" data-correct="true">Ea are părul blond și ochii albaștri.</button><button class="option" data-correct="false">El are părul negru și ochii căprui.</button><button class="option" data-correct="false">Ea are părul scurt și creț.</button></div></div></article>
+        <article class="photo-card quiz"><div class="photo-slot has-image"><img src="../assets/images/descrierea-persoanelor-poza-2.jpg" alt="Poza 2: bărbat cu păr scurt și ochelari"></div><div class="photo-body"><h3>Poza 2</h3><div class="options"><button class="option" data-correct="false">Ea este înaltă și are părul blond.</button><button class="option" data-correct="true">El are părul scurt și poartă ochelari.</button><button class="option" data-correct="false">El are părul lung și creț.</button></div></div></article>
+        <article class="photo-card quiz"><div class="photo-slot has-image"><img src="../assets/images/descrierea-persoanelor-poza-3.jpg" alt="Poza 3: femeie veselă cu păr creț"></div><div class="photo-body"><h3>Poza 3</h3><div class="options"><button class="option" data-correct="false">Ea este serioasă și are părul drept.</button><button class="option" data-correct="true">Ea este veselă și are părul creț.</button><button class="option" data-correct="false">El este timid și în vârstă.</button></div></div></article>
       </div>
     </section>
 
@@ -621,8 +635,8 @@
 
     <section class="print-box">
       <h2 class="section-title">Model</h2>
-      <p><strong>Română:</strong> Ea este tânără și prietenoasă. Are părul blond și ochii albaștri. Este înaltă și poartă ochelari.</p>
-      <p><strong>Deutsch:</strong> Sie ist jung und freundlich. Sie hat blonde Haare und blaue Augen. Sie ist groß und trägt eine Brille.</p>
+      <p><strong>Română:</strong> Ea este tânără și prietenoasă. Are părul lung, blond și ochii albaștri. Este frumoasă și zâmbește.</p>
+      <p><strong>Deutsch:</strong> Sie ist jung und freundlich. Sie hat lange blonde Haare und blaue Augen. Sie ist schön und lächelt.</p>
     </section>
   </main>
 
