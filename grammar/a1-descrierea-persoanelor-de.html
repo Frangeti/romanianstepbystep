@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>A1 · Descrierea persoanelor · Exerciții DE</title>
-<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&amp;display=swap" rel="stylesheet">
 <style>
   :root {
     --navy: #263d52;
@@ -220,6 +220,76 @@
   .section-note {
     margin: -6px 0 14px;
     color: var(--muted);
+  }
+
+  .adjective-table-wrap {
+    overflow-x: auto;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--paper);
+    box-shadow: 0 8px 22px rgba(38, 61, 82, .07);
+  }
+
+  .adjective-table {
+    width: 100%;
+    min-width: 720px;
+    border-collapse: collapse;
+  }
+
+  .adjective-table th,
+  .adjective-table td {
+    padding: 11px 14px;
+    border-bottom: 1px solid var(--border);
+    text-align: left;
+  }
+
+  .adjective-table th {
+    background: var(--navy);
+    color: #fff;
+    font-size: 14px;
+  }
+
+  .adjective-table tbody tr:nth-child(even) {
+    background: #f7fafb;
+  }
+
+  .adjective-table tbody tr:last-child td {
+    border-bottom: 0;
+  }
+
+  .adjective-table td:first-child {
+    color: var(--navy);
+    font-weight: 700;
+  }
+
+  .theory-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 12px;
+    margin-top: 14px;
+  }
+
+  .theory-card {
+    padding: 16px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--paper);
+    box-shadow: 0 6px 18px rgba(38, 61, 82, .06);
+  }
+
+  .theory-card h3 {
+    margin: 0 0 8px;
+    color: var(--navy);
+    font-size: 17px;
+  }
+
+  .theory-card p {
+    margin: 0;
+  }
+
+  .ending {
+    color: var(--coral);
+    font-weight: 700;
   }
 
   .exercise {
@@ -468,6 +538,8 @@
     .card,
     .exercise,
     .photo-card,
+    .adjective-table-wrap,
+    .theory-card,
     .print-box {
       box-shadow: none;
       break-inside: avoid;
@@ -528,6 +600,64 @@
         <div class="vocab-card"><span class="emoji">💬</span><span class="ro">vorbăreț</span><span class="de">gesprächig</span></div>
         <div class="vocab-card"><span class="emoji">⏳</span><span class="ro">răbdător</span><span class="de">geduldig</span></div>
         <div class="vocab-card"><span class="emoji">🙏</span><span class="ro">politicos</span><span class="de">höflich</span></div>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="section-title">Formele adjectivelor în română</h2>
+      <p class="section-note">Adjectivul se acordă cu substantivul în gen (masculin/feminin) și număr (singular/plural).</p>
+
+      <div class="adjective-table-wrap">
+        <table class="adjective-table">
+          <thead>
+            <tr>
+              <th>Adjectiv</th>
+              <th>Masculin singular</th>
+              <th>Feminin singular</th>
+              <th>Masculin plural</th>
+              <th>Feminin plural</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>înalt</td><td>înalt</td><td>înaltă</td><td>înalți</td><td>înalte</td></tr>
+            <tr><td>scund</td><td>scund</td><td>scundă</td><td>scunzi</td><td>scunde</td></tr>
+            <tr><td>slab</td><td>slab</td><td>slabă</td><td>slabi</td><td>slabe</td></tr>
+            <tr><td>plinuț</td><td>plinuț</td><td>plinuță</td><td>plinuți</td><td>plinuțe</td></tr>
+            <tr><td>tânăr</td><td>tânăr</td><td>tânără</td><td>tineri</td><td>tinere</td></tr>
+            <tr><td>frumos</td><td>frumos</td><td>frumoasă</td><td>frumoși</td><td>frumoase</td></tr>
+            <tr><td>blond</td><td>blond</td><td>blondă</td><td>blonzi</td><td>blonde</td></tr>
+            <tr><td>șaten</td><td>șaten</td><td>șatenă</td><td>șateni</td><td>șatene</td></tr>
+            <tr><td>negru</td><td>negru</td><td>neagră</td><td>negri</td><td>negre</td></tr>
+            <tr><td>lung</td><td>lung</td><td>lungă</td><td>lungi</td><td>lungi</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="theory-grid">
+        <article class="theory-card">
+          <h3>Regula de bază</h3>
+          <p>Forma de masculin singular este forma din dicționar: <strong>băiat înalt</strong>. Pentru feminin singular se adaugă frecvent terminația <span class="ending">-ă</span>: <strong>fată înaltă</strong>.</p>
+        </article>
+        <article class="theory-card">
+          <h3>Formele de plural</h3>
+          <p>Masculinul plural are frecvent terminația <span class="ending">-i</span>, iar femininul plural terminația <span class="ending">-e</span>: <strong>băieți înalți</strong>, <strong>fete înalte</strong>. Uneori consoana se modifică: <strong>scund → scunzi</strong>.</p>
+        </article>
+        <article class="theory-card">
+          <h3>Adjective terminate în -os</h3>
+          <p>Un tipar important este <span class="ending">-os / -oasă / -oși / -oase</span>: <strong>frumos, frumoasă, frumoși, frumoase</strong>.</p>
+        </article>
+        <article class="theory-card">
+          <h3>Forme speciale</h3>
+          <p>Unele adjective își schimbă rădăcina și trebuie memorate: <strong>tânăr → tineri</strong>, <strong>negru → neagră</strong>. Altele au aceeași formă la plural masculin și feminin: <strong>lungi</strong>.</p>
+        </article>
+        <article class="theory-card">
+          <h3>Adjective cu două forme</h3>
+          <p>Există și adjective cu o formă pentru singular și una pentru plural, indiferent de gen: <strong>băiat mare / fată mare</strong>, <strong>băieți mari / fete mari</strong>.</p>
+        </article>
+        <article class="theory-card">
+          <h3>Poziția adjectivului</h3>
+          <p>În descrierile neutre, adjectivul apare de obicei după substantiv: <strong>păr blond</strong>, <strong>ochi verzi</strong>, <strong>fată înaltă</strong>.</p>
+        </article>
       </div>
     </section>
 
