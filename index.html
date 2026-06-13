@@ -1022,6 +1022,7 @@
         <div class="sid-section">
           <div class="language-tools home-tools is-open" data-home-tools>
             <a class="sid-item subitem home-level" href="#romana-a1-incepator" data-home-section="romana-a1-incepator">A1. Începător</a>
+            <a class="sid-item subitem home-level" href="#c1" data-level-filter="c1">C1. Avansat</a>
             <a class="sid-item tool-item home-tool" href="#romana-lectii" data-home-section="romana-lectii"><span class="sid-dot dot-green"></span>1. Lecții de limba română</a>
             <a class="sid-item tool-item home-tool" href="#romana-lectii-pdf" data-home-section="romana-lectii-pdf"><span class="sid-dot dot-green"></span>2. Lecții de limba română PDF</a>
             <a class="sid-item tool-item home-tool" href="#romana-dictionar" data-home-section="romana-dictionar"><span class="sid-dot dot-green"></span>3. Dicționar</a>
@@ -1072,17 +1073,17 @@
           <div class="eyebrow">Platformă de lecții</div>
           <div class="intro-copy">
             <h1>Învață româna pas cu pas</h1>
-            <p>Lecții A1 organizate clar pentru învățare pas cu pas.</p>
+            <p>Lecții de limba română organizate clar, de la nivelul A1 la C1.</p>
           </div>
 
           <div class="stats" aria-label="Rezumat">
             <div class="stat">
-              <strong>10+2</strong>
-              <span>lecții A1 + lecții copii</span>
+              <strong>10+3</strong>
+              <span>lecții publicate</span>
             </div>
             <div class="stat">
-              <strong>A1</strong>
-              <span>nivel disponibil</span>
+              <strong>A1 și C1</strong>
+              <span>niveluri disponibile</span>
             </div>
             <div class="stat">
               <strong data-stat="audio-count">49</strong>
@@ -1111,10 +1112,18 @@
         <section id="romana-lectii">
           <div class="section-title">
             <h2>Lecții de limba română</h2>
-            <span>conținut viitor</span>
+            <span>lecții disponibile</span>
           </div>
           <div class="resource-grid">
             <article class="resource-card"><div class="resource-body"><div class="meta"><span class="badge badge-b2">A1</span><span class="badge badge-live">În pregătire</span></div><h3>Lecții A1</h3><p>Spațiu pregătit pentru lecții numai în limba română.</p><span class="resource-status waiting">În pregătire</span></div></article>
+            <article class="resource-card">
+              <div class="resource-body">
+                <div class="meta"><span class="badge badge-b2">C1</span><span class="badge badge-tech">English</span><span class="badge badge-live">Activă</span></div>
+                <h3>La doctor</h3>
+                <p>Vocabular medical nuanțat, registru formal, false friends, dialog și roleplay.</p>
+                <a class="open-lesson" href="lessons/c1/la-doctor.html">Deschide lecția</a>
+              </div>
+            </article>
           </div>
         </section>
 
@@ -1823,6 +1832,39 @@
             </div>
           </div>
 
+          <div class="level-section" id="c1" data-level-section="c1">
+            <div class="level-heading">
+              <h3>C1. Avansat</h3>
+            </div>
+            <div class="lesson-category">
+              <div class="lesson-category-head">
+                <h4>Lecții de limba română pentru vorbitorii de limba engleză</h4>
+              </div>
+              <div class="lesson-grid">
+                <article class="lesson-card" data-lesson-link="lessons/c1/la-doctor.html" data-lesson-no="01" tabindex="0" role="link">
+                  <div class="lesson-head">
+                    <div class="meta">
+                      <span class="badge badge-b2">Nivel C1</span>
+                      <span class="badge badge-tech">English</span>
+                      <span class="badge badge-live">Activă</span>
+                    </div>
+                    <div class="lesson-title" data-topic="At the doctor's">La doctor</div>
+                    <p class="lesson-desc">Nuanțe, subtilități și exprimare formală într-o consultație medicală.</p>
+                  </div>
+                  <div class="lesson-body">
+                    <div class="lesson-features">
+                      <div class="feature"><strong>Vocabular</strong><span>tipuri de durere și tratament</span></div>
+                      <div class="feature"><strong>Registru</strong><span>politețe și atenuare</span></div>
+                      <div class="feature"><strong>Traducere</strong><span>false friends din engleză</span></div>
+                      <div class="feature"><strong>Practică</strong><span>dialog, roleplay și autoevaluare</span></div>
+                    </div>
+                    <span class="resource-status">Lecție inclusă în C1</span>
+                  </div>
+                </article>
+              </div>
+            </div>
+          </div>
+
           <div class="empty-level is-hidden" data-empty-level>
             Nu există încă lecții publicate pentru acest nivel.
           </div>
@@ -2251,8 +2293,14 @@
 
     if (window.location.hash) {
       const hash = window.location.hash;
+      const requestedLevel = document.querySelector(`[data-level-section="${hash.slice(1)}"]`);
+      if (requestedLevel) {
+        showOnlyMainSection('#lectii');
+        showLessonsForLevel(hash.slice(1));
+        setActiveLevel(hash.slice(1));
+      }
       const targetSection = document.querySelector(`.main > section${hash}`);
-      if (targetSection) {
+      if (targetSection && !requestedLevel) {
         showOnlyMainSection(hash);
         const matchingLink = document.querySelector(`.sid-item[href="${hash}"]`);
         const language = matchingLink?.dataset.languageTool;

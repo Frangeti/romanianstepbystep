@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Romanian Step by Step C1 — La doctor</title>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&amp;display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #263d52;
+    --navy-soft: #2f4a60;
+    --purple: #574bc4;
+    --purple-light: #eeecff;
+    --teal: #277d78;
+    --teal-light: #e3f4f1;
+    --coral: #c94b2a;
+    --coral-light: #fff0eb;
+    --amber: #a96810;
+    --amber-light: #fff4dc;
+    --paper: #fff;
+    --bg: #f6f8f9;
+    --surface: #f9fbfc;
+    --border: #d8e2e8;
+    --text: #1f2f3b;
+    --muted: #6f7c84;
+    --shadow: 0 12px 32px rgba(38, 61, 82, .1);
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Atkinson Hyperlegible', Arial, sans-serif;
+    line-height: 1.58;
+  }
+  button, input, select, textarea { font: inherit; }
+  a { color: inherit; text-decoration: none; }
+  .topbar {
+    min-height: 72px;
+    padding: 0 clamp(1rem, 3vw, 3rem);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    background: var(--navy);
+    color: #fff;
+  }
+  .logo { font-size: 22px; font-weight: 700; }
+  .logo span { color: #cbd9e2; }
+  .level-pills { display: flex; gap: 7px; flex-wrap: wrap; }
+  .pill {
+    min-width: 38px;
+    padding: 5px 10px;
+    border: 1px solid rgba(255,255,255,.25);
+    border-radius: 999px;
+    color: rgba(255,255,255,.75);
+    text-align: center;
+    font-size: 12px;
+    font-weight: 700;
+  }
+  .pill.active { background: #fff; color: var(--navy); }
+  .tabs {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    padding: 9px clamp(1rem, 3vw, 3rem);
+    display: flex;
+    gap: 7px;
+    overflow-x: auto;
+    background: rgba(255,255,255,.96);
+    border-bottom: 1px solid var(--border);
+    box-shadow: 0 4px 14px rgba(38,61,82,.06);
+  }
+  .tab {
+    padding: 8px 12px;
+    border: 1px solid var(--border);
+    border-radius: 7px;
+    background: #fff;
+    color: var(--muted);
+    white-space: nowrap;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 700;
+  }
+  .tab:hover, .tab.active { border-color: #b8b2f1; background: var(--purple-light); color: var(--purple); }
+  .layout {
+    max-width: 1360px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 250px minmax(0, 1fr);
+  }
+  .sidebar {
+    position: sticky;
+    top: 57px;
+    align-self: start;
+    min-height: calc(100vh - 57px);
+    padding: 26px 15px;
+    border-right: 1px solid var(--border);
+    background: #eef4f7;
+  }
+  .sidebar-label {
+    padding: 0 10px 10px;
+    color: var(--muted);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+  }
+  .nav-item {
+    width: 100%;
+    margin-bottom: 5px;
+    padding: 10px 11px;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    background: transparent;
+    color: #4a6070;
+    cursor: pointer;
+    text-align: left;
+  }
+  .nav-item:hover, .nav-item.active {
+    border-color: #c8dce5;
+    background: #fff;
+    color: var(--navy);
+  }
+  .nav-icon {
+    min-width: 27px;
+    height: 27px;
+    display: inline-grid;
+    place-items: center;
+    border-radius: 7px;
+    background: var(--purple-light);
+    color: var(--purple);
+    font-size: 11px;
+    font-weight: 700;
+  }
+  .nav-num { margin-left: auto; color: #9aa8b1; font-size: 11px; }
+  .main { min-width: 0; padding: 0 30px 60px; }
+  .hero {
+    margin: 28px 0;
+    padding: clamp(1.5rem, 4vw, 3rem);
+    border: 1px solid #cfdfe7;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #fff, #eef4f7);
+    box-shadow: var(--shadow);
+  }
+  .home-link { color: var(--purple); font-size: 13px; font-weight: 700; }
+  .level-tag {
+    width: fit-content;
+    margin-top: 16px;
+    padding: 5px 10px;
+    border-radius: 999px;
+    background: var(--purple-light);
+    color: var(--purple);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .04em;
+  }
+  h1 { margin: 10px 0 5px; color: var(--navy); font-size: clamp(34px, 5vw, 54px); line-height: 1.08; }
+  .hero > p { max-width: 760px; margin: 0; color: #526a79; font-size: 18px; }
+  .hero-meta { margin-top: 18px; display: flex; gap: 8px; flex-wrap: wrap; }
+  .hero-meta span {
+    padding: 6px 10px;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: rgba(255,255,255,.8);
+    color: var(--muted);
+    font-size: 12px;
+  }
+  .section { display: none; animation: fade .2s ease; }
+  .section.active { display: block; }
+  @keyframes fade { from { opacity: .4; transform: translateY(3px); } }
+  .section-header {
+    margin: 0 0 18px;
+    padding-bottom: 13px;
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    border-bottom: 1px solid var(--border);
+  }
+  .section-icon {
+    width: 45px;
+    height: 45px;
+    display: grid;
+    place-items: center;
+    border-radius: 10px;
+    background: var(--purple-light);
+    color: var(--purple);
+    font-weight: 700;
+  }
+  .section-header h2 { margin: 0; color: var(--navy); font-size: 25px; }
+  .section-header p { margin: 1px 0 0; color: var(--muted); font-size: 14px; }
+  .tag {
+    width: fit-content;
+    margin: 22px 0 9px;
+    padding: 5px 10px;
+    display: block;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .03em;
+  }
+  .tag-purple { background: var(--purple-light); color: var(--purple); }
+  .tag-teal { background: var(--teal-light); color: var(--teal); }
+  .tag-coral { background: var(--coral-light); color: var(--coral); }
+  .tag-amber { background: var(--amber-light); color: var(--amber); }
+  .card, .text-passage, .writing-box, .grammar-rule {
+    padding: 18px;
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    background: var(--paper);
+    box-shadow: 0 7px 20px rgba(38,61,82,.055);
+  }
+  .card-title { margin-bottom: 12px; color: var(--navy); font-size: 17px; font-weight: 700; }
+  .vocab-grid, .topic-grid, .two-col {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 9px;
+  }
+  .vocab-item {
+    min-height: 68px;
+    padding: 11px 13px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--paper);
+  }
+  .vocab-ro { color: var(--navy); font-weight: 700; }
+  .vocab-en { margin-top: 2px; color: var(--muted); font-size: 13px; }
+  .expr-item {
+    padding: 10px 0;
+    display: grid;
+    grid-template-columns: minmax(190px, .8fr) 1.2fr;
+    gap: 15px;
+    border-bottom: 1px solid var(--border);
+  }
+  .expr-item:last-child { border-bottom: 0; }
+  .expr-ro { color: var(--navy); font-weight: 700; }
+  .expr-ex { color: var(--muted); }
+  .grammar-rule { margin-bottom: 11px; border-left: 4px solid var(--teal); }
+  .rule-label { margin-bottom: 5px; color: var(--teal); font-weight: 700; }
+  table { width: 100%; border-collapse: collapse; background: #fff; }
+  th, td { padding: 10px 12px; border: 1px solid var(--border); text-align: left; vertical-align: top; }
+  th { background: #eaf1f5; color: var(--navy); }
+  .pros-cons { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .pros-box, .cons-box {
+    padding: 17px;
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    background: #fff;
+  }
+  .pros-box { border-top: 4px solid var(--teal); }
+  .cons-box { border-top: 4px solid var(--coral); }
+  .pros-box h4, .cons-box h4 { margin: 0 0 8px; color: var(--navy); }
+  ul { margin: 6px 0; padding-left: 20px; }
+  li { margin-bottom: 5px; }
+  .text-passage { border-left: 5px solid var(--amber); }
+  .text-passage p { margin: 0 0 12px; }
+  .text-passage p:last-child { margin-bottom: 0; }
+  .ex-item { margin-bottom: 13px; }
+  .ex-item label { margin-bottom: 5px; display: block; color: var(--navy); font-weight: 700; }
+  input, select, textarea {
+    width: 100%;
+    padding: 10px 11px;
+    border: 1px solid #cbd9e0;
+    border-radius: 7px;
+    background: #fff;
+    color: var(--text);
+  }
+  textarea { resize: vertical; }
+  input:focus, select:focus, textarea:focus { outline: 2px solid #d9d5ff; border-color: var(--purple); }
+  .match-row {
+    margin-bottom: 8px;
+    display: grid;
+    grid-template-columns: minmax(220px, 1fr) 90px;
+    gap: 10px;
+    align-items: center;
+  }
+  .match-label { font-weight: 700; }
+  .options {
+    margin: 12px 0;
+    padding: 10px 12px;
+    border-radius: 7px;
+    background: var(--surface);
+    color: var(--muted);
+  }
+  .btn {
+    padding: 9px 15px;
+    border: 0;
+    border-radius: 7px;
+    background: var(--purple);
+    color: #fff;
+    cursor: pointer;
+    font-weight: 700;
+  }
+  .btn:hover { background: #4539aa; }
+  .feedback { display: none; margin-top: 10px; padding: 9px 11px; border-radius: 7px; }
+  .feedback.ok { display: block; background: var(--teal-light); color: var(--teal); }
+  .feedback.err { display: block; background: var(--coral-light); color: var(--coral); }
+  .conv-q {
+    margin-bottom: 8px;
+    padding: 12px 14px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: #fff;
+  }
+  .topic-card {
+    padding: 17px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: #fff;
+  }
+  .topic-card h4 { margin: 0 0 5px; color: var(--navy); }
+  .topic-card p { margin: 0; color: var(--muted); font-size: 13px; }
+  .topic-icon {
+    width: 35px;
+    height: 35px;
+    margin-bottom: 9px;
+    display: grid;
+    place-items: center;
+    border-radius: 8px;
+    background: var(--purple-light);
+    color: var(--purple);
+    font-size: 12px;
+    font-weight: 700;
+  }
+  details { margin-top: 12px; }
+  summary { color: var(--purple); cursor: pointer; font-weight: 700; }
+  .footer { padding: 22px; border-top: 1px solid var(--border); color: var(--muted); text-align: center; font-size: 13px; }
+  @media (max-width: 900px) {
+    .layout { display: block; }
+    .sidebar { position: static; min-height: auto; display: flex; gap: 6px; overflow-x: auto; border-right: 0; border-bottom: 1px solid var(--border); }
+    .sidebar-label, .nav-num { display: none; }
+    .nav-item { min-width: max-content; margin: 0; }
+    .main { padding: 0 18px 45px; }
+  }
+  @media (max-width: 650px) {
+    .topbar { align-items: flex-start; flex-direction: column; padding-block: 15px; }
+    .vocab-grid, .topic-grid, .two-col, .pros-cons { grid-template-columns: 1fr; }
+    .expr-item { grid-template-columns: 1fr; gap: 2px; }
+    .match-row { grid-template-columns: 1fr 80px; }
+    th, td { padding: 7px; font-size: 13px; }
+  }
+</style>
+</head>
+<body>
+<header class="topbar">
+  <a class="logo" href="../../index.html">Romanian <span>Step by Step</span></a>
+  <nav class="level-pills" aria-label="Niveluri">
+    <span class="pill">A1</span><span class="pill">A2</span><span class="pill">B1</span><span class="pill">B2</span><span class="pill active">C1</span>
+  </nav>
+</header>
+
+<nav class="tabs" aria-label="Secțiuni lecție">
+  <a class="tab" href="../../index.html">Acasă</a>
+  <button class="tab lesson-tab active" onclick="showSection('vocab',this)">Vocabular</button>
+  <button class="tab lesson-tab" onclick="showSection('registru',this)">Registru</button>
+  <button class="tab lesson-tab" onclick="showSection('dialog',this)">Dialog</button>
+  <button class="tab lesson-tab" onclick="showSection('exercitii',this)">Exerciții</button>
+  <button class="tab lesson-tab" onclick="showSection('conversatie',this)">Conversație</button>
+  <button class="tab lesson-tab" onclick="showSection('teme',this)">Teme</button>
+  <button class="tab lesson-tab" onclick="showSection('fise',this)">Fișe</button>
+  <button class="tab lesson-tab" onclick="showSection('test',this)">Test</button>
+</nav>
+
+<div class="layout">
+  <nav class="sidebar" aria-label="Navigare lecție">
+    <div class="sidebar-label">Secțiuni</div>
+    <button class="nav-item active" onclick="showSection('vocab',this)"><span class="nav-icon">01</span>Vocabular<span class="nav-num">01</span></button>
+    <button class="nav-item" onclick="showSection('registru',this)"><span class="nav-icon">02</span>Registru și nuanțe<span class="nav-num">02</span></button>
+    <button class="nav-item" onclick="showSection('dialog',this)"><span class="nav-icon">03</span>Dialog-model<span class="nav-num">03</span></button>
+    <button class="nav-item" onclick="showSection('exercitii',this)"><span class="nav-icon">04</span>Exerciții<span class="nav-num">04</span></button>
+    <button class="nav-item" onclick="showSection('conversatie',this)"><span class="nav-icon">05</span>Conversație<span class="nav-num">05</span></button>
+    <button class="nav-item" onclick="showSection('teme',this)"><span class="nav-icon">06</span>Producere de text<span class="nav-num">06</span></button>
+    <button class="nav-item" onclick="showSection('fise',this)"><span class="nav-icon">07</span>Fișe de lucru<span class="nav-num">07</span></button>
+    <button class="nav-item" onclick="showSection('test',this)"><span class="nav-icon">08</span>Autoevaluare<span class="nav-num">08</span></button>
+  </nav>
+
+  <main class="main">
+    <section class="hero">
+      <a class="home-link" href="../../index.html">← Acasă</a>
+      <div class="level-tag">Nivel C1 · Română pentru vorbitori de engleză</div>
+      <h1>La doctor</h1>
+      <p>Nuanțe, subtilități și exprimare formală într-o consultație medicală.</p>
+      <div class="hero-meta"><span>8 secțiuni</span><span>90 de minute</span><span>Vocabular medical</span><span>Exerciții interactive</span></div>
+    </section>
+
+    <div id="sec-vocab" class="section active">
+      <div class="section-header"><div class="section-icon">C1</div><div><h2>Vocabular medical nuanțat</h2><p>Descrierea exactă a durerii, evoluției simptomelor și tratamentului</p></div></div>
+
+      <span class="tag tag-purple">Tipuri de durere</span>
+      <div class="vocab-grid">
+        <div class="vocab-item"><div class="vocab-ro">durere surdă</div><div class="vocab-en">dull ache · constantă, greu de localizat</div></div>
+        <div class="vocab-item"><div class="vocab-ro">durere acută / tăioasă</div><div class="vocab-en">sharp pain · bruscă și clar localizată</div></div>
+        <div class="vocab-item"><div class="vocab-ro">durere înțepătoare</div><div class="vocab-en">stabbing pain · scurtă, ca o înțepătură</div></div>
+        <div class="vocab-item"><div class="vocab-ro">durere pulsatilă</div><div class="vocab-en">throbbing pain · bate în ritmul pulsului</div></div>
+        <div class="vocab-item"><div class="vocab-ro">durere difuză</div><div class="vocab-en">diffuse pain · răspândită pe o zonă mare</div></div>
+        <div class="vocab-item"><div class="vocab-ro">durere care iradiază</div><div class="vocab-en">radiating pain · se extinde spre altă zonă</div></div>
+        <div class="vocab-item"><div class="vocab-ro">durere persistentă</div><div class="vocab-en">persistent pain · nu dispare sau revine</div></div>
+        <div class="vocab-item"><div class="vocab-ro">durere intermitentă</div><div class="vocab-en">intermittent pain · apare și dispare</div></div>
+      </div>
+
+      <span class="tag tag-teal">Colocații medicale</span>
+      <div class="vocab-grid">
+        <div class="vocab-item"><div class="vocab-ro">a ameliora simptomele</div><div class="vocab-en">to alleviate symptoms</div></div>
+        <div class="vocab-item"><div class="vocab-ro">a se acutiza</div><div class="vocab-en">to flare up</div></div>
+        <div class="vocab-item"><div class="vocab-ro">a se agrava</div><div class="vocab-en">to worsen</div></div>
+        <div class="vocab-item"><div class="vocab-ro">a se remite</div><div class="vocab-en">to subside gradually</div></div>
+        <div class="vocab-item"><div class="vocab-ro">a declanșa o criză</div><div class="vocab-en">to trigger an episode</div></div>
+        <div class="vocab-item"><div class="vocab-ro">a urma / întrerupe un tratament</div><div class="vocab-en">to follow / stop treatment</div></div>
+        <div class="vocab-item"><div class="vocab-ro">a administra un medicament</div><div class="vocab-en">to administer medication</div></div>
+        <div class="vocab-item"><div class="vocab-ro">a prescrie un tratament</div><div class="vocab-en">to prescribe treatment</div></div>
+        <div class="vocab-item"><div class="vocab-ro">a avea reacții adverse</div><div class="vocab-en">to have adverse reactions</div></div>
+        <div class="vocab-item"><div class="vocab-ro">a suferi o intervenție</div><div class="vocab-en">to undergo a procedure</div></div>
+        <div class="vocab-item"><div class="vocab-ro">medicamente fără rețetă</div><div class="vocab-en">over-the-counter medication</div></div>
+        <div class="vocab-item"><div class="vocab-ro">medicamente pe bază de rețetă</div><div class="vocab-en">prescription medication</div></div>
+      </div>
+
+      <span class="tag tag-coral">Expresii idiomatice despre sănătate</span>
+      <div class="card">
+        <div class="expr-item"><div class="expr-ro">a se simți stors de energie</div><div class="expr-ex">to feel washed out / drained</div></div>
+        <div class="expr-item"><div class="expr-ro">a fi sănătos tun</div><div class="expr-ex">to be as fit as a fiddle</div></div>
+        <div class="expr-item"><div class="expr-ro">a fi pe calea cea bună</div><div class="expr-ex">to be on the mend</div></div>
+        <div class="expr-item"><div class="expr-ro">a fi tras la față</div><div class="expr-ex">to look pale or unwell</div></div>
+        <div class="expr-item"><div class="expr-ro">a nu se simți în apele lui</div><div class="expr-ex">not to feel like oneself</div></div>
+        <div class="expr-item"><div class="expr-ro">a avea inima cât un purice</div><div class="expr-ex">to be extremely scared or anxious</div></div>
+      </div>
+    </div>
+
+    <div id="sec-registru" class="section">
+      <div class="section-header"><div class="section-icon">C1</div><div><h2>Registru formal și atenuare</h2><p>Politețe, incertitudine și evitarea traducerilor literale</p></div></div>
+
+      <span class="tag tag-teal">Formalitate în consultație</span>
+      <div class="grammar-rule"><div class="rule-label">Pronumele de politețe și persoana a II-a plural</div><p><strong>Îmi puteți spune, vă rog, care ar putea fi cauza?</strong> · <strong>Ce tratament îmi recomandați?</strong> · <strong>Considerați că sunt necesare investigații suplimentare?</strong></p></div>
+      <table>
+        <thead><tr><th>Formulare directă</th><th>Formulare formală, adecvată nivelului C1</th></tr></thead>
+        <tbody>
+          <tr><td>Poți să-mi spui ce am?</td><td>Îmi puteți spune, vă rog, care ar putea fi cauza?</td></tr>
+          <tr><td>Ce tratament îmi dai?</td><td>Ce tratament îmi recomandați?</td></tr>
+          <tr><td>Mă doare rău genunchiul.</td><td>Durerea de la nivelul genunchiului s-a intensificat, mai ales la efort.</td></tr>
+        </tbody>
+      </table>
+
+      <span class="tag tag-purple">Atenuare și exprimarea incertitudinii</span>
+      <div class="card">
+        <div class="expr-item"><div class="expr-ro">Parcă mă apasă ceva în piept.</div><div class="expr-ex">Descriere aproximativă a unei senzații dificil de definit.</div></div>
+        <div class="expr-item"><div class="expr-ro">Nu aș numi-o neapărat durere.</div><div class="expr-ex">Corectarea și nuanțarea propriei descrieri.</div></div>
+        <div class="expr-item"><div class="expr-ro">Am impresia că simptomele s-au agravat.</div><div class="expr-ex">Observație personală fără certitudine medicală.</div></div>
+        <div class="expr-item"><div class="expr-ro">Este prea devreme să ne pronunțăm.</div><div class="expr-ex">Suspendarea profesională a concluziei.</div></div>
+      </div>
+
+      <span class="tag tag-coral">False friends și capcane de traducere</span>
+      <div class="pros-cons">
+        <div class="pros-box"><h4>Formulări naturale</h4><ul><li><strong>rețetă</strong> pentru prescription</li><li><strong>medicamente</strong> pentru medication</li><li><strong>la Urgențe / la UPU</strong> pentru emergency room</li><li><strong>am greață</strong> pentru nausea</li><li><strong>mi-e rău</strong> pentru o stare generală proastă</li></ul></div>
+        <div class="cons-box"><h4>Formulări de evitat</h4><ul><li>„prescripție” în conversația obișnuită</li><li>„am luat medicină” pentru pastile</li><li>traducerea literală a lui casualty</li><li>„mi-e rău” fără clarificarea senzației</li><li>registrul familiar cu un medic necunoscut</li></ul></div>
+      </div>
+
+      <span class="tag tag-amber">Diminutive cu rol empatic</span>
+      <div class="writing-box"><p>Formule precum <strong>„o mică înțepătură”</strong>, <strong>„puțin sânge”</strong> sau <strong>„câteva minuțele”</strong> pot reduce anxietatea pacientului. În context medical românesc, funcția lor poate fi empatică, nu lipsită de profesionalism.</p></div>
+    </div>
+
+    <div id="sec-dialog" class="section">
+      <div class="section-header"><div class="section-icon">C1</div><div><h2>Dialog-model: a doua opinie</h2><p>Vocabular precis, politețe și exprimare prudentă</p></div></div>
+      <div class="text-passage">
+        <p><strong>Pacientul:</strong> Bună ziua, domnule doctor. Am venit la dumneavoastră pentru o a doua opinie. Urmez un tratament de aproximativ trei săptămâni, dar simptomele nu s-au ameliorat, ba chiar s-au agravat.</p>
+        <p><strong>Medicul:</strong> Bună ziua. Îmi puteți descrie mai exact simptomele?</p>
+        <p><strong>Pacientul:</strong> Inițial era o durere surdă, suportabilă, dar în ultimele zile a devenit pulsatilă și apare mai ales seara. În plus, am avut câteva reacții adverse: greață, amețeală și o stare generală de slăbiciune.</p>
+        <p><strong>Medicul:</strong> Durerea este localizată într-un punct anume sau se extinde?</p>
+        <p><strong>Pacientul:</strong> Pornește din zona genunchiului și uneori iradiază spre gambă. Nu este constantă, dar se acutizează când merg mai mult sau urc scările.</p>
+        <p><strong>Medicul:</strong> Ați luat și medicamente fără rețetă?</p>
+        <p><strong>Pacientul:</strong> Da, am luat un antiinflamator pentru a ameliora durerea, dar efectul a fost temporar.</p>
+        <p><strong>Medicul:</strong> Vom face câteva investigații suplimentare și, în funcție de rezultate, putem ajusta tratamentul. Nu exclud nici o intervenție minoră, dar este prea devreme să ne pronunțăm.</p>
+        <p><strong>Pacientul:</strong> Aș prefera să evit intervenția chirurgicală, dacă există o alternativă.</p>
+        <p><strong>Medicul:</strong> Desigur. Întâi evaluăm cauza exactă, apoi alegem cea mai potrivită variantă.</p>
+      </div>
+      <span class="tag tag-amber">Întrebări de comprehensiune și analiză</span>
+      <div class="card">
+        <div class="ex-item"><label>1. De ce solicită pacientul o a doua opinie?</label><input type="text" placeholder="Formulează un răspuns complet..."></div>
+        <div class="ex-item"><label>2. Cum s-a modificat durerea în timp?</label><input type="text" placeholder="Descrie evoluția..."></div>
+        <div class="ex-item"><label>3. Ce formulă evită o concluzie prematură?</label><input type="text" placeholder="Identifică formula..."></div>
+        <div class="ex-item"><label>4. Ce indicii arată că dialogul este formal?</label><input type="text" placeholder="Menționează două indicii..."></div>
+      </div>
+    </div>
+
+    <div id="sec-exercitii" class="section">
+      <div class="section-header"><div class="section-icon">C1</div><div><h2>Exerciții interactive</h2><p>Expresii idiomatice, false friends și reformulare</p></div></div>
+
+      <span class="tag tag-coral">Exercițiul 1 — Potrivește expresia</span>
+      <div class="card">
+        <div class="match-row"><span class="match-label">1. a se simți stors de energie</span><select id="idiom1"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option></select></div>
+        <div class="match-row"><span class="match-label">2. a fi sănătos tun</span><select id="idiom2"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option></select></div>
+        <div class="match-row"><span class="match-label">3. a fi pe calea cea bună</span><select id="idiom3"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option></select></div>
+        <div class="match-row"><span class="match-label">4. a nu se simți în apele lui</span><select id="idiom4"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option></select></div>
+        <div class="options"><strong>A</strong> — to be on the mend · <strong>B</strong> — not to feel like oneself · <strong>C</strong> — to feel drained · <strong>D</strong> — to be as fit as a fiddle</div>
+        <button class="btn" onclick="checkIdioms()">Verifică</button><div id="idiom-fb" class="feedback"></div>
+      </div>
+
+      <span class="tag tag-purple">Exercițiul 2 — Alege formularea naturală</span>
+      <div class="card">
+        <div class="ex-item"><label>1. I need a prescription.</label><select id="friend1"><option value="">— alege —</option><option value="rețetă">Am nevoie de o rețetă.</option><option value="prescripție">Am nevoie de o prescripție.</option></select></div>
+        <div class="ex-item"><label>2. I took some medication.</label><select id="friend2"><option value="">— alege —</option><option value="medicamente">Am luat niște medicamente.</option><option value="medicină">Am luat niște medicină.</option></select></div>
+        <div class="ex-item"><label>3. Go to the emergency room.</label><select id="friend3"><option value="">— alege —</option><option value="urgențe">Mergeți la Urgențe.</option><option value="casualitate">Mergeți la Casualitate.</option></select></div>
+        <div class="ex-item"><label>4. I feel nauseous.</label><select id="friend4"><option value="">— alege —</option><option value="greață">Am greață.</option><option value="rău">Sunt bolnav.</option></select></div>
+        <button class="btn" onclick="checkFriends()">Verifică</button><div id="friend-fb" class="feedback"></div>
+      </div>
+
+      <span class="tag tag-teal">Exercițiul 3 — Reformulare C1</span>
+      <div class="card">
+        <p><strong>Model:</strong> „Mă doare spatele.” → „Simt o durere surdă în zona lombară, care se accentuează după ce stau mult timp pe scaun.”</p>
+        <div class="ex-item"><label>1. Mă doare capul.</label><textarea rows="2" placeholder="Precizează natura și localizarea..."></textarea></div>
+        <div class="ex-item"><label>2. Mă doare genunchiul când merg.</label><textarea rows="2" placeholder="Folosește un registru formal..."></textarea></div>
+        <div class="ex-item"><label>3. Mi-e rău de la pastile.</label><textarea rows="2" placeholder="Folosește «reacții adverse»..."></textarea></div>
+        <div class="ex-item"><label>4. Cred că tratamentul nu merge.</label><textarea rows="2" placeholder="Atenuează afirmația..."></textarea></div>
+        <details><summary>Vezi variante posibile</summary><p>1. Am o durere pulsatilă în zona tâmplelor, care se intensifică la lumină puternică.<br>2. Durerea de la nivelul genunchiului apare mai ales la mers și se accentuează când urc scările.<br>3. După administrarea medicamentelor, am avut reacții adverse, inclusiv greață și amețeală.<br>4. Am impresia că tratamentul nu a avut efectul dorit, deoarece simptomele persistă.</p></details>
+      </div>
+    </div>
+
+    <div id="sec-conversatie" class="section">
+      <div class="section-header"><div class="section-icon">C1</div><div><h2>Roleplay și conversație</h2><p>Dialog complex medic–pacient și negocierea opțiunilor</p></div></div>
+      <span class="tag tag-purple">Scenariul A — A doua opinie</span>
+      <div class="pros-cons">
+        <div class="pros-box"><h4>Pacientul</h4><ul><li>Tratamentul anterior a produs reacții adverse.</li><li>Durerea s-a acutizat.</li><li>Solicitați o a doua opinie.</li><li>Folosiți cel puțin cinci expresii din lecție.</li></ul></div>
+        <div class="cons-box"><h4>Medicul</h4><ul><li>Întrebați despre durata simptomelor.</li><li>Clarificați localizarea și iradierea.</li><li>Discutați tratamentele anterioare.</li><li>Propuneți investigații suplimentare.</li></ul></div>
+      </div>
+      <span class="tag tag-coral">Scenariul B — La Urgențe</span>
+      <div class="card">
+        <p><strong>Pacientul:</strong> Ați ajuns la Urgențe pentru o durere bruscă și intensă. Explicați ce s-a întâmplat, păstrând registrul formal.</p>
+        <p><strong>Medicul:</strong> Stabiliți debutul, intensitatea, localizarea, simptomele asociate și necesitatea investigațiilor.</p>
+        <div class="expr-item"><div class="expr-ro">Durerea a apărut brusc.</div><div class="expr-ex">Simptomele au debutat acum aproximativ două ore.</div></div>
+        <div class="expr-item"><div class="expr-ro">Nu pot localiza exact durerea.</div><div class="expr-ex">Senzația se accentuează când respir adânc.</div></div>
+        <div class="expr-item"><div class="expr-ro">Am mai avut episoade similare.</div><div class="expr-ex">De data aceasta, intensitatea este mult mai mare.</div></div>
+      </div>
+      <span class="tag tag-teal">Întrebări pentru discuție</span>
+      <div class="conv-q">1. Când este justificat să soliciți o a doua opinie?</div>
+      <div class="conv-q">2. Cum poate un medic să explice incertitudinea fără să alarmeze pacientul?</div>
+      <div class="conv-q">3. Diminutivele medicale reduc anxietatea sau pot părea condescendente?</div>
+      <div class="conv-q">4. Ce informații trebuie pregătite înaintea consultației?</div>
+      <div class="conv-q">5. Care este diferența dintre descrierea senzației și autodiagnostic?</div>
+    </div>
+
+    <div id="sec-teme" class="section">
+      <div class="section-header"><div class="section-icon">C1</div><div><h2>Traducere și producere de text</h2><p>Adaptare naturală și exprimare medicală coerentă</p></div></div>
+      <span class="tag tag-teal">C1 Challenge — traducere și adaptare</span>
+      <div class="writing-box">
+        <p><strong>Text:</strong> “My knee problem flared up after the marathon, so I had to take some over-the-counter anti-inflammatories to ease the sharp pain, but I think I might need to undergo a minor procedure.”</p>
+        <textarea rows="5" placeholder="Scrie traducerea într-un registru natural și formal..."></textarea>
+        <details><summary>Vezi varianta recomandată</summary><p>Afecțiunea de la nivelul genunchiului s-a acutizat după maraton, motiv pentru care am fost nevoit să iau antiinflamatoare eliberate fără rețetă pentru a ameliora durerea acută. Totuși, cred că ar putea fi necesară o intervenție minoră.</p></details>
+      </div>
+      <span class="tag tag-amber">Producere de text — 120–150 de cuvinte</span>
+      <div class="card"><p>Descrie o problemă medicală recurentă. Folosește cel puțin opt expresii din lecție: tipuri de durere, evoluția simptomelor, reacții adverse, tratament și a doua opinie.</p><textarea rows="10" placeholder="Scrie paragraful aici..."></textarea></div>
+      <span class="tag tag-coral">Temă pentru acasă</span>
+      <div class="writing-box"><h3>Dialog de 15–20 de replici</h3><p>Scrie un dialog între un pacient și un medic specialist. Include o problemă recurentă, un tratament anterior, reacții adverse și solicitarea unei a doua opinii.</p><p>Folosește cinci termeni medicali, pronumele <strong>dumneavoastră</strong>, o formulă de atenuare și o capcană de traducere evitată corect.</p></div>
+    </div>
+
+    <div id="sec-fise" class="section">
+      <div class="section-header"><div class="section-icon">C1</div><div><h2>Fișe de lucru</h2><p>Materiale suplimentare pentru lecția „La doctor”</p></div></div>
+      <div class="topic-grid">
+        <div class="topic-card"><div class="topic-icon">C1</div><h4>Fișă C1 · La doctor</h4><p>Vocabular medical, registru formal, false friends, dialog și reformulare.</p></div>
+        <div class="topic-card"><div class="topic-icon">EN</div><h4>Sprijin pentru vorbitori de engleză</h4><p>Echivalente funcționale și capcane frecvente de traducere.</p></div>
+        <div class="topic-card"><div class="topic-icon">PDF</div><h4>Variantă PDF · în pregătire</h4><p>Fișă printabilă cu exerciții, roleplay și barem.</p></div>
+      </div>
+    </div>
+
+    <div id="sec-test" class="section">
+      <div class="section-header"><div class="section-icon">C1</div><div><h2>Barem de autoevaluare</h2><p>Evaluează precizia, registrul și naturalețea exprimării</p></div></div>
+      <table>
+        <thead><tr><th>Criteriu</th><th>Punctaj</th></tr></thead>
+        <tbody><tr><td>Folosirea vocabularului medical nuanțat</td><td>2 puncte</td></tr><tr><td>Corectitudinea gramaticală</td><td>2 puncte</td></tr><tr><td>Registrul formal adecvat</td><td>2 puncte</td></tr><tr><td>Coerența și claritatea exprimării</td><td>2 puncte</td></tr><tr><td>Evitarea traducerilor literale din engleză</td><td>2 puncte</td></tr></tbody>
+      </table>
+      <span class="tag tag-purple">Interpretare</span>
+      <div class="card">
+        <div class="expr-item"><div class="expr-ro">9–10 puncte</div><div class="expr-ex">Exprimare foarte bună, adecvată nivelului C1.</div></div>
+        <div class="expr-item"><div class="expr-ro">7–8 puncte</div><div class="expr-ex">Exprimare bună, cu mici ezitări.</div></div>
+        <div class="expr-item"><div class="expr-ro">5–6 puncte</div><div class="expr-ex">Vocabular potrivit, dar exprimarea este încă rigidă.</div></div>
+        <div class="expr-item"><div class="expr-ro">Sub 5 puncte</div><div class="expr-ex">Mai exersează registrul, nuanțele și colocările.</div></div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<footer class="footer">Romanian Step by Step · Nivel C1 · La doctor · Creat pentru uz didactic</footer>
+
+<script>
+function showSection(name, source, shouldScroll = true) {
+  document.querySelectorAll('.section').forEach(section => section.classList.remove('active'));
+  document.querySelectorAll('.nav-item, .lesson-tab').forEach(button => button.classList.remove('active'));
+  const section = document.getElementById('sec-' + name);
+  if (!section) return;
+  section.classList.add('active');
+  document.querySelectorAll('.nav-item, .lesson-tab').forEach(button => {
+    const action = button.getAttribute('onclick') || '';
+    if (action.includes("'" + name + "'")) button.classList.add('active');
+  });
+  if (source) source.classList.add('active');
+  history.replaceState(null, '', '#' + name);
+  if (shouldScroll) window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function showFeedback(id, score, total, answers) {
+  const feedback = document.getElementById(id);
+  const perfect = score === total;
+  feedback.className = 'feedback ' + (perfect ? 'ok' : 'err');
+  feedback.textContent = perfect
+    ? 'Corect. Toate răspunsurile sunt potrivite.'
+    : 'Ai ' + score + ' din ' + total + ' corecte. Răspunsuri: ' + answers;
+}
+
+function checkIdioms() {
+  const answers = { idiom1: 'C', idiom2: 'D', idiom3: 'A', idiom4: 'B' };
+  let score = 0;
+  Object.entries(answers).forEach(([id, answer]) => {
+    if (document.getElementById(id).value === answer) score++;
+  });
+  showFeedback('idiom-fb', score, 4, '1-C, 2-D, 3-A, 4-B.');
+}
+
+function checkFriends() {
+  const answers = { friend1: 'rețetă', friend2: 'medicamente', friend3: 'urgențe', friend4: 'greață' };
+  let score = 0;
+  Object.entries(answers).forEach(([id, answer]) => {
+    if (document.getElementById(id).value === answer) score++;
+  });
+  showFeedback('friend-fb', score, 4, 'rețetă, medicamente, la Urgențe, am greață.');
+}
+
+function openHashSection() {
+  const name = window.location.hash.replace('#', '');
+  if (name && document.getElementById('sec-' + name)) showSection(name, null, false);
+}
+
+document.addEventListener('DOMContentLoaded', openHashSection);
+window.addEventListener('hashchange', openHashSection);
+</script>
+</body>
+</html>
