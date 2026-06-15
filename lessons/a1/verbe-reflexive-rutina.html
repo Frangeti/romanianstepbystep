@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Verbe reflexive - Rutina · Rumänisch A1</title>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&amp;display=swap" rel="stylesheet">
+<style>
+  :root {
+    --dark: #2f4a60;
+    --blue: #263d52;
+    --blue-soft: #e9f1f5;
+    --green: #2d7a4f;
+    --green-soft: #e8f5ee;
+    --red: #c0392b;
+    --red-soft: #fdecea;
+    --gold: #f5f7f8;
+    --bg: #fdfaf4;
+    --card: #fff;
+    --border: #d8e2e8;
+    --text: #1f2f3b;
+    --muted: #6f7c84;
+    --shadow: 0 5px 24px rgba(38, 61, 82, .09);
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    min-height: 100vh;
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Atkinson Hyperlegible', Arial, sans-serif;
+    line-height: 1.55;
+  }
+  button, input, select, textarea { font: inherit; }
+  a { color: inherit; text-decoration: none; }
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: var(--dark);
+    color: #fff;
+  }
+  .header-inner {
+    max-width: 1050px;
+    min-height: 66px;
+    margin: 0 auto;
+    padding: 12px 22px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+  .site-title { color: var(--gold); font-size: 22px; font-weight: 700; }
+  .site-subtitle { margin-left: auto; color: rgba(255,255,255,.75); font-size: 14px; }
+  .lesson-nav {
+    border-top: 1px solid rgba(255,255,255,.2);
+    background: var(--dark);
+    overflow-x: auto;
+  }
+  .lesson-nav ul {
+    max-width: 1050px;
+    margin: 0 auto;
+    padding: 0 16px;
+    display: flex;
+    list-style: none;
+  }
+  .lesson-nav a {
+    padding: 10px 13px;
+    display: block;
+    border-bottom: 3px solid transparent;
+    color: rgba(255,255,255,.7);
+    white-space: nowrap;
+    font-size: 13px;
+    font-weight: 700;
+  }
+  .lesson-nav a:hover, .lesson-nav a.active { border-bottom-color: #fff; color: #fff; }
+  .container { max-width: 920px; margin: 0 auto; padding: 32px 20px 64px; }
+  .lesson-header {
+    margin-bottom: 26px;
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+  }
+  .lesson-number {
+    padding: 8px 16px;
+    border-radius: 8px;
+    background: var(--dark);
+    color: #fff;
+    font-size: 28px;
+    font-weight: 700;
+  }
+  h1 { margin: 0; color: var(--dark); font-size: clamp(30px, 5vw, 42px); line-height: 1.1; }
+  .subtitle { margin-top: 5px; color: var(--muted); }
+  .intro {
+    margin-bottom: 24px;
+    padding: 18px 21px;
+    border-left: 4px solid #fff;
+    border-radius: 10px;
+    background: linear-gradient(135deg, var(--dark), #6f8ea3);
+    color: #fff;
+  }
+  .intro h2 { margin: 0 0 8px; font-size: 18px; }
+  .intro p { margin: 5px 0; }
+  .section-title {
+    margin: 29px 0 13px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--dark);
+    font-size: 20px;
+  }
+  .section-title::after { content: ""; height: 1px; flex: 1; background: var(--border); }
+  .note, .example-box, .homework {
+    padding: 16px 18px;
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    background: #fff;
+    box-shadow: var(--shadow);
+  }
+  .note { border-left: 4px solid #6f8ea3; }
+  .note p, .example-box p, .homework p { margin: 5px 0; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    box-shadow: var(--shadow);
+  }
+  th, td { padding: 10px 12px; border: 1px solid var(--border); text-align: left; vertical-align: top; }
+  th { background: var(--blue-soft); color: var(--dark); }
+  .highlight { color: var(--red); font-weight: 700; }
+  .pronoun-grid, .vocab-grid, .quiz-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 9px;
+  }
+  .pronoun-card, .vocab-card, .quiz-card {
+    padding: 12px 14px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: #fff;
+    box-shadow: 0 4px 14px rgba(38,61,82,.05);
+  }
+  .pronoun-card strong, .vocab-ro { color: var(--dark); }
+  .vocab-card { display: flex; gap: 10px; align-items: center; }
+  .vocab-icon { width: 30px; flex: 0 0 30px; text-align: center; font-size: 20px; }
+  .vocab-copy { min-width: 0; }
+  .vocab-ro { font-weight: 700; }
+  .vocab-de { color: var(--muted); font-size: 14px; }
+  .verb-box {
+    overflow: hidden;
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    box-shadow: var(--shadow);
+  }
+  .verb-head { padding: 11px 15px; background: var(--dark); color: #fff; font-weight: 700; }
+  .verb-box table { box-shadow: none; }
+  .quiz-card h3 { margin: 0 0 7px; color: var(--dark); font-size: 16px; }
+  .quiz-card p { margin: 0 0 10px; }
+  .options { display: grid; gap: 7px; }
+  .option {
+    padding: 9px 10px;
+    border: 1px solid var(--border);
+    border-radius: 7px;
+    background: #fff;
+    color: var(--text);
+    cursor: pointer;
+    text-align: left;
+  }
+  .option:hover { border-color: #8da7b8; background: #f7fafb; }
+  .option.correct { border-color: var(--green); background: var(--green-soft); color: var(--green); }
+  .option.wrong { border-color: var(--red); background: var(--red-soft); color: var(--red); }
+  .exercise {
+    margin-bottom: 14px;
+    padding: 16px;
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    background: #fff;
+  }
+  .exercise label { margin-bottom: 6px; display: block; color: var(--dark); font-weight: 700; }
+  select, textarea {
+    width: 100%;
+    padding: 9px 10px;
+    border: 1px solid #c9d6dd;
+    border-radius: 7px;
+    background: #fff;
+  }
+  textarea { min-height: 130px; resize: vertical; }
+  .check-btn {
+    margin-top: 11px;
+    padding: 9px 14px;
+    border: 0;
+    border-radius: 7px;
+    background: var(--dark);
+    color: #fff;
+    cursor: pointer;
+    font-weight: 700;
+  }
+  .feedback { display: none; margin-top: 10px; padding: 9px 11px; border-radius: 7px; font-weight: 700; }
+  .feedback.ok { display: block; background: var(--green-soft); color: var(--green); }
+  .feedback.err { display: block; background: var(--red-soft); color: var(--red); }
+  .homework { border-top: 4px solid #6f8ea3; }
+  .footer { padding: 22px; border-top: 1px solid var(--border); color: var(--muted); text-align: center; font-size: 13px; }
+  @media (max-width: 650px) {
+    .site-subtitle { display: none; }
+    .lesson-header { flex-direction: column; }
+    .pronoun-grid, .vocab-grid, .quiz-grid { grid-template-columns: 1fr; }
+    th, td { padding: 7px; font-size: 13px; }
+  }
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="header-inner">
+    <a class="site-title" href="../../index.html">Romanian Step by Step</a>
+    <span class="site-subtitle">Rumänisch · Niveau A1 · Deutsch</span>
+  </div>
+  <nav class="lesson-nav" aria-label="Abschnitte">
+    <ul>
+      <li><a href="../../index.html#a1-germana">Acasă</a></li>
+      <li><a class="active" href="#gramatica">Grammatik</a></li>
+      <li><a href="#rutina">Tagesablauf</a></li>
+      <li><a href="#quiz">Quiz</a></li>
+      <li><a href="#tema">Hausaufgabe</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main class="container">
+  <div class="lesson-header">
+    <div class="lesson-number">11</div>
+    <div>
+      <h1>Verbe reflexive - Rutina</h1>
+      <p class="subtitle">Reflexive Verben und der Tagesablauf</p>
+    </div>
+  </div>
+
+  <section class="intro">
+    <h2>Hallo! Willkommen zu deiner interaktiven Rumänischlektion.</h2>
+    <p>Heute lernst du die <strong>reflexiven Verben</strong>. Die Handlung bezieht sich auf die Person selbst: <em>mă spăl</em> = ich wasche mich.</p>
+    <p>Am Ende kannst du einfache Sätze über deine Morgen-, Tages- und Abendroutine bilden.</p>
+  </section>
+
+  <section id="gramatica">
+    <h2 class="section-title">1. Normal oder reflexiv?</h2>
+    <div class="note">
+      <p>Ein Verb ist reflexiv, wenn die Person die Handlung an sich selbst ausführt. Für <strong>eu</strong> steht vor dem Verb meistens <strong>mă</strong>.</p>
+      <p><strong>Ohne „mă”:</strong> Die Handlung betrifft eine andere Person oder eine Sache. <strong>Mit „mă”:</strong> Die Handlung betrifft mich selbst.</p>
+    </div>
+
+    <table>
+      <thead><tr><th>Normales Verb</th><th>Reflexives Verb</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Spăl</strong> cămașa.<br><small>Ich wasche das Hemd.</small></td><td><strong class="highlight">Mă</strong> spăl.<br><small>Ich wasche mich.</small></td></tr>
+        <tr><td><strong>Îmbrac</strong> copilul.<br><small>Ich ziehe das Kind an.</small></td><td><strong class="highlight">Mă</strong> îmbrac.<br><small>Ich ziehe mich an.</small></td></tr>
+        <tr><td><strong>Dezbrac</strong> păpușa.<br><small>Ich ziehe die Puppe aus.</small></td><td><strong class="highlight">Mă</strong> dezbrac.<br><small>Ich ziehe mich aus.</small></td></tr>
+        <tr><td><strong>Uit</strong> cheile.<br><small>Ich vergesse die Schlüssel.</small></td><td><strong class="highlight">Mă</strong> uit la televizor.<br><small>Ich sehe fern.</small></td></tr>
+      </tbody>
+    </table>
+
+    <h2 class="section-title">2. Reflexivpronomen</h2>
+    <div class="pronoun-grid">
+      <div class="pronoun-card"><strong>eu mă</strong> · ich mich</div>
+      <div class="pronoun-card"><strong>tu te</strong> · du dich</div>
+      <div class="pronoun-card"><strong>el / ea se</strong> · er / sie sich</div>
+      <div class="pronoun-card"><strong>noi ne</strong> · wir uns</div>
+      <div class="pronoun-card"><strong>voi vă</strong> · ihr euch</div>
+      <div class="pronoun-card"><strong>ei / ele se</strong> · sie sich</div>
+    </div>
+    <div class="note" style="margin-top:12px">
+      <p><strong>Wichtig:</strong> Manche rumänischen Verben werden fest mit einem Reflexivpronomen gelernt, auch wenn die Bedeutung nicht wörtlich reflexiv ist: <em>mă uit</em> (ich schaue), <em>mă duc</em> (ich gehe), <em>mă joc</em> (ich spiele).</p>
+    </div>
+
+    <h2 class="section-title">3. Modell: a se spăla</h2>
+    <div class="verb-box">
+      <div class="verb-head">a se spăla · sich waschen</div>
+      <table>
+        <tbody>
+          <tr><td>eu</td><td><strong>mă spăl</strong></td><td>ich wasche mich</td></tr>
+          <tr><td>tu</td><td><strong>te speli</strong></td><td>du wäschst dich</td></tr>
+          <tr><td>el / ea</td><td><strong>se spală</strong></td><td>er / sie wäscht sich</td></tr>
+          <tr><td>noi</td><td><strong>ne spălăm</strong></td><td>wir waschen uns</td></tr>
+          <tr><td>voi</td><td><strong>vă spălați</strong></td><td>ihr wascht euch</td></tr>
+          <tr><td>ei / ele</td><td><strong>se spală</strong></td><td>sie waschen sich</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="rutina">
+    <h2 class="section-title">4. Dimineața · Am Morgen</h2>
+    <div class="vocab-grid">
+      <div class="vocab-card"><span class="vocab-icon">☀</span><div class="vocab-copy"><div class="vocab-ro">Mă trezesc.</div><div class="vocab-de">Ich wache auf.</div></div></div>
+      <div class="vocab-card"><span class="vocab-icon">↥</span><div class="vocab-copy"><div class="vocab-ro">Mă scol.</div><div class="vocab-de">Ich stehe auf.</div></div></div>
+      <div class="vocab-card"><span class="vocab-icon">▤</span><div class="vocab-copy"><div class="vocab-ro">Mă ridic din pat.</div><div class="vocab-de">Ich stehe aus dem Bett auf.</div></div></div>
+      <div class="vocab-card"><span class="vocab-icon">●</span><div class="vocab-copy"><div class="vocab-ro">Mă spăl.</div><div class="vocab-de">Ich wasche mich.</div></div></div>
+      <div class="vocab-card"><span class="vocab-icon">◇</span><div class="vocab-copy"><div class="vocab-ro">Mă bărbieresc / Mă rad.</div><div class="vocab-de">Ich rasiere mich.</div></div></div>
+      <div class="vocab-card"><span class="vocab-icon">▣</span><div class="vocab-copy"><div class="vocab-ro">Mă îmbrac.</div><div class="vocab-de">Ich ziehe mich an.</div></div></div>
+      <div class="vocab-card"><span class="vocab-icon">⌁</span><div class="vocab-copy"><div class="vocab-ro">Mă încalț.</div><div class="vocab-de">Ich ziehe meine Schuhe an.</div></div></div>
+      <div class="vocab-card"><span class="vocab-icon">»</span><div class="vocab-copy"><div class="vocab-ro">Mă grăbesc.</div><div class="vocab-de">Ich beeile mich.</div></div></div>
+    </div>
+
+    <h2 class="section-title">5. În timpul zilei · Tagsüber</h2>
+    <div class="vocab-grid">
+      <div class="vocab-card"><span class="vocab-icon">→</span><div class="vocab-copy"><div class="vocab-ro">Mă duc la serviciu.</div><div class="vocab-de">Ich gehe zur Arbeit.</div></div></div>
+      <div class="vocab-card"><span class="vocab-icon">◇</span><div class="vocab-copy"><div class="vocab-ro">Mă întâlnesc cu prietenii.</div><div class="vocab-de">Ich treffe mich mit Freunden.</div></div></div>
+      <div class="vocab-card"><span class="vocab-icon">♧</span><div class="vocab-copy"><div class="vocab-ro">Mă plimb în parc.</div><div class="vocab-de">Ich gehe im Park spazieren.</div></div></div>
+      <div class="vocab-card"><span class="vocab-icon">□</span><div class="vocab-copy"><div class="vocab-ro">Mă joc.</div><div class="vocab-de">Ich spiele.</div></div></div>
+      <div class="vocab-card"><span class="vocab-icon">←</span><div class="vocab-copy"><div class="vocab-ro">Mă întorc acasă.</div><div class="vocab-de">Ich kehre nach Hause zurück.</div></div></div>
+    </div>
+
+    <h2 class="section-title">6. Seara · Am Abend</h2>
+    <div class="vocab-grid">
+      <div class="vocab-card"><span class="vocab-icon">⌂</span><div class="vocab-copy"><div class="vocab-ro">Mă odihnesc.</div><div class="vocab-de">Ich ruhe mich aus.</div></div></div>
+      <div class="vocab-card"><span class="vocab-icon">≈</span><div class="vocab-copy"><div class="vocab-ro">Mă relaxez.</div><div class="vocab-de">Ich entspanne mich.</div></div></div>
+      <div class="vocab-card"><span class="vocab-icon">▻</span><div class="vocab-copy"><div class="vocab-ro">Mă uit la televizor.</div><div class="vocab-de">Ich sehe fern.</div></div></div>
+      <div class="vocab-card"><span class="vocab-icon">⌁</span><div class="vocab-copy"><div class="vocab-ro">Mă descalț.</div><div class="vocab-de">Ich ziehe meine Schuhe aus.</div></div></div>
+      <div class="vocab-card"><span class="vocab-icon">▣</span><div class="vocab-copy"><div class="vocab-ro">Mă dezbrac.</div><div class="vocab-de">Ich ziehe mich aus.</div></div></div>
+      <div class="vocab-card"><span class="vocab-icon">☾</span><div class="vocab-copy"><div class="vocab-ro">Mă culc.</div><div class="vocab-de">Ich gehe schlafen.</div></div></div>
+    </div>
+
+    <h2 class="section-title">7. Relații și sentimente</h2>
+    <div class="vocab-grid">
+      <div class="vocab-card"><span class="vocab-icon">!</span><div class="vocab-copy"><div class="vocab-ro">Mă cert.</div><div class="vocab-de">Ich streite mich.</div></div></div>
+      <div class="vocab-card"><span class="vocab-icon">:(</span><div class="vocab-copy"><div class="vocab-ro">Mă supăr.</div><div class="vocab-de">Ich ärgere mich / werde traurig.</div></div></div>
+      <div class="vocab-card"><span class="vocab-icon">=</span><div class="vocab-copy"><div class="vocab-ro">Mă împac.</div><div class="vocab-de">Ich versöhne mich.</div></div></div>
+      <div class="vocab-card"><span class="vocab-icon">○</span><div class="vocab-copy"><div class="vocab-ro">Mă căsătoresc.</div><div class="vocab-de">Ich heirate.</div></div></div>
+      <div class="vocab-card"><span class="vocab-icon">/</span><div class="vocab-copy"><div class="vocab-ro">Mă despart.</div><div class="vocab-de">Ich trenne mich.</div></div></div>
+    </div>
+
+    <h2 class="section-title">8. O zi din viața mea</h2>
+    <div class="example-box">
+      <p><strong>Dimineața mă trezesc, mă ridic din pat și mă spăl.</strong></p>
+      <p>Morgens wache ich auf, stehe aus dem Bett auf und wasche mich.</p>
+      <p><strong>După ce mă îmbrac și mă încalț, mă duc la serviciu.</strong></p>
+      <p>Nachdem ich mich angezogen und meine Schuhe angezogen habe, gehe ich zur Arbeit.</p>
+      <p><strong>Seara mă întorc acasă, mă relaxez și mă culc.</strong></p>
+      <p>Abends komme ich nach Hause, entspanne mich und gehe schlafen.</p>
+    </div>
+  </section>
+
+  <section id="quiz">
+    <h2 class="section-title">9. Interaktives Quiz</h2>
+    <div class="quiz-grid">
+      <article class="quiz-card">
+        <h3>Frage 1</h3>
+        <p>Wie sagst du „Ich wasche mein Auto”?</p>
+        <div class="options">
+          <button class="option" data-correct="false">Mă spăl mașina.</button>
+          <button class="option" data-correct="true">Spăl mașina.</button>
+        </div>
+      </article>
+      <article class="quiz-card">
+        <h3>Frage 2</h3>
+        <p>„Ich ziehe mich an und meine Schuhe an.”</p>
+        <div class="options">
+          <button class="option" data-correct="false">Îmbrac și încalț.</button>
+          <button class="option" data-correct="true">Mă îmbrac și mă încalț.</button>
+        </div>
+      </article>
+      <article class="quiz-card">
+        <h3>Frage 3</h3>
+        <p>Was bedeutet „Mă întorc”?</p>
+        <div class="options">
+          <button class="option" data-correct="false">Ich drehe etwas um.</button>
+          <button class="option" data-correct="true">Ich kehre zurück.</button>
+        </div>
+      </article>
+      <article class="quiz-card">
+        <h3>Frage 4</h3>
+        <p>Welche Form passt zu „noi”?</p>
+        <div class="options">
+          <button class="option" data-correct="true">Noi ne spălăm.</button>
+          <button class="option" data-correct="false">Noi mă spălăm.</button>
+        </div>
+      </article>
+    </div>
+
+    <h2 class="section-title">10. Completează</h2>
+    <div class="exercise">
+      <label for="q1">1. Eu ___ trezesc la ora șapte.</label>
+      <select id="q1"><option value="">—</option><option value="mă">mă</option><option value="te">te</option><option value="se">se</option></select>
+    </div>
+    <div class="exercise">
+      <label for="q2">2. Noi ___ relaxăm seara.</label>
+      <select id="q2"><option value="">—</option><option value="ne">ne</option><option value="vă">vă</option><option value="se">se</option></select>
+    </div>
+    <div class="exercise">
+      <label for="q3">3. Maria ___ îmbracă repede.</label>
+      <select id="q3"><option value="">—</option><option value="mă">mă</option><option value="te">te</option><option value="se">se</option></select>
+    </div>
+    <button class="check-btn" onclick="checkPronouns()">Antworten prüfen</button>
+    <div id="pronoun-feedback" class="feedback"></div>
+  </section>
+
+  <section id="tema">
+    <h2 class="section-title">11. Tema pentru acasă · Hausaufgabe</h2>
+    <div class="homework">
+      <p>Schreibe 6–8 Sätze über deinen Tag. Benutze mindestens sechs reflexive Verben.</p>
+      <p><strong>Anfang:</strong> „Dimineața mă trezesc, mă ridic din pat și mă spăl. După ce mă îmbrac...”</p>
+      <textarea aria-label="Hausaufgabe" placeholder="Dimineața mă trezesc..."></textarea>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">Romanian Step by Step · A1 Deutsch · Verbe reflexive - Rutina</footer>
+
+<script>
+document.querySelectorAll('.quiz-card .option').forEach(button => {
+  button.addEventListener('click', () => {
+    const options = button.closest('.options');
+    if (options.querySelector('.correct') || options.querySelector('.wrong')) return;
+    if (button.dataset.correct === 'true') {
+      button.classList.add('correct');
+    } else {
+      button.classList.add('wrong');
+      options.querySelector('[data-correct="true"]').classList.add('correct');
+    }
+  });
+});
+
+function checkPronouns() {
+  const answers = { q1: 'mă', q2: 'ne', q3: 'se' };
+  let score = 0;
+  Object.entries(answers).forEach(([id, answer]) => {
+    if (document.getElementById(id).value === answer) score++;
+  });
+  const feedback = document.getElementById('pronoun-feedback');
+  feedback.className = 'feedback ' + (score === 3 ? 'ok' : 'err');
+  feedback.textContent = score === 3
+    ? 'Sehr gut! Alle Antworten sind richtig.'
+    : 'Du hast ' + score + ' von 3 richtig. Lösungen: mă, ne, se.';
+}
+</script>
+</body>
+</html>
