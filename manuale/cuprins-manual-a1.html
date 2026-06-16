@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cuprins manual A1 · Romanian Step by Step</title>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&amp;display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #263d52;
+    --navy-soft: #36556d;
+    --blue: #6f8ea3;
+    --blue-pale: #e9f1f5;
+    --coral: #c95a45;
+    --coral-pale: #fff0eb;
+    --green: #397461;
+    --green-pale: #e8f3ee;
+    --sand: #f5efe4;
+    --paper: #fff;
+    --bg: #fdfaf4;
+    --border: #d8e2e8;
+    --text: #1f2f3b;
+    --muted: #6f7c84;
+    --shadow: 0 14px 36px rgba(38, 61, 82, .11);
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Atkinson Hyperlegible', Arial, sans-serif;
+    line-height: 1.55;
+  }
+  a { color: inherit; text-decoration: none; }
+  .topbar {
+    min-height: 70px;
+    padding: 0 clamp(1rem, 4vw, 4rem);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    background: var(--navy);
+    color: #fff;
+  }
+  .logo { font-size: 22px; font-weight: 700; }
+  .logo span { color: #cad9e2; }
+  .back {
+    padding: 7px 11px;
+    border: 1px solid rgba(255,255,255,.25);
+    border-radius: 7px;
+    color: rgba(255,255,255,.82);
+    font-size: 13px;
+    font-weight: 700;
+  }
+  .hero {
+    padding: clamp(2.5rem, 7vw, 6rem) clamp(1rem, 6vw, 6rem);
+    background:
+      linear-gradient(120deg, rgba(255,255,255,.98), rgba(233,241,245,.96)),
+      radial-gradient(circle at 88% 20%, rgba(201,90,69,.2), transparent 28%);
+    border-bottom: 1px solid var(--border);
+  }
+  .hero-inner { max-width: 1180px; margin: 0 auto; }
+  .kicker {
+    width: fit-content;
+    padding: 6px 11px;
+    border-radius: 999px;
+    background: var(--coral-pale);
+    color: var(--coral);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+  }
+  h1 {
+    max-width: 820px;
+    margin: 15px 0 10px;
+    color: var(--navy);
+    font-size: clamp(38px, 6vw, 68px);
+    line-height: 1.02;
+  }
+  .lead { max-width: 780px; margin: 0; color: #4f6878; font-size: clamp(17px, 2vw, 21px); }
+  .meta {
+    margin-top: 22px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .meta span {
+    padding: 7px 11px;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: rgba(255,255,255,.8);
+    color: var(--muted);
+    font-size: 13px;
+  }
+  .container { max-width: 1180px; margin: 0 auto; padding: 34px 20px 70px; }
+  .section-head {
+    margin: 35px 0 15px;
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 1rem;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 10px;
+  }
+  .section-head h2 { margin: 0; color: var(--navy); font-size: 25px; }
+  .section-head p { margin: 0; color: var(--muted); font-size: 14px; }
+  .overview {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0,1fr));
+    gap: 10px;
+  }
+  .overview-card {
+    padding: 17px;
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    background: #fff;
+  }
+  .overview-card strong { display: block; color: var(--navy); font-size: 20px; }
+  .overview-card span { color: var(--muted); font-size: 13px; }
+  .principles {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0,1fr));
+    gap: 12px;
+  }
+  .principle {
+    padding: 18px;
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    background: #fff;
+    box-shadow: 0 6px 18px rgba(38,61,82,.055);
+  }
+  .principle h3 { margin: 0 0 6px; color: var(--navy); font-size: 17px; }
+  .principle p { margin: 0; color: var(--muted); font-size: 14px; }
+  .unit-list { display: grid; gap: 13px; }
+  .unit {
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 125px minmax(0,1fr);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--paper);
+    box-shadow: 0 8px 24px rgba(38,61,82,.06);
+  }
+  .unit-no {
+    padding: 20px 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: var(--navy);
+    color: #fff;
+  }
+  .unit-no strong { font-size: 34px; line-height: 1; }
+  .unit-no span { color: rgba(255,255,255,.72); font-size: 12px; text-transform: uppercase; letter-spacing: .08em; }
+  .unit-body { padding: 18px 20px; }
+  .unit-title {
+    margin-bottom: 13px;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+  }
+  .unit-title h3 { margin: 0; color: var(--navy); font-size: 22px; }
+  .unit-title em { color: var(--coral); font-size: 13px; font-style: normal; font-weight: 700; }
+  .unit-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr 1fr 1fr;
+    gap: 12px;
+  }
+  .unit-block h4 {
+    margin: 0 0 4px;
+    color: var(--navy-soft);
+    font-size: 12px;
+    letter-spacing: .05em;
+    text-transform: uppercase;
+  }
+  .unit-block p { margin: 0; color: var(--muted); font-size: 13px; }
+  .can-do {
+    margin-top: 12px;
+    padding: 8px 10px;
+    border-left: 3px solid var(--green);
+    background: var(--green-pale);
+    color: #315e50;
+    font-size: 13px;
+  }
+  .review {
+    padding: 17px 20px;
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 15px;
+    border: 1px solid #e5c9bc;
+    border-radius: 10px;
+    background: var(--coral-pale);
+  }
+  .review strong { color: var(--coral); font-size: 17px; }
+  .review p { margin: 0; color: #795647; font-size: 14px; }
+  .appendix-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0,1fr));
+    gap: 10px;
+  }
+  .appendix {
+    padding: 16px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: #fff;
+  }
+  .appendix h3 { margin: 0 0 5px; color: var(--navy); font-size: 16px; }
+  .appendix p { margin: 0; color: var(--muted); font-size: 13px; }
+  .editorial-note {
+    margin-top: 28px;
+    padding: 18px 20px;
+    border: 1px solid #dbcdb8;
+    border-radius: 9px;
+    background: var(--sand);
+    color: #665b4e;
+  }
+  .editorial-note strong { color: var(--navy); }
+  footer { padding: 22px; border-top: 1px solid var(--border); color: var(--muted); text-align: center; font-size: 13px; }
+  @media (max-width: 900px) {
+    .overview { grid-template-columns: repeat(2,1fr); }
+    .principles { grid-template-columns: 1fr; }
+    .unit-grid { grid-template-columns: repeat(2,1fr); }
+  }
+  @media (max-width: 650px) {
+    .unit { grid-template-columns: 1fr; }
+    .unit-no { min-height: 75px; flex-direction: row; align-items: center; }
+    .unit-grid, .appendix-grid { grid-template-columns: 1fr; }
+    .review { grid-template-columns: 1fr; }
+    .section-head { align-items: flex-start; flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+<header class="topbar">
+  <a class="logo" href="../index.html">Romanian <span>Step by Step</span></a>
+  <a class="back" href="../index.html#romana-a1-incepator">Înapoi la A1</a>
+</header>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="kicker">Concept editorial · CEFR A1</div>
+    <h1>Manual de limba română A1</h1>
+    <p class="lead">Cuprins curricular pentru un curs complet, orientat spre comunicare, progres vizibil și autonomie elementară în situații cotidiene.</p>
+    <div class="meta">
+      <span>12 unități</span>
+      <span>4 recapitulări</span>
+      <span>80–100 ore de studiu</span>
+      <span>Adulți și adolescenți</span>
+      <span>Româna ca limbă străină</span>
+    </div>
+  </div>
+</section>
+
+<main class="container">
+  <div class="section-head">
+    <h2>Arhitectura manualului</h2>
+    <p>Progresie spiralată: comunicare, lexic, gramatică, fonetică și cultură</p>
+  </div>
+  <div class="overview">
+    <div class="overview-card"><strong>12</strong><span>unități tematice</span></div>
+    <div class="overview-card"><strong>4</strong><span>module de recapitulare</span></div>
+    <div class="overview-card"><strong>1</strong><span>proiect practic per modul</span></div>
+    <div class="overview-card"><strong>A1</strong><span>evaluare finală pe competențe</span></div>
+  </div>
+
+  <div class="section-head">
+    <h2>Principii didactice</h2>
+    <p>Structură profesională, originală, aliniată descriptorilor CEFR</p>
+  </div>
+  <div class="principles">
+    <article class="principle"><h3>De la model la comunicare</h3><p>Fiecare unitate pornește de la dialoguri scurte și conduce spre o sarcină orală sau scrisă realizabilă.</p></article>
+    <article class="principle"><h3>Gramatică în context</h3><p>Regulile apar după exemple și sunt consolidate prin microexerciții, comparații și reutilizare în unitățile următoare.</p></article>
+    <article class="principle"><h3>„Pot să…” la final</h3><p>Obiectivele sunt formulate ca acțiuni observabile: mă prezint, cer informații, cumpăr, descriu sau relatez foarte simplu.</p></article>
+  </div>
+
+  <div class="section-head">
+    <h2>Cuprins</h2>
+    <p>12 unități + recapitulare, proiect și evaluare</p>
+  </div>
+
+  <div class="unit-list">
+    <article class="unit">
+      <div class="unit-no"><strong>01</strong><span>Contact</span></div>
+      <div class="unit-body">
+        <div class="unit-title"><h3>Bună! Eu sunt Ana.</h3><em>Primul contact</em></div>
+        <div class="unit-grid">
+          <div class="unit-block"><h4>Comunicare</h4><p>Salut, mă prezint, întreb numele, mulțumesc și îmi iau rămas-bun.</p></div>
+          <div class="unit-block"><h4>Vocabular</h4><p>Saluturi, nume, țări, limbi, formule de politețe.</p></div>
+          <div class="unit-block"><h4>Gramatică</h4><p>Pronumele personale; <em>a fi</em>; propoziția afirmativă și întrebarea.</p></div>
+          <div class="unit-block"><h4>Pronunție</h4><p>Alfabetul; ă, â/î, ș, ț; accentul cuvântului.</p></div>
+        </div>
+        <div class="can-do"><strong>Pot să:</strong> mă prezint și pot înțelege date personale foarte simple.</div>
+      </div>
+    </article>
+
+    <article class="unit">
+      <div class="unit-no"><strong>02</strong><span>Identitate</span></div>
+      <div class="unit-body">
+        <div class="unit-title"><h3>De unde ești?</h3><em>Date personale</em></div>
+        <div class="unit-grid">
+          <div class="unit-block"><h4>Comunicare</h4><p>Spun originea, naționalitatea, limbile vorbite, adresa și numărul de telefon.</p></div>
+          <div class="unit-block"><h4>Vocabular</h4><p>Țări, orașe, naționalități, numerele 0–100, formular.</p></div>
+          <div class="unit-block"><h4>Gramatică</h4><p>Genul adjectivelor de naționalitate; <em>a vorbi, a locui, a veni</em>; negația.</p></div>
+          <div class="unit-block"><h4>Pronunție</h4><p>Grupurile ce/ci, ge/gi; intonația întrebărilor.</p></div>
+        </div>
+        <div class="can-do"><strong>Pot să:</strong> completez un formular simplu și schimb informații personale de bază.</div>
+      </div>
+    </article>
+
+    <article class="unit">
+      <div class="unit-no"><strong>03</strong><span>Oameni</span></div>
+      <div class="unit-body">
+        <div class="unit-title"><h3>Aceasta este familia mea.</h3><em>Familie și persoane</em></div>
+        <div class="unit-grid">
+          <div class="unit-block"><h4>Comunicare</h4><p>Prezint familia, spun vârsta și descriu foarte simplu o persoană.</p></div>
+          <div class="unit-block"><h4>Vocabular</h4><p>Membrii familiei, profesii, aspect fizic, caracter de bază.</p></div>
+          <div class="unit-block"><h4>Gramatică</h4><p><em>A avea</em>; posesivele meu/mea; acordul adjectivului; pluralul frecvent.</p></div>
+          <div class="unit-block"><h4>Pronunție</h4><p>Diftongi uzuali; legarea cuvintelor în grupuri scurte.</p></div>
+        </div>
+        <div class="can-do"><strong>Pot să:</strong> prezint persoane apropiate în propoziții scurte și clare.</div>
+      </div>
+    </article>
+
+    <div class="review"><strong>Recapitulare 1</strong><p>Unitățile 1–3 · Portofoliu: „Profilul meu” · Joc de rol: prima întâlnire · Autoevaluare CEFR · Test modular.</p></div>
+
+    <article class="unit">
+      <div class="unit-no"><strong>04</strong><span>Locuință</span></div>
+      <div class="unit-body">
+        <div class="unit-title"><h3>Casa mea este mică, dar luminoasă.</h3><em>Acasă</em></div>
+        <div class="unit-grid">
+          <div class="unit-block"><h4>Comunicare</h4><p>Descriu locuința, camerele și poziția obiectelor.</p></div>
+          <div class="unit-block"><h4>Vocabular</h4><p>Casă, apartament, camere, mobilier, culori și dimensiuni.</p></div>
+          <div class="unit-block"><h4>Gramatică</h4><p>Articolul nehotărât; <em>este/sunt</em>; prepoziții de loc; <em>acesta/aceasta</em>.</p></div>
+          <div class="unit-block"><h4>Pronunție</h4><p>Consoane finale; opoziții singular–plural.</p></div>
+        </div>
+        <div class="can-do"><strong>Pot să:</strong> descriu pe scurt unde locuiesc și unde se află obiectele.</div>
+      </div>
+    </article>
+
+    <article class="unit">
+      <div class="unit-no"><strong>05</strong><span>Rutina</span></div>
+      <div class="unit-body">
+        <div class="unit-title"><h3>La ce oră te trezești?</h3><em>Ziua mea</em></div>
+        <div class="unit-grid">
+          <div class="unit-block"><h4>Comunicare</h4><p>Descriu rutina, întreb și spun ora, ordonez activități cotidiene.</p></div>
+          <div class="unit-block"><h4>Vocabular</h4><p>Momentele zilei, activități zilnice, zilele săptămânii.</p></div>
+          <div class="unit-block"><h4>Gramatică</h4><p>Prezentul verbelor regulate; verbe reflexive; adverbe de frecvență.</p></div>
+          <div class="unit-block"><h4>Pronunție</h4><p>Ritmul propoziției; formele neaccentuate mă, te, se.</p></div>
+        </div>
+        <div class="can-do"><strong>Pot să:</strong> povestesc simplu cum arată o zi obișnuită.</div>
+      </div>
+    </article>
+
+    <article class="unit">
+      <div class="unit-no"><strong>06</strong><span>Alimentație</span></div>
+      <div class="unit-body">
+        <div class="unit-title"><h3>Ce doriți să comandați?</h3><em>La masă</em></div>
+        <div class="unit-grid">
+          <div class="unit-block"><h4>Comunicare</h4><p>Comand la cafenea, spun ce îmi place și cer nota.</p></div>
+          <div class="unit-block"><h4>Vocabular</h4><p>Alimente, băuturi, mese, cantități și meniul.</p></div>
+          <div class="unit-block"><h4>Gramatică</h4><p><em>A vrea, a lua, a mânca, a bea</em>; acuzativul simplu; <em>niște</em>.</p></div>
+          <div class="unit-block"><h4>Pronunție</h4><p>Formule politicoase și intonația cererilor.</p></div>
+        </div>
+        <div class="can-do"><strong>Pot să:</strong> comand produse simple și exprim preferințe alimentare.</div>
+      </div>
+    </article>
+
+    <div class="review"><strong>Recapitulare 2</strong><p>Unitățile 4–6 · Proiect: „Apartamentul și ziua mea” · Joc de rol: la cafenea · Dictare funcțională · Test modular.</p></div>
+
+    <article class="unit">
+      <div class="unit-no"><strong>07</strong><span>Cumpărături</span></div>
+      <div class="unit-body">
+        <div class="unit-title"><h3>Cât costă?</h3><em>Magazine și servicii</em></div>
+        <div class="unit-grid">
+          <div class="unit-block"><h4>Comunicare</h4><p>Întreb prețul, cer o mărime, aleg, plătesc și înțeleg informații simple.</p></div>
+          <div class="unit-block"><h4>Vocabular</h4><p>Haine, încălțăminte, culori, bani, unități și ambalaje.</p></div>
+          <div class="unit-block"><h4>Gramatică</h4><p>Acordul adjectivelor; demonstrative; numerale peste 100; <em>pe</em> + obiect.</p></div>
+          <div class="unit-block"><h4>Pronunție</h4><p>Numere și prețuri; accent contrastiv.</p></div>
+        </div>
+        <div class="can-do"><strong>Pot să:</strong> fac o cumpărătură simplă și să cer informațiile necesare.</div>
+      </div>
+    </article>
+
+    <article class="unit">
+      <div class="unit-no"><strong>08</strong><span>Oraș</span></div>
+      <div class="unit-body">
+        <div class="unit-title"><h3>Unde este stația?</h3><em>Orientare și transport</em></div>
+        <div class="unit-grid">
+          <div class="unit-block"><h4>Comunicare</h4><p>Cer și dau indicații simple, cumpăr bilet și înțeleg un orar.</p></div>
+          <div class="unit-block"><h4>Vocabular</h4><p>Locuri în oraș, direcții, transport public și distanțe.</p></div>
+          <div class="unit-block"><h4>Gramatică</h4><p>Prepoziții de direcție; imperative frecvente; <em>trebuie să</em>; verbe de mișcare.</p></div>
+          <div class="unit-block"><h4>Pronunție</h4><p>Intonația instrucțiunilor; consoane grupate.</p></div>
+        </div>
+        <div class="can-do"><strong>Pot să:</strong> găsesc un loc și să folosesc transportul public în situații previzibile.</div>
+      </div>
+    </article>
+
+    <article class="unit">
+      <div class="unit-no"><strong>09</strong><span>Activitate</span></div>
+      <div class="unit-body">
+        <div class="unit-title"><h3>Lucrez și învăț româna.</h3><em>Muncă și studiu</em></div>
+        <div class="unit-grid">
+          <div class="unit-block"><h4>Comunicare</h4><p>Vorbesc despre ocupație, program, sarcini și competențe elementare.</p></div>
+          <div class="unit-block"><h4>Vocabular</h4><p>Profesii, locul de muncă, școală, obiecte și activități.</p></div>
+          <div class="unit-block"><h4>Gramatică</h4><p><em>A putea, a ști, a trebui</em>; conjunctivul prezent în formule uzuale.</p></div>
+          <div class="unit-block"><h4>Pronunție</h4><p>Accentul verbelor; grupuri cu <em>să</em>.</p></div>
+        </div>
+        <div class="can-do"><strong>Pot să:</strong> spun ce fac, unde lucrez sau studiez și ce pot face.</div>
+      </div>
+    </article>
+
+    <div class="review"><strong>Recapitulare 3</strong><p>Unitățile 7–9 · Proiect: „O zi practică în oraș” · Simulare: cumpărături și transport · Mediere de informații simple · Test modular.</p></div>
+
+    <article class="unit">
+      <div class="unit-no"><strong>10</strong><span>Timp liber</span></div>
+      <div class="unit-body">
+        <div class="unit-title"><h3>Ce faci în weekend?</h3><em>Preferințe și invitații</em></div>
+        <div class="unit-grid">
+          <div class="unit-block"><h4>Comunicare</h4><p>Vorbesc despre hobby-uri, invit, accept, refuz și stabilesc o întâlnire.</p></div>
+          <div class="unit-block"><h4>Vocabular</h4><p>Sport, cultură, vreme, anotimpuri și activități de weekend.</p></div>
+          <div class="unit-block"><h4>Gramatică</h4><p><em>Îmi place / îmi plac</em>; <em>cu</em> + pronume; viitorul cu <em>o să</em>.</p></div>
+          <div class="unit-block"><h4>Pronunție</h4><p>Intonația invitației; reducerea formelor uzuale.</p></div>
+        </div>
+        <div class="can-do"><strong>Pot să:</strong> discut despre preferințe și să fac planuri foarte simple.</div>
+      </div>
+    </article>
+
+    <article class="unit">
+      <div class="unit-no"><strong>11</strong><span>Sănătate</span></div>
+      <div class="unit-body">
+        <div class="unit-title"><h3>Nu mă simt bine.</h3><em>La medic și la farmacie</em></div>
+        <div class="unit-grid">
+          <div class="unit-block"><h4>Comunicare</h4><p>Descriu simptome de bază, cer ajutor și înțeleg recomandări simple.</p></div>
+          <div class="unit-block"><h4>Vocabular</h4><p>Corpul, stări, simptome, medicamente și recomandări.</p></div>
+          <div class="unit-block"><h4>Gramatică</h4><p><em>Mă doare / mă dor</em>; dativul în expresii; imperativul; <em>să</em> + prezent.</p></div>
+          <div class="unit-block"><h4>Pronunție</h4><p>Claritatea simptomelor; accentul informației importante.</p></div>
+        </div>
+        <div class="can-do"><strong>Pot să:</strong> comunic o problemă simplă de sănătate și să urmez indicații scurte.</div>
+      </div>
+    </article>
+
+    <article class="unit">
+      <div class="unit-no"><strong>12</strong><span>Călătorie</span></div>
+      <div class="unit-body">
+        <div class="unit-title"><h3>Am fost la Brașov.</h3><em>Călătorii și experiențe</em></div>
+        <div class="unit-grid">
+          <div class="unit-block"><h4>Comunicare</h4><p>Rezerv o cameră, întreb despre servicii și relatez foarte simplu un weekend.</p></div>
+          <div class="unit-block"><h4>Vocabular</h4><p>Gară, hotel, bagaje, vacanță, obiective și activități.</p></div>
+          <div class="unit-block"><h4>Gramatică</h4><p>Perfectul compus al verbelor frecvente; marcatori temporali; recapitularea viitorului.</p></div>
+          <div class="unit-block"><h4>Pronunție</h4><p>Formele auxiliare scurte; ritmul relatării.</p></div>
+        </div>
+        <div class="can-do"><strong>Pot să:</strong> rezolv situații simple de călătorie și să spun pe scurt ce am făcut.</div>
+      </div>
+    </article>
+
+    <div class="review"><strong>Recapitulare finală</strong><p>Unitățile 10–12 · Proiect: „Weekend în România” · Portofoliu A1 · Simulare integrată · Test final: citire, ascultare, scriere și vorbire.</p></div>
+  </div>
+
+  <div class="section-head">
+    <h2>Anexe</h2>
+    <p>Instrumente de studiu și referință</p>
+  </div>
+  <div class="appendix-grid">
+    <article class="appendix"><h3>Gramatică sistematică</h3><p>Tabele, reguli scurte, exemple și trimiteri la unități.</p></article>
+    <article class="appendix"><h3>Verbe esențiale</h3><p>Conjugarea verbelor frecvente la prezent, perfect compus și viitor.</p></article>
+    <article class="appendix"><h3>Vocabular pe unități</h3><p>Liste tematice cu spațiu pentru traducere și exemple personale.</p></article>
+    <article class="appendix"><h3>Dicționar alfabetic</h3><p>Cuvintele active ale nivelului A1, cu gen și plural.</p></article>
+    <article class="appendix"><h3>Transcrieri audio</h3><p>Dialoguri, anunțuri, mesaje și exerciții de pronunție.</p></article>
+    <article class="appendix"><h3>Cheia exercițiilor</h3><p>Răspunsuri, modele de text și criterii de autoevaluare.</p></article>
+  </div>
+
+  <div class="editorial-note">
+    <strong>Notă editorială:</strong> structura este originală și urmărește o progresie comunicativă comparabilă ca rigoare cu manualele europene profesionale. Conținutul nu reproduce cuprinsul sau formulările unei publicații existente.
+  </div>
+</main>
+
+<footer>Romanian Step by Step · Concept de manual A1 · Aliniere CEFR</footer>
+</body>
+</html>
