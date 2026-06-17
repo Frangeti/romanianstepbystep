@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lecție C1 — Conversație la medic: Febră și alergie</title>
+<style>
+  :root {
+    --bg: #F7F5F0;
+    --surface: #FFFFFF;
+    --surface2: #F0EDE6;
+    --border: #DDD9D0;
+    --doc-bg: #E8F1FB;
+    --doc-text: #0C3D6B;
+    --pac-bg: #E2F4EC;
+    --pac-text: #074D38;
+    --accent: #1B6E4F;
+    --accent-light: #D0EDE1;
+    --warn: #7A4A00;
+    --warn-bg: #FEF3DC;
+    --warn-border: #E09A20;
+    --text: #1A1714;
+    --text2: #5A5550;
+    --text3: #8A8580;
+    --pill-bg: #E8E4F8;
+    --pill-text: #3B318A;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    font-family: 'Georgia', serif;
+    color: var(--text);
+    min-height: 100vh;
+  }
+  header {
+    background: var(--accent);
+    color: #fff;
+    padding: 2rem 1.5rem 1.5rem;
+    text-align: center;
+    position: relative;
+  }
+  .home-link {
+    position: absolute;
+    top: 14px;
+    left: 16px;
+    color: rgba(255,255,255,0.86);
+    font-family: 'Arial', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    text-decoration: none;
+  }
+  .home-link:hover { color: #fff; text-decoration: underline; }
+  header .eyebrow {
+    font-family: 'Arial', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    opacity: 0.75;
+    margin-bottom: 10px;
+  }
+  header h1 {
+    font-size: clamp(1.4rem, 4vw, 2rem);
+    font-weight: normal;
+    line-height: 1.3;
+    margin-bottom: 8px;
+  }
+  header .subtitle {
+    font-family: 'Arial', sans-serif;
+    font-size: 14px;
+    opacity: 0.8;
+  }
+  .level-badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.2);
+    border: 1px solid rgba(255,255,255,0.4);
+    border-radius: 99px;
+    padding: 3px 14px;
+    font-family: 'Arial', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    margin-top: 12px;
+  }
+
+  .tabs {
+    display: flex;
+    gap: 0;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 0 1rem;
+    overflow-x: auto;
+  }
+  .tab-btn {
+    padding: 14px 18px;
+    font-family: 'Arial', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text3);
+    background: none;
+    border: none;
+    border-bottom: 2.5px solid transparent;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: color 0.15s, border-color 0.15s;
+  }
+  .tab-btn:hover { color: var(--text2); }
+  .tab-btn.active { color: var(--accent); border-bottom-color: var(--accent); }
+
+  .content { max-width: 760px; margin: 0 auto; padding: 1.5rem 1rem 3rem; }
+  .phase { display: none; }
+  .phase.active { display: block; }
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 1.2rem;
+  }
+  .section-label {
+    font-family: 'Arial', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text3);
+    margin-bottom: 14px;
+  }
+
+  /* DIALOG */
+  .bubble-wrap { display: flex; flex-direction: column; gap: 10px; }
+  .turn { display: flex; flex-direction: column; }
+  .turn.right { align-items: flex-end; }
+  .speaker-name {
+    font-family: 'Arial', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--text3);
+    margin-bottom: 3px;
+    padding: 0 4px;
+  }
+  .turn.right .speaker-name { text-align: right; }
+  .bubble {
+    display: inline-block;
+    max-width: 88%;
+    padding: 11px 15px;
+    border-radius: 14px;
+    font-size: 15px;
+    line-height: 1.7;
+  }
+  .bubble.doc { background: var(--doc-bg); color: var(--doc-text); border-bottom-left-radius: 4px; }
+  .bubble.pac { background: var(--pac-bg); color: var(--pac-text); border-bottom-right-radius: 4px; }
+
+  /* Annotations */
+  .anno {
+    border-bottom: 1.5px dashed var(--accent);
+    cursor: pointer;
+    position: relative;
+  }
+  .anno .tip {
+    display: none;
+    position: absolute;
+    bottom: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: #0C3D2A;
+    color: #D0EDE1;
+    font-size: 12px;
+    font-family: 'Arial', sans-serif;
+    padding: 6px 10px;
+    border-radius: 8px;
+    white-space: normal;
+    width: 200px;
+    text-align: center;
+    z-index: 20;
+    line-height: 1.5;
+    pointer-events: none;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  }
+  .anno .tip::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 5px solid transparent;
+    border-top-color: #0C3D2A;
+  }
+  .anno:hover .tip,
+  .anno.open .tip { display: block; }
+
+  /* Tip box */
+  .tip-box {
+    background: var(--warn-bg);
+    border-left: 3px solid var(--warn-border);
+    border-radius: 0 8px 8px 0;
+    padding: 10px 14px;
+    font-family: 'Arial', sans-serif;
+    font-size: 14px;
+    color: var(--warn);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+  .tip-box strong { font-weight: 700; }
+
+  /* Vocab */
+  .vocab-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+  @media (max-width: 500px) { .vocab-grid { grid-template-columns: 1fr; } }
+  .vocab-item {
+    background: var(--surface2);
+    border-radius: 8px;
+    padding: 9px 12px;
+  }
+  .vocab-term { font-size: 14px; font-weight: bold; color: var(--text); }
+  .vocab-def { font-family: 'Arial', sans-serif; font-size: 12px; color: var(--text2); margin-top: 2px; }
+
+  /* Phrases */
+  .phrase-list { list-style: none; }
+  .phrase-list li {
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--text);
+  }
+  .phrase-list li:last-child { border-bottom: none; }
+  .phrase-list em { color: var(--accent); font-style: italic; }
+
+  /* Analysis */
+  .analysis-block { margin-bottom: 18px; }
+  .analysis-title {
+    font-family: 'Arial', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 8px;
+  }
+  .compare-box {
+    background: var(--surface2);
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-family: 'Arial', sans-serif;
+    font-size: 13.5px;
+    line-height: 1.8;
+  }
+  .wrong-ex { color: #992222; }
+  .right-ex { color: #0C6B3A; }
+
+  /* Quiz */
+  .quiz-q {
+    font-size: 15px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    line-height: 1.5;
+  }
+  .quiz-opts { display: flex; flex-direction: column; gap: 6px; margin-bottom: 20px; }
+  .quiz-opt {
+    text-align: left;
+    padding: 10px 14px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background: var(--surface2);
+    color: var(--text);
+    font-family: 'Arial', sans-serif;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background 0.12s, border-color 0.12s;
+    line-height: 1.5;
+  }
+  .quiz-opt:hover:not(:disabled) { background: var(--surface); border-color: var(--accent); }
+  .quiz-opt.correct { background: #D4EDD9; border-color: #2D7A3A; color: #133D1A; }
+  .quiz-opt.wrong { background: #F5DADA; border-color: #A33030; color: #501313; }
+  .quiz-score {
+    font-family: 'Arial', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--accent);
+    margin-top: 10px;
+    display: none;
+  }
+
+  footer {
+    text-align: center;
+    font-family: 'Arial', sans-serif;
+    font-size: 12px;
+    color: var(--text3);
+    padding: 1.5rem 1rem;
+    border-top: 1px solid var(--border);
+    margin-top: 2rem;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <a class="home-link" href="../../index.html">← Acasă</a>
+  <div class="eyebrow">Lecție interactivă de română</div>
+  <h1>Conversație la medic:<br>Febră diurnă și alergie</h1>
+  <div class="subtitle">Dialog autentic · Vocabular · Analiză lingvistică · Test</div>
+  <div class="level-badge">Nivel C1</div>
+</header>
+
+<nav class="tabs">
+  <button class="tab-btn active" data-tab="dialog">Dialog</button>
+  <button class="tab-btn" data-tab="vocabular">Vocabular</button>
+  <button class="tab-btn" data-tab="analiza">Analiză C1</button>
+  <button class="tab-btn" data-tab="quiz">Test</button>
+</nav>
+
+<div class="content">
+
+  <!-- ── DIALOG ── -->
+  <div id="tab-dialog" class="phase active">
+    <div class="tip-box">
+      <strong>Instrucțiune:</strong> Treceți cu mouse-ul (sau apăsați) pe cuvintele
+      <span style="border-bottom:1.5px dashed #1B6E4F; color:#074D38;">subliniate cu verde</span>
+      pentru a vedea explicații instant.
+    </div>
+
+    <div class="card">
+      <div class="section-label">Scenariu — Consultație internistică: febră diurnă, alergie, antihistaminice sedative</div>
+      <div class="bubble-wrap">
+
+        <div class="turn">
+          <div class="speaker-name">Medic</div>
+          <div class="bubble doc">Bună ziua. Cu ce vă pot fi de folos astăzi?</div>
+        </div>
+
+        <div class="turn right">
+          <div class="speaker-name">Pacient</div>
+          <div class="bubble pac">
+            Bună ziua, domnule doctor. Mă confrunt de câteva zile cu o situație destul de deranjantă: temperatura îmi crește
+            <span class="anno">gradual<span class="tip">treptat, progresiv — mai precis decât „încet-încet"</span></span>
+            pe parcursul zilei, atingând uneori 37,8–38,2 grade, pentru ca spre seară și înainte de culcare să revină la valori normale, fără niciun tratament
+            <span class="anno">antipiretic<span class="tip">medicament care scade febra: paracetamol, ibuprofen etc.</span></span>.
+          </div>
+        </div>
+
+        <div class="turn">
+          <div class="speaker-name">Medic</div>
+          <div class="bubble doc">
+            Interesant. Acest
+            <span class="anno">pattern febril<span class="tip">tipar de evoluție a temperaturii în timp — expresie medicală curentă la C1</span></span>
+            — creștere diurnă cu
+            <span class="anno">defervescență<span class="tip">scăderea febrei, spontană sau prin tratament</span></span>
+            nocturnă spontană — poate sugera mai multe cauze. De câte zile se manifestă și ați observat și alte simptome asociate?
+          </div>
+        </div>
+
+        <div class="turn right">
+          <div class="speaker-name">Pacient</div>
+          <div class="bubble pac">
+            De aproximativ cinci zile. Pe lângă febră, am și o
+            <span class="anno">simptomatologie alergică<span class="tip">ansamblu de simptome legate de alergie — mai formal decât „am alergie"</span></span>
+            pronunțată —
+            <span class="anno">rinoree apoasă<span class="tip">scurgere nazală lichidă, clară — simptom alergic clasic</span></span>,
+            <span class="anno">prurit ocular<span class="tip">mâncărime la ochi — termenul medical corect</span></span>
+            și strănut frecvent. Urmez deja un tratament cu antihistaminice, prescris de medicul meu de familie, însă acestea îmi provoacă o
+            <span class="anno">sedare semnificativă<span class="tip">somnolență puternică indusă de medicament — mai elevat decât „mi-e somn"</span></span>
+            pe durata zilei, ceea ce îmi afectează considerabil capacitatea de concentrare la serviciu.
+          </div>
+        </div>
+
+        <div class="turn">
+          <div class="speaker-name">Medic</div>
+          <div class="bubble doc">
+            Înțeleg. Ce preparat antihistaminic urmați și de când? Mă interesează în mod particular dacă este vorba de un antihistaminic de generație mai veche, cu efect sedativ cunoscut, sau de unul din
+            <span class="anno">generația a doua<span class="tip">antihistaminice non-sedative: cetirizină, loratadină, fexofenadină</span></span>,
+            care ar trebui să fie considerabil mai puțin
+            <span class="anno">somnogen<span class="tip">care provoacă somn — adjectiv tehnic din farmacologie</span></span>.
+          </div>
+        </div>
+
+        <div class="turn right">
+          <div class="speaker-name">Pacient</div>
+          <div class="bubble pac">
+            Iau clorhidrat de difenhidramină, câte un comprimat seara — deși recunosc că uneori iau și ziua când simptomele se
+            <span class="anno">acutizează<span class="tip">se agravează brusc, se intensifică — verb specific limbajului medical</span></span>.
+            Bănuiesc că tocmai aceasta este sursa somnolenței diurne. Cât privește febra, nu știu dacă este legată de alergie sau de cu totul altceva.
+          </div>
+        </div>
+
+        <div class="turn">
+          <div class="speaker-name">Medic</div>
+          <div class="bubble doc">
+            Aveți dreptate să faceți această
+            <span class="anno">distincție etiologică<span class="tip">distincție privind cauza bolii — registru medical formal</span></span>.
+            Difenhidramina este într-adevăr un antihistaminic de prima generație, cu
+            <span class="anno">profil sedativ pronunțat<span class="tip">cu efect puternic de somnolență — expresie tehnică farmacologică</span></span>,
+            motiv pentru care îl vom înlocui cu un preparat non-sedativ. Referitor la febra cu acest pattern particular, vom exclude o eventuală
+            <span class="anno">suprainfecție bacteriană<span class="tip">infecție bacteriană apărută pe fondul alergiei sau virozei</span></span>
+            sau o patologie de fond. Vă voi recomanda
+            <span class="anno">hemoleucogramă<span class="tip">analiză completă de sânge: globule roșii, albe, trombocite</span></span>
+            completă și proteina C reactivă.
+          </div>
+        </div>
+
+        <div class="turn right">
+          <div class="speaker-name">Pacient</div>
+          <div class="bubble pac">
+            Apreciez că abordați problema în mod sistematic. Aș dori totuși să înțeleg: febra care scade
+            <span class="anno">spontan<span class="tip">fără tratament, de la sine — opus lui „indus terapeutic"</span></span>
+            înainte de culcare este un semn îngrijorător sau poate fi interpretată ca un mecanism de
+            <span class="anno">autoreglare<span class="tip">capacitatea organismului de a reveni la echilibru fără intervenție externă</span></span>
+            al organismului?
+          </div>
+        </div>
+
+        <div class="turn">
+          <div class="speaker-name">Medic</div>
+          <div class="bubble doc">
+            Întrebarea dumneavoastră este perfect justificată. Temperatura corporală urmează în mod fiziologic un
+            <span class="anno">ritm circadian<span class="tip">ciclu biologic natural de 24 de ore — valorile sunt mai ridicate după-amiaza</span></span>
+            — valorile sunt mai ridicate după-amiaza și mai scăzute dimineața devreme. În cazul dumneavoastră, această variație pare amplificată, ceea ce necesită investigații suplimentare pentru a exclude o cauză
+            <span class="anno">sistemică<span class="tip">care afectează întregul organism, nu un singur organ</span></span>.
+            Deocamdată, nu este un semnal de alarmă major, însă nu trebuie neglijat.
+          </div>
+        </div>
+
+        <div class="turn right">
+          <div class="speaker-name">Pacient</div>
+          <div class="bubble pac">Vă mulțumesc pentru clarificări. Aștept cu interes rezultatele și mă voi prezenta cu ele în cel mai scurt timp posibil.</div>
+        </div>
+
+        <div class="turn">
+          <div class="speaker-name">Medic</div>
+          <div class="bubble doc">
+            Foarte bine. Până atunci, vă prescriu
+            <span class="anno">cetirizină<span class="tip">antihistaminic generația a doua — eficient și non-sedativ</span></span>
+            10 mg — o dată pe zi, seara — care va controla simptomele alergice fără să vă compromită starea de
+            <span class="anno">vigilență diurnă<span class="tip">capacitatea de a fi alert și concentrat pe parcursul zilei</span></span>.
+            Monitorizați temperatura de două ori pe zi și notați valorile. Ne revedem după analize.
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ── VOCABULAR ── -->
+  <div id="tab-vocabular" class="phase">
+    <div class="card">
+      <div class="section-label">Termeni medicali esențiali din dialog</div>
+      <div class="vocab-grid">
+        <div class="vocab-item"><div class="vocab-term">defervescență</div><div class="vocab-def">scăderea febrei, spontană sau prin tratament</div></div>
+        <div class="vocab-item"><div class="vocab-term">pattern febril</div><div class="vocab-def">tiparul de evoluție a temperaturii în timp</div></div>
+        <div class="vocab-item"><div class="vocab-term">ritm circadian</div><div class="vocab-def">ciclul biologic natural de 24 de ore</div></div>
+        <div class="vocab-item"><div class="vocab-term">sedare / efect sedativ</div><div class="vocab-def">somnolență indusă de un medicament</div></div>
+        <div class="vocab-item"><div class="vocab-term">prurit ocular</div><div class="vocab-def">mâncărime la ochi — simptom alergic</div></div>
+        <div class="vocab-item"><div class="vocab-term">rinoree apoasă</div><div class="vocab-def">scurgere nazală lichidă, clară</div></div>
+        <div class="vocab-item"><div class="vocab-term">antihistaminic non-sedativ</div><div class="vocab-def">gen. a doua: cetirizină, loratadină</div></div>
+        <div class="vocab-item"><div class="vocab-term">suprainfecție bacteriană</div><div class="vocab-def">infecție bacteriană pe fond viral sau alergic</div></div>
+        <div class="vocab-item"><div class="vocab-term">a se acutiza</div><div class="vocab-def">a se agrava brusc, a se intensifica</div></div>
+        <div class="vocab-item"><div class="vocab-term">profil sedativ</div><div class="vocab-def">tendința unui medicament de a provoca somn</div></div>
+        <div class="vocab-item"><div class="vocab-term">etiologie</div><div class="vocab-def">cauza sau originea unei boli</div></div>
+        <div class="vocab-item"><div class="vocab-term">hemoleucogramă</div><div class="vocab-def">analiză completă a sângelui</div></div>
+        <div class="vocab-item"><div class="vocab-term">antipiretic</div><div class="vocab-def">medicament care scade febra</div></div>
+        <div class="vocab-item"><div class="vocab-term">vigilență diurnă</div><div class="vocab-def">starea de alertă și concentrare pe parcursul zilei</div></div>
+        <div class="vocab-item"><div class="vocab-term">sistemic</div><div class="vocab-def">care afectează întregul organism</div></div>
+        <div class="vocab-item"><div class="vocab-term">somnogen</div><div class="vocab-def">care provoacă somn — adjectiv farmacologic</div></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="section-label">Fraze gata de folosit — nivel C1</div>
+      <ul class="phrase-list">
+        <li><em>Temperatura îmi urmează un tipar constant: crește gradual pe parcursul zilei și revine la normal seara, fără tratament antipiretic.</em></li>
+        <li><em>Antihistaminicul pe care îl iau îmi induce o sedare diurnă care îmi compromite randamentul profesional.</em></li>
+        <li><em>Nu știu dacă febra este de natură alergică sau dacă semnalează o altă patologie de fond.</em></li>
+        <li><em>Simptomele se acutizează în a doua parte a zilei, ceea ce mă determină să iau o doză suplimentară.</em></li>
+        <li><em>Aș dori să înțeleg dacă această evoluție poate fi interpretată ca un mecanism de autoreglare al organismului.</em></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ── ANALIZĂ ── -->
+  <div id="tab-analiza" class="phase">
+    <div class="card">
+      <div class="section-label">Ce face un răspuns să fie nivel C1 în acest context</div>
+
+      <div class="analysis-block">
+        <div class="analysis-title">1. Nominalizare în loc de verb simplu</div>
+        <div class="compare-box">
+          <span class="wrong-ex">✗ „am alergie și îmi vine somn"</span><br>
+          <span class="right-ex">✓ „prezint simptomatologie alergică ce induce o sedare semnificativă pe durata zilei"</span>
+        </div>
+      </div>
+
+      <div class="analysis-block">
+        <div class="analysis-title">2. Verbe epistemice — exprimați incertitudinea cu precizie</div>
+        <div class="compare-box">
+          <span class="wrong-ex">✗ „nu știu dacă e de la alergie"</span><br>
+          <span class="right-ex">✓ „bănuiesc că aceasta este sursa somnolenței, însă nu exclud o altă cauză"</span>
+        </div>
+      </div>
+
+      <div class="analysis-block">
+        <div class="analysis-title">3. Subordonare complexă</div>
+        <div class="compare-box">
+          <span class="wrong-ex">✗ „iau pastile și îmi vine somn. Nu mă pot concentra."</span><br>
+          <span class="right-ex">✓ „antihistaminicele îmi provoacă o sedare semnificativă, <em>ceea ce</em> îmi afectează considerabil capacitatea de concentrare la serviciu"</span>
+        </div>
+      </div>
+
+      <div class="analysis-block">
+        <div class="analysis-title">4. Distincții lexicale fine</div>
+        <div class="compare-box">
+          <span class="wrong-ex">scade febra</span> → <span class="right-ex">defervescență</span><br>
+          <span class="wrong-ex">se înrăutățește</span> → <span class="right-ex">se acutizează / se exacerbează</span><br>
+          <span class="wrong-ex">de la sine</span> → <span class="right-ex">spontan / fără intervenție terapeutică</span><br>
+          <span class="wrong-ex">mi-e somn din cauza pastilei</span> → <span class="right-ex">preparatul induce o sedare diurnă pronunțată</span>
+        </div>
+      </div>
+
+      <div class="analysis-block">
+        <div class="analysis-title">5. Întrebări precise, nu vagi</div>
+        <div class="compare-box">
+          <span class="wrong-ex">✗ „E grav?"</span><br>
+          <span class="right-ex">✓ „Febra care scade spontan înainte de culcare poate fi interpretată ca un mecanism de autoreglare al organismului sau este un semn îngrijorător?"</span>
+        </div>
+      </div>
+
+      <div class="analysis-block">
+        <div class="analysis-title">6. Menținerea registrului formal pe tot parcursul</div>
+        <div class="compare-box">
+          Pacientul nu coboară niciodată la limbaj colocvial, chiar și când descrie ceva banal precum somnolența. Folosește <em>„îmi compromite vigilența diurnă"</em> nu <em>„adorm la birou"</em>.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── QUIZ ── -->
+  <div id="tab-quiz" class="phase">
+    <div class="card">
+      <div class="section-label">Test rapid — terminologie medicală C1</div>
+      <div id="quiz-body"></div>
+      <div class="quiz-score" id="quiz-score"></div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  Lecție de română — Nivel C1 &nbsp;·&nbsp; Conversație la medic
+</footer>
+
+<script>
+// Tab navigation
+function showTab(id, btn) {
+  document.querySelectorAll('.phase').forEach(function(p) { p.classList.remove('active'); });
+  document.querySelectorAll('.tab-btn').forEach(function(b) { b.classList.remove('active'); });
+  var target = document.getElementById('tab-' + id);
+  if (target) target.classList.add('active');
+  if (btn) btn.classList.add('active');
+}
+
+// Attach tab button listeners via JS (more reliable than onclick)
+document.querySelectorAll('.tab-btn').forEach(function(btn) {
+  btn.addEventListener('click', function(e) {
+    var id = btn.getAttribute('data-tab');
+    showTab(id, btn);
+  });
+});
+
+// Touch/click support for annotations
+document.querySelectorAll('.anno').forEach(function(el) {
+  el.addEventListener('click', function(e) {
+    e.stopPropagation();
+    var wasOpen = el.classList.contains('open');
+    document.querySelectorAll('.anno').forEach(function(a) { a.classList.remove('open'); });
+    if (!wasOpen) el.classList.add('open');
+  });
+});
+document.addEventListener('click', function() {
+  document.querySelectorAll('.anno').forEach(function(a) { a.classList.remove('open'); });
+});
+
+// Quiz
+const quizData = [
+  {
+    q: "Ce înseamnă că febra prezintă „defervescență nocturnă spontană"?",
+    opts: ["Febra crește noaptea fără tratament","Febra scade seara de la sine","Febra dispare complet după somn","Pacientul transpiră noaptea"],
+    correct: 1
+  },
+  {
+    q: "Care antihistaminic este non-sedativ?",
+    opts: ["Difenhidramina","Prometazina","Cetirizina","Clorfenamina"],
+    correct: 2
+  },
+  {
+    q: "Ce înseamnă că simptomele „se acutizează"?",
+    opts: ["Dispar treptat","Se agravează brusc","Apar pentru prima dată","Se ameliorează"],
+    correct: 1
+  },
+  {
+    q: "Completați la nivel C1: „Antihistaminicul îmi provoacă ___ pe durata zilei."",
+    opts: ["somn","oboseală multă","o sedare semnificativă","să adorm"],
+    correct: 2
+  },
+  {
+    q: "Ce investigație este „hemoleucograma"?",
+    opts: ["Ecografie abdominală","Analiză completă a sângelui","Radiografie pulmonară","Electrocardiogramă"],
+    correct: 1
+  },
+  {
+    q: "Ce înseamnă că o boală are cauză „sistemică"?",
+    opts: ["Afectează un singur organ","Este contagioasă","Afectează întregul organism","Este de origine genetică"],
+    correct: 2
+  },
+];
+
+let answered = new Array(quizData.length).fill(null);
+
+function renderQuiz() {
+  const container = document.getElementById('quiz-body');
+  container.innerHTML = quizData.map((item, qi) => `
+    <div style="margin-bottom:22px;">
+      <div class="quiz-q">${qi + 1}. ${item.q}</div>
+      <div class="quiz-opts">
+        ${item.opts.map((opt, oi) => {
+          let cls = 'quiz-opt';
+          if (answered[qi] !== null) {
+            if (oi === item.correct) cls += ' correct';
+            else if (oi === answered[qi]) cls += ' wrong';
+          }
+          return `<button class="${cls}" onclick="answer(${qi},${oi})" ${answered[qi] !== null ? 'disabled' : ''}>${opt}</button>`;
+        }).join('')}
+      </div>
+    </div>
+  `).join('');
+
+  const scoreEl = document.getElementById('quiz-score');
+  if (answered.every(a => a !== null)) {
+    const score = answered.filter((a, i) => a === quizData[i].correct).length;
+    scoreEl.style.display = 'block';
+    scoreEl.textContent = `Scor final: ${score} / ${quizData.length} ${score === quizData.length ? '🎉 Excelent!' : score >= 4 ? '— Foarte bine!' : '— Mai exersați vocabularul!'}`;
+  } else {
+    scoreEl.style.display = 'none';
+  }
+}
+
+function answer(qi, oi) {
+  answered[qi] = oi;
+  renderQuiz();
+}
+
+renderQuiz();
+</script>
+</body>
+</html>
