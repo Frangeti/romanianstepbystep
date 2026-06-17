@@ -283,6 +283,66 @@
     margin-top: 10px;
     display: none;
   }
+  .exercise-block { margin-bottom: 18px; }
+  .exercise-block h3 {
+    font-family: 'Arial', sans-serif;
+    font-size: 14px;
+    margin: 0 0 8px;
+    color: var(--text);
+  }
+  .exercise-item {
+    background: var(--surface2);
+    border-radius: 8px;
+    padding: 10px 12px;
+    margin-bottom: 8px;
+    font-size: 14px;
+    line-height: 1.65;
+  }
+  .write-field {
+    width: 100%;
+    min-height: 58px;
+    margin-top: 7px;
+    padding: 9px 10px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: #fff;
+    color: var(--text);
+    font-family: 'Arial', sans-serif;
+    font-size: 14px;
+    resize: vertical;
+  }
+  .mini-select {
+    width: 100%;
+    margin-top: 7px;
+    padding: 8px 10px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: #fff;
+    color: var(--text);
+    font-family: 'Arial', sans-serif;
+    font-size: 14px;
+  }
+  .check-btn {
+    border: 0;
+    border-radius: 8px;
+    background: var(--accent);
+    color: #fff;
+    cursor: pointer;
+    font-family: 'Arial', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    padding: 9px 14px;
+  }
+  .exercise-feedback {
+    display: none;
+    margin-top: 10px;
+    border-radius: 8px;
+    padding: 9px 11px;
+    font-family: 'Arial', sans-serif;
+    font-size: 13px;
+  }
+  .exercise-feedback.ok { display: block; background: #D4EDD9; color: #133D1A; }
+  .exercise-feedback.err { display: block; background: #F5DADA; color: #501313; }
 
   footer {
     text-align: center;
@@ -308,7 +368,8 @@
 <nav class="tabs">
   <button class="tab-btn active" data-tab="dialog">Dialog</button>
   <button class="tab-btn" data-tab="vocabular">Vocabular</button>
-  <button class="tab-btn" data-tab="analiza">Analiză C1</button>
+  <button class="tab-btn" data-tab="analiza">Lecție C1</button>
+  <button class="tab-btn" data-tab="exercitii">Exerciții</button>
   <button class="tab-btn" data-tab="quiz">Test</button>
 </nav>
 
@@ -323,7 +384,7 @@
     </div>
 
     <div class="card">
-      <div class="section-label">Scenariu — Consultație internistică: febră diurnă, alergie, antihistaminice sedative</div>
+      <div class="section-label">Scenariu — Consultație: febră ușoară pe parcursul zilei, alergie și somnolență de la medicamente</div>
       <div class="bubble-wrap">
 
         <div class="turn">
@@ -334,107 +395,70 @@
         <div class="turn right">
           <div class="speaker-name">Pacient</div>
           <div class="bubble pac">
-            Bună ziua, domnule doctor. Mă confrunt de câteva zile cu o situație destul de deranjantă: temperatura îmi crește
-            <span class="anno">gradual<span class="tip">treptat, progresiv — mai precis decât „încet-încet"</span></span>
-            pe parcursul zilei, atingând uneori 37,8–38,2 grade, pentru ca spre seară și înainte de culcare să revină la valori normale, fără niciun tratament
-            <span class="anno">antipiretic<span class="tip">medicament care scade febra: paracetamol, ibuprofen etc.</span></span>.
+            Bună ziua, domnule doctor. De câteva zile observ ceva deranjant: temperatura îmi crește
+            <span class="anno">treptat<span class="tip">încet, pas cu pas; mai neutru decât „dintr-odată"</span></span>
+            pe parcursul zilei, uneori până la 37,8–38,2 grade, iar seara revine la normal fără să iau medicamente pentru febră.
           </div>
         </div>
 
         <div class="turn">
           <div class="speaker-name">Medic</div>
           <div class="bubble doc">
-            Interesant. Acest
-            <span class="anno">pattern febril<span class="tip">tipar de evoluție a temperaturii în timp — expresie medicală curentă la C1</span></span>
-            — creștere diurnă cu
-            <span class="anno">defervescență<span class="tip">scăderea febrei, spontană sau prin tratament</span></span>
-            nocturnă spontană — poate sugera mai multe cauze. De câte zile se manifestă și ați observat și alte simptome asociate?
+            Înțeleg. Faptul că temperatura crește ziua și scade seara poate avea mai multe explicații. De câte zile se întâmplă și ați observat și alte simptome?
           </div>
         </div>
 
         <div class="turn right">
           <div class="speaker-name">Pacient</div>
           <div class="bubble pac">
-            De aproximativ cinci zile. Pe lângă febră, am și o
-            <span class="anno">simptomatologie alergică<span class="tip">ansamblu de simptome legate de alergie — mai formal decât „am alergie"</span></span>
-            pronunțată —
-            <span class="anno">rinoree apoasă<span class="tip">scurgere nazală lichidă, clară — simptom alergic clasic</span></span>,
-            <span class="anno">prurit ocular<span class="tip">mâncărime la ochi — termenul medical corect</span></span>
-            și strănut frecvent. Urmez deja un tratament cu antihistaminice, prescris de medicul meu de familie, însă acestea îmi provoacă o
-            <span class="anno">sedare semnificativă<span class="tip">somnolență puternică indusă de medicament — mai elevat decât „mi-e somn"</span></span>
-            pe durata zilei, ceea ce îmi afectează considerabil capacitatea de concentrare la serviciu.
+            De aproximativ cinci zile. În același timp, am și simptome de alergie: îmi curge nasul, mă mănâncă ochii și strănut des. Medicul de familie mi-a recomandat un antihistaminic, dar mă face foarte somnoros ziua și îmi este greu să mă concentrez la serviciu.
           </div>
         </div>
 
         <div class="turn">
           <div class="speaker-name">Medic</div>
           <div class="bubble doc">
-            Înțeleg. Ce preparat antihistaminic urmați și de când? Mă interesează în mod particular dacă este vorba de un antihistaminic de generație mai veche, cu efect sedativ cunoscut, sau de unul din
-            <span class="anno">generația a doua<span class="tip">antihistaminice non-sedative: cetirizină, loratadină, fexofenadină</span></span>,
-            care ar trebui să fie considerabil mai puțin
-            <span class="anno">somnogen<span class="tip">care provoacă somn — adjectiv tehnic din farmacologie</span></span>.
+            Ce medicament luați și de când? Unele medicamente pentru alergie, mai ales cele mai vechi, pot da somnolență. Altele sunt mai potrivite pentru zi, pentru că afectează mai puțin atenția.
           </div>
         </div>
 
         <div class="turn right">
           <div class="speaker-name">Pacient</div>
           <div class="bubble pac">
-            Iau clorhidrat de difenhidramină, câte un comprimat seara — deși recunosc că uneori iau și ziua când simptomele se
-            <span class="anno">acutizează<span class="tip">se agravează brusc, se intensifică — verb specific limbajului medical</span></span>.
-            Bănuiesc că tocmai aceasta este sursa somnolenței diurne. Cât privește febra, nu știu dacă este legată de alergie sau de cu totul altceva.
+            Iau difenhidramină, un comprimat seara. Recunosc însă că uneori iau și ziua, când alergia devine mai supărătoare. Bănuiesc că de aici vine somnolența. În schimb, nu știu dacă temperatura are legătură cu alergia sau cu altceva.
           </div>
         </div>
 
         <div class="turn">
           <div class="speaker-name">Medic</div>
           <div class="bubble doc">
-            Aveți dreptate să faceți această
-            <span class="anno">distincție etiologică<span class="tip">distincție privind cauza bolii — registru medical formal</span></span>.
-            Difenhidramina este într-adevăr un antihistaminic de prima generație, cu
-            <span class="anno">profil sedativ pronunțat<span class="tip">cu efect puternic de somnolență — expresie tehnică farmacologică</span></span>,
-            motiv pentru care îl vom înlocui cu un preparat non-sedativ. Referitor la febra cu acest pattern particular, vom exclude o eventuală
-            <span class="anno">suprainfecție bacteriană<span class="tip">infecție bacteriană apărută pe fondul alergiei sau virozei</span></span>
-            sau o patologie de fond. Vă voi recomanda
-            <span class="anno">hemoleucogramă<span class="tip">analiză completă de sânge: globule roșii, albe, trombocite</span></span>
-            completă și proteina C reactivă.
+            E bine că separați cele două probleme. Difenhidramina poate provoca somnolență, deci o putem înlocui cu un antihistaminic mai puțin sedativ. Pentru temperatură, aș vrea totuși să verificăm dacă există o infecție sau o inflamație. Vă recomand o analiză de sânge și proteina C reactivă.
           </div>
         </div>
 
         <div class="turn right">
           <div class="speaker-name">Pacient</div>
           <div class="bubble pac">
-            Apreciez că abordați problema în mod sistematic. Aș dori totuși să înțeleg: febra care scade
-            <span class="anno">spontan<span class="tip">fără tratament, de la sine — opus lui „indus terapeutic"</span></span>
-            înainte de culcare este un semn îngrijorător sau poate fi interpretată ca un mecanism de
-            <span class="anno">autoreglare<span class="tip">capacitatea organismului de a reveni la echilibru fără intervenție externă</span></span>
-            al organismului?
+            Înțeleg. Aș vrea doar să știu dacă faptul că temperatura scade singură seara este îngrijorător sau poate fi o reacție normală a organismului.
           </div>
         </div>
 
         <div class="turn">
           <div class="speaker-name">Medic</div>
           <div class="bubble doc">
-            Întrebarea dumneavoastră este perfect justificată. Temperatura corporală urmează în mod fiziologic un
-            <span class="anno">ritm circadian<span class="tip">ciclu biologic natural de 24 de ore — valorile sunt mai ridicate după-amiaza</span></span>
-            — valorile sunt mai ridicate după-amiaza și mai scăzute dimineața devreme. În cazul dumneavoastră, această variație pare amplificată, ceea ce necesită investigații suplimentare pentru a exclude o cauză
-            <span class="anno">sistemică<span class="tip">care afectează întregul organism, nu un singur organ</span></span>.
-            Deocamdată, nu este un semnal de alarmă major, însă nu trebuie neglijat.
+            Întrebarea este foarte bună. Temperatura corpului poate varia normal în timpul zilei: de obicei este puțin mai mare după-amiaza și mai mică dimineața. La dumneavoastră variația pare mai accentuată, așa că merită urmărită. Nu pare un semn de alarmă major, dar nici nu aș ignora-o.
           </div>
         </div>
 
         <div class="turn right">
           <div class="speaker-name">Pacient</div>
-          <div class="bubble pac">Vă mulțumesc pentru clarificări. Aștept cu interes rezultatele și mă voi prezenta cu ele în cel mai scurt timp posibil.</div>
+          <div class="bubble pac">Vă mulțumesc pentru explicații. Voi face analizele și revin cu rezultatele.</div>
         </div>
 
         <div class="turn">
           <div class="speaker-name">Medic</div>
           <div class="bubble doc">
-            Foarte bine. Până atunci, vă prescriu
-            <span class="anno">cetirizină<span class="tip">antihistaminic generația a doua — eficient și non-sedativ</span></span>
-            10 mg — o dată pe zi, seara — care va controla simptomele alergice fără să vă compromită starea de
-            <span class="anno">vigilență diurnă<span class="tip">capacitatea de a fi alert și concentrat pe parcursul zilei</span></span>.
-            Monitorizați temperatura de două ori pe zi și notați valorile. Ne revedem după analize.
+            Foarte bine. Până atunci, vă prescriu cetirizină 10 mg, o dată pe zi, seara. Ar trebui să controleze alergia fără să vă dea aceeași somnolență. Măsurați temperatura dimineața și seara, notați valorile și ne revedem după analize.
           </div>
         </div>
 
@@ -445,35 +469,35 @@
   <!-- ── VOCABULAR ── -->
   <div id="tab-vocabular" class="phase">
     <div class="card">
-      <div class="section-label">Termeni medicali esențiali din dialog</div>
+      <div class="section-label">Vocabular explicativ din dialog</div>
       <div class="vocab-grid">
-        <div class="vocab-item"><div class="vocab-term">defervescență</div><div class="vocab-def">scăderea febrei, spontană sau prin tratament</div></div>
-        <div class="vocab-item"><div class="vocab-term">pattern febril</div><div class="vocab-def">tiparul de evoluție a temperaturii în timp</div></div>
-        <div class="vocab-item"><div class="vocab-term">ritm circadian</div><div class="vocab-def">ciclul biologic natural de 24 de ore</div></div>
-        <div class="vocab-item"><div class="vocab-term">sedare / efect sedativ</div><div class="vocab-def">somnolență indusă de un medicament</div></div>
-        <div class="vocab-item"><div class="vocab-term">prurit ocular</div><div class="vocab-def">mâncărime la ochi — simptom alergic</div></div>
-        <div class="vocab-item"><div class="vocab-term">rinoree apoasă</div><div class="vocab-def">scurgere nazală lichidă, clară</div></div>
-        <div class="vocab-item"><div class="vocab-term">antihistaminic non-sedativ</div><div class="vocab-def">gen. a doua: cetirizină, loratadină</div></div>
-        <div class="vocab-item"><div class="vocab-term">suprainfecție bacteriană</div><div class="vocab-def">infecție bacteriană pe fond viral sau alergic</div></div>
-        <div class="vocab-item"><div class="vocab-term">a se acutiza</div><div class="vocab-def">a se agrava brusc, a se intensifica</div></div>
-        <div class="vocab-item"><div class="vocab-term">profil sedativ</div><div class="vocab-def">tendința unui medicament de a provoca somn</div></div>
-        <div class="vocab-item"><div class="vocab-term">etiologie</div><div class="vocab-def">cauza sau originea unei boli</div></div>
-        <div class="vocab-item"><div class="vocab-term">hemoleucogramă</div><div class="vocab-def">analiză completă a sângelui</div></div>
-        <div class="vocab-item"><div class="vocab-term">antipiretic</div><div class="vocab-def">medicament care scade febra</div></div>
-        <div class="vocab-item"><div class="vocab-term">vigilență diurnă</div><div class="vocab-def">starea de alertă și concentrare pe parcursul zilei</div></div>
-        <div class="vocab-item"><div class="vocab-term">sistemic</div><div class="vocab-def">care afectează întregul organism</div></div>
-        <div class="vocab-item"><div class="vocab-term">somnogen</div><div class="vocab-def">care provoacă somn — adjectiv farmacologic</div></div>
+        <div class="vocab-item"><div class="vocab-term">observ ceva deranjant</div><div class="vocab-def">formulare naturală pentru a introduce o problemă care nu este urgentă, dar te preocupă</div></div>
+        <div class="vocab-item"><div class="vocab-term">temperatura îmi crește treptat</div><div class="vocab-def">temperatura urcă încet, nu brusc</div></div>
+        <div class="vocab-item"><div class="vocab-term">revine la normal</div><div class="vocab-def">se întoarce la o valoare obișnuită</div></div>
+        <div class="vocab-item"><div class="vocab-term">simptome de alergie</div><div class="vocab-def">semne precum strănut, nas care curge, ochi iritați</div></div>
+        <div class="vocab-item"><div class="vocab-term">îmi curge nasul</div><div class="vocab-def">expresie naturală pentru secreții nazale</div></div>
+        <div class="vocab-item"><div class="vocab-term">mă mănâncă ochii</div><div class="vocab-def">simt mâncărime la ochi; formulare conversațională</div></div>
+        <div class="vocab-item"><div class="vocab-term">antihistaminic</div><div class="vocab-def">medicament pentru simptome de alergie</div></div>
+        <div class="vocab-item"><div class="vocab-term">mă face somnoros</div><div class="vocab-def">îmi provoacă somnolență; mai natural decât „produce sedare”</div></div>
+        <div class="vocab-item"><div class="vocab-term">îmi este greu să mă concentrez</div><div class="vocab-def">am dificultăți de atenție, mai ales la serviciu sau la studiu</div></div>
+        <div class="vocab-item"><div class="vocab-term">devine mai supărătoare</div><div class="vocab-def">se agravează sau mă deranjează mai mult</div></div>
+        <div class="vocab-item"><div class="vocab-term">bănuiesc că...</div><div class="vocab-def">cred, dar nu sunt complet sigur; exprimă o ipoteză</div></div>
+        <div class="vocab-item"><div class="vocab-term">a verifica dacă există...</div><div class="vocab-def">a face investigații ca să confirmăm sau să excludem o cauză</div></div>
+        <div class="vocab-item"><div class="vocab-term">infecție / inflamație</div><div class="vocab-def">două posibile explicații pentru febră sau stare generală proastă</div></div>
+        <div class="vocab-item"><div class="vocab-term">proteina C reactivă</div><div class="vocab-def">analiză care poate arăta dacă există inflamație în organism</div></div>
+        <div class="vocab-item"><div class="vocab-term">semn de alarmă</div><div class="vocab-def">un simptom care ar trebui să te îngrijoreze și să te trimită rapid la medic</div></div>
+        <div class="vocab-item"><div class="vocab-term">merită urmărită</div><div class="vocab-def">nu pare urgent, dar trebuie observat în continuare</div></div>
       </div>
     </div>
 
     <div class="card">
-      <div class="section-label">Fraze gata de folosit — nivel C1</div>
+      <div class="section-label">Fraze gata de folosit</div>
       <ul class="phrase-list">
-        <li><em>Temperatura îmi urmează un tipar constant: crește gradual pe parcursul zilei și revine la normal seara, fără tratament antipiretic.</em></li>
-        <li><em>Antihistaminicul pe care îl iau îmi induce o sedare diurnă care îmi compromite randamentul profesional.</em></li>
-        <li><em>Nu știu dacă febra este de natură alergică sau dacă semnalează o altă patologie de fond.</em></li>
-        <li><em>Simptomele se acutizează în a doua parte a zilei, ceea ce mă determină să iau o doză suplimentară.</em></li>
-        <li><em>Aș dori să înțeleg dacă această evoluție poate fi interpretată ca un mecanism de autoreglare al organismului.</em></li>
+        <li><em>De câteva zile observ ceva deranjant: temperatura îmi crește treptat pe parcursul zilei.</em></li>
+        <li><em>Medicamentul pentru alergie mă face foarte somnoros și îmi este greu să mă concentrez.</em></li>
+        <li><em>Bănuiesc că somnolența are legătură cu medicamentul, dar nu știu dacă temperatura este legată de alergie.</em></li>
+        <li><em>Aș vrea să știu dacă acest lucru este îngrijorător sau poate fi o reacție normală a organismului.</em></li>
+        <li><em>Voi face analizele și revin cu rezultatele.</em></li>
       </ul>
     </div>
   </div>
@@ -481,54 +505,105 @@
   <!-- ── ANALIZĂ ── -->
   <div id="tab-analiza" class="phase">
     <div class="card">
-      <div class="section-label">Ce face un răspuns să fie nivel C1 în acest context</div>
+      <div class="section-label">Mini-lecție: cum vorbești clar la medic</div>
 
       <div class="analysis-block">
-        <div class="analysis-title">1. Nominalizare în loc de verb simplu</div>
+        <div class="analysis-title">1. Începe cu observația principală</div>
         <div class="compare-box">
-          <span class="wrong-ex">✗ „am alergie și îmi vine somn"</span><br>
-          <span class="right-ex">✓ „prezint simptomatologie alergică ce induce o sedare semnificativă pe durata zilei"</span>
+          <span class="wrong-ex">Prea vag: „Nu mă simt bine.”</span><br>
+          <span class="right-ex">Mai clar: „De câteva zile observ că temperatura îmi crește treptat pe parcursul zilei.”</span>
         </div>
       </div>
 
       <div class="analysis-block">
-        <div class="analysis-title">2. Verbe epistemice — exprimați incertitudinea cu precizie</div>
+        <div class="analysis-title">2. Separă simptomele diferite</div>
         <div class="compare-box">
-          <span class="wrong-ex">✗ „nu știu dacă e de la alergie"</span><br>
-          <span class="right-ex">✓ „bănuiesc că aceasta este sursa somnolenței, însă nu exclud o altă cauză"</span>
+          <span class="wrong-ex">Amestecat: „Am febră și alergie și pastilele nu sunt bune.”</span><br>
+          <span class="right-ex">Mai organizat: „Am simptome de alergie, iar separat observ o temperatură ușor crescută.”</span>
         </div>
       </div>
 
       <div class="analysis-block">
-        <div class="analysis-title">3. Subordonare complexă</div>
+        <div class="analysis-title">3. Exprimă ipoteza fără să pui singur diagnosticul</div>
         <div class="compare-box">
-          <span class="wrong-ex">✗ „iau pastile și îmi vine somn. Nu mă pot concentra."</span><br>
-          <span class="right-ex">✓ „antihistaminicele îmi provoacă o sedare semnificativă, <em>ceea ce</em> îmi afectează considerabil capacitatea de concentrare la serviciu"</span>
+          <span class="wrong-ex">Prea categoric: „Febra e de la alergie.”</span><br>
+          <span class="right-ex">Mai potrivit: „Nu știu dacă temperatura are legătură cu alergia sau cu altceva.”</span>
         </div>
       </div>
 
       <div class="analysis-block">
-        <div class="analysis-title">4. Distincții lexicale fine</div>
+        <div class="analysis-title">4. Descrie efectul medicamentului concret</div>
         <div class="compare-box">
-          <span class="wrong-ex">scade febra</span> → <span class="right-ex">defervescență</span><br>
-          <span class="wrong-ex">se înrăutățește</span> → <span class="right-ex">se acutizează / se exacerbează</span><br>
-          <span class="wrong-ex">de la sine</span> → <span class="right-ex">spontan / fără intervenție terapeutică</span><br>
-          <span class="wrong-ex">mi-e somn din cauza pastilei</span> → <span class="right-ex">preparatul induce o sedare diurnă pronunțată</span>
+          <span class="wrong-ex">Simplu: „Pastila nu e bună.”</span><br>
+          <span class="right-ex">Mai exact: „Medicamentul mă face foarte somnoros și îmi este greu să mă concentrez la serviciu.”</span>
         </div>
       </div>
 
       <div class="analysis-block">
-        <div class="analysis-title">5. Întrebări precise, nu vagi</div>
+        <div class="analysis-title">5. Pune întrebări precise</div>
         <div class="compare-box">
-          <span class="wrong-ex">✗ „E grav?"</span><br>
-          <span class="right-ex">✓ „Febra care scade spontan înainte de culcare poate fi interpretată ca un mecanism de autoreglare al organismului sau este un semn îngrijorător?"</span>
+          <span class="wrong-ex">Prea general: „E grav?”</span><br>
+          <span class="right-ex">Mai util: „Faptul că temperatura scade singură seara este îngrijorător?”</span>
         </div>
       </div>
 
       <div class="analysis-block">
-        <div class="analysis-title">6. Menținerea registrului formal pe tot parcursul</div>
+        <div class="analysis-title">6. Confirmă pașii următori</div>
         <div class="compare-box">
-          Pacientul nu coboară niciodată la limbaj colocvial, chiar și când descrie ceva banal precum somnolența. Folosește <em>„îmi compromite vigilența diurnă"</em> nu <em>„adorm la birou"</em>.
+          La final, pacientul arată că a înțeles planul: <em>„Voi face analizele și revin cu rezultatele.”</em>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── EXERCIȚII ── -->
+  <div id="tab-exercitii" class="phase">
+    <div class="card">
+      <div class="section-label">Exerciții pe dialog</div>
+
+      <div class="exercise-block">
+        <h3>1. Înțelegere</h3>
+        <div class="exercise-item">a. De câte zile are pacientul temperatura ușor crescută?<textarea class="write-field" placeholder="Răspuns..."></textarea></div>
+        <div class="exercise-item">b. Ce simptome de alergie descrie pacientul?<textarea class="write-field" placeholder="Răspuns..."></textarea></div>
+        <div class="exercise-item">c. De ce vrea medicul analize?<textarea class="write-field" placeholder="Răspuns..."></textarea></div>
+      </div>
+
+      <div class="exercise-block">
+        <h3>2. Potrivește expresia cu sensul</h3>
+        <div class="exercise-item">1. „revine la normal”
+          <select class="mini-select" id="match1"><option value="">— alege —</option><option value="A">A. trebuie observată în continuare</option><option value="B">B. se întoarce la valoarea obișnuită</option><option value="C">C. cred, dar nu sunt sigur</option></select>
+        </div>
+        <div class="exercise-item">2. „bănuiesc că”
+          <select class="mini-select" id="match2"><option value="">— alege —</option><option value="A">A. trebuie observată în continuare</option><option value="B">B. se întoarce la valoarea obișnuită</option><option value="C">C. cred, dar nu sunt sigur</option></select>
+        </div>
+        <div class="exercise-item">3. „merită urmărită”
+          <select class="mini-select" id="match3"><option value="">— alege —</option><option value="A">A. trebuie observată în continuare</option><option value="B">B. se întoarce la valoarea obișnuită</option><option value="C">C. cred, dar nu sunt sigur</option></select>
+        </div>
+        <button class="check-btn" onclick="checkMatchExercise()">Verifică</button>
+        <div id="match-feedback" class="exercise-feedback"></div>
+      </div>
+
+      <div class="exercise-block">
+        <h3>3. Reformulează mai natural</h3>
+        <div class="exercise-item">a. „Pastila îmi strică ziua.”<textarea class="write-field" placeholder="Ex.: Medicamentul mă face foarte somnoros..."></textarea></div>
+        <div class="exercise-item">b. „Febra se duce seara.”<textarea class="write-field" placeholder="Ex.: Temperatura revine la normal seara..."></textarea></div>
+        <div class="exercise-item">c. „Nu știu dacă e de la alergie.”<textarea class="write-field" placeholder="Ex.: Nu știu dacă temperatura are legătură cu alergia..."></textarea></div>
+      </div>
+
+      <div class="exercise-block">
+        <h3>4. Completează mini-dialogul</h3>
+        <div class="exercise-item">
+          <p><strong>Pacient:</strong> De câteva zile observ că temperatura îmi __________ pe parcursul zilei.</p>
+          <p><strong>Medic:</strong> Ați observat și alte __________?</p>
+          <p><strong>Pacient:</strong> Da, îmi curge nasul, mă mănâncă ochii și __________ des.</p>
+          <textarea class="write-field" placeholder="Completează cele trei spații..."></textarea>
+        </div>
+      </div>
+
+      <div class="exercise-block">
+        <h3>5. Roleplay</h3>
+        <div class="exercise-item">
+          Lucrați în perechi. Un student este pacientul, celălalt este medicul. Folosiți cel puțin cinci expresii din vocabular și încheiați conversația cu un plan clar: medicament, analize sau monitorizare.
         </div>
       </div>
     </div>
@@ -537,7 +612,7 @@
   <!-- ── QUIZ ── -->
   <div id="tab-quiz" class="phase">
     <div class="card">
-      <div class="section-label">Test rapid — terminologie medicală C1</div>
+      <div class="section-label">Test rapid — dialog și vocabular</div>
       <div id="quiz-body"></div>
       <div class="quiz-score" id="quiz-score"></div>
     </div>
@@ -583,34 +658,34 @@ document.addEventListener('click', function() {
 // Quiz
 const quizData = [
   {
-    q: "Ce înseamnă că febra prezintă „defervescență nocturnă spontană"?",
-    opts: ["Febra crește noaptea fără tratament","Febra scade seara de la sine","Febra dispare complet după somn","Pacientul transpiră noaptea"],
+    q: "Ce înseamnă „temperatura revine la normal”?",
+    opts: ["Temperatura crește brusc","Temperatura se întoarce la o valoare obișnuită","Pacientul ia antibiotic","Alergia se agravează"],
     correct: 1
   },
   {
-    q: "Care antihistaminic este non-sedativ?",
-    opts: ["Difenhidramina","Prometazina","Cetirizina","Clorfenamina"],
-    correct: 2
-  },
-  {
-    q: "Ce înseamnă că simptomele „se acutizează"?",
-    opts: ["Dispar treptat","Se agravează brusc","Apar pentru prima dată","Se ameliorează"],
+    q: "De ce este deranjat pacientul de antihistaminicul pe care îl ia?",
+    opts: ["Îi provoacă foame","Îl face foarte somnoros","Îi crește temperatura imediat","Îi irită gâtul"],
     correct: 1
   },
   {
-    q: "Completați la nivel C1: „Antihistaminicul îmi provoacă ___ pe durata zilei."",
-    opts: ["somn","oboseală multă","o sedare semnificativă","să adorm"],
-    correct: 2
-  },
-  {
-    q: "Ce investigație este „hemoleucograma"?",
-    opts: ["Ecografie abdominală","Analiză completă a sângelui","Radiografie pulmonară","Electrocardiogramă"],
+    q: "Ce exprimă formula „bănuiesc că”?",
+    opts: ["O certitudine medicală","O ipoteză, fără siguranță totală","O recomandare obligatorie","O urgență"],
     correct: 1
   },
   {
-    q: "Ce înseamnă că o boală are cauză „sistemică"?",
-    opts: ["Afectează un singur organ","Este contagioasă","Afectează întregul organism","Este de origine genetică"],
-    correct: 2
+    q: "De ce recomandă medicul analize?",
+    opts: ["Pentru a verifica dacă există infecție sau inflamație","Pentru a schimba ochelarii pacientului","Pentru a confirma o alergie alimentară","Pentru a evita orice tratament"],
+    correct: 0
+  },
+  {
+    q: "Ce înseamnă „merită urmărită” în dialog?",
+    opts: ["Trebuie ignorată","Trebuie observată în continuare","Trebuie tratată doar cu antibiotic","Este o urgență majoră"],
+    correct: 1
+  },
+  {
+    q: "Care replică este cea mai clară pentru o consultație?",
+    opts: ["Nu sunt bine și nu știu ce am.","De câteva zile observ că temperatura îmi crește treptat pe parcursul zilei.","E ceva ciudat cu mine.","Cred că e grav."],
+    correct: 1
   },
 ];
 
@@ -647,6 +722,19 @@ function renderQuiz() {
 function answer(qi, oi) {
   answered[qi] = oi;
   renderQuiz();
+}
+
+function checkMatchExercise() {
+  const answers = { match1: 'B', match2: 'C', match3: 'A' };
+  let score = 0;
+  Object.entries(answers).forEach(([id, answer]) => {
+    if (document.getElementById(id).value === answer) score++;
+  });
+  const feedback = document.getElementById('match-feedback');
+  feedback.className = 'exercise-feedback ' + (score === 3 ? 'ok' : 'err');
+  feedback.textContent = score === 3
+    ? 'Corect. Toate potrivirile sunt bune.'
+    : 'Ai ' + score + ' din 3. Răspunsuri: 1-B, 2-C, 3-A.';
 }
 
 renderQuiz();
