@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<title>Fișă B2 - La doctor</title>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=DM+Mono&display=swap" rel="stylesheet">
+<style>
+  @page { size: A4; margin: 0; }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: 'Atkinson Hyperlegible', Arial, sans-serif;
+    background: #f6f8f9;
+    color: #1f2f3b;
+    line-height: 1.45;
+    font-size: 12px;
+  }
+  .pdf-page {
+    width: 210mm;
+    min-height: 297mm;
+    padding: 18mm 18mm 20mm;
+    position: relative;
+    page-break-after: always;
+    background: #ffffff;
+  }
+  .pdf-page:last-child { page-break-after: auto; }
+  h1 {
+    margin: 0 0 6px;
+    color: #2f4a60;
+    font-size: 28px;
+    line-height: 1.15;
+  }
+  h2 {
+    margin: 18px 0 8px;
+    padding-bottom: 4px;
+    border-bottom: 1px solid #d8e2e8;
+    color: #2f4a60;
+    font-size: 17px;
+  }
+  h3 { margin: 14px 0 6px; color: #2f4a60; font-size: 13px; }
+  .meta {
+    margin-bottom: 16px;
+    color: #6f7c84;
+    font-size: 11px;
+  }
+  .box {
+    margin: 8px 0 12px;
+    padding: 10px 12px;
+    border: 1px solid #d7ecf8;
+    border-radius: 8px;
+    background: #f6f8f9;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 6px 14px;
+  }
+  .three-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px 10px;
+  }
+  table {
+    width: 100%;
+    margin: 8px 0 12px;
+    border-collapse: collapse;
+  }
+  th, td {
+    padding: 6px 7px;
+    border: 1px solid #d7ecf8;
+    vertical-align: top;
+  }
+  th {
+    background: #f6f8f9;
+    color: #2f4a60;
+    text-align: left;
+  }
+  ul, ol { margin-top: 6px; padding-left: 20px; }
+  li { margin-bottom: 4px; }
+  .dialog p { margin: 0 0 6px; }
+  .line {
+    display: block;
+    height: 18px;
+    margin-top: 4px;
+    border-bottom: 1px solid #8792a7;
+  }
+  .line.short { display: inline-block; min-width: 170px; }
+  .answer-space {
+    display: block;
+    height: 40px;
+    margin: 5px 0 10px;
+    border: 1px solid #d8e2e8;
+    border-radius: 6px;
+    background: #ffffff;
+  }
+  .options {
+    margin: 6px 0 10px;
+    padding: 7px 9px;
+    border: 1px solid #d7ecf8;
+    border-radius: 8px;
+    background: #f6f8f9;
+    color: #6f7c84;
+    font-size: 11px;
+  }
+  .small { color: #6f7c84; font-size: 11px; }
+  .page-number {
+    position: absolute;
+    right: 18mm;
+    bottom: 9mm;
+    color: #6f7c84;
+    font-size: 11px;
+  }
+</style>
+</head>
+<body>
+  <section class="pdf-page">
+    <h1>La doctor</h1>
+    <div class="meta">Romanian Step by Step · Nivel B2 · Fișă de lucru PDF · Consultația medicală și comunicarea cu medicul</div>
+
+    <h2>1. Obiective</h2>
+    <div class="box">
+      <p>La finalul lecției vei putea:</p>
+      <ul>
+        <li>să descrii simptome și probleme de sănătate;</li>
+        <li>să înțelegi recomandările medicului;</li>
+        <li>să vorbești despre diagnostic și tratament;</li>
+        <li>să folosești expresii naturale întâlnite într-un cabinet medical;</li>
+        <li>să participi la o conversație completă medic-pacient.</li>
+      </ul>
+    </div>
+
+    <h2>2. Vocabular esențial</h2>
+    <h3>2.a. Simptome</h3>
+    <div class="grid">
+      <div>durere - senzație neplăcută într-o parte a corpului</div>
+      <div>febră - temperatură ridicată</div>
+      <div>tuse - eliminarea aerului din plămâni în mod repetat</div>
+      <div>nas înfundat - dificultate în respirația pe nas</div>
+      <div>durere în gât - iritație sau durere la nivelul gâtului</div>
+      <div>amețeală - senzația că totul se învârte</div>
+      <div>greață - senzația că vrei să vomiți</div>
+      <div>oboseală - lipsă de energie</div>
+      <div>frisoane - senzație de frig însoțită de tremurat</div>
+      <div>lipsă de poftă de mâncare - nu ai chef să mănânci</div>
+    </div>
+
+    <h3>2.b. Diagnostice frecvente</h3>
+    <div class="grid">
+      <div>răceală - infecție ușoară a căilor respiratorii</div>
+      <div>gripă - infecție virală mai severă</div>
+      <div>amigdalită - inflamația amigdalelor</div>
+      <div>bronșită - inflamația bronhiilor</div>
+      <div>alergie - reacție exagerată a organismului</div>
+      <div>hipertensiune - tensiune arterială mare</div>
+      <div>gastrită - inflamația stomacului</div>
+      <div>infecție virală - boală provocată de un virus</div>
+      <div>infecție bacteriană - boală provocată de bacterii</div>
+    </div>
+
+    <h3>2.c. Tratament</h3>
+    <div class="grid">
+      <div>rețetă - document pentru medicamente</div>
+      <div>tratament - ansamblul măsurilor recomandate</div>
+      <div>antibiotic - medicament împotriva bacteriilor</div>
+      <div>antiinflamator - reduce inflamația</div>
+      <div>analgezic - reduce durerea</div>
+      <div>sirop - medicament lichid</div>
+      <div>comprimat - pastilă</div>
+      <div>doză - cantitatea recomandată</div>
+      <div>recuperare - perioada de refacere</div>
+      <div>concediu medical - document care justifică absența de la muncă</div>
+    </div>
+    <div class="page-number">1</div>
+  </section>
+
+  <section class="pdf-page">
+    <h2>3. Expresii folosite de pacient</h2>
+    <table>
+      <thead><tr><th>Expresie</th><th>Exemple / explicații</th></tr></thead>
+      <tbody>
+        <tr><td>Mă doare...</td><td>Mă doare capul. Mă doare spatele. Mă doare stomacul.</td></tr>
+        <tr><td>Am dureri de...</td><td>Am dureri de gât. Am dureri de urechi. Am dureri de articulații.</td></tr>
+        <tr><td>Mă simt rău.</td><td>Nu mă simt bine. Nu sunt în formă. Nu mă simt ca de obicei.</td></tr>
+        <tr><td>Am simptome de câteva zile.</td><td>Am simptome de trei zile. Am febră de ieri. Tușesc de o săptămână.</td></tr>
+        <tr><td>Simptomele s-au agravat.</td><td>S-au înrăutățit. Sunt mai severe.</td></tr>
+        <tr><td>Nu observ nicio îmbunătățire.</td><td>Nu mă simt mai bine. Tratamentul nu pare să funcționeze.</td></tr>
+      </tbody>
+    </table>
+
+    <h2>4. Ce poate întreba medicul</h2>
+    <div class="three-grid">
+      <div>Ce vă supără?</div>
+      <div>Cu ce problemă ați venit?</div>
+      <div>De când aveți simptomele?</div>
+      <div>Unde vă doare?</div>
+      <div>Cât de puternică este durerea?</div>
+      <div>Ați avut febră?</div>
+      <div>Tușiți?</div>
+      <div>Luați vreun tratament?</div>
+      <div>Aveți alergii?</div>
+      <div>Ați mai avut această problemă?</div>
+      <div>Fumați?</div>
+      <div>Ați făcut analize recent?</div>
+    </div>
+
+    <h2>5. Ce poate spune medicul</h2>
+    <table>
+      <thead><tr><th>Formulare</th><th>Adică</th></tr></thead>
+      <tbody>
+        <tr><td>Vă rog să descrieți simptomele.</td><td>Povestiți ce probleme aveți.</td></tr>
+        <tr><td>Vă rog să respirați adânc.</td><td>Inspirați și expirați profund.</td></tr>
+        <tr><td>Deschideți gura, vă rog.</td><td>Permiteți-mi să examinez gâtul.</td></tr>
+        <tr><td>Voi măsura tensiunea arterială.</td><td>Verific presiunea sângelui.</td></tr>
+        <tr><td>Este nevoie de analize suplimentare.</td><td>Trebuie să facem investigații în plus.</td></tr>
+        <tr><td>Nu pare să fie nimic grav.</td><td>Problema nu este serioasă.</td></tr>
+      </tbody>
+    </table>
+
+    <h2>6. Recomandările medicului</h2>
+    <div class="grid">
+      <div>Odihniți-vă câteva zile.</div>
+      <div>Consumați multe lichide.</div>
+      <div>Evitați efortul fizic.</div>
+      <div>Luați medicamentele conform recomandării.</div>
+      <div>Reveniți la control peste o săptămână.</div>
+      <div>Faceți analize de sânge.</div>
+      <div>Evitați alimentele grase.</div>
+      <div>Beți mai multă apă.</div>
+      <div>Renunțați la fumat.</div>
+      <div>Monitorizați-vă tensiunea arterială.</div>
+    </div>
+    <div class="page-number">2</div>
+  </section>
+
+  <section class="pdf-page">
+    <h2>7. Dialog model</h2>
+    <div class="box dialog">
+      <p><strong>Pacientul:</strong> Bună ziua, domnule doctor. Nu mă simt bine de câteva zile.</p>
+      <p><strong>Medicul:</strong> Bună ziua. Ce simptome aveți?</p>
+      <p><strong>Pacientul:</strong> Am febră, tușesc și mă doare gâtul.</p>
+      <p><strong>Medicul:</strong> De când au început simptomele?</p>
+      <p><strong>Pacientul:</strong> De aproximativ trei zile.</p>
+      <p><strong>Medicul:</strong> Ați luat vreun medicament?</p>
+      <p><strong>Pacientul:</strong> Doar un antitermic pentru febră.</p>
+      <p><strong>Medicul:</strong> Voi examina gâtul. Deschideți gura, vă rog.</p>
+      <p><strong>Medicul:</strong> Pare să fie o infecție virală. Nu este nevoie de antibiotic.</p>
+      <p><strong>Pacientul:</strong> Ce tratament îmi recomandați?</p>
+      <p><strong>Medicul:</strong> Odihnă, multe lichide și acest tratament timp de cinci zile.</p>
+      <p><strong>Pacientul:</strong> Mulțumesc.</p>
+      <p><strong>Medicul:</strong> Dacă simptomele persistă, reveniți la control.</p>
+    </div>
+
+    <h2>8. Joc de rol</h2>
+    <table>
+      <thead><tr><th>Situație</th><th>Pacientul</th><th>Medicul</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Durere de stomac</td>
+          <td>spune de când are problema, unde îl doare, dacă a luat medicamente și ce a mâncat</td>
+          <td>întreabă intensitatea durerii, momentul apariției și alte simptome asociate</td>
+        </tr>
+        <tr>
+          <td>Alergie</td>
+          <td>are mâncărimi, strănută des și are ochii iritați</td>
+          <td>întreabă despre alergii anterioare, recomandă tratament și oferă sfaturi de prevenție</td>
+        </tr>
+        <tr>
+          <td>Durere de spate</td>
+          <td>lucrează la birou, stă mult pe scaun și are dureri lombare</td>
+          <td>recomandă exerciții, fizioterapie și explică postura corectă</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>9. Exercițiul 1 - Potrivește simptomul cu diagnosticul</h2>
+    <ol>
+      <li>Febră, durere în gât, tuse. <span class="line short"></span></li>
+      <li>Strănut, ochi iritați. <span class="line short"></span></li>
+      <li>Durere de stomac după masă. <span class="line short"></span></li>
+      <li>Tuse persistentă și secreții. <span class="line short"></span></li>
+    </ol>
+    <div class="options"><strong>a.</strong> Gastrită · <strong>b.</strong> Alergie · <strong>c.</strong> Răceală · <strong>d.</strong> Bronșită</div>
+
+    <h2>10. Exercițiul 2 - Completează dialogul</h2>
+    <p><strong>Pacient:</strong> Domnule doctor, <span class="line short"></span> de două zile.</p>
+    <p><strong>Medicul:</strong> Unde vă doare?</p>
+    <p><strong>Pacient:</strong> <span class="line short"></span> foarte tare gâtul.</p>
+    <p><strong>Medicul:</strong> Ați avut <span class="line short"></span>?</p>
+    <p><strong>Pacient:</strong> Da, aproape 39 de grade.</p>
+    <div class="page-number">3</div>
+  </section>
+
+  <section class="pdf-page">
+    <h2>11. Exercițiul 3 - Reformulează</h2>
+    <p><strong>Exemplu:</strong> Mă doare capul. → Am dureri de cap.</p>
+    <ol>
+      <li>Mă doare spatele. <span class="line"></span></li>
+      <li>Mă doare stomacul. <span class="line"></span></li>
+      <li>Mă doare gâtul. <span class="line"></span></li>
+      <li>Mă doare urechea. <span class="line"></span></li>
+    </ol>
+
+    <h2>12. Exercițiul 4 - Ce răspunzi?</h2>
+    <p><strong>Medicul:</strong> De când aveți simptomele?</p>
+    <span class="answer-space"></span>
+    <p><strong>Medicul:</strong> Luați vreun tratament?</p>
+    <span class="answer-space"></span>
+    <p><strong>Medicul:</strong> Aveți alergii?</p>
+    <span class="answer-space"></span>
+
+    <h2>13. Expresii utile de nivel B2</h2>
+    <table>
+      <thead><tr><th>Expresie</th><th>Sens</th></tr></thead>
+      <tbody>
+        <tr><td>starea mea s-a agravat</td><td>mă simt mai rău</td></tr>
+        <tr><td>simptomele persistă</td><td>nu dispar</td></tr>
+        <tr><td>tratamentul nu dă rezultate</td><td>nu funcționează</td></tr>
+        <tr><td>am observat o ameliorare</td><td>mă simt mai bine</td></tr>
+        <tr><td>am reacționat bine la tratament</td><td>tratamentul a funcționat</td></tr>
+        <tr><td>boala este în remisie</td><td>simptomele au dispărut temporar</td></tr>
+        <tr><td>necesită investigații suplimentare</td><td>sunt necesare mai multe analize</td></tr>
+        <tr><td>trebuie monitorizată evoluția</td><td>trebuie urmărită situația</td></tr>
+        <tr><td>prezentați factori de risc</td><td>există elemente care pot favoriza boala</td></tr>
+        <tr><td>este indicat să reveniți la control</td><td>trebuie să veniți din nou la medic</td></tr>
+      </tbody>
+    </table>
+
+    <h2>14. Provocare finală</h2>
+    <div class="box">
+      <p>Simulează o consultație de 3-4 minute între un pacient și un medic folosind:</p>
+      <ul>
+        <li>minimum 5 simptome;</li>
+        <li>un diagnostic;</li>
+        <li>o recomandare;</li>
+        <li>o rețetă;</li>
+        <li>o programare la control;</li>
+        <li>cel puțin 5 expresii din lecție.</li>
+      </ul>
+    </div>
+    <p class="small">Scopul este să poți susține o conversație naturală și detaliată într-un cabinet medical, așa cum se întâmplă în viața reală.</p>
+    <div class="page-number">4</div>
+  </section>
+</body>
+</html>
