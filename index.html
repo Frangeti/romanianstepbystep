@@ -286,6 +286,20 @@
     font-weight: 800;
   }
 
+  .home-tools .sid-item.home-level::after {
+    content: "+";
+    margin-left: auto;
+    color: var(--muted);
+    font-size: 16px;
+    font-weight: 800;
+    line-height: 1;
+  }
+
+  .home-tools .sid-level-group.is-open .sid-item.home-level::after {
+    content: "-";
+    color: var(--mint);
+  }
+
   .skill-tools .sid-item.home-level {
     color: var(--coral);
     font-weight: 800;
@@ -304,8 +318,13 @@
   }
 
   .level-tool-list {
+    display: none;
     margin: .18rem 0 .2rem 14px;
     padding-left: .45rem;
+  }
+
+  .sid-level-group.is-open .level-tool-list {
+    display: block;
   }
 
   .home-tools .level-tool-list .sid-item.home-tool {
@@ -2373,6 +2392,7 @@
     const sidebarItems = document.querySelectorAll('.sid-item');
     const topNavLinks = document.querySelectorAll('.main-nav-link[href^="#"]');
     const levelFilters = document.querySelectorAll('[data-level-filter]');
+    const homeLevelGroups = document.querySelectorAll('.home-tools .sid-level-group');
     const showAllLessonsLinks = document.querySelectorAll('[data-show-all-lessons]');
     const mainSections = document.querySelectorAll('.main > section');
     const languageToolMenus = document.querySelectorAll('[data-language-tools]');
@@ -2414,6 +2434,14 @@
           link.classList.remove('active');
         }
       });
+    }
+
+    function toggleHomeLevelGroup(link) {
+      const group = link.closest('.sid-level-group');
+      if (!group) return;
+      const shouldOpen = !group.classList.contains('is-open');
+      homeLevelGroups.forEach(item => item.classList.remove('is-open'));
+      group.classList.toggle('is-open', shouldOpen);
     }
 
     function showOnlyMainSection(hash) {
@@ -2503,6 +2531,7 @@
 
     levelFilters.forEach(link => {
       link.addEventListener('click', () => {
+        toggleHomeLevelGroup(link);
         closeLanguageTools();
         showAllSidebarLanguages();
         showOnlyMainSection('#lectii');
