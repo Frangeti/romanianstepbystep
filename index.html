@@ -282,6 +282,11 @@
     font-weight: 800;
   }
 
+  .skill-tools .sid-item.home-level {
+    color: var(--coral);
+    font-weight: 800;
+  }
+
   .sid-level-group {
     margin-bottom: .55rem;
     padding-bottom: .5rem;
@@ -1178,6 +1183,13 @@
             <a class="sid-item tool-item" href="#teste" data-language-tool="spaniola"><span class="sid-dot dot-blue"></span>7. Teste</a>
             <a class="sid-item subitem" href="#a1-spaniola-copii" data-language-category="spaniola" data-language-section="a1-spaniola-copii">A1. Începător copii</a>
           </div>
+          <div class="language-tools skill-tools" data-skill-tools>
+            <a class="sid-item subitem home-level" href="#citire" data-skill-level="a1">A1. Începător</a>
+            <a class="sid-item subitem home-level" href="#citire" data-skill-level="a2">A2. Începător</a>
+            <a class="sid-item subitem home-level" href="#citire" data-skill-level="b1">B1. Intermediar</a>
+            <a class="sid-item subitem home-level" href="#citire" data-skill-level="b2">B2. Intermediar avansat</a>
+            <a class="sid-item subitem home-level" href="#citire" data-skill-level="c1">C1. Avansat</a>
+          </div>
         </div>
       </aside>
 
@@ -1205,46 +1217,13 @@
           </div>
         </section>
 
-        <section id="citire">
-          <div class="section-title">
-            <h2>Citire</h2>
-            <span>texte și înțelegere</span>
-          </div>
-          <div class="resource-grid">
-            <article class="resource-card"><div class="resource-body"><div class="meta"><span class="badge badge-b2">A1-C1</span><span class="badge badge-live">În pregătire</span></div><h3>Texte pe niveluri</h3><p>Materiale pentru citire, vocabular în context și întrebări de înțelegere.</p><span class="resource-status waiting">În pregătire</span></div></article>
-            <article class="resource-card"><div class="resource-body"><div class="meta"><span class="badge badge-b2">B2</span><span class="badge badge-live">Activă</span></div><h3>La doctor B2</h3><p>Dialog simplificat și exerciții de înțelegere pe tema consultației medicale.</p><a class="open-lesson" href="lessons/b2/la-doctor.html">Deschide lecția</a></div></article>
-          </div>
-        </section>
+        <section id="citire"></section>
 
-        <section id="scriere">
-          <div class="section-title">
-            <h2>Scriere</h2>
-            <span>texte ghidate</span>
-          </div>
-          <div class="resource-grid">
-            <article class="resource-card"><div class="resource-body"><div class="meta"><span class="badge badge-b2">A1-C1</span><span class="badge badge-live">În pregătire</span></div><h3>Exerciții de scriere</h3><p>Modele de răspunsuri, formulări utile și teme scurte pentru fiecare nivel.</p><span class="resource-status waiting">În pregătire</span></div></article>
-          </div>
-        </section>
+        <section id="scriere"></section>
 
-        <section id="ascultare">
-          <div class="section-title">
-            <h2>Ascultare</h2>
-            <span>audio și dictare</span>
-          </div>
-          <div class="resource-grid">
-            <article class="resource-card"><div class="resource-body"><div class="meta"><span class="badge badge-b2">A1-C1</span><span class="badge badge-live">În pregătire</span></div><h3>Materiale audio</h3><p>Dialoguri, dictări și activități de ascultare organizate pe niveluri.</p><span class="resource-status waiting">În pregătire</span></div></article>
-          </div>
-        </section>
+        <section id="ascultare"></section>
 
-        <section id="vorbire">
-          <div class="section-title">
-            <h2>Vorbire</h2>
-            <span>dialog și roluri</span>
-          </div>
-          <div class="resource-grid">
-            <article class="resource-card"><div class="resource-body"><div class="meta"><span class="badge badge-b2">A1-C1</span><span class="badge badge-live">În pregătire</span></div><h3>Practica conversației</h3><p>Întrebări, mini-dialoguri și jocuri de rol pentru lecțiile de conversație.</p><span class="resource-status waiting">În pregătire</span></div></article>
-          </div>
-        </section>
+        <section id="vorbire"></section>
 
         <section id="romana-a1-incepator">
           <div class="section-title">
@@ -2394,8 +2373,11 @@
     const mainSections = document.querySelectorAll('.main > section');
     const languageToolMenus = document.querySelectorAll('[data-language-tools]');
     const homeTools = document.querySelector('[data-home-tools]');
+    const skillTools = document.querySelector('[data-skill-tools]');
+    const skillLevelLinks = document.querySelectorAll('[data-skill-level]');
     const languageCategoryLinks = document.querySelectorAll('.sid-item[data-language-category]');
     const lessonCategories = document.querySelectorAll('.lesson-category[id^="a1-"]');
+    const skillSectionHashes = ['#citire', '#scriere', '#ascultare', '#vorbire'];
 
     function setActiveMenu(item) {
       sidebarItems.forEach(link => link.classList.remove('active'));
@@ -2440,8 +2422,13 @@
       languageToolMenus.forEach(menu => menu.classList.remove('is-open'));
     }
 
+    function closeSkillTools() {
+      if (skillTools) skillTools.classList.remove('is-open');
+    }
+
     function openLanguageTools(language) {
       if (homeTools) homeTools.classList.remove('is-open');
+      closeSkillTools();
       languageToolMenus.forEach(menu => {
         menu.classList.toggle('is-open', menu.dataset.languageTools === language);
       });
@@ -2449,12 +2436,14 @@
 
     function showAllSidebarLanguages() {
       if (homeTools) homeTools.classList.add('is-open');
+      closeSkillTools();
       languageCategoryLinks.forEach(link => link.classList.remove('is-sidebar-hidden'));
       languageToolMenus.forEach(menu => menu.classList.remove('is-sidebar-hidden'));
     }
 
     function showOnlySidebarLanguage(language) {
       if (homeTools) homeTools.classList.remove('is-open');
+      closeSkillTools();
       languageCategoryLinks.forEach(link => {
         link.classList.toggle('is-sidebar-hidden', link.dataset.languageCategory !== language);
       });
@@ -2465,8 +2454,19 @@
 
     function showHomeSidebar() {
       if (homeTools) homeTools.classList.add('is-open');
+      closeSkillTools();
       languageToolMenus.forEach(menu => {
         if (menu !== homeTools) menu.classList.remove('is-open');
+      });
+    }
+
+    function showSkillSidebar(hash) {
+      if (homeTools) homeTools.classList.remove('is-open');
+      closeLanguageTools();
+      if (skillTools) skillTools.classList.add('is-open');
+      skillLevelLinks.forEach(link => {
+        link.setAttribute('href', hash);
+        link.classList.remove('active');
       });
     }
 
@@ -2523,6 +2523,7 @@
       link.addEventListener('click', () => {
         const hash = link.getAttribute('href');
         const language = link.dataset.languageCategory;
+        const isSkillSection = skillSectionHashes.includes(hash);
         setActiveTopNav(hash);
         clearActiveLevels();
         showOnlyMainSection(language ? '#lectii' : hash);
@@ -2536,6 +2537,8 @@
           showLessonCategory(hash.slice(1));
           showOnlySidebarLanguage(language);
           openLanguageTools(language);
+        } else if (isSkillSection) {
+          showSkillSidebar(hash);
         } else {
           showHomeSidebar();
           closeLanguageTools();
@@ -2546,7 +2549,7 @@
     });
 
     sidebarItems.forEach(link => {
-      if (!link.dataset.levelFilter) {
+      if (!link.dataset.levelFilter && !link.dataset.skillLevel) {
         link.addEventListener('click', () => {
           const hash = link.getAttribute('href');
           const language = link.dataset.languageCategory || link.dataset.languageTool;
@@ -2579,6 +2582,17 @@
       }
     });
 
+    skillLevelLinks.forEach(link => {
+      link.addEventListener('click', event => {
+        event.preventDefault();
+        const hash = link.getAttribute('href');
+        showOnlyMainSection(hash);
+        showSkillSidebar(hash);
+        setActiveMenu(link);
+        setActiveTopNav(hash);
+      });
+    });
+
     if (window.location.hash) {
       const hash = window.location.hash;
       const requestedLevel = document.querySelector(`[data-level-section="${hash.slice(1)}"]`);
@@ -2595,6 +2609,8 @@
         if (language) {
           showOnlySidebarLanguage(language);
           openLanguageTools(language);
+        } else if (skillSectionHashes.includes(hash)) {
+          showSkillSidebar(hash);
         } else if (matchingLink?.dataset.homeSection || matchingLink?.dataset.homeLink) {
           showHomeSidebar();
         } else {
