@@ -16,8 +16,8 @@
     --purple: #2f4a60;
     --purple-light: #f5f7f8;
     --purple-mid: #6f8ea3;
-    --green: #1D8C5A;
-    --green-light: #DFFAEE;
+    --green: #c89524;
+    --green-light: #fff4d8;
     --orange: #C2560A;
     --orange-light: #FEF0E4;
     --blue: #263d52;
@@ -364,7 +364,7 @@
     padding: .55rem .75rem;
   }
 
-  .answer-btn.correct { background: var(--green-light); border-color: rgba(36,122,79,.35); color: var(--green); font-weight: 700; }
+  .answer-btn.correct { background: var(--green-light); border-color: rgba(224,173,47,.32); color: var(--green); font-weight: 700; }
   .answer-btn.wrong { background: var(--orange-light); border-color: rgba(194,86,10,.3); color: var(--orange); font-weight: 700; }
 
   input, select, textarea {
@@ -621,6 +621,16 @@ button.primary:hover {
   border-color: #6f8ea3 !important;
 }
 
+
+  .nav-item::before {
+    content: "";
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #e0ad2f;
+    flex: 0 0 7px;
+    box-shadow: 0 0 0 3px rgba(255, 244, 216, .78);
+  }
 </style>
 </head>
 <body>

@@ -12,8 +12,8 @@
     --gold-light: #f5f7f8;
     --blue: #263d52;
     --blue-light: #f5f7f8;
-    --green: #2a7a4b;
-    --green-light: #e4f2ea;
+    --green: #c89524;
+    --green-light: #fff4d8;
     --purple: #2f4a60;
     --purple-light: #f5f7f8;
     --coral: #c0392b;
@@ -368,7 +368,7 @@
     padding: 1.3rem;
     text-align: center;
   }
-  .correct { border-color: rgba(42,122,75,.35) !important; background: var(--green-light) !important; }
+  .correct { border-color: rgba(224,173,47,.32) !important; background: var(--green-light) !important; }
   .incorrect { border-color: rgba(192,57,43,.35) !important; background: var(--coral-light) !important; }
   @media (max-width: 760px) {
     .topbar { align-items: flex-start; flex-direction: column; padding: 1rem; }
@@ -540,6 +540,16 @@ button.primary:hover {
   border-color: #6f8ea3 !important;
 }
 
+
+  .nav-item::before {
+    content: "";
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #e0ad2f;
+    flex: 0 0 7px;
+    box-shadow: 0 0 0 3px rgba(255, 244, 216, .78);
+  }
 </style>
 </head>
 <body>

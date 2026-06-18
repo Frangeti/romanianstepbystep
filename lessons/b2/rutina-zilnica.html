@@ -527,8 +527,8 @@
     --gold-light: #f6f8f9;
     --blue: #2f4a60;
     --blue-light: #f6f8f9;
-    --green: #2a7a4b;
-    --green-light: #e4f2ea;
+    --green: #c89524;
+    --green-light: #fff4d8;
     --purple: #2f4a60;
     --purple-light: #f6f8f9;
     --purple-mid: #a8bcae;
@@ -1173,6 +1173,16 @@ button.primary:hover {
   border-color: #a8bcae !important;
 }
 
+
+  .nav-item::before {
+    content: "";
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #e0ad2f;
+    flex: 0 0 7px;
+    box-shadow: 0 0 0 3px rgba(255, 244, 216, .78);
+  }
 </style>
 </head>
 <body>

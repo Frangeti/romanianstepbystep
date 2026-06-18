@@ -343,6 +343,16 @@
     .match-row { grid-template-columns: 1fr 80px; }
     th, td { padding: 7px; font-size: 13px; }
   }
+
+  .nav-item::before {
+    content: "";
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #e0ad2f;
+    flex: 0 0 7px;
+    box-shadow: 0 0 0 3px rgba(255, 244, 216, .78);
+  }
 </style>
 </head>
 <body>
