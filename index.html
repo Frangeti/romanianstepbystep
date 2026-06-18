@@ -82,9 +82,26 @@
 
   .main-nav {
     display: flex;
-    gap: 8px;
+    flex: 1;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .main-nav-group {
+    display: flex;
+    align-items: center;
     flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .main-nav-primary {
+    justify-content: flex-start;
+  }
+
+  .main-nav-languages {
     justify-content: flex-end;
+    margin-left: auto;
   }
 
   .main-nav-link {
@@ -263,6 +280,29 @@
   .home-tools .sid-item.home-level {
     color: var(--coral);
     font-weight: 800;
+  }
+
+  .sid-level-group {
+    margin-bottom: .55rem;
+    padding-bottom: .5rem;
+    border-bottom: 1px solid rgba(50, 91, 111, .12);
+  }
+
+  .sid-level-group:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: 0;
+  }
+
+  .level-tool-list {
+    margin: .18rem 0 .2rem 14px;
+    padding-left: .45rem;
+  }
+
+  .home-tools .level-tool-list .sid-item.home-tool {
+    min-height: 31px;
+    padding: 5px .65rem;
+    font-size: 12px;
   }
 
   .language-tools .sid-item[data-language-category] {
@@ -971,7 +1011,17 @@
       padding: 1rem;
       position: static;
     }
-    .main-nav { justify-content: flex-start; }
+    .main-nav {
+      width: 100%;
+      align-items: flex-start;
+      justify-content: flex-start;
+      flex-direction: column;
+      gap: .7rem;
+    }
+    .main-nav-languages {
+      justify-content: flex-start;
+      margin-left: 0;
+    }
     .layout { grid-template-columns: 1fr; }
     .sidebar { display: none; }
     .main { padding: 1rem; }
@@ -1010,10 +1060,18 @@
     <header class="topbar">
       <a class="logo" href="index.html">Romanian <span>Step by Step</span></a>
       <nav class="main-nav" aria-label="Meniu principal">
-        <a class="main-nav-link active" href="#acasa">Acasă</a>
-        <a class="main-nav-link" href="#a1-germana" data-language-category="germana">Germană</a>
-        <a class="main-nav-link" href="#a1-engleza" data-language-category="engleza">Engleză</a>
-        <a class="main-nav-link" href="#a1-spaniola" data-language-category="spaniola">Spaniolă</a>
+        <div class="main-nav-group main-nav-primary">
+          <a class="main-nav-link active" href="#acasa">Acasă</a>
+          <a class="main-nav-link" href="#citire">Citire</a>
+          <a class="main-nav-link" href="#scriere">Scriere</a>
+          <a class="main-nav-link" href="#ascultare">Ascultare</a>
+          <a class="main-nav-link" href="#vorbire">Vorbire</a>
+        </div>
+        <div class="main-nav-group main-nav-languages" aria-label="Limbi">
+          <a class="main-nav-link" href="#a1-germana" data-language-category="germana">Germană</a>
+          <a class="main-nav-link" href="#a1-engleza" data-language-category="engleza">Engleză</a>
+          <a class="main-nav-link" href="#a1-spaniola" data-language-category="spaniola">Spaniolă</a>
+        </div>
       </nav>
     </header>
 
@@ -1021,19 +1079,71 @@
       <aside class="sidebar" aria-label="Meniu lecții">
         <div class="sid-section">
           <div class="language-tools home-tools is-open" data-home-tools>
-            <a class="sid-item subitem home-level" href="#romana-a1-incepator" data-home-section="romana-a1-incepator">A1. Începător</a>
-            <a class="sid-item subitem home-level" href="#a2" data-level-filter="a2">A2. Începător</a>
-            <a class="sid-item subitem home-level" href="#b1" data-level-filter="b1">B1. Intermediar</a>
-            <a class="sid-item subitem home-level" href="#b2" data-level-filter="b2">B2. Intermediar - Avansat</a>
-            <a class="sid-item subitem home-level" href="#c1" data-level-filter="c1">C1. Avansat</a>
-            <a class="sid-item tool-item home-tool" href="#romana-lectii" data-home-section="romana-lectii"><span class="sid-dot dot-green"></span>1. Lecții de limba română</a>
-            <a class="sid-item tool-item home-tool" href="#romana-lectii-pdf" data-home-section="romana-lectii-pdf"><span class="sid-dot dot-green"></span>2. Lecții de limba română PDF</a>
-            <a class="sid-item tool-item home-tool" href="#romana-dictionar" data-home-section="romana-dictionar"><span class="sid-dot dot-green"></span>3. Dicționar</a>
-            <a class="sid-item tool-item home-tool" href="#romana-pronuntie" data-home-section="romana-pronuntie"><span class="sid-dot dot-green"></span>4. Pronunție</a>
-            <a class="sid-item tool-item home-tool" href="#romana-vocabular" data-home-section="romana-vocabular"><span class="sid-dot dot-green"></span>5. Vocabular</a>
-            <a class="sid-item tool-item home-tool" href="#romana-gramatica" data-home-section="romana-gramatica"><span class="sid-dot dot-green"></span>6. Gramatică</a>
-            <a class="sid-item tool-item home-tool" href="#romana-verbe" data-home-section="romana-verbe"><span class="sid-dot dot-green"></span>7. Verbe</a>
-            <a class="sid-item tool-item home-tool" href="#romana-teste" data-home-section="romana-teste"><span class="sid-dot dot-green"></span>8. Teste</a>
+            <div class="sid-level-group">
+              <a class="sid-item subitem home-level" href="#a1" data-level-filter="a1">A1. Începător</a>
+              <div class="level-tool-list">
+                <a class="sid-item tool-item home-tool" href="#romana-lectii" data-home-section="romana-lectii"><span class="sid-dot dot-green"></span>1. Lecții de limba română</a>
+                <a class="sid-item tool-item home-tool" href="#romana-lectii-pdf" data-home-section="romana-lectii-pdf"><span class="sid-dot dot-green"></span>2. Lecții de limba română PDF</a>
+                <a class="sid-item tool-item home-tool" href="#romana-dictionar" data-home-section="romana-dictionar"><span class="sid-dot dot-green"></span>3. Dicționar</a>
+                <a class="sid-item tool-item home-tool" href="#romana-pronuntie" data-home-section="romana-pronuntie"><span class="sid-dot dot-green"></span>4. Pronunție</a>
+                <a class="sid-item tool-item home-tool" href="#romana-vocabular" data-home-section="romana-vocabular"><span class="sid-dot dot-green"></span>5. Vocabular</a>
+                <a class="sid-item tool-item home-tool" href="#romana-gramatica" data-home-section="romana-gramatica"><span class="sid-dot dot-green"></span>6. Gramatică</a>
+                <a class="sid-item tool-item home-tool" href="#romana-verbe" data-home-section="romana-verbe"><span class="sid-dot dot-green"></span>7. Verbe</a>
+                <a class="sid-item tool-item home-tool" href="#romana-teste" data-home-section="romana-teste"><span class="sid-dot dot-green"></span>8. Teste</a>
+              </div>
+            </div>
+            <div class="sid-level-group">
+              <a class="sid-item subitem home-level" href="#a2" data-level-filter="a2">A2. Începător</a>
+              <div class="level-tool-list">
+                <a class="sid-item tool-item home-tool" href="#romana-lectii" data-home-section="romana-lectii"><span class="sid-dot dot-green"></span>1. Lecții de limba română</a>
+                <a class="sid-item tool-item home-tool" href="#romana-lectii-pdf" data-home-section="romana-lectii-pdf"><span class="sid-dot dot-green"></span>2. Lecții de limba română PDF</a>
+                <a class="sid-item tool-item home-tool" href="#romana-dictionar" data-home-section="romana-dictionar"><span class="sid-dot dot-green"></span>3. Dicționar</a>
+                <a class="sid-item tool-item home-tool" href="#romana-pronuntie" data-home-section="romana-pronuntie"><span class="sid-dot dot-green"></span>4. Pronunție</a>
+                <a class="sid-item tool-item home-tool" href="#romana-vocabular" data-home-section="romana-vocabular"><span class="sid-dot dot-green"></span>5. Vocabular</a>
+                <a class="sid-item tool-item home-tool" href="#romana-gramatica" data-home-section="romana-gramatica"><span class="sid-dot dot-green"></span>6. Gramatică</a>
+                <a class="sid-item tool-item home-tool" href="#romana-verbe" data-home-section="romana-verbe"><span class="sid-dot dot-green"></span>7. Verbe</a>
+                <a class="sid-item tool-item home-tool" href="#romana-teste" data-home-section="romana-teste"><span class="sid-dot dot-green"></span>8. Teste</a>
+              </div>
+            </div>
+            <div class="sid-level-group">
+              <a class="sid-item subitem home-level" href="#b1" data-level-filter="b1">B1. Intermediar</a>
+              <div class="level-tool-list">
+                <a class="sid-item tool-item home-tool" href="#romana-lectii" data-home-section="romana-lectii"><span class="sid-dot dot-green"></span>1. Lecții de limba română</a>
+                <a class="sid-item tool-item home-tool" href="#romana-lectii-pdf" data-home-section="romana-lectii-pdf"><span class="sid-dot dot-green"></span>2. Lecții de limba română PDF</a>
+                <a class="sid-item tool-item home-tool" href="#romana-dictionar" data-home-section="romana-dictionar"><span class="sid-dot dot-green"></span>3. Dicționar</a>
+                <a class="sid-item tool-item home-tool" href="#romana-pronuntie" data-home-section="romana-pronuntie"><span class="sid-dot dot-green"></span>4. Pronunție</a>
+                <a class="sid-item tool-item home-tool" href="#romana-vocabular" data-home-section="romana-vocabular"><span class="sid-dot dot-green"></span>5. Vocabular</a>
+                <a class="sid-item tool-item home-tool" href="#romana-gramatica" data-home-section="romana-gramatica"><span class="sid-dot dot-green"></span>6. Gramatică</a>
+                <a class="sid-item tool-item home-tool" href="#romana-verbe" data-home-section="romana-verbe"><span class="sid-dot dot-green"></span>7. Verbe</a>
+                <a class="sid-item tool-item home-tool" href="#romana-teste" data-home-section="romana-teste"><span class="sid-dot dot-green"></span>8. Teste</a>
+              </div>
+            </div>
+            <div class="sid-level-group">
+              <a class="sid-item subitem home-level" href="#b2" data-level-filter="b2">B2. Intermediar - Avansat</a>
+              <div class="level-tool-list">
+                <a class="sid-item tool-item home-tool" href="#romana-lectii" data-home-section="romana-lectii"><span class="sid-dot dot-green"></span>1. Lecții de limba română</a>
+                <a class="sid-item tool-item home-tool" href="#romana-lectii-pdf" data-home-section="romana-lectii-pdf"><span class="sid-dot dot-green"></span>2. Lecții de limba română PDF</a>
+                <a class="sid-item tool-item home-tool" href="#romana-dictionar" data-home-section="romana-dictionar"><span class="sid-dot dot-green"></span>3. Dicționar</a>
+                <a class="sid-item tool-item home-tool" href="#romana-pronuntie" data-home-section="romana-pronuntie"><span class="sid-dot dot-green"></span>4. Pronunție</a>
+                <a class="sid-item tool-item home-tool" href="#romana-vocabular" data-home-section="romana-vocabular"><span class="sid-dot dot-green"></span>5. Vocabular</a>
+                <a class="sid-item tool-item home-tool" href="#romana-gramatica" data-home-section="romana-gramatica"><span class="sid-dot dot-green"></span>6. Gramatică</a>
+                <a class="sid-item tool-item home-tool" href="#romana-verbe" data-home-section="romana-verbe"><span class="sid-dot dot-green"></span>7. Verbe</a>
+                <a class="sid-item tool-item home-tool" href="#romana-teste" data-home-section="romana-teste"><span class="sid-dot dot-green"></span>8. Teste</a>
+              </div>
+            </div>
+            <div class="sid-level-group">
+              <a class="sid-item subitem home-level" href="#c1" data-level-filter="c1">C1. Avansat</a>
+              <div class="level-tool-list">
+                <a class="sid-item tool-item home-tool" href="#romana-lectii" data-home-section="romana-lectii"><span class="sid-dot dot-green"></span>1. Lecții de limba română</a>
+                <a class="sid-item tool-item home-tool" href="#romana-lectii-pdf" data-home-section="romana-lectii-pdf"><span class="sid-dot dot-green"></span>2. Lecții de limba română PDF</a>
+                <a class="sid-item tool-item home-tool" href="#romana-dictionar" data-home-section="romana-dictionar"><span class="sid-dot dot-green"></span>3. Dicționar</a>
+                <a class="sid-item tool-item home-tool" href="#romana-pronuntie" data-home-section="romana-pronuntie"><span class="sid-dot dot-green"></span>4. Pronunție</a>
+                <a class="sid-item tool-item home-tool" href="#romana-vocabular" data-home-section="romana-vocabular"><span class="sid-dot dot-green"></span>5. Vocabular</a>
+                <a class="sid-item tool-item home-tool" href="#romana-gramatica" data-home-section="romana-gramatica"><span class="sid-dot dot-green"></span>6. Gramatică</a>
+                <a class="sid-item tool-item home-tool" href="#romana-verbe" data-home-section="romana-verbe"><span class="sid-dot dot-green"></span>7. Verbe</a>
+                <a class="sid-item tool-item home-tool" href="#romana-teste" data-home-section="romana-teste"><span class="sid-dot dot-green"></span>8. Teste</a>
+              </div>
+            </div>
           </div>
           <div class="language-tools" data-language-tools="germana">
             <a class="sid-item subitem" href="#a1-germana" data-language-category="germana" data-language-section="a1-germana">A1. Începător</a>
@@ -1092,6 +1202,47 @@
               <strong data-stat="audio-count">49</strong>
               <span>materiale audio atașate</span>
             </div>
+          </div>
+        </section>
+
+        <section id="citire">
+          <div class="section-title">
+            <h2>Citire</h2>
+            <span>texte și înțelegere</span>
+          </div>
+          <div class="resource-grid">
+            <article class="resource-card"><div class="resource-body"><div class="meta"><span class="badge badge-b2">A1-C1</span><span class="badge badge-live">În pregătire</span></div><h3>Texte pe niveluri</h3><p>Materiale pentru citire, vocabular în context și întrebări de înțelegere.</p><span class="resource-status waiting">În pregătire</span></div></article>
+            <article class="resource-card"><div class="resource-body"><div class="meta"><span class="badge badge-b2">B2</span><span class="badge badge-live">Activă</span></div><h3>La doctor B2</h3><p>Dialog simplificat și exerciții de înțelegere pe tema consultației medicale.</p><a class="open-lesson" href="lessons/b2/la-doctor.html">Deschide lecția</a></div></article>
+          </div>
+        </section>
+
+        <section id="scriere">
+          <div class="section-title">
+            <h2>Scriere</h2>
+            <span>texte ghidate</span>
+          </div>
+          <div class="resource-grid">
+            <article class="resource-card"><div class="resource-body"><div class="meta"><span class="badge badge-b2">A1-C1</span><span class="badge badge-live">În pregătire</span></div><h3>Exerciții de scriere</h3><p>Modele de răspunsuri, formulări utile și teme scurte pentru fiecare nivel.</p><span class="resource-status waiting">În pregătire</span></div></article>
+          </div>
+        </section>
+
+        <section id="ascultare">
+          <div class="section-title">
+            <h2>Ascultare</h2>
+            <span>audio și dictare</span>
+          </div>
+          <div class="resource-grid">
+            <article class="resource-card"><div class="resource-body"><div class="meta"><span class="badge badge-b2">A1-C1</span><span class="badge badge-live">În pregătire</span></div><h3>Materiale audio</h3><p>Dialoguri, dictări și activități de ascultare organizate pe niveluri.</p><span class="resource-status waiting">În pregătire</span></div></article>
+          </div>
+        </section>
+
+        <section id="vorbire">
+          <div class="section-title">
+            <h2>Vorbire</h2>
+            <span>dialog și roluri</span>
+          </div>
+          <div class="resource-grid">
+            <article class="resource-card"><div class="resource-body"><div class="meta"><span class="badge badge-b2">A1-C1</span><span class="badge badge-live">În pregătire</span></div><h3>Practica conversației</h3><p>Întrebări, mini-dialoguri și jocuri de rol pentru lecțiile de conversație.</p><span class="resource-status waiting">În pregătire</span></div></article>
           </div>
         </section>
 
