@@ -19,11 +19,11 @@
     --paper: #ffffff;
     --bg: #f4f7fa;
     --mist: var(--blue-wash);
-    --mint: #278f8f;
-    --mint-light: #e3f4f1;
+    --mint: #e0ad2f;
+    --mint-light: #fff4d8;
     --coral: #d86655;
     --coral-light: #fae7e2;
-    --sun: #b9872f;
+    --sun: #c89524;
     --sun-light: #f8efd9;
     --sky: #407fa3;
     --sky-light: #e5f1f7;
@@ -342,7 +342,7 @@
 
   .home-tools .dot-navy { background: var(--navy); }
   .home-tools .dot-coral { background: var(--coral); }
-  .home-tools .dot-green { background: var(--sky); }
+  .home-tools .dot-green { background: var(--mint); }
 
   .sid-dot {
     width: 7px;
@@ -352,10 +352,10 @@
     box-shadow: 0 0 0 3px rgba(255, 255, 255, .82);
   }
 
-  .dot-blue,
-  .dot-purple,
-  .dot-teal,
-  .dot-gold { background: var(--blue-grey); }
+  .dot-teal { background: var(--mint); }
+  .dot-blue { background: var(--sky); }
+  .dot-purple { background: var(--berry); }
+  .dot-gold { background: var(--sun); }
 
   .main {
     background: transparent;
@@ -416,7 +416,7 @@
     height: 8px;
     border-radius: 50%;
     background: var(--mint);
-    box-shadow: 0 0 0 4px rgba(39, 143, 143, .14);
+    box-shadow: 0 0 0 4px rgba(224, 173, 47, .18);
   }
 
   h1 {
@@ -600,15 +600,15 @@
     box-shadow: 0 14px 34px rgba(35, 54, 75, .06);
   }
 
-  #a1 .lesson-card:nth-child(1) { --accent: #278f8f; }
+  #a1 .lesson-card:nth-child(1) { --accent: #e0ad2f; }
   #a1 .lesson-card:nth-child(2) { --accent: #407fa3; }
   #a1 .lesson-card:nth-child(3) { --accent: #5a668f; }
   #a1 .lesson-card:nth-child(4) { --accent: #b9872f; }
-  #a1 .lesson-card:nth-child(5) { --accent: #278f8f; }
+  #a1 .lesson-card:nth-child(5) { --accent: #e0ad2f; }
   #a1 .lesson-card:nth-child(6) { --accent: #407fa3; }
   #a1 .lesson-card:nth-child(7) { --accent: #5a668f; }
   #a1 .lesson-card:nth-child(8) { --accent: #b9872f; }
-  #a1 .lesson-card:nth-child(9) { --accent: #278f8f; }
+  #a1 .lesson-card:nth-child(9) { --accent: #e0ad2f; }
   #a1 .lesson-card:nth-child(10) { --accent: #407fa3; }
   #a1 .lesson-card:nth-child(11) { --accent: #5a668f; }
   #a1 .lesson-card:nth-child(12) { --accent: #b9872f; }
@@ -800,15 +800,16 @@
     padding: 10px 20px;
     border-radius: 8px;
     background: var(--mint);
-    color: #fff;
+    color: var(--ink);
     font-size: 15px;
     font-weight: 600;
-    box-shadow: 0 12px 24px rgba(39, 143, 143, .16);
+    box-shadow: 0 12px 24px rgba(224, 173, 47, .2);
     transition: background .15s, transform .15s, box-shadow .15s;
   }
 
   .open-lesson:hover {
     background: var(--ink);
+    color: #fff;
     box-shadow: 0 16px 28px rgba(35, 54, 75, .16);
     transform: translateY(-1px);
   }
@@ -904,7 +905,7 @@
     flex-direction: column;
     justify-content: flex-end;
     gap: .35rem;
-    background: linear-gradient(135deg, var(--ink), var(--mint));
+    background: linear-gradient(135deg, var(--ink), var(--sun));
   }
 
   .cover-gold {
@@ -918,7 +919,7 @@
   }
 
   .cover-teal {
-    background: linear-gradient(135deg, #1f7373, var(--mint));
+    background: linear-gradient(135deg, #9f7418, var(--mint));
     color: #fff;
   }
 
