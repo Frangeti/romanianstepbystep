@@ -1135,6 +1135,87 @@
     color: var(--muted);
   }
 
+  .level-section[data-level-section="a1"] {
+    --level-color: #d94f45;
+  }
+
+  .level-section[data-level-section="a2"] {
+    --level-color: #e47d30;
+  }
+
+  .level-section[data-level-section="b1"] {
+    --level-color: #d9a225;
+  }
+
+  .level-section[data-level-section="b2"] {
+    --level-color: #8fab35;
+  }
+
+  .level-section[data-level-section="c1"] {
+    --level-color: #2f9b5f;
+  }
+
+  .level-section .level-heading h3,
+  .level-section .level-title-coral {
+    color: var(--level-color);
+  }
+
+  .level-section .lesson-category-head {
+    border-color: color-mix(in srgb, var(--level-color) 28%, white);
+    background: color-mix(in srgb, var(--level-color) 8%, white);
+  }
+
+  .level-section .lesson-category-head h4 {
+    color: var(--level-color);
+  }
+
+  .level-section .lesson-card {
+    --accent: var(--level-color);
+    border-color: color-mix(in srgb, var(--level-color) 30%, white);
+    background:
+      linear-gradient(145deg, rgba(255, 255, 255, .96), rgba(255, 255, 255, .82)),
+      linear-gradient(145deg, color-mix(in srgb, var(--level-color) 16%, white), #fff);
+  }
+
+  #a1 .lesson-category .lesson-card {
+    --accent: var(--level-color);
+  }
+
+  .level-section .lesson-card:hover {
+    border-color: color-mix(in srgb, var(--level-color) 48%, white);
+  }
+
+  .level-section .lesson-head {
+    border-bottom-color: color-mix(in srgb, var(--level-color) 20%, white);
+  }
+
+  .level-section .lesson-title {
+    color: var(--level-color);
+  }
+
+  .level-section .lesson-title::after {
+    color: color-mix(in srgb, var(--level-color) 82%, var(--ink));
+  }
+
+  .level-section .lesson-desc,
+  .level-section .feature span {
+    color: color-mix(in srgb, var(--level-color) 48%, var(--muted));
+  }
+
+  .level-section .feature strong {
+    color: color-mix(in srgb, var(--level-color) 86%, var(--ink));
+  }
+
+  .level-section .badge-b2 {
+    background: color-mix(in srgb, var(--level-color) 14%, white);
+    color: color-mix(in srgb, var(--level-color) 82%, var(--ink));
+  }
+
+  .level-section .resource-status {
+    background: color-mix(in srgb, var(--level-color) 12%, white);
+    color: color-mix(in srgb, var(--level-color) 82%, var(--ink));
+  }
+
   .footer {
     padding: 1.4rem clamp(1.25rem, 3vw, 2.75rem);
     border-top: 1px solid var(--border);
