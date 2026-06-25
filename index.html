@@ -802,6 +802,14 @@
     transform: translateX(2px);
   }
 
+  #a1 .lesson-card:not([data-lesson-link]) {
+    cursor: default;
+  }
+
+  #a1 .lesson-card:not([data-lesson-link])::after {
+    display: none;
+  }
+
   #a1 .lesson-head {
     min-height: 100%;
     border-bottom: 0;
@@ -1190,7 +1198,13 @@
   }
 
   .level-section .lesson-title {
-    color: var(--level-color);
+    color: var(--navy);
+  }
+
+  .resource-body h3,
+  .resource-cover h3,
+  .coming-card h3 {
+    color: var(--navy);
   }
 
   .level-section .lesson-title::after {
@@ -2287,6 +2301,113 @@
           <div class="level-section" id="a1" data-level-section="a1">
             <div class="level-heading">
               <h3 class="level-title-coral">A1. Începător</h3>
+            </div>
+            <div class="lesson-category" id="a1-romana">
+              <div class="lesson-category-head">
+                <h4>Lecții de limba română fără traducere</h4>
+              </div>
+              <div class="lesson-grid">
+              <article class="lesson-card" data-lesson-no="01">
+                <div class="lesson-head">
+                  <div class="meta">
+                    <span class="badge badge-b2">Nivel A1</span>
+                    <span class="badge badge-live">Română</span>
+                  </div>
+                  <div class="lesson-title" data-topic="Salutări și formule simple">Salutări</div>
+                  <p class="lesson-desc">Salutări, despărțiri și primele formule de conversație în limba română.</p>
+                </div>
+              </article>
+              <article class="lesson-card" data-lesson-no="02">
+                <div class="lesson-head">
+                  <div class="meta">
+                    <span class="badge badge-b2">Nivel A1</span>
+                    <span class="badge badge-live">Română</span>
+                  </div>
+                  <div class="lesson-title" data-topic="Întrebări despre stare">Ce faci?</div>
+                  <p class="lesson-desc">Întrebări și răspunsuri scurte despre stare și dispoziție.</p>
+                </div>
+              </article>
+              <article class="lesson-card" data-lesson-no="03">
+                <div class="lesson-head">
+                  <div class="meta">
+                    <span class="badge badge-b2">Nivel A1</span>
+                    <span class="badge badge-live">Română</span>
+                  </div>
+                  <div class="lesson-title" data-topic="Politețe de bază">Mulțumesc</div>
+                  <p class="lesson-desc">Mulțumiri, rugăminți și răspunsuri politicoase în situații simple.</p>
+                </div>
+              </article>
+              <article class="lesson-card" data-lesson-no="04">
+                <div class="lesson-head">
+                  <div class="meta">
+                    <span class="badge badge-b2">Nivel A1</span>
+                    <span class="badge badge-live">Română</span>
+                  </div>
+                  <div class="lesson-title" data-topic="Formule de scuză">Scuze</div>
+                  <p class="lesson-desc">Scuze, formule de iertare și răspunsuri potrivite în conversație.</p>
+                </div>
+              </article>
+              <article class="lesson-card" data-lesson-no="05">
+                <div class="lesson-head">
+                  <div class="meta">
+                    <span class="badge badge-b2">Nivel A1</span>
+                    <span class="badge badge-live">Română</span>
+                  </div>
+                  <div class="lesson-title" data-topic="Pronume și familie">Persoane</div>
+                  <p class="lesson-desc">Pronume personale, persoane apropiate, familie și verbul „a fi”.</p>
+                </div>
+              </article>
+              <article class="lesson-card" data-lesson-no="06">
+                <div class="lesson-head">
+                  <div class="meta">
+                    <span class="badge badge-b2">Nivel A1</span>
+                    <span class="badge badge-live">Română</span>
+                  </div>
+                  <div class="lesson-title" data-topic="Nume și prezentare">Prezentări</div>
+                  <p class="lesson-desc">Cum te prezinți, cum spui numele și cum întrebi numele cuiva.</p>
+                </div>
+              </article>
+              <article class="lesson-card" data-lesson-no="07">
+                <div class="lesson-head">
+                  <div class="meta">
+                    <span class="badge badge-b2">Nivel A1</span>
+                    <span class="badge badge-live">Română</span>
+                  </div>
+                  <div class="lesson-title" data-topic="Numere și vârstă">Numerele</div>
+                  <p class="lesson-desc">Numere de bază, vârsta, întrebări simple și verbul „a avea”.</p>
+                </div>
+              </article>
+              <article class="lesson-card" data-lesson-no="08">
+                <div class="lesson-head">
+                  <div class="meta">
+                    <span class="badge badge-b2">Nivel A1</span>
+                    <span class="badge badge-live">Română</span>
+                  </div>
+                  <div class="lesson-title" data-topic="Țări și orașe">De unde ești?</div>
+                  <p class="lesson-desc">Țări, orașe, origine și întrebări despre locul de unde vine cineva.</p>
+                </div>
+              </article>
+              <article class="lesson-card" data-lesson-no="09">
+                <div class="lesson-head">
+                  <div class="meta">
+                    <span class="badge badge-b2">Nivel A1</span>
+                    <span class="badge badge-live">Română</span>
+                  </div>
+                  <div class="lesson-title" data-topic="Identitate și forme">Naționalități</div>
+                  <p class="lesson-desc">Naționalități, forme masculine și feminine și propoziții simple.</p>
+                </div>
+              </article>
+              <article class="lesson-card" data-lesson-no="10">
+                <div class="lesson-head">
+                  <div class="meta">
+                    <span class="badge badge-b2">Nivel A1</span>
+                    <span class="badge badge-live">Română</span>
+                  </div>
+                  <div class="lesson-title" data-topic="Limbi și comunicare">Ce limbă vorbești?</div>
+                  <p class="lesson-desc">Limbi vorbite, întrebări simple și verbul „a vorbi”.</p>
+                </div>
+              </article>
+              </div>
             </div>
             <div class="lesson-category" id="a1-germana">
               <div class="lesson-category-head">
@@ -3454,6 +3575,22 @@
       if (emptyLevel) emptyLevel.classList.toggle('is-hidden', visibleCount > 0);
     }
 
+    function showRomanianForLevel(level) {
+      let visibleCount = 0;
+      levelSections.forEach(section => {
+        const isMatch = section.dataset.levelSection === level;
+        section.classList.toggle('is-hidden', !isMatch);
+        if (!isMatch) return;
+
+        section.querySelectorAll('.lesson-category').forEach(category => {
+          const isRomanianCategory = category.id === `${level}-romana`;
+          category.classList.toggle('is-hidden', !isRomanianCategory);
+          if (isRomanianCategory) visibleCount++;
+        });
+      });
+      if (emptyLevel) emptyLevel.classList.toggle('is-hidden', visibleCount > 0);
+    }
+
     function showLanguageCategory(language) {
       showLessonCategory(getLanguageHash(language).slice(1));
     }
@@ -3471,7 +3608,7 @@
         closeLanguageTools();
         showAllSidebarLanguages();
         showOnlyMainSection('#lectii');
-        showAllLessonLevels();
+        showRomanianForLevel(link.dataset.levelFilter);
         setActiveLevel(link.dataset.levelFilter);
       });
     });
@@ -3583,7 +3720,7 @@
       const requestedLevel = document.querySelector(`[data-level-section="${hash.slice(1)}"]`);
       if (requestedLevel) {
         showOnlyMainSection('#lectii');
-        showLessonsForLevel(hash.slice(1));
+        showRomanianForLevel(hash.slice(1));
         setActiveLevel(hash.slice(1));
       }
       const targetSection = document.querySelector(`.main > section${hash}`);
