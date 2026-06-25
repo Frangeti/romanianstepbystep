@@ -1301,6 +1301,7 @@
           <a class="main-nav-link" href="#vorbire">Vorbire</a>
         </div>
         <div class="main-nav-group main-nav-languages" aria-label="Limbi">
+          <a class="main-nav-link" href="#acasa" data-home-link>Română</a>
           <a class="main-nav-link" href="#a1-germana" data-language-category="germana">Germană</a>
           <a class="main-nav-link" href="#a1-engleza" data-language-category="engleza">Engleză</a>
           <a class="main-nav-link" href="#a1-spaniola" data-language-category="spaniola">Spaniolă</a>
@@ -3296,8 +3297,14 @@
       if (item) item.classList.add('active');
     }
 
-    function setActiveTopNav(hash) {
-      topNavLinks.forEach(link => link.classList.toggle('active', link.getAttribute('href') === hash));
+    function setActiveTopNav(hash, preferredLink = null) {
+      topNavLinks.forEach(link => {
+        if (preferredLink) {
+          link.classList.toggle('active', link === preferredLink);
+        } else {
+          link.classList.toggle('active', link.getAttribute('href') === hash && !link.dataset.homeLink);
+        }
+      });
     }
 
     function getLanguageHash(language) {
@@ -3486,7 +3493,7 @@
         const hash = link.getAttribute('href');
         const language = link.dataset.languageCategory;
         const isSkillSection = skillSectionHashes.includes(hash);
-        setActiveTopNav(hash);
+        setActiveTopNav(hash, link);
         clearActiveLevels();
         showOnlyMainSection(language ? '#lectii' : hash);
 
