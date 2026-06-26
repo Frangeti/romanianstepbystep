@@ -670,6 +670,48 @@
     font-size: 15px;
   }
 
+  .construction-banner {
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center;
+    gap: .85rem;
+    padding: 1.1rem 1.2rem;
+    border: 1px solid color-mix(in srgb, var(--mint) 40%, white);
+    border-radius: 8px;
+    background:
+      linear-gradient(135deg, color-mix(in srgb, var(--mint) 16%, white), #fff 72%);
+    color: var(--muted);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .construction-banner::before {
+    content: "";
+    flex: 0 0 13px;
+    width: 13px;
+    height: 13px;
+    border-radius: 999px;
+    background: var(--mint);
+    box-shadow: 0 0 0 6px color-mix(in srgb, var(--mint) 18%, white);
+  }
+
+  .construction-banner strong {
+    display: block;
+    color: var(--navy);
+    font-size: 16px;
+    line-height: 1.2;
+  }
+
+  .construction-banner span {
+    display: block;
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.45;
+  }
+
+  .construction-banner.is-hidden {
+    display: none;
+  }
+
   .lesson-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -721,6 +763,10 @@
     color: var(--ink);
     font-size: 17px;
     line-height: 1.2;
+  }
+
+  #a1-romana .lesson-category-head h4 {
+    color: var(--navy);
   }
 
   #a1 .lesson-grid {
@@ -1138,9 +1184,11 @@
   }
 
   .resource-status.waiting {
-    background: #fff;
-    border: 1px solid var(--border);
-    color: var(--muted);
+    width: 100%;
+    justify-content: center;
+    background: color-mix(in srgb, var(--mint) 14%, white);
+    border: 1px solid color-mix(in srgb, var(--mint) 38%, white);
+    color: var(--navy);
   }
 
   .level-section[data-level-section="a1"] {
@@ -2174,7 +2222,7 @@
             <span>lecții disponibile</span>
           </div>
           <div class="resource-grid">
-            <article class="resource-card"><div class="resource-body"><div class="meta"><span class="badge badge-b2">A1</span><span class="badge badge-live">În pregătire</span></div><h3>Lecții A1</h3><p>Spațiu pregătit pentru lecții numai în limba română.</p><span class="resource-status waiting">În pregătire</span></div></article>
+            <article class="resource-card"><div class="resource-body"><div class="meta"><span class="badge badge-b2">A1</span><span class="badge badge-live">În construcție</span></div><h3>Lecții A1</h3><p>Spațiu pregătit pentru lecții numai în limba română.</p><span class="resource-status waiting">În construcție</span></div></article>
             <article class="resource-card">
               <div class="resource-body">
                 <div class="meta"><span class="badge badge-b2">A1</span><span class="badge badge-live">Activă</span></div>
@@ -2216,7 +2264,7 @@
             <span>fișe viitoare</span>
           </div>
           <div class="resource-grid">
-            <article class="resource-card"><div class="resource-body"><div class="meta"><span class="badge badge-b2">A1</span><span class="badge badge-live">În pregătire</span></div><h3>PDF A1</h3><p>Spațiu pregătit pentru fișe PDF numai în limba română.</p><span class="resource-status waiting">În pregătire</span></div></article>
+            <article class="resource-card"><div class="resource-body"><div class="meta"><span class="badge badge-b2">A1</span><span class="badge badge-live">În construcție</span></div><h3>PDF A1</h3><p>Spațiu pregătit pentru fișe PDF numai în limba română.</p><span class="resource-status waiting">În construcție</span></div></article>
             <article class="resource-card">
               <div class="resource-body">
                 <div class="meta"><span class="badge badge-b2">B2</span><span class="badge badge-live">Fișă</span></div>
@@ -2243,7 +2291,7 @@
             <span>cuvinte în română</span>
           </div>
           <div class="resource-grid">
-            <article class="resource-card"><div class="resource-body"><div class="meta"><span class="badge badge-b2">A1</span><span class="badge badge-live">În pregătire</span></div><h3>Dicționar A1</h3><p>Spațiu pregătit pentru dicționar numai în limba română.</p><span class="resource-status waiting">În pregătire</span></div></article>
+            <article class="resource-card"><div class="resource-body"><div class="meta"><span class="badge badge-b2">A1</span><span class="badge badge-live">În construcție</span></div><h3>Dicționar A1</h3><p>Spațiu pregătit pentru dicționar numai în limba română.</p><span class="resource-status waiting">În construcție</span></div></article>
           </div>
         </section>
 
@@ -2253,7 +2301,7 @@
             <span>sunete românești</span>
           </div>
           <div class="resource-grid">
-            <article class="resource-card"><div class="resource-body"><div class="meta"><span class="badge badge-b2">A1</span><span class="badge badge-live">În pregătire</span></div><h3>Pronunție A1</h3><p>Spațiu pregătit pentru materiale de pronunție în limba română.</p><span class="resource-status waiting">În pregătire</span></div></article>
+            <article class="resource-card"><div class="resource-body"><div class="meta"><span class="badge badge-b2">A1</span><span class="badge badge-live">În construcție</span></div><h3>Pronunție A1</h3><p>Spațiu pregătit pentru materiale de pronunție în limba română.</p><span class="resource-status waiting">În construcție</span></div></article>
           </div>
         </section>
 
@@ -2263,7 +2311,7 @@
             <span>teme și cuvinte</span>
           </div>
           <div class="resource-grid">
-            <article class="resource-card"><div class="resource-body"><div class="meta"><span class="badge badge-b2">A1</span><span class="badge badge-live">În pregătire</span></div><h3>Vocabular A1</h3><p>Spațiu pregătit pentru vocabular numai în limba română.</p><span class="resource-status waiting">În pregătire</span></div></article>
+            <article class="resource-card"><div class="resource-body"><div class="meta"><span class="badge badge-b2">A1</span><span class="badge badge-live">În construcție</span></div><h3>Vocabular A1</h3><p>Spațiu pregătit pentru vocabular numai în limba română.</p><span class="resource-status waiting">În construcție</span></div></article>
           </div>
         </section>
 
@@ -2273,7 +2321,7 @@
             <span>reguli simple</span>
           </div>
           <div class="resource-grid">
-            <article class="resource-card"><div class="resource-body"><div class="meta"><span class="badge badge-b2">A1</span><span class="badge badge-live">În pregătire</span></div><h3>Gramatică A1</h3><p>Spațiu pregătit pentru gramatică numai în limba română.</p><span class="resource-status waiting">În pregătire</span></div></article>
+            <article class="resource-card"><div class="resource-body"><div class="meta"><span class="badge badge-b2">A1</span><span class="badge badge-live">În construcție</span></div><h3>Gramatică A1</h3><p>Spațiu pregătit pentru gramatică numai în limba română.</p><span class="resource-status waiting">În construcție</span></div></article>
           </div>
         </section>
 
@@ -2283,7 +2331,7 @@
             <span>conjugări</span>
           </div>
           <div class="resource-grid">
-            <article class="resource-card"><div class="resource-body"><div class="meta"><span class="badge badge-b2">A1</span><span class="badge badge-live">În pregătire</span></div><h3>Verbe A1</h3><p>Spațiu pregătit pentru verbe și exemple numai în limba română.</p><span class="resource-status waiting">În pregătire</span></div></article>
+            <article class="resource-card"><div class="resource-body"><div class="meta"><span class="badge badge-b2">A1</span><span class="badge badge-live">În construcție</span></div><h3>Verbe A1</h3><p>Spațiu pregătit pentru verbe și exemple numai în limba română.</p><span class="resource-status waiting">În construcție</span></div></article>
           </div>
         </section>
 
@@ -2293,7 +2341,7 @@
             <span>verificări A1</span>
           </div>
           <div class="resource-grid">
-            <article class="resource-card"><div class="resource-body"><div class="meta"><span class="badge badge-b2">A1</span><span class="badge badge-live">În pregătire</span></div><h3>Teste A1</h3><p>Spațiu pregătit pentru teste numai în limba română.</p><span class="resource-status waiting">În pregătire</span></div></article>
+            <article class="resource-card"><div class="resource-body"><div class="meta"><span class="badge badge-b2">A1</span><span class="badge badge-live">În construcție</span></div><h3>Teste A1</h3><p>Spațiu pregătit pentru teste numai în limba română.</p><span class="resource-status waiting">În construcție</span></div></article>
           </div>
         </section>
 
@@ -2304,7 +2352,7 @@
             </div>
             <div class="lesson-category" id="a1-romana">
               <div class="lesson-category-head">
-                <h4>Lecții de limba română fără traducere</h4>
+                <h4>Lecții pentru începători</h4>
               </div>
               <div class="lesson-grid">
               <article class="lesson-card" data-lesson-no="01">
@@ -2839,7 +2887,7 @@
                   <div class="meta">
                     <span class="badge badge-b2">Nivel A1</span>
                     <span class="badge badge-tech">English</span>
-                    <span class="badge badge-live">În pregătire</span>
+                    <span class="badge badge-live">În construcție</span>
                   </div>
                   <div class="lesson-title" data-topic="How are you?">Ce faci?</div>
                   <p class="lesson-desc">Întrebări și răspunsuri simple despre cum te simți.</p>
@@ -2851,7 +2899,7 @@
                     <div class="feature"><strong>Formal</strong><span>tu vs. dumneavoastră</span></div>
                     <div class="feature"><strong>Exercises</strong><span>quiz și propoziții</span></div>
                   </div>
-                  <span class="resource-status waiting">Lecție în pregătire</span>
+                  <span class="resource-status waiting">În construcție</span>
                 </div>
               </article>
               <article class="lesson-card" data-lesson-no="03">
@@ -2859,7 +2907,7 @@
                   <div class="meta">
                     <span class="badge badge-b2">Nivel A1</span>
                     <span class="badge badge-tech">English</span>
-                    <span class="badge badge-live">În pregătire</span>
+                    <span class="badge badge-live">În construcție</span>
                   </div>
                   <div class="lesson-title" data-topic="Thank you & Please">Mulțumesc</div>
                   <p class="lesson-desc">Expresii politicoase pentru mulțumiri și rugăminți.</p>
@@ -2871,7 +2919,7 @@
                     <div class="feature"><strong>Pronunciation</strong><span>ț și terminația -esc</span></div>
                     <div class="feature"><strong>Exercises</strong><span>multiple choice și matching</span></div>
                   </div>
-                  <span class="resource-status waiting">Lecție în pregătire</span>
+                  <span class="resource-status waiting">În construcție</span>
                 </div>
               </article>
               <article class="lesson-card" data-lesson-no="04">
@@ -2879,7 +2927,7 @@
                   <div class="meta">
                     <span class="badge badge-b2">Nivel A1</span>
                     <span class="badge badge-tech">English</span>
-                    <span class="badge badge-live">În pregătire</span>
+                    <span class="badge badge-live">În construcție</span>
                   </div>
                   <div class="lesson-title" data-topic="Sorry">Scuze</div>
                   <p class="lesson-desc">Scuze, formule de iertare și răspunsuri scurte.</p>
@@ -2891,7 +2939,7 @@
                     <div class="feature"><strong>Dialogue</strong><span>Îmi pare rău</span></div>
                     <div class="feature"><strong>Exercises</strong><span>quiz și propoziții</span></div>
                   </div>
-                  <span class="resource-status waiting">Lecție în pregătire</span>
+                  <span class="resource-status waiting">În construcție</span>
                 </div>
               </article>
               <article class="lesson-card" data-lesson-no="05">
@@ -2899,7 +2947,7 @@
                   <div class="meta">
                     <span class="badge badge-b2">Nivel A1</span>
                     <span class="badge badge-tech">English</span>
-                    <span class="badge badge-live">În pregătire</span>
+                    <span class="badge badge-live">În construcție</span>
                   </div>
                   <div class="lesson-title" data-topic="People">Persoane</div>
                   <p class="lesson-desc">Pronume, persoane, familie și verbul „a fi”.</p>
@@ -2911,7 +2959,7 @@
                     <div class="feature"><strong>Family</strong><span>mamă, tată, fiu, fiică</span></div>
                     <div class="feature"><strong>Exercises</strong><span>imagini și quiz</span></div>
                   </div>
-                  <span class="resource-status waiting">Lecție în pregătire</span>
+                  <span class="resource-status waiting">În construcție</span>
                 </div>
               </article>
               <article class="lesson-card" data-lesson-no="06">
@@ -2919,7 +2967,7 @@
                   <div class="meta">
                     <span class="badge badge-b2">Nivel A1</span>
                     <span class="badge badge-tech">English</span>
-                    <span class="badge badge-live">În pregătire</span>
+                    <span class="badge badge-live">În construcție</span>
                   </div>
                   <div class="lesson-title" data-topic="Introductions">Prezentări</div>
                   <p class="lesson-desc">Cum te prezinți și cum întrebi numele cuiva.</p>
@@ -2931,7 +2979,7 @@
                     <div class="feature"><strong>Verb</strong><span>a se numi</span></div>
                     <div class="feature"><strong>Dialogue</strong><span>Îmi pare bine</span></div>
                   </div>
-                  <span class="resource-status waiting">Lecție în pregătire</span>
+                  <span class="resource-status waiting">În construcție</span>
                 </div>
               </article>
               <article class="lesson-card" data-lesson-no="07">
@@ -2939,7 +2987,7 @@
                   <div class="meta">
                     <span class="badge badge-b2">Nivel A1</span>
                     <span class="badge badge-tech">English</span>
-                    <span class="badge badge-live">În pregătire</span>
+                    <span class="badge badge-live">În construcție</span>
                   </div>
                   <div class="lesson-title" data-topic="Numbers">Numerele</div>
                   <p class="lesson-desc">Numerele de bază, vârsta și verbul „a avea”.</p>
@@ -2951,7 +2999,7 @@
                     <div class="feature"><strong>Age</strong><span>Câți ani ai?</span></div>
                     <div class="feature"><strong>Exercises</strong><span>quiz și imagini</span></div>
                   </div>
-                  <span class="resource-status waiting">Lecție în pregătire</span>
+                  <span class="resource-status waiting">În construcție</span>
                 </div>
               </article>
               <article class="lesson-card" data-lesson-no="08">
@@ -2959,7 +3007,7 @@
                   <div class="meta">
                     <span class="badge badge-b2">Nivel A1</span>
                     <span class="badge badge-tech">English</span>
-                    <span class="badge badge-live">În pregătire</span>
+                    <span class="badge badge-live">În construcție</span>
                   </div>
                   <div class="lesson-title" data-topic="Where are you from?">De unde ești?</div>
                   <p class="lesson-desc">Țări, orașe și întrebări despre origine.</p>
@@ -2971,7 +3019,7 @@
                     <div class="feature"><strong>Verb</strong><span>a veni: vin, vii, vine</span></div>
                     <div class="feature"><strong>Exercises</strong><span>quiz și matching</span></div>
                   </div>
-                  <span class="resource-status waiting">Lecție în pregătire</span>
+                  <span class="resource-status waiting">În construcție</span>
                 </div>
               </article>
               <article class="lesson-card" data-lesson-no="09">
@@ -2979,7 +3027,7 @@
                   <div class="meta">
                     <span class="badge badge-b2">Nivel A1</span>
                     <span class="badge badge-tech">English</span>
-                    <span class="badge badge-live">În pregătire</span>
+                    <span class="badge badge-live">În construcție</span>
                   </div>
                   <div class="lesson-title" data-topic="Nationalities">Naționalități</div>
                   <p class="lesson-desc">Naționalități în forme masculine și feminine.</p>
@@ -2991,7 +3039,7 @@
                     <div class="feature"><strong>Question</strong><span>Ce naționalitate ești?</span></div>
                     <div class="feature"><strong>Exercises</strong><span>quiz și asociere</span></div>
                   </div>
-                  <span class="resource-status waiting">Lecție în pregătire</span>
+                  <span class="resource-status waiting">În construcție</span>
                 </div>
               </article>
               <article class="lesson-card" data-lesson-no="10">
@@ -2999,7 +3047,7 @@
                   <div class="meta">
                     <span class="badge badge-b2">Nivel A1</span>
                     <span class="badge badge-tech">English</span>
-                    <span class="badge badge-live">În pregătire</span>
+                    <span class="badge badge-live">În construcție</span>
                   </div>
                   <div class="lesson-title" data-topic="Languages">Limbi</div>
                   <p class="lesson-desc">Limbi vorbite, întrebări simple și răspunsuri despre comunicare.</p>
@@ -3011,7 +3059,7 @@
                     <div class="feature"><strong>Verb</strong><span>a vorbi: vorbesc, vorbești</span></div>
                     <div class="feature"><strong>Exercises</strong><span>dialog și completare</span></div>
                   </div>
-                  <span class="resource-status waiting">Lecție în pregătire</span>
+                  <span class="resource-status waiting">În construcție</span>
                 </div>
               </article>
               </div>
@@ -3021,21 +3069,36 @@
               <div class="lesson-category-head">
                 <h4>Engleză · A1 Începător copii</h4>
               </div>
-              <div class="lesson-grid" data-language-lessons="engleza-copii"></div>
+              <div class="lesson-grid" data-language-lessons="engleza-copii">
+                <div class="construction-banner">
+                  <strong>În construcție</strong>
+                  <span>Materialele vor fi adăugate curând.</span>
+                </div>
+              </div>
             </div>
 
             <div class="lesson-category" id="a1-spaniola">
               <div class="lesson-category-head">
                 <h4>Spaniolă · A1 Începător</h4>
               </div>
-              <div class="lesson-grid" data-language-lessons="spaniola"></div>
+              <div class="lesson-grid" data-language-lessons="spaniola">
+                <div class="construction-banner">
+                  <strong>În construcție</strong>
+                  <span>Materialele vor fi adăugate curând.</span>
+                </div>
+              </div>
             </div>
 
             <div class="lesson-category" id="a1-spaniola-copii">
               <div class="lesson-category-head">
                 <h4>Spaniolă · A1 Începător copii</h4>
               </div>
-              <div class="lesson-grid" data-language-lessons="spaniola-copii"></div>
+              <div class="lesson-grid" data-language-lessons="spaniola-copii">
+                <div class="construction-banner">
+                  <strong>În construcție</strong>
+                  <span>Materialele vor fi adăugate curând.</span>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -3083,7 +3146,7 @@
                       <div class="feature"><strong>Vocabular</strong><span>tehnologie și aplicații</span></div>
                       <div class="feature"><strong>Audio</strong><span>text cu redare</span></div>
                       <div class="feature"><strong>Gramatică</strong><span>formulări B2</span></div>
-                      <div class="feature"><strong>Test</strong><span>în pregătire</span></div>
+                      <div class="feature"><strong>Test</strong><span>în construcție</span></div>
                     </div>
                     <span class="resource-status">Lecție inclusă în B2</span>
                   </div>
@@ -3165,8 +3228,11 @@
             </div>
           </div>
 
-          <div class="empty-level is-hidden" data-empty-level>
-            Nu există încă lecții publicate pentru acest nivel.
+          <div class="empty-level construction-banner is-hidden" data-empty-level>
+            <div>
+              <strong>În construcție</strong>
+              <span>Nu există încă lecții publicate pentru acest nivel.</span>
+            </div>
           </div>
         </section>
 <section id="glosar">
@@ -3177,10 +3243,10 @@
   <div class="resource-grid">
     <article class="resource-card">
       <div class="resource-body">
-        <div class="meta"><span class="badge badge-b2">A1</span><span class="badge badge-live">În pregătire</span></div>
+        <div class="meta"><span class="badge badge-b2">A1</span><span class="badge badge-live">În construcție</span></div>
         <h3>Glosar A1</h3>
         <p>Listă alfabetică pentru vocabularul din cele 10 lecții A1, cu traducere germană.</p>
-        <span class="resource-status waiting">În pregătire</span>
+        <span class="resource-status waiting">În construcție</span>
       </div>
     </article>
   </div>
@@ -3194,10 +3260,10 @@
   <div class="resource-grid">
     <article class="resource-card">
       <div class="resource-body">
-        <div class="meta"><span class="badge badge-b2">A1</span><span class="badge badge-live">În pregătire</span></div>
+        <div class="meta"><span class="badge badge-b2">A1</span><span class="badge badge-live">În construcție</span></div>
         <h3>Tabele A1</h3>
         <p>Pronume, verbe de bază, întrebări frecvente și structuri scurte pentru recapitulare.</p>
-        <span class="resource-status waiting">În pregătire</span>
+        <span class="resource-status waiting">În construcție</span>
       </div>
     </article>
   </div>
@@ -3211,10 +3277,10 @@
   <div class="resource-grid">
     <article class="resource-card">
       <div class="resource-body">
-        <div class="meta"><span class="badge badge-b2">A1</span><span class="badge badge-live">În pregătire</span></div>
+        <div class="meta"><span class="badge badge-b2">A1</span><span class="badge badge-live">În construcție</span></div>
         <h3>Pronunție română</h3>
         <p>Ghid pentru ă, â/î, ș, ț, ce/ci, -esc și formele cu ți / ți-mă.</p>
-        <span class="resource-status waiting">În pregătire</span>
+        <span class="resource-status waiting">În construcție</span>
       </div>
     </article>
   </div>
@@ -3228,10 +3294,10 @@
   <div class="resource-grid">
     <article class="resource-card">
       <div class="resource-body">
-        <div class="meta"><span class="badge badge-b2">A1</span><span class="badge badge-live">În pregătire</span></div>
+        <div class="meta"><span class="badge badge-b2">A1</span><span class="badge badge-live">În construcție</span></div>
         <h3>Recapitulare A1</h3>
         <p>Exerciții mixte pentru salutări, prezentări, persoane, numere, țări și limbi.</p>
-        <span class="resource-status waiting">În pregătire</span>
+        <span class="resource-status waiting">În construcție</span>
       </div>
     </article>
   </div>
@@ -3245,10 +3311,10 @@
   <div class="resource-grid">
     <article class="resource-card">
       <div class="resource-body">
-        <div class="meta"><span class="badge badge-b2">A1</span><span class="badge badge-live">În pregătire</span></div>
+        <div class="meta"><span class="badge badge-b2">A1</span><span class="badge badge-live">În construcție</span></div>
         <h3>Vocabular A1</h3>
         <p>Exerciții pentru traduceri, imagini, perechi de cuvinte și expresii uzuale.</p>
-        <span class="resource-status waiting">În pregătire</span>
+        <span class="resource-status waiting">În construcție</span>
       </div>
     </article>
   </div>
@@ -3262,10 +3328,10 @@
   <div class="resource-grid">
     <article class="resource-card">
       <div class="resource-body">
-        <div class="meta"><span class="badge badge-b2">A1</span><span class="badge badge-live">În pregătire</span></div>
+        <div class="meta"><span class="badge badge-b2">A1</span><span class="badge badge-live">În construcție</span></div>
         <h3>Gramatică A1</h3>
         <p>Exerciții pentru a fi, a avea, a veni, a vorbi și propoziții simple.</p>
-        <span class="resource-status waiting">În pregătire</span>
+        <span class="resource-status waiting">În construcție</span>
       </div>
     </article>
     <article class="resource-card">
@@ -3292,10 +3358,10 @@
   <div class="resource-grid">
     <article class="resource-card">
       <div class="resource-body">
-        <div class="meta"><span class="badge badge-b2">A1</span><span class="badge badge-live">În pregătire</span></div>
+        <div class="meta"><span class="badge badge-b2">A1</span><span class="badge badge-live">În construcție</span></div>
         <h3>Fișe A1</h3>
         <p>Fișe printabile pentru vocabular, traduceri și mini-dialoguri.</p>
-        <span class="resource-status waiting">În pregătire</span>
+        <span class="resource-status waiting">În construcție</span>
       </div>
     </article>
   </div>
@@ -3354,10 +3420,10 @@
   <div class="resource-grid">
     <article class="resource-card">
       <div class="resource-body">
-        <div class="meta"><span class="badge badge-b2">A1</span><span class="badge badge-live">În pregătire</span></div>
+        <div class="meta"><span class="badge badge-b2">A1</span><span class="badge badge-live">În construcție</span></div>
         <h3>Verbe A1</h3>
         <p>a fi, a avea, a se numi, a veni și a vorbi, cu exemple simple.</p>
-        <span class="resource-status waiting">În pregătire</span>
+        <span class="resource-status waiting">În construcție</span>
       </div>
     </article>
   </div>
