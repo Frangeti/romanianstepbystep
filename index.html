@@ -502,26 +502,30 @@
 
   .main {
     background: transparent;
-    padding: clamp(1.1rem, 3vw, 3rem);
+    padding: 1.25rem clamp(1.1rem, 3vw, 3rem) clamp(1.1rem, 3vw, 3rem);
   }
 
   .intro {
+    min-height: calc(100vh - 76px - 2.5rem);
     background:
       linear-gradient(135deg, rgba(255, 255, 255, .98) 0%, rgba(244, 249, 251, .98) 58%, rgba(235, 244, 248, .98) 100%);
     border: 1px solid var(--border);
     border-radius: 8px;
-    box-shadow: 0 22px 48px rgba(35, 54, 75, .09);
+    box-shadow: 0 12px 28px rgba(35, 54, 75, .06);
     padding: clamp(1.55rem, 3.3vw, 3rem);
     margin-bottom: 1.4rem;
     position: relative;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
 
   .intro::before {
     content: "";
     position: absolute;
     inset: 0;
-    border-top: 5px solid var(--mint);
+    border-top: 5px solid var(--coral);
     opacity: .9;
     pointer-events: none;
   }
@@ -562,14 +566,15 @@
     box-shadow: 0 0 0 4px rgba(224, 173, 47, .18);
   }
 
-  h1 {
+  .intro h1 {
     font-family: 'Atkinson Hyperlegible', sans-serif;
-    font-size: clamp(34px, 4.5vw, 58px);
+    font-size: clamp(32px, 4vw, 52px);
+    font-weight: 400;
     line-height: 1.12;
     margin-bottom: .55rem;
     color: var(--navy);
     max-width: none;
-    white-space: nowrap;
+    white-space: normal;
     position: relative;
     z-index: 1;
   }
@@ -583,11 +588,19 @@
     z-index: 1;
   }
 
+  .intro-level-a1 {
+    color: #d94f45;
+  }
+
+  .intro-level-c1 {
+    color: #2f9b5f;
+  }
+
   .stats {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 14px;
-    margin-top: 1.8rem;
+    margin-top: 2rem;
     position: relative;
     z-index: 1;
   }
@@ -595,7 +608,7 @@
   .stat {
     border: 1px solid var(--border);
     border-radius: 8px;
-    padding: 1rem;
+    padding: 1.15rem;
     background: rgba(255, 255, 255, .78);
     box-shadow: 0 10px 24px rgba(35, 54, 75, .06);
     backdrop-filter: blur(10px);
@@ -603,14 +616,15 @@
 
   .stat strong {
     display: block;
-    color: var(--mint);
-    font-size: 24px;
+    color: var(--coral);
+    font-size: 18px;
+    font-weight: 400;
     margin-bottom: 2px;
   }
 
   .stat span {
-    color: #526879;
-    font-size: 14px;
+    color: var(--navy);
+    font-size: 18px;
   }
 
   .section-title {
@@ -2195,24 +2209,20 @@
 
       <main class="main">
         <section class="intro" id="acasa">
-          <div class="eyebrow">Platformă de lecții</div>
           <div class="intro-copy">
-            <h1>Învață româna pas cu pas</h1>
-            <p>Lecții de limba română organizate clar, de la nivelul A1 la C1.</p>
+            <h1>Learn Romanian Step by Step</h1>
+            <p>From <span class="intro-level-a1">A1</span> to <span class="intro-level-c1">C1</span></p>
           </div>
 
           <div class="stats" aria-label="Rezumat">
             <div class="stat">
-              <strong>14</strong>
-              <span>lecții publicate</span>
+              <span>Lessons</span>
             </div>
             <div class="stat">
-              <strong>A1 și C1</strong>
-              <span>niveluri disponibile</span>
+              <span>Audios</span>
             </div>
             <div class="stat">
-              <strong data-stat="audio-count">49</strong>
-              <span>materiale audio atașate</span>
+              <span>Exercises</span>
             </div>
           </div>
         </section>
