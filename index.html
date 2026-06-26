@@ -772,7 +772,7 @@
 
   #a1 .lesson-card {
     --accent: var(--navy-soft);
-    min-height: 164px;
+    min-height: 178px;
     padding: 1.05rem;
     background:
       linear-gradient(145deg, rgba(255, 255, 255, .96), rgba(255, 255, 255, .78)),
@@ -801,10 +801,10 @@
   #a1 .lesson-card::before {
     content: attr(data-lesson-no);
     position: absolute;
-    top: 1rem;
-    left: 1rem;
-    width: 42px;
-    height: 34px;
+    top: .8rem;
+    right: .8rem;
+    width: 34px;
+    height: 28px;
     border-radius: 8px;
     background: color-mix(in srgb, var(--accent) 16%, white);
     color: color-mix(in srgb, var(--accent) 76%, var(--ink));
@@ -813,6 +813,14 @@
     font-size: 13px;
     font-weight: 800;
     letter-spacing: .04em;
+  }
+
+  #a1-romana .lesson-card::before {
+    background: var(--bg);
+    color: var(--navy);
+    box-shadow:
+      inset 0 0 0 1px rgba(35, 54, 75, .08),
+      0 8px 18px rgba(35, 54, 75, .05);
   }
 
   #a1 .lesson-card::after {
@@ -855,10 +863,12 @@
   #a1 .lesson-head {
     min-height: 100%;
     border-bottom: 0;
-    padding: 3.75rem 0 0;
+    padding: 0;
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
   }
 
   #a1 .meta,
@@ -869,24 +879,44 @@
 
   #a1 .lesson-title {
     font-family: 'Atkinson Hyperlegible', sans-serif;
-    font-size: clamp(21px, 1.8vw, 26px);
-    font-weight: 750;
-    line-height: 1.08;
+    font-size: clamp(20px, 1.55vw, 24px);
+    font-weight: 400;
+    line-height: 1.18;
     letter-spacing: 0;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: calc(100% - 2.2rem);
     margin: 0;
-    max-width: 11ch;
+    max-width: 14ch;
+    text-align: center;
+    transform: translate(-50%, -50%);
+    text-wrap: balance;
+    overflow-wrap: break-word;
   }
 
   #a1 .lesson-title::after {
     content: attr(data-topic);
     display: block;
-    margin-top: .55rem;
+    position: absolute;
+    top: calc(100% + 1.85rem);
+    left: 50%;
+    width: max-content;
+    max-width: calc(100vw - 4rem);
+    margin: 0;
     color: var(--mint);
     font-size: 12px;
     font-weight: 700;
-    letter-spacing: .08em;
-    line-height: 1.2;
+    letter-spacing: .05em;
+    line-height: 1.35;
     text-transform: uppercase;
+    text-align: center;
+    transform: translateX(-50%);
+    white-space: nowrap;
+  }
+
+  #a1-romana .lesson-title::after {
+    color: var(--level-color);
   }
 
   #a1 .lesson-desc {
@@ -945,7 +975,7 @@
     font-family: 'Atkinson Hyperlegible', sans-serif;
     color: var(--ink);
     font-size: clamp(28px, 2.6vw, 38px);
-    font-weight: 600;
+    font-weight: 400;
     margin-bottom: .25rem;
   }
 
