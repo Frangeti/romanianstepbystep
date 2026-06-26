@@ -289,7 +289,7 @@
   .home-tools .sid-item.home-level::after {
     content: "+";
     margin-left: auto;
-    color: var(--muted);
+    color: var(--level-color);
     font-size: 16px;
     font-weight: 800;
     line-height: 1;
@@ -298,7 +298,7 @@
   .language-tools .sid-level-group.has-tool-list > .sid-item[data-language-category]::after {
     content: "+";
     margin-left: auto;
-    color: var(--muted);
+    color: var(--level-color);
     font-size: 16px;
     font-weight: 800;
     line-height: 1;
@@ -636,6 +636,7 @@
 
   .level-section {
     margin-bottom: 1.35rem;
+    scroll-margin-top: calc(76px + 1.7rem);
   }
 
   .level-section.is-hidden,
@@ -650,6 +651,10 @@
     align-items: baseline;
     gap: .75rem;
     margin-bottom: .75rem;
+  }
+
+  #lectii {
+    margin-top: calc(1.7rem - clamp(1.1rem, 3vw, 3rem));
   }
 
   .level-heading h3 {
@@ -734,11 +739,6 @@
     border-color: #c9dce5;
     box-shadow: var(--shadow);
     transform: translateY(-2px);
-  }
-
-  #a1 .level-heading {
-    align-items: center;
-    margin-bottom: 1rem;
   }
 
   .lesson-category {
@@ -2373,9 +2373,6 @@
 
         <section id="lectii">
           <div class="level-section" id="a1" data-level-section="a1">
-            <div class="level-heading">
-              <h3 class="level-title-coral">A1. Începător</h3>
-            </div>
             <div class="lesson-category" id="a1-romana">
               <div class="lesson-grid">
               <article class="lesson-card" data-lesson-no="01">
