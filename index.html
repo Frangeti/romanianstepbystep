@@ -39,7 +39,7 @@
   body {
     min-height: 100vh;
     font-family: 'Atkinson Hyperlegible', sans-serif;
-    font-size: 16px;
+    font-size: 22px;
     background:
       linear-gradient(180deg, #fbfcfd 0%, var(--bg) 34%, #eef4f7 100%);
     color: var(--text);
@@ -524,7 +524,7 @@
 
   .main > section {
     margin-top: var(--menu-align-offset);
-    scroll-margin-top: calc(76px + 2.1rem);
+    scroll-margin-top: calc(92px + 2.1rem);
   }
 
   .intro {
@@ -694,7 +694,7 @@
 
   .level-section {
     margin-bottom: 1.35rem;
-    scroll-margin-top: calc(76px + 2.1rem);
+    scroll-margin-top: calc(92px + 2.1rem);
   }
 
   .level-section.is-hidden,
@@ -797,7 +797,7 @@
 
   .lesson-category {
     margin-top: 1.15rem;
-    scroll-margin-top: calc(76px + 2.1rem);
+    scroll-margin-top: calc(92px + 2.1rem);
   }
 
   .lesson-category:first-of-type {
@@ -1366,7 +1366,295 @@
     text-align: center;
   }
 
-  @media (max-width: 1100px) {
+  .logo {
+    font-size: clamp(24px, 2vw, 30px);
+  }
+
+  .main-nav-link {
+    min-height: 42px;
+    font-size: 18px;
+  }
+
+  .sid-head,
+  .sid-tools-head {
+    font-size: 14px;
+  }
+
+  .sid-item,
+  .sid-item.subitem,
+  .sid-item.tool-item,
+  .home-tools .level-tool-list .sid-item.home-tool,
+  [data-language-tools] .level-tool-list .sid-item.tool-item,
+  .language-tools .sid-item[data-language-category],
+  .skill-tools .sid-item.home-level {
+    min-height: 44px;
+    font-size: 18px;
+  }
+
+  .sid-item.tool-subitem {
+    min-height: 38px;
+    font-size: 17px;
+  }
+
+  .eyebrow,
+  .badge,
+  #a1 .lesson-title::after,
+  #romana-lectii .lesson-title::after,
+  .cover-level {
+    font-size: 16px;
+  }
+
+  .intro p,
+  .stat span,
+  .stat strong,
+  .lesson-desc,
+  .feature strong,
+  .open-lesson,
+  .track-item,
+  .resource-body p,
+  .resource-status,
+  .footer {
+    font-size: 20px;
+  }
+
+  .intro-description {
+    font-size: clamp(22px, 1.6vw, 26px);
+  }
+
+  .section-title h2,
+  .level-heading h3,
+  .lesson-category-head h4,
+  .resource-body h3,
+  .panel h3,
+  .coming-card h3 {
+    font-size: 22px;
+  }
+
+  .section-title span,
+  .feature span,
+  .track-item small,
+  .soon,
+  .coming-card p,
+  .resource-cover p {
+    font-size: 18px;
+  }
+
+  .topbar {
+    min-height: 92px;
+    padding-top: .75rem;
+    padding-bottom: .75rem;
+  }
+
+  .layout {
+    grid-template-columns: minmax(380px, 24vw) 1fr;
+    min-height: calc(100vh - 92px);
+  }
+
+  .sidebar {
+    top: 92px;
+    max-height: calc(100vh - 92px);
+    padding: 1.05rem .9rem;
+  }
+
+  .sid-section,
+  .language-tools {
+    padding: .65rem;
+  }
+
+  .sid-level-group {
+    margin-bottom: .7rem;
+    padding-bottom: .65rem;
+  }
+
+  .sid-item,
+  .sid-item.subitem,
+  .sid-item.tool-item,
+  .home-tools .level-tool-list .sid-item.home-tool,
+  [data-language-tools] .level-tool-list .sid-item.tool-item,
+  .language-tools .sid-item[data-language-category],
+  .skill-tools .sid-item.home-level {
+    align-items: flex-start;
+    min-height: 48px;
+    padding: 10px .85rem;
+    line-height: 1.35;
+    white-space: normal;
+    overflow-wrap: break-word;
+  }
+
+  .sid-item.tool-subitem {
+    min-height: 42px;
+    padding: 8px .75rem;
+    line-height: 1.35;
+    white-space: normal;
+    overflow-wrap: break-word;
+  }
+
+  .sid-dot {
+    margin-top: .55em;
+  }
+
+  .level-tool-list {
+    margin-left: 18px;
+    padding-left: .6rem;
+  }
+
+  .tool-submenu {
+    margin-left: 1.15rem;
+    padding-left: .6rem;
+  }
+
+  .main-nav-link {
+    min-width: 88px;
+    padding: 10px 18px;
+    line-height: 1.25;
+    white-space: normal;
+  }
+
+  .main {
+    padding: 1.5rem clamp(1.25rem, 3vw, 3.25rem) clamp(1.5rem, 3vw, 3.25rem);
+  }
+
+  .intro {
+    min-height: 360px;
+    padding: clamp(1.8rem, 3.5vw, 3.5rem);
+  }
+
+  .stats {
+    gap: 1rem;
+  }
+
+  .stat,
+  .panel,
+  .coming-card {
+    padding: 1.35rem;
+  }
+
+  .section-title {
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: .5rem 1rem;
+  }
+
+  .lesson-grid {
+    grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+    gap: 1.4rem;
+  }
+
+  #a1 .lesson-grid,
+  #romana-lectii .lesson-grid {
+    grid-template-columns: repeat(auto-fit, minmax(285px, 1fr));
+    gap: 1.25rem;
+  }
+
+  #a1 .lesson-card,
+  #romana-lectii .lesson-card {
+    min-height: 240px;
+    padding: 1.35rem;
+  }
+
+  #a1 .lesson-card::before,
+  #romana-lectii .lesson-card::before {
+    width: 46px;
+    height: 38px;
+    font-size: 17px;
+  }
+
+  #a1 .lesson-title,
+  #romana-lectii .lesson-title {
+    width: calc(100% - 2.8rem);
+    max-width: 16ch;
+    font-size: clamp(26px, 1.8vw, 32px);
+  }
+
+  #a1 .lesson-title::after,
+  #romana-lectii .lesson-title::after {
+    top: calc(100% + 2rem);
+    width: calc(100% + 1rem);
+    max-width: calc(100% + 1rem);
+    white-space: normal;
+  }
+
+  .lesson-head,
+  .lesson-body,
+  .resource-body {
+    padding: 1.6rem;
+  }
+
+  .lesson-title {
+    font-size: clamp(34px, 2.7vw, 44px);
+    line-height: 1.15;
+  }
+
+  .lesson-features {
+    gap: 1rem;
+  }
+
+  .feature {
+    min-height: 104px;
+    padding: 1.1rem;
+  }
+
+  .open-lesson {
+    min-height: 56px;
+    padding: 12px 24px;
+  }
+
+  .badge,
+  .cover-level {
+    min-height: 34px;
+    padding: 6px 14px;
+  }
+
+  .construction-banner {
+    align-items: flex-start;
+    padding: 1.35rem 1.45rem;
+  }
+
+  .construction-banner strong {
+    font-size: 22px;
+  }
+
+  .construction-banner span {
+    font-size: 19px;
+  }
+
+  .coming-grid {
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.25rem;
+  }
+
+  .resource-grid {
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 1.25rem;
+  }
+
+  .resource-cover {
+    min-height: 240px;
+    padding: 1.5rem;
+  }
+
+  .resource-cover h3 {
+    max-width: 14ch;
+    font-size: 34px;
+  }
+
+  .resource-status {
+    min-height: 48px;
+    padding: 10px 16px;
+  }
+
+  @media (max-width: 1180px) {
+    .layout {
+      grid-template-columns: 1fr;
+    }
+
+    .sidebar {
+      position: static;
+      max-height: none;
+      border-right: 0;
+      border-bottom: 1px solid var(--border);
+    }
+
     .lesson-grid {
       grid-template-columns: 1fr;
     }
@@ -1404,7 +1692,7 @@
     .intro-copy { display: block; }
     .intro-description {
       padding-left: .85rem;
-      font-size: 16px;
+      font-size: 20px;
     }
     h1 {
       max-width: none;
