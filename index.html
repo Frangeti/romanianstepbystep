@@ -794,12 +794,18 @@
     line-height: 1.2;
   }
 
-  #a1 .lesson-grid {
+  #a1 .lesson-grid,
+  #romana-lectii .lesson-grid {
     grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
     gap: 1rem;
   }
 
-  #a1 .lesson-card {
+  #romana-lectii {
+    --level-color: #d94f45;
+  }
+
+  #a1 .lesson-card,
+  #romana-lectii .lesson-card {
     --accent: var(--navy-soft);
     min-height: 178px;
     padding: 1.05rem;
@@ -826,8 +832,19 @@
   #a1 .lesson-card:nth-child(10) { --accent: #407fa3; }
   #a1 .lesson-card:nth-child(11) { --accent: #5a668f; }
   #a1 .lesson-card:nth-child(12) { --accent: #b9872f; }
+  #romana-lectii .lesson-card:nth-child(1) { --accent: #e0ad2f; }
+  #romana-lectii .lesson-card:nth-child(2) { --accent: #407fa3; }
+  #romana-lectii .lesson-card:nth-child(3) { --accent: #5a668f; }
+  #romana-lectii .lesson-card:nth-child(4) { --accent: #b9872f; }
+  #romana-lectii .lesson-card:nth-child(5) { --accent: #e0ad2f; }
+  #romana-lectii .lesson-card:nth-child(6) { --accent: #407fa3; }
+  #romana-lectii .lesson-card:nth-child(7) { --accent: #5a668f; }
+  #romana-lectii .lesson-card:nth-child(8) { --accent: #b9872f; }
+  #romana-lectii .lesson-card:nth-child(9) { --accent: #e0ad2f; }
+  #romana-lectii .lesson-card:nth-child(10) { --accent: #407fa3; }
 
-  #a1 .lesson-card::before {
+  #a1 .lesson-card::before,
+  #romana-lectii .lesson-card::before {
     content: attr(data-lesson-no);
     position: absolute;
     top: .8rem;
@@ -847,16 +864,19 @@
       0 8px 18px rgba(35, 54, 75, .05);
   }
 
-  #a1 .lesson-card:hover {
+  #a1 .lesson-card:hover,
+  #romana-lectii .lesson-card:hover {
     border-color: color-mix(in srgb, var(--accent) 32%, white);
     box-shadow: 0 22px 52px rgba(35, 54, 75, .1);
   }
 
-  #a1 .lesson-card {
+  #a1 .lesson-card,
+  #romana-lectii .lesson-card {
     cursor: default;
   }
 
-  #a1 .lesson-head {
+  #a1 .lesson-head,
+  #romana-lectii .lesson-head {
     min-height: 100%;
     border-bottom: 0;
     padding: 0;
@@ -869,11 +889,15 @@
 
   #a1 .meta,
   #a1 .meta .badge-tech,
-  #a1 .meta .badge-live {
+  #a1 .meta .badge-live,
+  #romana-lectii .meta,
+  #romana-lectii .meta .badge-tech,
+  #romana-lectii .meta .badge-live {
     display: none;
   }
 
-  #a1 .lesson-title {
+  #a1 .lesson-title,
+  #romana-lectii .lesson-title {
     font-family: 'Atkinson Hyperlegible', sans-serif;
     font-size: clamp(20px, 1.55vw, 24px);
     font-weight: 400;
@@ -891,7 +915,8 @@
     overflow-wrap: break-word;
   }
 
-  #a1 .lesson-title::after {
+  #a1 .lesson-title::after,
+  #romana-lectii .lesson-title::after {
     content: attr(data-topic);
     display: block;
     position: absolute;
@@ -911,11 +936,13 @@
     white-space: nowrap;
   }
 
-  #a1 .lesson-desc {
+  #a1 .lesson-desc,
+  #romana-lectii .lesson-desc {
     display: none;
   }
 
-  #a1 .lesson-body {
+  #a1 .lesson-body,
+  #romana-lectii .lesson-body {
     display: none;
   }
 
@@ -2236,14 +2263,105 @@
             <h2>Lecții de limba română</h2>
             <span>lecții disponibile</span>
           </div>
-          <div class="resource-grid">
-            <article class="resource-card"><div class="resource-body"><div class="meta"><span class="badge badge-b2">A1</span><span class="badge badge-live">În construcție</span></div><h3>Lecții A1</h3><p>Spațiu pregătit pentru lecții numai în limba română.</p><span class="resource-status waiting">În construcție</span></div></article>
-            <article class="resource-card">
-              <div class="resource-body">
-                <div class="meta"><span class="badge badge-b2">A1</span><span class="badge badge-live">Activă</span></div>
-                <h3>Verbe reflexive - Rutina</h3>
-                <p>Verbe reflexive și activități simple din rutina zilnică: dimineața, ziua și seara.</p>
-                <a class="open-lesson" href="lessons/a1/verbe-reflexive-rutina.html">Deschide lecția</a>
+          <div class="lesson-grid">
+            <article class="lesson-card" data-lesson-no="01">
+              <div class="lesson-head">
+                <div class="meta">
+                  <span class="badge badge-b2">Nivel A1</span>
+                  <span class="badge badge-live">Română</span>
+                </div>
+                <div class="lesson-title" data-topic="Salutări și formule simple">Salutări</div>
+                <p class="lesson-desc">Salutări, despărțiri și primele formule de conversație în limba română.</p>
+              </div>
+            </article>
+            <article class="lesson-card" data-lesson-no="02">
+              <div class="lesson-head">
+                <div class="meta">
+                  <span class="badge badge-b2">Nivel A1</span>
+                  <span class="badge badge-live">Română</span>
+                </div>
+                <div class="lesson-title" data-topic="Întrebări despre stare">Ce faci?</div>
+                <p class="lesson-desc">Întrebări și răspunsuri scurte despre stare și dispoziție.</p>
+              </div>
+            </article>
+            <article class="lesson-card" data-lesson-no="03">
+              <div class="lesson-head">
+                <div class="meta">
+                  <span class="badge badge-b2">Nivel A1</span>
+                  <span class="badge badge-live">Română</span>
+                </div>
+                <div class="lesson-title" data-topic="Politețe de bază">Mulțumesc</div>
+                <p class="lesson-desc">Mulțumiri, rugăminți și răspunsuri politicoase în situații simple.</p>
+              </div>
+            </article>
+            <article class="lesson-card" data-lesson-no="04">
+              <div class="lesson-head">
+                <div class="meta">
+                  <span class="badge badge-b2">Nivel A1</span>
+                  <span class="badge badge-live">Română</span>
+                </div>
+                <div class="lesson-title" data-topic="Formule de scuză">Scuze</div>
+                <p class="lesson-desc">Scuze, formule de iertare și răspunsuri potrivite în conversație.</p>
+              </div>
+            </article>
+            <article class="lesson-card" data-lesson-no="05">
+              <div class="lesson-head">
+                <div class="meta">
+                  <span class="badge badge-b2">Nivel A1</span>
+                  <span class="badge badge-live">Română</span>
+                </div>
+                <div class="lesson-title" data-topic="Pronume și familie">Persoane</div>
+                <p class="lesson-desc">Pronume personale, persoane apropiate, familie și verbul „a fi”.</p>
+              </div>
+            </article>
+            <article class="lesson-card" data-lesson-no="06">
+              <div class="lesson-head">
+                <div class="meta">
+                  <span class="badge badge-b2">Nivel A1</span>
+                  <span class="badge badge-live">Română</span>
+                </div>
+                <div class="lesson-title" data-topic="Nume și prezentare">Prezentări</div>
+                <p class="lesson-desc">Cum te prezinți, cum spui numele și cum întrebi numele cuiva.</p>
+              </div>
+            </article>
+            <article class="lesson-card" data-lesson-no="07">
+              <div class="lesson-head">
+                <div class="meta">
+                  <span class="badge badge-b2">Nivel A1</span>
+                  <span class="badge badge-live">Română</span>
+                </div>
+                <div class="lesson-title" data-topic="Numere și vârstă">Numerele</div>
+                <p class="lesson-desc">Numere de bază, vârsta, întrebări simple și verbul „a avea”.</p>
+              </div>
+            </article>
+            <article class="lesson-card" data-lesson-no="08">
+              <div class="lesson-head">
+                <div class="meta">
+                  <span class="badge badge-b2">Nivel A1</span>
+                  <span class="badge badge-live">Română</span>
+                </div>
+                <div class="lesson-title" data-topic="Țări și orașe">De unde ești?</div>
+                <p class="lesson-desc">Țări, orașe, origine și întrebări despre locul de unde vine cineva.</p>
+              </div>
+            </article>
+            <article class="lesson-card" data-lesson-no="09">
+              <div class="lesson-head">
+                <div class="meta">
+                  <span class="badge badge-b2">Nivel A1</span>
+                  <span class="badge badge-live">Română</span>
+                </div>
+                <div class="lesson-title" data-topic="Identitate și forme">Naționalități</div>
+                <p class="lesson-desc">Naționalități, forme masculine și feminine și propoziții simple.</p>
+              </div>
+            </article>
+            <article class="lesson-card" data-lesson-no="10">
+              <div class="lesson-head">
+                <div class="meta">
+                  <span class="badge badge-b2">Nivel A1</span>
+                  <span class="badge badge-live">Română</span>
+                </div>
+                <div class="lesson-title" data-topic="Limbi și comunicare">Ce limbă vorbești?</div>
+                <p class="lesson-desc">Limbi vorbite, întrebări simple și verbul „a vorbi”.</p>
               </div>
             </article>
           </div>
