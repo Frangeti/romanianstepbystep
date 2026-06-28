@@ -385,29 +385,32 @@
     display: block;
   }
 
-  .home-tools .level-tool-list .sid-item.home-tool {
+  .home-tools .level-tool-list .sid-item.home-tool,
+  [data-language-tools] .level-tool-list .sid-item.tool-item {
     min-height: 31px;
     padding: 5px .65rem;
     font-size: 12px;
   }
 
   .language-tools .sid-item[data-language-category] {
-    justify-content: center;
-    min-height: 42px;
-    margin-bottom: .25rem;
-    border-color: var(--border);
-    background: #ffffff;
-    color: var(--coral);
+    justify-content: flex-start;
+    min-height: 38px;
+    margin-bottom: 0;
+    padding: 8px .75rem;
+    border-color: transparent;
+    background: transparent;
+    color: var(--level-color);
     font-weight: 800;
-    text-align: center;
-    box-shadow: 0 7px 16px rgba(35, 54, 75, .06);
+    text-align: left;
+    box-shadow: none;
   }
 
   .language-tools .sid-item[data-language-category] + .sid-item.tool-item {
     margin-top: .2rem;
   }
 
-  .home-tools .sid-item.home-tool {
+  .home-tools .sid-item.home-tool,
+  [data-language-tools] .sid-item.tool-item {
     color: #38687b;
     font-weight: 700;
     white-space: nowrap;
@@ -450,13 +453,18 @@
     flex-basis: 5px;
   }
 
-  .home-tools .sid-dot {
+  .home-tools .sid-dot,
+  [data-language-tools] .sid-dot {
     margin-top: 0;
   }
 
   .home-tools .dot-navy,
   .home-tools .dot-coral,
-  .home-tools .dot-green { background: var(--mint); }
+  .home-tools .dot-green,
+  [data-language-tools] .dot-teal,
+  [data-language-tools] .dot-blue,
+  [data-language-tools] .dot-purple,
+  [data-language-tools] .dot-gold { background: var(--mint); }
 
   .sid-dot {
     width: 7px;
@@ -586,12 +594,30 @@
   }
 
   .intro p {
-    max-width: 600px;
+    max-width: 760px;
     color: #526879;
     font-size: 18px;
     line-height: 1.55;
     position: relative;
     z-index: 1;
+  }
+
+  .intro-tagline {
+    margin-bottom: 1rem;
+    font-weight: 700;
+  }
+
+  .intro-description {
+    max-width: 860px;
+    padding-left: 1rem;
+    border-left: 4px solid var(--mint);
+    color: #40586a;
+    font-size: clamp(17px, 1.35vw, 20px);
+    line-height: 1.65;
+  }
+
+  .intro-description strong {
+    color: var(--navy);
   }
 
   .intro-level-a1 {
@@ -1368,6 +1394,10 @@
     .main > section { margin-top: 0; }
     .intro::after { display: none; }
     .intro-copy { display: block; }
+    .intro-description {
+      padding-left: .85rem;
+      font-size: 16px;
+    }
     h1 {
       max-width: none;
       white-space: normal;
@@ -2216,8 +2246,9 @@
       <main class="main">
         <section class="intro" id="acasa">
           <div class="intro-copy">
-            <h1>Learn Romanian Step by Step</h1>
-            <p>From <span class="intro-level-a1">A1</span> to <span class="intro-level-c1">C1</span></p>
+            <h1>Învață română pas cu pas</h1>
+            <p class="intro-tagline">From <span class="intro-level-a1">A1</span> to <span class="intro-level-c1">C1</span></p>
+            <p class="intro-description"><strong>Română pas cu pas</strong> este un ghid structurat pentru învățarea limbii române, conceput pe principii pedagogice progresive. Lucrarea parcurge sistematic elementele fundamentale ale gramaticii, vocabularului și pronunției, oferind cursantului instrumentele necesare pentru o înțelegere temeinică a limbii, de la noțiunile elementare până la competența comunicativă avansată.</p>
           </div>
 
           <div class="stats" aria-label="Rezumat">
