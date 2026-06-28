@@ -3168,10 +3168,116 @@
                 <h4>Spaniolă · A1 Începător</h4>
               </div>
               <div class="lesson-grid" data-language-lessons="spaniola">
-                <div class="construction-banner">
-                  <strong>În construcție</strong>
-                  <span>Materialele vor fi adăugate curând.</span>
+              <article class="lesson-card" data-lesson-no="01">
+                <div class="lesson-head">
+                  <div class="meta">
+                    <span class="badge badge-b2">Nivel A1</span>
+                    <span class="badge badge-tech">Español</span>
+                    <span class="badge badge-live">Activă</span>
+                  </div>
+                  <div class="lesson-title" data-topic="Saludos">Salutări</div>
+                  <p class="lesson-desc">Salutări și formule de despărțire pentru primele conversații.</p>
                 </div>
+              </article>
+              <article class="lesson-card" data-lesson-no="02">
+                <div class="lesson-head">
+                  <div class="meta">
+                    <span class="badge badge-b2">Nivel A1</span>
+                    <span class="badge badge-tech">Español</span>
+                    <span class="badge badge-live">Activă</span>
+                  </div>
+                  <div class="lesson-title" data-topic="¿Cómo estás?">Ce faci?</div>
+                  <p class="lesson-desc">Întrebări și răspunsuri simple despre cum te simți.</p>
+                </div>
+              </article>
+              <article class="lesson-card" data-lesson-no="03">
+                <div class="lesson-head">
+                  <div class="meta">
+                    <span class="badge badge-b2">Nivel A1</span>
+                    <span class="badge badge-tech">Español</span>
+                    <span class="badge badge-live">Activă</span>
+                  </div>
+                  <div class="lesson-title" data-topic="Gracias y por favor">Mulțumesc</div>
+                  <p class="lesson-desc">Expresii politicoase pentru mulțumiri și rugăminți.</p>
+                </div>
+              </article>
+              <article class="lesson-card" data-lesson-no="04">
+                <div class="lesson-head">
+                  <div class="meta">
+                    <span class="badge badge-b2">Nivel A1</span>
+                    <span class="badge badge-tech">Español</span>
+                    <span class="badge badge-live">Activă</span>
+                  </div>
+                  <div class="lesson-title" data-topic="Perdón">Scuze</div>
+                  <p class="lesson-desc">Scuze, formule de iertare și răspunsuri scurte.</p>
+                </div>
+              </article>
+              <article class="lesson-card" data-lesson-no="05">
+                <div class="lesson-head">
+                  <div class="meta">
+                    <span class="badge badge-b2">Nivel A1</span>
+                    <span class="badge badge-tech">Español</span>
+                    <span class="badge badge-live">Activă</span>
+                  </div>
+                  <div class="lesson-title" data-topic="Personas">Persoane</div>
+                  <p class="lesson-desc">Pronume, persoane, familie și verbul „a fi”.</p>
+                </div>
+              </article>
+              <article class="lesson-card" data-lesson-no="06">
+                <div class="lesson-head">
+                  <div class="meta">
+                    <span class="badge badge-b2">Nivel A1</span>
+                    <span class="badge badge-tech">Español</span>
+                    <span class="badge badge-live">Activă</span>
+                  </div>
+                  <div class="lesson-title" data-topic="Presentaciones">Prezentări</div>
+                  <p class="lesson-desc">Cum te prezinți și cum întrebi numele cuiva.</p>
+                </div>
+              </article>
+              <article class="lesson-card" data-lesson-no="07">
+                <div class="lesson-head">
+                  <div class="meta">
+                    <span class="badge badge-b2">Nivel A1</span>
+                    <span class="badge badge-tech">Español</span>
+                    <span class="badge badge-live">Activă</span>
+                  </div>
+                  <div class="lesson-title" data-topic="Números">Numerele</div>
+                  <p class="lesson-desc">Numerele de bază, vârsta și verbul „a avea”.</p>
+                </div>
+              </article>
+              <article class="lesson-card" data-lesson-no="08">
+                <div class="lesson-head">
+                  <div class="meta">
+                    <span class="badge badge-b2">Nivel A1</span>
+                    <span class="badge badge-tech">Español</span>
+                    <span class="badge badge-live">Activă</span>
+                  </div>
+                  <div class="lesson-title" data-topic="¿De dónde eres?">De unde ești?</div>
+                  <p class="lesson-desc">Țări, orașe și întrebări despre origine.</p>
+                </div>
+              </article>
+              <article class="lesson-card" data-lesson-no="09">
+                <div class="lesson-head">
+                  <div class="meta">
+                    <span class="badge badge-b2">Nivel A1</span>
+                    <span class="badge badge-tech">Español</span>
+                    <span class="badge badge-live">Activă</span>
+                  </div>
+                  <div class="lesson-title" data-topic="Nacionalidades">Naționalități</div>
+                  <p class="lesson-desc">Naționalități în forme masculine și feminine.</p>
+                </div>
+              </article>
+              <article class="lesson-card" data-lesson-no="10">
+                <div class="lesson-head">
+                  <div class="meta">
+                    <span class="badge badge-b2">Nivel A1</span>
+                    <span class="badge badge-tech">Español</span>
+                    <span class="badge badge-live">Activă</span>
+                  </div>
+                  <div class="lesson-title" data-topic="Idiomas">Limbi</div>
+                  <p class="lesson-desc">Limbi vorbite, întrebări simple și verbul „a vorbi”.</p>
+                </div>
+              </article>
               </div>
             </div>
 
@@ -3680,10 +3786,10 @@
     }
 
     function showLessonCategory(selectedId) {
+      showLessonsForLevel(selectedId.split('-')[0]);
       lessonCategories.forEach(category => {
         category.classList.toggle('is-hidden', category.id !== selectedId);
       });
-      showLessonsForLevel(selectedId.split('-')[0]);
     }
 
     levelFilters.forEach(link => {
