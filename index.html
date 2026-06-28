@@ -138,6 +138,20 @@
     color: #fff;
   }
 
+  .login-link {
+    min-width: 96px;
+    background: var(--mint);
+    border-color: color-mix(in srgb, var(--mint) 72%, var(--ink));
+    color: var(--ink);
+    font-weight: 800;
+  }
+
+  .login-link:hover {
+    background: var(--ink);
+    border-color: var(--ink);
+    color: #fff;
+  }
+
   .layout {
     display: grid;
     grid-template-columns: 320px 1fr;
@@ -314,58 +328,38 @@
     color: var(--level-color);
   }
 
-  .skill-tools .sid-item.home-level {
-    justify-content: flex-start;
-    min-height: 38px;
-    margin-bottom: 0;
-    padding: 8px .75rem;
-    border-color: transparent;
-    background: transparent;
-    color: var(--coral);
-    font-weight: 800;
-    text-align: left;
-    box-shadow: none;
-  }
-
   .home-tools .sid-item.home-level[data-level-filter],
-  .language-tools .sid-level-group > .sid-item[data-language-category],
-  .skill-tools .sid-item.home-level[data-skill-level] {
+  .language-tools .sid-level-group > .sid-item[data-language-category] {
     color: var(--level-color);
   }
 
   .sid-item[data-level-filter="a1"],
-  .sid-level-group > .sid-item[data-language-section^="a1-"],
-  .skill-tools .sid-item[data-skill-level="a1"] {
+  .sid-level-group > .sid-item[data-language-section^="a1-"] {
     --level-color: #d94f45;
   }
 
   .sid-item[data-level-filter="a2"],
-  .sid-level-group > .sid-item[data-language-level="a2"],
-  .skill-tools .sid-item[data-skill-level="a2"] {
+  .sid-level-group > .sid-item[data-language-level="a2"] {
     --level-color: #e47d30;
   }
 
   .sid-item[data-level-filter="b1"],
-  .sid-level-group > .sid-item[data-language-level="b1"],
-  .skill-tools .sid-item[data-skill-level="b1"] {
+  .sid-level-group > .sid-item[data-language-level="b1"] {
     --level-color: #d9a225;
   }
 
   .sid-item[data-level-filter="b2"],
-  .sid-level-group > .sid-item[data-language-level="b2"],
-  .skill-tools .sid-item[data-skill-level="b2"] {
+  .sid-level-group > .sid-item[data-language-level="b2"] {
     --level-color: #8fab35;
   }
 
   .sid-item[data-level-filter="c1"],
-  .sid-level-group > .sid-item[data-language-level="c1"],
-  .skill-tools .sid-item[data-skill-level="c1"] {
+  .sid-level-group > .sid-item[data-language-level="c1"] {
     --level-color: #2f9b5f;
   }
 
   .home-tools .sid-item.home-level[data-level-filter].active,
-  .language-tools .sid-level-group > .sid-item[data-language-category].active,
-  .skill-tools .sid-item.home-level[data-skill-level].active {
+  .language-tools .sid-level-group > .sid-item[data-language-category].active {
     color: var(--level-color);
     border-color: color-mix(in srgb, var(--level-color) 34%, white);
     background: color-mix(in srgb, var(--level-color) 9%, white);
@@ -787,6 +781,26 @@
     transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
   }
 
+  .lesson-card {
+    position: relative;
+    overflow: visible;
+  }
+
+  .lesson-card::after {
+    content: "";
+    position: absolute;
+    top: -27px;
+    left: 16px;
+    width: 38px;
+    height: 92px;
+    background: url("data:image/svg+xml,%3Csvg width='38' height='92' viewBox='0 0 38 92' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M21 16C21 7.8 12 7.8 12 16V67C12 82 33 82 33 67V35' stroke='%23c995a2' stroke-width='5.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M21 16C21 7.8 12 7.8 12 16V67C12 82 33 82 33 67V35' stroke='%23edb4c0' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M14 16V66C14 77 31 77 31 66V36' stroke='%23fff4ed' stroke-width='1' stroke-linecap='round' opacity='.62'/%3E%3Cpath d='M23 17C23 5 10 5 10 17' stroke='%235e6f82' stroke-width='.9' stroke-linecap='round' opacity='.26'/%3E%3C/svg%3E") center / contain no-repeat;
+    filter: drop-shadow(2px 6px 6px rgba(35, 54, 75, .16));
+    transform: rotate(3deg);
+    transform-origin: 20px 27px;
+    pointer-events: none;
+    z-index: 6;
+  }
+
   .lesson-card:hover,
   .resource-card:hover,
   .coming-card:hover {
@@ -850,7 +864,7 @@
     border-radius: 8px;
     cursor: pointer;
     position: relative;
-    overflow: hidden;
+    overflow: visible;
     box-shadow: 0 14px 34px rgba(35, 54, 75, .06);
   }
 
@@ -1385,8 +1399,7 @@
   .sid-item.tool-item,
   .home-tools .level-tool-list .sid-item.home-tool,
   [data-language-tools] .level-tool-list .sid-item.tool-item,
-  .language-tools .sid-item[data-language-category],
-  .skill-tools .sid-item.home-level {
+  .language-tools .sid-item[data-language-category] {
     min-height: 44px;
     font-size: 18px;
   }
@@ -1471,8 +1484,7 @@
   .sid-item.tool-item,
   .home-tools .level-tool-list .sid-item.home-tool,
   [data-language-tools] .level-tool-list .sid-item.tool-item,
-  .language-tools .sid-item[data-language-category],
-  .skill-tools .sid-item.home-level {
+  .language-tools .sid-item[data-language-category] {
     align-items: flex-start;
     min-height: 48px;
     padding: 10px .85rem;
@@ -1728,17 +1740,13 @@
       <a class="logo" href="index.html">Romanian <span>Step by Step</span></a>
       <nav class="main-nav" aria-label="Meniu principal">
         <div class="main-nav-group main-nav-primary">
-          <a class="main-nav-link active" href="#acasa">Acasă</a>
-          <a class="main-nav-link" href="#citire">Citire</a>
-          <a class="main-nav-link" href="#scriere">Scriere</a>
-          <a class="main-nav-link" href="#ascultare">Ascultare</a>
-          <a class="main-nav-link" href="#vorbire">Vorbire</a>
-        </div>
-        <div class="main-nav-group main-nav-languages" aria-label="Limbi">
-          <a class="main-nav-link" href="#acasa" data-home-link>Română</a>
+          <a class="main-nav-link active" href="#acasa" data-home-link>Română</a>
           <a class="main-nav-link" href="#a1-germana" data-language-category="germana">Germană</a>
           <a class="main-nav-link" href="#a1-engleza" data-language-category="engleza">Engleză</a>
           <a class="main-nav-link" href="#a1-spaniola" data-language-category="spaniola">Spaniolă</a>
+        </div>
+        <div class="main-nav-group main-nav-languages" aria-label="Cont">
+          <button class="main-nav-link login-link" type="button">Login</button>
         </div>
       </nav>
     </header>
@@ -1751,7 +1759,7 @@
               <a class="sid-item subitem home-level" href="#a1" data-level-filter="a1">A1. Începător</a>
               <div class="level-tool-list">
                 <a class="sid-item tool-item home-tool" href="#romana-lectii" data-home-section="romana-lectii"><span class="sid-dot dot-green"></span>1. Lecții de limba română</a>
-                <a class="sid-item tool-item home-tool" href="#romana-lectii-pdf" data-home-section="romana-lectii-pdf"><span class="sid-dot dot-green"></span>2. Lecții de limba română PDF</a>
+                <a class="sid-item tool-item home-tool" href="#romana-lectii-pdf" data-home-section="romana-lectii-pdf"><span class="sid-dot dot-green"></span>2. Lecții download PDF</a>
                 <a class="sid-item tool-item home-tool" href="#romana-dictionar" data-home-section="romana-dictionar"><span class="sid-dot dot-green"></span>3. Dicționar alfabetic</a>
                 <a class="sid-item tool-item home-tool tool-parent" href="#romana-pronuntie" data-home-section="romana-pronuntie"><span class="sid-dot dot-green"></span>4. Pronunție</a>
                 <div class="tool-submenu">
@@ -1789,7 +1797,7 @@
               <a class="sid-item subitem home-level" href="#a2" data-level-filter="a2">A2. Începător</a>
               <div class="level-tool-list">
                 <a class="sid-item tool-item home-tool" href="#romana-lectii" data-home-section="romana-lectii"><span class="sid-dot dot-green"></span>1. Lecții de limba română</a>
-                <a class="sid-item tool-item home-tool" href="#romana-lectii-pdf" data-home-section="romana-lectii-pdf"><span class="sid-dot dot-green"></span>2. Lecții de limba română PDF</a>
+                <a class="sid-item tool-item home-tool" href="#romana-lectii-pdf" data-home-section="romana-lectii-pdf"><span class="sid-dot dot-green"></span>2. Lecții download PDF</a>
                 <a class="sid-item tool-item home-tool" href="#romana-dictionar" data-home-section="romana-dictionar"><span class="sid-dot dot-green"></span>3. Dicționar alfabetic</a>
                 <a class="sid-item tool-item home-tool tool-parent" href="#romana-pronuntie" data-home-section="romana-pronuntie"><span class="sid-dot dot-green"></span>4. Pronunție</a>
                 <div class="tool-submenu">
@@ -1827,7 +1835,7 @@
               <a class="sid-item subitem home-level" href="#b1" data-level-filter="b1">B1. Intermediar</a>
               <div class="level-tool-list">
                 <a class="sid-item tool-item home-tool" href="#romana-lectii" data-home-section="romana-lectii"><span class="sid-dot dot-green"></span>1. Lecții de limba română</a>
-                <a class="sid-item tool-item home-tool" href="#romana-lectii-pdf" data-home-section="romana-lectii-pdf"><span class="sid-dot dot-green"></span>2. Lecții de limba română PDF</a>
+                <a class="sid-item tool-item home-tool" href="#romana-lectii-pdf" data-home-section="romana-lectii-pdf"><span class="sid-dot dot-green"></span>2. Lecții download PDF</a>
                 <a class="sid-item tool-item home-tool" href="#romana-dictionar" data-home-section="romana-dictionar"><span class="sid-dot dot-green"></span>3. Dicționar alfabetic</a>
                 <a class="sid-item tool-item home-tool tool-parent" href="#romana-pronuntie" data-home-section="romana-pronuntie"><span class="sid-dot dot-green"></span>4. Pronunție</a>
                 <div class="tool-submenu">
@@ -1865,7 +1873,7 @@
               <a class="sid-item subitem home-level" href="#b2" data-level-filter="b2">B2. Intermediar - Avansat</a>
               <div class="level-tool-list">
                 <a class="sid-item tool-item home-tool" href="#romana-lectii" data-home-section="romana-lectii"><span class="sid-dot dot-green"></span>1. Lecții de limba română</a>
-                <a class="sid-item tool-item home-tool" href="#romana-lectii-pdf" data-home-section="romana-lectii-pdf"><span class="sid-dot dot-green"></span>2. Lecții de limba română PDF</a>
+                <a class="sid-item tool-item home-tool" href="#romana-lectii-pdf" data-home-section="romana-lectii-pdf"><span class="sid-dot dot-green"></span>2. Lecții download PDF</a>
                 <a class="sid-item tool-item home-tool" href="#romana-dictionar" data-home-section="romana-dictionar"><span class="sid-dot dot-green"></span>3. Dicționar alfabetic</a>
                 <a class="sid-item tool-item home-tool tool-parent" href="#romana-pronuntie" data-home-section="romana-pronuntie"><span class="sid-dot dot-green"></span>4. Pronunție</a>
                 <div class="tool-submenu">
@@ -1903,7 +1911,7 @@
               <a class="sid-item subitem home-level" href="#c1" data-level-filter="c1">C1. Avansat</a>
               <div class="level-tool-list">
                 <a class="sid-item tool-item home-tool" href="#romana-lectii" data-home-section="romana-lectii"><span class="sid-dot dot-green"></span>1. Lecții de limba română</a>
-                <a class="sid-item tool-item home-tool" href="#romana-lectii-pdf" data-home-section="romana-lectii-pdf"><span class="sid-dot dot-green"></span>2. Lecții de limba română PDF</a>
+                <a class="sid-item tool-item home-tool" href="#romana-lectii-pdf" data-home-section="romana-lectii-pdf"><span class="sid-dot dot-green"></span>2. Lecții download PDF</a>
                 <a class="sid-item tool-item home-tool" href="#romana-dictionar" data-home-section="romana-dictionar"><span class="sid-dot dot-green"></span>3. Dicționar alfabetic</a>
                 <a class="sid-item tool-item home-tool tool-parent" href="#romana-pronuntie" data-home-section="romana-pronuntie"><span class="sid-dot dot-green"></span>4. Pronunție</a>
                 <div class="tool-submenu">
@@ -2529,13 +2537,6 @@
               </div>
             </div>
           </div>
-          <div class="language-tools skill-tools" data-skill-tools>
-            <a class="sid-item subitem home-level" href="#citire" data-skill-level="a1">A1. Începător</a>
-            <a class="sid-item subitem home-level" href="#citire" data-skill-level="a2">A2. Începător</a>
-            <a class="sid-item subitem home-level" href="#citire" data-skill-level="b1">B1. Intermediar</a>
-            <a class="sid-item subitem home-level" href="#citire" data-skill-level="b2">B2. Intermediar avansat</a>
-            <a class="sid-item subitem home-level" href="#citire" data-skill-level="c1">C1. Avansat</a>
-          </div>
         </div>
       </aside>
 
@@ -2560,18 +2561,9 @@
           </div>
         </section>
 
-        <section id="citire"></section>
-
-        <section id="scriere"></section>
-
-        <section id="ascultare"></section>
-
-        <section id="vorbire"></section>
-
         <section id="romana-a1-incepator">
           <div class="section-title">
             <h2>A1. Începător</h2>
-            <span>manual și materiale</span>
           </div>
           <div class="resource-grid">
             <article class="resource-card">
@@ -2588,7 +2580,6 @@
         <section id="romana-lectii">
           <div class="section-title">
             <h2>Lecții de limba română</h2>
-            <span>lecții disponibile</span>
           </div>
           <div class="lesson-grid">
             <article class="lesson-card" data-lesson-no="01">
@@ -2697,7 +2688,6 @@
         <section id="romana-lectii-pdf">
           <div class="section-title">
             <h2>Lecții de limba română PDF</h2>
-            <span>fișe viitoare</span>
           </div>
           <div class="resource-grid">
             <article class="resource-card"><div class="resource-body"><div class="meta"><span class="badge badge-b2">A1</span><span class="badge badge-live">În construcție</span></div><h3>PDF A1</h3><p>Spațiu pregătit pentru fișe PDF numai în limba română.</p><span class="resource-status waiting">În construcție</span></div></article>
@@ -2707,7 +2697,6 @@
         <section id="romana-dictionar">
           <div class="section-title">
             <h2>Dicționar</h2>
-            <span>cuvinte în română</span>
           </div>
           <div class="resource-grid">
             <article class="resource-card"><div class="resource-body"><div class="meta"><span class="badge badge-b2">A1</span><span class="badge badge-live">În construcție</span></div><h3>Dicționar A1</h3><p>Spațiu pregătit pentru dicționar numai în limba română.</p><span class="resource-status waiting">În construcție</span></div></article>
@@ -2717,7 +2706,6 @@
         <section id="romana-pronuntie">
           <div class="section-title">
             <h2>Pronunție</h2>
-            <span>sunete românești</span>
           </div>
           <div class="resource-grid">
             <article class="resource-card"><div class="resource-body"><div class="meta"><span class="badge badge-b2">A1</span><span class="badge badge-live">În construcție</span></div><h3>Pronunție A1</h3><p>Spațiu pregătit pentru materiale de pronunție în limba română.</p><span class="resource-status waiting">În construcție</span></div></article>
@@ -2727,7 +2715,6 @@
         <section id="romana-vocabular">
           <div class="section-title">
             <h2>Vocabular</h2>
-            <span>teme și cuvinte</span>
           </div>
           <div class="resource-grid">
             <article class="resource-card"><div class="resource-body"><div class="meta"><span class="badge badge-b2">A1</span><span class="badge badge-live">În construcție</span></div><h3>Vocabular A1</h3><p>Spațiu pregătit pentru vocabular numai în limba română.</p><span class="resource-status waiting">În construcție</span></div></article>
@@ -2737,7 +2724,6 @@
         <section id="romana-gramatica">
           <div class="section-title">
             <h2>Gramatică</h2>
-            <span>reguli simple</span>
           </div>
           <div class="resource-grid">
             <article class="resource-card"><div class="resource-body"><div class="meta"><span class="badge badge-b2">A1</span><span class="badge badge-live">În construcție</span></div><h3>Gramatică A1</h3><p>Spațiu pregătit pentru gramatică numai în limba română.</p><span class="resource-status waiting">În construcție</span></div></article>
@@ -2747,7 +2733,6 @@
         <section id="romana-verbe">
           <div class="section-title">
             <h2>Verbe</h2>
-            <span>conjugări</span>
           </div>
           <div class="resource-grid">
             <article class="resource-card"><div class="resource-body"><div class="meta"><span class="badge badge-b2">A1</span><span class="badge badge-live">În construcție</span></div><h3>Verbe A1</h3><p>Spațiu pregătit pentru verbe și exemple numai în limba română.</p><span class="resource-status waiting">În construcție</span></div></article>
@@ -2757,7 +2742,6 @@
         <section id="romana-teste">
           <div class="section-title">
             <h2>Teste</h2>
-            <span>verificări A1</span>
           </div>
           <div class="resource-grid">
             <article class="resource-card"><div class="resource-body"><div class="meta"><span class="badge badge-b2">A1</span><span class="badge badge-live">În construcție</span></div><h3>Teste A1</h3><p>Spațiu pregătit pentru teste numai în limba română.</p><span class="resource-status waiting">În construcție</span></div></article>
@@ -3687,7 +3671,6 @@
 <section id="glosar">
   <div class="section-title">
     <h2>Glosar</h2>
-    <span>cuvinte organizate pe lecții</span>
   </div>
   <div class="resource-grid">
     <article class="resource-card">
@@ -3704,7 +3687,6 @@
 <section id="tabele-gramaticale">
   <div class="section-title">
     <h2>Tabele gramaticale</h2>
-    <span>forme și reguli pe scurt</span>
   </div>
   <div class="resource-grid">
     <article class="resource-card">
@@ -3721,7 +3703,6 @@
 <section id="ghid-pronuntie">
   <div class="section-title">
     <h2>Ghid de pronunție</h2>
-    <span>sunete și exemple</span>
   </div>
   <div class="resource-grid">
     <article class="resource-card">
@@ -3738,7 +3719,6 @@
 <section id="recapitulare">
   <div class="section-title">
     <h2>Exerciții de recapitulare</h2>
-    <span>verificare după lecții</span>
   </div>
   <div class="resource-grid">
     <article class="resource-card">
@@ -3755,7 +3735,6 @@
 <section id="exercitii-vocabular">
   <div class="section-title">
     <h2>Exerciții de vocabular</h2>
-    <span>asociere și alegere</span>
   </div>
   <div class="resource-grid">
     <article class="resource-card">
@@ -3772,7 +3751,6 @@
 <section id="exercitii-gramatica">
   <div class="section-title">
     <h2>Exerciții de gramatică</h2>
-    <span>forme și propoziții</span>
   </div>
   <div class="resource-grid">
     <article class="resource-card">
@@ -3802,7 +3780,6 @@
 <section id="fise-vocabular">
   <div class="section-title">
     <h2>Fișe vocabular</h2>
-    <span>materiale de lucru</span>
   </div>
   <div class="resource-grid">
     <article class="resource-card">
@@ -3819,7 +3796,6 @@
 <section id="lectii-pdf">
   <div class="section-title">
     <h2>Lecții PDF</h2>
-    <span>fișe printabile</span>
   </div>
   <div class="resource-grid">
     <article class="resource-card">
@@ -3864,7 +3840,6 @@
 <section id="verbe-conjugate">
   <div class="section-title">
     <h2>Verbe conjugate</h2>
-    <span>tabele rapide</span>
   </div>
   <div class="resource-grid">
     <article class="resource-card">
@@ -3881,7 +3856,6 @@
 <section id="teste">
   <div class="section-title">
     <h2>Teste</h2>
-    <span>verificări pe niveluri</span>
   </div>
 
   <div class="resource-grid">
@@ -3922,11 +3896,8 @@
     const mainSections = document.querySelectorAll('.main > section');
     const languageToolMenus = document.querySelectorAll('[data-language-tools]');
     const homeTools = document.querySelector('[data-home-tools]');
-    const skillTools = document.querySelector('[data-skill-tools]');
-    const skillLevelLinks = document.querySelectorAll('[data-skill-level]');
     const languageCategoryLinks = document.querySelectorAll('.sid-item[data-language-category]');
     const lessonCategories = document.querySelectorAll('.lesson-category[id]');
-    const skillSectionHashes = ['#citire', '#scriere', '#ascultare', '#vorbire'];
 
     function setActiveMenu(item) {
       sidebarItems.forEach(link => link.classList.remove('active'));
@@ -4010,13 +3981,8 @@
       languageToolMenus.forEach(menu => menu.classList.remove('is-open'));
     }
 
-    function closeSkillTools() {
-      if (skillTools) skillTools.classList.remove('is-open');
-    }
-
     function openLanguageTools(language) {
       if (homeTools) homeTools.classList.remove('is-open');
-      closeSkillTools();
       languageToolMenus.forEach(menu => {
         menu.classList.toggle('is-open', menu.dataset.languageTools === language);
       });
@@ -4024,14 +3990,12 @@
 
     function showAllSidebarLanguages() {
       if (homeTools) homeTools.classList.add('is-open');
-      closeSkillTools();
       languageCategoryLinks.forEach(link => link.classList.remove('is-sidebar-hidden'));
       languageToolMenus.forEach(menu => menu.classList.remove('is-sidebar-hidden'));
     }
 
     function showOnlySidebarLanguage(language) {
       if (homeTools) homeTools.classList.remove('is-open');
-      closeSkillTools();
       languageCategoryLinks.forEach(link => {
         link.classList.toggle('is-sidebar-hidden', link.dataset.languageCategory !== language);
       });
@@ -4042,19 +4006,8 @@
 
     function showHomeSidebar() {
       if (homeTools) homeTools.classList.add('is-open');
-      closeSkillTools();
       languageToolMenus.forEach(menu => {
         if (menu !== homeTools) menu.classList.remove('is-open');
-      });
-    }
-
-    function showSkillSidebar(hash) {
-      if (homeTools) homeTools.classList.remove('is-open');
-      closeLanguageTools();
-      if (skillTools) skillTools.classList.add('is-open');
-      skillLevelLinks.forEach(link => {
-        link.setAttribute('href', hash);
-        link.classList.remove('active');
       });
     }
 
@@ -4146,7 +4099,6 @@
       link.addEventListener('click', () => {
         const hash = link.getAttribute('href');
         const language = link.dataset.languageCategory;
-        const isSkillSection = skillSectionHashes.includes(hash);
         setActiveTopNav(hash, link);
         clearActiveLevels();
         showOnlyMainSection(language ? '#lectii' : hash);
@@ -4160,8 +4112,6 @@
           showLessonCategory(hash.slice(1));
           showOnlySidebarLanguage(language);
           openLanguageTools(language);
-        } else if (isSkillSection) {
-          showSkillSidebar(hash);
         } else {
           showHomeSidebar();
           closeLanguageTools();
@@ -4172,7 +4122,7 @@
     });
 
     sidebarItems.forEach(link => {
-      if (!link.dataset.levelFilter && !link.dataset.skillLevel) {
+      if (!link.dataset.levelFilter) {
         link.addEventListener('click', event => {
           if (link.classList.contains('tool-parent')) {
             event.preventDefault();
@@ -4221,17 +4171,6 @@
       }
     });
 
-    skillLevelLinks.forEach(link => {
-      link.addEventListener('click', event => {
-        event.preventDefault();
-        const hash = link.getAttribute('href');
-        showOnlyMainSection(hash);
-        showSkillSidebar(hash);
-        setActiveMenu(link);
-        setActiveTopNav(hash);
-      });
-    });
-
     if (window.location.hash) {
       const hash = window.location.hash;
       const requestedLevel = document.querySelector(`[data-level-section="${hash.slice(1)}"]`);
@@ -4249,8 +4188,6 @@
           showOnlySidebarLanguage(language);
           openLanguageTools(language);
           openLanguageLevelGroup(matchingLink);
-        } else if (skillSectionHashes.includes(hash)) {
-          showSkillSidebar(hash);
         } else if (matchingLink?.dataset.homeSection || matchingLink?.dataset.homeLink) {
           showHomeSidebar();
         } else {
