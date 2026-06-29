@@ -87,15 +87,15 @@
     display: flex;
     flex: 1;
     align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
+    justify-content: flex-end;
+    gap: .45rem;
   }
 
   .main-nav-group {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
-    gap: 8px;
+    gap: 5px;
   }
 
   .main-nav-primary {
@@ -111,9 +111,9 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    min-width: 68px;
+    min-width: 0;
     min-height: 36px;
-    padding: 7px 14px;
+    padding: 7px 11px;
     border-radius: 8px;
     border: 1px solid transparent;
     background: transparent;
@@ -139,7 +139,7 @@
   }
 
   .login-link {
-    min-width: 96px;
+    min-width: 88px;
     background: var(--mint);
     border-color: color-mix(in srgb, var(--mint) 72%, var(--ink));
     color: var(--ink);
@@ -1522,10 +1522,14 @@
   }
 
   .main-nav-link {
-    min-width: 88px;
-    padding: 10px 18px;
+    min-width: 0;
+    padding: 10px 13px;
     line-height: 1.25;
     white-space: normal;
+  }
+
+  .login-link {
+    min-width: 88px;
   }
 
   .main {
@@ -1745,13 +1749,11 @@
     <header class="topbar">
       <a class="logo" href="index.html">Romanian <span>Step by Step</span></a>
       <nav class="main-nav" aria-label="Meniu principal">
-        <div class="main-nav-group main-nav-primary">
+        <div class="main-nav-group main-nav-languages">
           <a class="main-nav-link active" href="#acasa" data-home-link>Română</a>
           <a class="main-nav-link" href="#a1-germana" data-language-category="germana">Germană</a>
           <a class="main-nav-link" href="#a1-engleza" data-language-category="engleza">Engleză</a>
           <a class="main-nav-link" href="#a1-spaniola" data-language-category="spaniola">Spaniolă</a>
-        </div>
-        <div class="main-nav-group main-nav-languages" aria-label="Cont">
           <button class="main-nav-link login-link" type="button">Login</button>
         </div>
       </nav>
