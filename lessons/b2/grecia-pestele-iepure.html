@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Romanian Step by Step B2 — Grecia: peștele-iepure</title>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=DM+Mono&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #F7F5F0;
+    --surface: #FFFFFF;
+    --surface2: #F0EDE8;
+    --text: #1A1814;
+    --text2: #6B6560;
+    --text3: #A09B95;
+    --navy: #2f4a60;
+    --navy-light: #f6f8f9;
+    --gold: #c89524;
+    --gold-light: #fff4d8;
+    --red: #b34a35;
+    --red-light: #faece7;
+    --green: #3b7a57;
+    --green-light: #eef7f1;
+    --border: rgba(26,24,20,0.1);
+    --border2: rgba(26,24,20,0.06);
+    --radius: 12px;
+    --radius-sm: 8px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Atkinson Hyperlegible', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    line-height: 1.7;
+  }
+
+  .header {
+    background: var(--navy);
+    color: #fff;
+    padding: 3rem 2rem 2.5rem;
+  }
+  .header-inner { max-width: 900px; margin: 0 auto; }
+  .home-link {
+    display: inline-block;
+    margin-bottom: .9rem;
+    color: rgba(255,255,255,.78);
+    font-size: 13px;
+    text-decoration: none;
+  }
+  .home-link:hover { color: #fff; }
+  .level-tag {
+    display: inline-block;
+    margin-bottom: 1rem;
+    padding: 4px 12px;
+    border: 1px solid rgba(255,255,255,.25);
+    border-radius: 20px;
+    background: rgba(255,255,255,.15);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+  }
+  h1 {
+    margin-bottom: .55rem;
+    font-size: clamp(30px, 5vw, 44px);
+    font-weight: 400;
+    line-height: 1.15;
+  }
+  .header p {
+    max-width: 670px;
+    color: rgba(255,255,255,.78);
+    font-size: 15px;
+  }
+  .header-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1.4rem;
+  }
+  .header-meta span {
+    border: 1px solid rgba(255,255,255,.24);
+    border-radius: 99px;
+    padding: 5px 10px;
+    color: rgba(255,255,255,.78);
+    font-size: 12px;
+  }
+
+  .layout {
+    display: flex;
+    max-width: 920px;
+    margin: 0 auto;
+  }
+  .sidebar {
+    width: 215px;
+    flex-shrink: 0;
+    padding: 2rem 0 2rem 1rem;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+  }
+  .sidebar-label {
+    margin-bottom: .75rem;
+    padding-left: .75rem;
+    color: var(--text3);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+  }
+  .nav-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    margin-bottom: 3px;
+    padding: .6rem .75rem;
+    border: 0;
+    border-radius: var(--radius-sm);
+    background: transparent;
+    color: var(--text2);
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 13px;
+    text-align: left;
+  }
+  .nav-item:hover,
+  .nav-item.active {
+    background: var(--surface);
+    color: var(--navy);
+    font-weight: 700;
+  }
+  .nav-item::before {
+    content: "";
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--gold);
+    flex: 0 0 7px;
+    box-shadow: 0 0 0 3px rgba(255,244,216,.78);
+  }
+  .nav-num {
+    margin-left: auto;
+    color: var(--text3);
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+  }
+
+  .main {
+    flex: 1;
+    min-width: 0;
+    padding: 2rem 1rem 2rem 1.5rem;
+  }
+  .section { display: none; }
+  .section.active { display: block; animation: fadeIn .18s ease; }
+  @keyframes fadeIn { from { opacity: .4; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+
+  .section-header {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.1rem;
+    border-bottom: 1px solid var(--border2);
+  }
+  .section-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: var(--radius-sm);
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    background: var(--navy-light);
+    color: var(--navy);
+    font-weight: 700;
+  }
+  .section-header h2 {
+    margin-bottom: 2px;
+    font-size: 23px;
+    font-weight: 400;
+  }
+  .section-header p { color: var(--text2); font-size: 13px; }
+
+  .card,
+  .text-passage,
+  .writing-box {
+    margin-bottom: 1.25rem;
+    padding: 1.25rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--surface);
+  }
+  .card-title {
+    margin-bottom: .85rem;
+    color: var(--text3);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+  }
+  .tag {
+    display: inline-block;
+    margin: 1rem 0 .7rem;
+    padding: 4px 11px;
+    border-radius: 99px;
+    background: var(--navy-light);
+    color: var(--navy);
+    font-size: 12px;
+    font-weight: 700;
+  }
+  .tag-gold { background: var(--gold-light); color: #8a5a0a; }
+  .tag-green { background: var(--green-light); color: var(--green); }
+  .tag-red { background: var(--red-light); color: var(--red); }
+
+  .vocab-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+    gap: .75rem;
+    margin-bottom: 1rem;
+  }
+  .vocab-item {
+    padding: .85rem;
+    border: 1px solid var(--border2);
+    border-radius: var(--radius-sm);
+    background: var(--surface);
+  }
+  .vocab-ro { color: var(--navy); font-size: 15px; font-weight: 700; }
+  .vocab-en { margin-top: 3px; color: var(--text2); font-size: 13px; }
+
+  .text-passage {
+    border-left: 4px solid var(--gold);
+    font-size: 15px;
+    line-height: 1.9;
+  }
+  .text-passage p + p { margin-top: .9rem; }
+  .note {
+    background: var(--gold-light);
+    border-color: rgba(200,149,36,.2);
+  }
+  .note a { color: var(--navy); font-weight: 700; }
+
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+  ul, ol { padding-left: 1.15rem; }
+  li { margin-bottom: .35rem; font-size: 14px; }
+  .expr-item {
+    padding: .75rem 0;
+    border-bottom: 1px solid var(--border2);
+  }
+  .expr-item:last-child { border-bottom: 0; padding-bottom: 0; }
+  .expr-ro { color: var(--text); font-size: 14px; font-weight: 700; }
+  .expr-en { margin-top: 3px; color: var(--text2); font-size: 13px; }
+
+  .grammar-rule {
+    margin-bottom: .8rem;
+    padding: .9rem 1rem;
+    border-left: 3px solid var(--navy);
+    border-radius: var(--radius-sm);
+    background: var(--surface2);
+  }
+  .rule-label {
+    margin-bottom: .35rem;
+    color: var(--navy);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+  }
+  .grammar-rule p { color: var(--text2); font-size: 14px; }
+
+  .ex-item { margin-bottom: 1rem; }
+  .ex-item label {
+    display: block;
+    margin-bottom: .4rem;
+    color: var(--text);
+    font-size: 14px;
+    font-weight: 700;
+  }
+  select, input, textarea {
+    width: 100%;
+    padding: 9px 11px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    background: var(--bg);
+    color: var(--text);
+    font-family: inherit;
+    font-size: 14px;
+  }
+  textarea { min-height: 105px; resize: vertical; }
+  select:focus, input:focus, textarea:focus {
+    outline: 2px solid #d9e5eb;
+    border-color: var(--navy);
+  }
+  .match-row {
+    display: grid;
+    grid-template-columns: minmax(190px, 1fr) 115px;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: .75rem;
+  }
+  .match-label { font-size: 14px; font-weight: 700; }
+  .options {
+    margin: 1rem 0;
+    padding: .8rem 1rem;
+    border-radius: var(--radius-sm);
+    background: var(--surface2);
+    color: var(--text2);
+    font-size: 13px;
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 38px;
+    padding: 8px 16px;
+    border: 1px solid var(--navy);
+    border-radius: var(--radius-sm);
+    background: var(--navy);
+    color: #fff;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 700;
+  }
+  .btn:hover { background: #263d52; }
+  .feedback {
+    display: none;
+    margin-top: .75rem;
+    padding: 8px 12px;
+    border-radius: var(--radius-sm);
+    font-size: 13px;
+  }
+  .feedback.ok { display: block; background: var(--green-light); color: var(--green); }
+  .feedback.err { display: block; background: var(--red-light); color: var(--red); }
+
+  .writing-box {
+    background: var(--gold-light);
+    border-color: rgba(200,149,36,.2);
+  }
+  .writing-box h3 {
+    margin-bottom: .5rem;
+    color: #8a5a0a;
+    font-size: 13px;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+  }
+  .footer {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    border-top: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--text3);
+    text-align: center;
+    font-size: 12px;
+  }
+
+  @media (max-width: 720px) {
+    .layout { display: block; }
+    .sidebar {
+      position: static;
+      width: auto;
+      height: auto;
+      padding: 1rem;
+      display: flex;
+      gap: 6px;
+      overflow-x: auto;
+    }
+    .sidebar-label, .nav-num { display: none; }
+    .nav-item { min-width: max-content; }
+    .main { padding: 1.25rem; }
+    .two-col, .match-row { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<header class="header">
+  <div class="header-inner">
+    <a class="home-link" href="../../index.html">← Acasă</a>
+    <div class="level-tag">Nivel B2 · Română pentru vorbitori de engleză</div>
+    <h1>Grecia: peștele-iepure și speciile invazive</h1>
+    <p>Lecție de română B2 pentru studenți englezi, construită ca analiză de știre: vocabular despre mediu, specii invazive, ecosisteme marine și exprimarea opiniei.</p>
+    <div class="header-meta">
+      <span>7 secțiuni</span>
+      <span>80 de minute</span>
+      <span>Text de presă adaptat</span>
+      <span>Exerciții interactive</span>
+    </div>
+  </div>
+</header>
+
+<div class="layout">
+  <nav class="sidebar" aria-label="Navigare lecție">
+    <div class="sidebar-label">Secțiuni</div>
+    <button class="nav-item active" onclick="showSection('obiective', this)"><span>01</span>Obiective<span class="nav-num">01</span></button>
+    <button class="nav-item" onclick="showSection('context', this)"><span>02</span>Context<span class="nav-num">02</span></button>
+    <button class="nav-item" onclick="showSection('vocabular', this)"><span>03</span>Vocabular<span class="nav-num">03</span></button>
+    <button class="nav-item" onclick="showSection('text', this)"><span>04</span>Text<span class="nav-num">04</span></button>
+    <button class="nav-item" onclick="showSection('gramatica', this)"><span>05</span>Gramatică<span class="nav-num">05</span></button>
+    <button class="nav-item" onclick="showSection('dezbatere', this)"><span>06</span>Dezbatere<span class="nav-num">06</span></button>
+    <button class="nav-item" onclick="showSection('exercitii', this)"><span>07</span>Exerciții<span class="nav-num">07</span></button>
+  </nav>
+
+  <main class="main">
+    <section id="sec-obiective" class="section active">
+      <div class="section-header">
+        <div class="section-icon">B2</div>
+        <div>
+          <h2>Obiectivele lecției</h2>
+          <p>What you will be able to do by the end of the lesson.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">La finalul lecției vei putea</div>
+        <ul>
+          <li>să înțelegi ideea principală a unei știri despre mediu în limba română;</li>
+          <li>să explici măsuri împotriva unei specii invazive folosind vocabular neutru;</li>
+          <li>să distingi între fapt, opinie și interpretare;</li>
+          <li>să folosești construcții impersonale: <em>se anunță, se propune, se aplică</em>;</li>
+          <li>să formulezi o opinie argumentată despre protecția mediului marin.</li>
+        </ul>
+      </div>
+
+      <div class="card note">
+        <div class="card-title">Sursa de pornire</div>
+        <p>Lecția pornește de la articolul Adevărul: <a href="https://adevarul.ro/stiri-externe/europa/grecia-anunta-primele-masuri-impotriva-2539685.html" target="_blank" rel="noopener">Grecia anunță primele măsuri împotriva peștelui-iepure</a>. Textul din lecție este adaptat și rescris pentru uz didactic, nu este o reproducere a articolului.</p>
+      </div>
+    </section>
+
+    <section id="sec-context" class="section">
+      <div class="section-header">
+        <div class="section-icon">02</div>
+        <div>
+          <h2>Contextul știrii</h2>
+          <p>Before reading: useful background about invasive marine species.</p>
+        </div>
+      </div>
+
+      <div class="text-passage">
+        <p>În presa românească, știrile despre specii invazive sunt adesea legate de schimbările climatice, pescuit, biodiversitate și măsuri luate de autorități. La nivel B2, este important să înțelegem nu doar cuvintele, ci și tonul: o știre poate informa, poate avertiza publicul sau poate prezenta o problemă de mediu ca urgentă.</p>
+        <p>În cazul Greciei, peștele-iepure este discutat ca specie invazivă toxică, periculoasă dacă este consumată și problematică pentru activitatea pescarilor. Autoritățile încearcă să reducă impactul acestei specii, în timp ce cercetătorii atrag atenția asupra efectelor pe termen lung asupra biodiversității.</p>
+      </div>
+
+      <div class="two-col">
+        <div class="card">
+          <div class="card-title">Fapt</div>
+          <p>O informație verificabilă: o instituție a anunțat o măsură, a publicat un plan sau a raportat prezența unei specii.</p>
+        </div>
+        <div class="card">
+          <div class="card-title">Opinie</div>
+          <p>O interpretare: măsura este utilă, insuficientă, greu de aplicat sau necesară pentru protecția ecosistemului.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="sec-vocabular" class="section">
+      <div class="section-header">
+        <div class="section-icon">03</div>
+        <div>
+          <h2>Vocabular esențial</h2>
+          <p>Romanian vocabulary with English explanations.</p>
+        </div>
+      </div>
+
+      <span class="tag">Specii și ecosisteme</span>
+      <div class="vocab-grid">
+        <div class="vocab-item"><div class="vocab-ro">peștele-iepure</div><div class="vocab-en">toxic invasive marine fish</div></div>
+        <div class="vocab-item"><div class="vocab-ro">specie invazivă</div><div class="vocab-en">invasive species</div></div>
+        <div class="vocab-item"><div class="vocab-ro">ecosistem marin</div><div class="vocab-en">marine ecosystem</div></div>
+        <div class="vocab-item"><div class="vocab-ro">biodiversitate</div><div class="vocab-en">biodiversity</div></div>
+        <div class="vocab-item"><div class="vocab-ro">toxină</div><div class="vocab-en">toxin</div></div>
+        <div class="vocab-item"><div class="vocab-ro">consum alimentar</div><div class="vocab-en">food consumption</div></div>
+      </div>
+
+      <span class="tag tag-gold">Impact și măsuri</span>
+      <div class="vocab-grid">
+        <div class="vocab-item"><div class="vocab-ro">a se înmulți rapid</div><div class="vocab-en">to multiply quickly</div></div>
+        <div class="vocab-item"><div class="vocab-ro">a afecta pescuitul</div><div class="vocab-en">to affect fishing</div></div>
+        <div class="vocab-item"><div class="vocab-ro">a pune în pericol consumatorii</div><div class="vocab-en">to endanger consumers</div></div>
+        <div class="vocab-item"><div class="vocab-ro">capturare controlată</div><div class="vocab-en">controlled capture</div></div>
+        <div class="vocab-item"><div class="vocab-ro">campanie de informare</div><div class="vocab-en">awareness campaign</div></div>
+        <div class="vocab-item"><div class="vocab-ro">monitorizare</div><div class="vocab-en">monitoring</div></div>
+      </div>
+
+      <span class="tag tag-green">Limbaj de presă</span>
+      <div class="vocab-grid">
+        <div class="vocab-item"><div class="vocab-ro">potrivit autorităților</div><div class="vocab-en">according to the authorities</div></div>
+        <div class="vocab-item"><div class="vocab-ro">în contextul</div><div class="vocab-en">in the context of</div></div>
+        <div class="vocab-item"><div class="vocab-ro">pe fondul</div><div class="vocab-en">against the backdrop of</div></div>
+        <div class="vocab-item"><div class="vocab-ro">a stârni reacții</div><div class="vocab-en">to spark reactions</div></div>
+        <div class="vocab-item"><div class="vocab-ro">măsură de combatere</div><div class="vocab-en">control measure</div></div>
+        <div class="vocab-item"><div class="vocab-ro">impact ecologic</div><div class="vocab-en">ecological impact</div></div>
+      </div>
+    </section>
+
+    <section id="sec-text" class="section">
+      <div class="section-header">
+        <div class="section-icon">04</div>
+        <div>
+          <h2>Text adaptat B2</h2>
+          <p>Read for main idea, details and tone.</p>
+        </div>
+      </div>
+
+      <div class="text-passage">
+        <p>Grecia a anunțat primele măsuri împotriva peștelui-iepure, o specie invazivă care se răspândește în unele zone ale Mării Mediterane. Autoritățile spun că această specie poate crea probleme pentru pescari și poate fi periculoasă pentru consumatori, deoarece poate conține toxine puternice.</p>
+        <p>Peștele-iepure nu este doar o problemă economică. În zonele în care se înmulțește rapid, el poate modifica relațiile dintre speciile locale și poate pune presiune pe ecosistemele marine. Din acest motiv, cercetătorii cer monitorizare constantă și informarea publicului.</p>
+        <p>Potrivit autorităților, măsurile pot include monitorizarea populațiilor, stimularea capturării controlate și campanii de informare pentru pescari, comercianți și turiști. Scopul este reducerea riscurilor pentru oameni și limitarea impactului ecologic, nu eliminarea completă și imediată a speciei, lucru foarte greu de realizat în mediul marin.</p>
+        <p>Dezbaterea arată cât de complexă este gestionarea unei specii invazive toxice. O măsură poate părea simplă pe hârtie, dar în practică trebuie să țină cont de costuri, de siguranța alimentară, de activitatea pescarilor și de protecția mediului.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Întrebări de înțelegere</div>
+        <ol>
+          <li>Ce specie este discutată în text?</li>
+          <li>De ce este considerat peștele-iepure o problemă?</li>
+          <li>Ce tipuri de măsuri pot lua autoritățile?</li>
+          <li>De ce este dificilă eliminarea unei specii invazive din mediul marin?</li>
+          <li>De ce este important limbajul folosit în presă?</li>
+        </ol>
+      </div>
+    </section>
+
+    <section id="sec-gramatica" class="section">
+      <div class="section-header">
+        <div class="section-icon">05</div>
+        <div>
+          <h2>Gramatică B2</h2>
+          <p>Useful structures for formal news language.</p>
+        </div>
+      </div>
+
+      <div class="grammar-rule">
+        <div class="rule-label">Construcții impersonale cu „se”</div>
+        <p><strong>Se anunță măsuri noi.</strong> = New measures are being announced. Această structură pune accentul pe acțiune, nu pe persoana care o face.</p>
+      </div>
+      <div class="grammar-rule">
+        <div class="rule-label">Nominalizare</div>
+        <p><strong>a monitoriza populațiile</strong> → <strong>monitorizarea populațiilor</strong>. În presă, nominalizarea face textul mai formal și mai compact.</p>
+      </div>
+      <div class="grammar-rule">
+        <div class="rule-label">Conectori de contrast</div>
+        <p><strong>În același timp, totuși, pe de altă parte</strong> introduc o perspectivă diferită și sunt utile pentru exprimarea unei opinii echilibrate.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Transformă în stil de presă</div>
+        <div class="expr-item"><div class="expr-ro">Autoritățile monitorizează populațiile de pește-iepure.</div><div class="expr-en">Se monitorizează populațiile de pește-iepure.</div></div>
+        <div class="expr-item"><div class="expr-ro">Pescarii capturează specia în mod controlat.</div><div class="expr-en">Se aplică o capturare controlată a speciei.</div></div>
+        <div class="expr-item"><div class="expr-ro">Cercetătorii avertizează publicul.</div><div class="expr-en">Publicul este avertizat de cercetători.</div></div>
+      </div>
+    </section>
+
+    <section id="sec-dezbatere" class="section">
+      <div class="section-header">
+        <div class="section-icon">06</div>
+        <div>
+          <h2>Dezbatere și opinie</h2>
+          <p>Speaking prompts for B2 students.</p>
+        </div>
+      </div>
+
+      <div class="two-col">
+        <div class="card">
+          <div class="card-title">Argumente pentru măsuri rapide</div>
+          <ul>
+            <li>Speciile invazive pot afecta ecosistemele locale.</li>
+            <li>Pescarii pot suferi pierderi economice.</li>
+            <li>Intervenția timpurie poate limita răspândirea speciei.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="card-title">Argumente pentru prudență</div>
+          <ul>
+            <li>Ecosistemele marine sunt complexe și greu de controlat.</li>
+            <li>Măsurile costisitoare pot avea efect limitat.</li>
+            <li>Publicul trebuie informat corect, fără panică.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="writing-box">
+        <h3>Sarcină orală</h3>
+        <p>Prezintă o opinie de 2 minute. Folosește cel puțin trei conectori: <strong>pe de o parte</strong>, <strong>pe de altă parte</strong>, <strong>totuși</strong>, <strong>în concluzie</strong>.</p>
+      </div>
+
+      <div class="writing-box">
+        <h3>Sarcină scrisă</h3>
+        <p>Scrie un paragraf de 120-150 de cuvinte: „Cum poate un stat să combată o specie invazivă fără să creeze panică în rândul publicului?”</p>
+      </div>
+    </section>
+
+    <section id="sec-exercitii" class="section">
+      <div class="section-header">
+        <div class="section-icon">07</div>
+        <div>
+          <h2>Exerciții</h2>
+          <p>Check vocabulary, grammar and comprehension.</p>
+        </div>
+      </div>
+
+      <span class="tag">Exercițiul 1 - Potrivește termenii</span>
+      <div class="card">
+        <div class="match-row"><span class="match-label">1. specie invazivă</span><select id="m1"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option></select></div>
+        <div class="match-row"><span class="match-label">2. biodiversitate</span><select id="m2"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option></select></div>
+        <div class="match-row"><span class="match-label">3. capturare controlată</span><select id="m3"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option></select></div>
+        <div class="match-row"><span class="match-label">4. a stârni reacții</span><select id="m4"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option></select></div>
+        <div class="options"><strong>A</strong> - varietatea vieții într-un ecosistem · <strong>B</strong> - specie care afectează un mediu nou · <strong>C</strong> - a provoca răspunsuri publice · <strong>D</strong> - prindere organizată a unei specii</div>
+        <button class="btn" onclick="checkEx1()">Verifică</button>
+        <div id="ex1-fb" class="feedback"></div>
+      </div>
+
+      <span class="tag tag-green">Exercițiul 2 - Alege construcția potrivită</span>
+      <div class="card">
+        <div class="ex-item"><label>1. În presă, se _________ noi măsuri.</label><select id="g1"><option value="">— alege —</option><option value="anunță">anunță</option><option value="anunț">anunț</option><option value="anunțăm">anunțăm</option></select></div>
+        <div class="ex-item"><label>2. Populațiile de pește-iepure _________ monitorizate.</label><select id="g2"><option value="">— alege —</option><option value="sunt">sunt</option><option value="este">este</option><option value="fi">fi</option></select></div>
+        <div class="ex-item"><label>3. Apariția speciei a _________ reacții puternice.</label><select id="g3"><option value="">— alege —</option><option value="stârnit">stârnit</option><option value="stârnește">stârnește</option><option value="stârneau">stârneau</option></select></div>
+        <button class="btn" onclick="checkEx2()">Verifică</button>
+        <div id="ex2-fb" class="feedback"></div>
+      </div>
+
+      <span class="tag tag-gold">Exercițiul 3 - Reformulează formal</span>
+      <div class="card">
+        <div class="ex-item"><label>1. Autoritățile spun că măsura este necesară.</label><input type="text" placeholder="Potrivit autorităților,..."></div>
+        <div class="ex-item"><label>2. Apariția speciei a îngrijorat pescarii.</label><input type="text" placeholder="Apariția speciei a stârnit..."></div>
+        <div class="ex-item"><label>3. Cercetătorii monitorizează peștele-iepure.</label><input type="text" placeholder="Monitorizarea peștelui-iepure..."></div>
+      </div>
+
+      <span class="tag tag-red">Exercițiul 4 - Răspuns liber</span>
+      <div class="card">
+        <div class="ex-item"><label>De ce poate deveni o specie invazivă o problemă economică, nu doar ecologică?</label><textarea placeholder="Scrie 4-5 fraze..."></textarea></div>
+        <div class="ex-item"><label>Ce responsabilitate are presa când scrie despre o problemă de mediu?</label><textarea placeholder="Scrie 4-5 fraze..."></textarea></div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<footer class="footer">Romanian Step by Step · Nivel B2 · Grecia: peștele-iepure · Creat pentru uz didactic</footer>
+
+<script>
+function showSection(name, el, shouldScroll = true) {
+  document.querySelectorAll('.section').forEach(section => section.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(button => button.classList.remove('active'));
+  const section = document.getElementById('sec-' + name);
+  if (!section) return;
+  section.classList.add('active');
+  document.querySelectorAll('.nav-item').forEach(button => {
+    const action = button.getAttribute('onclick') || '';
+    if (action.includes("'" + name + "'")) button.classList.add('active');
+  });
+  if (el) el.classList.add('active');
+  history.replaceState(null, '', '#' + name);
+  if (shouldScroll) window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function scoreFeedback(id, score, total, answers) {
+  const feedback = document.getElementById(id);
+  feedback.className = 'feedback ' + (score === total ? 'ok' : 'err');
+  feedback.textContent = score === total
+    ? 'Corect. Toate răspunsurile sunt potrivite.'
+    : 'Ai ' + score + ' din ' + total + ' corecte. Răspunsuri: ' + answers;
+}
+
+function checkEx1() {
+  const answers = { m1: 'B', m2: 'A', m3: 'D', m4: 'C' };
+  let score = 0;
+  Object.entries(answers).forEach(([id, answer]) => {
+    if (document.getElementById(id).value === answer) score++;
+  });
+  scoreFeedback('ex1-fb', score, 4, '1-B, 2-A, 3-D, 4-C.');
+}
+
+function checkEx2() {
+  const answers = { g1: 'anunță', g2: 'sunt', g3: 'stârnit' };
+  let score = 0;
+  Object.entries(answers).forEach(([id, answer]) => {
+    if (document.getElementById(id).value === answer) score++;
+  });
+  scoreFeedback('ex2-fb', score, 3, 'se anunță; sunt monitorizate; a stârnit.');
+}
+
+function openHashSection() {
+  const name = window.location.hash.replace('#', '');
+  if (name && document.getElementById('sec-' + name)) showSection(name, null, false);
+}
+window.addEventListener('hashchange', openHashSection);
+openHashSection();
+</script>
+</body>
+</html>

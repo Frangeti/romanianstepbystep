@@ -267,13 +267,15 @@
   .sid-item.tool-item {
     min-height: 36px;
     padding: 7px .75rem;
-    color: #365f73;
+    color: var(--navy);
     font-size: 13px;
+    font-weight: 400;
   }
 
   .sid-item.tool-item.active {
     border-color: #bed8e3;
-    color: var(--ink);
+    color: var(--navy);
+    font-weight: 400;
   }
 
   .home-tools .sid-item.home-language {
@@ -414,8 +416,8 @@
 
   .home-tools .sid-item.home-tool,
   [data-language-tools] .sid-item.tool-item {
-    color: #38687b;
-    font-weight: 700;
+    color: var(--navy);
+    font-weight: 400;
     white-space: nowrap;
   }
 
@@ -2263,9 +2265,9 @@
               </div>
             </div>
             <div class="sid-level-group has-tool-list">
-              <a class="sid-item subitem" href="#lectii" data-language-category="engleza" data-language-level="b2">B2. Intermediar - Avansat</a>
+              <a class="sid-item subitem" href="#b2-engleza" data-language-category="engleza" data-language-section="b2-engleza" data-language-level="b2">B2. Intermediar - Avansat</a>
               <div class="level-tool-list">
-                <a class="sid-item tool-item" href="#lectii" data-language-tool="engleza" data-language-level="b2"><span class="sid-dot dot-teal"></span>1. Lecții</a>
+                <a class="sid-item tool-item" href="#b2-engleza" data-language-tool="engleza" data-language-section="b2-engleza" data-language-level="b2"><span class="sid-dot dot-teal"></span>1. Lecții</a>
                 <a class="sid-item tool-item" href="#lectii" data-language-tool="engleza" data-language-level="b2" data-language-kids="true"><span class="sid-dot dot-teal"></span>2. Lecții copii</a>
                 <a class="sid-item tool-item" href="#lectii-pdf" data-language-tool="engleza"><span class="sid-dot dot-teal"></span>3. Lecții PDF</a>
                 <a class="sid-item tool-item" href="#glosar" data-language-tool="engleza"><span class="sid-dot dot-gold"></span>4. Dicționar alfabetic</a>
@@ -3646,6 +3648,33 @@
                 </div>
               </div>
             </div>
+            <div class="lesson-category" id="b2-engleza">
+              <div class="lesson-category-head">
+                <h4>Engleză · B2 Intermediar - Avansat</h4>
+              </div>
+              <div class="lesson-grid" data-language-lessons="engleza">
+                <article class="lesson-card" data-lesson-link="lessons/b2/grecia-pestele-iepure.html" data-lesson-no="01" tabindex="0" role="link">
+                  <div class="lesson-head">
+                    <div class="meta">
+                      <span class="badge badge-b2">Nivel B2</span>
+                      <span class="badge badge-tech">English</span>
+                      <span class="badge badge-live">Activă</span>
+                    </div>
+                    <div class="lesson-title" data-topic="News, environment and invasive species">Peștele-iepure</div>
+                    <p class="lesson-desc">Lecție B2 pentru studenți englezi, pornind de la un articol de presă despre peștele-iepure în Grecia.</p>
+                  </div>
+                  <div class="lesson-body">
+                    <div class="lesson-features">
+                      <div class="feature"><strong>Reading</strong><span>text de presă adaptat</span></div>
+                      <div class="feature"><strong>Vocabulary</strong><span>specii invazive și mediu</span></div>
+                      <div class="feature"><strong>Grammar</strong><span>construcții impersonale</span></div>
+                      <div class="feature"><strong>Speaking</strong><span>dezbatere și opinie argumentată</span></div>
+                    </div>
+                    <a class="open-lesson" href="lessons/b2/grecia-pestele-iepure.html">Deschide lecția</a>
+                  </div>
+                </article>
+              </div>
+            </div>
           </div>
 
           <div class="level-section" id="c1" data-level-section="c1">
@@ -4197,6 +4226,19 @@
         }
         setActiveMenu(matchingLink);
         setActiveTopNav(language ? getLanguageHash(language) : (matchingLink?.dataset.homeSection || matchingLink?.dataset.homeLink ? '#acasa' : hash));
+      } else if (document.getElementById(hash.slice(1))?.classList.contains('lesson-category')) {
+        showOnlyMainSection('#lectii');
+        showAllLessonLevels();
+        const languageLink = document.querySelector(`.sid-item[href="${hash}"]`);
+        const language = languageLink?.dataset.languageCategory || languageLink?.dataset.languageTool;
+        showLessonCategory(languageLink?.dataset.languageSection || hash.slice(1));
+        if (language) {
+          showOnlySidebarLanguage(language);
+          openLanguageTools(language);
+          openLanguageLevelGroup(languageLink);
+        }
+        setActiveMenu(languageLink);
+        setActiveTopNav(language ? getLanguageHash(language) : hash);
       } else if (hash.startsWith('#a1-')) {
         showOnlyMainSection('#lectii');
         showAllLessonLevels();
