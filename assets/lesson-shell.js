@@ -27,14 +27,20 @@
   }
 
   function getActiveLanguage() {
+    var languageParam = new URLSearchParams(window.location.search).get('lang');
+    if (/^(romana|germana|engleza|spaniola)$/.test(languageParam || '')) {
+      return languageParam;
+    }
+
     var source = [
       document.querySelector('.home-link') ? document.querySelector('.home-link').getAttribute('href') : '',
       textFrom('.home-link'),
       document.title,
+      window.location.search,
       window.location.pathname
     ].join(' ').toLowerCase();
 
-    if (/german|germană|germana|deutsch/.test(source)) return 'germana';
+    if (/german|germană|germana|deutsch|rumänisch|zurück/.test(source)) return 'germana';
     if (/englez|engleza|english/.test(source)) return 'engleza';
     if (/spaniol|spaniola|spanish/.test(source)) return 'spaniola';
     return 'romana';

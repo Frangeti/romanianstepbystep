@@ -4919,10 +4919,29 @@
       }
     });
 
+    function getCardLanguage(card) {
+      const category = card.closest('.lesson-category');
+      const categoryId = category?.id || '';
+      const gridLanguage = card.closest('[data-language-lessons]')?.dataset.languageLessons || '';
+      const source = `${categoryId} ${gridLanguage}`.toLowerCase();
+
+      if (source.includes('germana')) return 'germana';
+      if (source.includes('engleza')) return 'engleza';
+      if (source.includes('spaniola')) return 'spaniola';
+      return 'romana';
+    }
+
+    function lessonLinkWithLanguage(card) {
+      const link = card.dataset.lessonLink;
+      if (!link) return '';
+      const separator = link.includes('?') ? '&' : '?';
+      return `${link}${separator}lang=${getCardLanguage(card)}`;
+    }
+
     document.querySelectorAll('[data-lesson-link]').forEach(card => {
       const openCard = () => {
         closeAllAccordions();
-        window.location.href = card.dataset.lessonLink;
+        window.location.href = lessonLinkWithLanguage(card);
       };
 
       card.addEventListener('click', openCard);
