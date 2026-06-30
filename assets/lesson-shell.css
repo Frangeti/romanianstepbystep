@@ -31,7 +31,7 @@
   color: #1d1d1f;
   font-family: 'Atkinson Hyperlegible', sans-serif;
   font-size: clamp(24px, 2vw, 30px);
-  font-weight: 800;
+  font-weight: 400;
   line-height: 1.1;
   text-decoration: none;
   white-space: nowrap;
@@ -65,7 +65,7 @@
   cursor: pointer;
   font-family: 'Atkinson Hyperlegible', sans-serif;
   font-size: 18px;
-  font-weight: 600;
+  font-weight: 400;
   line-height: 1.25;
   text-decoration: none;
   transition: background .18s, border-color .18s, color .18s, transform .18s;
@@ -89,7 +89,7 @@
   background: #0071e3;
   border-color: #0071e3;
   color: #fff;
-  font-weight: 800;
+  font-weight: 400;
   box-shadow: 0 10px 24px rgba(0, 113, 227, .18);
 }
 
