@@ -26,6 +26,24 @@
     return match ? 'Nivel ' + match[1].toUpperCase() : 'Lecție';
   }
 
+  function getActiveLanguage() {
+    var source = [
+      document.querySelector('.home-link') ? document.querySelector('.home-link').getAttribute('href') : '',
+      textFrom('.home-link'),
+      document.title,
+      window.location.pathname
+    ].join(' ').toLowerCase();
+
+    if (/german|germană|germana|deutsch/.test(source)) return 'germana';
+    if (/englez|engleza|english/.test(source)) return 'engleza';
+    if (/spaniol|spaniola|spanish/.test(source)) return 'spaniola';
+    return 'romana';
+  }
+
+  function activeClass(language, activeLanguage) {
+    return language === activeLanguage ? ' is-active' : '';
+  }
+
   function escapeHtml(text) {
     return String(text || '')
       .replace(/&/g, '&amp;')
@@ -77,15 +95,16 @@
   function createTopbar() {
     if (document.querySelector('.lesson-site-topbar')) return;
 
+    var activeLanguage = getActiveLanguage();
     var topbar = document.createElement('header');
     topbar.className = 'lesson-site-topbar';
     topbar.innerHTML = [
       '<a class="lesson-site-logo" href="../../index.html">Romanian <span>Step by Step</span></a>',
       '<nav class="lesson-site-nav" aria-label="Meniu principal">',
-      '<a class="lesson-site-link is-active" href="../../index.html#acasa">Română</a>',
-      '<a class="lesson-site-link" href="../../index.html#a1-germana">Germană</a>',
-      '<a class="lesson-site-link" href="../../index.html#a1-engleza">Engleză</a>',
-      '<a class="lesson-site-link" href="../../index.html#a1-spaniola">Spaniolă</a>',
+      '<a class="lesson-site-link' + activeClass('romana', activeLanguage) + '" href="../../index.html#acasa">Română</a>',
+      '<a class="lesson-site-link' + activeClass('germana', activeLanguage) + '" href="../../index.html#a1-germana">Germană</a>',
+      '<a class="lesson-site-link' + activeClass('engleza', activeLanguage) + '" href="../../index.html#a1-engleza">Engleză</a>',
+      '<a class="lesson-site-link' + activeClass('spaniola', activeLanguage) + '" href="../../index.html#a1-spaniola">Spaniolă</a>',
       '<button class="lesson-login-link" type="button">Login</button>',
       '</nav>'
     ].join('');

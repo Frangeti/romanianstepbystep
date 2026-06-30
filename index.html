@@ -532,13 +532,14 @@
   }
 
   .intro {
-    min-height: var(--intro-match-height, calc((48px * 5) + (5 * (1.35rem + 1px)) + 2.6rem));
+    height: var(--intro-match-height, calc((48px * 5) + (4 * (.7rem + .65rem + 1px)) + 1.3rem));
+    min-height: var(--intro-match-height, calc((48px * 5) + (4 * (.7rem + .65rem + 1px)) + 1.3rem));
     background:
       linear-gradient(135deg, rgba(255, 255, 255, .98) 0%, rgba(244, 249, 251, .98) 58%, rgba(235, 244, 248, .98) 100%);
     border: 1px solid var(--border);
     border-radius: 8px;
     box-shadow: 0 12px 28px rgba(0, 0, 0, .06);
-    padding: clamp(1.55rem, 3.3vw, 3rem);
+    padding: clamp(1.15rem, 2.4vw, 2rem);
     margin-bottom: 1.4rem;
     position: relative;
     overflow: hidden;
@@ -624,8 +625,8 @@
     padding-left: 1rem;
     border-left: 4px solid var(--mint);
     color: #424245;
-    font-size: clamp(17px, 1.35vw, 20px);
-    line-height: 1.65;
+    font-size: clamp(16px, 1.25vw, 19px);
+    line-height: 1.52;
   }
 
   .intro-description strong {
@@ -638,6 +639,273 @@
 
   .intro-level-c1 {
     color: var(--level-c1);
+  }
+
+  .intro-actions {
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+    margin-top: 1rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .subscribe-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding: 10px 20px;
+    border: 1px solid var(--sky);
+    border-radius: 8px;
+    background: var(--sky);
+    color: #fff;
+    cursor: pointer;
+    font-family: 'Atkinson Hyperlegible', sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.2;
+    box-shadow: 0 10px 24px rgba(0, 113, 227, .18);
+    transition: background .18s, border-color .18s, transform .18s;
+  }
+
+  .subscribe-button:hover {
+    background: #0066cc;
+    border-color: #0066cc;
+    transform: translateY(-1px);
+  }
+
+  .subscription-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 1.25rem;
+    background: rgba(29, 29, 31, .36);
+    backdrop-filter: blur(18px);
+  }
+
+  .subscription-modal.is-open {
+    display: flex;
+  }
+
+  .subscription-dialog {
+    width: min(920px, 100%);
+    max-height: calc(100vh - 2.5rem);
+    overflow-y: auto;
+    border: 1px solid rgba(210, 210, 215, .86);
+    border-radius: 8px;
+    background: rgba(251, 251, 253, .96);
+    box-shadow: 0 28px 80px rgba(0, 0, 0, .18);
+  }
+
+  .subscription-head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: clamp(1.25rem, 3vw, 2rem);
+    border-bottom: 1px solid rgba(210, 210, 215, .72);
+  }
+
+  .subscription-head h2 {
+    color: var(--navy);
+    font-size: clamp(28px, 3vw, 40px);
+    font-weight: 400;
+    line-height: 1.1;
+  }
+
+  .subscription-head p {
+    max-width: 620px;
+    margin-top: .45rem;
+    color: var(--muted);
+    font-size: 18px;
+    line-height: 1.45;
+  }
+
+  .subscription-close {
+    flex: 0 0 auto;
+    width: 40px;
+    height: 40px;
+    border: 1px solid rgba(210, 210, 215, .86);
+    border-radius: 50%;
+    background: #fff;
+    color: var(--navy);
+    cursor: pointer;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 1;
+  }
+
+  .subscription-plans {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+    padding: clamp(1.25rem, 3vw, 2rem);
+  }
+
+  .plan-card {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+    padding: clamp(1.15rem, 2.2vw, 1.65rem);
+    border: 1px solid rgba(210, 210, 215, .86);
+    border-radius: 8px;
+    background: #fff;
+    box-shadow: 0 12px 34px rgba(0, 0, 0, .06);
+  }
+
+  .plan-card.is-featured {
+    border-color: rgba(0, 113, 227, .28);
+    background:
+      linear-gradient(145deg, rgba(255, 255, 255, .98), rgba(234, 243, 255, .72));
+  }
+
+  .plan-label {
+    width: max-content;
+    margin-bottom: 1rem;
+    padding: 5px 10px;
+    border-radius: 999px;
+    background: var(--sky-light);
+    color: var(--sky);
+    font-size: 14px;
+  }
+
+  .plan-card h3 {
+    color: var(--navy);
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 1.2;
+  }
+
+  .plan-price {
+    margin: 1rem 0 .65rem;
+    color: var(--navy);
+    font-size: clamp(34px, 4vw, 48px);
+    line-height: 1;
+  }
+
+  .plan-price span {
+    color: var(--muted);
+    font-size: 18px;
+  }
+
+  .plan-card p {
+    color: var(--muted);
+    font-size: 17px;
+    line-height: 1.45;
+  }
+
+  .plan-note {
+    margin-top: auto;
+    padding-top: 1.25rem;
+  }
+
+  .plan-action {
+    width: 100%;
+    min-height: 48px;
+    margin-top: 1.2rem;
+    border: 1px solid var(--sky);
+    border-radius: 8px;
+    background: var(--sky);
+    color: #fff;
+    cursor: pointer;
+    font-family: 'Atkinson Hyperlegible', sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+  }
+
+  .payment-panel {
+    display: none;
+    padding: clamp(1.25rem, 3vw, 2rem);
+  }
+
+  .subscription-dialog.is-payment-step .subscription-plans {
+    display: none;
+  }
+
+  .subscription-dialog.is-payment-step .payment-panel {
+    display: block;
+  }
+
+  .payment-summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    border: 1px solid rgba(210, 210, 215, .86);
+    border-radius: 8px;
+    background: #fff;
+  }
+
+  .payment-summary span {
+    color: var(--muted);
+    font-size: 16px;
+  }
+
+  .payment-summary strong {
+    display: block;
+    color: var(--navy);
+    font-size: 22px;
+    font-weight: 400;
+  }
+
+  .payment-methods {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: .85rem;
+  }
+
+  .payment-method {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: .85rem;
+    min-height: 74px;
+    padding: 1rem;
+    border: 1px solid rgba(210, 210, 215, .86);
+    border-radius: 8px;
+    background: #fff;
+    color: var(--navy);
+    cursor: pointer;
+    font-family: 'Atkinson Hyperlegible', sans-serif;
+    font-size: 19px;
+    font-weight: 400;
+    text-align: left;
+    transition: border-color .18s, box-shadow .18s, transform .18s;
+  }
+
+  .payment-method:hover {
+    border-color: rgba(0, 113, 227, .28);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, .07);
+    transform: translateY(-1px);
+  }
+
+  .payment-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 52px;
+    min-height: 34px;
+    padding: 5px 9px;
+    border-radius: 8px;
+    background: #f5f5f7;
+    color: var(--navy);
+    font-size: 14px;
+  }
+
+  .payment-back {
+    margin-top: 1rem;
+    border: 0;
+    background: transparent;
+    color: var(--sky);
+    cursor: pointer;
+    font-family: 'Atkinson Hyperlegible', sans-serif;
+    font-size: 17px;
   }
 
   .stats {
@@ -1524,8 +1792,9 @@
   }
 
   .intro {
-    min-height: var(--intro-match-height, calc((48px * 5) + (5 * (1.35rem + 1px)) + 2.6rem));
-    padding: clamp(1.8rem, 3.5vw, 3.5rem);
+    height: var(--intro-match-height, calc((48px * 5) + (4 * (.7rem + .65rem + 1px)) + 1.3rem));
+    min-height: var(--intro-match-height, calc((48px * 5) + (4 * (.7rem + .65rem + 1px)) + 1.3rem));
+    padding: clamp(1.15rem, 2.4vw, 2rem);
   }
 
   .stats {
@@ -1912,11 +2181,28 @@
     .sidebar { display: none; }
     .main { padding: 1rem; }
     .main > section { margin-top: 0; }
+    .intro {
+      height: auto;
+      min-height: 0;
+    }
     .intro::after { display: none; }
     .intro-copy { display: block; }
     .intro-description {
       padding-left: .85rem;
       font-size: 20px;
+    }
+    .subscription-plans {
+      grid-template-columns: 1fr;
+    }
+    .payment-methods {
+      grid-template-columns: 1fr;
+    }
+    .payment-summary {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+    .subscription-head {
+      align-items: flex-start;
     }
     h1 {
       max-width: none;
@@ -2756,19 +3042,11 @@
             <h1>Învață română pas cu pas</h1>
             <p class="intro-tagline">From <span class="intro-level-a1">A1</span> to <span class="intro-level-c1">C1</span></p>
             <p class="intro-description"><strong>Română pas cu pas</strong> este un ghid structurat pentru învățarea limbii române, conceput pe principii pedagogice progresive. Lucrarea parcurge sistematic elementele fundamentale ale gramaticii, vocabularului și pronunției, oferind cursantului instrumentele necesare pentru o înțelegere temeinică a limbii, de la noțiunile elementare până la competența comunicativă avansată.</p>
+            <div class="intro-actions">
+              <button class="subscribe-button" type="button">Subscribe</button>
+            </div>
           </div>
 
-          <div class="stats" aria-label="Rezumat">
-            <div class="stat">
-              <span>Lessons</span>
-            </div>
-            <div class="stat">
-              <span>Audios</span>
-            </div>
-            <div class="stat">
-              <span>Exercises</span>
-            </div>
-          </div>
         </section>
 
         <section id="romana-a1-incepator">
@@ -3461,6 +3739,38 @@
                   <span class="resource-status">Lecție pentru copii inclusă în A1</span>
                 </div>
               </article>
+              <article class="lesson-card" data-lesson-link="lessons/a1/lectie-copii-animale-companie.html" data-lesson-no="PETS" tabindex="0" role="link">
+                <div class="lesson-head">
+                  <div class="meta">
+                    <span class="badge badge-b2">Nivel A1</span>
+                    <span class="badge badge-tech">Deutsch</span>
+                    <span class="badge badge-live">Activă</span>
+                  </div>
+                  <div class="lesson-title" data-topic="Haustiere & Verben">Animale de companie</div>
+                  <p class="lesson-desc">Lecție pentru copii despre animale de companie și verbe simple: a plimba, a mângâia, a hrăni și a se juca cu.</p>
+                </div>
+                <div class="lesson-body">
+                  <div class="lesson-features">
+                    <div class="feature">
+                      <strong>Animale</strong>
+                      <span>câine, pisică, iepure, hamster</span>
+                    </div>
+                    <div class="feature">
+                      <strong>Verbe</strong>
+                      <span>a plimba, a mângâia, a hrăni</span>
+                    </div>
+                    <div class="feature">
+                      <strong>Joacă</strong>
+                      <span>a se juca cu mingea</span>
+                    </div>
+                    <div class="feature">
+                      <strong>Jocuri</strong>
+                      <span>quiz, potriviri și propoziții</span>
+                    </div>
+                  </div>
+                  <span class="resource-status">Lecție pentru copii inclusă în A1</span>
+                </div>
+              </article>
               </div>
             </div>
 
@@ -4091,6 +4401,76 @@
       </main>
     </div>
 
+    <div class="subscription-modal" id="subscription-modal" aria-hidden="true">
+      <div class="subscription-dialog" role="dialog" aria-modal="true" aria-labelledby="subscription-title">
+        <div class="subscription-head">
+          <div>
+            <h2 id="subscription-title">Abonamente</h2>
+          </div>
+          <button class="subscription-close" type="button" aria-label="Închide">×</button>
+        </div>
+
+        <div class="subscription-plans">
+          <article class="plan-card">
+            <span class="plan-label">Flexibil</span>
+            <h3>Abonament lunar</h3>
+            <div class="plan-price">€14,99 <span>/ lună</span></div>
+            <p>Plată recurentă lunară, potrivită pentru învățare pas cu pas.</p>
+            <p class="plan-note">Se poate anula oricând.</p>
+            <button class="plan-action" type="button" data-plan-name="Abonament lunar" data-plan-price="€14,99 / lună">SUBSCRIBE</button>
+          </article>
+
+          <article class="plan-card is-featured">
+            <span class="plan-label">Cel mai bun preț</span>
+            <h3>Abonament anual</h3>
+            <div class="plan-price">€99,99 <span>/ an</span></div>
+            <p>Plată recurentă anuală, ideală pentru un parcurs complet.</p>
+            <p class="plan-note">Se poate anula oricând.</p>
+            <button class="plan-action" type="button" data-plan-name="Abonament anual" data-plan-price="€99,99 / an">SUBSCRIBE</button>
+          </article>
+        </div>
+
+        <div class="payment-panel">
+          <div class="payment-summary">
+            <div>
+              <span>Plan selectat</span>
+              <strong data-selected-plan>Abonament</strong>
+            </div>
+            <strong data-selected-price>€0</strong>
+          </div>
+
+          <div class="payment-methods" aria-label="Opțiuni de plată">
+            <button class="payment-method" type="button">
+              Card bancar
+              <span class="payment-icon">VISA</span>
+            </button>
+            <button class="payment-method" type="button">
+              Apple Pay
+              <span class="payment-icon"> Pay</span>
+            </button>
+            <button class="payment-method" type="button">
+              Google Pay
+              <span class="payment-icon">G Pay</span>
+            </button>
+            <button class="payment-method" type="button">
+              PayPal
+              <span class="payment-icon">PayPal</span>
+            </button>
+            <button class="payment-method" type="button">
+              Transfer bancar
+              <span class="payment-icon">IBAN</span>
+            </button>
+            <button class="payment-method" type="button">
+              Revolut Pay
+              <span class="payment-icon">REV</span>
+            </button>
+          </div>
+
+          <button class="payment-back" type="button">Înapoi la abonamente</button>
+        </div>
+      </div>
+    </div>
+
     <footer class="footer">
       Romanian Step by Step · Site static pregătit pentru GitHub Pages
     </footer>
@@ -4108,6 +4488,14 @@
     const homeTools = document.querySelector('[data-home-tools]');
     const languageCategoryLinks = document.querySelectorAll('.sid-item[data-language-category]');
     const lessonCategories = document.querySelectorAll('.lesson-category[id]');
+    const subscribeButton = document.querySelector('.subscribe-button');
+    const subscriptionModal = document.querySelector('#subscription-modal');
+    const subscriptionDialog = document.querySelector('.subscription-dialog');
+    const subscriptionClose = document.querySelector('.subscription-close');
+    const planActions = document.querySelectorAll('.plan-action');
+    const selectedPlan = document.querySelector('[data-selected-plan]');
+    const selectedPrice = document.querySelector('[data-selected-price]');
+    const paymentBack = document.querySelector('.payment-back');
 
     function syncIntroWithSidebar() {
       const intro = document.querySelector('.intro');
@@ -4119,10 +4507,7 @@
         return;
       }
 
-      const panelRect = sidebarPanel.getBoundingClientRect();
-      const c1Level = document.querySelector('[data-home-tools].is-open [data-level-filter="c1"]');
-      const targetRect = c1Level ? c1Level.getBoundingClientRect() : panelRect;
-      const targetHeight = Math.ceil(targetRect.bottom - panelRect.top);
+      const targetHeight = Math.ceil(sidebarPanel.getBoundingClientRect().height);
 
       if (targetHeight > 0) {
         document.documentElement.style.setProperty('--intro-match-height', `${targetHeight}px`);
@@ -4131,6 +4516,36 @@
 
     function scheduleIntroSync() {
       window.requestAnimationFrame(syncIntroWithSidebar);
+    }
+
+    function openSubscriptionModal() {
+      if (!subscriptionModal) return;
+      subscriptionDialog?.classList.remove('is-payment-step');
+      subscriptionModal.classList.add('is-open');
+      subscriptionModal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      subscriptionClose?.focus();
+    }
+
+    function closeSubscriptionModal() {
+      if (!subscriptionModal) return;
+      subscriptionModal.classList.remove('is-open');
+      subscriptionModal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+      subscribeButton?.focus();
+    }
+
+    function openPaymentStep(button) {
+      if (!subscriptionDialog) return;
+      if (selectedPlan) selectedPlan.textContent = button.dataset.planName || 'Abonament';
+      if (selectedPrice) selectedPrice.textContent = button.dataset.planPrice || '';
+      subscriptionDialog.classList.add('is-payment-step');
+      subscriptionDialog.querySelector('.payment-method')?.focus();
+    }
+
+    function showSubscriptionPlans() {
+      subscriptionDialog?.classList.remove('is-payment-step');
+      subscriptionDialog?.querySelector('.plan-action')?.focus();
     }
 
     function setActiveMenu(item) {
@@ -4226,7 +4641,9 @@
     }
 
     function closeLanguageTools() {
-      languageToolMenus.forEach(menu => menu.classList.remove('is-open'));
+      languageToolMenus.forEach(menu => {
+        if (menu !== homeTools) menu.classList.remove('is-open');
+      });
       scheduleIntroSync();
     }
 
@@ -4486,6 +4903,21 @@
     scheduleIntroSync();
     window.addEventListener('load', syncIntroWithSidebar);
     window.addEventListener('resize', scheduleIntroSync);
+
+    subscribeButton?.addEventListener('click', openSubscriptionModal);
+    subscriptionClose?.addEventListener('click', closeSubscriptionModal);
+    planActions.forEach(button => {
+      button.addEventListener('click', () => openPaymentStep(button));
+    });
+    paymentBack?.addEventListener('click', showSubscriptionPlans);
+    subscriptionModal?.addEventListener('click', event => {
+      if (event.target === subscriptionModal) closeSubscriptionModal();
+    });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape' && subscriptionModal?.classList.contains('is-open')) {
+        closeSubscriptionModal();
+      }
+    });
 
     document.querySelectorAll('[data-lesson-link]').forEach(card => {
       const openCard = () => {
