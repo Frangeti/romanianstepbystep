@@ -26,9 +26,18 @@
     return match ? 'Nivel ' + match[1].toUpperCase() : 'Lecție';
   }
 
+  function escapeHtml(text) {
+    return String(text || '')
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+  }
+
   function cleanTopicText(text, type) {
     var cleaned = (text || '')
-      .replace(/[^\p{L}\p{N}\săâîșțĂÂÎȘȚ&-]/gu, ' ')
+      .replace(/[^A-Za-z0-9ăâîșțĂÂÎȘȚ\s&-]/g, ' ')
       .replace(/\s+/g, ' ')
       .trim();
 
@@ -100,14 +109,14 @@
 
     card.innerHTML = [
       '<div class="lesson-hero-topline">',
-      '<span class="lesson-universal-eyebrow">' + getLessonLevel() + '</span>',
+      '<span class="lesson-universal-eyebrow">' + escapeHtml(getLessonLevel()) + '</span>',
       '<span class="lesson-universal-note">În această lecție vom învăța</span>',
       '</div>',
-      '<h1>' + title + '</h1>',
-      '<p>' + subtitle + '</p>',
+      '<h1>' + escapeHtml(title) + '</h1>',
+      '<p>' + escapeHtml(subtitle) + '</p>',
       '<div class="lesson-hero-facts">',
-      '<div class="lesson-hero-fact"><span>Vocabular despre</span><strong>' + vocabTopic + '</strong></div>',
-      '<div class="lesson-hero-fact"><span>Gramatică despre</span><strong>' + grammarTopic + '</strong></div>',
+      '<div class="lesson-hero-fact"><span>Vocabular despre</span><strong>' + escapeHtml(vocabTopic) + '</strong></div>',
+      '<div class="lesson-hero-fact"><span>Gramatică despre</span><strong>' + escapeHtml(grammarTopic) + '</strong></div>',
       '</div>'
     ].join('');
 
