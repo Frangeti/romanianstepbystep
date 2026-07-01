@@ -4165,6 +4165,33 @@
                 </div>
               </div>
             </div>
+            <div class="lesson-category" id="b2-engleza">
+              <div class="lesson-category-head">
+                <h4>Lecții B2 de limba română pentru vorbitorii de limba engleză</h4>
+              </div>
+              <div class="lesson-grid" data-language-lessons="engleza">
+                <article class="lesson-card" data-lesson-link="lessons/b2/la-aeroport-engleza.html" data-lesson-no="AIR" tabindex="0" role="link">
+                  <div class="lesson-head">
+                    <div class="meta">
+                      <span class="badge badge-b2">Nivel B2</span>
+                      <span class="badge badge-tech">English</span>
+                      <span class="badge badge-live">Activă</span>
+                    </div>
+                    <div class="lesson-title" data-topic="Airport & Future Tense">La aeroport</div>
+                    <p class="lesson-desc">Vocabular de călătorie cu avionul, verbe de mișcare, dialoguri la aeroport și cele trei forme ale viitorului în română.</p>
+                  </div>
+                  <div class="lesson-body">
+                    <div class="lesson-features">
+                      <div class="feature"><strong>Aeroport</strong><span>check-in, securitate, poartă, bagaje</span></div>
+                      <div class="feature"><strong>Mișcare</strong><span>a intra, a ieși, a urca, a coborî</span></div>
+                      <div class="feature"><strong>Ordine</strong><span>plecare și sosire pas cu pas</span></div>
+                      <div class="feature"><strong>Gramatică</strong><span>viitor clasic, popular, colocvial</span></div>
+                    </div>
+                    <span class="resource-status">Lecție inclusă în B2</span>
+                  </div>
+                </article>
+              </div>
+            </div>
           </div>
 
           <div class="level-section" id="c1" data-level-section="c1">
@@ -4735,6 +4762,22 @@
       showLessonCategory(getLanguageHash(language).slice(1));
     }
 
+    function showLanguageLessonsForLevel(language, level) {
+      let visibleCount = 0;
+      levelSections.forEach(section => {
+        const isMatch = section.dataset.levelSection === level;
+        section.classList.toggle('is-hidden', !isMatch);
+        if (!isMatch) return;
+
+        section.querySelectorAll('.lesson-category').forEach(category => {
+          const isLanguageCategory = category.id === `${level}-${language}`;
+          category.classList.toggle('is-hidden', !isLanguageCategory);
+          if (isLanguageCategory) visibleCount++;
+        });
+      });
+      if (emptyLevel) emptyLevel.classList.toggle('is-hidden', visibleCount > 0);
+    }
+
     function showLessonCategory(selectedId) {
       showLessonsForLevel(selectedId.split('-')[0]);
       lessonCategories.forEach(category => {
@@ -4820,7 +4863,7 @@
             } else if (languageLevel && link.dataset.languageKids !== undefined) {
               showKidsForLevel(languageLevel);
             } else if (languageLevel) {
-              showLessonsForLevel(languageLevel);
+              showLanguageLessonsForLevel(language, languageLevel);
             }
             showOnlySidebarLanguage(language);
             openLanguageTools(language);

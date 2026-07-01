@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Romanian Step by Step B2 — La aeroport</title>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=DM+Mono&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #F7F5F0;
+    --surface: #FFFFFF;
+    --surface2: #F0EDE8;
+    --text: #1A1814;
+    --text2: #6B6560;
+    --text3: #A09B95;
+    --navy: #2f4a60;
+    --navy-light: #f6f8f9;
+    --green: #c89524;
+    --green-light: #fff4d8;
+    --red: #b34a35;
+    --red-light: #faece7;
+    --amber: #8a5a0a;
+    --amber-light: #fff4dc;
+    --border: rgba(26,24,20,0.1);
+    --border2: rgba(26,24,20,0.06);
+    --radius: 12px;
+    --radius-sm: 8px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Atkinson Hyperlegible', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; line-height: 1.7; }
+  .header { background: var(--navy); color: #fff; padding: 3rem 2rem 2.5rem; }
+  .header-inner { max-width: 920px; margin: 0 auto; }
+  .home-link { display: inline-block; color: rgba(255,255,255,0.78); font-size: 13px; text-decoration: none; margin-bottom: .9rem; }
+  .level-tag { display: inline-block; background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.25); color: #fff; font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; padding: 4px 12px; border-radius: 20px; margin-bottom: 1rem; }
+  h1 { font-size: clamp(30px, 5vw, 46px); font-weight: 400; line-height: 1.15; margin-bottom: .55rem; }
+  .header p { max-width: 720px; color: rgba(255,255,255,0.8); font-size: 15px; }
+  .header-meta { display: flex; gap: .7rem; margin-top: 1.4rem; flex-wrap: wrap; }
+  .header-meta span { border: 1px solid rgba(255,255,255,0.24); border-radius: 99px; padding: 5px 10px; color: rgba(255,255,255,0.78); font-size: 12px; }
+  .layout { display: flex; max-width: 980px; margin: 0 auto; }
+  .sidebar { width: 230px; flex-shrink: 0; padding: 2rem 0 2rem 1rem; position: sticky; top: 0; height: 100vh; overflow-y: auto; }
+  .sidebar-label { font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--text3); margin-bottom: .75rem; padding-left: .75rem; }
+  .nav-item { display: flex; align-items: center; gap: 8px; width: 100%; margin-bottom: 3px; padding: .6rem .75rem; border: 0; border-radius: var(--radius-sm); background: transparent; color: var(--text2); cursor: pointer; font-family: inherit; font-size: 13px; text-align: left; }
+  .nav-item:hover, .nav-item.active { background: var(--surface); color: var(--navy); font-weight: 700; }
+  .nav-item::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: #e0ad2f; flex: 0 0 7px; box-shadow: 0 0 0 3px rgba(255, 244, 216, .78); }
+  .nav-num { margin-left: auto; color: var(--text3); font-family: 'DM Mono', monospace; font-size: 10px; }
+  .main { flex: 1; min-width: 0; padding: 2rem 1rem 2rem 1.5rem; }
+  .section { display: none; }
+  .section.active { display: block; animation: fadeIn .18s ease; }
+  @keyframes fadeIn { from { opacity: .4; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+  .section-header { display: flex; gap: 1rem; align-items: flex-start; margin-bottom: 1.5rem; padding-bottom: 1.1rem; border-bottom: 1px solid var(--border2); }
+  .section-icon { width: 44px; height: 44px; border-radius: var(--radius-sm); display: grid; place-items: center; flex-shrink: 0; background: var(--navy-light); color: var(--navy); font-weight: 700; }
+  .section-header h2 { font-size: 24px; font-weight: 400; margin-bottom: 2px; }
+  .section-header p { color: var(--text2); font-size: 13px; }
+  .card, .text-passage, .writing-box { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.25rem; margin-bottom: 1.25rem; }
+  .card-title { margin-bottom: 1rem; color: var(--text3); font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+  .tag { display: inline-block; margin: .35rem 0 .75rem; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; }
+  .tag-navy { background: var(--navy-light); color: var(--navy); }
+  .tag-green { background: var(--green-light); color: var(--green); }
+  .tag-red { background: var(--red-light); color: var(--red); }
+  .tag-amber { background: var(--amber-light); color: var(--amber); }
+  .vocab-grid, .three-col { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 8px; margin-bottom: 1.25rem; }
+  .vocab-item, .mini-card { background: var(--surface2); border: 1px solid var(--border2); border-radius: var(--radius-sm); padding: .75rem .85rem; }
+  .vocab-ro, .mini-card strong { color: var(--text); font-size: 14px; font-weight: 700; }
+  .vocab-en, .mini-card span { display: block; margin-top: 2px; color: var(--text3); font-family: 'DM Mono', monospace; font-size: 11px; }
+  .expr-item { padding: .75rem 0; border-bottom: 1px solid var(--border2); }
+  .expr-item:last-child { border-bottom: 0; padding-bottom: 0; }
+  .expr-ro { color: var(--text); font-size: 14px; font-weight: 700; }
+  .expr-ex { color: var(--text2); font-size: 13px; font-style: italic; margin-top: 3px; }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .grammar-rule { background: var(--surface2); border-left: 3px solid var(--navy); border-radius: var(--radius-sm); padding: .9rem 1rem; margin-bottom: .75rem; }
+  .rule-label { color: var(--navy); font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; margin-bottom: .35rem; }
+  .grammar-rule p { color: var(--text2); font-size: 14px; }
+  .timeline { display: grid; gap: 8px; counter-reset: step; }
+  .step-card { display: grid; grid-template-columns: 34px 1fr; gap: 10px; align-items: start; background: var(--surface2); border: 1px solid var(--border2); border-radius: var(--radius-sm); padding: .8rem; }
+  .step-card::before { counter-increment: step; content: counter(step); display: grid; place-items: center; width: 30px; height: 30px; border-radius: 50%; background: var(--navy); color: #fff; font-family: 'DM Mono', monospace; font-size: 12px; }
+  ul { padding-left: 1.1rem; }
+  li { margin-bottom: .3rem; font-size: 14px; }
+  .ex-item { margin-bottom: 1rem; }
+  .ex-item label { display: block; margin-bottom: .4rem; color: var(--text); font-size: 14px; font-weight: 700; }
+  select, input, textarea { width: 100%; padding: 9px 11px; border: 1px solid var(--border); border-radius: var(--radius-sm); background: var(--bg); color: var(--text); font-family: inherit; font-size: 14px; }
+  textarea { min-height: 92px; resize: vertical; }
+  .match-row { display: grid; grid-template-columns: minmax(210px, 1fr) 140px; gap: 10px; align-items: center; margin-bottom: .75rem; }
+  .match-label { font-size: 14px; font-weight: 700; }
+  .options { margin: 1rem 0; padding: .8rem 1rem; border-radius: var(--radius-sm); background: var(--surface2); color: var(--text2); font-size: 13px; }
+  .btn { display: inline-flex; align-items: center; justify-content: center; min-height: 38px; padding: 8px 16px; border: 1px solid var(--navy); border-radius: var(--radius-sm); background: var(--navy); color: #fff; cursor: pointer; font-family: inherit; font-size: 13px; font-weight: 700; }
+  .feedback { display: none; margin-top: .75rem; padding: 8px 12px; border-radius: var(--radius-sm); font-size: 13px; }
+  .feedback.ok { display: block; background: var(--green-light); color: var(--green); }
+  .feedback.err { display: block; background: var(--red-light); color: var(--red); }
+  .writing-box { background: var(--amber-light); border-color: rgba(138,90,10,.18); }
+  .writing-box h3 { margin-bottom: .5rem; color: var(--amber); font-size: 13px; letter-spacing: .06em; text-transform: uppercase; }
+  .footer { margin-top: 2rem; padding: 1.5rem; border-top: 1px solid var(--border); background: var(--surface); color: var(--text3); text-align: center; font-size: 12px; }
+  @media (max-width: 760px) {
+    .layout { display: block; }
+    .sidebar { position: static; width: auto; height: auto; padding: 1rem; display: flex; gap: 6px; overflow-x: auto; }
+    .sidebar-label, .nav-num { display: none; }
+    .nav-item { min-width: max-content; }
+    .main { padding: 1.25rem; }
+    .two-col, .match-row { grid-template-columns: 1fr; }
+  }
+</style>
+<link rel="stylesheet" href="../../assets/lesson-shell.css">
+</head>
+<body>
+<header class="header">
+  <div class="header-inner">
+    <a class="home-link" href="../../index.html#b2-engleza">Romanian Step by Step · English · B2</a>
+    <div class="level-tag">Nivel B2 · Română pentru vorbitori de engleză</div>
+    <h1>La aeroport</h1>
+    <p>Airport Romanian for confident travel: movement verbs, airport procedures, flight vocabulary, in-flight phrases, dialogues and the three main future forms.</p>
+    <div class="header-meta">
+      <span>8 secțiuni</span>
+      <span>90 de minute</span>
+      <span>Călătorie cu avionul</span>
+      <span>Exerciții interactive</span>
+    </div>
+  </div>
+</header>
+
+<div class="layout">
+  <nav class="sidebar" aria-label="Navigare lecție">
+    <div class="sidebar-label">Secțiuni</div>
+    <button class="nav-item active" onclick="showSection('obiective', this)"><span>01</span>Obiective<span class="nav-num">01</span></button>
+    <button class="nav-item" onclick="showSection('aeroport', this)"><span>02</span>Aeroport<span class="nav-num">02</span></button>
+    <button class="nav-item" onclick="showSection('miscare', this)"><span>03</span>Verbe<span class="nav-num">03</span></button>
+    <button class="nav-item" onclick="showSection('proceduri', this)"><span>04</span>Proceduri<span class="nav-num">04</span></button>
+    <button class="nav-item" onclick="showSection('avion', this)"><span>05</span>În avion<span class="nav-num">05</span></button>
+    <button class="nav-item" onclick="showSection('dialoguri', this)"><span>06</span>Dialoguri<span class="nav-num">06</span></button>
+    <button class="nav-item" onclick="showSection('viitor', this)"><span>07</span>Viitorul<span class="nav-num">07</span></button>
+    <button class="nav-item" onclick="showSection('exercitii', this)"><span>08</span>Exerciții<span class="nav-num">08</span></button>
+  </nav>
+
+  <main class="main">
+    <section id="sec-obiective" class="section active">
+      <div class="section-header"><div class="section-icon">B2</div><div><h2>Obiectivele lecției</h2><p>What you will be able to do at the airport and during a flight.</p></div></div>
+      <div class="card">
+        <div class="card-title">La finalul lecției vei putea</div>
+        <ul>
+          <li>să descrii pașii de la plecare și de la sosire;</li>
+          <li>să folosești verbe de mișcare cu sensuri precise;</li>
+          <li>să ceri informații la check-in, securitate, poartă și control pașapoarte;</li>
+          <li>să vorbești politicos cu echipajul în avion;</li>
+          <li>să folosești viitorul clasic, popular și colocvial în contexte reale.</li>
+        </ul>
+      </div>
+      <div class="writing-box"><h3>Scop comunicativ</h3><p>Să poți gestiona o călătorie cu avionul în română, de la intrarea în aeroport până la ieșirea din terminalul de sosiri.</p></div>
+    </section>
+
+    <section id="sec-aeroport" class="section">
+      <div class="section-header"><div class="section-icon">02</div><div><h2>Ce există într-un aeroport</h2><p>Airport places, documents and services.</p></div></div>
+      <span class="tag tag-navy">Locuri</span>
+      <div class="vocab-grid">
+        <div class="vocab-item"><div class="vocab-ro">terminal</div><div class="vocab-en">terminal</div></div>
+        <div class="vocab-item"><div class="vocab-ro">ghișeu de check-in</div><div class="vocab-en">check-in desk</div></div>
+        <div class="vocab-item"><div class="vocab-ro">control de securitate</div><div class="vocab-en">security check</div></div>
+        <div class="vocab-item"><div class="vocab-ro">control pașapoarte</div><div class="vocab-en">passport control</div></div>
+        <div class="vocab-item"><div class="vocab-ro">poartă de îmbarcare</div><div class="vocab-en">boarding gate</div></div>
+        <div class="vocab-item"><div class="vocab-ro">bandă de bagaje</div><div class="vocab-en">baggage carousel</div></div>
+        <div class="vocab-item"><div class="vocab-ro">birou de informații</div><div class="vocab-en">information desk</div></div>
+        <div class="vocab-item"><div class="vocab-ro">zonă duty-free</div><div class="vocab-en">duty-free area</div></div>
+      </div>
+      <span class="tag tag-green">Documente și obiecte</span>
+      <div class="vocab-grid">
+        <div class="vocab-item"><div class="vocab-ro">pașaport</div><div class="vocab-en">passport</div></div>
+        <div class="vocab-item"><div class="vocab-ro">carte de îmbarcare</div><div class="vocab-en">boarding pass</div></div>
+        <div class="vocab-item"><div class="vocab-ro">bagaj de cală</div><div class="vocab-en">checked luggage</div></div>
+        <div class="vocab-item"><div class="vocab-ro">bagaj de mână</div><div class="vocab-en">carry-on luggage</div></div>
+        <div class="vocab-item"><div class="vocab-ro">etichetă de bagaj</div><div class="vocab-en">luggage tag</div></div>
+        <div class="vocab-item"><div class="vocab-ro">viză</div><div class="vocab-en">visa</div></div>
+      </div>
+    </section>
+
+    <section id="sec-miscare" class="section">
+      <div class="section-header"><div class="section-icon">03</div><div><h2>Verbe de mișcare</h2><p>Useful verbs for moving through an airport.</p></div></div>
+      <div class="vocab-grid">
+        <div class="vocab-item"><div class="vocab-ro">a intra în terminal</div><div class="vocab-en">to enter the terminal</div></div>
+        <div class="vocab-item"><div class="vocab-ro">a ieși din aeroport</div><div class="vocab-en">to leave the airport</div></div>
+        <div class="vocab-item"><div class="vocab-ro">a urca în avion</div><div class="vocab-en">to get on the plane</div></div>
+        <div class="vocab-item"><div class="vocab-ro">a coborî din avion</div><div class="vocab-en">to get off the plane</div></div>
+        <div class="vocab-item"><div class="vocab-ro">a merge spre poartă</div><div class="vocab-en">to go toward the gate</div></div>
+        <div class="vocab-item"><div class="vocab-ro">a trece prin securitate</div><div class="vocab-en">to go through security</div></div>
+        <div class="vocab-item"><div class="vocab-ro">a se îndrepta către ieșire</div><div class="vocab-en">to head toward the exit</div></div>
+        <div class="vocab-item"><div class="vocab-ro">a ajunge la timp</div><div class="vocab-en">to arrive on time</div></div>
+        <div class="vocab-item"><div class="vocab-ro">a decola</div><div class="vocab-en">to take off</div></div>
+        <div class="vocab-item"><div class="vocab-ro">a ateriza</div><div class="vocab-en">to land</div></div>
+      </div>
+      <div class="card">
+        <div class="card-title">Observație B2</div>
+        <p>În română folosim des perechi cu prepoziții: <strong>a intra în</strong>, <strong>a ieși din</strong>, <strong>a urca în</strong>, <strong>a coborî din</strong>, <strong>a trece prin</strong>, <strong>a merge spre/către</strong>.</p>
+      </div>
+    </section>
+
+    <section id="sec-proceduri" class="section">
+      <div class="section-header"><div class="section-icon">04</div><div><h2>Ordinea activităților</h2><p>Departure and arrival procedures.</p></div></div>
+      <div class="two-col">
+        <div class="card">
+          <div class="card-title">La plecare</div>
+          <div class="timeline">
+            <div class="step-card"><div><strong>Intri în terminal.</strong><br>Verifici panoul de plecări.</div></div>
+            <div class="step-card"><div><strong>Faci check-inul.</strong><br>Predai bagajul de cală și primești cartea de îmbarcare.</div></div>
+            <div class="step-card"><div><strong>Treci prin securitate.</strong><br>Scoți lichidele și electronicele dacă ți se cere.</div></div>
+            <div class="step-card"><div><strong>Mergi la poartă.</strong><br>Aștepți anunțul de îmbarcare.</div></div>
+            <div class="step-card"><div><strong>Te îmbarci.</strong><br>Urci în avion și îți găsești locul.</div></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-title">La sosire</div>
+          <div class="timeline">
+            <div class="step-card"><div><strong>Avionul aterizează.</strong><br>Aștepți oprirea completă.</div></div>
+            <div class="step-card"><div><strong>Cobori din avion.</strong><br>Urmezi indicatoarele spre sosiri.</div></div>
+            <div class="step-card"><div><strong>Treci prin controlul pașapoartelor.</strong><br>Prezinți documentele.</div></div>
+            <div class="step-card"><div><strong>Ridici bagajul.</strong><br>Mergi la banda de bagaje.</div></div>
+            <div class="step-card"><div><strong>Ieși din aeroport.</strong><br>Cauți taxiul, trenul sau persoana care te așteaptă.</div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="sec-avion" class="section">
+      <div class="section-header"><div class="section-icon">05</div><div><h2>Ce se poate spune în avion</h2><p>Polite and practical in-flight phrases.</p></div></div>
+      <div class="card">
+        <div class="expr-item"><div class="expr-ro">Scuzați-mă, acesta este locul meu?</div><div class="expr-ex">Excuse me, is this my seat?</div></div>
+        <div class="expr-item"><div class="expr-ro">Aș putea să trec, vă rog?</div><div class="expr-ex">Could I get through, please?</div></div>
+        <div class="expr-item"><div class="expr-ro">Îmi puteți aduce un pahar cu apă?</div><div class="expr-ex">Could you bring me a glass of water?</div></div>
+        <div class="expr-item"><div class="expr-ro">Unde pot pune bagajul de mână?</div><div class="expr-ex">Where can I put my carry-on?</div></div>
+        <div class="expr-item"><div class="expr-ro">Mi-e puțin rău. Aveți o pungă?</div><div class="expr-ex">I feel a bit sick. Do you have a bag?</div></div>
+        <div class="expr-item"><div class="expr-ro">Când vom ateriza?</div><div class="expr-ex">When will we land?</div></div>
+      </div>
+    </section>
+
+    <section id="sec-dialoguri" class="section">
+      <div class="section-header"><div class="section-icon">06</div><div><h2>Dialoguri și situații</h2><p>Realistic airport communication.</p></div></div>
+      <div class="card">
+        <div class="card-title">La check-in</div>
+        <p><strong>Pasager:</strong> Bună ziua. Am un zbor spre Londra la ora 16:20.</p>
+        <p><strong>Agent:</strong> Bună ziua. Pașaportul și biletul, vă rog. Aveți bagaj de cală?</p>
+        <p><strong>Pasager:</strong> Da, o valiză. Aș dori un loc la culoar, dacă se poate.</p>
+        <p><strong>Agent:</strong> Sigur. Poarta va fi afișată cu aproximativ o oră înainte de plecare.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Zbor întârziat</div>
+        <p><strong>Pasager:</strong> Scuzați-mă, știți de ce este întârziat zborul?</p>
+        <p><strong>Angajat:</strong> Din cauza vremii. Noua oră estimată de plecare este 18:10.</p>
+        <p><strong>Pasager:</strong> Voi pierde conexiunea. Unde pot primi ajutor?</p>
+        <p><strong>Angajat:</strong> Mergeți la biroul companiei aeriene. Colegii mei vă vor reprograma.</p>
+      </div>
+      <div class="writing-box"><h3>Situații pentru conversație</h3><ul><li>Bagajul tău nu apare pe bandă.</li><li>Poarta de îmbarcare s-a schimbat.</li><li>Ai nevoie de un loc lângă fereastră.</li><li>Ai pierdut conexiunea și ceri o soluție.</li></ul></div>
+    </section>
+
+    <section id="sec-viitor" class="section">
+      <div class="section-header"><div class="section-icon">07</div><div><h2>Gramatica: viitorul în limba română</h2><p>Three common future forms: formal/classic, popular and colloquial.</p></div></div>
+      <div class="grammar-rule">
+        <div class="rule-label">1. Viitorul clasic / literar</div>
+        <p><strong>voi, vei, va, vom, veți, vor + infinitiv</strong>: Eu voi pleca mâine. Avionul va decola la timp. Este forma neutră, corectă în scris și în situații oficiale.</p>
+      </div>
+      <div class="grammar-rule">
+        <div class="rule-label">2. Viitorul popular</div>
+        <p><strong>o să + conjunctiv</strong>: Eu o să plec mâine. Noi o să ajungem seara. Este foarte frecvent în vorbirea naturală.</p>
+      </div>
+      <div class="grammar-rule">
+        <div class="rule-label">3. Viitorul colocvial cu „am să”</div>
+        <p><strong>am/ai/are/avem/aveți/au să + conjunctiv</strong>: Am să verific poarta. Are să mă sune când aterizează. Este conversațional și poate suna personal sau intențional.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Același sens, trei registre</div>
+        <div class="three-col">
+          <div class="mini-card"><strong>Voi merge la poartă.</strong><span>formal / standard</span></div>
+          <div class="mini-card"><strong>O să merg la poartă.</strong><span>natural / popular</span></div>
+          <div class="mini-card"><strong>Am să merg la poartă.</strong><span>colocvial / intenție</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="sec-exercitii" class="section">
+      <div class="section-header"><div class="section-icon">08</div><div><h2>Exerciții</h2><p>Check vocabulary, order of activities and future forms.</p></div></div>
+      <div class="card">
+        <div class="card-title">1. Potrivește vocabularul</div>
+        <div class="match-row"><div class="match-label">1. boarding pass</div><select id="v1"><option value="">alege</option><option value="A">carte de îmbarcare</option><option value="B">bandă de bagaje</option><option value="C">poartă</option></select></div>
+        <div class="match-row"><div class="match-label">2. baggage carousel</div><select id="v2"><option value="">alege</option><option value="A">control pașapoarte</option><option value="B">bandă de bagaje</option><option value="C">bagaj de mână</option></select></div>
+        <div class="match-row"><div class="match-label">3. security check</div><select id="v3"><option value="">alege</option><option value="A">control de securitate</option><option value="B">ghișeu</option><option value="C">ieșire</option></select></div>
+        <button class="btn" onclick="checkVocab()">Verifică</button><div id="vocab-fb" class="feedback"></div>
+      </div>
+      <div class="card">
+        <div class="card-title">2. Ordinea corectă la plecare</div>
+        <p class="options">Scrie numerele 1-5: check-in, securitate, poartă, îmbarcare, intrare în terminal.</p>
+        <div class="match-row"><div class="match-label">Intri în terminal.</div><input id="d1" type="text"></div>
+        <div class="match-row"><div class="match-label">Faci check-inul.</div><input id="d2" type="text"></div>
+        <div class="match-row"><div class="match-label">Treci prin securitate.</div><input id="d3" type="text"></div>
+        <div class="match-row"><div class="match-label">Mergi la poarta de îmbarcare.</div><input id="d4" type="text"></div>
+        <div class="match-row"><div class="match-label">Urci în avion.</div><input id="d5" type="text"></div>
+        <button class="btn" onclick="checkDeparture()">Verifică</button><div id="departure-fb" class="feedback"></div>
+      </div>
+      <div class="card">
+        <div class="card-title">3. Ordinea corectă la sosire</div>
+        <p class="options">Scrie numerele 1-5 pentru pașii de la sosire.</p>
+        <div class="match-row"><div class="match-label">Avionul aterizează.</div><input id="a1" type="text"></div>
+        <div class="match-row"><div class="match-label">Cobori din avion.</div><input id="a2" type="text"></div>
+        <div class="match-row"><div class="match-label">Treci prin controlul pașapoartelor.</div><input id="a3" type="text"></div>
+        <div class="match-row"><div class="match-label">Ridici bagajul.</div><input id="a4" type="text"></div>
+        <div class="match-row"><div class="match-label">Ieși din aeroport.</div><input id="a5" type="text"></div>
+        <button class="btn" onclick="checkArrival()">Verifică</button><div id="arrival-fb" class="feedback"></div>
+      </div>
+      <div class="card">
+        <div class="card-title">4. Alege forma de viitor</div>
+        <div class="ex-item"><label>1. Formal: Mâine eu ___ spre București.</label><select id="f1"><option value="">alege</option><option value="A">voi zbura</option><option value="B">o să zbor</option><option value="C">am să zbor</option></select></div>
+        <div class="ex-item"><label>2. Natural/conversațional: Noi ___ la poartă peste zece minute.</label><select id="f2"><option value="">alege</option><option value="A">vom merge</option><option value="B">o să mergem</option><option value="C">au să mergem</option></select></div>
+        <div class="ex-item"><label>3. Intenție personală: Eu ___ verific încă o dată poarta.</label><select id="f3"><option value="">alege</option><option value="A">am să</option><option value="B">va</option><option value="C">vor</option></select></div>
+        <button class="btn" onclick="checkFuture()">Verifică</button><div id="future-fb" class="feedback"></div>
+      </div>
+      <div class="writing-box">
+        <h3>5. Producere de text</h3>
+        <p>Scrie 8-10 propoziții despre următoarea ta călătorie cu avionul. Folosește cel puțin trei verbe de mișcare și două forme diferite de viitor.</p>
+        <textarea placeholder="Exemplu: Mâine voi ajunge la aeroport cu două ore înainte..."></textarea>
+      </div>
+    </section>
+  </main>
+</div>
+
+<footer class="footer">Romanian Step by Step · Nivel B2 · La aeroport · Creat pentru uz didactic</footer>
+
+<script>
+function showSection(name, el, shouldScroll = true) {
+  document.querySelectorAll('.section').forEach(section => section.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(button => button.classList.remove('active'));
+  const section = document.getElementById('sec-' + name);
+  if (!section) return;
+  section.classList.add('active');
+  document.querySelectorAll('.nav-item').forEach(button => {
+    const action = button.getAttribute('onclick') || '';
+    if (action.includes("'" + name + "'")) button.classList.add('active');
+  });
+  if (el) el.classList.add('active');
+  history.replaceState(null, '', '#' + name);
+  if (shouldScroll) window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+function scoreFeedback(id, score, total, answers) {
+  const feedback = document.getElementById(id);
+  feedback.className = 'feedback ' + (score === total ? 'ok' : 'err');
+  feedback.textContent = score === total ? 'Corect. Toate răspunsurile sunt potrivite.' : 'Ai ' + score + ' din ' + total + ' corecte. Răspunsuri: ' + answers;
+}
+function checkVocab() {
+  const answers = { v1: 'A', v2: 'B', v3: 'A' };
+  let score = 0;
+  Object.entries(answers).forEach(([id, answer]) => { if (document.getElementById(id).value === answer) score++; });
+  scoreFeedback('vocab-fb', score, 3, '1-A, 2-B, 3-A.');
+}
+function checkDeparture() {
+  const answers = { d1: '1', d2: '2', d3: '3', d4: '4', d5: '5' };
+  let score = 0;
+  Object.entries(answers).forEach(([id, answer]) => { if (document.getElementById(id).value.trim() === answer) score++; });
+  scoreFeedback('departure-fb', score, 5, '1, 2, 3, 4, 5.');
+}
+function checkArrival() {
+  const answers = { a1: '1', a2: '2', a3: '3', a4: '4', a5: '5' };
+  let score = 0;
+  Object.entries(answers).forEach(([id, answer]) => { if (document.getElementById(id).value.trim() === answer) score++; });
+  scoreFeedback('arrival-fb', score, 5, '1, 2, 3, 4, 5.');
+}
+function checkFuture() {
+  const answers = { f1: 'A', f2: 'B', f3: 'A' };
+  let score = 0;
+  Object.entries(answers).forEach(([id, answer]) => { if (document.getElementById(id).value === answer) score++; });
+  scoreFeedback('future-fb', score, 3, '1-A, 2-B, 3-A.');
+}
+function openHashSection() {
+  const name = window.location.hash.replace('#', '');
+  if (name && document.getElementById('sec-' + name)) showSection(name, null, false);
+}
+document.addEventListener('DOMContentLoaded', openHashSection);
+window.addEventListener('hashchange', openHashSection);
+</script>
+<script src="../../assets/lesson-shell.js"></script>
+</body>
+</html>
