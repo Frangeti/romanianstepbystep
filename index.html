@@ -4104,10 +4104,13 @@
             </div>
             <div class="lesson-category" id="a2-romana">
               <div class="lesson-grid">
-                <div class="construction-banner">
-                  <strong>În construcție</strong>
-                  <span>Materialele vor fi adăugate curând.</span>
-                </div>
+                <article class="lesson-card" data-lesson-no="SOON">
+                  <div class="lesson-head">
+                    <div class="lesson-title">
+                      <span class="lesson-name">În curând</span>
+                    </div>
+                  </div>
+                </article>
               </div>
             </div>
           </div>
@@ -4118,10 +4121,13 @@
             </div>
             <div class="lesson-category" id="b1-romana">
               <div class="lesson-grid">
-                <div class="construction-banner">
-                  <strong>În construcție</strong>
-                  <span>Materialele vor fi adăugate curând.</span>
-                </div>
+                <article class="lesson-card" data-lesson-no="SOON">
+                  <div class="lesson-head">
+                    <div class="lesson-title">
+                      <span class="lesson-name">În curând</span>
+                    </div>
+                  </div>
+                </article>
               </div>
             </div>
           </div>
@@ -4132,55 +4138,11 @@
             </div>
             <div class="lesson-category" id="b2-romana">
               <div class="lesson-grid">
-                <div class="construction-banner">
-                  <strong>În construcție</strong>
-                  <span>Materialele vor fi adăugate curând.</span>
-                </div>
-              </div>
-            </div>
-            <div class="lesson-category" id="b2-engleza">
-              <div class="lesson-category-head">
-                <h4>Lecții B2 de limba română pentru vorbitorii de limba engleză</h4>
-              </div>
-              <div class="lesson-grid" data-language-lessons="engleza">
-                <article class="lesson-card" data-lesson-link="lessons/b2/la-aeroport-engleza.html" data-lesson-no="AIR" tabindex="0" role="link">
+                <article class="lesson-card" data-lesson-no="SOON">
                   <div class="lesson-head">
-                    <div class="meta">
-                      <span class="badge badge-b2">Nivel B2</span>
-                      <span class="badge badge-tech">English</span>
-                      <span class="badge badge-live">Activă</span>
+                    <div class="lesson-title">
+                      <span class="lesson-name">În curând</span>
                     </div>
-                    <div class="lesson-title"><span class="lesson-name">La aeroport</span><span class="lesson-translation">Airport & Future Tense</span></div>
-                    <p class="lesson-desc">Vocabular de călătorie cu avionul, verbe de mișcare, dialoguri la aeroport și cele trei forme ale viitorului în română.</p>
-                  </div>
-                  <div class="lesson-body">
-                    <div class="lesson-features">
-                      <div class="feature"><strong>Aeroport</strong><span>check-in, securitate, poartă, bagaje</span></div>
-                      <div class="feature"><strong>Mișcare</strong><span>a intra, a ieși, a urca, a coborî</span></div>
-                      <div class="feature"><strong>Ordine</strong><span>plecare și sosire pas cu pas</span></div>
-                      <div class="feature"><strong>Gramatică</strong><span>viitor clasic, popular, colocvial</span></div>
-                    </div>
-                    <span class="resource-status">Lecție inclusă în B2</span>
-                  </div>
-                </article>
-                <article class="lesson-card" data-lesson-link="lessons/b2/robotizarea-in-romania-engleza.html" data-lesson-no="ROB" tabindex="0" role="link">
-                  <div class="lesson-head">
-                    <div class="meta">
-                      <span class="badge badge-b2">Nivel B2</span>
-                      <span class="badge badge-tech">English</span>
-                      <span class="badge badge-live">Activă</span>
-                    </div>
-                    <div class="lesson-title"><span class="lesson-name">Robotizarea în România</span><span class="lesson-translation">Robotics & Automation</span></div>
-                    <p class="lesson-desc">Lecție B2 despre robotizare, industria auto, RPA, coboți, criza de personal și impactul asupra locurilor de muncă.</p>
-                  </div>
-                  <div class="lesson-body">
-                    <div class="lesson-features">
-                      <div class="feature"><strong>Tehnologie</strong><span>roboți industriali, RPA, coboți</span></div>
-                      <div class="feature"><strong>Economie</strong><span>forță de muncă, salarii, competitivitate</span></div>
-                      <div class="feature"><strong>Gramatică</strong><span>pasiv, reflexiv pasiv, conectori B2</span></div>
-                      <div class="feature"><strong>Dezbatere</strong><span>mit vs. realitate</span></div>
-                    </div>
-                    <span class="resource-status">Lecție inclusă în B2</span>
                   </div>
                 </article>
               </div>
@@ -4193,23 +4155,11 @@
             </div>
             <div class="lesson-category" id="c1-romana">
               <div class="lesson-grid">
-                <article class="lesson-card" data-lesson-link="lessons/c1/conditional-ipotetic.html" data-lesson-no="C1" tabindex="0" role="link">
+                <article class="lesson-card" data-lesson-no="SOON">
                   <div class="lesson-head">
-                    <div class="meta">
-                      <span>Nivel C1</span>
-                      <span>Gramatică aplicată</span>
-                    </div>
                     <div class="lesson-title">
-                      <span class="lesson-name">Condiționalul ipotetic</span>
-                      <span class="lesson-translation">Prezent și trecut</span>
+                      <span class="lesson-name">În curând</span>
                     </div>
-                    <p class="lesson-desc">Întrebări avansate pentru conversație, dezbatere și formularea ipotezelor în română.</p>
-                  </div>
-                  <div class="lesson-body">
-                    <ul>
-                      <li>Dacă aș fi... aș face...</li>
-                      <li>Dacă aș fi fost... aș fi făcut...</li>
-                    </ul>
                   </div>
                 </article>
               </div>
@@ -4741,10 +4691,12 @@
         section.classList.toggle('is-hidden', !isMatch);
         if (!isMatch) return;
 
+        const hasKidsCategory = Boolean(section.querySelector(`.lesson-category[id^="${level}-"][id$="-copii"]`));
         section.querySelectorAll('.lesson-category').forEach(category => {
           const isKidsCategory = category.id.startsWith(`${level}-`) && category.id.endsWith('-copii');
-          category.classList.toggle('is-hidden', !isKidsCategory);
-          if (isKidsCategory) visibleCount++;
+          const isFallbackCategory = !hasKidsCategory && category.id === `${level}-romana`;
+          category.classList.toggle('is-hidden', !(isKidsCategory || isFallbackCategory));
+          if (isKidsCategory || isFallbackCategory) visibleCount++;
         });
       });
       if (emptyLevel) emptyLevel.classList.toggle('is-hidden', visibleCount > 0);
@@ -4777,10 +4729,12 @@
         section.classList.toggle('is-hidden', !isMatch);
         if (!isMatch) return;
 
+        const hasLanguageCategory = Boolean(section.querySelector(`#${level}-${language}`));
         section.querySelectorAll('.lesson-category').forEach(category => {
           const isLanguageCategory = category.id === `${level}-${language}`;
-          category.classList.toggle('is-hidden', !isLanguageCategory);
-          if (isLanguageCategory) visibleCount++;
+          const isFallbackCategory = !hasLanguageCategory && category.id === `${level}-romana`;
+          category.classList.toggle('is-hidden', !(isLanguageCategory || isFallbackCategory));
+          if (isLanguageCategory || isFallbackCategory) visibleCount++;
         });
       });
       if (emptyLevel) emptyLevel.classList.toggle('is-hidden', visibleCount > 0);
