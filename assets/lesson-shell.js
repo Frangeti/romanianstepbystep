@@ -17,7 +17,7 @@
     return textFrom('.lesson-title-block .subtitle') ||
       textFrom('body > .header p') ||
       textFrom('.header p') ||
-      'În această lecție vom învăța vocabular, expresii și structuri utile pentru comunicare.';
+      '';
   }
 
   function getLessonLevel() {
@@ -126,8 +126,6 @@
 
     var title = getLessonTitle();
     var subtitle = getLessonSubtitle();
-    var vocabTopic = findTopic('vocab');
-    var grammarTopic = findTopic('grammar');
     var card = document.createElement('section');
     card.className = 'lesson-universal-card';
     card.setAttribute('aria-label', 'Introducere lecție');
@@ -135,14 +133,9 @@
     card.innerHTML = [
       '<div class="lesson-hero-topline">',
       '<span class="lesson-universal-eyebrow">' + escapeHtml(getLessonLevel()) + '</span>',
-      '<span class="lesson-universal-note">În această lecție vom învăța</span>',
       '</div>',
       '<h1>' + escapeHtml(title) + '</h1>',
-      '<p>' + escapeHtml(subtitle) + '</p>',
-      '<div class="lesson-hero-facts">',
-      '<div class="lesson-hero-fact"><span>Vocabular despre</span><strong>' + escapeHtml(vocabTopic) + '</strong></div>',
-      '<div class="lesson-hero-fact"><span>Gramatică despre</span><strong>' + escapeHtml(grammarTopic) + '</strong></div>',
-      '</div>'
+      subtitle ? '<p>' + escapeHtml(subtitle) + '</p>' : ''
     ].join('');
 
     target.insertBefore(card, target.firstChild);

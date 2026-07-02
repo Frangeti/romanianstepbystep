@@ -1061,22 +1061,7 @@
 
   .lesson-card {
     position: relative;
-    overflow: visible;
-  }
-
-  .lesson-card::after {
-    content: "";
-    position: absolute;
-    top: -27px;
-    left: 16px;
-    width: 38px;
-    height: 92px;
-    background: url("data:image/svg+xml,%3Csvg width='38' height='92' viewBox='0 0 38 92' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M21 16C21 7.8 12 7.8 12 16V67C12 82 33 82 33 67V35' stroke='%23c995a2' stroke-width='5.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M21 16C21 7.8 12 7.8 12 16V67C12 82 33 82 33 67V35' stroke='%23edb4c0' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M14 16V66C14 77 31 77 31 66V36' stroke='%23fff4ed' stroke-width='1' stroke-linecap='round' opacity='.62'/%3E%3Cpath d='M23 17C23 5 10 5 10 17' stroke='%235e6f82' stroke-width='.9' stroke-linecap='round' opacity='.26'/%3E%3C/svg%3E") center / contain no-repeat;
-    filter: drop-shadow(2px 6px 6px rgba(0, 0, 0, .16));
-    transform: rotate(3deg);
-    transform-origin: 20px 27px;
-    pointer-events: none;
-    z-index: 6;
+    overflow: hidden;
   }
 
   .lesson-card:hover,
@@ -1142,34 +1127,13 @@
     border-radius: 8px;
     cursor: pointer;
     position: relative;
-    overflow: visible;
+    overflow: hidden;
     box-shadow: 0 14px 34px rgba(0, 0, 0, .06);
   }
 
   #a1 .lesson-card:nth-child(n),
   #romana-lectii .lesson-card:nth-child(n) {
     --accent: var(--level-color);
-  }
-
-  #a1 .lesson-card::before,
-  #romana-lectii .lesson-card::before {
-    content: attr(data-lesson-no);
-    position: absolute;
-    top: .8rem;
-    right: .8rem;
-    width: 34px;
-    height: 28px;
-    border-radius: 8px;
-    background: var(--bg);
-    color: var(--navy);
-    display: grid;
-    place-items: center;
-    font-size: 13px;
-    font-weight: 800;
-    letter-spacing: .04em;
-    box-shadow:
-      inset 0 0 0 1px rgba(0, 0, 0, .08),
-      0 8px 18px rgba(0, 0, 0, .05);
   }
 
   #a1 .lesson-card:hover,
@@ -1221,27 +1185,6 @@
     transform: translate(-50%, -50%);
     text-wrap: balance;
     overflow-wrap: break-word;
-  }
-
-  #a1 .lesson-title::after,
-  #romana-lectii .lesson-title::after {
-    content: attr(data-topic);
-    display: block;
-    position: absolute;
-    top: calc(100% + 1.85rem);
-    left: 50%;
-    width: max-content;
-    max-width: calc(100vw - 4rem);
-    margin: 0;
-    color: var(--level-color);
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: .05em;
-    line-height: 1.35;
-    text-transform: uppercase;
-    text-align: center;
-    transform: translateX(-50%);
-    white-space: nowrap;
   }
 
   #a1 .lesson-desc,
@@ -1307,6 +1250,12 @@
   }
 
   .lesson-desc {
+    display: none;
+  }
+
+  .lesson-card .meta,
+  .lesson-card .lesson-body,
+  .lesson-title::after {
     display: none;
   }
 
@@ -1606,10 +1555,6 @@
     color: var(--navy);
   }
 
-  .level-section .lesson-title::after {
-    color: color-mix(in srgb, var(--level-color) 82%, var(--ink));
-  }
-
   .level-section .lesson-desc,
   .level-section .feature span {
     color: color-mix(in srgb, var(--level-color) 48%, var(--muted));
@@ -1669,8 +1614,6 @@
 
   .eyebrow,
   .badge,
-  #a1 .lesson-title::after,
-  #romana-lectii .lesson-title::after,
   .cover-level {
     font-size: 14px;
   }
@@ -1828,26 +1771,11 @@
     padding: 1.35rem;
   }
 
-  #a1 .lesson-card::before,
-  #romana-lectii .lesson-card::before {
-    width: 46px;
-    height: 38px;
-    font-size: 17px;
-  }
-
   #a1 .lesson-title,
   #romana-lectii .lesson-title {
     width: calc(100% - 2.8rem);
     max-width: 16ch;
     font-size: clamp(22px, 1.6vw, 28px);
-  }
-
-  #a1 .lesson-title::after,
-  #romana-lectii .lesson-title::after {
-    top: calc(100% + 2rem);
-    width: calc(100% + 1rem);
-    max-width: calc(100% + 1rem);
-    white-space: normal;
   }
 
   .lesson-head,
@@ -1917,6 +1845,62 @@
   .resource-status {
     min-height: 42px;
     padding: 8px 14px;
+  }
+
+  .lesson-card {
+    min-height: 132px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    text-align: center;
+  }
+
+  .lesson-card::before,
+  .lesson-card::after,
+  .lesson-title::after {
+    display: none !important;
+    content: none !important;
+  }
+
+  .lesson-card .meta,
+  .lesson-card .lesson-desc,
+  .lesson-card .lesson-body {
+    display: none !important;
+  }
+
+  .lesson-card .lesson-head {
+    width: 100%;
+    min-height: auto;
+    padding: 1.2rem !important;
+    border-bottom: 0 !important;
+    text-align: center;
+  }
+
+  .lesson-card .lesson-title {
+    position: static !important;
+    display: grid;
+    gap: .35rem;
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 !important;
+    color: var(--navy);
+    font-size: clamp(21px, 1.8vw, 28px) !important;
+    line-height: 1.18;
+    text-align: center;
+    transform: none !important;
+  }
+
+  .lesson-card .lesson-name,
+  .lesson-card .lesson-translation {
+    display: block;
+  }
+
+  .lesson-card .lesson-translation {
+    color: var(--muted);
+    font-size: clamp(13px, 1vw, 15px);
+    font-weight: 400;
+    line-height: 1.25;
   }
 
   /* Apple-inspired visual refresh */
@@ -2093,15 +2077,6 @@
   #a1 .lesson-card:nth-child(n),
   #romana-lectii .lesson-card:nth-child(n) {
     --accent: var(--level-color);
-  }
-
-  #a1 .lesson-card::before,
-  #romana-lectii .lesson-card::before {
-    background: #f5f5f7;
-    color: var(--level-color);
-    box-shadow:
-      inset 0 0 0 1px color-mix(in srgb, var(--level-color) 24%, white),
-      0 8px 20px rgba(0, 0, 0, .05);
   }
 
   .badge-b2,
@@ -3074,7 +3049,7 @@
                   <span class="badge badge-b2">Nivel A1</span>
                   <span class="badge badge-live">Română</span>
                 </div>
-                <div class="lesson-title" data-topic="Salutări și formule simple">Salutări</div>
+                <div class="lesson-title"><span class="lesson-name">Salutări</span><span class="lesson-translation">Salutări și formule simple</span></div>
                 <p class="lesson-desc">Salutări, despărțiri și primele formule de conversație în limba română.</p>
               </div>
             </article>
@@ -3084,7 +3059,7 @@
                   <span class="badge badge-b2">Nivel A1</span>
                   <span class="badge badge-live">Română</span>
                 </div>
-                <div class="lesson-title" data-topic="Întrebări despre stare">Ce faci?</div>
+                <div class="lesson-title"><span class="lesson-name">Ce faci?</span><span class="lesson-translation">Întrebări despre stare</span></div>
                 <p class="lesson-desc">Întrebări și răspunsuri scurte despre stare și dispoziție.</p>
               </div>
             </article>
@@ -3094,7 +3069,7 @@
                   <span class="badge badge-b2">Nivel A1</span>
                   <span class="badge badge-live">Română</span>
                 </div>
-                <div class="lesson-title" data-topic="Politețe de bază">Mulțumesc</div>
+                <div class="lesson-title"><span class="lesson-name">Mulțumesc</span><span class="lesson-translation">Politețe de bază</span></div>
                 <p class="lesson-desc">Mulțumiri, rugăminți și răspunsuri politicoase în situații simple.</p>
               </div>
             </article>
@@ -3104,7 +3079,7 @@
                   <span class="badge badge-b2">Nivel A1</span>
                   <span class="badge badge-live">Română</span>
                 </div>
-                <div class="lesson-title" data-topic="Formule de scuză">Scuze</div>
+                <div class="lesson-title"><span class="lesson-name">Scuze</span><span class="lesson-translation">Formule de scuză</span></div>
                 <p class="lesson-desc">Scuze, formule de iertare și răspunsuri potrivite în conversație.</p>
               </div>
             </article>
@@ -3114,7 +3089,7 @@
                   <span class="badge badge-b2">Nivel A1</span>
                   <span class="badge badge-live">Română</span>
                 </div>
-                <div class="lesson-title" data-topic="Pronume și familie">Persoane</div>
+                <div class="lesson-title"><span class="lesson-name">Persoane</span><span class="lesson-translation">Pronume și familie</span></div>
                 <p class="lesson-desc">Pronume personale, persoane apropiate, familie și verbul „a fi”.</p>
               </div>
             </article>
@@ -3124,7 +3099,7 @@
                   <span class="badge badge-b2">Nivel A1</span>
                   <span class="badge badge-live">Română</span>
                 </div>
-                <div class="lesson-title" data-topic="Nume și prezentare">Prezentări</div>
+                <div class="lesson-title"><span class="lesson-name">Prezentări</span><span class="lesson-translation">Nume și prezentare</span></div>
                 <p class="lesson-desc">Cum te prezinți, cum spui numele și cum întrebi numele cuiva.</p>
               </div>
             </article>
@@ -3134,7 +3109,7 @@
                   <span class="badge badge-b2">Nivel A1</span>
                   <span class="badge badge-live">Română</span>
                 </div>
-                <div class="lesson-title" data-topic="Numere și vârstă">Numerele</div>
+                <div class="lesson-title"><span class="lesson-name">Numerele</span><span class="lesson-translation">Numere și vârstă</span></div>
                 <p class="lesson-desc">Numere de bază, vârsta, întrebări simple și verbul „a avea”.</p>
               </div>
             </article>
@@ -3144,7 +3119,7 @@
                   <span class="badge badge-b2">Nivel A1</span>
                   <span class="badge badge-live">Română</span>
                 </div>
-                <div class="lesson-title" data-topic="Țări și orașe">De unde ești?</div>
+                <div class="lesson-title"><span class="lesson-name">De unde ești?</span><span class="lesson-translation">Țări și orașe</span></div>
                 <p class="lesson-desc">Țări, orașe, origine și întrebări despre locul de unde vine cineva.</p>
               </div>
             </article>
@@ -3154,7 +3129,7 @@
                   <span class="badge badge-b2">Nivel A1</span>
                   <span class="badge badge-live">Română</span>
                 </div>
-                <div class="lesson-title" data-topic="Identitate și forme">Naționalități</div>
+                <div class="lesson-title"><span class="lesson-name">Naționalități</span><span class="lesson-translation">Identitate și forme</span></div>
                 <p class="lesson-desc">Naționalități, forme masculine și feminine și propoziții simple.</p>
               </div>
             </article>
@@ -3164,7 +3139,7 @@
                   <span class="badge badge-b2">Nivel A1</span>
                   <span class="badge badge-live">Română</span>
                 </div>
-                <div class="lesson-title" data-topic="Limbi și comunicare">Ce limbă vorbești?</div>
+                <div class="lesson-title"><span class="lesson-name">Ce limbă vorbești?</span><span class="lesson-translation">Limbi și comunicare</span></div>
                 <p class="lesson-desc">Limbi vorbite, întrebări simple și verbul „a vorbi”.</p>
               </div>
             </article>
@@ -3244,7 +3219,7 @@
                     <span class="badge badge-b2">Nivel A1</span>
                     <span class="badge badge-live">Română</span>
                   </div>
-                  <div class="lesson-title" data-topic="Salutări și formule simple">Salutări</div>
+                  <div class="lesson-title"><span class="lesson-name">Salutări</span><span class="lesson-translation">Salutări și formule simple</span></div>
                   <p class="lesson-desc">Salutări, despărțiri și primele formule de conversație în limba română.</p>
                 </div>
               </article>
@@ -3254,7 +3229,7 @@
                     <span class="badge badge-b2">Nivel A1</span>
                     <span class="badge badge-live">Română</span>
                   </div>
-                  <div class="lesson-title" data-topic="Întrebări despre stare">Ce faci?</div>
+                  <div class="lesson-title"><span class="lesson-name">Ce faci?</span><span class="lesson-translation">Întrebări despre stare</span></div>
                   <p class="lesson-desc">Întrebări și răspunsuri scurte despre stare și dispoziție.</p>
                 </div>
               </article>
@@ -3264,7 +3239,7 @@
                     <span class="badge badge-b2">Nivel A1</span>
                     <span class="badge badge-live">Română</span>
                   </div>
-                  <div class="lesson-title" data-topic="Politețe de bază">Mulțumesc</div>
+                  <div class="lesson-title"><span class="lesson-name">Mulțumesc</span><span class="lesson-translation">Politețe de bază</span></div>
                   <p class="lesson-desc">Mulțumiri, rugăminți și răspunsuri politicoase în situații simple.</p>
                 </div>
               </article>
@@ -3274,7 +3249,7 @@
                     <span class="badge badge-b2">Nivel A1</span>
                     <span class="badge badge-live">Română</span>
                   </div>
-                  <div class="lesson-title" data-topic="Formule de scuză">Scuze</div>
+                  <div class="lesson-title"><span class="lesson-name">Scuze</span><span class="lesson-translation">Formule de scuză</span></div>
                   <p class="lesson-desc">Scuze, formule de iertare și răspunsuri potrivite în conversație.</p>
                 </div>
               </article>
@@ -3284,7 +3259,7 @@
                     <span class="badge badge-b2">Nivel A1</span>
                     <span class="badge badge-live">Română</span>
                   </div>
-                  <div class="lesson-title" data-topic="Pronume și familie">Persoane</div>
+                  <div class="lesson-title"><span class="lesson-name">Persoane</span><span class="lesson-translation">Pronume și familie</span></div>
                   <p class="lesson-desc">Pronume personale, persoane apropiate, familie și verbul „a fi”.</p>
                 </div>
               </article>
@@ -3294,7 +3269,7 @@
                     <span class="badge badge-b2">Nivel A1</span>
                     <span class="badge badge-live">Română</span>
                   </div>
-                  <div class="lesson-title" data-topic="Nume și prezentare">Prezentări</div>
+                  <div class="lesson-title"><span class="lesson-name">Prezentări</span><span class="lesson-translation">Nume și prezentare</span></div>
                   <p class="lesson-desc">Cum te prezinți, cum spui numele și cum întrebi numele cuiva.</p>
                 </div>
               </article>
@@ -3304,7 +3279,7 @@
                     <span class="badge badge-b2">Nivel A1</span>
                     <span class="badge badge-live">Română</span>
                   </div>
-                  <div class="lesson-title" data-topic="Numere și vârstă">Numerele</div>
+                  <div class="lesson-title"><span class="lesson-name">Numerele</span><span class="lesson-translation">Numere și vârstă</span></div>
                   <p class="lesson-desc">Numere de bază, vârsta, întrebări simple și verbul „a avea”.</p>
                 </div>
               </article>
@@ -3314,7 +3289,7 @@
                     <span class="badge badge-b2">Nivel A1</span>
                     <span class="badge badge-live">Română</span>
                   </div>
-                  <div class="lesson-title" data-topic="Țări și orașe">De unde ești?</div>
+                  <div class="lesson-title"><span class="lesson-name">De unde ești?</span><span class="lesson-translation">Țări și orașe</span></div>
                   <p class="lesson-desc">Țări, orașe, origine și întrebări despre locul de unde vine cineva.</p>
                 </div>
               </article>
@@ -3324,7 +3299,7 @@
                     <span class="badge badge-b2">Nivel A1</span>
                     <span class="badge badge-live">Română</span>
                   </div>
-                  <div class="lesson-title" data-topic="Identitate și forme">Naționalități</div>
+                  <div class="lesson-title"><span class="lesson-name">Naționalități</span><span class="lesson-translation">Identitate și forme</span></div>
                   <p class="lesson-desc">Naționalități, forme masculine și feminine și propoziții simple.</p>
                 </div>
               </article>
@@ -3334,7 +3309,7 @@
                     <span class="badge badge-b2">Nivel A1</span>
                     <span class="badge badge-live">Română</span>
                   </div>
-                  <div class="lesson-title" data-topic="Limbi și comunicare">Ce limbă vorbești?</div>
+                  <div class="lesson-title"><span class="lesson-name">Ce limbă vorbești?</span><span class="lesson-translation">Limbi și comunicare</span></div>
                   <p class="lesson-desc">Limbi vorbite, întrebări simple și verbul „a vorbi”.</p>
                 </div>
               </article>
@@ -3352,7 +3327,7 @@
                     <span class="badge badge-tech">Deutsch</span>
                     <span class="badge badge-live">Activă</span>
                   </div>
-                  <div class="lesson-title" data-topic="Begrüßungen">Salutări</div>
+                  <div class="lesson-title"><span class="lesson-name">Salutări</span><span class="lesson-translation">Begrüßungen</span></div>
                   <p class="lesson-desc">Salutări și formule de despărțire pentru primele conversații.</p>
                 </div>
                 <div class="lesson-body">
@@ -3384,7 +3359,7 @@
                     <span class="badge badge-tech">Deutsch</span>
                     <span class="badge badge-live">Activă</span>
                   </div>
-                  <div class="lesson-title" data-topic="Wie geht es?">Ce faci?</div>
+                  <div class="lesson-title"><span class="lesson-name">Ce faci?</span><span class="lesson-translation">Wie geht es?</span></div>
                   <p class="lesson-desc">Întrebări și răspunsuri simple despre cum te simți.</p>
                 </div>
                 <div class="lesson-body">
@@ -3416,7 +3391,7 @@
                     <span class="badge badge-tech">Deutsch</span>
                     <span class="badge badge-live">Activă</span>
                   </div>
-                  <div class="lesson-title" data-topic="Danke & Bitte">Mulțumesc</div>
+                  <div class="lesson-title"><span class="lesson-name">Mulțumesc</span><span class="lesson-translation">Danke & Bitte</span></div>
                   <p class="lesson-desc">Expresii politicoase pentru mulțumiri și rugăminți.</p>
                 </div>
                 <div class="lesson-body">
@@ -3448,7 +3423,7 @@
                     <span class="badge badge-tech">Deutsch</span>
                     <span class="badge badge-live">Activă</span>
                   </div>
-                  <div class="lesson-title" data-topic="Entschuldigung">Scuze</div>
+                  <div class="lesson-title"><span class="lesson-name">Scuze</span><span class="lesson-translation">Entschuldigung</span></div>
                   <p class="lesson-desc">Scuze, formule de iertare și răspunsuri scurte.</p>
                 </div>
                 <div class="lesson-body">
@@ -3480,7 +3455,7 @@
                     <span class="badge badge-tech">Deutsch</span>
                     <span class="badge badge-live">Activă</span>
                   </div>
-                  <div class="lesson-title" data-topic="Personen">Persoane</div>
+                  <div class="lesson-title"><span class="lesson-name">Persoane</span><span class="lesson-translation">Personen</span></div>
                   <p class="lesson-desc">Pronume, persoane, familie și verbul „a fi”.</p>
                 </div>
                 <div class="lesson-body">
@@ -3512,7 +3487,7 @@
                     <span class="badge badge-tech">Deutsch</span>
                     <span class="badge badge-live">Activă</span>
                   </div>
-                  <div class="lesson-title" data-topic="Vorstellung">Prezentări</div>
+                  <div class="lesson-title"><span class="lesson-name">Prezentări</span><span class="lesson-translation">Vorstellung</span></div>
                   <p class="lesson-desc">Cum te prezinți și cum întrebi numele cuiva.</p>
                 </div>
                 <div class="lesson-body">
@@ -3544,7 +3519,7 @@
                     <span class="badge badge-tech">Deutsch</span>
                     <span class="badge badge-live">Activă</span>
                   </div>
-                  <div class="lesson-title" data-topic="Zahlen">Numerele</div>
+                  <div class="lesson-title"><span class="lesson-name">Numerele</span><span class="lesson-translation">Zahlen</span></div>
                   <p class="lesson-desc">Numerele de bază, vârsta și verbul „a avea”.</p>
                 </div>
                 <div class="lesson-body">
@@ -3576,7 +3551,7 @@
                     <span class="badge badge-tech">Deutsch</span>
                     <span class="badge badge-live">Activă</span>
                   </div>
-                  <div class="lesson-title" data-topic="Herkunft">De unde ești?</div>
+                  <div class="lesson-title"><span class="lesson-name">De unde ești?</span><span class="lesson-translation">Herkunft</span></div>
                   <p class="lesson-desc">Țări, orașe și întrebări despre origine.</p>
                 </div>
                 <div class="lesson-body">
@@ -3608,7 +3583,7 @@
                     <span class="badge badge-tech">Deutsch</span>
                     <span class="badge badge-live">Activă</span>
                   </div>
-                  <div class="lesson-title" data-topic="Nationalitäten">Naționalități</div>
+                  <div class="lesson-title"><span class="lesson-name">Naționalități</span><span class="lesson-translation">Nationalitäten</span></div>
                   <p class="lesson-desc">Naționalități în forme masculine și feminine.</p>
                 </div>
                 <div class="lesson-body">
@@ -3640,7 +3615,7 @@
                     <span class="badge badge-tech">Deutsch</span>
                     <span class="badge badge-live">Activă</span>
                   </div>
-                  <div class="lesson-title" data-topic="Sprachen">Ce limbă vorbești?</div>
+                  <div class="lesson-title"><span class="lesson-name">Ce limbă vorbești?</span><span class="lesson-translation">Sprachen</span></div>
                   <p class="lesson-desc">Limbi, verbul „a vorbi” și propoziții scurte.</p>
                 </div>
                 <div class="lesson-body">
@@ -3680,7 +3655,7 @@
                     <span class="badge badge-tech">Deutsch</span>
                     <span class="badge badge-live">Activă</span>
                   </div>
-                  <div class="lesson-title" data-topic="Wiederholung für Kinder">Lectie pentru copii</div>
+                  <div class="lesson-title"><span class="lesson-name">Lectie pentru copii</span><span class="lesson-translation">Wiederholung für Kinder</span></div>
                   <p class="lesson-desc">Lecție cu jocuri de conversație despre prezentare, politețe, familie și locuință.</p>
                 </div>
                 <div class="lesson-body">
@@ -3712,7 +3687,7 @@
                     <span class="badge badge-tech">Deutsch</span>
                     <span class="badge badge-live">Activă</span>
                   </div>
-                  <div class="lesson-title" data-topic="Stadt & Sehenswürdigkeiten">Orașul</div>
+                  <div class="lesson-title"><span class="lesson-name">Orașul</span><span class="lesson-translation">Stadt & Sehenswürdigkeiten</span></div>
                   <p class="lesson-desc">Lecție cu jocuri despre oraș, obiective turistice, direcții și bilete.</p>
                 </div>
                 <div class="lesson-body">
@@ -3744,7 +3719,7 @@
                     <span class="badge badge-tech">Deutsch</span>
                     <span class="badge badge-live">Activă</span>
                   </div>
-                  <div class="lesson-title" data-topic="Haustiere & Verben">Animale de companie</div>
+                  <div class="lesson-title"><span class="lesson-name">Animale de companie</span><span class="lesson-translation">Haustiere & Verben</span></div>
                   <p class="lesson-desc">Lecție pentru copii despre animale de companie și verbe simple: a plimba, a mângâia, a hrăni și a se juca cu.</p>
                 </div>
                 <div class="lesson-body">
@@ -3784,7 +3759,7 @@
                     <span class="badge badge-tech">English</span>
                     <span class="badge badge-live">Activă</span>
                   </div>
-                  <div class="lesson-title" data-topic="Greetings">Salutări</div>
+                  <div class="lesson-title"><span class="lesson-name">Salutări</span><span class="lesson-translation">Greetings</span></div>
                   <p class="lesson-desc">Salutări și formule de despărțire pentru primele conversații.</p>
                 </div>
                 <div class="lesson-body">
@@ -3804,7 +3779,7 @@
                     <span class="badge badge-tech">English</span>
                     <span class="badge badge-live">În construcție</span>
                   </div>
-                  <div class="lesson-title" data-topic="How are you?">Ce faci?</div>
+                  <div class="lesson-title"><span class="lesson-name">Ce faci?</span><span class="lesson-translation">How are you?</span></div>
                   <p class="lesson-desc">Întrebări și răspunsuri simple despre cum te simți.</p>
                 </div>
                 <div class="lesson-body">
@@ -3824,7 +3799,7 @@
                     <span class="badge badge-tech">English</span>
                     <span class="badge badge-live">În construcție</span>
                   </div>
-                  <div class="lesson-title" data-topic="Thank you & Please">Mulțumesc</div>
+                  <div class="lesson-title"><span class="lesson-name">Mulțumesc</span><span class="lesson-translation">Thank you & Please</span></div>
                   <p class="lesson-desc">Expresii politicoase pentru mulțumiri și rugăminți.</p>
                 </div>
                 <div class="lesson-body">
@@ -3844,7 +3819,7 @@
                     <span class="badge badge-tech">English</span>
                     <span class="badge badge-live">În construcție</span>
                   </div>
-                  <div class="lesson-title" data-topic="Sorry">Scuze</div>
+                  <div class="lesson-title"><span class="lesson-name">Scuze</span><span class="lesson-translation">Sorry</span></div>
                   <p class="lesson-desc">Scuze, formule de iertare și răspunsuri scurte.</p>
                 </div>
                 <div class="lesson-body">
@@ -3864,7 +3839,7 @@
                     <span class="badge badge-tech">English</span>
                     <span class="badge badge-live">În construcție</span>
                   </div>
-                  <div class="lesson-title" data-topic="People">Persoane</div>
+                  <div class="lesson-title"><span class="lesson-name">Persoane</span><span class="lesson-translation">People</span></div>
                   <p class="lesson-desc">Pronume, persoane, familie și verbul „a fi”.</p>
                 </div>
                 <div class="lesson-body">
@@ -3884,7 +3859,7 @@
                     <span class="badge badge-tech">English</span>
                     <span class="badge badge-live">În construcție</span>
                   </div>
-                  <div class="lesson-title" data-topic="Introductions">Prezentări</div>
+                  <div class="lesson-title"><span class="lesson-name">Prezentări</span><span class="lesson-translation">Introductions</span></div>
                   <p class="lesson-desc">Cum te prezinți și cum întrebi numele cuiva.</p>
                 </div>
                 <div class="lesson-body">
@@ -3904,7 +3879,7 @@
                     <span class="badge badge-tech">English</span>
                     <span class="badge badge-live">În construcție</span>
                   </div>
-                  <div class="lesson-title" data-topic="Numbers">Numerele</div>
+                  <div class="lesson-title"><span class="lesson-name">Numerele</span><span class="lesson-translation">Numbers</span></div>
                   <p class="lesson-desc">Numerele de bază, vârsta și verbul „a avea”.</p>
                 </div>
                 <div class="lesson-body">
@@ -3924,7 +3899,7 @@
                     <span class="badge badge-tech">English</span>
                     <span class="badge badge-live">În construcție</span>
                   </div>
-                  <div class="lesson-title" data-topic="Where are you from?">De unde ești?</div>
+                  <div class="lesson-title"><span class="lesson-name">De unde ești?</span><span class="lesson-translation">Where are you from?</span></div>
                   <p class="lesson-desc">Țări, orașe și întrebări despre origine.</p>
                 </div>
                 <div class="lesson-body">
@@ -3944,7 +3919,7 @@
                     <span class="badge badge-tech">English</span>
                     <span class="badge badge-live">În construcție</span>
                   </div>
-                  <div class="lesson-title" data-topic="Nationalities">Naționalități</div>
+                  <div class="lesson-title"><span class="lesson-name">Naționalități</span><span class="lesson-translation">Nationalities</span></div>
                   <p class="lesson-desc">Naționalități în forme masculine și feminine.</p>
                 </div>
                 <div class="lesson-body">
@@ -3964,7 +3939,7 @@
                     <span class="badge badge-tech">English</span>
                     <span class="badge badge-live">În construcție</span>
                   </div>
-                  <div class="lesson-title" data-topic="Languages">Limbi</div>
+                  <div class="lesson-title"><span class="lesson-name">Limbi</span><span class="lesson-translation">Languages</span></div>
                   <p class="lesson-desc">Limbi vorbite, întrebări simple și răspunsuri despre comunicare.</p>
                 </div>
                 <div class="lesson-body">
@@ -4004,7 +3979,7 @@
                     <span class="badge badge-tech">Español</span>
                     <span class="badge badge-live">Activă</span>
                   </div>
-                  <div class="lesson-title" data-topic="Saludos">Salutări</div>
+                  <div class="lesson-title"><span class="lesson-name">Salutări</span><span class="lesson-translation">Saludos</span></div>
                   <p class="lesson-desc">Salutări și formule de despărțire pentru primele conversații.</p>
                 </div>
               </article>
@@ -4015,7 +3990,7 @@
                     <span class="badge badge-tech">Español</span>
                     <span class="badge badge-live">Activă</span>
                   </div>
-                  <div class="lesson-title" data-topic="¿Cómo estás?">Ce faci?</div>
+                  <div class="lesson-title"><span class="lesson-name">Ce faci?</span><span class="lesson-translation">¿Cómo estás?</span></div>
                   <p class="lesson-desc">Întrebări și răspunsuri simple despre cum te simți.</p>
                 </div>
               </article>
@@ -4026,7 +4001,7 @@
                     <span class="badge badge-tech">Español</span>
                     <span class="badge badge-live">Activă</span>
                   </div>
-                  <div class="lesson-title" data-topic="Gracias y por favor">Mulțumesc</div>
+                  <div class="lesson-title"><span class="lesson-name">Mulțumesc</span><span class="lesson-translation">Gracias y por favor</span></div>
                   <p class="lesson-desc">Expresii politicoase pentru mulțumiri și rugăminți.</p>
                 </div>
               </article>
@@ -4037,7 +4012,7 @@
                     <span class="badge badge-tech">Español</span>
                     <span class="badge badge-live">Activă</span>
                   </div>
-                  <div class="lesson-title" data-topic="Perdón">Scuze</div>
+                  <div class="lesson-title"><span class="lesson-name">Scuze</span><span class="lesson-translation">Perdón</span></div>
                   <p class="lesson-desc">Scuze, formule de iertare și răspunsuri scurte.</p>
                 </div>
               </article>
@@ -4048,7 +4023,7 @@
                     <span class="badge badge-tech">Español</span>
                     <span class="badge badge-live">Activă</span>
                   </div>
-                  <div class="lesson-title" data-topic="Personas">Persoane</div>
+                  <div class="lesson-title"><span class="lesson-name">Persoane</span><span class="lesson-translation">Personas</span></div>
                   <p class="lesson-desc">Pronume, persoane, familie și verbul „a fi”.</p>
                 </div>
               </article>
@@ -4059,7 +4034,7 @@
                     <span class="badge badge-tech">Español</span>
                     <span class="badge badge-live">Activă</span>
                   </div>
-                  <div class="lesson-title" data-topic="Presentaciones">Prezentări</div>
+                  <div class="lesson-title"><span class="lesson-name">Prezentări</span><span class="lesson-translation">Presentaciones</span></div>
                   <p class="lesson-desc">Cum te prezinți și cum întrebi numele cuiva.</p>
                 </div>
               </article>
@@ -4070,7 +4045,7 @@
                     <span class="badge badge-tech">Español</span>
                     <span class="badge badge-live">Activă</span>
                   </div>
-                  <div class="lesson-title" data-topic="Números">Numerele</div>
+                  <div class="lesson-title"><span class="lesson-name">Numerele</span><span class="lesson-translation">Números</span></div>
                   <p class="lesson-desc">Numerele de bază, vârsta și verbul „a avea”.</p>
                 </div>
               </article>
@@ -4081,7 +4056,7 @@
                     <span class="badge badge-tech">Español</span>
                     <span class="badge badge-live">Activă</span>
                   </div>
-                  <div class="lesson-title" data-topic="¿De dónde eres?">De unde ești?</div>
+                  <div class="lesson-title"><span class="lesson-name">De unde ești?</span><span class="lesson-translation">¿De dónde eres?</span></div>
                   <p class="lesson-desc">Țări, orașe și întrebări despre origine.</p>
                 </div>
               </article>
@@ -4092,7 +4067,7 @@
                     <span class="badge badge-tech">Español</span>
                     <span class="badge badge-live">Activă</span>
                   </div>
-                  <div class="lesson-title" data-topic="Nacionalidades">Naționalități</div>
+                  <div class="lesson-title"><span class="lesson-name">Naționalități</span><span class="lesson-translation">Nacionalidades</span></div>
                   <p class="lesson-desc">Naționalități în forme masculine și feminine.</p>
                 </div>
               </article>
@@ -4103,7 +4078,7 @@
                     <span class="badge badge-tech">Español</span>
                     <span class="badge badge-live">Activă</span>
                   </div>
-                  <div class="lesson-title" data-topic="Idiomas">Limbi</div>
+                  <div class="lesson-title"><span class="lesson-name">Limbi</span><span class="lesson-translation">Idiomas</span></div>
                   <p class="lesson-desc">Limbi vorbite, întrebări simple și verbul „a vorbi”.</p>
                 </div>
               </article>
@@ -4175,7 +4150,7 @@
                       <span class="badge badge-tech">English</span>
                       <span class="badge badge-live">Activă</span>
                     </div>
-                    <div class="lesson-title" data-topic="Airport & Future Tense">La aeroport</div>
+                    <div class="lesson-title"><span class="lesson-name">La aeroport</span><span class="lesson-translation">Airport & Future Tense</span></div>
                     <p class="lesson-desc">Vocabular de călătorie cu avionul, verbe de mișcare, dialoguri la aeroport și cele trei forme ale viitorului în română.</p>
                   </div>
                   <div class="lesson-body">
@@ -4195,7 +4170,7 @@
                       <span class="badge badge-tech">English</span>
                       <span class="badge badge-live">Activă</span>
                     </div>
-                    <div class="lesson-title" data-topic="Robotics & Automation">Robotizarea în România</div>
+                    <div class="lesson-title"><span class="lesson-name">Robotizarea în România</span><span class="lesson-translation">Robotics & Automation</span></div>
                     <p class="lesson-desc">Lecție B2 despre robotizare, industria auto, RPA, coboți, criza de personal și impactul asupra locurilor de muncă.</p>
                   </div>
                   <div class="lesson-body">
@@ -4218,10 +4193,25 @@
             </div>
             <div class="lesson-category" id="c1-romana">
               <div class="lesson-grid">
-                <div class="construction-banner">
-                  <strong>În construcție</strong>
-                  <span>Materialele vor fi adăugate curând.</span>
-                </div>
+                <article class="lesson-card" data-lesson-link="lessons/c1/conditional-ipotetic.html" data-lesson-no="C1" tabindex="0" role="link">
+                  <div class="lesson-head">
+                    <div class="meta">
+                      <span>Nivel C1</span>
+                      <span>Gramatică aplicată</span>
+                    </div>
+                    <div class="lesson-title">
+                      <span class="lesson-name">Condiționalul ipotetic</span>
+                      <span class="lesson-translation">Prezent și trecut</span>
+                    </div>
+                    <p class="lesson-desc">Întrebări avansate pentru conversație, dezbatere și formularea ipotezelor în română.</p>
+                  </div>
+                  <div class="lesson-body">
+                    <ul>
+                      <li>Dacă aș fi... aș face...</li>
+                      <li>Dacă aș fi fost... aș fi făcut...</li>
+                    </ul>
+                  </div>
+                </article>
               </div>
             </div>
           </div>

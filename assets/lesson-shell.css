@@ -169,39 +169,6 @@ body.has-universal-lesson-shell > .header,
   line-height: 1.5;
 }
 
-.lesson-hero-facts {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: .75rem;
-  margin-top: 1.05rem;
-}
-
-.lesson-hero-fact {
-  min-height: 76px;
-  padding: .85rem .95rem;
-  border: 1px solid rgba(210, 210, 215, .8);
-  border-radius: 8px;
-  background: rgba(255, 255, 255, .82);
-}
-
-.lesson-hero-fact span {
-  display: block;
-  margin-bottom: .25rem;
-  color: #6e6e73;
-  font-size: clamp(13px, 1vw, 15px);
-  font-weight: 700;
-  letter-spacing: .04em;
-  text-transform: uppercase;
-}
-
-.lesson-hero-fact strong {
-  display: block;
-  color: #1d1d1f;
-  font-size: clamp(18px, 1.45vw, 22px);
-  font-weight: 400;
-  line-height: 1.25;
-}
-
 .has-universal-lesson-shell .container {
   padding-top: 1.5rem;
 }
@@ -233,10 +200,6 @@ body.has-universal-lesson-shell > .header,
     min-width: 0;
     font-size: 16px;
     padding: 9px 13px;
-  }
-
-  .lesson-hero-facts {
-    grid-template-columns: 1fr;
   }
 
   .has-universal-lesson-shell .sidebar {
