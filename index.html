@@ -44,7 +44,7 @@
   body {
     min-height: 100vh;
     font-family: 'Atkinson Hyperlegible', sans-serif;
-    font-size: 22px;
+    font-size: 18px;
     background:
       linear-gradient(180deg, #ffffff 0%, var(--bg) 38%, #efeff1 100%);
     color: var(--text);
@@ -1641,17 +1641,17 @@
   }
 
   .logo {
-    font-size: clamp(24px, 2vw, 30px);
+    font-size: clamp(22px, 1.8vw, 27px);
   }
 
   .main-nav-link {
-    min-height: 42px;
-    font-size: 18px;
+    min-height: 38px;
+    font-size: 16px;
   }
 
   .sid-head,
   .sid-tools-head {
-    font-size: 14px;
+    font-size: 12px;
   }
 
   .sid-item,
@@ -1660,13 +1660,13 @@
   .home-tools .level-tool-list .sid-item.home-tool,
   [data-language-tools] .level-tool-list .sid-item.tool-item,
   .language-tools .sid-item[data-language-category] {
-    min-height: 44px;
-    font-size: 18px;
+    min-height: 40px;
+    font-size: 16px;
   }
 
   .sid-item.tool-subitem {
-    min-height: 38px;
-    font-size: 17px;
+    min-height: 36px;
+    font-size: 15px;
   }
 
   .eyebrow,
@@ -1674,7 +1674,7 @@
   #a1 .lesson-title::after,
   #romana-lectii .lesson-title::after,
   .cover-level {
-    font-size: 16px;
+    font-size: 14px;
   }
 
   .intro p,
@@ -1687,11 +1687,11 @@
   .resource-body p,
   .resource-status,
   .footer {
-    font-size: 20px;
+    font-size: 17px;
   }
 
   .intro-description {
-    font-size: clamp(22px, 1.6vw, 26px);
+    font-size: clamp(18px, 1.35vw, 21px);
   }
 
   .section-title h2,
@@ -1700,7 +1700,7 @@
   .resource-body h3,
   .panel h3,
   .coming-card h3 {
-    font-size: 22px;
+    font-size: 20px;
   }
 
   .section-title span,
@@ -1709,23 +1709,23 @@
   .soon,
   .coming-card p,
   .resource-cover p {
-    font-size: 18px;
+    font-size: 16px;
   }
 
   .topbar {
-    min-height: 92px;
-    padding-top: .75rem;
-    padding-bottom: .75rem;
+    min-height: 84px;
+    padding-top: .6rem;
+    padding-bottom: .6rem;
   }
 
   .layout {
-    grid-template-columns: minmax(380px, 24vw) 1fr;
-    min-height: calc(100vh - 92px);
+    grid-template-columns: minmax(340px, 22vw) 1fr;
+    min-height: calc(100vh - 84px);
   }
 
   .sidebar {
-    top: 92px;
-    max-height: calc(100vh - 92px);
+    top: 84px;
+    max-height: calc(100vh - 84px);
     padding: 1.05rem .9rem;
   }
 
@@ -1746,16 +1746,16 @@
   [data-language-tools] .level-tool-list .sid-item.tool-item,
   .language-tools .sid-item[data-language-category] {
     align-items: flex-start;
-    min-height: 48px;
-    padding: 10px .85rem;
+    min-height: 42px;
+    padding: 8px .78rem;
     line-height: 1.35;
     white-space: normal;
     overflow-wrap: break-word;
   }
 
   .sid-item.tool-subitem {
-    min-height: 42px;
-    padding: 8px .75rem;
+    min-height: 38px;
+    padding: 7px .7rem;
     line-height: 1.35;
     white-space: normal;
     overflow-wrap: break-word;
@@ -1778,7 +1778,7 @@
 
   .main-nav-link {
     min-width: 0;
-    padding: 10px 13px;
+    padding: 8px 12px;
     line-height: 1.25;
     white-space: normal;
   }
@@ -1841,7 +1841,7 @@
   #romana-lectii .lesson-title {
     width: calc(100% - 2.8rem);
     max-width: 16ch;
-    font-size: clamp(26px, 1.8vw, 32px);
+    font-size: clamp(22px, 1.6vw, 28px);
   }
 
   #a1 .lesson-title::after,
@@ -1859,7 +1859,7 @@
   }
 
   .lesson-title {
-    font-size: clamp(34px, 2.7vw, 44px);
+    font-size: clamp(28px, 2.35vw, 36px);
     line-height: 1.15;
   }
 
@@ -1889,11 +1889,11 @@
   }
 
   .construction-banner strong {
-    font-size: 22px;
+    font-size: 19px;
   }
 
   .construction-banner span {
-    font-size: 19px;
+    font-size: 16px;
   }
 
   .coming-grid {
@@ -1913,12 +1913,12 @@
 
   .resource-cover h3 {
     max-width: 14ch;
-    font-size: 34px;
+    font-size: 28px;
   }
 
   .resource-status {
-    min-height: 48px;
-    padding: 10px 16px;
+    min-height: 42px;
+    padding: 8px 14px;
   }
 
   /* Apple-inspired visual refresh */
@@ -2189,7 +2189,7 @@
     .intro-copy { display: block; }
     .intro-description {
       padding-left: .85rem;
-      font-size: 20px;
+      font-size: 18px;
     }
     .subscription-plans {
       grid-template-columns: 1fr;
@@ -4826,6 +4826,7 @@
           showOnlySidebarLanguage(language);
           openLanguageTools(language);
         } else {
+          closeAllAccordions();
           showHomeSidebar();
           closeLanguageTools();
         }
