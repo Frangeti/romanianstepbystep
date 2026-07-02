@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Romanian Step by Step B2 — Robotizarea în România</title>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=DM+Mono&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #F7F5F0;
+    --surface: #FFFFFF;
+    --surface2: #F0EDE8;
+    --text: #1A1814;
+    --text2: #6B6560;
+    --text3: #A09B95;
+    --navy: #2f4a60;
+    --navy-light: #f6f8f9;
+    --green: #c89524;
+    --green-light: #fff4d8;
+    --red: #b34a35;
+    --red-light: #faece7;
+    --amber: #8a5a0a;
+    --amber-light: #fff4dc;
+    --border: rgba(26,24,20,0.1);
+    --border2: rgba(26,24,20,0.06);
+    --radius: 12px;
+    --radius-sm: 8px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Atkinson Hyperlegible', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; line-height: 1.7; }
+  .header { background: var(--navy); color: #fff; padding: 3rem 2rem 2.5rem; }
+  .header-inner { max-width: 920px; margin: 0 auto; }
+  .home-link { display: inline-block; color: rgba(255,255,255,0.78); font-size: 13px; text-decoration: none; margin-bottom: .9rem; }
+  .level-tag { display: inline-block; background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.25); color: #fff; font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; padding: 4px 12px; border-radius: 20px; margin-bottom: 1rem; }
+  h1 { font-size: clamp(30px, 5vw, 46px); font-weight: 400; line-height: 1.15; margin-bottom: .55rem; }
+  .header p { max-width: 760px; color: rgba(255,255,255,0.8); font-size: 15px; }
+  .header-meta { display: flex; gap: .7rem; margin-top: 1.4rem; flex-wrap: wrap; }
+  .header-meta span { border: 1px solid rgba(255,255,255,0.24); border-radius: 99px; padding: 5px 10px; color: rgba(255,255,255,0.78); font-size: 12px; }
+  .layout { display: flex; max-width: 980px; margin: 0 auto; }
+  .sidebar { width: 230px; flex-shrink: 0; padding: 2rem 0 2rem 1rem; position: sticky; top: 0; height: 100vh; overflow-y: auto; }
+  .sidebar-label { font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--text3); margin-bottom: .75rem; padding-left: .75rem; }
+  .nav-item { display: flex; align-items: center; gap: 8px; width: 100%; margin-bottom: 3px; padding: .6rem .75rem; border: 0; border-radius: var(--radius-sm); background: transparent; color: var(--text2); cursor: pointer; font-family: inherit; font-size: 13px; text-align: left; }
+  .nav-item:hover, .nav-item.active { background: var(--surface); color: var(--navy); font-weight: 700; }
+  .nav-item::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: #e0ad2f; flex: 0 0 7px; box-shadow: 0 0 0 3px rgba(255, 244, 216, .78); }
+  .nav-num { margin-left: auto; color: var(--text3); font-family: 'DM Mono', monospace; font-size: 10px; }
+  .main { flex: 1; min-width: 0; padding: 2rem 1rem 2rem 1.5rem; }
+  .section { display: none; }
+  .section.active { display: block; animation: fadeIn .18s ease; }
+  @keyframes fadeIn { from { opacity: .4; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+  .section-header { display: flex; gap: 1rem; align-items: flex-start; margin-bottom: 1.5rem; padding-bottom: 1.1rem; border-bottom: 1px solid var(--border2); }
+  .section-icon { width: 44px; height: 44px; border-radius: var(--radius-sm); display: grid; place-items: center; flex-shrink: 0; background: var(--navy-light); color: var(--navy); font-weight: 700; }
+  .section-header h2 { font-size: 24px; font-weight: 400; margin-bottom: 2px; }
+  .section-header p { color: var(--text2); font-size: 13px; }
+  .card, .text-passage, .writing-box { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.25rem; margin-bottom: 1.25rem; }
+  .card-title { margin-bottom: 1rem; color: var(--text3); font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+  .tag { display: inline-block; margin: .35rem 0 .75rem; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; }
+  .tag-navy { background: var(--navy-light); color: var(--navy); }
+  .tag-green { background: var(--green-light); color: var(--green); }
+  .tag-red { background: var(--red-light); color: var(--red); }
+  .tag-amber { background: var(--amber-light); color: var(--amber); }
+  .vocab-grid, .three-col { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 8px; margin-bottom: 1.25rem; }
+  .vocab-item, .mini-card { background: var(--surface2); border: 1px solid var(--border2); border-radius: var(--radius-sm); padding: .75rem .85rem; }
+  .vocab-ro, .mini-card strong { color: var(--text); font-size: 14px; font-weight: 700; }
+  .vocab-en, .mini-card span { display: block; margin-top: 2px; color: var(--text3); font-family: 'DM Mono', monospace; font-size: 11px; }
+  .expr-item { padding: .75rem 0; border-bottom: 1px solid var(--border2); }
+  .expr-item:last-child { border-bottom: 0; padding-bottom: 0; }
+  .expr-ro { color: var(--text); font-size: 14px; font-weight: 700; }
+  .expr-ex { color: var(--text2); font-size: 13px; font-style: italic; margin-top: 3px; }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .grammar-rule { background: var(--surface2); border-left: 3px solid var(--navy); border-radius: var(--radius-sm); padding: .9rem 1rem; margin-bottom: .75rem; }
+  .rule-label { color: var(--navy); font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; margin-bottom: .35rem; }
+  .grammar-rule p { color: var(--text2); font-size: 14px; }
+  .quote-box { border-left: 4px solid var(--green); background: var(--green-light); color: var(--text); padding: 1rem 1.1rem; border-radius: var(--radius-sm); margin: 1rem 0; }
+  ul { padding-left: 1.1rem; }
+  li { margin-bottom: .3rem; font-size: 14px; }
+  .ex-item { margin-bottom: 1rem; }
+  .ex-item label { display: block; margin-bottom: .4rem; color: var(--text); font-size: 14px; font-weight: 700; }
+  select, input, textarea { width: 100%; padding: 9px 11px; border: 1px solid var(--border); border-radius: var(--radius-sm); background: var(--bg); color: var(--text); font-family: inherit; font-size: 14px; }
+  textarea { min-height: 110px; resize: vertical; }
+  .match-row { display: grid; grid-template-columns: minmax(230px, 1fr) 160px; gap: 10px; align-items: center; margin-bottom: .75rem; }
+  .match-label { font-size: 14px; font-weight: 700; }
+  .options { margin: 1rem 0; padding: .8rem 1rem; border-radius: var(--radius-sm); background: var(--surface2); color: var(--text2); font-size: 13px; }
+  .btn { display: inline-flex; align-items: center; justify-content: center; min-height: 38px; padding: 8px 16px; border: 1px solid var(--navy); border-radius: var(--radius-sm); background: var(--navy); color: #fff; cursor: pointer; font-family: inherit; font-size: 13px; font-weight: 700; }
+  .feedback { display: none; margin-top: .75rem; padding: 8px 12px; border-radius: var(--radius-sm); font-size: 13px; }
+  .feedback.ok { display: block; background: var(--green-light); color: var(--green); }
+  .feedback.err { display: block; background: var(--red-light); color: var(--red); }
+  .writing-box { background: var(--amber-light); border-color: rgba(138,90,10,.18); }
+  .writing-box h3 { margin-bottom: .5rem; color: var(--amber); font-size: 13px; letter-spacing: .06em; text-transform: uppercase; }
+  .footer { margin-top: 2rem; padding: 1.5rem; border-top: 1px solid var(--border); background: var(--surface); color: var(--text3); text-align: center; font-size: 12px; }
+  @media (max-width: 760px) {
+    .layout { display: block; }
+    .sidebar { position: static; width: auto; height: auto; padding: 1rem; display: flex; gap: 6px; overflow-x: auto; }
+    .sidebar-label, .nav-num { display: none; }
+    .nav-item { min-width: max-content; }
+    .main { padding: 1.25rem; }
+    .two-col, .match-row { grid-template-columns: 1fr; }
+  }
+</style>
+<link rel="stylesheet" href="../../assets/lesson-shell.css">
+</head>
+<body>
+<header class="header">
+  <div class="header-inner">
+    <a class="home-link" href="../../index.html#b2-engleza">Romanian Step by Step · English · B2</a>
+    <div class="level-tag">Nivel B2 · Română pentru vorbitori de engleză</div>
+    <h1>Robotizarea în România</h1>
+    <p>A B2 lesson about automation, industrial robots, RPA, cobots and the labour-market pressure that is accelerating technological change in Romania.</p>
+    <div class="header-meta">
+      <span>8 secțiuni</span>
+      <span>90 de minute</span>
+      <span>Tehnologie și economie</span>
+      <span>Dezbatere B2</span>
+    </div>
+  </div>
+</header>
+
+<div class="layout">
+  <nav class="sidebar" aria-label="Navigare lecție">
+    <div class="sidebar-label">Secțiuni</div>
+    <button class="nav-item active" onclick="showSection('obiective', this)"><span>01</span>Obiective<span class="nav-num">01</span></button>
+    <button class="nav-item" onclick="showSection('text', this)"><span>02</span>Text<span class="nav-num">02</span></button>
+    <button class="nav-item" onclick="showSection('vocabular', this)"><span>03</span>Vocabular<span class="nav-num">03</span></button>
+    <button class="nav-item" onclick="showSection('industrie', this)"><span>04</span>Industrii<span class="nav-num">04</span></button>
+    <button class="nav-item" onclick="showSection('rpa', this)"><span>05</span>RPA<span class="nav-num">05</span></button>
+    <button class="nav-item" onclick="showSection('gramatica', this)"><span>06</span>Gramatică<span class="nav-num">06</span></button>
+    <button class="nav-item" onclick="showSection('dezbatere', this)"><span>07</span>Dezbatere<span class="nav-num">07</span></button>
+    <button class="nav-item" onclick="showSection('exercitii', this)"><span>08</span>Exerciții<span class="nav-num">08</span></button>
+  </nav>
+
+  <main class="main">
+    <section id="sec-obiective" class="section active">
+      <div class="section-header"><div class="section-icon">B2</div><div><h2>Obiectivele lecției</h2><p>Technology, economy and argumentation in Romanian.</p></div></div>
+      <div class="card">
+        <div class="card-title">La finalul lecției vei putea</div>
+        <ul>
+          <li>să explici de ce se accelerează robotizarea în România;</li>
+          <li>să folosești vocabular despre roboți industriali, RPA, coboți și automatizare;</li>
+          <li>să compari România cu alte țări folosind structuri B2;</li>
+          <li>să discuți impactul asupra locurilor de muncă într-un mod nuanțat;</li>
+          <li>să folosești pasivul, reflexivul pasiv și conectori de contrast/cauză.</li>
+        </ul>
+      </div>
+      <div class="writing-box"><h3>Scop comunicativ</h3><p>Să poți participa la o discuție profesională despre robotizare, productivitate și viitorul muncii în România.</p></div>
+    </section>
+
+    <section id="sec-text" class="section">
+      <div class="section-header"><div class="section-icon">02</div><div><h2>Text de lectură</h2><p>Read the text and notice the argument structure.</p></div></div>
+      <div class="text-passage">
+        <p>Robotizarea în România este un subiect aflat la intersecția dintre un potențial uriaș și o realitate încă modestă în comparație cu vestul Europei. România se află într-o fază de accelerare forțată, împinsă de criza de forță de muncă și de nevoia companiilor de a rămâne competitive.</p>
+        <p>Un indicator important este densitatea de roboți, adică numărul de roboți industriali la 10.000 de angajați. România se situează încă sub media europeană, însă în regiune are o poziție mai bună decât unii vecini. În timp ce economii precum Germania sau Coreea de Sud folosesc sute de roboți la 10.000 de muncitori, România se află în jurul pragului de 100-110 roboți.</p>
+        <p>Campionii robotizării sunt industria auto și furnizorii de componente. Uzinele Dacia de la Mioveni și Ford Otosan de la Craiova sunt printre cele mai automatizate ecosisteme industriale din țară. Acolo, roboții sunt folosiți pentru sudură, vopsitorie, manipulare grea și operațiuni repetitive. În ultimii ani, robotizarea s-a extins și spre mase plastice, cauciuc, metalurgie, logistică și e-commerce.</p>
+        <p>Un caz special este RPA, adică automatizarea proceselor repetitive cu roboți software. România a devenit vizibilă global prin UiPath, companie pornită din București și ajunsă lider internațional în acest domeniu. Băncile, companiile de telecomunicații și marile corporații folosesc roboți software pentru introducerea datelor, verificări repetitive și fluxuri administrative.</p>
+        <p>Principalul motor al robotizării nu mai este doar dorința de modernizare, ci necesitatea. Lipsa de personal și creșterea salariilor fac ca investiția într-un robot să fie amortizată mai rapid. În plus, coboții, adică roboții colaborativi, sunt tot mai atractivi pentru IMM-uri: sunt mai mici, mai ieftini, mai ușor de programat și pot lucra în siguranță lângă operatorii umani.</p>
+      </div>
+      <div class="quote-box"><strong>Mit vs. realitate:</strong> teama că roboții iau locurile de muncă este frecventă, dar în multe firme românești roboții preiau sarcinile repetitive, periculoase sau greu de acoperit cu personal disponibil.</div>
+    </section>
+
+    <section id="sec-vocabular" class="section">
+      <div class="section-header"><div class="section-icon">03</div><div><h2>Vocabular B2</h2><p>Technology, production and labour-market vocabulary.</p></div></div>
+      <span class="tag tag-navy">Tehnologie</span>
+      <div class="vocab-grid">
+        <div class="vocab-item"><div class="vocab-ro">robotizare</div><div class="vocab-en">robotisation / automation through robots</div></div>
+        <div class="vocab-item"><div class="vocab-ro">automatizare</div><div class="vocab-en">automation</div></div>
+        <div class="vocab-item"><div class="vocab-ro">robot industrial</div><div class="vocab-en">industrial robot</div></div>
+        <div class="vocab-item"><div class="vocab-ro">robot software</div><div class="vocab-en">software robot</div></div>
+        <div class="vocab-item"><div class="vocab-ro">cobot</div><div class="vocab-en">collaborative robot</div></div>
+        <div class="vocab-item"><div class="vocab-ro">densitate de roboți</div><div class="vocab-en">robot density</div></div>
+      </div>
+      <span class="tag tag-green">Economie și muncă</span>
+      <div class="vocab-grid">
+        <div class="vocab-item"><div class="vocab-ro">criză de forță de muncă</div><div class="vocab-en">labour shortage</div></div>
+        <div class="vocab-item"><div class="vocab-ro">creșterea salariilor</div><div class="vocab-en">wage growth</div></div>
+        <div class="vocab-item"><div class="vocab-ro">amortizarea investiției</div><div class="vocab-en">return on investment / payback</div></div>
+        <div class="vocab-item"><div class="vocab-ro">competitivitate</div><div class="vocab-en">competitiveness</div></div>
+        <div class="vocab-item"><div class="vocab-ro">sarcini repetitive</div><div class="vocab-en">repetitive tasks</div></div>
+        <div class="vocab-item"><div class="vocab-ro">locuri de muncă greu de acoperit</div><div class="vocab-en">hard-to-fill jobs</div></div>
+      </div>
+    </section>
+
+    <section id="sec-industrie" class="section">
+      <div class="section-header"><div class="section-icon">04</div><div><h2>Unde se robotizează România?</h2><p>Main sectors and examples.</p></div></div>
+      <div class="three-col">
+        <div class="mini-card"><strong>Industria auto</strong><span>Dacia, Ford Otosan, furnizori de componente, sudură, vopsitorie</span></div>
+        <div class="mini-card"><strong>Industrie prelucrătoare</strong><span>mase plastice, cauciuc, metalurgie, manipulare grea</span></div>
+        <div class="mini-card"><strong>Logistică și e-commerce</strong><span>sortare, depozite, fluxuri repetitive, ambalare</span></div>
+      </div>
+      <div class="card">
+        <div class="card-title">Expresii utile pentru comparație</div>
+        <div class="expr-item"><div class="expr-ro">România se află sub media europeană.</div><div class="expr-ex">Romania is below the European average.</div></div>
+        <div class="expr-item"><div class="expr-ro">Totuși, ritmul investițiilor se accelerează.</div><div class="expr-ex">However, the pace of investment is accelerating.</div></div>
+        <div class="expr-item"><div class="expr-ro">Comparativ cu vestul Europei, decalajul rămâne vizibil.</div><div class="expr-ex">Compared with Western Europe, the gap remains visible.</div></div>
+      </div>
+    </section>
+
+    <section id="sec-rpa" class="section">
+      <div class="section-header"><div class="section-icon">05</div><div><h2>RPA și coboții</h2><p>Software robots and collaborative robots.</p></div></div>
+      <div class="two-col">
+        <div class="card">
+          <div class="card-title">RPA</div>
+          <p>RPA înseamnă automatizarea proceselor repetitive din birouri. Un robot software poate copia date, verifica documente, completa formulare sau trimite notificări. În România, UiPath a făcut acest domeniu foarte vizibil.</p>
+        </div>
+        <div class="card">
+          <div class="card-title">Coboți</div>
+          <p>Coboții sunt roboți colaborativi. Ei sunt mai mici decât roboții industriali clasici, pot lucra aproape de oameni și sunt atractivi pentru IMM-uri deoarece sunt mai ușor de instalat și programat.</p>
+        </div>
+      </div>
+      <div class="writing-box"><h3>Întrebare B2</h3><p>Care crezi că va crește mai repede în România: robotizarea fizică în fabrici sau automatizarea software în birouri? Argumentează.</p></div>
+    </section>
+
+    <section id="sec-gramatica" class="section">
+      <div class="section-header"><div class="section-icon">06</div><div><h2>Gramatică B2</h2><p>Passive structures and connectors for analysis.</p></div></div>
+      <div class="grammar-rule">
+        <div class="rule-label">Pasiv cu „a fi” + participiu</div>
+        <p><strong>Roboții sunt folosiți</strong> pentru sudură și vopsitorie. <strong>Investiția este amortizată</strong> mai rapid când salariile cresc.</p>
+      </div>
+      <div class="grammar-rule">
+        <div class="rule-label">Reflexiv pasiv / impersonal</div>
+        <p><strong>Se folosesc</strong> tot mai mulți roboți software. <strong>Se investește</strong> în automatizare din cauza lipsei de personal.</p>
+      </div>
+      <div class="grammar-rule">
+        <div class="rule-label">Conectori B2</div>
+        <p><strong>deși</strong>, <strong>în timp ce</strong>, <strong>pe măsură ce</strong>, <strong>din cauza</strong>, <strong>prin urmare</strong>, <strong>cu toate acestea</strong>.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Transformări utile</div>
+        <div class="expr-item"><div class="expr-ro">Companiile folosesc roboți software.</div><div class="expr-ex">Roboții software sunt folosiți de companii. / Se folosesc roboți software.</div></div>
+        <div class="expr-item"><div class="expr-ro">Firmele automatizează sarcinile repetitive.</div><div class="expr-ex">Sarcinile repetitive sunt automatizate. / Se automatizează sarcinile repetitive.</div></div>
+      </div>
+    </section>
+
+    <section id="sec-dezbatere" class="section">
+      <div class="section-header"><div class="section-icon">07</div><div><h2>Dezbatere: mit vs. realitate</h2><p>Prepare balanced arguments.</p></div></div>
+      <div class="two-col">
+        <div class="card">
+          <div class="card-title">Argumente pentru robotizare</div>
+          <ul>
+            <li>reduce presiunea cauzată de lipsa de personal;</li>
+            <li>crește productivitatea și calitatea;</li>
+            <li>preia activități repetitive sau periculoase;</li>
+            <li>ajută firmele să rămână competitive.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="card-title">Riscuri și întrebări</div>
+          <ul>
+            <li>angajații au nevoie de recalificare;</li>
+            <li>IMM-urile pot avea dificultăți la finanțare;</li>
+            <li>există teamă socială față de pierderea locurilor de muncă;</li>
+            <li>nu toate procesele pot fi automatizate eficient.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="quote-box"><strong>Model de opinie:</strong> Consider că robotizarea nu trebuie privită doar ca o amenințare, ci ca o schimbare care obligă firmele și angajații să se adapteze.</div>
+    </section>
+
+    <section id="sec-exercitii" class="section">
+      <div class="section-header"><div class="section-icon">08</div><div><h2>Exerciții</h2><p>Vocabulary, comprehension, grammar and argumentation.</p></div></div>
+      <div class="card">
+        <div class="card-title">1. Potrivește termenii</div>
+        <div class="match-row"><div class="match-label">1. labour shortage</div><select id="v1"><option value="">alege</option><option value="A">criză de forță de muncă</option><option value="B">densitate de roboți</option><option value="C">cobot</option></select></div>
+        <div class="match-row"><div class="match-label">2. collaborative robot</div><select id="v2"><option value="">alege</option><option value="A">robot software</option><option value="B">cobot</option><option value="C">amortizare</option></select></div>
+        <div class="match-row"><div class="match-label">3. repetitive tasks</div><select id="v3"><option value="">alege</option><option value="A">sarcini repetitive</option><option value="B">creșterea salariilor</option><option value="C">metalurgie</option></select></div>
+        <button class="btn" onclick="checkVocab()">Verifică</button><div id="vocab-fb" class="feedback"></div>
+      </div>
+      <div class="card">
+        <div class="card-title">2. Înțelegerea textului</div>
+        <div class="ex-item"><label>1. Care este principalul motor al robotizării?</label><select id="c1"><option value="">alege</option><option value="A">criza de personal</option><option value="B">turismul</option><option value="C">publicitatea</option></select></div>
+        <div class="ex-item"><label>2. În ce industrie sunt cei mai mulți roboți industriali?</label><select id="c2"><option value="">alege</option><option value="A">industria auto</option><option value="B">educația</option><option value="C">agricultura tradițională</option></select></div>
+        <div class="ex-item"><label>3. Ce automatizează RPA?</label><select id="c3"><option value="">alege</option><option value="A">procese repetitive din birouri</option><option value="B">zboruri cu avionul</option><option value="C">vopsirea manuală</option></select></div>
+        <button class="btn" onclick="checkComprehension()">Verifică</button><div id="comp-fb" class="feedback"></div>
+      </div>
+      <div class="card">
+        <div class="card-title">3. Pasiv și reflexiv pasiv</div>
+        <div class="ex-item"><label>1. Companiile folosesc roboți software. → Roboții software ___ de companii.</label><select id="g1"><option value="">alege</option><option value="A">sunt folosiți</option><option value="B">se folosește</option><option value="C">folosește</option></select></div>
+        <div class="ex-item"><label>2. Firmele investesc în automatizare. → În România ___ în automatizare.</label><select id="g2"><option value="">alege</option><option value="A">se investește</option><option value="B">este investit</option><option value="C">investesc</option></select></div>
+        <div class="ex-item"><label>3. Roboții preiau sarcini repetitive. → Sarcinile repetitive ___ de roboți.</label><select id="g3"><option value="">alege</option><option value="A">sunt preluate</option><option value="B">se preia</option><option value="C">preiau</option></select></div>
+        <button class="btn" onclick="checkGrammar()">Verifică</button><div id="grammar-fb" class="feedback"></div>
+      </div>
+      <div class="card">
+        <div class="card-title">4. Alege conectorul potrivit</div>
+        <div class="ex-item"><label>1. ___ România este sub media europeană, ritmul investițiilor crește.</label><select id="k1"><option value="">alege</option><option value="A">Deși</option><option value="B">Prin urmare</option><option value="C">Din cauza</option></select></div>
+        <div class="ex-item"><label>2. ___ salariile cresc, investiția într-un robot devine mai atractivă.</label><select id="k2"><option value="">alege</option><option value="A">Pe măsură ce</option><option value="B">Cu toate acestea</option><option value="C">În loc de</option></select></div>
+        <button class="btn" onclick="checkConnectors()">Verifică</button><div id="connectors-fb" class="feedback"></div>
+      </div>
+      <div class="writing-box">
+        <h3>5. Producere de text</h3>
+        <p>Scrie 120-150 de cuvinte: „Roboții iau locurile de muncă sau ajută economia?” Folosește cel puțin trei conectori B2 și două structuri pasive.</p>
+        <textarea placeholder="În opinia mea, robotizarea în România..."></textarea>
+      </div>
+    </section>
+  </main>
+</div>
+
+<footer class="footer">Romanian Step by Step · Nivel B2 · Robotizarea în România · Creat pentru uz didactic</footer>
+
+<script>
+function showSection(name, el, shouldScroll = true) {
+  document.querySelectorAll('.section').forEach(section => section.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(button => button.classList.remove('active'));
+  const section = document.getElementById('sec-' + name);
+  if (!section) return;
+  section.classList.add('active');
+  document.querySelectorAll('.nav-item').forEach(button => {
+    const action = button.getAttribute('onclick') || '';
+    if (action.includes("'" + name + "'")) button.classList.add('active');
+  });
+  if (el) el.classList.add('active');
+  history.replaceState(null, '', '#' + name);
+  if (shouldScroll) window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+function scoreFeedback(id, score, total, answers) {
+  const feedback = document.getElementById(id);
+  feedback.className = 'feedback ' + (score === total ? 'ok' : 'err');
+  feedback.textContent = score === total ? 'Corect. Toate răspunsurile sunt potrivite.' : 'Ai ' + score + ' din ' + total + ' corecte. Răspunsuri: ' + answers;
+}
+function checkSet(map, feedbackId, answerText) {
+  let score = 0;
+  Object.entries(map).forEach(([id, answer]) => { if (document.getElementById(id).value === answer) score++; });
+  scoreFeedback(feedbackId, score, Object.keys(map).length, answerText);
+}
+function checkVocab() { checkSet({ v1: 'A', v2: 'B', v3: 'A' }, 'vocab-fb', '1-A, 2-B, 3-A.'); }
+function checkComprehension() { checkSet({ c1: 'A', c2: 'A', c3: 'A' }, 'comp-fb', '1-A, 2-A, 3-A.'); }
+function checkGrammar() { checkSet({ g1: 'A', g2: 'A', g3: 'A' }, 'grammar-fb', '1-A, 2-A, 3-A.'); }
+function checkConnectors() { checkSet({ k1: 'A', k2: 'A' }, 'connectors-fb', '1-A, 2-A.'); }
+function openHashSection() {
+  const name = window.location.hash.replace('#', '');
+  if (name && document.getElementById('sec-' + name)) showSection(name, null, false);
+}
+document.addEventListener('DOMContentLoaded', openHashSection);
+window.addEventListener('hashchange', openHashSection);
+</script>
+<script src="../../assets/lesson-shell.js"></script>
+</body>
+</html>
