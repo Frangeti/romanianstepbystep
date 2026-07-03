@@ -1394,6 +1394,25 @@
     transition: transform .18s, box-shadow .18s, border-color .18s;
   }
 
+  .resource-card.soon-card {
+    --level-color: var(--level-a1);
+    display: grid;
+    place-items: center;
+    min-height: 148px;
+    border-color: color-mix(in srgb, var(--level-color) 34%, white);
+    background:
+      linear-gradient(145deg, rgba(255, 255, 255, .92), rgba(245, 245, 247, .78)),
+      linear-gradient(145deg, color-mix(in srgb, var(--level-color) 16%, transparent), rgba(255, 255, 255, .9));
+  }
+
+  .resource-card.soon-card h3 {
+    margin: 0;
+    color: color-mix(in srgb, var(--level-color) 86%, var(--ink));
+    font-size: clamp(22px, 1.8vw, 30px);
+    font-weight: 400;
+    text-align: center;
+  }
+
   .resource-cover {
     min-height: 190px;
     padding: 1.2rem;
@@ -2056,6 +2075,54 @@
       linear-gradient(145deg, rgba(255, 255, 255, .9), rgba(245, 245, 247, .76)),
       linear-gradient(145deg, color-mix(in srgb, var(--level-color, var(--sky)) 18%, transparent), rgba(255, 255, 255, .92));
     border-color: rgba(210, 210, 215, .86);
+    overflow: visible;
+  }
+
+  #a1 .lesson-card:not([data-lesson-no="SOON"])::before,
+  #romana-lectii .lesson-card:not([data-lesson-no="SOON"])::before,
+  .level-section .lesson-card:not([data-lesson-no="SOON"])::before {
+    content: attr(data-lesson-no) !important;
+    position: absolute;
+    top: .75rem;
+    right: .75rem;
+    z-index: 4;
+    display: grid !important;
+    place-items: center;
+    min-width: 36px;
+    height: 30px;
+    padding: 0 .45rem;
+    border: 1px solid color-mix(in srgb, var(--level-color, var(--sky)) 26%, white);
+    border-radius: 9px;
+    background: rgba(255, 255, 255, .76);
+    color: color-mix(in srgb, var(--level-color, var(--sky)) 84%, var(--ink));
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: .02em;
+    box-shadow: 0 8px 18px rgba(0, 0, 0, .055);
+    backdrop-filter: blur(12px);
+  }
+
+  #a1 .lesson-card::after,
+  #romana-lectii .lesson-card::after,
+  .level-section .lesson-card::after {
+    content: "" !important;
+    position: absolute;
+    top: -24px;
+    left: 18px;
+    z-index: 5;
+    display: block !important;
+    width: 34px;
+    height: 86px;
+    background: url("data:image/svg+xml,%3Csvg width='34' height='86' viewBox='0 0 34 86' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='s' x='-10' y='-10' width='54' height='106' color-interpolation-filters='sRGB'%3E%3CfeDropShadow dx='1.6' dy='4' stdDeviation='2.4' flood-color='%23000000' flood-opacity='.18'/%3E%3C/filter%3E%3Cg filter='url(%23s)'%3E%3Cpath d='M19.2 14.8C19.2 6.2 9.6 6.2 9.6 14.8V60.8C9.6 74.2 28.4 74.2 28.4 60.8V33.2' stroke='%23d9a2ad' stroke-width='4.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M19.2 14.8C19.2 6.2 9.6 6.2 9.6 14.8V60.8C9.6 74.2 28.4 74.2 28.4 60.8V33.2' stroke='%23f1c4cd' stroke-width='2.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M12.3 15.2V60.2C12.3 69.2 25.8 69.2 25.8 60.2V34.4' stroke='%23fff3f0' stroke-width='.9' stroke-linecap='round' opacity='.58'/%3E%3Cpath d='M20.8 15C20.8 3.9 8 3.9 8 15' stroke='%236f5160' stroke-width='.8' stroke-linecap='round' opacity='.25'/%3E%3C/g%3E%3C/svg%3E") center / contain no-repeat;
+    transform: rotate(-4deg);
+    transform-origin: 17px 26px;
+    pointer-events: none;
+  }
+
+  .level-section .lesson-card .lesson-translation,
+  #romana-lectii .lesson-card .lesson-translation,
+  #a1 .lesson-card .lesson-translation {
+    color: color-mix(in srgb, var(--level-color, var(--sky)) 82%, var(--ink));
   }
 
   #a1 .lesson-card:hover,
@@ -2265,7 +2332,7 @@
             <div class="sid-level-group">
               <a class="sid-item subitem home-level" href="#a2" data-level-filter="a2">A2. Începător</a>
               <div class="level-tool-list">
-                <a class="sid-item tool-item home-tool" href="#romana-lectii" data-home-section="romana-lectii"><span class="sid-dot dot-green"></span>1. Lecții de limba română</a>
+                <a class="sid-item tool-item home-tool" href="#lectii" data-home-level="a2"><span class="sid-dot dot-green"></span>1. Lecții de limba română</a>
                 <a class="sid-item tool-item home-tool" href="#romana-lectii-pdf" data-home-section="romana-lectii-pdf"><span class="sid-dot dot-green"></span>2. Lecții download PDF</a>
                 <a class="sid-item tool-item home-tool" href="#romana-dictionar" data-home-section="romana-dictionar"><span class="sid-dot dot-green"></span>3. Dicționar alfabetic</a>
                 <a class="sid-item tool-item home-tool tool-parent" href="#romana-pronuntie" data-home-section="romana-pronuntie"><span class="sid-dot dot-green"></span>4. Pronunție</a>
@@ -2303,7 +2370,7 @@
             <div class="sid-level-group">
               <a class="sid-item subitem home-level" href="#b1" data-level-filter="b1">B1. Intermediar</a>
               <div class="level-tool-list">
-                <a class="sid-item tool-item home-tool" href="#romana-lectii" data-home-section="romana-lectii"><span class="sid-dot dot-green"></span>1. Lecții de limba română</a>
+                <a class="sid-item tool-item home-tool" href="#lectii" data-home-level="b1"><span class="sid-dot dot-green"></span>1. Lecții de limba română</a>
                 <a class="sid-item tool-item home-tool" href="#romana-lectii-pdf" data-home-section="romana-lectii-pdf"><span class="sid-dot dot-green"></span>2. Lecții download PDF</a>
                 <a class="sid-item tool-item home-tool" href="#romana-dictionar" data-home-section="romana-dictionar"><span class="sid-dot dot-green"></span>3. Dicționar alfabetic</a>
                 <a class="sid-item tool-item home-tool tool-parent" href="#romana-pronuntie" data-home-section="romana-pronuntie"><span class="sid-dot dot-green"></span>4. Pronunție</a>
@@ -2341,7 +2408,7 @@
             <div class="sid-level-group">
               <a class="sid-item subitem home-level" href="#b2" data-level-filter="b2">B2. Intermediar - Avansat</a>
               <div class="level-tool-list">
-                <a class="sid-item tool-item home-tool" href="#romana-lectii" data-home-section="romana-lectii"><span class="sid-dot dot-green"></span>1. Lecții de limba română</a>
+                <a class="sid-item tool-item home-tool" href="#lectii" data-home-level="b2"><span class="sid-dot dot-green"></span>1. Lecții de limba română</a>
                 <a class="sid-item tool-item home-tool" href="#romana-lectii-pdf" data-home-section="romana-lectii-pdf"><span class="sid-dot dot-green"></span>2. Lecții download PDF</a>
                 <a class="sid-item tool-item home-tool" href="#romana-dictionar" data-home-section="romana-dictionar"><span class="sid-dot dot-green"></span>3. Dicționar alfabetic</a>
                 <a class="sid-item tool-item home-tool tool-parent" href="#romana-pronuntie" data-home-section="romana-pronuntie"><span class="sid-dot dot-green"></span>4. Pronunție</a>
@@ -2379,7 +2446,7 @@
             <div class="sid-level-group">
               <a class="sid-item subitem home-level" href="#c1" data-level-filter="c1">C1. Avansat</a>
               <div class="level-tool-list">
-                <a class="sid-item tool-item home-tool" href="#romana-lectii" data-home-section="romana-lectii"><span class="sid-dot dot-green"></span>1. Lecții de limba română</a>
+                <a class="sid-item tool-item home-tool" href="#lectii" data-home-level="c1"><span class="sid-dot dot-green"></span>1. Lecții de limba română</a>
                 <a class="sid-item tool-item home-tool" href="#romana-lectii-pdf" data-home-section="romana-lectii-pdf"><span class="sid-dot dot-green"></span>2. Lecții download PDF</a>
                 <a class="sid-item tool-item home-tool" href="#romana-dictionar" data-home-section="romana-dictionar"><span class="sid-dot dot-green"></span>3. Dicționar alfabetic</a>
                 <a class="sid-item tool-item home-tool tool-parent" href="#romana-pronuntie" data-home-section="romana-pronuntie"><span class="sid-dot dot-green"></span>4. Pronunție</a>
@@ -2422,36 +2489,34 @@
                 <a class="sid-item tool-item" href="#a1-germana" data-language-tool="germana" data-language-section="a1-germana"><span class="sid-dot dot-teal"></span>1. Lecții</a>
                 <a class="sid-item tool-item" href="#a1-germana-copii" data-language-tool="germana" data-language-section="a1-germana-copii"><span class="sid-dot dot-teal"></span>2. Lecții copii</a>
                 <a class="sid-item tool-item" href="#lectii-pdf" data-language-tool="germana"><span class="sid-dot dot-teal"></span>3. Lecții PDF</a>
-                <a class="sid-item tool-item" href="#glosar" data-language-tool="germana"><span class="sid-dot dot-gold"></span>4. Dicționar alfabetic</a>
+                <a class="sid-item tool-item tool-parent" href="#glosar" data-language-tool="germana"><span class="sid-dot dot-teal"></span>4. Dicționar alfabetic</a>
+                <div class="tool-submenu">
+                  <a class="sid-item tool-subitem" href="#glosar" data-language-tool="germana"><span class="sid-dot dot-teal"></span>Glosar</a>
+                </div>
                 <a class="sid-item tool-item tool-parent" href="#ghid-pronuntie" data-language-tool="germana"><span class="sid-dot dot-teal"></span>5. Pronunție</a>
                 <div class="tool-submenu">
                   <a class="sid-item tool-subitem" href="#ghid-pronuntie" data-language-tool="germana"><span class="sid-dot dot-teal"></span>Reguli</a>
                   <a class="sid-item tool-subitem" href="#recapitulare" data-language-tool="germana"><span class="sid-dot dot-teal"></span>Exerciții</a>
                 </div>
-                <a class="sid-item tool-item tool-parent" href="#fise-vocabular" data-language-tool="germana"><span class="sid-dot dot-gold"></span>6. Vocabular</a>
+                <a class="sid-item tool-item tool-parent" href="#fise-vocabular" data-language-tool="germana"><span class="sid-dot dot-teal"></span>6. Vocabular</a>
                 <div class="tool-submenu">
-                  <a class="sid-item tool-subitem" href="#fise-vocabular" data-language-tool="germana"><span class="sid-dot dot-gold"></span>Pe lecții</a>
-                  <a class="sid-item tool-subitem" href="#exercitii-vocabular" data-language-tool="germana"><span class="sid-dot dot-gold"></span>Exerciții pe lecții</a>
-                  <a class="sid-item tool-subitem" href="#exercitii-vocabular" data-language-tool="germana"><span class="sid-dot dot-gold"></span>Exerciții Nivel</a>
+                  <a class="sid-item tool-subitem" href="#fise-vocabular" data-language-tool="germana"><span class="sid-dot dot-teal"></span>Pe lecții</a>
+                  <a class="sid-item tool-subitem" href="#exercitii-vocabular" data-language-tool="germana"><span class="sid-dot dot-teal"></span>Exerciții pe lecții</a>
+                  <a class="sid-item tool-subitem" href="#exercitii-vocabular" data-language-tool="germana"><span class="sid-dot dot-teal"></span>Exerciții Nivel</a>
                 </div>
-                <a class="sid-item tool-item tool-parent" href="#exercitii-gramatica" data-language-tool="germana"><span class="sid-dot dot-gold"></span>7. Gramatică</a>
+                <a class="sid-item tool-item tool-parent" href="#exercitii-gramatica" data-language-tool="germana"><span class="sid-dot dot-teal"></span>7. Gramatică</a>
                 <div class="tool-submenu">
-                  <a class="sid-item tool-subitem" href="#exercitii-gramatica" data-language-tool="germana"><span class="sid-dot dot-gold"></span>Reguli pe lecții</a>
-                  <a class="sid-item tool-subitem" href="#exercitii-gramatica" data-language-tool="germana"><span class="sid-dot dot-gold"></span>Exerciții pe lecții</a>
-                  <a class="sid-item tool-subitem" href="#tabele-gramaticale" data-language-tool="germana"><span class="sid-dot dot-gold"></span>Tabele</a>
-                  <a class="sid-item tool-subitem" href="#exercitii-gramatica" data-language-tool="germana"><span class="sid-dot dot-gold"></span>Gramatică Nivel</a>
-                  <a class="sid-item tool-subitem" href="#exercitii-gramatica" data-language-tool="germana"><span class="sid-dot dot-gold"></span>Exerciții Nivel</a>
+                  <a class="sid-item tool-subitem" href="#exercitii-gramatica" data-language-tool="germana"><span class="sid-dot dot-teal"></span>Reguli pe lecții</a>
+                  <a class="sid-item tool-subitem" href="#exercitii-gramatica" data-language-tool="germana"><span class="sid-dot dot-teal"></span>Exerciții pe lecții</a>
+                  <a class="sid-item tool-subitem" href="#tabele-gramaticale" data-language-tool="germana"><span class="sid-dot dot-teal"></span>Tabele</a>
+                  <a class="sid-item tool-subitem" href="#exercitii-gramatica" data-language-tool="germana"><span class="sid-dot dot-teal"></span>Gramatică Nivel</a>
+                  <a class="sid-item tool-subitem" href="#exercitii-gramatica" data-language-tool="germana"><span class="sid-dot dot-teal"></span>Exerciții Nivel</a>
                 </div>
-                <a class="sid-item tool-item tool-parent" href="#verbe-conjugate" data-language-tool="germana"><span class="sid-dot dot-blue"></span>8. Verbe</a>
+                <a class="sid-item tool-item tool-parent" href="#verbe-conjugate" data-language-tool="germana"><span class="sid-dot dot-teal"></span>8. Verbe</a>
                 <div class="tool-submenu">
-                  <a class="sid-item tool-subitem" href="#verbe-conjugate" data-language-tool="germana"><span class="sid-dot dot-blue"></span>Dicționar</a>
-                  <a class="sid-item tool-subitem" href="#verbe-conjugate" data-language-tool="germana"><span class="sid-dot dot-blue"></span>Verbe lecții</a>
-                  <a class="sid-item tool-subitem" href="#verbe-conjugate" data-language-tool="germana"><span class="sid-dot dot-blue"></span>Conjugări</a>
-                </div>
-                <a class="sid-item tool-item tool-parent" href="#teste" data-language-tool="germana"><span class="sid-dot dot-blue"></span>9. Teste</a>
-                <div class="tool-submenu">
-                  <a class="sid-item tool-subitem" href="#teste" data-language-tool="germana"><span class="sid-dot dot-blue"></span>Pe lecții</a>
-                  <a class="sid-item tool-subitem" href="#teste" data-language-tool="germana"><span class="sid-dot dot-blue"></span>Nivel</a>
+                  <a class="sid-item tool-subitem" href="#verbe-conjugate" data-language-tool="germana"><span class="sid-dot dot-teal"></span>Dicționar</a>
+                  <a class="sid-item tool-subitem" href="#verbe-conjugate" data-language-tool="germana"><span class="sid-dot dot-teal"></span>Verbe lecții</a>
+                  <a class="sid-item tool-subitem" href="#verbe-conjugate" data-language-tool="germana"><span class="sid-dot dot-teal"></span>Conjugări</a>
                 </div>
               </div>
             </div>
@@ -2619,36 +2684,34 @@
                 <a class="sid-item tool-item" href="#a1-engleza" data-language-tool="engleza" data-language-section="a1-engleza"><span class="sid-dot dot-teal"></span>1. Lecții</a>
                 <a class="sid-item tool-item" href="#a1-engleza-copii" data-language-tool="engleza" data-language-section="a1-engleza-copii"><span class="sid-dot dot-teal"></span>2. Lecții copii</a>
                 <a class="sid-item tool-item" href="#lectii-pdf" data-language-tool="engleza"><span class="sid-dot dot-teal"></span>3. Lecții PDF</a>
-                <a class="sid-item tool-item" href="#glosar" data-language-tool="engleza"><span class="sid-dot dot-gold"></span>4. Dicționar alfabetic</a>
+                <a class="sid-item tool-item tool-parent" href="#glosar" data-language-tool="engleza"><span class="sid-dot dot-teal"></span>4. Dicționar alfabetic</a>
+                <div class="tool-submenu">
+                  <a class="sid-item tool-subitem" href="#glosar" data-language-tool="engleza"><span class="sid-dot dot-teal"></span>Glosar</a>
+                </div>
                 <a class="sid-item tool-item tool-parent" href="#ghid-pronuntie" data-language-tool="engleza"><span class="sid-dot dot-teal"></span>5. Pronunție</a>
                 <div class="tool-submenu">
                   <a class="sid-item tool-subitem" href="#ghid-pronuntie" data-language-tool="engleza"><span class="sid-dot dot-teal"></span>Reguli</a>
                   <a class="sid-item tool-subitem" href="#recapitulare" data-language-tool="engleza"><span class="sid-dot dot-teal"></span>Exerciții</a>
                 </div>
-                <a class="sid-item tool-item tool-parent" href="#fise-vocabular" data-language-tool="engleza"><span class="sid-dot dot-gold"></span>6. Vocabular</a>
+                <a class="sid-item tool-item tool-parent" href="#fise-vocabular" data-language-tool="engleza"><span class="sid-dot dot-teal"></span>6. Vocabular</a>
                 <div class="tool-submenu">
-                  <a class="sid-item tool-subitem" href="#fise-vocabular" data-language-tool="engleza"><span class="sid-dot dot-gold"></span>Pe lecții</a>
-                  <a class="sid-item tool-subitem" href="#exercitii-vocabular" data-language-tool="engleza"><span class="sid-dot dot-gold"></span>Exerciții pe lecții</a>
-                  <a class="sid-item tool-subitem" href="#exercitii-vocabular" data-language-tool="engleza"><span class="sid-dot dot-gold"></span>Exerciții Nivel</a>
+                  <a class="sid-item tool-subitem" href="#fise-vocabular" data-language-tool="engleza"><span class="sid-dot dot-teal"></span>Pe lecții</a>
+                  <a class="sid-item tool-subitem" href="#exercitii-vocabular" data-language-tool="engleza"><span class="sid-dot dot-teal"></span>Exerciții pe lecții</a>
+                  <a class="sid-item tool-subitem" href="#exercitii-vocabular" data-language-tool="engleza"><span class="sid-dot dot-teal"></span>Exerciții Nivel</a>
                 </div>
-                <a class="sid-item tool-item tool-parent" href="#exercitii-gramatica" data-language-tool="engleza"><span class="sid-dot dot-gold"></span>7. Gramatică</a>
+                <a class="sid-item tool-item tool-parent" href="#exercitii-gramatica" data-language-tool="engleza"><span class="sid-dot dot-teal"></span>7. Gramatică</a>
                 <div class="tool-submenu">
-                  <a class="sid-item tool-subitem" href="#exercitii-gramatica" data-language-tool="engleza"><span class="sid-dot dot-gold"></span>Reguli pe lecții</a>
-                  <a class="sid-item tool-subitem" href="#exercitii-gramatica" data-language-tool="engleza"><span class="sid-dot dot-gold"></span>Exerciții pe lecții</a>
-                  <a class="sid-item tool-subitem" href="#tabele-gramaticale" data-language-tool="engleza"><span class="sid-dot dot-gold"></span>Tabele</a>
-                  <a class="sid-item tool-subitem" href="#exercitii-gramatica" data-language-tool="engleza"><span class="sid-dot dot-gold"></span>Gramatică Nivel</a>
-                  <a class="sid-item tool-subitem" href="#exercitii-gramatica" data-language-tool="engleza"><span class="sid-dot dot-gold"></span>Exerciții Nivel</a>
+                  <a class="sid-item tool-subitem" href="#exercitii-gramatica" data-language-tool="engleza"><span class="sid-dot dot-teal"></span>Reguli pe lecții</a>
+                  <a class="sid-item tool-subitem" href="#exercitii-gramatica" data-language-tool="engleza"><span class="sid-dot dot-teal"></span>Exerciții pe lecții</a>
+                  <a class="sid-item tool-subitem" href="#tabele-gramaticale" data-language-tool="engleza"><span class="sid-dot dot-teal"></span>Tabele</a>
+                  <a class="sid-item tool-subitem" href="#exercitii-gramatica" data-language-tool="engleza"><span class="sid-dot dot-teal"></span>Gramatică Nivel</a>
+                  <a class="sid-item tool-subitem" href="#exercitii-gramatica" data-language-tool="engleza"><span class="sid-dot dot-teal"></span>Exerciții Nivel</a>
                 </div>
-                <a class="sid-item tool-item tool-parent" href="#verbe-conjugate" data-language-tool="engleza"><span class="sid-dot dot-blue"></span>8. Verbe</a>
+                <a class="sid-item tool-item tool-parent" href="#verbe-conjugate" data-language-tool="engleza"><span class="sid-dot dot-teal"></span>8. Verbe</a>
                 <div class="tool-submenu">
-                  <a class="sid-item tool-subitem" href="#verbe-conjugate" data-language-tool="engleza"><span class="sid-dot dot-blue"></span>Dicționar</a>
-                  <a class="sid-item tool-subitem" href="#verbe-conjugate" data-language-tool="engleza"><span class="sid-dot dot-blue"></span>Verbe lecții</a>
-                  <a class="sid-item tool-subitem" href="#verbe-conjugate" data-language-tool="engleza"><span class="sid-dot dot-blue"></span>Conjugări</a>
-                </div>
-                <a class="sid-item tool-item tool-parent" href="#teste" data-language-tool="engleza"><span class="sid-dot dot-blue"></span>9. Teste</a>
-                <div class="tool-submenu">
-                  <a class="sid-item tool-subitem" href="#teste" data-language-tool="engleza"><span class="sid-dot dot-blue"></span>Pe lecții</a>
-                  <a class="sid-item tool-subitem" href="#teste" data-language-tool="engleza"><span class="sid-dot dot-blue"></span>Nivel</a>
+                  <a class="sid-item tool-subitem" href="#verbe-conjugate" data-language-tool="engleza"><span class="sid-dot dot-teal"></span>Dicționar</a>
+                  <a class="sid-item tool-subitem" href="#verbe-conjugate" data-language-tool="engleza"><span class="sid-dot dot-teal"></span>Verbe lecții</a>
+                  <a class="sid-item tool-subitem" href="#verbe-conjugate" data-language-tool="engleza"><span class="sid-dot dot-teal"></span>Conjugări</a>
                 </div>
               </div>
             </div>
@@ -2816,36 +2879,34 @@
                 <a class="sid-item tool-item" href="#a1-spaniola" data-language-tool="spaniola" data-language-section="a1-spaniola"><span class="sid-dot dot-teal"></span>1. Lecții</a>
                 <a class="sid-item tool-item" href="#a1-spaniola-copii" data-language-tool="spaniola" data-language-section="a1-spaniola-copii"><span class="sid-dot dot-teal"></span>2. Lecții copii</a>
                 <a class="sid-item tool-item" href="#lectii-pdf" data-language-tool="spaniola"><span class="sid-dot dot-teal"></span>3. Lecții PDF</a>
-                <a class="sid-item tool-item" href="#glosar" data-language-tool="spaniola"><span class="sid-dot dot-gold"></span>4. Dicționar alfabetic</a>
+                <a class="sid-item tool-item tool-parent" href="#glosar" data-language-tool="spaniola"><span class="sid-dot dot-teal"></span>4. Dicționar alfabetic</a>
+                <div class="tool-submenu">
+                  <a class="sid-item tool-subitem" href="#glosar" data-language-tool="spaniola"><span class="sid-dot dot-teal"></span>Glosar</a>
+                </div>
                 <a class="sid-item tool-item tool-parent" href="#ghid-pronuntie" data-language-tool="spaniola"><span class="sid-dot dot-teal"></span>5. Pronunție</a>
                 <div class="tool-submenu">
                   <a class="sid-item tool-subitem" href="#ghid-pronuntie" data-language-tool="spaniola"><span class="sid-dot dot-teal"></span>Reguli</a>
                   <a class="sid-item tool-subitem" href="#recapitulare" data-language-tool="spaniola"><span class="sid-dot dot-teal"></span>Exerciții</a>
                 </div>
-                <a class="sid-item tool-item tool-parent" href="#fise-vocabular" data-language-tool="spaniola"><span class="sid-dot dot-gold"></span>6. Vocabular</a>
+                <a class="sid-item tool-item tool-parent" href="#fise-vocabular" data-language-tool="spaniola"><span class="sid-dot dot-teal"></span>6. Vocabular</a>
                 <div class="tool-submenu">
-                  <a class="sid-item tool-subitem" href="#fise-vocabular" data-language-tool="spaniola"><span class="sid-dot dot-gold"></span>Pe lecții</a>
-                  <a class="sid-item tool-subitem" href="#exercitii-vocabular" data-language-tool="spaniola"><span class="sid-dot dot-gold"></span>Exerciții pe lecții</a>
-                  <a class="sid-item tool-subitem" href="#exercitii-vocabular" data-language-tool="spaniola"><span class="sid-dot dot-gold"></span>Exerciții Nivel</a>
+                  <a class="sid-item tool-subitem" href="#fise-vocabular" data-language-tool="spaniola"><span class="sid-dot dot-teal"></span>Pe lecții</a>
+                  <a class="sid-item tool-subitem" href="#exercitii-vocabular" data-language-tool="spaniola"><span class="sid-dot dot-teal"></span>Exerciții pe lecții</a>
+                  <a class="sid-item tool-subitem" href="#exercitii-vocabular" data-language-tool="spaniola"><span class="sid-dot dot-teal"></span>Exerciții Nivel</a>
                 </div>
-                <a class="sid-item tool-item tool-parent" href="#exercitii-gramatica" data-language-tool="spaniola"><span class="sid-dot dot-gold"></span>7. Gramatică</a>
+                <a class="sid-item tool-item tool-parent" href="#exercitii-gramatica" data-language-tool="spaniola"><span class="sid-dot dot-teal"></span>7. Gramatică</a>
                 <div class="tool-submenu">
-                  <a class="sid-item tool-subitem" href="#exercitii-gramatica" data-language-tool="spaniola"><span class="sid-dot dot-gold"></span>Reguli pe lecții</a>
-                  <a class="sid-item tool-subitem" href="#exercitii-gramatica" data-language-tool="spaniola"><span class="sid-dot dot-gold"></span>Exerciții pe lecții</a>
-                  <a class="sid-item tool-subitem" href="#tabele-gramaticale" data-language-tool="spaniola"><span class="sid-dot dot-gold"></span>Tabele</a>
-                  <a class="sid-item tool-subitem" href="#exercitii-gramatica" data-language-tool="spaniola"><span class="sid-dot dot-gold"></span>Gramatică Nivel</a>
-                  <a class="sid-item tool-subitem" href="#exercitii-gramatica" data-language-tool="spaniola"><span class="sid-dot dot-gold"></span>Exerciții Nivel</a>
+                  <a class="sid-item tool-subitem" href="#exercitii-gramatica" data-language-tool="spaniola"><span class="sid-dot dot-teal"></span>Reguli pe lecții</a>
+                  <a class="sid-item tool-subitem" href="#exercitii-gramatica" data-language-tool="spaniola"><span class="sid-dot dot-teal"></span>Exerciții pe lecții</a>
+                  <a class="sid-item tool-subitem" href="#tabele-gramaticale" data-language-tool="spaniola"><span class="sid-dot dot-teal"></span>Tabele</a>
+                  <a class="sid-item tool-subitem" href="#exercitii-gramatica" data-language-tool="spaniola"><span class="sid-dot dot-teal"></span>Gramatică Nivel</a>
+                  <a class="sid-item tool-subitem" href="#exercitii-gramatica" data-language-tool="spaniola"><span class="sid-dot dot-teal"></span>Exerciții Nivel</a>
                 </div>
-                <a class="sid-item tool-item tool-parent" href="#verbe-conjugate" data-language-tool="spaniola"><span class="sid-dot dot-blue"></span>8. Verbe</a>
+                <a class="sid-item tool-item tool-parent" href="#verbe-conjugate" data-language-tool="spaniola"><span class="sid-dot dot-teal"></span>8. Verbe</a>
                 <div class="tool-submenu">
-                  <a class="sid-item tool-subitem" href="#verbe-conjugate" data-language-tool="spaniola"><span class="sid-dot dot-blue"></span>Dicționar</a>
-                  <a class="sid-item tool-subitem" href="#verbe-conjugate" data-language-tool="spaniola"><span class="sid-dot dot-blue"></span>Verbe lecții</a>
-                  <a class="sid-item tool-subitem" href="#verbe-conjugate" data-language-tool="spaniola"><span class="sid-dot dot-blue"></span>Conjugări</a>
-                </div>
-                <a class="sid-item tool-item tool-parent" href="#teste" data-language-tool="spaniola"><span class="sid-dot dot-blue"></span>9. Teste</a>
-                <div class="tool-submenu">
-                  <a class="sid-item tool-subitem" href="#teste" data-language-tool="spaniola"><span class="sid-dot dot-blue"></span>Pe lecții</a>
-                  <a class="sid-item tool-subitem" href="#teste" data-language-tool="spaniola"><span class="sid-dot dot-blue"></span>Nivel</a>
+                  <a class="sid-item tool-subitem" href="#verbe-conjugate" data-language-tool="spaniola"><span class="sid-dot dot-teal"></span>Dicționar</a>
+                  <a class="sid-item tool-subitem" href="#verbe-conjugate" data-language-tool="spaniola"><span class="sid-dot dot-teal"></span>Verbe lecții</a>
+                  <a class="sid-item tool-subitem" href="#verbe-conjugate" data-language-tool="spaniola"><span class="sid-dot dot-teal"></span>Conjugări</a>
                 </div>
               </div>
             </div>
@@ -3151,7 +3212,7 @@
             <h2>Lecții de limba română PDF</h2>
           </div>
           <div class="resource-grid">
-            <article class="resource-card"><div class="resource-body"><div class="meta"><span class="badge badge-b2">A1</span><span class="badge badge-live">În construcție</span></div><h3>PDF A1</h3><p>Spațiu pregătit pentru fișe PDF numai în limba română.</p><span class="resource-status waiting">În construcție</span></div></article>
+            <article class="resource-card soon-card"><h3>În curând</h3></article>
           </div>
         </section>
 
@@ -3160,7 +3221,7 @@
             <h2>Dicționar</h2>
           </div>
           <div class="resource-grid">
-            <article class="resource-card"><div class="resource-body"><div class="meta"><span class="badge badge-b2">A1</span><span class="badge badge-live">În construcție</span></div><h3>Dicționar A1</h3><p>Spațiu pregătit pentru dicționar numai în limba română.</p><span class="resource-status waiting">În construcție</span></div></article>
+            <article class="resource-card soon-card"><h3>În curând</h3></article>
           </div>
         </section>
 
@@ -3169,7 +3230,7 @@
             <h2>Pronunție</h2>
           </div>
           <div class="resource-grid">
-            <article class="resource-card"><div class="resource-body"><div class="meta"><span class="badge badge-b2">A1</span><span class="badge badge-live">În construcție</span></div><h3>Pronunție A1</h3><p>Spațiu pregătit pentru materiale de pronunție în limba română.</p><span class="resource-status waiting">În construcție</span></div></article>
+            <article class="resource-card soon-card"><h3>În curând</h3></article>
           </div>
         </section>
 
@@ -3178,7 +3239,7 @@
             <h2>Vocabular</h2>
           </div>
           <div class="resource-grid">
-            <article class="resource-card"><div class="resource-body"><div class="meta"><span class="badge badge-b2">A1</span><span class="badge badge-live">În construcție</span></div><h3>Vocabular A1</h3><p>Spațiu pregătit pentru vocabular numai în limba română.</p><span class="resource-status waiting">În construcție</span></div></article>
+            <article class="resource-card soon-card"><h3>În curând</h3></article>
           </div>
         </section>
 
@@ -3187,7 +3248,7 @@
             <h2>Gramatică</h2>
           </div>
           <div class="resource-grid">
-            <article class="resource-card"><div class="resource-body"><div class="meta"><span class="badge badge-b2">A1</span><span class="badge badge-live">În construcție</span></div><h3>Gramatică A1</h3><p>Spațiu pregătit pentru gramatică numai în limba română.</p><span class="resource-status waiting">În construcție</span></div></article>
+            <article class="resource-card soon-card"><h3>În curând</h3></article>
           </div>
         </section>
 
@@ -3196,7 +3257,7 @@
             <h2>Verbe</h2>
           </div>
           <div class="resource-grid">
-            <article class="resource-card"><div class="resource-body"><div class="meta"><span class="badge badge-b2">A1</span><span class="badge badge-live">În construcție</span></div><h3>Verbe A1</h3><p>Spațiu pregătit pentru verbe și exemple numai în limba română.</p><span class="resource-status waiting">În construcție</span></div></article>
+            <article class="resource-card soon-card"><h3>În curând</h3></article>
           </div>
         </section>
 
@@ -3205,7 +3266,7 @@
             <h2>Teste</h2>
           </div>
           <div class="resource-grid">
-            <article class="resource-card"><div class="resource-body"><div class="meta"><span class="badge badge-b2">A1</span><span class="badge badge-live">În construcție</span></div><h3>Teste A1</h3><p>Spațiu pregătit pentru teste numai în limba română.</p><span class="resource-status waiting">În construcție</span></div></article>
+            <article class="resource-card soon-card"><h3>În curând</h3></article>
           </div>
         </section>
 
@@ -4178,14 +4239,7 @@
     <h2>Glosar</h2>
   </div>
   <div class="resource-grid">
-    <article class="resource-card">
-      <div class="resource-body">
-        <div class="meta"><span class="badge badge-b2">A1</span><span class="badge badge-live">În construcție</span></div>
-        <h3>Glosar A1</h3>
-        <p>Listă alfabetică pentru vocabularul din cele 10 lecții A1, cu traducere germană.</p>
-        <span class="resource-status waiting">În construcție</span>
-      </div>
-    </article>
+    <article class="resource-card soon-card"><h3>În curând</h3></article>
   </div>
 </section>
 
@@ -4194,14 +4248,7 @@
     <h2>Tabele gramaticale</h2>
   </div>
   <div class="resource-grid">
-    <article class="resource-card">
-      <div class="resource-body">
-        <div class="meta"><span class="badge badge-b2">A1</span><span class="badge badge-live">În construcție</span></div>
-        <h3>Tabele A1</h3>
-        <p>Pronume, verbe de bază, întrebări frecvente și structuri scurte pentru recapitulare.</p>
-        <span class="resource-status waiting">În construcție</span>
-      </div>
-    </article>
+    <article class="resource-card soon-card"><h3>În curând</h3></article>
   </div>
 </section>
 
@@ -4210,14 +4257,7 @@
     <h2>Ghid de pronunție</h2>
   </div>
   <div class="resource-grid">
-    <article class="resource-card">
-      <div class="resource-body">
-        <div class="meta"><span class="badge badge-b2">A1</span><span class="badge badge-live">În construcție</span></div>
-        <h3>Pronunție română</h3>
-        <p>Ghid pentru ă, â/î, ș, ț, ce/ci, -esc și formele cu ți / ți-mă.</p>
-        <span class="resource-status waiting">În construcție</span>
-      </div>
-    </article>
+    <article class="resource-card soon-card"><h3>În curând</h3></article>
   </div>
 </section>
 
@@ -4226,14 +4266,7 @@
     <h2>Exerciții de recapitulare</h2>
   </div>
   <div class="resource-grid">
-    <article class="resource-card">
-      <div class="resource-body">
-        <div class="meta"><span class="badge badge-b2">A1</span><span class="badge badge-live">În construcție</span></div>
-        <h3>Recapitulare A1</h3>
-        <p>Exerciții mixte pentru salutări, prezentări, persoane, numere, țări și limbi.</p>
-        <span class="resource-status waiting">În construcție</span>
-      </div>
-    </article>
+    <article class="resource-card soon-card"><h3>În curând</h3></article>
   </div>
 </section>
 
@@ -4242,14 +4275,7 @@
     <h2>Exerciții de vocabular</h2>
   </div>
   <div class="resource-grid">
-    <article class="resource-card">
-      <div class="resource-body">
-        <div class="meta"><span class="badge badge-b2">A1</span><span class="badge badge-live">În construcție</span></div>
-        <h3>Vocabular A1</h3>
-        <p>Exerciții pentru traduceri, imagini, perechi de cuvinte și expresii uzuale.</p>
-        <span class="resource-status waiting">În construcție</span>
-      </div>
-    </article>
+    <article class="resource-card soon-card"><h3>În curând</h3></article>
   </div>
 </section>
 
@@ -4258,27 +4284,7 @@
     <h2>Exerciții de gramatică</h2>
   </div>
   <div class="resource-grid">
-    <article class="resource-card">
-      <div class="resource-body">
-        <div class="meta"><span class="badge badge-b2">A1</span><span class="badge badge-live">În construcție</span></div>
-        <h3>Gramatică A1</h3>
-        <p>Exerciții pentru a fi, a avea, a veni, a vorbi și propoziții simple.</p>
-        <span class="resource-status waiting">În construcție</span>
-      </div>
-    </article>
-    <article class="resource-card">
-      <div class="resource-body">
-        <div class="meta">
-          <span class="badge badge-b2">A1</span>
-          <span class="badge badge-tech">Germană</span>
-          <span class="badge badge-live">Interactiv</span>
-        </div>
-        <h3>Descrierea persoanelor</h3>
-        <p>Exerciții pentru memorarea vocabularului, alegerea traducerii corecte și descrierea persoanelor cu imagini.</p>
-        <a class="open-lesson" href="grammar/a1-descrierea-persoanelor-de.html">Deschide HTML</a>
-        <a class="open-lesson" href="pdf/a1-descrierea-persoanelor-de.pdf">Descarcă PDF</a>
-      </div>
-    </article>
+    <article class="resource-card soon-card"><h3>În curând</h3></article>
   </div>
 </section>
 
@@ -4287,14 +4293,7 @@
     <h2>Fișe vocabular</h2>
   </div>
   <div class="resource-grid">
-    <article class="resource-card">
-      <div class="resource-body">
-        <div class="meta"><span class="badge badge-b2">A1</span><span class="badge badge-live">În construcție</span></div>
-        <h3>Fișe A1</h3>
-        <p>Fișe printabile pentru vocabular, traduceri și mini-dialoguri.</p>
-        <span class="resource-status waiting">În construcție</span>
-      </div>
-    </article>
+    <article class="resource-card soon-card"><h3>În curând</h3></article>
   </div>
 </section>
 
@@ -4347,14 +4346,7 @@
     <h2>Verbe conjugate</h2>
   </div>
   <div class="resource-grid">
-    <article class="resource-card">
-      <div class="resource-body">
-        <div class="meta"><span class="badge badge-b2">A1</span><span class="badge badge-live">În construcție</span></div>
-        <h3>Verbe A1</h3>
-        <p>a fi, a avea, a se numi, a veni și a vorbi, cu exemple simple.</p>
-        <span class="resource-status waiting">În construcție</span>
-      </div>
-    </article>
+    <article class="resource-card soon-card"><h3>În curând</h3></article>
   </div>
 </section>
 
@@ -4364,23 +4356,7 @@
   </div>
 
   <div class="resource-grid">
-    <article class="resource-card">
-      <div class="resource-cover cover-gold">
-        <span class="cover-level">A1</span>
-        <h3>Test de nivel A1</h3>
-        <p>Verificare pentru începători</p>
-      </div>
-      <div class="resource-body">
-        <div class="meta">
-          <span class="badge badge-b2">Test</span>
-          <span class="badge badge-tech">A1</span>
-          <span class="badge badge-live">Online</span>
-        </div>
-        <h3>A1 · Începător</h3>
-        <p>Test scurt pentru vocabular de bază, verbe simple și înțelegerea unui text scurt.</p>
-        <a class="open-lesson" href="tests/a1/test-nivel-a1.html">Deschide testul</a>
-      </div>
-    </article>
+    <article class="resource-card soon-card"><h3>În curând</h3></article>
   </div>
 </section>
       </main>
@@ -4811,10 +4787,21 @@
           const languageSection = link.dataset.languageSection;
           const languageLevel = link.dataset.languageLevel;
           const homeSection = link.dataset.homeSection;
+          const homeLevel = link.dataset.homeLevel;
           const isA1Category = Boolean(link.dataset.languageCategory);
           setActiveTopNav(language ? getLanguageHash(language) : '#acasa');
           clearActiveLevels();
           showOnlyMainSection(languageSection ? '#lectii' : hash);
+
+          if (homeLevel) {
+            closeLanguageTools();
+            showAllSidebarLanguages();
+            showOnlyMainSection('#lectii');
+            showRomanianForLevel(homeLevel);
+            setActiveLevel(homeLevel);
+            setActiveMenu(link);
+            return;
+          }
 
           if (link.dataset.showAllLessons !== undefined || languageSection || languageLevel) {
             showAllLessonLevels();
