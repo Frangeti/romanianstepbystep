@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manual A2 · Română ca limbă străină</title>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1d1d1f;
+    --muted: #6e6e73;
+    --paper: #ffffff;
+    --page: #f5f5f7;
+    --blue: #0071e3;
+    --blue-soft: #eaf3ff;
+    --navy: #1d1d1f;
+    --level-a1: rgba(217, 79, 69, .74);
+    --level-a2: rgba(228, 125, 48, .72);
+    --level-b1: rgba(217, 162, 37, .68);
+    --level-b2: rgba(143, 171, 53, .68);
+    --level-c1: rgba(47, 155, 95, .7);
+    --shadow: 0 22px 70px rgba(0, 0, 0, .08);
+  }
+
+  * { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
+    background:
+      linear-gradient(180deg, #ffffff 0, var(--page) 420px, #ececef 100%);
+    color: var(--ink);
+    font-family: 'Atkinson Hyperlegible', Arial, sans-serif;
+    font-size: 18px;
+    line-height: 1.6;
+  }
+
+  a { color: inherit; text-decoration: none; }
+
+  .topbar {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    min-height: 72px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0 clamp(1.1rem, 3vw, 3.5rem);
+    border-bottom: 1px solid rgba(210, 210, 215, .72);
+    background: rgba(255, 255, 255, .94);
+    box-shadow: 0 10px 28px rgba(0, 0, 0, .07);
+    backdrop-filter: blur(14px);
+  }
+
+  .brand {
+    color: var(--ink);
+    font-size: clamp(20px, 2vw, 25px);
+    line-height: 1;
+    white-space: nowrap;
+  }
+
+  .brand span { color: var(--blue); }
+
+  .manual-nav {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 5px;
+    margin-left: auto;
+    flex-wrap: wrap;
+  }
+
+  .manual-nav-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 36px;
+    padding: 7px 11px;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    background: transparent;
+    color: var(--navy);
+    font-size: 13px;
+    transition: background .18s, border-color .18s, color .18s, transform .18s;
+  }
+
+  .manual-nav-link:hover {
+    border-color: var(--line, #d2d2d7);
+    background: var(--page);
+    transform: translateY(-1px);
+  }
+
+  .manual-nav-link.active {
+    background: var(--ink);
+    border-color: var(--ink);
+    color: #fff;
+  }
+
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 40px;
+    padding: 8px 14px;
+    border: 1px solid var(--blue);
+    border-radius: 8px;
+    background: var(--blue);
+    color: #fff;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 13px;
+  }
+
+  .book {
+    width: min(1180px, calc(100% - 2rem));
+    margin: 2rem auto 4rem;
+  }
+
+  .spread {
+    display: grid;
+    grid-template-columns: minmax(0, .92fr) minmax(0, 1.08fr);
+    gap: 1.25rem;
+    align-items: stretch;
+  }
+
+  .cover {
+    min-height: 640px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: clamp(1.6rem, 3.5vw, 3rem);
+    border: 1px solid rgba(210, 210, 215, .88);
+    border-radius: 8px;
+    background:
+      linear-gradient(145deg, rgba(255, 255, 255, .97), rgba(245, 245, 247, .78)),
+      linear-gradient(145deg, rgba(0, 113, 227, .14), rgba(111, 167, 126, .13));
+    box-shadow: var(--shadow);
+  }
+
+  .cover::before {
+    content: "";
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: 13px;
+    background: linear-gradient(180deg, var(--level-a1), var(--level-a2), var(--level-b1), var(--level-b2), var(--level-c1));
+  }
+
+  .cover-kicker {
+    width: fit-content;
+    padding: 6px 12px;
+    border-radius: 999px;
+    background: var(--blue-soft);
+    color: var(--blue);
+    font-size: 15px;
+  }
+
+  h1 {
+    max-width: 680px;
+    margin: 1.1rem 0 .8rem;
+    color: var(--ink);
+    font-size: clamp(44px, 6vw, 84px);
+    font-weight: 400;
+    line-height: .98;
+    letter-spacing: 0;
+  }
+
+  .cover-subtitle {
+    max-width: 620px;
+    margin: 0;
+    color: var(--muted);
+    font-size: clamp(20px, 2.2vw, 27px);
+    line-height: 1.35;
+  }
+
+  .cover-bottom {
+    display: grid;
+    gap: .8rem;
+  }
+
+  .cover-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .45rem;
+  }
+
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    min-height: 32px;
+    padding: 5px 11px;
+    border: 1px solid rgba(210, 210, 215, .86);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, .74);
+    color: var(--muted);
+    font-size: 15px;
+  }
+
+  .manual-note {
+    padding: 1rem;
+    border: 1px solid rgba(210, 210, 215, .86);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, .7);
+    color: var(--muted);
+    font-size: 16px;
+  }
+
+  .reader-page {
+    padding: clamp(1.5rem, 3vw, 2.5rem);
+    border: 1px solid rgba(210, 210, 215, .88);
+    border-radius: 8px;
+    background: var(--paper);
+    box-shadow: 0 18px 46px rgba(0, 0, 0, .06);
+  }
+
+  .page-label {
+    margin: 0 0 .65rem;
+    color: var(--blue);
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+  }
+
+  h2 {
+    margin: 0 0 1rem;
+    color: var(--ink);
+    font-size: clamp(28px, 3vw, 44px);
+    font-weight: 400;
+    line-height: 1.12;
+  }
+
+  .lead {
+    margin: 0 0 1.2rem;
+    color: var(--muted);
+    font-size: 20px;
+  }
+
+  .can-grid {
+    display: grid;
+    gap: .65rem;
+    margin-top: 1rem;
+  }
+
+  .can {
+    padding: .9rem 1rem;
+    border: 1px solid rgba(210, 210, 215, .76);
+    border-radius: 8px;
+    background: #fbfbfd;
+  }
+
+  .can strong {
+    display: block;
+    margin-bottom: 2px;
+    color: var(--ink);
+    font-weight: 400;
+  }
+
+  .can span {
+    display: block;
+    color: var(--muted);
+    font-size: 16px;
+  }
+
+  .section {
+    margin-top: 1.25rem;
+    padding: clamp(1.3rem, 2.5vw, 2rem);
+    border: 1px solid rgba(210, 210, 215, .88);
+    border-radius: 8px;
+    background: var(--paper);
+    box-shadow: 0 12px 36px rgba(0, 0, 0, .045);
+  }
+
+  .section-head {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    padding-bottom: .8rem;
+    border-bottom: 1px solid rgba(210, 210, 215, .7);
+  }
+
+  .section-head h2 {
+    margin: 0;
+    font-size: clamp(26px, 2.6vw, 38px);
+  }
+
+  .section-head p {
+    max-width: 430px;
+    margin: 0;
+    color: var(--muted);
+    font-size: 16px;
+    text-align: right;
+  }
+
+  .how-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: .8rem;
+  }
+
+  .how-card {
+    min-height: 142px;
+    padding: 1rem;
+    border: 1px solid rgba(210, 210, 215, .82);
+    border-radius: 8px;
+    background: #fbfbfd;
+  }
+
+  .how-card b {
+    display: block;
+    color: var(--blue);
+    font-size: 34px;
+    line-height: 1;
+    font-weight: 400;
+  }
+
+  .how-card strong {
+    display: block;
+    margin: .7rem 0 .25rem;
+    font-size: 18px;
+    font-weight: 400;
+  }
+
+  .how-card span {
+    color: var(--muted);
+    font-size: 15px;
+  }
+
+  .unit-list {
+    display: grid;
+    gap: .9rem;
+  }
+
+  .unit {
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: minmax(116px, 132px) minmax(0, 1fr);
+    border: 1px solid rgba(210, 210, 215, .86);
+    border-radius: 8px;
+    background: #fff;
+  }
+
+  .unit:nth-child(5n + 1) { --unit-level: var(--level-a1); }
+  .unit:nth-child(5n + 2) { --unit-level: var(--level-a2); }
+  .unit:nth-child(5n + 3) { --unit-level: var(--level-b1); }
+  .unit:nth-child(5n + 4) { --unit-level: var(--level-b2); }
+  .unit:nth-child(5n) { --unit-level: var(--level-c1); }
+
+  .unit-no {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: .8rem;
+    min-width: 0;
+    padding: 1rem .85rem;
+    background:
+      linear-gradient(145deg, color-mix(in srgb, var(--unit-level) 88%, white), color-mix(in srgb, var(--unit-level) 64%, white));
+    color: color-mix(in srgb, var(--unit-level) 48%, var(--ink));
+  }
+
+  .unit-no strong {
+    font-size: clamp(34px, 4vw, 42px);
+    line-height: .95;
+    font-weight: 400;
+  }
+
+  .unit-no span {
+    display: block;
+    max-width: 100%;
+    color: color-mix(in srgb, var(--unit-level) 64%, var(--muted));
+    font-size: 11px;
+    line-height: 1.18;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    overflow-wrap: anywhere;
+    word-break: normal;
+  }
+
+  .unit-body {
+    min-width: 0;
+    padding: 1rem 1.15rem;
+  }
+
+  .unit-title {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: .8rem;
+    margin-bottom: .8rem;
+  }
+
+  .unit-title h3 {
+    min-width: 0;
+    margin: 0;
+    color: var(--ink);
+    font-size: 23px;
+    font-weight: 400;
+    line-height: 1.2;
+    overflow-wrap: anywhere;
+  }
+
+  .unit-title em {
+    flex: 0 0 auto;
+    color: var(--muted);
+    font-size: 14px;
+    font-style: normal;
+  }
+
+  .unit-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: .75rem;
+  }
+
+  .unit-block {
+    min-width: 0;
+    padding: .72rem .75rem;
+    border: 1px solid rgba(210, 210, 215, .58);
+    border-radius: 8px;
+    background: rgba(245, 245, 247, .62);
+  }
+
+  .unit-block h4 {
+    margin: 0 0 .25rem;
+    color: var(--navy);
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    overflow-wrap: anywhere;
+  }
+
+  .unit-block p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 15px;
+    line-height: 1.45;
+    overflow-wrap: anywhere;
+  }
+
+  .recap {
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: minmax(116px, 132px) minmax(0, 1fr);
+    border: 1px solid rgba(210, 210, 215, .86);
+    border-radius: 8px;
+    background:
+      linear-gradient(145deg, rgba(255, 255, 255, .98), rgba(245, 245, 247, .86));
+  }
+
+  .recap-no {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: .8rem;
+    min-width: 0;
+    padding: 1rem .85rem;
+    background: linear-gradient(145deg, #dff0ff, #b9dcff);
+    color: #0b3b66;
+  }
+
+  .recap-no strong {
+    font-size: clamp(30px, 3.5vw, 34px);
+    font-weight: 400;
+    line-height: .95;
+  }
+
+  .recap-no span {
+    display: block;
+    max-width: 100%;
+    color: rgba(11, 59, 102, .78);
+    font-size: 11px;
+    line-height: 1.18;
+    text-transform: uppercase;
+    letter-spacing: .035em;
+    overflow-wrap: anywhere;
+    word-break: normal;
+  }
+
+  .recap-body {
+    padding: 1rem 1.15rem;
+  }
+
+  .recap-body h3 {
+    margin: 0 0 .25rem;
+    color: var(--ink);
+    font-size: 22px;
+    font-weight: 400;
+  }
+
+  .recap-body p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 15px;
+    line-height: 1.5;
+  }
+
+  .progression {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: .55rem;
+    counter-reset: grammar;
+  }
+
+  .grammar-step {
+    min-height: 118px;
+    padding: .9rem;
+    border: 1px solid rgba(210, 210, 215, .82);
+    border-radius: 8px;
+    background: #fbfbfd;
+  }
+
+  .grammar-step::before {
+    counter-increment: grammar;
+    content: counter(grammar, decimal-leading-zero);
+    display: block;
+    margin-bottom: .5rem;
+    color: var(--blue);
+    font-size: 14px;
+  }
+
+  .grammar-step strong {
+    color: var(--ink);
+    font-weight: 400;
+  }
+
+  .appendix-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: .75rem;
+  }
+
+  .appendix {
+    padding: 1rem;
+    border: 1px solid rgba(210, 210, 215, .82);
+    border-radius: 8px;
+    background: linear-gradient(145deg, #fff, #f7f7f9);
+    color: var(--muted);
+  }
+
+  .appendix strong {
+    display: block;
+    margin-bottom: .25rem;
+    color: var(--ink);
+    font-weight: 400;
+  }
+
+  .closing {
+    margin-top: 1.25rem;
+    padding: clamp(1.4rem, 3vw, 2.2rem);
+    border-radius: 8px;
+    background: var(--ink);
+    color: rgba(255, 255, 255, .78);
+  }
+
+  .closing h2 {
+    color: #fff;
+  }
+
+  .closing p {
+    max-width: 820px;
+    margin: 0;
+  }
+
+  @media (max-width: 960px) {
+    .spread,
+    .how-grid,
+    .progression,
+    .appendix-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .unit-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  @media (max-width: 700px) {
+    body { font-size: 17px; }
+
+    .topbar {
+      position: static;
+      align-items: flex-start;
+      flex-direction: column;
+      padding-block: 1rem;
+    }
+
+    .manual-nav {
+      justify-content: flex-start;
+      margin-left: 0;
+    }
+
+    .book {
+      width: min(100% - 1rem, 1180px);
+      margin-top: .5rem;
+    }
+
+    .spread,
+    .how-grid,
+    .progression,
+    .appendix-grid,
+    .unit-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .cover {
+      min-height: 520px;
+    }
+
+    .section-head {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+
+    .section-head p {
+      text-align: left;
+    }
+
+    .unit,
+    .recap {
+      grid-template-columns: 1fr;
+    }
+
+    .unit-no,
+    .recap-no {
+      min-height: 96px;
+      flex-direction: row;
+      align-items: end;
+    }
+  }
+
+  @media print {
+    body {
+      background: #fff;
+      font-size: 11pt;
+    }
+
+    .topbar {
+      display: none;
+    }
+
+    .book {
+      width: auto;
+      margin: 0;
+    }
+
+    .cover,
+    .reader-page,
+    .section,
+    .unit,
+    .recap,
+    .closing {
+      box-shadow: none;
+      break-inside: avoid;
+    }
+  }
+</style>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="../index.html#a1">Romanian <span>Step by Step</span></a>
+    <nav class="manual-nav" aria-label="Meniu principal">
+      <a class="manual-nav-link active" href="../index.html#a1">Română</a>
+      <a class="manual-nav-link" href="../index.html#a1-germana">Germană</a>
+      <a class="manual-nav-link" href="../index.html#a1-engleza">Engleză</a>
+      <a class="manual-nav-link" href="../index.html#a1-spaniola">Spaniolă</a>
+      <button class="back-link" type="button">Login</button>
+    </nav>
+  </header>
+
+  <main class="book">
+    <section class="section">
+      <div class="section-head">
+        <h2>Cuprinsul manualului</h2>
+      </div>
+
+      <div class="unit-list">
+        <article class="unit">
+          <div class="unit-no"><strong>01</strong><span>recapitulare</span></div>
+          <div class="unit-body">
+            <div class="unit-title"><h3>Prezentare și cunoștințe recapitulative</h3><em>A1 → A2</em></div>
+            <div class="unit-grid">
+              <div class="unit-block"><h4>Comunicare</h4><p>Prezintă-te detaliat și introdu familia Popescu.</p></div>
+              <div class="unit-block"><h4>Gramatică</h4><p>a fi, a avea, prezentul indicativ, pronume personale</p></div>
+              <div class="unit-block"><h4>Vocabular</h4><p>date personale, țări, naționalități, profesii</p></div>
+              <div class="unit-block"><h4>Poveste</h4><p>familia ajunge într-un oraș nou și se prezintă</p></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="unit">
+          <div class="unit-no"><strong>02</strong><span>relații</span></div>
+          <div class="unit-body">
+            <div class="unit-title"><h3>Familia și relațiile</h3><em>posesie</em></div>
+            <div class="unit-grid">
+              <div class="unit-block"><h4>Comunicare</h4><p>Descrie membrii familiei și relațiile dintre ei.</p></div>
+              <div class="unit-block"><h4>Gramatică</h4><p>adjectivul posesiv și acordul adjectivului</p></div>
+              <div class="unit-block"><h4>Vocabular</h4><p>grade de rudenie, stări civile, relații apropiate</p></div>
+              <div class="unit-block"><h4>Poveste</h4><p>studentul cunoaște familia și află cine este cine</p></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="unit">
+          <div class="unit-no"><strong>03</strong><span>acasă</span></div>
+          <div class="unit-body">
+            <div class="unit-title"><h3>Casa și locuința</h3><em>spațiu</em></div>
+            <div class="unit-grid">
+              <div class="unit-block"><h4>Comunicare</h4><p>Descrie locuința și poziția obiectelor.</p></div>
+              <div class="unit-block"><h4>Gramatică</h4><p>prepoziții de loc și genitivul substantivelor</p></div>
+              <div class="unit-block"><h4>Vocabular</h4><p>camere, mobilier, obiecte casnice</p></div>
+              <div class="unit-block"><h4>Poveste</h4><p>familia își prezintă casa și camera studentului</p></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="unit">
+          <div class="unit-no"><strong>04</strong><span>oraș</span></div>
+          <div class="unit-body">
+            <div class="unit-title"><h3>Orașul și indicații de orientare</h3><em>direcții</em></div>
+            <div class="unit-grid">
+              <div class="unit-block"><h4>Comunicare</h4><p>Cere și dă indicații de drum.</p></div>
+              <div class="unit-block"><h4>Gramatică</h4><p>prepoziții complexe de loc și imperativ de politețe</p></div>
+              <div class="unit-block"><h4>Vocabular</h4><p>clădiri publice, indicatoare, puncte cardinale</p></div>
+              <div class="unit-block"><h4>Poveste</h4><p>familia merge prin cartier și caută școala, piața și stația</p></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="unit">
+          <div class="unit-no"><strong>05</strong><span>ziua mea</span></div>
+          <div class="unit-body">
+            <div class="unit-title"><h3>Rutina zilnică</h3><em>prezent</em></div>
+            <div class="unit-grid">
+              <div class="unit-block"><h4>Comunicare</h4><p>Descrie activități zilnice și exprimă ora.</p></div>
+              <div class="unit-block"><h4>Gramatică</h4><p>verbe reflexive și conjugări complete I-IV</p></div>
+              <div class="unit-block"><h4>Vocabular</h4><p>activități cotidiene, ceasul, zilele săptămânii</p></div>
+              <div class="unit-block"><h4>Poveste</h4><p>studentul urmărește rutina familiei într-o zi obișnuită</p></div>
+            </div>
+          </div>
+        </article>
+
+        <div class="recap">
+          <div class="recap-no"><strong>R1</strong><span>recapitulare</span></div>
+          <div class="recap-body">
+            <h3>Familia Popescu în oraș</h3>
+            <p>Unitățile 1-5 · Prezentare extinsă · Hartă de cartier · Dialog despre casă și rutină · Test modular.</p>
+          </div>
+        </div>
+
+        <article class="unit">
+          <div class="unit-no"><strong>06</strong><span>magazin</span></div>
+          <div class="unit-body">
+            <div class="unit-title"><h3>Cumpărături și prețuri</h3><em>dialog</em></div>
+            <div class="unit-grid">
+              <div class="unit-block"><h4>Comunicare</h4><p>Cere informații despre preț și fă cumpărături.</p></div>
+              <div class="unit-block"><h4>Gramatică</h4><p>numeralul cardinal extins și acuzativul</p></div>
+              <div class="unit-block"><h4>Vocabular</h4><p>magazine, produse, unități de măsură, bani</p></div>
+              <div class="unit-block"><h4>Poveste</h4><p>familia cumpără produse pentru cină</p></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="unit">
+          <div class="unit-no"><strong>07</strong><span>restaurant</span></div>
+          <div class="unit-body">
+            <div class="unit-title"><h3>Mâncare și restaurant</h3><em>dativ</em></div>
+            <div class="unit-grid">
+              <div class="unit-block"><h4>Comunicare</h4><p>Comandă și exprimă preferințe alimentare.</p></div>
+              <div class="unit-block"><h4>Gramatică</h4><p>a plăcea + dativ; articol hotărât și nehotărât</p></div>
+              <div class="unit-block"><h4>Vocabular</h4><p>alimente, băuturi, tacâmuri, meniuri</p></div>
+              <div class="unit-block"><h4>Poveste</h4><p>familia ia masa în oraș și discută despre preferințe</p></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="unit">
+          <div class="unit-no"><strong>08</strong><span>weekend</span></div>
+          <div class="unit-body">
+            <div class="unit-title"><h3>Timp liber și hobby-uri</h3><em>gusturi</em></div>
+            <div class="unit-grid">
+              <div class="unit-block"><h4>Comunicare</h4><p>Vorbește despre activități, gusturi și interese.</p></div>
+              <div class="unit-block"><h4>Gramatică</h4><p>a-i plăcea, a-i plăcea să, infinitiv lung și scurt</p></div>
+              <div class="unit-block"><h4>Vocabular</h4><p>sporturi, hobby-uri, activități recreative</p></div>
+              <div class="unit-block"><h4>Poveste</h4><p>familia își alege activitățile pentru weekend</p></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="unit">
+          <div class="unit-no"><strong>09</strong><span>vreme</span></div>
+          <div class="unit-body">
+            <div class="unit-title"><h3>Vremea și anotimpurile</h3><em>comparativ</em></div>
+            <div class="unit-grid">
+              <div class="unit-block"><h4>Comunicare</h4><p>Descrie vremea și fă planuri.</p></div>
+              <div class="unit-block"><h4>Gramatică</h4><p>comparativul și superlativul adjectivelor</p></div>
+              <div class="unit-block"><h4>Vocabular</h4><p>fenomene meteo, anotimpuri, îmbrăcăminte</p></div>
+              <div class="unit-block"><h4>Poveste</h4><p>familia verifică vremea înainte de excursie</p></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="unit">
+          <div class="unit-no"><strong>10</strong><span>drum</span></div>
+          <div class="unit-body">
+            <div class="unit-title"><h3>Călătorii și transport</h3><em>viitor</em></div>
+            <div class="unit-grid">
+              <div class="unit-block"><h4>Comunicare</h4><p>Cere informații de călătorie și cumpără bilete.</p></div>
+              <div class="unit-block"><h4>Gramatică</h4><p>viitor popular: o să; viitor literar: voi + infinitiv</p></div>
+              <div class="unit-block"><h4>Vocabular</h4><p>transport, gară, aeroport, hotel</p></div>
+              <div class="unit-block"><h4>Poveste</h4><p>familia pregătește o excursie în România</p></div>
+            </div>
+          </div>
+        </article>
+
+        <div class="recap">
+          <div class="recap-no"><strong>R2</strong><span>recapitulare</span></div>
+          <div class="recap-body">
+            <h3>Planuri pentru weekend</h3>
+            <p>Unitățile 6-10 · Simulare: magazin, restaurant și gară · Itinerar de călătorie · Test modular.</p>
+          </div>
+        </div>
+
+        <article class="unit">
+          <div class="unit-no"><strong>11</strong><span>trecut</span></div>
+          <div class="unit-body">
+            <div class="unit-title"><h3>Trecutul: povestirea evenimentelor</h3><em>perfect compus</em></div>
+            <div class="unit-grid">
+              <div class="unit-block"><h4>Comunicare</h4><p>Povestește evenimente trecute și experiențe.</p></div>
+              <div class="unit-block"><h4>Gramatică</h4><p>perfectul compus, verbe regulate și neregulate</p></div>
+              <div class="unit-block"><h4>Vocabular</h4><p>ieri, acum două zile, săptămâna trecută</p></div>
+              <div class="unit-block"><h4>Poveste</h4><p>familia povestește ce a făcut în excursie</p></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="unit">
+          <div class="unit-no"><strong>12</strong><span>sănătate</span></div>
+          <div class="unit-body">
+            <div class="unit-title"><h3>Sănătate și corpul uman</h3><em>imperativ</em></div>
+            <div class="unit-grid">
+              <div class="unit-block"><h4>Comunicare</h4><p>Descrie simptome și cere ajutor medical.</p></div>
+              <div class="unit-block"><h4>Gramatică</h4><p>imperativ afirmativ și negativ</p></div>
+              <div class="unit-block"><h4>Vocabular</h4><p>corpul uman, boli comune, farmacie, doctor</p></div>
+              <div class="unit-block"><h4>Poveste</h4><p>un membru al familiei merge la farmacie și la doctor</p></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="unit">
+          <div class="unit-no"><strong>13</strong><span>viitor</span></div>
+          <div class="unit-body">
+            <div class="unit-title"><h3>Planuri de viitor și dorințe</h3><em>conjunctiv</em></div>
+            <div class="unit-grid">
+              <div class="unit-block"><h4>Comunicare</h4><p>Exprimă intenții, dorințe și planuri.</p></div>
+              <div class="unit-block"><h4>Gramatică</h4><p>conjunctiv prezent: să + verb</p></div>
+              <div class="unit-block"><h4>Vocabular</h4><p>proiecte, ambiții, educație, carieră</p></div>
+              <div class="unit-block"><h4>Poveste</h4><p>familia discută despre școală, muncă și planuri</p></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="unit">
+          <div class="unit-no"><strong>14</strong><span>tradiții</span></div>
+          <div class="unit-body">
+            <div class="unit-title"><h3>Evenimente și sărbători</h3><em>imperfect</em></div>
+            <div class="unit-grid">
+              <div class="unit-block"><h4>Comunicare</h4><p>Vorbește despre tradiții, felicită și invită.</p></div>
+              <div class="unit-block"><h4>Gramatică</h4><p>imperfectul pentru descrieri și obiceiuri trecute</p></div>
+              <div class="unit-block"><h4>Vocabular</h4><p>sărbători românești, tradiții, urări</p></div>
+              <div class="unit-block"><h4>Poveste</h4><p>familia pregătește o sărbătoare și invită prieteni</p></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="unit">
+          <div class="unit-no"><strong>15</strong><span>final</span></div>
+          <div class="unit-body">
+            <div class="unit-title"><h3>Recapitulare finală și pregătire pentru B1</h3><em>evaluare</em></div>
+            <div class="unit-grid">
+              <div class="unit-block"><h4>Comunicare</h4><p>Integrează comunicarea învățată.</p></div>
+              <div class="unit-block"><h4>Gramatică</h4><p>timpuri verbale, cazuri, acorduri</p></div>
+              <div class="unit-block"><h4>Vocabular</h4><p>recapitulare tematică</p></div>
+              <div class="unit-block"><h4>Final</h4><p>studentul prezintă povestea familiei și trece spre B1</p></div>
+            </div>
+          </div>
+        </article>
+
+        <div class="recap">
+          <div class="recap-no"><strong>RF</strong><span>final</span></div>
+          <div class="recap-body">
+            <h3>Poveste A2 completă</h3>
+            <p>Unitățile 11-15 · Portofoliu A2 · Prezentare orală · Scriere ghidată · Test final: citire, ascultare, scriere și vorbire.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

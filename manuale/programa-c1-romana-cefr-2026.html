@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Programa C1 · Limba română ca limbă străină</title>
+<style>
+  :root{
+    --ink:#1f2d36;
+    --muted:#667985;
+    --navy:#25384a;
+    --blue:#6e90a4;
+    --blue-soft:#e9f2f6;
+    --coral:#c85f48;
+    --coral-soft:#fff0ea;
+    --gold:#c18b2e;
+    --gold-soft:#fff5df;
+    --green:#4f7f6a;
+    --green-soft:#edf6f1;
+    --paper:#fffdf8;
+    --bg:#f6efe5;
+    --line:#ddd4c8;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family: Georgia, "Times New Roman", serif;
+    line-height:1.58;
+  }
+  .page{
+    max-width:1120px;
+    margin:34px auto;
+    background:var(--paper);
+    box-shadow:0 18px 55px rgba(37,56,74,.16);
+    border:1px solid var(--line);
+  }
+  .cover{
+    min-height:560px;
+    padding:70px 74px;
+    background:
+      radial-gradient(circle at 88% 16%, rgba(200,95,72,.18), transparent 28%),
+      linear-gradient(135deg, #fffdf8 0%, #edf4f7 100%);
+    border-bottom:1px solid var(--line);
+    position:relative;
+  }
+  .label{
+    display:inline-block;
+    padding:7px 13px;
+    border-radius:999px;
+    background:var(--coral-soft);
+    color:var(--coral);
+    font-family: Arial, sans-serif;
+    font-size:12px;
+    font-weight:700;
+    letter-spacing:.09em;
+    text-transform:uppercase;
+  }
+  h1{
+    margin:26px 0 18px;
+    max-width:790px;
+    color:var(--navy);
+    font-size:58px;
+    line-height:1.02;
+    letter-spacing:-.03em;
+  }
+  .subtitle{
+    max-width:760px;
+    color:#425d6d;
+    font-size:22px;
+    margin:0;
+  }
+  .meta{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-top:36px;
+    font-family:Arial, sans-serif;
+  }
+  .meta span{
+    padding:9px 13px;
+    border:1px solid #d7e2e8;
+    border-radius:999px;
+    background:rgba(255,255,255,.72);
+    color:var(--muted);
+    font-size:13px;
+  }
+  .edition{
+    position:absolute;
+    bottom:42px;
+    left:74px;
+    right:74px;
+    padding-top:18px;
+    border-top:1px solid rgba(37,56,74,.16);
+    color:var(--muted);
+    font-family:Arial, sans-serif;
+    font-size:14px;
+  }
+  main{padding:46px 74px 70px}
+  section{margin:0 0 44px}
+  h2{
+    margin:0 0 16px;
+    padding-bottom:9px;
+    border-bottom:2px solid var(--navy);
+    color:var(--navy);
+    font-size:30px;
+    letter-spacing:-.02em;
+  }
+  h3{
+    margin:26px 0 8px;
+    color:var(--coral);
+    font-size:22px;
+  }
+  h4{
+    margin:16px 0 6px;
+    color:var(--navy);
+    font-family:Arial, sans-serif;
+    font-size:13px;
+    text-transform:uppercase;
+    letter-spacing:.08em;
+  }
+  p{margin:0 0 12px}
+  ul{margin:8px 0 0 22px; padding:0}
+  li{margin:4px 0}
+  .intro-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:14px;
+    margin-top:18px;
+  }
+  .card{
+    padding:18px;
+    border:1px solid var(--line);
+    border-radius:14px;
+    background:#fff;
+  }
+  .card strong{
+    display:block;
+    margin-bottom:5px;
+    color:var(--navy);
+    font-size:18px;
+  }
+  .module{
+    margin:26px 0 34px;
+    padding:24px;
+    border:1px solid var(--line);
+    border-radius:18px;
+    background:#fff;
+    break-inside:avoid;
+  }
+  .module-title{
+    display:flex;
+    align-items:flex-start;
+    justify-content:space-between;
+    gap:18px;
+    margin-bottom:16px;
+  }
+  .module-title h3{
+    margin:0;
+    color:var(--navy);
+    font-size:24px;
+  }
+  .module-title span{
+    min-width:max-content;
+    padding:6px 10px;
+    border-radius:999px;
+    background:var(--blue-soft);
+    color:var(--navy);
+    font-family:Arial, sans-serif;
+    font-size:12px;
+    font-weight:700;
+  }
+  .unit{
+    padding:18px 0;
+    border-top:1px solid #eee3d6;
+    break-inside:avoid;
+  }
+  .unit:first-of-type{border-top:0}
+  .unit h4{
+    margin-top:0;
+    color:var(--coral);
+    font-size:15px;
+    text-transform:none;
+    letter-spacing:0;
+  }
+  .unit-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:14px 24px;
+  }
+  .pill{
+    display:inline-block;
+    margin:3px 6px 3px 0;
+    padding:5px 9px;
+    border-radius:999px;
+    background:var(--gold-soft);
+    color:#70501a;
+    font-family:Arial, sans-serif;
+    font-size:12px;
+  }
+  .task{
+    margin-top:12px;
+    padding:12px 14px;
+    border-left:4px solid var(--green);
+    background:var(--green-soft);
+    border-radius:0 10px 10px 0;
+    font-family:Arial, sans-serif;
+    color:#355b4a;
+  }
+  .review{
+    margin-top:14px;
+    padding:14px 16px;
+    border:1px solid #efcabc;
+    border-radius:14px;
+    background:var(--coral-soft);
+    color:#765246;
+    font-family:Arial, sans-serif;
+  }
+  .table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:12px;
+    font-family:Arial, sans-serif;
+    font-size:14px;
+  }
+  .table th,.table td{
+    border:1px solid var(--line);
+    padding:10px 12px;
+    text-align:left;
+    vertical-align:top;
+  }
+  .table th{
+    background:var(--navy);
+    color:white;
+  }
+  .appendix{
+    columns:2;
+    column-gap:42px;
+  }
+  .note{
+    margin-top:28px;
+    padding:18px 20px;
+    border:1px solid #d9c9b4;
+    border-radius:14px;
+    background:#fbf1df;
+    color:#594b3a;
+    font-family:Arial, sans-serif;
+  }
+  footer{
+    padding:24px 74px;
+    border-top:1px solid var(--line);
+    color:var(--muted);
+    font-family:Arial, sans-serif;
+    font-size:13px;
+  }
+  @media(max-width:800px){
+    .page{margin:0;border:0}
+    .cover,main,footer{padding-left:24px;padding-right:24px}
+    h1{font-size:42px}
+    .intro-grid,.unit-grid{grid-template-columns:1fr}
+    .appendix{columns:1}
+  }
+  @media print{
+    body{background:#fff}
+    .page{margin:0;box-shadow:none;border:0}
+    .cover{min-height:520px}
+    .module{break-inside:avoid}
+    a{color:inherit}
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <header class="cover">
+    <span class="label">Programă curriculară · CEFR C1 · ediție 2026</span>
+    <h1>Limba română ca limbă străină</h1>
+    <p class="subtitle">Programă avansată C1 pentru comunicare fluentă, argumentare, gândire critică, carieră, dezvoltare personală și înțelegerea lumii contemporane.</p>
+    <div class="meta">
+      <span>Nivel avansat C1</span>
+      <span>30 unități</span>
+      <span>10 module tematice</span>
+      <span>280–350 pagini recomandate</span>
+      <span>Adulți, profesioniști, studenți internaționali</span>
+    </div>
+    <div class="edition">Concept editorial: „Româna pentru cetățeanul global al anului 2030”</div>
+  </header>
+
+  <main>
+    <section>
+      <h2>Viziunea programei</h2>
+      <p>La nivelul C1, cursantul nu mai învață limba doar prin teme cotidiene, ci folosește limba română pentru a interpreta, analiza și dezbate lumea actuală. Programa propune o abordare modernă, orientată spre teme reale ale anului 2026: inteligență artificială, schimbări climatice, securitate digitală, carieră, transformări sociale, dezvoltare personală și viitorul muncii.</p>
+      <div class="intro-grid">
+        <div class="card"><strong>Fluență și nuanță</strong>Utilizare flexibilă a limbii în contexte academice, profesionale și sociale complexe.</div>
+        <div class="card"><strong>Gândire critică</strong>Analiză de surse, argumentare, contraargumentare, identificarea manipulării și a biasului.</div>
+        <div class="card"><strong>Autonomie avansată</strong>Producerea de eseuri, prezentări, rapoarte, e-mailuri formale și discursuri publice.</div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Obiective generale C1</h2>
+      <ul>
+        <li>înțelegerea textelor lungi, complexe, academice, jurnalistice, literare și profesionale;</li>
+        <li>identificarea sensurilor implicite, a ironiei, a aluziilor și a nuanțelor de registru;</li>
+        <li>participarea fluentă la conversații, dezbateri, negocieri și prezentări;</li>
+        <li>formularea unor opinii argumentate, cu exemple, comparații, rezerve și contraargumente;</li>
+        <li>redactarea de texte clare, structurate și adecvate contextului;</li>
+        <li>adaptarea stilului la registrul formal, academic, profesional, jurnalistic sau colocvial;</li>
+        <li>utilizarea frazei complexe, a conectorilor discursivi și a structurilor gramaticale avansate.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Structura programei</h2>
+
+      <article class="module">
+        <div class="module-title"><h3>Modulul I – Identitate, limbaj și nuanță</h3><span>Unitățile 1–3</span></div>
+
+        <div class="unit">
+          <h4>Unitatea 1. Cine sunt când vorbesc românește?</h4>
+          <div class="unit-grid">
+            <div><strong>Teme:</strong> identitate lingvistică, bilingvism, apartenență, adaptare culturală, voce personală.</div>
+            <div><strong>Competențe:</strong> exprimarea nuanțată a opiniei, reflecție personală, prezentare biografică avansată.</div>
+            <div><strong>Gramatică și stil:</strong> recapitularea timpurilor verbale în discurs narativ și reflexiv; registru neutru, colocvial, academic.</div>
+            <div><strong>Lexic:</strong> identitate, apartenență, cultură, adaptare, valori personale.</div>
+          </div>
+          <div class="task"><strong>Sarcină finală:</strong> eseu reflexiv – „Relația mea cu limba română”.</div>
+        </div>
+
+        <div class="unit">
+          <h4>Unitatea 2. Subtext, ironie și sens implicit</h4>
+          <div class="unit-grid">
+            <div><strong>Teme:</strong> politețe indirectă, ironie, aluzii, eufemisme, intenția vorbitorului.</div>
+            <div><strong>Competențe:</strong> interpretarea sensurilor implicite, reformulare, deducție contextuală.</div>
+            <div><strong>Gramatică și stil:</strong> moduri verbale în exprimarea incertitudinii, distanțării și rezervei.</div>
+            <div><strong>Lexic:</strong> atitudini, evaluări, intensificatori, atenuatori, formulări indirecte.</div>
+          </div>
+          <div class="task"><strong>Sarcină finală:</strong> analiză de dialog cu sensuri implicite.</div>
+        </div>
+
+        <div class="unit">
+          <h4>Unitatea 3. Perspectivă și punct de vedere</h4>
+          <div class="unit-grid">
+            <div><strong>Teme:</strong> opinie, rezervă, distanțare, acord și dezacord sofisticat.</div>
+            <div><strong>Competențe:</strong> argumentare critică, exprimarea poziției, reformulare și mediere.</div>
+            <div><strong>Gramatică și stil:</strong> construcții impersonale și pasive; structuri cu valoare modală.</div>
+            <div><strong>Lexic:</strong> evaluare critică, poziționare discursivă, argumentare și contraargumentare.</div>
+          </div>
+          <div class="task"><strong>Sarcină finală:</strong> comentariu argumentativ pe o temă de actualitate.</div>
+        </div>
+        <div class="review"><strong>Recapitulare 1:</strong> eseu reflexiv + analiză de dialog + dezbatere scurtă.</div>
+      </article>
+
+      <article class="module">
+        <div class="module-title"><h3>Modulul II – Individul în societatea digitală</h3><span>Unitățile 4–6</span></div>
+
+        <div class="unit">
+          <h4>Unitatea 4. Cine suntem în era digitală?</h4>
+          <div class="unit-grid">
+            <div><strong>Teme:</strong> identitate digitală, reputație online, amprentă digitală, viață privată.</div>
+            <div><strong>Competențe:</strong> analiză critică, argumentare, exprimarea avantajelor și riscurilor.</div>
+            <div><strong>Gramatică și stil:</strong> cauză–consecință, concesie, opoziție, formulări ipotetice.</div>
+            <div><strong>Lexic:</strong> confidențialitate, profil online, date personale, reputație, expunere.</div>
+          </div>
+          <div class="task"><strong>Sarcină finală:</strong> eseu – „Mai există viață privată?”.</div>
+        </div>
+
+        <div class="unit">
+          <h4>Unitatea 5. Inteligența artificială și viitorul muncii</h4>
+          <div class="unit-grid">
+            <div><strong>Teme:</strong> AI generativă, automatizare, profesii în transformare, competențe viitoare.</div>
+            <div><strong>Competențe:</strong> dezbatere, analiză de studiu de caz, predicții și scenarii.</div>
+            <div><strong>Gramatică și stil:</strong> structuri pentru ipoteză, probabilitate, predicție și distanțare.</div>
+            <div><strong>Lexic:</strong> automatizare, algoritm, productivitate, creativitate, competențe transferabile.</div>
+          </div>
+          <div class="task"><strong>Sarcină finală:</strong> prezentare – „Profesia mea în 2040”.</div>
+        </div>
+
+        <div class="unit">
+          <h4>Unitatea 6. Atenția – noua monedă a secolului XXI</h4>
+          <div class="unit-grid">
+            <div><strong>Teme:</strong> rețele sociale, economia atenției, dependență digitală, influenceri.</div>
+            <div><strong>Competențe:</strong> argumentare, analiză de comportamente sociale, exprimarea rezervei.</div>
+            <div><strong>Gramatică și stil:</strong> conectori argumentativi, intensificatori și atenuatori.</div>
+            <div><strong>Lexic:</strong> notificări, conținut viral, algoritmi, consum media, influență.</div>
+          </div>
+          <div class="task"><strong>Sarcină finală:</strong> articol argumentativ despre economia atenției.</div>
+        </div>
+        <div class="review"><strong>Recapitulare 2:</strong> dezbatere despre AI + analiză de conținut digital + articol de opinie.</div>
+      </article>
+
+      <article class="module">
+        <div class="module-title"><h3>Modulul III – Lumea în schimbare</h3><span>Unitățile 7–9</span></div>
+
+        <div class="unit">
+          <h4>Unitatea 7. Schimbările climatice și adaptarea</h4>
+          <div class="unit-grid">
+            <div><strong>Teme:</strong> fenomene extreme, energie regenerabilă, agricultură, reziliență.</div>
+            <div><strong>Competențe:</strong> prezentare de date, argumentare ecologică, propuneri de soluții.</div>
+            <div><strong>Gramatică și stil:</strong> subordonate cauzale, consecutive, concesive și condiționale.</div>
+            <div><strong>Lexic:</strong> sustenabilitate, emisii, adaptare, resurse, tranziție verde.</div>
+          </div>
+          <div class="task"><strong>Sarcină finală:</strong> simularea unei conferințe ONU.</div>
+        </div>
+
+        <div class="unit">
+          <h4>Unitatea 8. Orașele viitorului</h4>
+          <div class="unit-grid">
+            <div><strong>Teme:</strong> smart cities, mobilitate, infrastructură, locuire, spații verzi.</div>
+            <div><strong>Competențe:</strong> propunere urbanistică, comparație, argumentare cu exemple.</div>
+            <div><strong>Gramatică și stil:</strong> comparații complexe, structuri corelative, nominalizare.</div>
+            <div><strong>Lexic:</strong> transport public, urbanizare, infrastructură, locuire, calitatea vieții.</div>
+          </div>
+          <div class="task"><strong>Sarcină finală:</strong> proiectarea unui oraș ideal.</div>
+        </div>
+
+        <div class="unit">
+          <h4>Unitatea 9. Migrație și mobilitate globală</h4>
+          <div class="unit-grid">
+            <div><strong>Teme:</strong> migrație economică, integrare, multiculturalism, diaspora românească.</div>
+            <div><strong>Competențe:</strong> interviu, reportaj, mediere culturală, analiză socială.</div>
+            <div><strong>Gramatică și stil:</strong> stil indirect, relatarea perspectivelor multiple.</div>
+            <div><strong>Lexic:</strong> integrare, comunitate, adaptare, mobilitate, identitate multiplă.</div>
+          </div>
+          <div class="task"><strong>Sarcină finală:</strong> reportaj social despre migrație sau diaspora.</div>
+        </div>
+        <div class="review"><strong>Recapitulare 3:</strong> proiect comunitar + prezentare orală + raport scurt.</div>
+      </article>
+
+      <article class="module">
+        <div class="module-title"><h3>Modulul IV – Economie, tehnologie și securitate</h3><span>Unitățile 10–12</span></div>
+
+        <div class="unit">
+          <h4>Unitatea 10. Economia digitală</h4>
+          <div class="unit-grid">
+            <div><strong>Teme:</strong> muncă remote, freelancing, economia creatorilor, platforme digitale.</div>
+            <div><strong>Competențe:</strong> analiză economică simplificată, prezentare de tendințe, argumentare.</div>
+            <div><strong>Gramatică și stil:</strong> fraza complexă, raportarea cauzelor și efectelor.</div>
+            <div><strong>Lexic:</strong> platformă, monetizare, contract, autonomie, flexibilitate.</div>
+          </div>
+          <div class="task"><strong>Sarcină finală:</strong> analiză: „Este munca pe platforme o oportunitate sau un risc?”.</div>
+        </div>
+
+        <div class="unit">
+          <h4>Unitatea 11. Securitate cibernetică</h4>
+          <div class="unit-grid">
+            <div><strong>Teme:</strong> fraude online, deepfake, phishing, protecția datelor.</div>
+            <div><strong>Competențe:</strong> explicarea riscurilor, avertizare, redactare de recomandări.</div>
+            <div><strong>Gramatică și stil:</strong> imperative formale, structuri impersonale, pasiv.</div>
+            <div><strong>Lexic:</strong> autentificare, parolă, fraudă, deepfake, verificare, securitate.</div>
+          </div>
+          <div class="task"><strong>Sarcină finală:</strong> ghid de siguranță digitală pentru publicul larg.</div>
+        </div>
+
+        <div class="unit">
+          <h4>Unitatea 12. Banii viitorului</h4>
+          <div class="unit-grid">
+            <div><strong>Teme:</strong> plăți digitale, euro digital, criptomonede, identitate digitală europeană.</div>
+            <div><strong>Competențe:</strong> dezbatere formală, explicație clară, comparație de sisteme.</div>
+            <div><strong>Gramatică și stil:</strong> exprimarea probabilității, a riscului și a incertitudinii.</div>
+            <div><strong>Lexic:</strong> tranzacție, monedă digitală, confidențialitate, reglementare, risc.</div>
+          </div>
+          <div class="task"><strong>Sarcină finală:</strong> dezbatere – „Vor dispărea banii cash?”.</div>
+        </div>
+        <div class="review"><strong>Recapitulare 4:</strong> studiu de caz digital + dezbatere + ghid practic.</div>
+      </article>
+
+      <article class="module">
+        <div class="module-title"><h3>Modulul V – Comunicare, influență și dezbatere publică</h3><span>Unitățile 13–15</span></div>
+
+        <div class="unit">
+          <h4>Unitatea 13. Dezinformare și gândire critică</h4>
+          <div class="unit-grid">
+            <div><strong>Teme:</strong> fake news, manipulare, propagandă, verificarea surselor.</div>
+            <div><strong>Competențe:</strong> analiză comparativă, evaluare critică, argumentare bazată pe surse.</div>
+            <div><strong>Gramatică și stil:</strong> conectori concesivi, opoziționali și conclusivi.</div>
+            <div><strong>Lexic:</strong> sursă, bias, verificare, manipulare, credibilitate.</div>
+          </div>
+          <div class="task"><strong>Sarcină finală:</strong> analiză comparativă a două surse media.</div>
+        </div>
+
+        <div class="unit">
+          <h4>Unitatea 14. Leadership și colaborare</h4>
+          <div class="unit-grid">
+            <div><strong>Teme:</strong> leadership modern, diversitate, comunicare interculturală, negociere.</div>
+            <div><strong>Competențe:</strong> mediere, formulare diplomatică, coordonare de discuție.</div>
+            <div><strong>Gramatică și stil:</strong> condiționalul prezent și perfect; politețe avansată.</div>
+            <div><strong>Lexic:</strong> responsabilitate, influență, colaborare, obiecție, compromis.</div>
+          </div>
+          <div class="task"><strong>Sarcină finală:</strong> simularea unei ședințe executive.</div>
+        </div>
+
+        <div class="unit">
+          <h4>Unitatea 15. Vorbitul în public</h4>
+          <div class="unit-grid">
+            <div><strong>Teme:</strong> storytelling, persuasiune, discurs public, prezentări profesionale.</div>
+            <div><strong>Competențe:</strong> structurarea discursului, captarea atenției, răspuns spontan.</div>
+            <div><strong>Gramatică și stil:</strong> formule retorice, repetiție controlată, ritm și coeziune.</div>
+            <div><strong>Lexic:</strong> introducere, teză, exemplu, concluzie, impact, audiență.</div>
+          </div>
+          <div class="task"><strong>Sarcină finală:</strong> discurs public de 7–10 minute.</div>
+        </div>
+        <div class="review"><strong>Recapitulare 5:</strong> dezbatere publică + discurs + feedback colegial.</div>
+      </article>
+
+      <article class="module">
+        <div class="module-title"><h3>Modulul VI – România modernă și cultura contemporană</h3><span>Unitățile 16–18</span></div>
+
+        <div class="unit">
+          <h4>Unitatea 16. România după 1989</h4>
+          <div class="unit-grid">
+            <div><strong>Teme:</strong> tranziție, schimbări sociale, integrare europeană, memorie colectivă.</div>
+            <div><strong>Competențe:</strong> explicarea unei evoluții istorice, comparație trecut–prezent.</div>
+            <div><strong>Gramatică și stil:</strong> concordanța timpurilor, secvențiere narativă complexă.</div>
+            <div><strong>Lexic:</strong> tranziție, democrație, reformă, societate, mentalitate.</div>
+          </div>
+          <div class="task"><strong>Sarcină finală:</strong> prezentare: „O schimbare majoră în România post-1989”.</div>
+        </div>
+
+        <div class="unit">
+          <h4>Unitatea 17. România în Uniunea Europeană</h4>
+          <div class="unit-grid">
+            <div><strong>Teme:</strong> instituții europene, libera circulație, piața unică, identitate europeană.</div>
+            <div><strong>Competențe:</strong> explicare instituțională, argumentare pro/contra, analiză de impact.</div>
+            <div><strong>Gramatică și stil:</strong> pasivul, nominalizarea, limbaj administrativ.</div>
+            <div><strong>Lexic:</strong> instituții, legislație, cetățenie, fonduri europene, piață unică.</div>
+          </div>
+          <div class="task"><strong>Sarcină finală:</strong> articol explicativ despre rolul României în UE.</div>
+        </div>
+
+        <div class="unit">
+          <h4>Unitatea 18. România digitală</h4>
+          <div class="unit-grid">
+            <div><strong>Teme:</strong> digitalizarea administrației, identitate electronică, servicii publice online.</div>
+            <div><strong>Competențe:</strong> evaluarea serviciilor publice, formularea de propuneri, limbaj civic.</div>
+            <div><strong>Gramatică și stil:</strong> structuri impersonale și administrative.</div>
+            <div><strong>Lexic:</strong> platformă publică, dosar electronic, identitate digitală, ghișeu online.</div>
+          </div>
+          <div class="task"><strong>Sarcină finală:</strong> propunere de îmbunătățire a unui serviciu public digital.</div>
+        </div>
+        <div class="review"><strong>Recapitulare 6:</strong> articol civic + analiză culturală + prezentare.</div>
+      </article>
+
+      <article class="module">
+        <div class="module-title"><h3>Modulul VII – Dezvoltare personală și adaptare la schimbare</h3><span>Unitățile 19–21</span></div>
+
+        <div class="unit">
+          <h4>Unitatea 19. Cum învățăm toată viața?</h4>
+          <div class="unit-grid">
+            <div><strong>Teme:</strong> lifelong learning, reskilling, upskilling, micro-certificări, învățare autodirijată.</div>
+            <div><strong>Competențe:</strong> exprimarea obiectivelor personale, evaluarea progresului, descrierea strategiilor.</div>
+            <div><strong>Gramatică și stil:</strong> exprimarea scopului, condiției și progresiei.</div>
+            <div><strong>Lexic:</strong> competență, progres, obiectiv, disciplină, învățare continuă.</div>
+          </div>
+          <div class="task"><strong>Sarcină finală:</strong> plan personal de dezvoltare pentru următorii 5 ani.</div>
+        </div>
+
+        <div class="unit">
+          <h4>Unitatea 20. Alegerea unei cariere într-o lume imprevizibilă</h4>
+          <div class="unit-grid">
+            <div><strong>Teme:</strong> orientare profesională, schimbarea carierei, profesii emergente, competențe transferabile.</div>
+            <div><strong>Competențe:</strong> analiză de traseu profesional, argumentarea unei alegeri, comparație de opțiuni.</div>
+            <div><strong>Gramatică și stil:</strong> ipoteză, condițional, exprimarea riscului și a oportunității.</div>
+            <div><strong>Lexic:</strong> carieră, tranziție, vocație, specializare, incertitudine.</div>
+          </div>
+          <div class="task"><strong>Sarcină finală:</strong> analiză a unei posibile schimbări de carieră.</div>
+        </div>
+
+        <div class="unit">
+          <h4>Unitatea 21. Echilibrul dintre viața profesională și cea personală</h4>
+          <div class="unit-grid">
+            <div><strong>Teme:</strong> burnout, work-life balance, muncă remote, sănătate mintală, limite personale.</div>
+            <div><strong>Competențe:</strong> formularea recomandărilor, analiza cauzelor și consecințelor.</div>
+            <div><strong>Gramatică și stil:</strong> structuri recomandative, nuanțare, cauză–efect.</div>
+            <div><strong>Lexic:</strong> epuizare, echilibru, presiune, recuperare, ritm de lucru.</div>
+          </div>
+          <div class="task"><strong>Sarcină finală:</strong> studiu de caz – prevenirea epuizării profesionale.</div>
+        </div>
+        <div class="review"><strong>Recapitulare 7:</strong> portofoliu personal + simulare de consiliere profesională.</div>
+      </article>
+
+      <article class="module">
+        <div class="module-title"><h3>Modulul VIII – Schimbări sociale și transformarea societății</h3><span>Unitățile 22–24</span></div>
+
+        <div class="unit">
+          <h4>Unitatea 22. O societate care îmbătrânește</h4>
+          <div class="unit-grid">
+            <div><strong>Teme:</strong> scăderea natalității, longevitate, demografie, sisteme sociale.</div>
+            <div><strong>Competențe:</strong> interpretarea tendințelor, formularea de scenarii, argumentare socială.</div>
+            <div><strong>Gramatică și stil:</strong> exprimarea predicției, probabilității și consecinței.</div>
+            <div><strong>Lexic:</strong> natalitate, longevitate, pensii, forță de muncă, generații.</div>
+          </div>
+          <div class="task"><strong>Sarcină finală:</strong> raport privind provocările demografice.</div>
+        </div>
+
+        <div class="unit">
+          <h4>Unitatea 23. Generațiile în dialog</h4>
+          <div class="unit-grid">
+            <div><strong>Teme:</strong> Baby Boomers, Generația X, Millennials, Generația Z, Generația Alpha.</div>
+            <div><strong>Competențe:</strong> comparare, interviu, analiză culturală, mediere între perspective.</div>
+            <div><strong>Gramatică și stil:</strong> comparație avansată, concesie, contrast, reformulare.</div>
+            <div><strong>Lexic:</strong> mentalitate, conflict generațional, valori, adaptare, stereotip.</div>
+          </div>
+          <div class="task"><strong>Sarcină finală:</strong> interviu între generații și analiză comparativă.</div>
+        </div>
+
+        <div class="unit">
+          <h4>Unitatea 24. Diversitate și incluziune</h4>
+          <div class="unit-grid">
+            <div><strong>Teme:</strong> diversitate culturală, integrare, identități multiple, comunicare interculturală.</div>
+            <div><strong>Competențe:</strong> exprimarea sensibilă a opiniilor, medierea conflictelor, negocierea sensului.</div>
+            <div><strong>Gramatică și stil:</strong> formulări diplomatice, atenuatori, limbaj incluziv.</div>
+            <div><strong>Lexic:</strong> incluziune, apartenență, diferență, prejudecată, respect.</div>
+          </div>
+          <div class="task"><strong>Sarcină finală:</strong> studiu comparativ între două culturi.</div>
+        </div>
+        <div class="review"><strong>Recapitulare 8:</strong> dezbatere socială + reportaj + eseu comparativ.</div>
+      </article>
+
+      <article class="module">
+        <div class="module-title"><h3>Modulul IX – Leadership și impact personal</h3><span>Unitățile 25–27</span></div>
+
+        <div class="unit">
+          <h4>Unitatea 25. Ce înseamnă succesul?</h4>
+          <div class="unit-grid">
+            <div><strong>Teme:</strong> succes profesional, succes personal, fericire, sens, valori.</div>
+            <div><strong>Competențe:</strong> reflecție critică, definire conceptuală, argumentare personală.</div>
+            <div><strong>Gramatică și stil:</strong> abstractizare, nominalizare, frază eseistică.</div>
+            <div><strong>Lexic:</strong> reușită, împlinire, scop, statut, recunoaștere.</div>
+          </div>
+          <div class="task"><strong>Sarcină finală:</strong> eseu – „Cum definesc succesul?”.</div>
+        </div>
+
+        <div class="unit">
+          <h4>Unitatea 26. Leadership în secolul XXI</h4>
+          <div class="unit-grid">
+            <div><strong>Teme:</strong> leadership colaborativ, inteligență emoțională, influență și responsabilitate.</div>
+            <div><strong>Competențe:</strong> analiză de lider, feedback constructiv, argumentare etică.</div>
+            <div><strong>Gramatică și stil:</strong> limbaj evaluativ, concesie, formulări nuanțate.</div>
+            <div><strong>Lexic:</strong> viziune, empatie, autoritate, influență, responsabilitate.</div>
+          </div>
+          <div class="task"><strong>Sarcină finală:</strong> analiza unui lider contemporan.</div>
+        </div>
+
+        <div class="unit">
+          <h4>Unitatea 27. Construirea unui brand personal</h4>
+          <div class="unit-grid">
+            <div><strong>Teme:</strong> reputație profesională, networking, LinkedIn, portofoliu profesional.</div>
+            <div><strong>Competențe:</strong> autoprezentare, comunicare strategică, redactare profesională.</div>
+            <div><strong>Gramatică și stil:</strong> registru profesional, concizie, formulări de impact.</div>
+            <div><strong>Lexic:</strong> profil, reputație, rețea profesională, portofoliu, credibilitate.</div>
+          </div>
+          <div class="task"><strong>Sarcină finală:</strong> profil profesional complet + prezentare de 2 minute.</div>
+        </div>
+        <div class="review"><strong>Recapitulare 9:</strong> profil profesional + simulare de networking + prezentare.</div>
+      </article>
+
+      <article class="module">
+        <div class="module-title"><h3>Modulul X – Idei care modelează viitorul</h3><span>Unitățile 28–30</span></div>
+
+        <div class="unit">
+          <h4>Unitatea 28. Viața într-o lume dominată de AI</h4>
+          <div class="unit-grid">
+            <div><strong>Teme:</strong> colaborarea om–mașină, creativitate, competențe umane, etică tehnologică.</div>
+            <div><strong>Competențe:</strong> analiză prospectivă, exprimarea riscurilor și oportunităților.</div>
+            <div><strong>Gramatică și stil:</strong> viitor, ipoteză, prezumtiv, condițional.</div>
+            <div><strong>Lexic:</strong> autonomie, creativitate, etică, automatizare, judecată umană.</div>
+          </div>
+          <div class="task"><strong>Sarcină finală:</strong> eseu prospectiv – „Cum va lucra omul în 2040?”.</div>
+        </div>
+
+        <div class="unit">
+          <h4>Unitatea 29. Adaptabilitatea ca superputere</h4>
+          <div class="unit-grid">
+            <div><strong>Teme:</strong> reziliență, incertitudine, reinventare profesională, schimbare de viață.</div>
+            <div><strong>Competențe:</strong> planificare, autoanaliză, argumentarea unei strategii personale.</div>
+            <div><strong>Gramatică și stil:</strong> exprimarea condiției, scopului, concesiei și priorității.</div>
+            <div><strong>Lexic:</strong> adaptabilitate, reziliență, reinventare, incertitudine, curaj.</div>
+          </div>
+          <div class="task"><strong>Sarcină finală:</strong> plan de adaptare la o schimbare majoră de viață.</div>
+        </div>
+
+        <div class="unit">
+          <h4>Unitatea 30. Moștenirea pe care o lăsăm</h4>
+          <div class="unit-grid">
+            <div><strong>Teme:</strong> contribuție socială, voluntariat, impact, valori, generații viitoare.</div>
+            <div><strong>Competențe:</strong> discurs public, argumentare etică, apel la valori.</div>
+            <div><strong>Gramatică și stil:</strong> recapitulare integrată: moduri, timpuri, frază complexă, registre.</div>
+            <div><strong>Lexic:</strong> contribuție, moștenire, responsabilitate, solidaritate, viitor.</div>
+          </div>
+          <div class="task"><strong>Proiect final C1:</strong> discurs public – „Ce fel de lume vreau să las generațiilor viitoare?”.</div>
+        </div>
+        <div class="review"><strong>Recapitulare finală:</strong> portofoliu C1 + discurs final + simulare examen.</div>
+      </article>
+    </section>
+
+    <section>
+      <h2>Teme transversale</h2>
+      <span class="pill">Inteligență artificială</span>
+      <span class="pill">Sustenabilitate</span>
+      <span class="pill">Cetățenie digitală</span>
+      <span class="pill">Gândire critică</span>
+      <span class="pill">Comunicare profesională</span>
+      <span class="pill">Orientare în carieră</span>
+      <span class="pill">Dezvoltare personală</span>
+      <span class="pill">Schimbări sociale</span>
+      <span class="pill">Leadership</span>
+      <span class="pill">Cultură românească modernă</span>
+
+      <table class="table">
+        <thead>
+          <tr><th>Domeniu</th><th>Pondere recomandată</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Inteligență artificială și tehnologie</td><td>15%</td></tr>
+          <tr><td>Dezvoltare personală</td><td>15%</td></tr>
+          <tr><td>Carieră și viitorul muncii</td><td>15%</td></tr>
+          <tr><td>Schimbări sociale și demografie</td><td>15%</td></tr>
+          <tr><td>Comunicare, leadership și influență</td><td>10%</td></tr>
+          <tr><td>Economie și societate</td><td>10%</td></tr>
+          <tr><td>Mediu și sustenabilitate</td><td>10%</td></tr>
+          <tr><td>Cultură și identitate românească</td><td>10%</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>Conținut gramatical C1</h2>
+      <ul>
+        <li>recapitularea tuturor timpurilor verbale;</li>
+        <li>nuanțe ale conjunctivului, condiționalului și prezumtivului;</li>
+        <li>pasivul și construcțiile impersonale;</li>
+        <li>nominalizarea și densitatea stilului academic;</li>
+        <li>fraza complexă cu subordonate multiple;</li>
+        <li>subordonate concesive, consecutive, condiționale, completive și relative;</li>
+        <li>concordanța timpurilor;</li>
+        <li>stil direct, indirect și indirect liber;</li>
+        <li>conectori discursivi avansați;</li>
+        <li>exprimarea ipotezei, rezervei, probabilității și distanțării;</li>
+        <li>registre: formal, academic, jurnalistic, profesional și colocvial.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Evaluare finală C1</h2>
+      <table class="table">
+        <thead>
+          <tr><th>Competență</th><th>Tipuri de sarcini</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Înțelegerea textului scris</td><td>articol de opinie, fragment literar, text academic, identificarea ideilor implicite</td></tr>
+          <tr><td>Înțelegerea orală</td><td>interviuri, dezbateri, prezentări, discursuri formale sau colocviale</td></tr>
+          <tr><td>Exprimarea scrisă</td><td>eseu argumentativ, e-mail formal complex, analiză critică, comentariu de text</td></tr>
+          <tr><td>Exprimarea orală</td><td>prezentare individuală, dezbatere, reacție spontană, argumentare cu exemple și contraargumente</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>Anexe recomandate</h2>
+      <div class="appendix">
+        <ol>
+          <li>Gramatică avansată C1</li>
+          <li>Conectori discursivi și formule argumentative</li>
+          <li>Registre și niveluri de formalitate</li>
+          <li>Expresii idiomatice frecvente</li>
+          <li>Modele de eseu C1</li>
+          <li>Modele de e-mail formal</li>
+          <li>Strategii de prezentare orală</li>
+          <li>Vocabular tematic avansat</li>
+          <li>Transcrieri audio</li>
+          <li>Cheia exercițiilor</li>
+          <li>Model complet de examen C1</li>
+          <li>Portofoliu de proiecte C1</li>
+        </ol>
+      </div>
+      <div class="note">
+        <strong>Notă editorială:</strong> această programă poate susține un manual modern de aproximativ 280–350 de pagini. Accentul este pus pe comunicare avansată, rafinament lingvistic, autonomie profesională și capacitatea cursantului de a discuta competent problemele lumii actuale.
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    Programa C1 · Limba română ca limbă străină · Concept editorial 2026 · CEFR C1
+  </footer>
+</div>
+</body>
+</html>

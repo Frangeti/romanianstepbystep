@@ -1922,6 +1922,25 @@
     line-height: 1.25;
   }
 
+  #a1-romana .lesson-grid,
+  #a2-romana .lesson-grid,
+  #b1-romana .lesson-grid,
+  #b2-romana .lesson-grid,
+  #c1-romana .lesson-grid {
+    grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+    gap: 1.4rem;
+  }
+
+  .lesson-card.manual-program-card {
+    width: 100%;
+    min-height: 132px;
+  }
+
+  .lesson-card.manual-program-card .lesson-head {
+    min-height: auto;
+    padding: 1.2rem !important;
+  }
+
   /* Apple-inspired visual refresh */
   .topbar,
   .sidebar,
@@ -2146,6 +2165,33 @@
     --accent: var(--level-color);
   }
 
+  #a1-romana .lesson-card.manual-program-card,
+  #a2-romana .lesson-card.manual-program-card,
+  #b1-romana .lesson-card.manual-program-card,
+  #b2-romana .lesson-card.manual-program-card,
+  #c1-romana .lesson-card.manual-program-card {
+    width: 100%;
+    min-height: 132px !important;
+    padding: 0 !important;
+  }
+
+  #a1-romana .lesson-card.manual-program-card .lesson-head,
+  #a2-romana .lesson-card.manual-program-card .lesson-head,
+  #b1-romana .lesson-card.manual-program-card .lesson-head,
+  #b2-romana .lesson-card.manual-program-card .lesson-head,
+  #c1-romana .lesson-card.manual-program-card .lesson-head {
+    min-height: auto !important;
+    padding: 1.2rem !important;
+  }
+
+  #a1-romana .lesson-card.manual-program-card .lesson-title,
+  #a2-romana .lesson-card.manual-program-card .lesson-title,
+  #b1-romana .lesson-card.manual-program-card .lesson-title,
+  #b2-romana .lesson-card.manual-program-card .lesson-title,
+  #c1-romana .lesson-card.manual-program-card .lesson-title {
+    font-size: clamp(21px, 1.8vw, 28px) !important;
+  }
+
   .badge-b2,
   .badge-tech,
   .badge-live,
@@ -2275,7 +2321,7 @@
 <body>
   <div class="shell">
     <header class="topbar">
-      <a class="logo" href="index.html">Romanian <span>Step by Step</span></a>
+      <a class="logo" href="#a1" data-open-home-level="a1">Romanian <span>Step by Step</span></a>
       <nav class="main-nav" aria-label="Meniu principal">
         <div class="main-nav-group main-nav-languages">
           <a class="main-nav-link active" href="#acasa" data-home-link>Română</a>
@@ -2370,7 +2416,7 @@
             <div class="sid-level-group">
               <a class="sid-item subitem home-level" href="#b1" data-level-filter="b1">B1. Intermediar</a>
               <div class="level-tool-list">
-                <a class="sid-item tool-item home-tool" href="#lectii" data-home-level="b1"><span class="sid-dot dot-green"></span>1. Lecții de limba română</a>
+                <a class="sid-item tool-item home-tool" href="#lectii" data-home-category="b1-romana-lectii"><span class="sid-dot dot-green"></span>1. Lecții de limba română</a>
                 <a class="sid-item tool-item home-tool" href="#romana-lectii-pdf" data-home-section="romana-lectii-pdf"><span class="sid-dot dot-green"></span>2. Lecții download PDF</a>
                 <a class="sid-item tool-item home-tool" href="#romana-dictionar" data-home-section="romana-dictionar"><span class="sid-dot dot-green"></span>3. Dicționar alfabetic</a>
                 <a class="sid-item tool-item home-tool tool-parent" href="#romana-pronuntie" data-home-section="romana-pronuntie"><span class="sid-dot dot-green"></span>4. Pronunție</a>
@@ -3272,106 +3318,19 @@
 
         <section id="lectii">
           <div class="level-section" id="a1" data-level-section="a1">
+            <div class="level-heading">
+              <h3>A1. Începător</h3>
+            </div>
             <div class="lesson-category" id="a1-romana">
               <div class="lesson-grid">
-              <article class="lesson-card" data-lesson-no="01">
+              <article class="lesson-card manual-program-card" data-lesson-link="manuale/cuprins-manual-a1.html" data-lesson-no="A1" tabindex="0" role="link">
                 <div class="lesson-head">
                   <div class="meta">
                     <span class="badge badge-b2">Nivel A1</span>
-                    <span class="badge badge-live">Română</span>
+                    <span class="badge badge-live">Programă</span>
                   </div>
-                  <div class="lesson-title"><span class="lesson-name">Salutări</span><span class="lesson-translation">Salutări și formule simple</span></div>
-                  <p class="lesson-desc">Salutări, despărțiri și primele formule de conversație în limba română.</p>
-                </div>
-              </article>
-              <article class="lesson-card" data-lesson-no="02">
-                <div class="lesson-head">
-                  <div class="meta">
-                    <span class="badge badge-b2">Nivel A1</span>
-                    <span class="badge badge-live">Română</span>
-                  </div>
-                  <div class="lesson-title"><span class="lesson-name">Ce faci?</span><span class="lesson-translation">Întrebări despre stare</span></div>
-                  <p class="lesson-desc">Întrebări și răspunsuri scurte despre stare și dispoziție.</p>
-                </div>
-              </article>
-              <article class="lesson-card" data-lesson-no="03">
-                <div class="lesson-head">
-                  <div class="meta">
-                    <span class="badge badge-b2">Nivel A1</span>
-                    <span class="badge badge-live">Română</span>
-                  </div>
-                  <div class="lesson-title"><span class="lesson-name">Mulțumesc</span><span class="lesson-translation">Politețe de bază</span></div>
-                  <p class="lesson-desc">Mulțumiri, rugăminți și răspunsuri politicoase în situații simple.</p>
-                </div>
-              </article>
-              <article class="lesson-card" data-lesson-no="04">
-                <div class="lesson-head">
-                  <div class="meta">
-                    <span class="badge badge-b2">Nivel A1</span>
-                    <span class="badge badge-live">Română</span>
-                  </div>
-                  <div class="lesson-title"><span class="lesson-name">Scuze</span><span class="lesson-translation">Formule de scuză</span></div>
-                  <p class="lesson-desc">Scuze, formule de iertare și răspunsuri potrivite în conversație.</p>
-                </div>
-              </article>
-              <article class="lesson-card" data-lesson-no="05">
-                <div class="lesson-head">
-                  <div class="meta">
-                    <span class="badge badge-b2">Nivel A1</span>
-                    <span class="badge badge-live">Română</span>
-                  </div>
-                  <div class="lesson-title"><span class="lesson-name">Persoane</span><span class="lesson-translation">Pronume și familie</span></div>
-                  <p class="lesson-desc">Pronume personale, persoane apropiate, familie și verbul „a fi”.</p>
-                </div>
-              </article>
-              <article class="lesson-card" data-lesson-no="06">
-                <div class="lesson-head">
-                  <div class="meta">
-                    <span class="badge badge-b2">Nivel A1</span>
-                    <span class="badge badge-live">Română</span>
-                  </div>
-                  <div class="lesson-title"><span class="lesson-name">Prezentări</span><span class="lesson-translation">Nume și prezentare</span></div>
-                  <p class="lesson-desc">Cum te prezinți, cum spui numele și cum întrebi numele cuiva.</p>
-                </div>
-              </article>
-              <article class="lesson-card" data-lesson-no="07">
-                <div class="lesson-head">
-                  <div class="meta">
-                    <span class="badge badge-b2">Nivel A1</span>
-                    <span class="badge badge-live">Română</span>
-                  </div>
-                  <div class="lesson-title"><span class="lesson-name">Numerele</span><span class="lesson-translation">Numere și vârstă</span></div>
-                  <p class="lesson-desc">Numere de bază, vârsta, întrebări simple și verbul „a avea”.</p>
-                </div>
-              </article>
-              <article class="lesson-card" data-lesson-no="08">
-                <div class="lesson-head">
-                  <div class="meta">
-                    <span class="badge badge-b2">Nivel A1</span>
-                    <span class="badge badge-live">Română</span>
-                  </div>
-                  <div class="lesson-title"><span class="lesson-name">De unde ești?</span><span class="lesson-translation">Țări și orașe</span></div>
-                  <p class="lesson-desc">Țări, orașe, origine și întrebări despre locul de unde vine cineva.</p>
-                </div>
-              </article>
-              <article class="lesson-card" data-lesson-no="09">
-                <div class="lesson-head">
-                  <div class="meta">
-                    <span class="badge badge-b2">Nivel A1</span>
-                    <span class="badge badge-live">Română</span>
-                  </div>
-                  <div class="lesson-title"><span class="lesson-name">Naționalități</span><span class="lesson-translation">Identitate și forme</span></div>
-                  <p class="lesson-desc">Naționalități, forme masculine și feminine și propoziții simple.</p>
-                </div>
-              </article>
-              <article class="lesson-card" data-lesson-no="10">
-                <div class="lesson-head">
-                  <div class="meta">
-                    <span class="badge badge-b2">Nivel A1</span>
-                    <span class="badge badge-live">Română</span>
-                  </div>
-                  <div class="lesson-title"><span class="lesson-name">Ce limbă vorbești?</span><span class="lesson-translation">Limbi și comunicare</span></div>
-                  <p class="lesson-desc">Limbi vorbite, întrebări simple și verbul „a vorbi”.</p>
+                  <div class="lesson-title"><span class="lesson-name">Programa A1</span><span class="lesson-translation">Limba română pentru străini</span></div>
+                  <p class="lesson-desc">Cuprins curricular pentru primul nivel: unități, competențe, vocabular, gramatică și progresie de studiu.</p>
                 </div>
               </article>
               </div>
@@ -4165,11 +4124,17 @@
             </div>
             <div class="lesson-category" id="a2-romana">
               <div class="lesson-grid">
-                <article class="lesson-card" data-lesson-no="SOON">
+                <article class="lesson-card manual-program-card" data-lesson-link="manuale/programa-a2-romana-limba-straina.html" data-lesson-no="A2" tabindex="0" role="link">
                   <div class="lesson-head">
-                    <div class="lesson-title">
-                      <span class="lesson-name">În curând</span>
+                    <div class="meta">
+                      <span class="badge badge-b2">Nivel A2</span>
+                      <span class="badge badge-live">Programă</span>
                     </div>
+                    <div class="lesson-title">
+                      <span class="lesson-name">Programa A2</span>
+                      <span class="lesson-translation">Limba română pentru străini</span>
+                    </div>
+                    <p class="lesson-desc">Începutul manualului A2: structură pe unități, competențe CEFR, progresie gramaticală și materiale finale.</p>
                   </div>
                 </article>
               </div>
@@ -4182,11 +4147,140 @@
             </div>
             <div class="lesson-category" id="b1-romana">
               <div class="lesson-grid">
-                <article class="lesson-card" data-lesson-no="SOON">
+                <article class="lesson-card manual-program-card" data-lesson-link="manuale/programa-b1-romana-cefr.html" data-lesson-no="B1" tabindex="0" role="link">
                   <div class="lesson-head">
-                    <div class="lesson-title">
-                      <span class="lesson-name">În curând</span>
+                    <div class="meta">
+                      <span class="badge badge-b2">Nivel B1</span>
+                      <span class="badge badge-live">Programă</span>
                     </div>
+                    <div class="lesson-title">
+                      <span class="lesson-name">Programa B1</span>
+                      <span class="lesson-translation">Limba română pentru străini</span>
+                    </div>
+                  </div>
+                </article>
+              </div>
+            </div>
+            <div class="lesson-category" id="b1-romana-lectii">
+              <div class="lesson-grid">
+                <article class="lesson-card" data-lesson-link="lessons/b1/povestea-mea.html" data-lesson-no="01" tabindex="0" role="link">
+                  <div class="lesson-head">
+                    <div class="meta">
+                      <span class="badge badge-b2">Nivel B1</span>
+                      <span class="badge badge-live">Română</span>
+                    </div>
+                    <div class="lesson-title"><span class="lesson-name">Povestea mea</span><span class="lesson-translation">Parcurs personal</span></div>
+                    <p class="lesson-desc">Prezentarea parcursului personal, experiențe importante și schimbări.</p>
+                  </div>
+                </article>
+                <article class="lesson-card" data-lesson-no="02">
+                  <div class="lesson-head">
+                    <div class="meta">
+                      <span class="badge badge-b2">Nivel B1</span>
+                      <span class="badge badge-live">Română</span>
+                    </div>
+                    <div class="lesson-title"><span class="lesson-name">Amintiri și copilărie</span><span class="lesson-translation">Trecut și prezent</span></div>
+                    <p class="lesson-desc">Povestirea întâmplărilor din trecut și compararea trecutului cu prezentul.</p>
+                  </div>
+                </article>
+                <article class="lesson-card" data-lesson-no="03">
+                  <div class="lesson-head">
+                    <div class="meta">
+                      <span class="badge badge-b2">Nivel B1</span>
+                      <span class="badge badge-live">Română</span>
+                    </div>
+                    <div class="lesson-title"><span class="lesson-name">Relații și comunicare</span><span class="lesson-translation">Emoții și sfaturi</span></div>
+                    <p class="lesson-desc">Exprimarea emoțiilor, gestionarea conflictelor și oferirea de sfaturi.</p>
+                  </div>
+                </article>
+                <article class="lesson-card" data-lesson-no="04">
+                  <div class="lesson-head">
+                    <div class="meta">
+                      <span class="badge badge-b2">Nivel B1</span>
+                      <span class="badge badge-live">Română</span>
+                    </div>
+                    <div class="lesson-title"><span class="lesson-name">Muncă și carieră</span><span class="lesson-translation">Profesie și interviu</span></div>
+                    <p class="lesson-desc">Descrierea profesiei, interviu de angajare și experiență profesională.</p>
+                  </div>
+                </article>
+                <article class="lesson-card" data-lesson-no="05">
+                  <div class="lesson-head">
+                    <div class="meta">
+                      <span class="badge badge-b2">Nivel B1</span>
+                      <span class="badge badge-live">Română</span>
+                    </div>
+                    <div class="lesson-title"><span class="lesson-name">Educație și învățare</span><span class="lesson-translation">Studii și obiective</span></div>
+                    <p class="lesson-desc">Descrierea studiilor și exprimarea obiectivelor educaționale.</p>
+                  </div>
+                </article>
+                <article class="lesson-card" data-lesson-no="06">
+                  <div class="lesson-head">
+                    <div class="meta">
+                      <span class="badge badge-b2">Nivel B1</span>
+                      <span class="badge badge-live">Română</span>
+                    </div>
+                    <div class="lesson-title"><span class="lesson-name">Tehnologie și comunicare digitală</span><span class="lesson-translation">Avantaje și dezavantaje</span></div>
+                    <p class="lesson-desc">Folosirea tehnologiei, rețele sociale, aplicații și securitate digitală.</p>
+                  </div>
+                </article>
+                <article class="lesson-card" data-lesson-no="07">
+                  <div class="lesson-head">
+                    <div class="meta">
+                      <span class="badge badge-b2">Nivel B1</span>
+                      <span class="badge badge-live">Română</span>
+                    </div>
+                    <div class="lesson-title"><span class="lesson-name">Călătorii și turism</span><span class="lesson-translation">Vacanță și jurnal</span></div>
+                    <p class="lesson-desc">Planificarea unei călătorii și relatarea unei vacanțe.</p>
+                  </div>
+                </article>
+                <article class="lesson-card" data-lesson-no="08">
+                  <div class="lesson-head">
+                    <div class="meta">
+                      <span class="badge badge-b2">Nivel B1</span>
+                      <span class="badge badge-live">Română</span>
+                    </div>
+                    <div class="lesson-title"><span class="lesson-name">Cultura română</span><span class="lesson-translation">Tradiții și comparații</span></div>
+                    <p class="lesson-desc">Descrierea tradițiilor și compararea culturilor.</p>
+                  </div>
+                </article>
+                <article class="lesson-card" data-lesson-no="09">
+                  <div class="lesson-head">
+                    <div class="meta">
+                      <span class="badge badge-b2">Nivel B1</span>
+                      <span class="badge badge-live">Română</span>
+                    </div>
+                    <div class="lesson-title"><span class="lesson-name">Oraș și comunitate</span><span class="lesson-translation">Servicii și voluntariat</span></div>
+                    <p class="lesson-desc">Probleme urbane, servicii publice și voluntariat.</p>
+                  </div>
+                </article>
+                <article class="lesson-card" data-lesson-no="10">
+                  <div class="lesson-head">
+                    <div class="meta">
+                      <span class="badge badge-b2">Nivel B1</span>
+                      <span class="badge badge-live">Română</span>
+                    </div>
+                    <div class="lesson-title"><span class="lesson-name">Sănătate și stil de viață</span><span class="lesson-translation">Recomandări și obiceiuri</span></div>
+                    <p class="lesson-desc">Recomandări, obiceiuri sănătoase și echilibru personal.</p>
+                  </div>
+                </article>
+                <article class="lesson-card" data-lesson-no="11">
+                  <div class="lesson-head">
+                    <div class="meta">
+                      <span class="badge badge-b2">Nivel B1</span>
+                      <span class="badge badge-live">Română</span>
+                    </div>
+                    <div class="lesson-title"><span class="lesson-name">Mediu și sustenabilitate</span><span class="lesson-translation">Opinie și argumentare</span></div>
+                    <p class="lesson-desc">Opinii, argumentare simplă, reciclare și protecția mediului.</p>
+                  </div>
+                </article>
+                <article class="lesson-card" data-lesson-no="12">
+                  <div class="lesson-head">
+                    <div class="meta">
+                      <span class="badge badge-b2">Nivel B1</span>
+                      <span class="badge badge-live">Română</span>
+                    </div>
+                    <div class="lesson-title"><span class="lesson-name">Planuri și viitor</span><span class="lesson-translation">Obiective și aspirații</span></div>
+                    <p class="lesson-desc">Proiecte personale, obiective, aspirații și planificare.</p>
                   </div>
                 </article>
               </div>
@@ -4199,10 +4293,15 @@
             </div>
             <div class="lesson-category" id="b2-romana">
               <div class="lesson-grid">
-                <article class="lesson-card" data-lesson-no="SOON">
+                <article class="lesson-card manual-program-card" data-lesson-link="manuale/programa-b2-romana-limba-straina.html" data-lesson-no="B2" tabindex="0" role="link">
                   <div class="lesson-head">
+                    <div class="meta">
+                      <span class="badge badge-b2">Nivel B2</span>
+                      <span class="badge badge-live">Programă</span>
+                    </div>
                     <div class="lesson-title">
-                      <span class="lesson-name">În curând</span>
+                      <span class="lesson-name">Programa B2</span>
+                      <span class="lesson-translation">Limba română pentru străini</span>
                     </div>
                   </div>
                 </article>
@@ -4216,10 +4315,15 @@
             </div>
             <div class="lesson-category" id="c1-romana">
               <div class="lesson-grid">
-                <article class="lesson-card" data-lesson-no="SOON">
+                <article class="lesson-card manual-program-card" data-lesson-no="C1" tabindex="0">
                   <div class="lesson-head">
+                    <div class="meta">
+                      <span class="badge badge-b2">Nivel C1</span>
+                      <span class="badge badge-live">Programă</span>
+                    </div>
                     <div class="lesson-title">
-                      <span class="lesson-name">În curând</span>
+                      <span class="lesson-name">Programa C1</span>
+                      <span class="lesson-translation">Limba română pentru străini</span>
                     </div>
                   </div>
                 </article>
@@ -4441,6 +4545,7 @@
     const emptyLevel = document.querySelector('[data-empty-level]');
     const sidebarItems = document.querySelectorAll('.sid-item');
     const topNavLinks = document.querySelectorAll('.main-nav-link[href^="#"]');
+    const homeTitleLinks = document.querySelectorAll('[data-open-home-level]');
     const levelFilters = document.querySelectorAll('[data-level-filter]');
     const homeLevelGroups = document.querySelectorAll('.home-tools .sid-level-group');
     const showAllLessonsLinks = document.querySelectorAll('[data-show-all-lessons]');
@@ -4558,15 +4663,6 @@
       scheduleIntroSync();
     }
 
-    function toggleHomeLevelGroup(link) {
-      const group = link.closest('.sid-level-group');
-      if (!group) return;
-      const shouldOpen = !group.classList.contains('is-open');
-      homeLevelGroups.forEach(item => item.classList.remove('is-open'));
-      group.classList.toggle('is-open', shouldOpen);
-      scheduleIntroSync();
-    }
-
     function toggleLanguageLevelGroup(link) {
       const group = link.closest('.sid-level-group');
       const menu = link.closest('[data-language-tools]');
@@ -4667,12 +4763,10 @@
         section.classList.toggle('is-hidden', !isMatch);
         if (!isMatch) return;
 
-        const hasKidsCategory = Boolean(section.querySelector(`.lesson-category[id^="${level}-"][id$="-copii"]`));
         section.querySelectorAll('.lesson-category').forEach(category => {
           const isKidsCategory = category.id.startsWith(`${level}-`) && category.id.endsWith('-copii');
-          const isFallbackCategory = !hasKidsCategory && category.id === `${level}-romana`;
-          category.classList.toggle('is-hidden', !(isKidsCategory || isFallbackCategory));
-          if (isKidsCategory || isFallbackCategory) visibleCount++;
+          category.classList.toggle('is-hidden', !isKidsCategory);
+          if (isKidsCategory) visibleCount++;
         });
       });
       if (emptyLevel) emptyLevel.classList.toggle('is-hidden', visibleCount > 0);
@@ -4705,12 +4799,10 @@
         section.classList.toggle('is-hidden', !isMatch);
         if (!isMatch) return;
 
-        const hasLanguageCategory = Boolean(section.querySelector(`#${level}-${language}`));
         section.querySelectorAll('.lesson-category').forEach(category => {
           const isLanguageCategory = category.id === `${level}-${language}`;
-          const isFallbackCategory = !hasLanguageCategory && category.id === `${level}-romana`;
-          category.classList.toggle('is-hidden', !(isLanguageCategory || isFallbackCategory));
-          if (isLanguageCategory || isFallbackCategory) visibleCount++;
+          category.classList.toggle('is-hidden', !isLanguageCategory);
+          if (isLanguageCategory) visibleCount++;
         });
       });
       if (emptyLevel) emptyLevel.classList.toggle('is-hidden', visibleCount > 0);
@@ -4724,13 +4816,39 @@
     }
 
     levelFilters.forEach(link => {
-      link.addEventListener('click', () => {
-        toggleHomeLevelGroup(link);
+      link.addEventListener('click', event => {
+        event.preventDefault();
+        homeLevelGroups.forEach(item => item.classList.remove('is-open'));
+        link.closest('.sid-level-group')?.classList.add('is-open');
         closeLanguageTools();
         showAllSidebarLanguages();
         showOnlyMainSection('#lectii');
         showRomanianForLevel(link.dataset.levelFilter);
         setActiveLevel(link.dataset.levelFilter);
+        setActiveMenu(link);
+        scheduleIntroSync();
+        history.replaceState(null, '', `#${link.dataset.levelFilter}`);
+      });
+    });
+
+    homeTitleLinks.forEach(link => {
+      link.addEventListener('click', event => {
+        event.preventDefault();
+        const level = link.dataset.openHomeLevel || 'a1';
+        const levelLink = document.querySelector(`.home-tools .sid-item[data-level-filter="${level}"]`);
+        closeLanguageTools();
+        showAllSidebarLanguages();
+        showOnlyMainSection('#lectii');
+        showRomanianForLevel(level);
+        setActiveLevel(level);
+        if (levelLink) {
+          homeLevelGroups.forEach(item => item.classList.remove('is-open'));
+          levelLink.closest('.sid-level-group')?.classList.add('is-open');
+          setActiveMenu(levelLink);
+        }
+        setActiveTopNav('#acasa');
+        scheduleIntroSync();
+        history.replaceState(null, '', `#${level}`);
       });
     });
 
@@ -4788,10 +4906,21 @@
           const languageLevel = link.dataset.languageLevel;
           const homeSection = link.dataset.homeSection;
           const homeLevel = link.dataset.homeLevel;
+          const homeCategory = link.dataset.homeCategory;
           const isA1Category = Boolean(link.dataset.languageCategory);
           setActiveTopNav(language ? getLanguageHash(language) : '#acasa');
           clearActiveLevels();
           showOnlyMainSection(languageSection ? '#lectii' : hash);
+
+          if (homeCategory) {
+            closeLanguageTools();
+            showAllSidebarLanguages();
+            showOnlyMainSection('#lectii');
+            showLessonCategory(homeCategory);
+            setActiveLevel(homeCategory.split('-')[0]);
+            setActiveMenu(link);
+            return;
+          }
 
           if (homeLevel) {
             closeLanguageTools();
@@ -4841,6 +4970,16 @@
         showOnlyMainSection('#lectii');
         showRomanianForLevel(hash.slice(1));
         setActiveLevel(hash.slice(1));
+        showHomeSidebar();
+        closeLanguageTools();
+        showAllSidebarLanguages();
+        const levelLink = document.querySelector(`.home-tools .sid-item[data-level-filter="${hash.slice(1)}"]`);
+        if (levelLink) {
+          homeLevelGroups.forEach(item => item.classList.remove('is-open'));
+          levelLink.closest('.sid-level-group')?.classList.add('is-open');
+          setActiveMenu(levelLink);
+          scheduleIntroSync();
+        }
       }
       const targetSection = document.querySelector(`.main > section${hash}`);
       if (targetSection && !requestedLevel) {

@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manual B2 · Română ca limbă străină</title>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1d1d1f;
+    --muted: #6e6e73;
+    --paper: #ffffff;
+    --page: #f5f5f7;
+    --blue: #0071e3;
+    --navy: #1d1d1f;
+    --level-a1: rgba(217, 79, 69, .74);
+    --level-a2: rgba(228, 125, 48, .72);
+    --level-b1: rgba(217, 162, 37, .68);
+    --level-b2: rgba(143, 171, 53, .68);
+    --level-c1: rgba(47, 155, 95, .7);
+    --shadow: 0 22px 70px rgba(0, 0, 0, .08);
+  }
+
+  * { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
+    background:
+      linear-gradient(180deg, #ffffff 0, var(--page) 420px, #ececef 100%);
+    color: var(--ink);
+    font-family: 'Atkinson Hyperlegible', Arial, sans-serif;
+    font-size: 18px;
+    line-height: 1.6;
+  }
+
+  a { color: inherit; text-decoration: none; }
+
+  .topbar {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    min-height: 72px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0 clamp(1.1rem, 3vw, 3.5rem);
+    border-bottom: 1px solid rgba(210, 210, 215, .72);
+    background: rgba(255, 255, 255, .94);
+    box-shadow: 0 10px 28px rgba(0, 0, 0, .07);
+    backdrop-filter: blur(14px);
+  }
+
+  .brand {
+    color: var(--ink);
+    font-size: clamp(20px, 2vw, 25px);
+    line-height: 1;
+    white-space: nowrap;
+  }
+
+  .brand span { color: var(--blue); }
+
+  .manual-nav {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 5px;
+    margin-left: auto;
+    flex-wrap: wrap;
+  }
+
+  .manual-nav-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 36px;
+    padding: 7px 11px;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    background: transparent;
+    color: var(--navy);
+    font-size: 13px;
+    transition: background .18s, border-color .18s, transform .18s;
+  }
+
+  .manual-nav-link:hover {
+    border-color: #d2d2d7;
+    background: var(--page);
+    transform: translateY(-1px);
+  }
+
+  .manual-nav-link.active {
+    background: var(--ink);
+    border-color: var(--ink);
+    color: #fff;
+  }
+
+  .login-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 40px;
+    padding: 8px 14px;
+    border: 1px solid var(--blue);
+    border-radius: 8px;
+    background: var(--blue);
+    color: #fff;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 13px;
+  }
+
+  .book {
+    width: min(1180px, calc(100% - 2rem));
+    margin: 2rem auto 4rem;
+  }
+
+  .section {
+    margin-top: 1.25rem;
+    padding: clamp(1.3rem, 2.5vw, 2rem);
+    border: 1px solid rgba(210, 210, 215, .88);
+    border-radius: 8px;
+    background: var(--paper);
+    box-shadow: 0 12px 36px rgba(0, 0, 0, .045);
+  }
+
+  .section-head {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    padding-bottom: .8rem;
+    border-bottom: 1px solid rgba(210, 210, 215, .7);
+  }
+
+  .section-head h1,
+  .section-head h2 {
+    margin: 0;
+    color: var(--ink);
+    font-size: clamp(26px, 2.6vw, 38px);
+    font-weight: 400;
+    line-height: 1.12;
+  }
+
+  .unit-list {
+    display: grid;
+    gap: .9rem;
+  }
+
+  .unit {
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: minmax(116px, 132px) minmax(0, 1fr);
+    border: 1px solid rgba(210, 210, 215, .86);
+    border-radius: 8px;
+    background: #fff;
+  }
+
+  .unit:nth-child(5n + 1) { --unit-level: var(--level-a1); }
+  .unit:nth-child(5n + 2) { --unit-level: var(--level-a2); }
+  .unit:nth-child(5n + 3) { --unit-level: var(--level-b1); }
+  .unit:nth-child(5n + 4) { --unit-level: var(--level-b2); }
+  .unit:nth-child(5n) { --unit-level: var(--level-c1); }
+
+  .unit-no {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: .8rem;
+    min-width: 0;
+    padding: 1rem .85rem;
+    background:
+      linear-gradient(145deg, color-mix(in srgb, var(--unit-level) 88%, white), color-mix(in srgb, var(--unit-level) 64%, white));
+    color: color-mix(in srgb, var(--unit-level) 48%, var(--ink));
+  }
+
+  .unit-no strong {
+    font-size: clamp(34px, 4vw, 42px);
+    line-height: .95;
+    font-weight: 400;
+  }
+
+  .unit-no span {
+    display: block;
+    max-width: 100%;
+    color: color-mix(in srgb, var(--unit-level) 64%, var(--muted));
+    font-size: 11px;
+    line-height: 1.18;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    overflow-wrap: anywhere;
+    word-break: normal;
+  }
+
+  .unit-body {
+    min-width: 0;
+    padding: 1rem 1.15rem;
+  }
+
+  .unit-title {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: .8rem;
+    margin-bottom: .8rem;
+  }
+
+  .unit-title h3 {
+    min-width: 0;
+    margin: 0;
+    color: var(--ink);
+    font-size: 23px;
+    font-weight: 400;
+    line-height: 1.2;
+    overflow-wrap: anywhere;
+  }
+
+  .unit-title em {
+    flex: 0 0 auto;
+    color: var(--muted);
+    font-size: 14px;
+    font-style: normal;
+  }
+
+  .unit-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: .75rem;
+  }
+
+  .unit-block {
+    min-width: 0;
+    padding: .72rem .75rem;
+    border: 1px solid rgba(210, 210, 215, .58);
+    border-radius: 8px;
+    background: rgba(245, 245, 247, .62);
+  }
+
+  .unit-block h4 {
+    margin: 0 0 .25rem;
+    color: var(--navy);
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    overflow-wrap: anywhere;
+  }
+
+  .unit-block p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 15px;
+    line-height: 1.45;
+    overflow-wrap: anywhere;
+  }
+
+  .recap {
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: minmax(116px, 132px) minmax(0, 1fr);
+    border: 1px solid rgba(210, 210, 215, .86);
+    border-radius: 8px;
+    background:
+      linear-gradient(145deg, rgba(255, 255, 255, .98), rgba(245, 245, 247, .86));
+  }
+
+  .recap-no {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: .8rem;
+    min-width: 0;
+    padding: 1rem .85rem;
+    background: linear-gradient(145deg, #dff0ff, #b9dcff);
+    color: #0b3b66;
+  }
+
+  .recap-no strong {
+    font-size: clamp(30px, 3.5vw, 34px);
+    font-weight: 400;
+    line-height: .95;
+  }
+
+  .recap-no span {
+    display: block;
+    max-width: 100%;
+    color: rgba(11, 59, 102, .78);
+    font-size: 11px;
+    line-height: 1.18;
+    text-transform: uppercase;
+    letter-spacing: .035em;
+    overflow-wrap: anywhere;
+    word-break: normal;
+  }
+
+  .recap-body {
+    padding: 1rem 1.15rem;
+  }
+
+  .recap-body h3 {
+    margin: 0 0 .25rem;
+    color: var(--ink);
+    font-size: 22px;
+    font-weight: 400;
+  }
+
+  .recap-body p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 15px;
+    line-height: 1.5;
+  }
+
+  @media (max-width: 700px) {
+    body { font-size: 17px; }
+
+    .topbar {
+      position: static;
+      align-items: flex-start;
+      flex-direction: column;
+      padding-block: 1rem;
+    }
+
+    .manual-nav {
+      justify-content: flex-start;
+      margin-left: 0;
+    }
+
+    .book {
+      width: min(100% - 1rem, 1180px);
+      margin-top: .5rem;
+    }
+
+    .section-head {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+
+    .unit,
+    .recap {
+      grid-template-columns: 1fr;
+    }
+
+    .unit-no,
+    .recap-no {
+      min-height: 96px;
+      flex-direction: row;
+      align-items: end;
+    }
+
+    .unit-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media print {
+    body {
+      background: #fff;
+      font-size: 11pt;
+    }
+
+    .topbar {
+      display: none;
+    }
+
+    .book {
+      width: auto;
+      margin: 0;
+    }
+
+    .section,
+    .unit,
+    .recap {
+      box-shadow: none;
+      break-inside: avoid;
+    }
+  }
+</style>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="../index.html#b2">Romanian <span>Step by Step</span></a>
+    <nav class="manual-nav" aria-label="Meniu principal">
+      <a class="manual-nav-link active" href="../index.html#b2">Română</a>
+      <a class="manual-nav-link" href="../index.html#a1-germana">Germană</a>
+      <a class="manual-nav-link" href="../index.html#a1-engleza">Engleză</a>
+      <a class="manual-nav-link" href="../index.html#a1-spaniola">Spaniolă</a>
+      <button class="login-button" type="button">Login</button>
+    </nav>
+  </header>
+
+  <main class="book">
+    <section class="section">
+      <div class="section-head">
+        <h1>Cuprinsul manualului B2</h1>
+      </div>
+
+      <div class="unit-list">
+        <article class="unit">
+          <div class="unit-no"><strong>01</strong><span>identitate</span></div>
+          <div class="unit-body">
+            <div class="unit-title"><h3>Identitate și personalitate</h3><em>caracterizare</em></div>
+            <div class="unit-grid">
+              <div class="unit-block"><h4>Comunicare</h4><p>Descrie trăsături de caracter, exprimă nuanțe de personalitate și compară oameni.</p></div>
+              <div class="unit-block"><h4>Gramatică</h4><p>Consolidare mod conjunctiv; adjective și expresii de caracterizare.</p></div>
+              <div class="unit-block"><h4>Vocabular</h4><p>Trăsături de caracter, temperament, adjective abstracte.</p></div>
+              <div class="unit-block"><h4>Scriere</h4><p>Portret caracterologic — eseu descriptiv.</p></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="unit">
+          <div class="unit-no"><strong>02</strong><span>educație</span></div>
+          <div class="unit-body">
+            <div class="unit-title"><h3>Educație și învățare pe tot parcursul vieții</h3><em>condițional</em></div>
+            <div class="unit-grid">
+              <div class="unit-block"><h4>Comunicare</h4><p>Compară sisteme educaționale și exprimă opinii despre metode de studiu.</p></div>
+              <div class="unit-block"><h4>Gramatică</h4><p>Modul condițional-optativ prezent și perfect; construcții condiționale cu dacă.</p></div>
+              <div class="unit-block"><h4>Vocabular</h4><p>Sistem de învățământ, termeni academici, competențe.</p></div>
+              <div class="unit-block"><h4>Oral</h4><p>Dezbatere despre educația online și educația tradițională.</p></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="unit">
+          <div class="unit-no"><strong>03</strong><span>carieră</span></div>
+          <div class="unit-body">
+            <div class="unit-title"><h3>Muncă și carieră</h3><em>registru formal</em></div>
+            <div class="unit-grid">
+              <div class="unit-block"><h4>Comunicare</h4><p>Discută interviuri de angajare, negociază și exprimă ambiții profesionale.</p></div>
+              <div class="unit-block"><h4>Gramatică</h4><p>Infinitivul și supinul în funcții sintactice avansate; construcții pasive.</p></div>
+              <div class="unit-block"><h4>Vocabular</h4><p>Piața muncii, CV, competențe profesionale, negociere salarială.</p></div>
+              <div class="unit-block"><h4>Scriere</h4><p>Scrisoare de intenție sau e-mail formal de aplicare.</p></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="unit">
+          <div class="unit-no"><strong>04</strong><span>media</span></div>
+          <div class="unit-body">
+            <div class="unit-title"><h3>Media și tehnologie</h3><em>discurs indirect</em></div>
+            <div class="unit-grid">
+              <div class="unit-block"><h4>Comunicare</h4><p>Comentează știri și exprimă acord sau dezacord argumentat.</p></div>
+              <div class="unit-block"><h4>Gramatică</h4><p>Discursul indirect: raportarea afirmațiilor, întrebărilor și ordinelor.</p></div>
+              <div class="unit-block"><h4>Vocabular</h4><p>Presă, rețele sociale, tehnologie, dezinformare.</p></div>
+              <div class="unit-block"><h4>Interacțiune</h4><p>Analiza unei știri controversate.</p></div>
+            </div>
+          </div>
+        </article>
+
+        <div class="recap">
+          <div class="recap-no"><strong>R1</strong><span>recapitulare</span></div>
+          <div class="recap-body">
+            <h3>Identitate, educație și viață profesională</h3>
+            <p>Unitățile 1-4 · Portofoliu B2 · Dezbatere ghidată · Scrisoare formală · Test modular.</p>
+          </div>
+        </div>
+
+        <article class="unit">
+          <div class="unit-no"><strong>05</strong><span>societate</span></div>
+          <div class="unit-body">
+            <div class="unit-title"><h3>Societate și probleme actuale</h3><em>argumentare</em></div>
+            <div class="unit-grid">
+              <div class="unit-block"><h4>Comunicare</h4><p>Argumentează pro și contra, exprimă îngrijorare sau susținere.</p></div>
+              <div class="unit-block"><h4>Gramatică</h4><p>Conectori argumentativi: totuși, în ciuda, cu toate că, prin urmare.</p></div>
+              <div class="unit-block"><h4>Vocabular</h4><p>Probleme sociale: mediu, migrație, inegalitate.</p></div>
+              <div class="unit-block"><h4>Scriere</h4><p>Eseu argumentativ pro și contra.</p></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="unit">
+          <div class="unit-no"><strong>06</strong><span>sănătate</span></div>
+          <div class="unit-body">
+            <div class="unit-title"><h3>Sănătate și stil de viață</h3><em>sfat nuanțat</em></div>
+            <div class="unit-grid">
+              <div class="unit-block"><h4>Comunicare</h4><p>Discută obiceiuri sănătoase și oferă sfaturi elaborate.</p></div>
+              <div class="unit-block"><h4>Gramatică</h4><p>Conjunctivul cu valoare de sfat; a trebui, a fi necesar să, a se cuveni.</p></div>
+              <div class="unit-block"><h4>Vocabular</h4><p>Sănătate mintală, nutriție, echilibru viață-muncă.</p></div>
+              <div class="unit-block"><h4>Interacțiune</h4><p>Discuție despre stresul cotidian.</p></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="unit">
+          <div class="unit-no"><strong>07</strong><span>cultură</span></div>
+          <div class="unit-body">
+            <div class="unit-title"><h3>Artă, cultură și literatură română</h3><em>interpretare</em></div>
+            <div class="unit-grid">
+              <div class="unit-block"><h4>Comunicare</h4><p>Interpretează o operă artistică sau literară și exprimă o părere critică.</p></div>
+              <div class="unit-block"><h4>Gramatică</h4><p>Timpuri trecute cu nuanțe stilistice: perfect compus, imperfect, mai-mult-ca-perfect.</p></div>
+              <div class="unit-block"><h4>Vocabular</h4><p>Termeni din critica literară și artistică.</p></div>
+              <div class="unit-block"><h4>Cultură</h4><p>Fragmente adaptate din literatura română modernă.</p></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="unit">
+          <div class="unit-no"><strong>08</strong><span>intercultural</span></div>
+          <div class="unit-body">
+            <div class="unit-title"><h3>Călătorii și interculturalitate</h3><em>comparație</em></div>
+            <div class="unit-grid">
+              <div class="unit-block"><h4>Comunicare</h4><p>Compară culturi, povestește o experiență interculturală și exprimă șoc cultural.</p></div>
+              <div class="unit-block"><h4>Gramatică</h4><p>Construcții comparative complexe; superlativ relativ și absolut nuanțat.</p></div>
+              <div class="unit-block"><h4>Vocabular</h4><p>Turism experiențial, stereotipuri culturale.</p></div>
+              <div class="unit-block"><h4>Interacțiune</h4><p>Discuție despre diferențe culturale România–alte țări.</p></div>
+            </div>
+          </div>
+        </article>
+
+        <div class="recap">
+          <div class="recap-no"><strong>R2</strong><span>recapitulare</span></div>
+          <div class="recap-body">
+            <h3>Societate, sănătate și cultură</h3>
+            <p>Unitățile 5-8 · Eseu argumentativ · Analiză de text autentic · Discuție interculturală · Test modular.</p>
+          </div>
+        </div>
+
+        <article class="unit">
+          <div class="unit-no"><strong>09</strong><span>consum</span></div>
+          <div class="unit-body">
+            <div class="unit-title"><h3>Economie și consum</h3><em>impersonal</em></div>
+            <div class="unit-grid">
+              <div class="unit-block"><h4>Comunicare</h4><p>Discută despre buget, consum responsabil și economie personală.</p></div>
+              <div class="unit-block"><h4>Gramatică</h4><p>Construcții impersonale și reflexiv-pasive: se spune că, se consideră că.</p></div>
+              <div class="unit-block"><h4>Vocabular</h4><p>Economie, marketing, comportament de consum.</p></div>
+              <div class="unit-block"><h4>Scriere</h4><p>Articol de opinie despre consumerism.</p></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="unit">
+          <div class="unit-no"><strong>10</strong><span>mediu</span></div>
+          <div class="unit-body">
+            <div class="unit-title"><h3>Mediu și sustenabilitate</h3><em>cauză-efect</em></div>
+            <div class="unit-grid">
+              <div class="unit-block"><h4>Comunicare</h4><p>Propune soluții și exprimă cauzalitate și consecință.</p></div>
+              <div class="unit-block"><h4>Gramatică</h4><p>Conectori de cauză și consecință: deoarece, din cauză că, drept urmare, astfel încât.</p></div>
+              <div class="unit-block"><h4>Vocabular</h4><p>Schimbări climatice, ecologie, resurse.</p></div>
+              <div class="unit-block"><h4>Interacțiune</h4><p>Dezbatere despre soluții ecologice la nivel local.</p></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="unit">
+          <div class="unit-no"><strong>11</strong><span>drepturi</span></div>
+          <div class="unit-body">
+            <div class="unit-title"><h3>Justiție, lege și drepturi civice</h3><em>formal</em></div>
+            <div class="unit-grid">
+              <div class="unit-block"><h4>Comunicare</h4><p>Discută reguli, drepturi și obligații; exprimă dezacord formal.</p></div>
+              <div class="unit-block"><h4>Gramatică</h4><p>Conjunctivul perfect; construcții cu fie... fie și ori... ori.</p></div>
+              <div class="unit-block"><h4>Vocabular</h4><p>Sistem juridic de bază, drepturi civice, instituții.</p></div>
+              <div class="unit-block"><h4>Scriere</h4><p>Scrisoare oficială de reclamație.</p></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="unit">
+          <div class="unit-no"><strong>12</strong><span>emoții</span></div>
+          <div class="unit-body">
+            <div class="unit-title"><h3>Emoții, relații și comunicare interpersonală</h3><em>registru</em></div>
+            <div class="unit-grid">
+              <div class="unit-block"><h4>Comunicare</h4><p>Exprimă emoții complexe, gestionează conflicte verbal și nuanțează opinii.</p></div>
+              <div class="unit-block"><h4>Gramatică</h4><p>Expresii idiomatice cu valoare emoțională; registrul colocvial și formal.</p></div>
+              <div class="unit-block"><h4>Vocabular</h4><p>Emoții nuanțate, limbaj al conflictului și al medierii.</p></div>
+              <div class="unit-block"><h4>Interacțiune</h4><p>Joc de rol: rezolvarea unui conflict.</p></div>
+            </div>
+          </div>
+        </article>
+
+        <div class="recap">
+          <div class="recap-no"><strong>R3</strong><span>recapitulare</span></div>
+          <div class="recap-body">
+            <h3>Argumentare civică și comunicare nuanțată</h3>
+            <p>Unitățile 9-12 · Articol de opinie · Scrisoare oficială · Dezbatere pe teme civice · Test modular.</p>
+          </div>
+        </div>
+
+        <article class="unit">
+          <div class="unit-no"><strong>13</strong><span>viitor</span></div>
+          <div class="unit-body">
+            <div class="unit-title"><h3>Viitorul: predicții, tendințe, ipoteze</h3><em>ipoteză</em></div>
+            <div class="unit-grid">
+              <div class="unit-block"><h4>Comunicare</h4><p>Fă predicții, speculează despre viitor și exprimă ipoteze nerealizabile.</p></div>
+              <div class="unit-block"><h4>Gramatică</h4><p>Condiționalul trecut pentru ipoteze nerealizate; viitorul anterior.</p></div>
+              <div class="unit-block"><h4>Vocabular</h4><p>Tendințe sociale, inovație, predicții.</p></div>
+              <div class="unit-block"><h4>Scriere</h4><p>Eseu: Cum va arăta lumea în 2050?</p></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="unit">
+          <div class="unit-no"><strong>14</strong><span>evaluare</span></div>
+          <div class="unit-body">
+            <div class="unit-title"><h3>Recapitulare finală și pregătire pentru C1</h3><em>sinteză</em></div>
+            <div class="unit-grid">
+              <div class="unit-block"><h4>Comunicare</h4><p>Integrează registrele formal și informal și construiește argumentare complexă.</p></div>
+              <div class="unit-block"><h4>Gramatică</h4><p>Recapitulare generală a modurilor și timpurilor verbale; sinonimie și paletă stilistică.</p></div>
+              <div class="unit-block"><h4>Vocabular</h4><p>Recapitulare tematică extinsă, expresii idiomatice frecvente.</p></div>
+              <div class="unit-block"><h4>Evaluare</h4><p>Test de progres B2 și simulare de certificare RLS.</p></div>
+            </div>
+          </div>
+        </article>
+
+        <div class="recap">
+          <div class="recap-no"><strong>RF</strong><span>final</span></div>
+          <div class="recap-body">
+            <h3>Portofoliu B2 și tranziție spre C1</h3>
+            <p>Unitățile 13-14 · Eseu prospectiv · Simulare examen · Autoevaluare CEFR · Plan individual de progres.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</body>
+</html>
