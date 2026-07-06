@@ -110,6 +110,17 @@
     min-width: 0;
   }
 
+  .lesson-number {
+    display: inline-block;
+    margin-right: 0.8rem;
+    color: var(--level-b1);
+    font: inherit;
+    line-height: inherit;
+    font-weight: 400;
+    letter-spacing: .12em;
+    vertical-align: middle;
+  }
+
   .hero-photo {
     overflow: hidden;
     min-height: 210px;
@@ -303,9 +314,40 @@
 
   .blank {
     display: inline-block;
-    min-width: 72px;
+    min-width: 8ch;
+    width: max(8ch, 90px);
+    border: none;
     border-bottom: 1.5px dotted #86868b;
-    transform: translateY(-2px);
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    line-height: inherit;
+    padding: 0 0 2px;
+    outline: none;
+    vertical-align: text-bottom;
+  }
+
+  .blank::placeholder {
+    color: rgba(110, 110, 115, .7);
+  }
+
+  .toggle-audio-text {
+    margin: 1rem 0 0;
+    padding: .7rem 1rem;
+    border: 1px solid rgba(210, 210, 215, .85);
+    border-radius: var(--radius);
+    background: #fff;
+    color: var(--ink);
+    font: inherit;
+    cursor: pointer;
+  }
+
+  .toggle-audio-text:hover {
+    background: #f7f8fa;
+  }
+
+  .hidden {
+    display: none;
   }
 
   .prompt {
@@ -367,7 +409,7 @@
   <main class="book">
     <section class="hero">
       <div class="hero-title">
-        <h1>Povestea mea</h1>
+        <h1><span class="lesson-number">01.</span>Povestea mea</h1>
       </div>
       <figure class="hero-photo" aria-label="Studentă care scrie despre povestea ei">
         <img src="../../assets/images/povestea-mea.jpg" alt="Studentă care scrie într-un caiet, lângă fotografii și notițe despre amintiri, experiențe și viitor.">
@@ -376,13 +418,13 @@
 
     <section class="section" id="obiective">
       <div class="section-head">
-        <h2>La finalul lecției studentul va ști</h2>
+        <h2>La sfârșitul lecției vei ști</h2>
       </div>
       <div class="grid slim-grid">
-        <div class="card slim-card"><strong>Să prezinte</strong><span>parcursul personal în ordine logică.</span></div>
-        <div class="card slim-card"><strong>Să povestească</strong><span>experiențe importante din trecut.</span></div>
-        <div class="card slim-card"><strong>Să folosească</strong><span>perfectul compus și imperfectul corect.</span></div>
-        <div class="card slim-card"><strong>Să redacteze</strong><span>un text B1 despre propria poveste.</span></div>
+        <div class="card slim-card"><strong>Să prezinți</strong><span>parcursul personal în ordine logică.</span></div>
+        <div class="card slim-card"><strong>Să povestești</strong><span>experiențe importante din trecut.</span></div>
+        <div class="card slim-card"><strong>Să folosești</strong><span>perfectul compus și imperfectul corect.</span></div>
+        <div class="card slim-card"><strong>Să redactezi</strong><span>un text B1 despre propria poveste.</span></div>
       </div>
     </section>
 
@@ -411,23 +453,31 @@
       </div>
       <h3>B. Adevărat sau fals</h3>
       <ol>
-        <li>Irina s-a născut într-un sat din nordul României. <span class="blank"></span></li>
-        <li>În copilărie, Irina petrecea mult timp în grădina bunicilor. <span class="blank"></span></li>
-        <li>Mutarea la oraș a fost ușoară de la început. <span class="blank"></span></li>
-        <li>Clubul de lectură a ajutat-o să descopere interesul pentru scris. <span class="blank"></span></li>
+        <li>Irina s-a născut într-un sat din nordul României. <input class="blank" type="text" autocomplete="off" aria-label="Răspuns"></li>
+        <li>În copilărie, Irina petrecea mult timp în grădina bunicilor. <input class="blank" type="text" autocomplete="off" aria-label="Răspuns"></li>
+        <li>Mutarea la oraș a fost ușoară de la început. <input class="blank" type="text" autocomplete="off" aria-label="Răspuns"></li>
+        <li>Clubul de lectură a ajutat-o să descopere interesul pentru scris. <input class="blank" type="text" autocomplete="off" aria-label="Răspuns"></li>
       </ol>
       <h3>C. Ordonează informațiile</h3>
       <table>
         <tr><th>Informație</th><th>Ordinea în text</th></tr>
-        <tr><td>a. Irina a ales să studieze comunicarea.</td><td><span class="blank"></span></td></tr>
-        <tr><td>b. Familia s-a mutat la oraș.</td><td><span class="blank"></span></td></tr>
-        <tr><td>c. Irina a petrecut copilăria lângă bunici.</td><td><span class="blank"></span></td></tr>
-        <tr><td>d. Irina și-a făcut prieteni noi.</td><td><span class="blank"></span></td></tr>
+        <tr><td>a. Irina a ales să studieze comunicarea.</td><td><input class="blank" type="text" autocomplete="off" aria-label="Răspuns"></td></tr>
+        <tr><td>b. Familia s-a mutat la oraș.</td><td><input class="blank" type="text" autocomplete="off" aria-label="Răspuns"></td></tr>
+        <tr><td>c. Irina a petrecut copilăria lângă bunici.</td><td><input class="blank" type="text" autocomplete="off" aria-label="Răspuns"></td></tr>
+        <tr><td>d. Irina și-a făcut prieteni noi.</td><td><input class="blank" type="text" autocomplete="off" aria-label="Răspuns"></td></tr>
       </table>
       <details>
         <summary>Cheie orientativă</summary>
         <p>A/F: 1-F, 2-A, 3-F, 4-A. Ordine: c, b, d, a.</p>
       </details>
+      <h3>D. Găsește succesiunea</h3>
+      <ol>
+        <li>Completează propozițiile cu una dintre expresiile: <em>mai întâi</em>, <em>după aceea</em>, <em>mai târziu</em>, <em>în cele din urmă</em>.</li>
+        <li><input class="blank" type="text" autocomplete="off" aria-label="Răspuns"> am început liceul.</li>
+        <li><input class="blank" type="text" autocomplete="off" aria-label="Răspuns"> m-am mutat la oraș.</li>
+        <li><input class="blank" type="text" autocomplete="off" aria-label="Răspuns"> am descoperit că îmi place să scriu.</li>
+        <li><input class="blank" type="text" autocomplete="off" aria-label="Răspuns"> am înțeles cât de valoroase sunt amintirile.</li>
+      </ol>
     </section>
 
     <section class="section" id="gramatica">
@@ -442,22 +492,31 @@
       </div>
       <h3>B. Completează cu forma potrivită</h3>
       <ol>
-        <li>Când eram copil, eu (a petrece) <span class="blank"></span> mult timp la bunici.</li>
-        <li>La doisprezece ani, familia mea (a se muta) <span class="blank"></span> într-un oraș mai mare.</li>
-        <li>În fiecare vară, noi (a merge) <span class="blank"></span> la țară.</li>
-        <li>În liceu, eu (a descoperi) <span class="blank"></span> pasiunea pentru scris.</li>
-        <li>Casa bunicilor (a fi) <span class="blank"></span> veche, dar foarte primitoare.</li>
+        <li>Când eram copil, eu (a petrece) <input class="blank" type="text" autocomplete="off" aria-label="Răspuns"> mult timp la bunici.</li>
+        <li>La doisprezece ani, familia mea (a se muta) <input class="blank" type="text" autocomplete="off" aria-label="Răspuns"> într-un oraș mai mare.</li>
+        <li>În fiecare vară, noi (a merge) <input class="blank" type="text" autocomplete="off" aria-label="Răspuns"> la țară.</li>
+        <li>În liceu, eu (a descoperi) <input class="blank" type="text" autocomplete="off" aria-label="Răspuns"> pasiunea pentru scris.</li>
+        <li>Casa bunicilor (a fi) <input class="blank" type="text" autocomplete="off" aria-label="Răspuns"> veche, dar foarte primitoare.</li>
       </ol>
       <h3>C. Derivare de vocabular</h3>
       <table>
         <tr><th>Cuvânt de bază</th><th>Completează propoziția</th></tr>
-        <tr><td>a alege</td><td>A fost o <span class="blank"></span> importantă pentru viitorul meu.</td></tr>
-        <tr><td>a educa</td><td>Familia și școala au avut un rol esențial în <span class="blank"></span> mea.</td></tr>
-        <tr><td>responsabil</td><td>În copilărie am învățat ce înseamnă <span class="blank"></span>.</td></tr>
+        <tr><td>a alege</td><td>A fost o <input class="blank" type="text" autocomplete="off" aria-label="Răspuns"> importantă pentru viitorul meu.</td></tr>
+        <tr><td>a educa</td><td>Familia și școala au avut un rol esențial în <input class="blank" type="text" autocomplete="off" aria-label="Răspuns"> mea.</td></tr>
+        <tr><td>responsabil</td><td>În copilărie am învățat ce înseamnă <input class="blank" type="text" autocomplete="off" aria-label="Răspuns">.</td></tr>
       </table>
+      <h3>D. Alege forma corectă</h3>
+      <ol>
+        <li>În fiecare vară, noi <input class="blank" type="text" autocomplete="off" aria-label="Răspuns"> (merge/mergeam) la bunici.</li>
+        <li>La început, mi-a fost greu pentru că nu <input class="blank" type="text" autocomplete="off" aria-label="Răspuns"> (cunoașteam/am cunoscut) pe nimeni.</li>
+        <li>După liceu, am știut că <input class="blank" type="text" autocomplete="off" aria-label="Răspuns"> (vreau/voiam) să scriu despre oameni.</li>
+        <li>Casa bunicilor <input class="blank" type="text" autocomplete="off" aria-label="Răspuns"> (era/a fost) plină de povești.</li>
+      </ol>
+      <h3>E. Scrie propoziții</h3>
+      <p>Redactează două propoziții scurte în care folosești: 1) un verb la perfect compus și 2) un verb la imperfect.</p>
       <details>
         <summary>Cheie orientativă</summary>
-        <p>B: petreceam, s-a mutat, mergeam, am descoperit, era. C: alegere, educația, responsabilitatea.</p>
+        <p>B: petreceam, cunoașteam, voiam, era. C: alegere, educația, responsabilitatea.</p>
       </details>
     </section>
 
@@ -475,6 +534,10 @@
           <h3>B. E-mail către un prieten</h3>
           <p>Un prieten român te întreabă cum a fost copilăria ta. Răspunde printr-un e-mail în care povestești două amintiri și explici de ce sunt importante pentru tine.</p>
         </div>
+        <div class="task-box">
+          <h3>C. Planul textului tău</h3>
+          <p>Notează în câteva propoziții: 1) unde te-ai născut, 2) o experiență care te-a schimbat, 3) o schimbare importantă din viața ta și 4) un obiectiv pentru viitor. Folosește legături logice între idei.</p>
+        </div>
       </div>
     </section>
 
@@ -484,14 +547,17 @@
         <span class="score">simulare</span>
       </div>
       <p>În lipsa unui fișier audio, citește textul o dată cu voce tare sau roagă pe cineva să îl citească. Apoi completează ideile principale.</p>
-      <div class="text-box">
-        <p>Mihai povestește că s-a născut într-o familie numeroasă. Când era mic, locuia într-un apartament cu părinții și sora lui. În weekend mergeau des la bunici, unde el se juca în curte și asculta povești despre viața de altădată. Când a intrat la liceu, a devenit mai independent și a început să ia singur decizii. Spune că cea mai importantă lecție primită de la familie a fost să nu renunțe ușor.</p>
+      <button type="button" class="toggle-audio-text" aria-expanded="false" aria-controls="audio-text">Vezi textul audio</button>
+      <div id="audio-text" class="audio-text hidden">
+        <div class="text-box">
+          <p>Mihai povestește că s-a născut într-o familie numeroasă. Când era mic, locuia într-un apartament cu părinții și sora lui. În weekend mergeau des la bunici, unde el se juca în curte și asculta povești despre viața de altădată. Când a intrat la liceu, a devenit mai independent și a început să ia singur decizii. Spune că cea mai importantă lecție primită de la familie a fost să nu renunțe ușor.</p>
+        </div>
       </div>
       <ol>
-        <li>Mihai s-a născut într-o familie <span class="blank"></span>.</li>
-        <li>În weekend mergea des la <span class="blank"></span>.</li>
-        <li>La liceu a devenit mai <span class="blank"></span>.</li>
-        <li>Lecția importantă primită de la familie a fost să nu <span class="blank"></span> ușor.</li>
+        <li>Mihai s-a născut într-o familie <input class="blank" type="text" autocomplete="off" aria-label="Răspuns">.</li>
+        <li>În weekend mergea des la <input class="blank" type="text" autocomplete="off" aria-label="Răspuns">.</li>
+        <li>La liceu a devenit mai <input class="blank" type="text" autocomplete="off" aria-label="Răspuns">.</li>
+        <li>Lecția importantă primită de la familie a fost să nu <input class="blank" type="text" autocomplete="off" aria-label="Răspuns"> ușor.</li>
       </ol>
     </section>
 
@@ -535,5 +601,17 @@
       <a href="../../index.html#lectii">Lecția următoare</a>
     </nav>
   </main>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var toggle = document.querySelector('.toggle-audio-text');
+      var audioText = document.getElementById('audio-text');
+      if (!toggle || !audioText) return;
+      toggle.addEventListener('click', function() {
+        var isHidden = audioText.classList.toggle('hidden');
+        toggle.textContent = isHidden ? 'Vezi textul audio' : 'Ascunde textul audio';
+        toggle.setAttribute('aria-expanded', String(!isHidden));
+      });
+    });
+  </script>
 </body>
 </html>
