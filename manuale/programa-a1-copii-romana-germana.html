@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Programă A1 copii · Română-Germană</title>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1d1d1f;
+    --muted: #6e6e73;
+    --paper: #ffffff;
+    --page: #f5f5f7;
+    --blue: #0071e3;
+    --navy: #1d1d1f;
+    --level-a1: rgba(217, 79, 69, .74);
+    --level-a2: rgba(228, 125, 48, .72);
+    --level-b1: rgba(217, 162, 37, .68);
+    --level-b2: rgba(143, 171, 53, .68);
+    --level-c1: rgba(47, 155, 95, .7);
+    --shadow: 0 22px 70px rgba(0, 0, 0, .08);
+  }
+
+  * { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
+    background:
+      linear-gradient(180deg, #ffffff 0, var(--page) 420px, #ececef 100%);
+    color: var(--ink);
+    font-family: 'Atkinson Hyperlegible', Arial, sans-serif;
+    font-size: 18px;
+    line-height: 1.6;
+  }
+
+  a { color: inherit; text-decoration: none; }
+
+  .topbar {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    min-height: 72px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0 clamp(1.1rem, 3vw, 3.5rem);
+    border-bottom: 1px solid rgba(210, 210, 215, .72);
+    background: rgba(255, 255, 255, .94);
+    box-shadow: 0 10px 28px rgba(0, 0, 0, .07);
+    backdrop-filter: blur(14px);
+  }
+
+  .brand {
+    color: var(--ink);
+    font-size: clamp(20px, 2vw, 25px);
+    line-height: 1;
+    white-space: nowrap;
+  }
+
+  .brand span { color: var(--blue); }
+
+  .manual-nav {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 5px;
+    margin-left: auto;
+    flex-wrap: wrap;
+  }
+
+  .manual-nav-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 36px;
+    padding: 7px 11px;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    background: transparent;
+    color: var(--navy);
+    font-size: 13px;
+    transition: background .18s, border-color .18s, transform .18s;
+  }
+
+  .manual-nav-link:hover {
+    border-color: #d2d2d7;
+    background: var(--page);
+    transform: translateY(-1px);
+  }
+
+  .manual-nav-link.active {
+    background: var(--ink);
+    border-color: var(--ink);
+    color: #fff;
+  }
+
+  .login-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 40px;
+    padding: 8px 14px;
+    border: 1px solid var(--blue);
+    border-radius: 8px;
+    background: var(--blue);
+    color: #fff;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 13px;
+  }
+
+  .book {
+    width: min(1180px, calc(100% - 2rem));
+    margin: 2rem auto 4rem;
+  }
+
+  .section {
+    margin-top: 1.25rem;
+    padding: clamp(1.3rem, 2.5vw, 2rem);
+    border: 1px solid rgba(210, 210, 215, .88);
+    border-radius: 8px;
+    background: var(--paper);
+    box-shadow: 0 12px 36px rgba(0, 0, 0, .045);
+  }
+
+  .section-head {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    padding-bottom: .8rem;
+    border-bottom: 1px solid rgba(210, 210, 215, .7);
+  }
+
+  .section-head h1,
+  .section-head h2 {
+    margin: 0;
+    color: var(--ink);
+    font-size: clamp(26px, 2.6vw, 38px);
+    font-weight: 400;
+    line-height: 1.12;
+  }
+
+  .section-head p {
+    max-width: 450px;
+    margin: 0;
+    color: var(--muted);
+    font-size: 16px;
+    text-align: right;
+  }
+
+  .unit-list {
+    display: grid;
+    gap: .9rem;
+  }
+
+  .unit {
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: minmax(116px, 132px) minmax(0, 1fr);
+    border: 1px solid rgba(210, 210, 215, .86);
+    border-radius: 8px;
+    background: #fff;
+  }
+
+  .unit:nth-child(5n + 1) { --unit-level: var(--level-a1); }
+  .unit:nth-child(5n + 2) { --unit-level: var(--level-a2); }
+  .unit:nth-child(5n + 3) { --unit-level: var(--level-b1); }
+  .unit:nth-child(5n + 4) { --unit-level: var(--level-b2); }
+  .unit:nth-child(5n) { --unit-level: var(--level-c1); }
+
+  .unit-no {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: .8rem;
+    min-width: 0;
+    padding: 1rem .85rem;
+    background:
+      linear-gradient(145deg, color-mix(in srgb, var(--unit-level) 88%, white), color-mix(in srgb, var(--unit-level) 64%, white));
+    color: color-mix(in srgb, var(--unit-level) 48%, var(--ink));
+  }
+
+  .unit-no strong {
+    font-size: clamp(34px, 4vw, 42px);
+    line-height: .95;
+    font-weight: 400;
+  }
+
+  .unit-no span {
+    display: block;
+    max-width: 100%;
+    color: color-mix(in srgb, var(--unit-level) 64%, var(--muted));
+    font-size: 11px;
+    line-height: 1.18;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    overflow-wrap: anywhere;
+    word-break: normal;
+  }
+
+  .unit-body {
+    min-width: 0;
+    padding: 1rem 1.15rem;
+  }
+
+  .unit-title {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: .8rem;
+    margin-bottom: .8rem;
+  }
+
+  .unit-title h3 {
+    min-width: 0;
+    margin: 0;
+    color: var(--ink);
+    font-size: 23px;
+    font-weight: 400;
+    line-height: 1.2;
+    overflow-wrap: anywhere;
+  }
+
+  .unit-title em {
+    flex: 0 0 auto;
+    color: var(--muted);
+    font-size: 14px;
+    font-style: normal;
+  }
+
+  .unit-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: .75rem;
+  }
+
+  .unit-block {
+    min-width: 0;
+    padding: .72rem .75rem;
+    border: 1px solid rgba(210, 210, 215, .58);
+    border-radius: 8px;
+    background: rgba(245, 245, 247, .62);
+  }
+
+  .unit-block h4 {
+    margin: 0 0 .25rem;
+    color: var(--navy);
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    overflow-wrap: anywhere;
+  }
+
+  .unit-block p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 15px;
+    line-height: 1.45;
+    overflow-wrap: anywhere;
+  }
+
+  .recap {
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: minmax(116px, 132px) minmax(0, 1fr);
+    border: 1px solid rgba(210, 210, 215, .86);
+    border-radius: 8px;
+    background:
+      linear-gradient(145deg, rgba(255, 255, 255, .98), rgba(245, 245, 247, .86));
+  }
+
+  .recap-no {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: .8rem;
+    min-width: 0;
+    padding: 1rem .85rem;
+    background: linear-gradient(145deg, #dff0ff, #b9dcff);
+    color: #0b3b66;
+  }
+
+  .recap-no strong {
+    font-size: clamp(30px, 3.5vw, 34px);
+    font-weight: 400;
+    line-height: .95;
+  }
+
+  .recap-no span {
+    display: block;
+    max-width: 100%;
+    color: rgba(11, 59, 102, .78);
+    font-size: 11px;
+    line-height: 1.18;
+    text-transform: uppercase;
+    letter-spacing: .035em;
+    overflow-wrap: anywhere;
+    word-break: normal;
+  }
+
+  .recap-body {
+    padding: 1rem 1.15rem;
+  }
+
+  .recap-body h3 {
+    margin: 0 0 .25rem;
+    color: var(--ink);
+    font-size: 22px;
+    font-weight: 400;
+  }
+
+  .recap-body p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 15px;
+    line-height: 1.5;
+  }
+
+  @media (max-width: 960px) {
+    .unit-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  @media (max-width: 700px) {
+    body { font-size: 17px; }
+
+    .topbar {
+      position: static;
+      align-items: flex-start;
+      flex-direction: column;
+      padding-block: 1rem;
+    }
+
+    .manual-nav {
+      justify-content: flex-start;
+      margin-left: 0;
+    }
+
+    .book {
+      width: min(100% - 1rem, 1180px);
+      margin-top: .5rem;
+    }
+
+    .section-head {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+
+    .section-head p {
+      text-align: left;
+    }
+
+    .unit,
+    .recap {
+      grid-template-columns: 1fr;
+    }
+
+    .unit-no,
+    .recap-no {
+      min-height: 96px;
+      flex-direction: row;
+      align-items: end;
+    }
+
+    .unit-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media print {
+    body {
+      background: #fff;
+      font-size: 11pt;
+    }
+
+    .topbar {
+      display: none;
+    }
+
+    .book {
+      width: auto;
+      margin: 0;
+    }
+
+    .section,
+    .unit,
+    .recap {
+      box-shadow: none;
+      break-inside: avoid;
+    }
+  }
+</style>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="../index.html#a1-germana-copii">Romanian <span>Step by Step</span></a>
+    <nav class="manual-nav" aria-label="Meniu principal">
+      <a class="manual-nav-link" href="../index.html#a1">Română</a>
+      <a class="manual-nav-link active" href="../index.html#a1-germana-copii">Germană</a>
+      <a class="manual-nav-link" href="../index.html#a1-engleza">Engleză</a>
+      <a class="manual-nav-link" href="../index.html#a1-spaniola">Spaniolă</a>
+      <button class="login-button" type="button">Login</button>
+    </nav>
+  </header>
+
+  <main class="book">
+    <section class="section">
+      <div class="section-head">
+        <h1>Programă A1 copii · Română-Germană</h1>
+      </div>
+
+      <div class="unit-list">
+        <article class="unit">
+          <div class="unit-no"><strong>01</strong><span>salut</span></div>
+          <div class="unit-body">
+            <div class="unit-title"><h3>Bună! Hallo!</h3><em>Primul contact prin joc</em></div>
+            <div class="unit-grid">
+              <div class="unit-block"><h4>Comunicare</h4><p>Copilul salută, răspunde la salut, spune numele și folosește formule scurte de despărțire.</p></div>
+              <div class="unit-block"><h4>Vocabular</h4><p>Bună, salut, la revedere, pa, eu sunt; Hallo, Tschüss, Ich bin.</p></div>
+              <div class="unit-block"><h4>Gramatică</h4><p>Eu sunt..., Tu ești...?; propoziții foarte scurte și întrebarea cu intonație.</p></div>
+              <div class="unit-block"><h4>Joc</h4><p>Mingea numelor: copilul aruncă mingea, salută și spune „Eu sunt...”.</p></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="unit">
+          <div class="unit-no"><strong>02</strong><span>emoții</span></div>
+          <div class="unit-body">
+            <div class="unit-title"><h3>Ce faci? Cum ești azi?</h3><em>Stări și emoții</em></div>
+            <div class="unit-grid">
+              <div class="unit-block"><h4>Comunicare</h4><p>Întreabă și răspunde simplu despre stare: bine, rău, obosit, vesel.</p></div>
+              <div class="unit-block"><h4>Vocabular</h4><p>Bine, foarte bine, așa și așa, vesel, trist, obosit; gut, müde, traurig, fröhlich.</p></div>
+              <div class="unit-block"><h4>Gramatică</h4><p>Ce faci? Sunt bine. Sunt vesel/veselă. Nu sunt obosit/obosită.</p></div>
+              <div class="unit-block"><h4>Joc</h4><p>Cartonașe cu fețe: copilul alege o emoție și spune propoziția.</p></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="unit">
+          <div class="unit-no"><strong>03</strong><span>familie</span></div>
+          <div class="unit-body">
+            <div class="unit-title"><h3>Familia mea</h3><em>Persoane apropiate</em></div>
+            <div class="unit-grid">
+              <div class="unit-block"><h4>Comunicare</h4><p>Prezintă familia și spune câți frați sau câte surori are.</p></div>
+              <div class="unit-block"><h4>Vocabular</h4><p>Mamă, tată, frate, soră, bunic, bunică; Mutter, Vater, Bruder, Schwester.</p></div>
+              <div class="unit-block"><h4>Gramatică</h4><p>Am / nu am; acesta este..., aceasta este...; meu/mea în formule fixe.</p></div>
+              <div class="unit-block"><h4>Proiect</h4><p>Desen: arborele familiei cu 4-6 cuvinte română-germană.</p></div>
+            </div>
+          </div>
+        </article>
+
+        <div class="recap">
+          <div class="recap-no"><strong>R1</strong><span>recapitulare</span></div>
+          <div class="recap-body">
+            <h3>Eu și familia mea</h3>
+            <p>Unitățile 1-3 · Mini-portofoliu cu nume, emoție, familie · Joc de rol: salut și prezentare · Autoevaluare prin abțibilduri.</p>
+          </div>
+        </div>
+
+        <article class="unit">
+          <div class="unit-no"><strong>04</strong><span>numere</span></div>
+          <div class="unit-body">
+            <div class="unit-title"><h3>Câți ani ai?</h3><em>Numere, vârstă și obiecte</em></div>
+            <div class="unit-grid">
+              <div class="unit-block"><h4>Comunicare</h4><p>Spune vârsta, numără obiecte din clasă și întreabă „Câți?”.</p></div>
+              <div class="unit-block"><h4>Vocabular</h4><p>Numere 1-20, ani, carte, creion, caiet, minge; Zahlen 1-20.</p></div>
+              <div class="unit-block"><h4>Gramatică</h4><p>Am șapte ani. Sunt două cărți. Un/o în formule uzuale.</p></div>
+              <div class="unit-block"><h4>Joc</h4><p>Bingo cu numere și obiecte: „Am trei creioane”.</p></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="unit">
+          <div class="unit-no"><strong>05</strong><span>culori</span></div>
+          <div class="unit-body">
+            <div class="unit-title"><h3>Ce culoare are?</h3><em>Culori și jucării</em></div>
+            <div class="unit-grid">
+              <div class="unit-block"><h4>Comunicare</h4><p>Descrie jucării și obiecte prin culoare și mărime.</p></div>
+              <div class="unit-block"><h4>Vocabular</h4><p>Roșu, albastru, verde, galben, mic, mare, jucărie, minge; rot, blau, grün, gelb.</p></div>
+              <div class="unit-block"><h4>Gramatică</h4><p>Este roșu/roșie. Mingea este mare. Acord adjectival doar în formule modelate.</p></div>
+              <div class="unit-block"><h4>Joc</h4><p>Vânătoare de culori: „Găsește ceva verde!”.</p></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="unit">
+          <div class="unit-no"><strong>06</strong><span>animale</span></div>
+          <div class="unit-body">
+            <div class="unit-title"><h3>Animalul meu preferat</h3><em>Animale de companie</em></div>
+            <div class="unit-grid">
+              <div class="unit-block"><h4>Comunicare</h4><p>Numesc animale, spun ce animal am sau ce animal îmi place.</p></div>
+              <div class="unit-block"><h4>Vocabular</h4><p>Câine, pisică, iepure, hamster, pasăre, pește; Hund, Katze, Kaninchen, Fisch.</p></div>
+              <div class="unit-block"><h4>Gramatică</h4><p>Am un/o... Îmi place... El/ea este mic/mică. Verbe: a avea, a fi, a se juca.</p></div>
+              <div class="unit-block"><h4>Proiect</h4><p>Poster: animalul meu preferat, cu 3 propoziții simple.</p></div>
+            </div>
+          </div>
+        </article>
+
+        <div class="recap">
+          <div class="recap-no"><strong>R2</strong><span>recapitulare</span></div>
+          <div class="recap-body">
+            <h3>Numere, culori și animale</h3>
+            <p>Unitățile 4-6 · Jocuri cu cartonașe · Poster „Animalul meu” · Ascultare cu răspuns prin desen · Test modular ludic.</p>
+          </div>
+        </div>
+
+        <article class="unit">
+          <div class="unit-no"><strong>07</strong><span>corp</span></div>
+          <div class="unit-body">
+            <div class="unit-title"><h3>Cap, mâini, picioare</h3><em>Corpul și mișcarea</em></div>
+            <div class="unit-grid">
+              <div class="unit-block"><h4>Comunicare</h4><p>Numesc părți ale corpului și urmez instrucțiuni simple.</p></div>
+              <div class="unit-block"><h4>Vocabular</h4><p>Cap, ochi, nas, gură, mână, picior; Kopf, Auge, Nase, Mund, Hand, Fuß.</p></div>
+              <div class="unit-block"><h4>Gramatică</h4><p>Imperative ludice: ridică, atinge, arată; Mă doare... în formule foarte simple.</p></div>
+              <div class="unit-block"><h4>Joc</h4><p>Simon spune: „Atinge nasul!”, „Ridică mâna!”.</p></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="unit">
+          <div class="unit-no"><strong>08</strong><span>acasă</span></div>
+          <div class="unit-body">
+            <div class="unit-title"><h3>Camera mea</h3><em>Acasă și obiecte</em></div>
+            <div class="unit-grid">
+              <div class="unit-block"><h4>Comunicare</h4><p>Descrie camera cu obiecte și poziții simple: pe, în, lângă.</p></div>
+              <div class="unit-block"><h4>Vocabular</h4><p>Casă, cameră, masă, scaun, pat, dulap, lampă; Haus, Zimmer, Tisch, Stuhl, Bett.</p></div>
+              <div class="unit-block"><h4>Gramatică</h4><p>Este pe/în/lângă...; aici/acolo; acesta/aceasta în contexte vizuale.</p></div>
+              <div class="unit-block"><h4>Proiect</h4><p>Desenează camera și prezintă 5 obiecte.</p></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="unit">
+          <div class="unit-no"><strong>09</strong><span>oraș</span></div>
+          <div class="unit-body">
+            <div class="unit-title"><h3>Unde este parcul?</h3><em>Orașul copiilor</em></div>
+            <div class="unit-grid">
+              <div class="unit-block"><h4>Comunicare</h4><p>Numesc locuri în oraș și cer indicații foarte simple.</p></div>
+              <div class="unit-block"><h4>Vocabular</h4><p>Parc, școală, magazin, gară, muzeu, stradă; Park, Schule, Laden, Bahnhof, Museum.</p></div>
+              <div class="unit-block"><h4>Gramatică</h4><p>Unde este...? Este aici/acolo. Merg la...; la + locuri familiare.</p></div>
+              <div class="unit-block"><h4>Joc</h4><p>Hartă pe covor: copilul mută piesa și spune „Merg la parc”.</p></div>
+            </div>
+          </div>
+        </article>
+
+        <div class="recap">
+          <div class="recap-no"><strong>R3</strong><span>recapitulare</span></div>
+          <div class="recap-body">
+            <h3>Corpul, camera și orașul</h3>
+            <p>Unitățile 7-9 · Joc de mișcare · Tur ghidat prin camera desenată · Hartă simplă a orașului · Test modular oral.</p>
+          </div>
+        </div>
+
+        <article class="unit">
+          <div class="unit-no"><strong>10</strong><span>mâncare</span></div>
+          <div class="unit-body">
+            <div class="unit-title"><h3>Îmi place pizza.</h3><em>Mâncare și preferințe</em></div>
+            <div class="unit-grid">
+              <div class="unit-block"><h4>Comunicare</h4><p>Spune ce îi place și ce nu îi place; cere apă sau o gustare.</p></div>
+              <div class="unit-block"><h4>Vocabular</h4><p>Apă, lapte, pâine, măr, banană, supă, pizza; Wasser, Milch, Brot, Apfel, Banane.</p></div>
+              <div class="unit-block"><h4>Gramatică</h4><p>Îmi place / nu îmi place; vreau apă; te rog / mulțumesc.</p></div>
+              <div class="unit-block"><h4>Joc</h4><p>Meniul clasei: copilul comandă cu formule politicoase.</p></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="unit">
+          <div class="unit-no"><strong>11</strong><span>rutină</span></div>
+          <div class="unit-body">
+            <div class="unit-title"><h3>Dimineața mă trezesc.</h3><em>Rutina mea</em></div>
+            <div class="unit-grid">
+              <div class="unit-block"><h4>Comunicare</h4><p>Ordonează activități zilnice: dimineața, la prânz, seara.</p></div>
+              <div class="unit-block"><h4>Vocabular</h4><p>Mă trezesc, mănânc, merg la școală, mă joc, citesc, dorm; ich wache auf, ich spiele.</p></div>
+              <div class="unit-block"><h4>Gramatică</h4><p>Prezentul unor verbe frecvente la persoana I; apoi, după aceea, seara.</p></div>
+              <div class="unit-block"><h4>Proiect</h4><p>Benzi desenate: „Ziua mea” în 4 imagini și 4 propoziții.</p></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="unit">
+          <div class="unit-no"><strong>12</strong><span>petrecere</span></div>
+          <div class="unit-body">
+            <div class="unit-title"><h3>La mulți ani!</h3><em>Invitații și recapitulare</em></div>
+            <div class="unit-grid">
+              <div class="unit-block"><h4>Comunicare</h4><p>Invită, felicită, acceptă/refuză simplu și recapitulează formulele A1.</p></div>
+              <div class="unit-block"><h4>Vocabular</h4><p>Zi de naștere, cadou, tort, balon, petrecere; Geburtstag, Geschenk, Kuchen, Ballon.</p></div>
+              <div class="unit-block"><h4>Gramatică</h4><p>Vino! Hai! Vreau să...; recapitulare: sunt, am, îmi place, merg la.</p></div>
+              <div class="unit-block"><h4>Proiect</h4><p>Invitație bilingvă la petrecere și dialog scurt în perechi.</p></div>
+            </div>
+          </div>
+        </article>
+
+        <div class="recap">
+          <div class="recap-no"><strong>RF</strong><span>final</span></div>
+          <div class="recap-body">
+            <h3>Petrecerea A1</h3>
+            <p>Unitățile 10-12 · Portofoliu A1 copii · Invitație bilingvă · Dialoguri scurte · Evaluare finală prin joc, desen, ascultare și vorbire.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
