@@ -68,6 +68,7 @@
     padding: 5px 13px;
   }
   .pill.active { background: var(--gold); color: var(--navy); }
+  .pill-button { border: 0; background: transparent; cursor: pointer; font: inherit; }
   .tabs {
     min-height: 48px;
     padding: 0 clamp(1.25rem, 3vw, 2.75rem);
@@ -617,6 +618,8 @@ button.primary:hover {
       <span class="pill">B1</span>
       <span class="pill">B2</span>
       <span class="pill">C1</span>
+    <a class="pill" href="../../flashcards.html">Flashcards</a>
+      <button class="pill pill-button" type="button">Login</button>
     </nav>
   </header>
 
