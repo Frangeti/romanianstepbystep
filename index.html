@@ -887,91 +887,16 @@
     padding: clamp(1.25rem, 3vw, 2rem);
   }
 
-  .custom-request-panel {
-    display: none;
-    padding: clamp(1.25rem, 3vw, 2rem);
-  }
-
-  .subscription-dialog.is-payment-step .subscription-plans,
-  .subscription-dialog.is-custom-step .subscription-plans {
+  .subscription-dialog.is-payment-step .subscription-plans {
     display: none;
   }
 
-  .subscription-dialog.is-payment-step .subscription-includes,
-  .subscription-dialog.is-custom-step .subscription-includes {
+  .subscription-dialog.is-payment-step .subscription-includes {
     display: none;
   }
 
   .subscription-dialog.is-payment-step .payment-panel {
     display: block;
-  }
-
-  .subscription-dialog.is-custom-step .custom-request-panel {
-    display: block;
-  }
-
-  .custom-request-form {
-    display: grid;
-    gap: .9rem;
-    max-width: 680px;
-    margin: 0 auto;
-  }
-
-  .custom-request-form label {
-    display: grid;
-    gap: .35rem;
-    color: var(--navy);
-    font-size: 16px;
-  }
-
-  .custom-request-form input,
-  .custom-request-form textarea {
-    width: 100%;
-    border: 1px solid rgba(210, 210, 215, .86);
-    border-radius: 8px;
-    background: #fff;
-    color: var(--navy);
-    font: inherit;
-    font-size: 17px;
-    padding: .85rem 1rem;
-  }
-
-  .custom-request-form textarea {
-    min-height: 150px;
-    resize: vertical;
-  }
-
-  .custom-request-form input:focus,
-  .custom-request-form textarea:focus {
-    border-color: rgba(0, 113, 227, .48);
-    box-shadow: 0 0 0 4px rgba(0, 113, 227, .12);
-    outline: 0;
-  }
-
-  .custom-request-actions {
-    display: flex;
-    align-items: center;
-    gap: .85rem;
-    flex-wrap: wrap;
-    margin-top: .35rem;
-  }
-
-  .custom-send {
-    min-height: 48px;
-    padding: 0 1.2rem;
-    border: 1px solid var(--sky);
-    border-radius: 8px;
-    background: var(--sky);
-    color: #fff;
-    cursor: pointer;
-    font: inherit;
-    font-size: 17px;
-  }
-
-  .custom-note {
-    color: var(--muted);
-    font-size: 14px;
-    line-height: 1.4;
   }
 
   .payment-summary {
@@ -4610,47 +4535,12 @@
             <button class="plan-action" type="button" data-plan-name="Annual plan" data-plan-price="€99.99 / year">Choose annual</button>
           </article>
 
-          <article class="plan-card">
-            <span class="plan-label">Personal</span>
-            <h3>Private support</h3>
-            <div class="plan-price">Custom <span>/ learner</span></div>
-            <p>For learners who want individual guidance, feedback and a clearer study rhythm.</p>
-            <ul class="plan-features">
-              <li>Personal learning direction</li>
-              <li>Recommended lesson sequence</li>
-              <li>Useful for exam preparation</li>
-            </ul>
-            <p class="plan-note">Request details before payment.</p>
-            <button class="plan-action" type="button" data-custom-request>Request access</button>
-          </article>
         </div>
 
         <div class="subscription-includes" aria-label="Included features">
           <span>Access to published lessons, vocabulary and grammar resources.</span>
           <span>Designed for Romanian learners from beginner to advanced levels.</span>
           <span>Works on desktop, tablet and mobile, with new resources added progressively.</span>
-        </div>
-
-        <div class="custom-request-panel">
-          <form class="custom-request-form" data-custom-request-form>
-            <label>
-              Name
-              <input type="text" name="name" autocomplete="name" required>
-            </label>
-            <label>
-              Email
-              <input type="email" name="email" autocomplete="email" required>
-            </label>
-            <label>
-              Message
-              <textarea name="message" required placeholder="Tell us what kind of private support you need."></textarea>
-            </label>
-            <div class="custom-request-actions">
-              <button class="custom-send" type="submit">Send request</button>
-              <button class="payment-back" type="button" data-custom-back>Back to plans</button>
-            </div>
-            <p class="custom-note">Your email app will open with a prepared message addressed to romanianstepbystep@icloud.com.</p>
-          </form>
         </div>
 
         <div class="payment-panel">
@@ -4720,8 +4610,6 @@
     const selectedPlan = document.querySelector('[data-selected-plan]');
     const selectedPrice = document.querySelector('[data-selected-price]');
     const paymentBack = document.querySelector('[data-payment-back]');
-    const customRequestForm = document.querySelector('[data-custom-request-form]');
-    const customBack = document.querySelector('[data-custom-back]');
 
     function syncIntroWithSidebar() {
       const intro = document.querySelector('.intro');
@@ -4747,7 +4635,6 @@
     function openSubscriptionModal() {
       if (!subscriptionModal) return;
       subscriptionDialog?.classList.remove('is-payment-step');
-      subscriptionDialog?.classList.remove('is-custom-step');
       subscriptionModal.classList.add('is-open');
       subscriptionModal.setAttribute('aria-hidden', 'false');
       document.body.style.overflow = 'hidden';
@@ -4766,39 +4653,13 @@
       if (!subscriptionDialog) return;
       if (selectedPlan) selectedPlan.textContent = button.dataset.planName || 'Subscription';
       if (selectedPrice) selectedPrice.textContent = button.dataset.planPrice || '';
-      subscriptionDialog.classList.remove('is-custom-step');
       subscriptionDialog.classList.add('is-payment-step');
       subscriptionDialog.querySelector('.payment-method')?.focus();
     }
 
-    function openCustomRequestStep() {
-      if (!subscriptionDialog) return;
-      subscriptionDialog.classList.remove('is-payment-step');
-      subscriptionDialog.classList.add('is-custom-step');
-      subscriptionDialog.querySelector('[name="name"]')?.focus();
-    }
-
     function showSubscriptionPlans() {
-      subscriptionDialog?.classList.remove('is-payment-step', 'is-custom-step');
+      subscriptionDialog?.classList.remove('is-payment-step');
       subscriptionDialog?.querySelector('.plan-action')?.focus();
-    }
-
-    function sendCustomRequest(event) {
-      event.preventDefault();
-      const formData = new FormData(customRequestForm);
-      const name = String(formData.get('name') || '').trim();
-      const email = String(formData.get('email') || '').trim();
-      const message = String(formData.get('message') || '').trim();
-      const subject = `Private support request from ${name || 'Romanian Step by Step learner'}`;
-      const body = [
-        `Name: ${name}`,
-        `Email: ${email}`,
-        '',
-        'Message:',
-        message
-      ].join('\n');
-
-      window.location.href = `mailto:romanianstepbystep@icloud.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     }
 
     function setActiveMenu(item) {
@@ -5226,17 +5087,9 @@
     subscribeButton?.addEventListener('click', openSubscriptionModal);
     subscriptionClose?.addEventListener('click', closeSubscriptionModal);
     planActions.forEach(button => {
-      button.addEventListener('click', () => {
-        if (button.dataset.customRequest !== undefined) {
-          openCustomRequestStep();
-          return;
-        }
-        openPaymentStep(button);
-      });
+      button.addEventListener('click', () => openPaymentStep(button));
     });
     paymentBack?.addEventListener('click', showSubscriptionPlans);
-    customBack?.addEventListener('click', showSubscriptionPlans);
-    customRequestForm?.addEventListener('submit', sendCustomRequest);
     subscriptionModal?.addEventListener('click', event => {
       if (event.target === subscriptionModal) closeSubscriptionModal();
     });
