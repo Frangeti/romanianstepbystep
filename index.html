@@ -112,6 +112,11 @@
     margin-left: auto;
   }
 
+  .nav-dropdown {
+    position: relative;
+    display: inline-flex;
+  }
+
   .main-nav-link {
     display: inline-flex;
     align-items: center;
@@ -130,6 +135,39 @@
     transition: background .18s, border-color .18s, color .18s, transform .18s;
   }
 
+  .lessons-menu-button::after {
+    content: "⌄";
+    margin-left: .45rem;
+    font-size: 12px;
+    line-height: 1;
+  }
+
+  .nav-dropdown-menu {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    z-index: 30;
+    min-width: 190px;
+    display: none;
+    padding: 6px;
+    border: 1px solid rgba(210, 210, 215, .9);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, .96);
+    box-shadow: 0 18px 44px rgba(0, 0, 0, .12);
+    backdrop-filter: blur(14px);
+  }
+
+  .nav-dropdown:hover .nav-dropdown-menu,
+  .nav-dropdown:focus-within .nav-dropdown-menu {
+    display: grid;
+    gap: 3px;
+  }
+
+  .lesson-dropdown-link {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
   .main-nav-link:hover {
     border-color: var(--border);
     background: var(--mist);
@@ -141,6 +179,18 @@
     background: var(--ink);
     border-color: var(--ink);
     color: #fff;
+  }
+
+  .main.is-lessons-view .lesson-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .main.is-lessons-view .lesson-card {
+    min-height: auto;
+  }
+
+  .main.is-lessons-view .level-section {
+    margin-bottom: 1rem;
   }
 
   .login-link {
@@ -673,6 +723,59 @@
     background: #0066cc;
     border-color: #0066cc;
     transform: translateY(-1px);
+  }
+
+  .contact-card {
+    padding: 1.25rem;
+    border: 1px solid rgba(210, 210, 215, .86);
+    border-radius: 14px;
+    background: linear-gradient(145deg, rgba(255,255,255,.96), rgba(245,245,247,.86));
+    box-shadow: 0 16px 40px rgba(0,0,0,.05);
+  }
+
+  .contact-form {
+    display: grid;
+    gap: .8rem;
+    margin-top: .8rem;
+  }
+
+  .contact-form label {
+    display: grid;
+    gap: .35rem;
+    color: var(--ink);
+    font-size: 15px;
+  }
+
+  .contact-form input,
+  .contact-form textarea {
+    width: 100%;
+    padding: .75rem .85rem;
+    border: 1px solid rgba(210, 210, 215, .88);
+    border-radius: 10px;
+    background: #fff;
+    color: var(--ink);
+    font: inherit;
+  }
+
+  .contact-form textarea {
+    min-height: 120px;
+    resize: vertical;
+  }
+
+  .contact-form button {
+    justify-self: start;
+    min-height: 42px;
+    padding: .7rem 1rem;
+    border: 0;
+    border-radius: 999px;
+    background: var(--sky);
+    color: #fff;
+    font: inherit;
+    cursor: pointer;
+  }
+
+  .contact-form button:hover {
+    background: #0066cc;
   }
 
   .subscription-modal {
@@ -2332,6 +2435,17 @@
       justify-content: flex-start;
       margin-left: 0;
     }
+    .nav-dropdown {
+      width: 100%;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .nav-dropdown-menu {
+      position: static;
+      width: 100%;
+      margin-top: .35rem;
+      box-shadow: none;
+    }
     .layout { grid-template-columns: 1fr; }
     .sidebar { display: none; }
     .main { padding: 1rem; }
@@ -2396,12 +2510,20 @@
       <a class="logo" href="#a1" data-open-home-level="a1">Romanian <span>Step by Step</span></a>
       <nav class="main-nav" aria-label="Meniu principal">
         <div class="main-nav-group main-nav-languages">
-          <a class="main-nav-link active" href="#acasa" data-home-link>Română</a>
-          <a class="main-nav-link" href="#a1-germana" data-language-category="germana">Germană</a>
-          <a class="main-nav-link" href="#a1-engleza" data-language-category="engleza">Engleză</a>
-          <a class="main-nav-link" href="#a1-spaniola" data-language-category="spaniola">Spaniolă</a>
+          <a class="main-nav-link active" href="#acasa" data-home-link>Home</a>
+          <div class="nav-dropdown">
+            <button class="main-nav-link lessons-menu-button" type="button" aria-haspopup="true">Lessons</button>
+            <div class="nav-dropdown-menu" aria-label="Lessons languages">
+              <a class="main-nav-link lesson-dropdown-link" href="#lectii" data-show-all-lessons>Romanian</a>
+              <a class="main-nav-link lesson-dropdown-link" href="#a1-germana" data-language-category="germana">German</a>
+              <a class="main-nav-link lesson-dropdown-link" href="#a1-engleza" data-language-category="engleza">English</a>
+            </div>
+          </div>
           <a class="main-nav-link" href="flashcards.html">Flashcards</a>
-          <button class="main-nav-link login-link" type="button">Login</button>
+          <a class="main-nav-link" href="#romana-a1-incepator">Books</a>
+          <a class="main-nav-link" href="#romana-lectii">Classes</a>
+          <a class="main-nav-link" href="#contact">Contact</a>
+          <button class="main-nav-link" type="button">Sign in</button>
         </div>
       </nav>
     </header>
@@ -3202,127 +3324,45 @@
 
         </section>
 
+        <section id="contact" class="contact-section">
+          <div class="section-title">
+            <h2>Contact</h2>
+          </div>
+          <div class="contact-card">
+            <p>Trimite-ne un mesaj și te vom răspunde cât de curând.</p>
+            <form class="contact-form">
+              <label>
+                Nume
+                <input type="text" name="name" placeholder="Numele tău" required>
+              </label>
+              <label>
+                Adresă de email
+                <input type="email" name="email" placeholder="exemplu@email.com" required>
+              </label>
+              <label>
+                Mesaj
+                <textarea name="message" placeholder="Scrie mesajul tău aici" required></textarea>
+              </label>
+              <button type="submit">Send</button>
+            </form>
+          </div>
+        </section>
+
         <section id="romana-a1-incepator">
           <div class="section-title">
-            <h2>A1. Începător</h2>
+            <h2>Books</h2>
           </div>
           <div class="resource-grid">
-            <article class="resource-card">
-              <div class="resource-body">
-                <div class="meta"><span class="badge badge-b2">A1</span><span class="badge badge-live">Activ</span></div>
-                <h3>Manual de limba română A1</h3>
-                <p>Cuprins curricular CEFR: 12 unități, recapitulări, proiecte, evaluări și anexe.</p>
-                <a class="open-lesson" href="manuale/cuprins-manual-a1.html">Deschide cuprinsul</a>
-              </div>
-            </article>
+            <article class="resource-card soon-card"><h3>În curând</h3></article>
           </div>
         </section>
 
         <section id="romana-lectii">
           <div class="section-title">
-            <h2>Lecții de limba română</h2>
+            <h2>Classes</h2>
           </div>
-          <div class="lesson-grid">
-            <article class="lesson-card" data-lesson-no="01">
-              <div class="lesson-head">
-                <div class="meta">
-                  <span class="badge badge-b2">Nivel A1</span>
-                  <span class="badge badge-live">Română</span>
-                </div>
-                <div class="lesson-title"><span class="lesson-name">Salutări</span><span class="lesson-translation">Salutări și formule simple</span></div>
-                <p class="lesson-desc">Salutări, despărțiri și primele formule de conversație în limba română.</p>
-              </div>
-            </article>
-            <article class="lesson-card" data-lesson-no="02">
-              <div class="lesson-head">
-                <div class="meta">
-                  <span class="badge badge-b2">Nivel A1</span>
-                  <span class="badge badge-live">Română</span>
-                </div>
-                <div class="lesson-title"><span class="lesson-name">Ce faci?</span><span class="lesson-translation">Întrebări despre stare</span></div>
-                <p class="lesson-desc">Întrebări și răspunsuri scurte despre stare și dispoziție.</p>
-              </div>
-            </article>
-            <article class="lesson-card" data-lesson-no="03">
-              <div class="lesson-head">
-                <div class="meta">
-                  <span class="badge badge-b2">Nivel A1</span>
-                  <span class="badge badge-live">Română</span>
-                </div>
-                <div class="lesson-title"><span class="lesson-name">Mulțumesc</span><span class="lesson-translation">Politețe de bază</span></div>
-                <p class="lesson-desc">Mulțumiri, rugăminți și răspunsuri politicoase în situații simple.</p>
-              </div>
-            </article>
-            <article class="lesson-card" data-lesson-no="04">
-              <div class="lesson-head">
-                <div class="meta">
-                  <span class="badge badge-b2">Nivel A1</span>
-                  <span class="badge badge-live">Română</span>
-                </div>
-                <div class="lesson-title"><span class="lesson-name">Scuze</span><span class="lesson-translation">Formule de scuză</span></div>
-                <p class="lesson-desc">Scuze, formule de iertare și răspunsuri potrivite în conversație.</p>
-              </div>
-            </article>
-            <article class="lesson-card" data-lesson-no="05">
-              <div class="lesson-head">
-                <div class="meta">
-                  <span class="badge badge-b2">Nivel A1</span>
-                  <span class="badge badge-live">Română</span>
-                </div>
-                <div class="lesson-title"><span class="lesson-name">Persoane</span><span class="lesson-translation">Pronume și familie</span></div>
-                <p class="lesson-desc">Pronume personale, persoane apropiate, familie și verbul „a fi”.</p>
-              </div>
-            </article>
-            <article class="lesson-card" data-lesson-no="06">
-              <div class="lesson-head">
-                <div class="meta">
-                  <span class="badge badge-b2">Nivel A1</span>
-                  <span class="badge badge-live">Română</span>
-                </div>
-                <div class="lesson-title"><span class="lesson-name">Prezentări</span><span class="lesson-translation">Nume și prezentare</span></div>
-                <p class="lesson-desc">Cum te prezinți, cum spui numele și cum întrebi numele cuiva.</p>
-              </div>
-            </article>
-            <article class="lesson-card" data-lesson-no="07">
-              <div class="lesson-head">
-                <div class="meta">
-                  <span class="badge badge-b2">Nivel A1</span>
-                  <span class="badge badge-live">Română</span>
-                </div>
-                <div class="lesson-title"><span class="lesson-name">Numerele</span><span class="lesson-translation">Numere și vârstă</span></div>
-                <p class="lesson-desc">Numere de bază, vârsta, întrebări simple și verbul „a avea”.</p>
-              </div>
-            </article>
-            <article class="lesson-card" data-lesson-no="08">
-              <div class="lesson-head">
-                <div class="meta">
-                  <span class="badge badge-b2">Nivel A1</span>
-                  <span class="badge badge-live">Română</span>
-                </div>
-                <div class="lesson-title"><span class="lesson-name">De unde ești?</span><span class="lesson-translation">Țări și orașe</span></div>
-                <p class="lesson-desc">Țări, orașe, origine și întrebări despre locul de unde vine cineva.</p>
-              </div>
-            </article>
-            <article class="lesson-card" data-lesson-no="09">
-              <div class="lesson-head">
-                <div class="meta">
-                  <span class="badge badge-b2">Nivel A1</span>
-                  <span class="badge badge-live">Română</span>
-                </div>
-                <div class="lesson-title"><span class="lesson-name">Naționalități</span><span class="lesson-translation">Identitate și forme</span></div>
-                <p class="lesson-desc">Naționalități, forme masculine și feminine și propoziții simple.</p>
-              </div>
-            </article>
-            <article class="lesson-card" data-lesson-no="10">
-              <div class="lesson-head">
-                <div class="meta">
-                  <span class="badge badge-b2">Nivel A1</span>
-                  <span class="badge badge-live">Română</span>
-                </div>
-                <div class="lesson-title"><span class="lesson-name">Ce limbă vorbești?</span><span class="lesson-translation">Limbi și comunicare</span></div>
-                <p class="lesson-desc">Limbi vorbite, întrebări simple și verbul „a vorbi”.</p>
-              </div>
-            </article>
+          <div class="resource-grid">
+            <article class="resource-card soon-card"><h3>În curând</h3></article>
           </div>
         </section>
 
@@ -4278,7 +4318,7 @@
                     <p class="lesson-desc">Povestirea întâmplărilor din trecut și compararea trecutului cu prezentul.</p>
                   </div>
                 </article>
-                <article class="lesson-card" data-lesson-no="03">
+                <article class="lesson-card" data-lesson-link="lessons/b1/relatii.html" data-lesson-no="03" tabindex="0" role="link">
                   <div class="lesson-head">
                     <div class="meta">
                       <span class="badge badge-b2">Nivel B1</span>
@@ -4288,7 +4328,7 @@
                     <p class="lesson-desc">Exprimarea emoțiilor, gestionarea conflictelor și oferirea de sfaturi.</p>
                   </div>
                 </article>
-                <article class="lesson-card" data-lesson-no="04">
+                <article class="lesson-card" data-lesson-link="lessons/b1/munca-si-cariera.html" data-lesson-no="04" tabindex="0" role="link">
                   <div class="lesson-head">
                     <div class="meta">
                       <span class="badge badge-b2">Nivel B1</span>
@@ -4672,7 +4712,7 @@
         if (preferredLink) {
           link.classList.toggle('active', link === preferredLink);
         } else {
-          link.classList.toggle('active', link.getAttribute('href') === hash && !link.dataset.homeLink);
+          link.classList.toggle('active', link.getAttribute('href') === hash);
         }
       });
     }
@@ -4760,7 +4800,22 @@
       scheduleIntroSync();
     }
 
+    function showLessonsSidebarOnly() {
+      const sidebar = document.querySelector('.sidebar');
+      const mainContent = document.querySelector('.main');
+      sidebar?.classList.add('is-lessons-view');
+      mainContent?.classList.add('is-lessons-view');
+      if (homeTools) homeTools.classList.add('is-open');
+      homeLevelGroups.forEach(group => group.classList.remove('is-open'));
+      document.querySelectorAll('.sid-item.tool-parent.is-open').forEach(link => link.classList.remove('is-open'));
+      scheduleIntroSync();
+    }
+
     function showAllSidebarLanguages() {
+      const sidebar = document.querySelector('.sidebar');
+      const mainContent = document.querySelector('.main');
+      sidebar?.classList.remove('is-lessons-view');
+      mainContent?.classList.remove('is-lessons-view');
       if (homeTools) homeTools.classList.add('is-open');
       languageCategoryLinks.forEach(link => link.classList.remove('is-sidebar-hidden'));
       languageToolMenus.forEach(menu => menu.classList.remove('is-sidebar-hidden'));
@@ -4768,6 +4823,10 @@
     }
 
     function showOnlySidebarLanguage(language) {
+      const sidebar = document.querySelector('.sidebar');
+      const mainContent = document.querySelector('.main');
+      sidebar?.classList.remove('is-lessons-view');
+      mainContent?.classList.remove('is-lessons-view');
       if (homeTools) homeTools.classList.remove('is-open');
       languageCategoryLinks.forEach(link => {
         link.classList.toggle('is-sidebar-hidden', link.dataset.languageCategory !== language);
@@ -4779,6 +4838,10 @@
     }
 
     function showHomeSidebar() {
+      const sidebar = document.querySelector('.sidebar');
+      const mainContent = document.querySelector('.main');
+      sidebar?.classList.remove('is-lessons-view');
+      mainContent?.classList.remove('is-lessons-view');
       if (homeTools) homeTools.classList.add('is-open');
       languageToolMenus.forEach(menu => {
         if (menu !== homeTools) menu.classList.remove('is-open');
@@ -4801,6 +4864,18 @@
     function showAllLessonLevels() {
       levelSections.forEach(section => section.classList.remove('is-hidden'));
       lessonCategories.forEach(category => category.classList.remove('is-hidden'));
+      if (emptyLevel) emptyLevel.classList.add('is-hidden');
+    }
+
+    function showRomanianProgramLevels() {
+      levelSections.forEach(section => {
+        const level = section.dataset.levelSection;
+        section.classList.remove('is-hidden');
+        section.querySelectorAll('.lesson-category').forEach(category => {
+          const isRomanianProgramCategory = category.id === `${level}-romana`;
+          category.classList.toggle('is-hidden', !isRomanianProgramCategory);
+        });
+      });
       if (emptyLevel) emptyLevel.classList.add('is-hidden');
     }
 
@@ -4903,9 +4978,9 @@
     showAllLessonsLinks.forEach(link => {
       link.addEventListener('click', () => {
         closeLanguageTools();
-        showAllSidebarLanguages();
+        showLessonsSidebarOnly();
         showOnlyMainSection('#lectii');
-        showAllLessonLevels();
+        showRomanianProgramLevels();
         clearActiveLevels();
         setActiveMenu(document.querySelector('.sid-item[data-show-all-lessons]'));
         setActiveTopNav('#acasa');
@@ -4921,7 +4996,8 @@
         showOnlyMainSection(language ? '#lectii' : hash);
 
         if (link.dataset.showAllLessons !== undefined) {
-          showAllLessonLevels();
+          showLessonsSidebarOnly();
+          showRomanianProgramLevels();
         }
 
         if (language) {

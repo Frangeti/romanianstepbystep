@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>B1 · Muncă și carieră</title>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&amp;family=DM+Mono&amp;display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f5f5f7;
+    --paper: #ffffff;
+    --ink: #1d1d1f;
+    --muted: #6e6e73;
+    --blue: #0071e3;
+    --line: #d2d2d7;
+    --level-b1: rgba(217, 162, 37, .68);
+    --soft: #fbfbfd;
+    --accent: #8b6a16;
+    --radius: 8px;
+    --shadow: 0 18px 46px rgba(0, 0, 0, .06);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    min-height: 100vh;
+    background: linear-gradient(180deg, #ffffff 0, var(--bg) 380px, #ececef 100%);
+    color: var(--ink);
+    font-family: 'Atkinson Hyperlegible', Arial, sans-serif;
+    font-size: 18px;
+    line-height: 1.6;
+  }
+
+  a { color: inherit; text-decoration: none; }
+
+  .topbar {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    min-height: 72px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0 clamp(1.1rem, 3vw, 3.5rem);
+    border-bottom: 1px solid rgba(210, 210, 215, .72);
+    background: rgba(255, 255, 255, .94);
+    box-shadow: 0 10px 28px rgba(0, 0, 0, .07);
+    backdrop-filter: blur(14px);
+  }
+
+  .brand { font-size: clamp(20px, 2vw, 25px); white-space: nowrap; }
+  .brand span { color: var(--blue); }
+
+  .nav {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 5px;
+    flex-wrap: wrap;
+  }
+
+  .nav a,
+  .login-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 36px;
+    padding: 7px 11px;
+    border: 1px solid transparent;
+    border-radius: var(--radius);
+    background: transparent;
+    color: var(--ink);
+    font: inherit;
+    font-size: 13px;
+  }
+
+  .nav a.active {
+    background: var(--ink);
+    color: #fff;
+  }
+
+  .login-button {
+    min-height: 40px;
+    border-color: var(--blue);
+    background: var(--blue);
+    color: #fff;
+  }
+
+  .book {
+    width: min(1120px, calc(100% - 2rem));
+    margin: 2rem auto 4rem;
+  }
+
+  .hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(260px, 44%);
+    align-items: center;
+    gap: clamp(1rem, 2.5vw, 2rem);
+    padding: clamp(1rem, 2.2vw, 1.6rem);
+    border: 1px solid rgba(210, 210, 215, .88);
+    border-radius: var(--radius);
+    background:
+      linear-gradient(145deg, rgba(255, 255, 255, .94), rgba(245, 245, 247, .78)),
+      linear-gradient(145deg, color-mix(in srgb, var(--level-b1) 22%, transparent), rgba(255, 255, 255, .92));
+    box-shadow: var(--shadow);
+  }
+
+  .hero-title { min-width: 0; }
+
+  .lesson-number {
+    flex: 0 0 auto;
+    color: var(--level-b1);
+    font: inherit;
+    line-height: inherit;
+    font-weight: 400;
+    letter-spacing: .12em;
+    vertical-align: middle;
+  }
+
+  .hero-photo {
+    overflow: hidden;
+    min-height: 210px;
+    aspect-ratio: 16 / 9;
+    border: 1px solid rgba(210, 210, 215, .82);
+    border-radius: var(--radius);
+    background: #f5f5f7;
+    box-shadow: 0 18px 34px rgba(0, 0, 0, .12);
+  }
+
+  .hero-photo img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .eyebrow {
+    width: fit-content;
+    padding: 5px 10px;
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--level-b1) 24%, white);
+    color: color-mix(in srgb, var(--level-b1) 70%, var(--ink));
+    font-size: 13px;
+  }
+
+  h1 {
+    max-width: 820px;
+    display: flex;
+    align-items: baseline;
+    gap: .8rem;
+    white-space: nowrap;
+    color: var(--ink);
+    font-size: clamp(30px, 3.8vw, 50px);
+    font-weight: 400;
+    line-height: 1.02;
+  }
+
+  .lead {
+    max-width: 780px;
+    color: var(--muted);
+    font-size: clamp(19px, 2vw, 23px);
+    line-height: 1.38;
+  }
+
+  .quick-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .5rem;
+    margin-top: .5rem;
+  }
+
+  .quick-nav a {
+    padding: 7px 11px;
+    border: 1px solid rgba(210, 210, 215, .82);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, .72);
+    color: var(--muted);
+    font-size: 14px;
+  }
+
+  .section {
+    margin-top: 1rem;
+    padding: clamp(1.2rem, 2.4vw, 1.8rem);
+    border: 1px solid rgba(210, 210, 215, .88);
+    border-radius: var(--radius);
+    background: var(--paper);
+    box-shadow: 0 12px 36px rgba(0, 0, 0, .045);
+  }
+
+  .section-head {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    padding-bottom: .75rem;
+    border-bottom: 1px solid rgba(210, 210, 215, .7);
+  }
+
+  h2 {
+    color: var(--ink);
+    font-size: clamp(25px, 2.3vw, 34px);
+    font-weight: 400;
+    line-height: 1.15;
+  }
+
+  .score {
+    flex: 0 0 auto;
+    padding: 5px 10px;
+    border-radius: 999px;
+    background: #eaf3ff;
+    color: var(--blue);
+    font-size: 13px;
+  }
+
+  h3 {
+    margin: 1rem 0 .45rem;
+    color: color-mix(in srgb, var(--level-b1) 72%, var(--ink));
+    font-size: 20px;
+    font-weight: 400;
+  }
+
+  p + p { margin-top: .65rem; }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: .75rem;
+  }
+
+  .card,
+  .text-box,
+  .task-box {
+    padding: .9rem 1rem;
+    border: 1px solid rgba(210, 210, 215, .7);
+    border-radius: var(--radius);
+    background: var(--soft);
+  }
+
+  .card strong {
+    display: block;
+    margin-bottom: .2rem;
+    color: var(--ink);
+    font-weight: 400;
+  }
+
+  .slim-grid {
+    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+    gap: .55rem;
+  }
+
+  .slim-card { padding: .62rem .72rem; }
+
+  .slim-card strong {
+    margin-bottom: .1rem;
+    font-size: 15px;
+    line-height: 1.2;
+  }
+
+  .slim-card span {
+    display: block;
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.35;
+  }
+
+  #vocabular .card strong {
+    color: color-mix(in srgb, var(--level-b1) 78%, var(--ink));
+  }
+
+  .card span,
+  .task-box p,
+  .text-box {
+    color: var(--muted);
+    font-size: 16px;
+  }
+
+  .text-box {
+    border-left: 5px solid color-mix(in srgb, var(--level-b1) 72%, white);
+    background:
+      linear-gradient(145deg, rgba(255, 255, 255, .96), rgba(245, 245, 247, .82));
+    color: var(--ink);
+  }
+
+  ol,
+  ul { margin-left: 1.2rem; }
+
+  li + li { margin-top: .35rem; }
+
+  table {
+    width: 100%;
+    margin-top: .8rem;
+    border-collapse: collapse;
+    overflow: hidden;
+    border-radius: var(--radius);
+    font-size: 16px;
+  }
+
+  th,
+  td {
+    padding: .7rem .75rem;
+    border: 1px solid rgba(210, 210, 215, .78);
+    vertical-align: top;
+    text-align: left;
+  }
+
+  th {
+    background: color-mix(in srgb, var(--level-b1) 18%, white);
+    color: var(--ink);
+    font-weight: 400;
+  }
+
+  .blank {
+    display: inline-block;
+    min-width: 8ch;
+    width: max(8ch, 90px);
+    border: none;
+    border-bottom: 1.5px dotted #86868b;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    line-height: inherit;
+    padding: 0 0 2px;
+    outline: none;
+    vertical-align: text-bottom;
+  }
+
+  .blank::placeholder { color: rgba(110, 110, 115, .7); }
+
+  .answer {
+    margin-top: .8rem;
+    padding: .75rem .85rem;
+    border-left: 3px solid var(--level-b1);
+    background: #fffaf0;
+    color: #514015;
+    font-size: 16px;
+  }
+
+  details {
+    margin-top: .9rem;
+    padding: .8rem .9rem;
+    border: 1px solid rgba(210, 210, 215, .72);
+    border-radius: var(--radius);
+    background: #fff;
+  }
+
+  summary {
+    cursor: pointer;
+    color: var(--blue);
+  }
+
+  .prompt,
+  .audio-card {
+    display: grid;
+    gap: .75rem;
+    margin-top: .75rem;
+  }
+
+  .audio-card {
+    padding: 1rem;
+    border: 1px solid rgba(0, 113, 227, .18);
+    border-radius: var(--radius);
+    background: #f4f9ff;
+  }
+
+  .audio-button,
+  .footer-nav a {
+    width: fit-content;
+    border: 0;
+    border-radius: var(--radius);
+    background: var(--blue);
+    color: #fff;
+    font: inherit;
+    font-size: 15px;
+    cursor: pointer;
+    padding: .55rem .85rem;
+  }
+
+  .audio-text { display: none; }
+  .audio-text.is-visible { display: block; }
+
+  .footer-nav {
+    display: flex;
+    justify-content: space-between;
+    gap: .75rem;
+    margin-top: 1rem;
+  }
+
+  @media (max-width: 780px) {
+    .topbar { align-items: flex-start; flex-direction: column; padding: .8rem 1rem; }
+    .nav { justify-content: flex-start; }
+    .hero { grid-template-columns: 1fr; }
+    h1 { white-space: normal; font-size: clamp(32px, 11vw, 44px); }
+    .section-head { align-items: flex-start; flex-direction: column; }
+    .footer-nav { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="../../index.html"><span>Romanian</span> Step by Step</a>
+    <nav class="nav" aria-label="Meniu principal">
+      <a href="../../index.html">Home</a>
+      <a class="active" href="../../index.html#lectii">Lessons</a>
+      <a href="../../flashcards.html">Flashcards</a>
+      <a href="../../index.html#manuale">Books</a>
+      <a href="../../index.html#classes">Classes</a>
+      <a href="../../index.html#contact">Contact</a>
+      <a href="../../index.html#signin">Sign in</a>
+    </nav>
+  </header>
+
+  <main class="book">
+    <section class="hero">
+      <div class="hero-title">
+        <h1><span class="lesson-number">04.</span>Muncă și carieră</h1>
+      </div>
+      <figure class="hero-photo">
+        <img src="../../assets/images/munca-si-cariera-b1.png" alt="Femeie care lucrează la laptop într-un birou luminos.">
+      </figure>
+    </section>
+
+    <section class="section" id="obiective">
+      <div class="section-head">
+        <h2>Obiectivele lecției</h2>
+        <span class="score">profesie · interviu · CV</span>
+      </div>
+      <div class="grid">
+        <article class="card"><strong>Profesie</strong><span>Descrii locul de muncă, domeniul, programul și responsabilitățile principale.</span></article>
+        <article class="card"><strong>Experiență</strong><span>Vorbești despre experiența profesională, competențe și realizări simple.</span></article>
+        <article class="card"><strong>Interviu</strong><span>Răspunzi la întrebări frecvente într-un interviu de angajare.</span></article>
+        <article class="card"><strong>Sarcină finală</strong><span>Redactezi un CV scurt și o scrisoare de intenție simplă.</span></article>
+      </div>
+    </section>
+
+    <section class="section" id="vocabular">
+      <div class="section-head">
+        <h2>Vocabular tematic</h2>
+      </div>
+      <div class="grid slim-grid">
+        <article class="card slim-card"><strong>Loc de muncă</strong><span>companie, birou, echipă, departament, program, contract, salariu</span></article>
+        <article class="card slim-card"><strong>Profesii</strong><span>angajat, manager, profesor, asistent, contabil, programator, consultant</span></article>
+        <article class="card slim-card"><strong>Responsabilități</strong><span>a organiza, a coordona, a răspunde de, a pregăti, a comunica, a verifica</span></article>
+        <article class="card slim-card"><strong>Competențe</strong><span>comunicare, seriozitate, punctualitate, flexibilitate, experiență, atenție la detalii</span></article>
+        <article class="card slim-card"><strong>Interviu</strong><span>candidat, angajator, post, cerințe, disponibilitate, experiență relevantă</span></article>
+        <article class="card slim-card"><strong>Carieră</strong><span>obiectiv profesional, promovare, formare, dezvoltare, plan, viitor</span></article>
+      </div>
+    </section>
+
+    <section class="section" id="citire">
+      <div class="section-head">
+        <h2>I. Comprehensiune de lectură</h2>
+        <span class="score">model B1</span>
+      </div>
+      <h3>A. Citește textul</h3>
+      <div class="text-box">
+        <p><strong>Un nou pas în carieră</strong></p>
+        <p>Elena lucrează de cinci ani într-o companie de servicii, în departamentul de relații cu clienții. La început, răspundea la e-mailuri și oferea informații simple despre produse. Cu timpul, a primit responsabilități noi: a început să coordoneze o echipă mică, să pregătească rapoarte săptămânale și să participe la ședințe cu managerii.</p>
+        <p>Deși îi place echipa ei, Elena simte că are nevoie de o schimbare. Vrea să învețe mai mult despre management și să lucreze într-un domeniu în care comunicarea este importantă. A găsit un anunț pentru un post de coordonator de proiecte într-o organizație internațională. Cerințele sunt clare: experiență cu clienții, capacitate de organizare, limba engleză și disponibilitate pentru program flexibil.</p>
+        <p>Înainte să trimită aplicația, Elena și-a actualizat CV-ul. A adăugat experiența profesională, competențele importante și două realizări: a redus timpul de răspuns pentru clienți și a format trei colegi noi. Apoi a scris o scrisoare de intenție simplă, în care a explicat de ce este interesată de post și ce poate aduce echipei.</p>
+        <p>Săptămâna următoare, Elena a fost invitată la interviu. Este puțin emoționată, dar se pregătește atent. Va vorbi despre experiența ei, despre felul în care rezolvă problemele și despre planurile ei de viitor. Dacă va primi postul, va avea mai multe responsabilități, dar și mai multe oportunități de dezvoltare.</p>
+      </div>
+
+      <h3>B. Adevărat sau fals</h3>
+      <ol>
+        <li>Elena lucrează în departamentul de relații cu clienții. <input class="blank" type="text" autocomplete="off" aria-label="Răspuns"></li>
+        <li>Elena nu a coordonat niciodată o echipă. <input class="blank" type="text" autocomplete="off" aria-label="Răspuns"></li>
+        <li>Postul nou este într-o organizație internațională. <input class="blank" type="text" autocomplete="off" aria-label="Răspuns"></li>
+        <li>În CV, Elena a inclus competențe și realizări. <input class="blank" type="text" autocomplete="off" aria-label="Răspuns"></li>
+        <li>Elena nu vrea mai multe responsabilități. <input class="blank" type="text" autocomplete="off" aria-label="Răspuns"></li>
+      </ol>
+
+      <h3>C. Ordonează informațiile</h3>
+      <table>
+        <tr><th>Informație</th><th>Ordinea în text</th></tr>
+        <tr><td>a. Elena își actualizează CV-ul.</td><td><input class="blank" type="text" autocomplete="off" aria-label="Răspuns"></td></tr>
+        <tr><td>b. Primește responsabilități noi în companie.</td><td><input class="blank" type="text" autocomplete="off" aria-label="Răspuns"></td></tr>
+        <tr><td>c. Este invitată la interviu.</td><td><input class="blank" type="text" autocomplete="off" aria-label="Răspuns"></td></tr>
+        <tr><td>d. Găsește un anunț pentru un post nou.</td><td><input class="blank" type="text" autocomplete="off" aria-label="Răspuns"></td></tr>
+      </table>
+
+      <h3>D. Găsește în text</h3>
+      <ol>
+        <li>Două responsabilități ale Elenei: <input class="blank" type="text" autocomplete="off" aria-label="Răspuns"> și <input class="blank" type="text" autocomplete="off" aria-label="Răspuns">.</li>
+        <li>Două cerințe ale postului: <input class="blank" type="text" autocomplete="off" aria-label="Răspuns"> și <input class="blank" type="text" autocomplete="off" aria-label="Răspuns">.</li>
+        <li>O realizare profesională: <input class="blank" type="text" autocomplete="off" aria-label="Răspuns">.</li>
+        <li>Un plan de viitor: <input class="blank" type="text" autocomplete="off" aria-label="Răspuns">.</li>
+      </ol>
+
+      <details>
+        <summary>Cheie orientativă</summary>
+        <p>A/F: 1-A, 2-F, 3-A, 4-A, 5-F. Ordine: b, d, a, c. D: coordonează o echipă, pregătește rapoarte; experiență cu clienții, organizare, engleză, program flexibil; a redus timpul de răspuns / a format colegi; vrea să învețe management / să se dezvolte.</p>
+      </details>
+    </section>
+
+    <section class="section" id="gramatica">
+      <div class="section-head">
+        <h2>II. Gramatică și vocabular</h2>
+        <span class="score">viitor · condițional</span>
+      </div>
+
+      <h3>A. Teorie: viitorul pentru planuri profesionale</h3>
+      <div class="grid">
+        <article class="card"><strong>Viitor cu „voi”</strong><span>Voi trimite CV-ul mâine. Voi participa la interviu săptămâna viitoare.</span></article>
+        <article class="card"><strong>Viitor popular</strong><span>O să aplic pentru un post nou. O să învăț mai mult despre management.</span></article>
+        <article class="card"><strong>Plan apropiat</strong><span>Am să pregătesc scrisoarea de intenție. Am să caut mai multe anunțuri.</span></article>
+        <article class="card"><strong>Intenție</strong><span>Intenționez să îmi schimb locul de muncă. Plănuiesc să urmez un curs.</span></article>
+        <article class="card"><strong>Condițional introductiv</strong><span>Aș vrea să lucrez într-o echipă internațională. Mi-ar plăcea să am mai multe responsabilități.</span></article>
+        <article class="card"><strong>Interviu</strong><span>În viitor, aș putea coordona proiecte și aș contribui la dezvoltarea echipei.</span></article>
+      </div>
+
+      <h3>B. Forme utile</h3>
+      <table>
+        <tr><th>Structură</th><th>Exemplu</th><th>Utilizare</th></tr>
+        <tr><td>voi + infinitiv</td><td>Voi trimite aplicația azi.</td><td>viitor standard</td></tr>
+        <tr><td>o să + prezent</td><td>O să caut un post mai potrivit.</td><td>viitor frecvent în vorbire</td></tr>
+        <tr><td>am să + prezent</td><td>Am să pregătesc răspunsurile.</td><td>intenție personală</td></tr>
+        <tr><td>aș vrea să + conjunctiv</td><td>Aș vrea să lucrez într-un mediu dinamic.</td><td>dorință politicoasă</td></tr>
+        <tr><td>mi-ar plăcea să + conjunctiv</td><td>Mi-ar plăcea să învăț lucruri noi.</td><td>preferință profesională</td></tr>
+      </table>
+
+      <h3>C. Condiționalul prezent: introducere</h3>
+      <table>
+        <tr><th>Persoană</th><th>a lucra</th><th>a avea</th><th>a putea</th></tr>
+        <tr><td>eu</td><td>aș lucra</td><td>aș avea</td><td>aș putea</td></tr>
+        <tr><td>tu</td><td>ai lucra</td><td>ai avea</td><td>ai putea</td></tr>
+        <tr><td>el/ea</td><td>ar lucra</td><td>ar avea</td><td>ar putea</td></tr>
+        <tr><td>noi</td><td>am lucra</td><td>am avea</td><td>am putea</td></tr>
+        <tr><td>voi</td><td>ați lucra</td><td>ați avea</td><td>ați putea</td></tr>
+        <tr><td>ei/ele</td><td>ar lucra</td><td>ar avea</td><td>ar putea</td></tr>
+      </table>
+
+      <h3>D. Completează cu viitorul potrivit</h3>
+      <ol>
+        <li>Mâine eu <input class="blank" type="text" autocomplete="off" aria-label="Răspuns"> (trimite) CV-ul.</li>
+        <li>Săptămâna viitoare, noi <input class="blank" type="text" autocomplete="off" aria-label="Răspuns"> (participa) la un interviu.</li>
+        <li>Elena <input class="blank" type="text" autocomplete="off" aria-label="Răspuns"> (căuta) un post cu mai multe responsabilități.</li>
+        <li>Eu <input class="blank" type="text" autocomplete="off" aria-label="Răspuns"> (pregăti) o scrisoare de intenție.</li>
+        <li>Compania <input class="blank" type="text" autocomplete="off" aria-label="Răspuns"> (organiza) un training pentru angajați.</li>
+      </ol>
+
+      <h3>E. Alege forma potrivită</h3>
+      <ol>
+        <li>La interviu, eu <input class="blank" type="text" autocomplete="off" aria-label="Răspuns"> despre experiența mea. (voi vorbi / vorbeam)</li>
+        <li>În viitor, mi-ar plăcea să <input class="blank" type="text" autocomplete="off" aria-label="Răspuns"> într-o echipă internațională. (lucrez / lucram)</li>
+        <li>Dacă voi primi postul, <input class="blank" type="text" autocomplete="off" aria-label="Răspuns"> mai multe proiecte. (voi coordona / coordonam)</li>
+        <li>Aș vrea să <input class="blank" type="text" autocomplete="off" aria-label="Răspuns"> competențele mele de comunicare. (dezvolt / dezvoltam)</li>
+        <li>O să <input class="blank" type="text" autocomplete="off" aria-label="Răspuns"> anunțuri în fiecare zi. (caut / căutam)</li>
+      </ol>
+
+      <h3>F. Transformă în condițional politicos</h3>
+      <ol>
+        <li>Vreau să lucrez într-o companie mare. → Aș vrea să...</li>
+        <li>Vreau un program flexibil. → Mi-ar plăcea să...</li>
+        <li>Pot coordona o echipă. → Aș putea să...</li>
+        <li>Vreau să învăț mai mult. → Aș vrea să...</li>
+      </ol>
+
+      <h3>G. Derivare de vocabular</h3>
+      <table>
+        <tr><th>Cuvânt de bază</th><th>Completează propoziția</th></tr>
+        <tr><td>a angaja</td><td>Procesul de <input class="blank" type="text" autocomplete="off" aria-label="Răspuns"> durează două săptămâni.</td></tr>
+        <tr><td>responsabil</td><td>La noul post voi avea mai multă <input class="blank" type="text" autocomplete="off" aria-label="Răspuns">.</td></tr>
+        <tr><td>competent</td><td>Comunicarea este o <input class="blank" type="text" autocomplete="off" aria-label="Răspuns"> importantă.</td></tr>
+        <tr><td>a organiza</td><td><input class="blank" type="text" autocomplete="off" aria-label="Răspuns"> timpului este esențială.</td></tr>
+        <tr><td>profesie</td><td>Experiența <input class="blank" type="text" autocomplete="off" aria-label="Răspuns"> contează la interviu.</td></tr>
+      </table>
+
+      <h3>H. Răspunsuri la interviu</h3>
+      <ol>
+        <li>De ce doriți acest post? → Aș vrea acest post pentru că...</li>
+        <li>Care sunt punctele dumneavoastră forte? → Sunt o persoană...</li>
+        <li>Ce veți face în primele luni? → În primele luni voi...</li>
+        <li>Unde vă vedeți peste cinci ani? → Peste cinci ani mi-ar plăcea să...</li>
+      </ol>
+
+      <h3>I. Construiește propoziții</h3>
+      <p>Scrie cinci propoziții despre planurile tale profesionale. Folosește: 1) <em>voi</em>, 2) <em>o să</em>, 3) <em>intenționez să</em>, 4) <em>aș vrea să</em>, 5) <em>mi-ar plăcea să</em>.</p>
+
+      <details>
+        <summary>Cheie orientativă</summary>
+        <p>D: voi trimite, vom participa, va căuta / o să caute, voi pregăti, va organiza. E: voi vorbi, lucrez, voi coordona, dezvolt, caut. G: angajare, responsabilitate, competență, organizarea, profesională.</p>
+      </details>
+    </section>
+
+    <section class="section" id="scriere">
+      <div class="section-head">
+        <h2>III. Exprimare scrisă</h2>
+        <span class="score">CV · scrisoare de intenție</span>
+      </div>
+      <div class="prompt">
+        <div class="task-box">
+          <h3>A. CV simplu</h3>
+          <p>Scrie un CV scurt pentru un post potrivit profilului tău. Include: date personale, experiență profesională, educație, competențe lingvistice, competențe digitale și două calități personale.</p>
+        </div>
+        <div class="task-box">
+          <h3>B. Scrisoare de intenție</h3>
+          <p>Scrie o scrisoare de intenție de 120-150 de cuvinte. Explică pentru ce post aplici, ce experiență ai, ce competențe poți aduce și de ce te interesează compania.</p>
+        </div>
+        <div class="task-box">
+          <h3>C. Planul scrisorii</h3>
+          <p>Organizează textul în patru pași: 1) salut și post, 2) experiență relevantă, 3) competențe și calități, 4) disponibilitate pentru interviu și formulă de încheiere.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="ascultare">
+      <div class="section-head">
+        <h2>IV. Ascultare</h2>
+        <span class="score">simulare interviu</span>
+      </div>
+      <div class="audio-card">
+        <p>Ascultă textul citit de profesor sau folosește transcrierea pentru exercițiu.</p>
+        <button class="audio-button" type="button" aria-expanded="false" aria-controls="audioText" onclick="toggleAudioText(this)">Vezi textul audio</button>
+        <div class="audio-text" id="audioText">
+          <div class="text-box">
+            <p>La interviu, Mihai spune că a lucrat trei ani într-o firmă de transport, unde a organizat programul șoferilor și a comunicat zilnic cu clienții. El explică faptul că este o persoană punctuală, atentă la detalii și obișnuită să lucreze sub presiune. În viitor, ar vrea să coordoneze o echipă mai mare și să participe la proiecte internaționale. Angajatorul îl întreabă când poate începe, iar Mihai răspunde că va fi disponibil de luna viitoare.</p>
+          </div>
+        </div>
+      </div>
+      <ol>
+        <li>Mihai a lucrat într-o firmă de <input class="blank" type="text" autocomplete="off" aria-label="Răspuns">.</li>
+        <li>El organiza programul <input class="blank" type="text" autocomplete="off" aria-label="Răspuns">.</li>
+        <li>Mihai este punctual și atent la <input class="blank" type="text" autocomplete="off" aria-label="Răspuns">.</li>
+        <li>În viitor, ar vrea să coordoneze o echipă mai <input class="blank" type="text" autocomplete="off" aria-label="Răspuns">.</li>
+        <li>Va fi disponibil de luna <input class="blank" type="text" autocomplete="off" aria-label="Răspuns">.</li>
+      </ol>
+      <details>
+        <summary>Cheie orientativă</summary>
+        <p>transport, șoferilor, detalii, mare, viitoare.</p>
+      </details>
+    </section>
+
+    <section class="section" id="oral">
+      <div class="section-head">
+        <h2>V. Exprimare orală</h2>
+        <span class="score">model examen B1</span>
+      </div>
+      <div class="prompt">
+        <div class="task-box">
+          <h3>A. Conversație dirijată</h3>
+          <p>Răspunde la întrebări: Cu ce te ocupi? Ce responsabilități ai? Ce competențe sunt importante în domeniul tău? Ce ai vrea să faci în viitor?</p>
+        </div>
+        <div class="task-box">
+          <h3>B. Monolog</h3>
+          <p>Vorbește 2 minute despre locul tău de muncă actual sau despre un loc de muncă dorit. Include programul, responsabilitățile, colegii, avantajele și planurile de viitor.</p>
+        </div>
+        <div class="task-box">
+          <h3>C. Joc de rol</h3>
+          <p>Studentul A este angajatorul, iar Studentul B este candidatul. Simulați un interviu: experiență, competențe, program, salariu, disponibilitate și obiective profesionale.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="subiecte">
+      <div class="section-head">
+        <h2>Subiecte posibile</h2>
+      </div>
+      <div class="grid">
+        <article class="card"><strong>Locul de muncă</strong><span>Ce îți place și ce nu îți place la locul tău de muncă?</span></article>
+        <article class="card"><strong>Interviu</strong><span>Ce întrebări sunt dificile la un interviu de angajare?</span></article>
+        <article class="card"><strong>Competențe</strong><span>Ce competențe sunt mai importante: comunicarea sau experiența tehnică?</span></article>
+        <article class="card"><strong>Program</strong><span>Preferi program flexibil, muncă de acasă sau program fix?</span></article>
+        <article class="card"><strong>Carieră</strong><span>Unde te vezi profesional peste cinci ani?</span></article>
+        <article class="card"><strong>Schimbare</strong><span>Când este bine să schimbi locul de muncă?</span></article>
+      </div>
+    </section>
+
+    <nav class="footer-nav" aria-label="Navigare lecții">
+      <a href="relatii.html">Lecția anterioară</a>
+      <a href="../../index.html#lectii">Înapoi la lecții</a>
+    </nav>
+  </main>
+
+<script>
+  function toggleAudioText(button) {
+    var audioText = document.getElementById('audioText');
+    var isVisible = audioText.classList.toggle('is-visible');
+    if (button) {
+      button.textContent = isVisible ? 'Ascunde textul audio' : 'Vezi textul audio';
+      button.setAttribute('aria-expanded', String(isVisible));
+    }
+  }
+</script>
+</body>
+</html>

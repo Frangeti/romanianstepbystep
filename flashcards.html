@@ -52,6 +52,7 @@
 
   .logo {
     font-size: clamp(20px, 2vw, 25px);
+    font-weight: 400;
     white-space: nowrap;
   }
 
@@ -66,6 +67,13 @@
     flex-wrap: wrap;
   }
 
+  .main-nav-group {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+
   .main-nav-link {
     display: inline-flex;
     align-items: center;
@@ -77,7 +85,10 @@
     background: transparent;
     color: var(--navy);
     cursor: pointer;
+    font-family: 'Atkinson Hyperlegible', Arial, sans-serif;
     font-size: 13px;
+    font-weight: 400;
+    line-height: 1.2;
     transition: background .18s, border-color .18s, color .18s, transform .18s;
   }
 
@@ -91,6 +102,44 @@
     background: var(--navy);
     border-color: var(--navy);
     color: #fff;
+  }
+
+  .lessons-menu-button::after {
+    content: "⌄";
+    margin-left: .45rem;
+    font-size: 12px;
+    line-height: 1;
+  }
+
+  .nav-dropdown {
+    position: relative;
+    display: inline-flex;
+  }
+
+  .nav-dropdown-menu {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    z-index: 30;
+    min-width: 190px;
+    display: none;
+    padding: 6px;
+    border: 1px solid rgba(210, 210, 215, .9);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, .96);
+    box-shadow: 0 18px 44px rgba(0, 0, 0, .12);
+    backdrop-filter: blur(14px);
+  }
+
+  .nav-dropdown:hover .nav-dropdown-menu,
+  .nav-dropdown:focus-within .nav-dropdown-menu {
+    display: grid;
+    gap: 3px;
+  }
+
+  .lesson-dropdown-link {
+    width: 100%;
+    justify-content: flex-start;
   }
 
   main {
@@ -201,6 +250,58 @@
 
   .flashcard-panel.is-visible {
     display: grid;
+  }
+
+  .language-switcher {
+    display: flex;
+    justify-content: center;
+    gap: .6rem;
+    flex-wrap: wrap;
+    margin: 0 auto 1.2rem;
+  }
+
+  .lang-chip {
+    min-height: 40px;
+    padding: 8px 16px;
+    border: 1px solid rgba(210, 210, 215, .9);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, .82);
+    color: var(--muted);
+    cursor: pointer;
+    font-size: 14px;
+    transition: background .18s, border-color .18s, color .18s, transform .18s;
+  }
+
+  .lang-chip:hover {
+    border-color: color-mix(in srgb, var(--level-color) 42%, white);
+    color: var(--navy);
+    transform: translateY(-1px);
+  }
+
+  .lang-chip.is-active {
+    border-color: color-mix(in srgb, var(--level-color) 52%, white);
+    background: color-mix(in srgb, var(--level-color) 13%, white);
+    color: color-mix(in srgb, var(--level-color) 82%, var(--navy));
+  }
+
+  .coming-soon-state {
+    display: none;
+    max-width: 560px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+    border: 1px solid rgba(210, 210, 215, .86);
+    border-radius: 12px;
+    background: rgba(255, 255, 255, .9);
+    box-shadow: var(--shadow-sm);
+    text-align: center;
+  }
+
+  .coming-soon-state.is-visible {
+    display: block;
+  }
+
+  .german-content.is-hidden {
+    display: none;
   }
 
   .deck-switcher {
@@ -570,64 +671,86 @@
   <header class="topbar">
     <a class="logo" href="index.html#a1">Romanian <span>Step by Step</span></a>
     <nav class="main-nav" aria-label="Meniu principal">
-      <a class="main-nav-link" href="index.html#acasa">Română</a>
-      <a class="main-nav-link" href="index.html#a1-germana">Germană</a>
-      <a class="main-nav-link" href="index.html#a1-engleza">Engleză</a>
-      <a class="main-nav-link" href="index.html#a1-spaniola">Spaniolă</a>
-      <a class="main-nav-link active" href="flashcards.html">Flashcards</a>
-      <button class="main-nav-link login-link" type="button">Login</button>
+      <div class="main-nav-group">
+        <a class="main-nav-link" href="index.html#acasa">Home</a>
+        <div class="nav-dropdown">
+          <button class="main-nav-link lessons-menu-button" type="button" aria-haspopup="true">Lessons</button>
+          <div class="nav-dropdown-menu" aria-label="Lessons languages">
+            <a class="main-nav-link lesson-dropdown-link" href="index.html#lectii">Romanian</a>
+            <a class="main-nav-link lesson-dropdown-link" href="index.html#a1-germana">German</a>
+            <a class="main-nav-link lesson-dropdown-link" href="index.html#a1-engleza">English</a>
+          </div>
+        </div>
+        <a class="main-nav-link active" href="flashcards.html">Flashcards</a>
+        <a class="main-nav-link" href="index.html#romana-a1-incepator">Books</a>
+        <a class="main-nav-link" href="index.html#romana-lectii">Classes</a>
+        <a class="main-nav-link" href="index.html#contact">Contact</a>
+        <button class="main-nav-link" type="button">Sign in</button>
+      </div>
     </nav>
   </header>
 
   <main>
-    <div class="deck-switcher" aria-label="Alege lecția">
-      <button class="deck-chip is-active" type="button" data-deck="0">Lecția 1</button>
-      <button class="deck-chip" type="button" data-deck="1">Lecția 2</button>
-      <button class="deck-chip" type="button" data-deck="2">Lecția 3</button>
+    <div class="language-switcher" aria-label="Alege limba flashcards">
+      <button class="lang-chip" type="button" data-language="english">Engleză</button>
+      <button class="lang-chip is-active" type="button" data-language="german">Germană</button>
     </div>
 
-    <section class="flashcard-panel is-visible" aria-label="Flashcard vocabular germană A1">
-      <div class="flashcard-nav">
-        <div class="flashcard-meta">
-          <strong class="deck-title" id="deckTitle"></strong>
+    <div class="coming-soon-state" id="comingSoonState" role="status">
+      <h2>Flashcards în engleză</h2>
+      <p>Acest set va fi disponibil în curând.</p>
+    </div>
+
+    <div class="german-content" id="germanContent">
+      <div class="deck-switcher" aria-label="Alege lecția">
+        <button class="deck-chip is-active" type="button" data-deck="0">Lecția 1</button>
+        <button class="deck-chip" type="button" data-deck="1">Lecția 2</button>
+        <button class="deck-chip" type="button" data-deck="2">Lecția 3</button>
+      </div>
+
+      <section class="flashcard-panel is-visible" aria-label="Flashcard vocabular germană A1">
+        <div class="flashcard-nav">
+          <div class="flashcard-meta">
+            <strong class="deck-title" id="deckTitle"></strong>
+          </div>
         </div>
-      </div>
 
-      <div class="flip-card" id="flipCard" role="button" tabindex="0" aria-label="Întoarce flashcardul">
-        <span class="flip-inner">
-          <span class="flip-face flip-front">
-            <span class="flashcard-top">
-              <span class="flashcard-number" id="frontNumber"></span>
-              <span class="language-pill">Română</span>
+        <div class="flip-card" id="flipCard" role="button" tabindex="0" aria-label="Întoarce flashcardul">
+          <span class="flip-inner">
+            <span class="flip-face flip-front">
+              <span class="flashcard-top">
+                <span class="flashcard-number" id="frontNumber"></span>
+                <span class="language-pill">Română</span>
+              </span>
+              <span class="card-content">
+                <span class="card-word" id="frontWord"></span>
+                <button class="audio-btn" data-audio-side="front" type="button" aria-label="Ascultă cuvântul">▶</button>
+                <span class="card-hint">Click pentru traducerea în germană</span>
+              </span>
+              <span class="flashcard-footer" aria-label="Întoarce cardul">↻</span>
             </span>
-            <span class="card-content">
-              <span class="card-word" id="frontWord"></span>
-              <button class="audio-btn" data-audio-side="front" type="button" aria-label="Ascultă cuvântul">▶</button>
-              <span class="card-hint">Click pentru traducerea în germană</span>
+            <span class="flip-face flip-back">
+              <span class="flashcard-top">
+                <span class="flashcard-number" id="backNumber"></span>
+                <span class="language-pill">Germană</span>
+              </span>
+              <span class="card-content">
+                <span class="card-word" id="backWord"></span>
+                <button class="audio-btn" data-audio-side="back" type="button" aria-label="Ascultă cuvântul">▶</button>
+                <span class="card-hint">Click pentru cuvântul în română</span>
+              </span>
+              <span class="flashcard-footer" aria-label="Întoarce cardul">↻</span>
             </span>
-            <span class="flashcard-footer" aria-label="Întoarce cardul">↻</span>
           </span>
-          <span class="flip-face flip-back">
-            <span class="flashcard-top">
-              <span class="flashcard-number" id="backNumber"></span>
-              <span class="language-pill">Germană</span>
-            </span>
-            <span class="card-content">
-              <span class="card-word" id="backWord"></span>
-              <button class="audio-btn" data-audio-side="back" type="button" aria-label="Ascultă cuvântul">▶</button>
-              <span class="card-hint">Click pentru cuvântul în română</span>
-            </span>
-            <span class="flashcard-footer" aria-label="Întoarce cardul">↻</span>
-          </span>
-        </span>
-      </div>
+        </div>
 
-      <div class="flashcard-controls">
-        <button class="arrow-btn" id="prevCard" type="button" aria-label="Cardul anterior">‹</button>
-        <span class="card-counter" id="cardCounter"></span>
-        <button class="arrow-btn" id="nextCard" type="button" aria-label="Cardul următor">›</button>
-      </div>
-    </section>
+        <div class="flashcard-controls">
+          <button class="arrow-btn" id="prevCard" type="button" aria-label="Cardul anterior">‹</button>
+          <span class="card-counter" id="cardCounter"></span>
+          <button class="arrow-btn" id="nextCard" type="button" aria-label="Cardul următor">›</button>
+        </div>
+      </section>
+    </div>
   </main>
 
   <script>
@@ -718,6 +841,7 @@
     let cardIndex = 0;
     let flipped = false;
     let hasSelectedDeck = true;
+    let selectedLanguage = 'german';
     let dragStartX = 0;
     let dragStartY = 0;
     let dragDeltaX = 0;
@@ -727,6 +851,9 @@
     const flashcardPanel = document.querySelector('.flashcard-panel');
     const flipCard = document.getElementById('flipCard');
     const deckTitle = document.getElementById('deckTitle');
+    const languageButtons = document.querySelectorAll('.lang-chip[data-language]');
+    const comingSoonState = document.getElementById('comingSoonState');
+    const germanContent = document.getElementById('germanContent');
     const frontWord = document.getElementById('frontWord');
     const backWord = document.getElementById('backWord');
     const frontNumber = document.getElementById('frontNumber');
@@ -745,6 +872,15 @@
       const sameLanguage = voices.filter((voice) => voice.lang && voice.lang.toLowerCase().startsWith(lang.toLowerCase().slice(0, 2)));
       const preferred = sameLanguage.find((voice) => /natural|premium|enhanced|neural|microsoft|google|anna|carmen|ioana|german/i.test(voice.name));
       return preferred || sameLanguage.find((voice) => voice.localService) || sameLanguage[0] || null;
+    }
+
+    function renderLanguageSelection() {
+      const isGerman = selectedLanguage === 'german';
+      languageButtons.forEach((button) => {
+        button.classList.toggle('is-active', button.dataset.language === selectedLanguage);
+      });
+      comingSoonState.classList.toggle('is-visible', !isGerman);
+      germanContent.classList.toggle('is-hidden', !isGerman);
     }
 
     function renderCard() {
@@ -887,6 +1023,13 @@
       });
     });
 
+    languageButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        selectedLanguage = button.dataset.language;
+        renderLanguageSelection();
+      });
+    });
+
     document.getElementById('prevCard').addEventListener('click', () => moveCard(-1));
     document.getElementById('nextCard').addEventListener('click', () => moveCard(1));
     deckButtons.forEach((button) => {
@@ -907,6 +1050,7 @@
       window.speechSynthesis.onvoiceschanged = loadVoices;
     }
 
+    renderLanguageSelection();
     renderCard();
   </script>
 </body>
