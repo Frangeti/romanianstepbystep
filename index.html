@@ -795,7 +795,7 @@
   }
 
   .subscription-dialog {
-    width: min(1080px, 100%);
+    width: min(920px, 100%);
     max-height: calc(100vh - 2.5rem);
     overflow-y: auto;
     border: 1px solid rgba(210, 210, 215, .86);
@@ -815,24 +815,12 @@
       #fff;
   }
 
-  .subscription-kicker {
-    display: inline-flex;
-    width: max-content;
-    margin-bottom: .75rem;
-    padding: 5px 10px;
-    border-radius: 999px;
-    background: rgba(0, 113, 227, .1);
-    color: var(--sky);
-    font-size: 13px;
-    letter-spacing: .08em;
-    text-transform: uppercase;
-  }
-
   .subscription-head h2 {
     color: var(--navy);
-    font-size: clamp(30px, 4vw, 52px);
+    font-size: clamp(24px, 3vw, 36px);
     font-weight: 400;
     line-height: 1.1;
+    white-space: nowrap;
   }
 
   .subscription-head p {
@@ -859,7 +847,8 @@
 
   .subscription-plans {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(280px, 1fr));
+    align-items: stretch;
     gap: 1rem;
     padding: clamp(1.25rem, 3vw, 2rem);
   }
@@ -911,10 +900,26 @@
     font-size: 18px;
   }
 
+  .plan-savings {
+    width: fit-content;
+    margin: -.15rem 0 .75rem;
+    padding: 6px 10px;
+    border-radius: 999px;
+    background: rgba(0, 113, 227, .1);
+    color: var(--sky);
+    font-size: 14px;
+    line-height: 1.25;
+  }
+
   .plan-card p {
     color: var(--muted);
     font-size: 17px;
     line-height: 1.45;
+  }
+
+  .plan-card .plan-savings {
+    color: var(--sky);
+    font-size: 14px;
   }
 
   .plan-features {
@@ -946,13 +951,6 @@
     font-size: 13px;
   }
 
-  .plan-note {
-    margin-top: auto;
-    padding-top: 1.25rem;
-    color: var(--muted);
-    font-size: 15px;
-  }
-
   .plan-action {
     width: 100%;
     min-height: 48px;
@@ -967,34 +965,12 @@
     font-weight: 400;
   }
 
-  .subscription-includes {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: .85rem;
-    padding: 0 clamp(1.25rem, 3vw, 2rem) clamp(1.25rem, 3vw, 2rem);
-  }
-
-  .subscription-includes span {
-    min-height: 58px;
-    padding: .85rem 1rem;
-    border: 1px solid rgba(210, 210, 215, .72);
-    border-radius: 8px;
-    background: rgba(255, 255, 255, .74);
-    color: var(--muted);
-    font-size: 15px;
-    line-height: 1.35;
-  }
-
   .payment-panel {
     display: none;
     padding: clamp(1.25rem, 3vw, 2rem);
   }
 
   .subscription-dialog.is-payment-step .subscription-plans {
-    display: none;
-  }
-
-  .subscription-dialog.is-payment-step .subscription-includes {
     display: none;
   }
 
@@ -2478,9 +2454,6 @@
     .subscription-plans {
       grid-template-columns: 1fr;
     }
-    .subscription-includes {
-      grid-template-columns: 1fr;
-    }
     .payment-methods {
       grid-template-columns: 1fr;
     }
@@ -2490,6 +2463,9 @@
     }
     .subscription-head {
       align-items: flex-start;
+    }
+    .subscription-head h2 {
+      white-space: normal;
     }
     h1 {
       max-width: none;
@@ -4554,48 +4530,35 @@
       <div class="subscription-dialog" role="dialog" aria-modal="true" aria-labelledby="subscription-title">
         <div class="subscription-head">
           <div>
-            <span class="subscription-kicker">Pricing</span>
-            <h2 id="subscription-title">Choose your Romanian learning plan</h2>
-            <p>Get structured lessons, guided practice and printable resources designed for steady progress from A1 to C1.</p>
+            <h2 id="subscription-title">Choose your preferred subscription</h2>
           </div>
           <button class="subscription-close" type="button" aria-label="Close">×</button>
         </div>
 
         <div class="subscription-plans">
           <article class="plan-card">
-            <span class="plan-label">Starter</span>
             <h3>Monthly</h3>
             <div class="plan-price">€14.99 <span>/ month</span></div>
-            <p>Flexible access for learners who want to study at their own pace.</p>
             <ul class="plan-features">
               <li>All published Romanian lessons</li>
               <li>Vocabulary and grammar sections</li>
               <li>Practice activities and tests</li>
             </ul>
-            <p class="plan-note">Cancel anytime.</p>
-            <button class="plan-action" type="button" data-plan-name="Monthly plan" data-plan-price="€14.99 / month">Start monthly</button>
+            <button class="plan-action" type="button" data-plan-name="Monthly plan" data-plan-price="€14.99 / month">Subscribe</button>
           </article>
 
           <article class="plan-card is-featured">
-            <span class="plan-label">Best value</span>
             <h3>Annual</h3>
             <div class="plan-price">€99.99 <span>/ year</span></div>
-            <p>The best option for a complete learning path with consistent practice.</p>
+            <p class="plan-savings">Only €8.33/month, billed annually</p>
             <ul class="plan-features">
               <li>Everything in Monthly</li>
               <li>Full A1-C1 learning roadmap</li>
-              <li>Best price for long-term study</li>
+              <li>Best option for steady progress</li>
             </ul>
-            <p class="plan-note">Save compared with monthly billing.</p>
-            <button class="plan-action" type="button" data-plan-name="Annual plan" data-plan-price="€99.99 / year">Choose annual</button>
+            <button class="plan-action" type="button" data-plan-name="Annual plan" data-plan-price="€99.99 / year">Subscribe</button>
           </article>
 
-        </div>
-
-        <div class="subscription-includes" aria-label="Included features">
-          <span>Access to published lessons, vocabulary and grammar resources.</span>
-          <span>Designed for Romanian learners from beginner to advanced levels.</span>
-          <span>Works on desktop, tablet and mobile, with new resources added progressively.</span>
         </div>
 
         <div class="payment-panel">
