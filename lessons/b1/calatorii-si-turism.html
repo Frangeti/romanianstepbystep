@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>B1 · Călătorii și turism</title>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&amp;family=DM+Mono&amp;display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f5f5f7;
+    --paper: #ffffff;
+    --ink: #1d1d1f;
+    --muted: #6e6e73;
+    --blue: #0071e3;
+    --line: #d2d2d7;
+    --level-b1: rgba(217, 162, 37, .68);
+    --soft: #fbfbfd;
+    --accent: #8b6a16;
+    --radius: 8px;
+    --shadow: 0 18px 46px rgba(0, 0, 0, .06);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    min-height: 100vh;
+    background: linear-gradient(180deg, #ffffff 0, var(--bg) 380px, #ececef 100%);
+    color: var(--ink);
+    font-family: 'Atkinson Hyperlegible', Arial, sans-serif;
+    font-size: 18px;
+    line-height: 1.6;
+  }
+
+  a { color: inherit; text-decoration: none; }
+
+  .topbar {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    min-height: 76px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0 clamp(1.1rem, 3vw, 3.5rem);
+    border-bottom: 1px solid rgba(220, 230, 237, .9);
+    background: rgba(255, 255, 255, .94);
+    box-shadow: 0 10px 28px rgba(0, 0, 0, .07);
+    backdrop-filter: blur(14px);
+  }
+
+  .brand { font-size: clamp(20px, 2vw, 25px); white-space: nowrap; }
+  .brand span { color: var(--blue); }
+
+  .nav {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 5px;
+    flex-wrap: wrap;
+  }
+
+  .nav a,
+  .nav button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 36px;
+    padding: 7px 11px;
+    border: 1px solid transparent;
+    border-radius: var(--radius);
+    background: transparent;
+    color: var(--ink);
+    font: inherit;
+    font-size: 13px;
+    cursor: pointer;
+  }
+
+  .nav a.active,
+  .nav button.active {
+    background: var(--ink);
+    color: #fff;
+  }
+
+  .lessons-menu-button::after {
+    content: "⌄";
+    margin-left: .45rem;
+    font-size: 12px;
+    line-height: 1;
+  }
+
+  .nav-dropdown {
+    position: relative;
+    display: inline-flex;
+  }
+
+  .nav-dropdown-menu {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    z-index: 30;
+    min-width: 190px;
+    display: none;
+    padding: 6px;
+    border: 1px solid rgba(210, 210, 215, .9);
+    border-radius: var(--radius);
+    background: rgba(255, 255, 255, .96);
+    box-shadow: 0 18px 44px rgba(0, 0, 0, .12);
+    backdrop-filter: blur(14px);
+  }
+
+  .nav-dropdown:hover .nav-dropdown-menu,
+  .nav-dropdown:focus-within .nav-dropdown-menu {
+    display: grid;
+    gap: 3px;
+  }
+
+  .lesson-dropdown-link {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .book {
+    width: min(1120px, calc(100% - 2rem));
+    margin: 2rem auto 4rem;
+  }
+
+  .hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(260px, 44%);
+    align-items: center;
+    gap: clamp(1rem, 2.5vw, 2rem);
+    padding: clamp(1rem, 2.2vw, 1.6rem);
+    border: 1px solid rgba(210, 210, 215, .88);
+    border-radius: var(--radius);
+    background:
+      linear-gradient(145deg, rgba(255, 255, 255, .94), rgba(245, 245, 247, .78)),
+      linear-gradient(145deg, color-mix(in srgb, var(--level-b1) 22%, transparent), rgba(255, 255, 255, .92));
+    box-shadow: var(--shadow);
+  }
+
+  .hero-title { min-width: 0; }
+
+  .lesson-number {
+    flex: 0 0 auto;
+    color: var(--level-b1);
+    font: inherit;
+    line-height: inherit;
+    font-weight: 400;
+    letter-spacing: .12em;
+    vertical-align: middle;
+  }
+
+  .hero-photo {
+    overflow: hidden;
+    min-height: 210px;
+    aspect-ratio: 16 / 9;
+    border: 1px solid rgba(210, 210, 215, .82);
+    border-radius: var(--radius);
+    background: #f5f5f7;
+    box-shadow: 0 18px 34px rgba(0, 0, 0, .12);
+  }
+
+  .hero-photo img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .eyebrow {
+    width: fit-content;
+    padding: 5px 10px;
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--level-b1) 24%, white);
+    color: color-mix(in srgb, var(--level-b1) 70%, var(--ink));
+    font-size: 13px;
+  }
+
+  h1 {
+    max-width: 820px;
+    display: flex;
+    align-items: flex-start;
+    gap: .7rem;
+    white-space: normal;
+    color: var(--ink);
+    font-size: clamp(29px, 3.1vw, 44px);
+    font-weight: 400;
+    line-height: 1.08;
+  }
+
+  .hero-title-text {
+    display: block;
+    min-width: 0;
+    max-width: 14ch;
+  }
+
+  .lead {
+    max-width: 780px;
+    color: var(--muted);
+    font-size: clamp(19px, 2vw, 23px);
+    line-height: 1.38;
+  }
+
+  .quick-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .5rem;
+    margin-top: .5rem;
+  }
+
+  .quick-nav a {
+    padding: 7px 11px;
+    border: 1px solid rgba(210, 210, 215, .82);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, .72);
+    color: var(--muted);
+    font-size: 14px;
+  }
+
+  .section {
+    margin-top: 1rem;
+    padding: clamp(1.2rem, 2.4vw, 1.8rem);
+    border: 1px solid rgba(210, 210, 215, .88);
+    border-radius: var(--radius);
+    background: var(--paper);
+    box-shadow: 0 12px 36px rgba(0, 0, 0, .045);
+  }
+
+  .section-head {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    padding-bottom: .75rem;
+    border-bottom: 1px solid rgba(210, 210, 215, .7);
+  }
+
+  h2 {
+    color: var(--ink);
+    font-size: clamp(25px, 2.3vw, 34px);
+    font-weight: 400;
+    line-height: 1.15;
+  }
+
+  .score {
+    flex: 0 0 auto;
+    padding: 5px 10px;
+    border-radius: 999px;
+    background: #eaf3ff;
+    color: var(--blue);
+    font-size: 13px;
+  }
+
+  h3 {
+    margin: 1rem 0 .45rem;
+    color: color-mix(in srgb, var(--level-b1) 72%, var(--ink));
+    font-size: 20px;
+    font-weight: 400;
+  }
+
+  p + p { margin-top: .65rem; }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: .75rem;
+  }
+
+  .card,
+  .text-box,
+  .task-box {
+    padding: .9rem 1rem;
+    border: 1px solid rgba(210, 210, 215, .7);
+    border-radius: var(--radius);
+    background: var(--soft);
+  }
+
+  .card strong {
+    display: block;
+    margin-bottom: .2rem;
+    color: var(--ink);
+    font-weight: 400;
+  }
+
+  .slim-grid {
+    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+    gap: .55rem;
+  }
+
+  .slim-card { padding: .62rem .72rem; }
+
+  .slim-card strong {
+    margin-bottom: .1rem;
+    font-size: 15px;
+    line-height: 1.2;
+  }
+
+  .slim-card span {
+    display: block;
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.35;
+  }
+
+  #vocabular .card strong {
+    color: color-mix(in srgb, var(--level-b1) 78%, var(--ink));
+  }
+
+  .card span,
+  .task-box p,
+  .text-box {
+    color: var(--muted);
+    font-size: 16px;
+  }
+
+  .text-box {
+    border-left: 5px solid color-mix(in srgb, var(--level-b1) 72%, white);
+    background:
+      linear-gradient(145deg, rgba(255, 255, 255, .96), rgba(245, 245, 247, .82));
+    color: var(--ink);
+  }
+
+  ol,
+  ul { margin-left: 1.2rem; }
+
+  li + li { margin-top: .35rem; }
+
+  table {
+    width: 100%;
+    margin-top: .8rem;
+    border-collapse: collapse;
+    overflow: hidden;
+    border-radius: var(--radius);
+    font-size: 16px;
+  }
+
+  th,
+  td {
+    padding: .7rem .75rem;
+    border: 1px solid rgba(210, 210, 215, .78);
+    vertical-align: top;
+    text-align: left;
+  }
+
+  th {
+    background: color-mix(in srgb, var(--level-b1) 18%, white);
+    color: var(--ink);
+    font-weight: 400;
+  }
+
+  .blank {
+    display: inline-block;
+    min-width: 8ch;
+    width: max(8ch, 90px);
+    border: none;
+    border-bottom: 1.5px dotted #86868b;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    line-height: inherit;
+    padding: 0 0 2px;
+    outline: none;
+    vertical-align: text-bottom;
+  }
+
+  .blank::placeholder { color: rgba(110, 110, 115, .7); }
+
+  .answer {
+    margin-top: .8rem;
+    padding: .75rem .85rem;
+    border-left: 3px solid var(--level-b1);
+    background: #fffaf0;
+    color: #514015;
+    font-size: 16px;
+  }
+
+  details {
+    margin-top: .9rem;
+    padding: .8rem .9rem;
+    border: 1px solid rgba(210, 210, 215, .72);
+    border-radius: var(--radius);
+    background: #fff;
+  }
+
+  summary {
+    cursor: pointer;
+    color: var(--blue);
+  }
+
+  .prompt,
+  .audio-card {
+    display: grid;
+    gap: .75rem;
+    margin-top: .75rem;
+  }
+
+  .audio-card {
+    padding: 1rem;
+    border: 1px solid rgba(0, 113, 227, .18);
+    border-radius: var(--radius);
+    background: #f4f9ff;
+  }
+
+  .audio-button,
+  .footer-nav a {
+    width: fit-content;
+    border: 0;
+    border-radius: var(--radius);
+    background: var(--blue);
+    color: #fff;
+    font: inherit;
+    font-size: 15px;
+    cursor: pointer;
+    padding: .55rem .85rem;
+  }
+
+  .audio-text { display: none; }
+  .audio-text.is-visible { display: block; }
+
+  .footer-nav {
+    display: flex;
+    justify-content: space-between;
+    gap: .75rem;
+    margin-top: 1rem;
+  }
+
+  @media (max-width: 780px) {
+    .topbar { align-items: flex-start; flex-direction: column; padding: .8rem 1rem; }
+    .nav { justify-content: flex-start; }
+    .nav-dropdown {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .nav-dropdown-menu {
+      position: static;
+      width: 100%;
+      margin-top: .35rem;
+      box-shadow: none;
+    }
+    .hero { grid-template-columns: 1fr; }
+    h1 { white-space: normal; font-size: clamp(32px, 11vw, 44px); }
+    .section-head { align-items: flex-start; flex-direction: column; }
+    .footer-nav { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="../../index.html">Romanian <span>Step by Step</span></a>
+    <nav class="nav" aria-label="Meniu principal">
+      <a href="../../index.html#acasa">Home</a>
+      <div class="nav-dropdown">
+        <button class="lessons-menu-button active" type="button" aria-haspopup="true">Lessons</button>
+        <div class="nav-dropdown-menu" aria-label="Lessons languages">
+          <a class="lesson-dropdown-link" href="../../index.html#lectii">Romanian</a>
+          <a class="lesson-dropdown-link" href="../../index.html#a1-germana">German</a>
+          <a class="lesson-dropdown-link" href="../../index.html#a1-engleza">English</a>
+        </div>
+      </div>
+      <a href="../../flashcards.html">Flashcards</a>
+      <a href="../../index.html#romana-a1-incepator">Books</a>
+      <a href="../../index.html#romana-lectii">Classes</a>
+      <a href="../../index.html#contact">Contact</a>
+      <button type="button">Sign in</button>
+    </nav>
+  </header>
+
+  <main class="book">
+    <section class="hero">
+      <div class="hero-title">
+        <h1><span class="lesson-number">07.</span><span class="hero-title-text">Călătorii și turism</span></h1>
+      </div>
+      <figure class="hero-photo">
+        <img src="../../assets/images/castelul-peles-calatorii-b1.png" alt="Castelul Peleș din Sinaia, văzut din grădină, cu munți și turiști în depărtare.">
+      </figure>
+    </section>
+
+    <section class="section" id="obiective">
+      <div class="section-head">
+        <h2>La sfârșitul lecției vei ști</h2>
+      </div>
+      <div class="grid slim-grid">
+        <div class="card slim-card"><strong>Să planifici</strong><span>o călătorie: transport, cazare, program, buget și obiective turistice.</span></div>
+        <div class="card slim-card"><strong>Să relatezi</strong><span>o vacanță sau o excursie, cu evenimente așezate clar în timp.</span></div>
+        <div class="card slim-card"><strong>Să recunoști</strong><span>mai-mult-ca-perfectul și să folosești conectori de secvențiere.</span></div>
+        <div class="card slim-card"><strong>Să redactezi</strong><span>un jurnal de călătorie coerent, cu impresii și recomandări.</span></div>
+      </div>
+    </section>
+
+    <section class="section" id="vocabular">
+      <div class="section-head">
+        <h2>Vocabular tematic</h2>
+      </div>
+      <div class="grid slim-grid">
+        <article class="card slim-card"><strong>Transport</strong><span>tren, autocar, avion, mașină, bilet, gară, aeroport, întârziere</span></article>
+        <article class="card slim-card"><strong>Cazare</strong><span>hotel, pensiune, cameră dublă, recepție, rezervare, mic dejun inclus</span></article>
+        <article class="card slim-card"><strong>Turism</strong><span>obiectiv turistic, castel, muzeu, ghid, hartă, traseu, intrare, program</span></article>
+        <article class="card slim-card"><strong>Planificare</strong><span>itinerar, buget, bagaj, asigurare, confirmare, recomandare, excursie</span></article>
+        <article class="card slim-card"><strong>Relatare</strong><span>am plecat, am ajuns, vizitasem, rezervasem, apoi, după aceea, la final</span></article>
+        <article class="card slim-card"><strong>Impresii</strong><span>minunat, aglomerat, liniștit, spectaculos, obositor, memorabil, autentic</span></article>
+      </div>
+    </section>
+
+    <section class="section" id="citire">
+      <div class="section-head">
+        <h2>I. Comprehensiune de lectură</h2>
+        <span class="score">model B1</span>
+      </div>
+      <h3>A. Citește textul</h3>
+      <div class="text-box">
+        <p><strong>O excursie la Castelul Peleș</strong></p>
+        <p>În luna mai, Mara și doi prieteni au decis să facă o excursie de weekend la Sinaia. Căutaseră de mult timp un loc aproape de București, cu natură, istorie și obiective turistice interesante. Cu o săptămână înainte, rezervaseră o cameră la o pensiune mică, cumpăraseră bilete de tren și pregătiseră un itinerar simplu.</p>
+        <p>Au plecat sâmbătă dimineața devreme. Trenul a fost aglomerat, dar drumul prin munți a fost frumos. Când au ajuns în Sinaia, au lăsat bagajele la pensiune și au mers pe jos spre Castelul Peleș. Deși văzuseră multe fotografii înainte, castelul li s-a părut mai spectaculos în realitate: turnurile, lemnul sculptat și grădinile erau foarte bine îngrijite.</p>
+        <p>La intrare, au aflat că următorul tur ghidat începea peste douăzeci de minute. Până atunci, au făcut fotografii în curte și au citit câteva informații despre familia regală. În interior, ghidul le-a povestit despre camerele castelului, despre colecțiile de artă și despre felul în care fusese construită reședința.</p>
+        <p>Seara, Mara a scris în jurnalul ei de călătorie că excursia fusese scurtă, dar memorabilă. Dacă ar planifica din nou vizita, ar rezerva biletele online și ar pleca mai devreme, ca să evite aglomerația. Totuși, le-ar recomanda tuturor să viziteze Peleșul, pentru că este unul dintre cele mai frumoase obiective turistice din România.</p>
+      </div>
+
+      <h3>B. Adevărat sau fals</h3>
+      <ol>
+        <li>Mara și prietenii ei au mers la Sinaia în luna mai. <input class="blank" type="text" autocomplete="off" aria-label="Răspuns"></li>
+        <li>Ei rezervaseră cazarea înainte de excursie. <input class="blank" type="text" autocomplete="off" aria-label="Răspuns"></li>
+        <li>Castelul Peleș li s-a părut mai puțin interesant decât în fotografii. <input class="blank" type="text" autocomplete="off" aria-label="Răspuns"></li>
+        <li>Turul ghidat începea imediat, fără așteptare. <input class="blank" type="text" autocomplete="off" aria-label="Răspuns"></li>
+        <li>Mara ar recomanda vizita la Peleș. <input class="blank" type="text" autocomplete="off" aria-label="Răspuns"></li>
+      </ol>
+
+      <h3>C. Răspunde la întrebări</h3>
+      <ol>
+        <li>De ce au ales Sinaia pentru excursie? <input class="blank" type="text" autocomplete="off" aria-label="Răspuns"></li>
+        <li>Ce pregătiseră înainte de plecare? <input class="blank" type="text" autocomplete="off" aria-label="Răspuns"></li>
+        <li>Ce au făcut după ce au ajuns în Sinaia? <input class="blank" type="text" autocomplete="off" aria-label="Răspuns"></li>
+        <li>Ce a povestit ghidul în interiorul castelului? <input class="blank" type="text" autocomplete="off" aria-label="Răspuns"></li>
+        <li>Ce ar face Mara diferit data viitoare? <input class="blank" type="text" autocomplete="off" aria-label="Răspuns"></li>
+      </ol>
+
+      <h3>D. Găsește în text</h3>
+      <ol>
+        <li>Două elemente de planificare: <input class="blank" type="text" autocomplete="off" aria-label="Răspuns"> și <input class="blank" type="text" autocomplete="off" aria-label="Răspuns">.</li>
+        <li>Două detalii despre Castelul Peleș: <input class="blank" type="text" autocomplete="off" aria-label="Răspuns"> și <input class="blank" type="text" autocomplete="off" aria-label="Răspuns">.</li>
+        <li>Un dezavantaj al excursiei: <input class="blank" type="text" autocomplete="off" aria-label="Răspuns">.</li>
+        <li>O recomandare pentru viitor: <input class="blank" type="text" autocomplete="off" aria-label="Răspuns">.</li>
+      </ol>
+
+      <details>
+        <summary>Cheie orientativă</summary>
+        <p>A/F: 1-A, 2-A, 3-F, 4-F, 5-A. C: era aproape de București și avea natură, istorie, obiective; rezervaseră cazare, cumpăraseră bilete, pregătiseră itinerar; au lăsat bagajele și au mers spre Peleș; despre camere, colecții și construcție; ar rezerva online și ar pleca mai devreme.</p>
+      </details>
+    </section>
+
+    <section class="section" id="gramatica">
+      <div class="section-head">
+        <h2>II. Gramatică și vocabular</h2>
+        <span class="score">mai-mult-ca-perfect · secvențiere</span>
+      </div>
+
+      <h3>A. Teorie: mai-mult-ca-perfectul receptiv</h3>
+      <div class="grid">
+        <article class="card"><strong>Acțiune anterioară</strong><span>Când am ajuns la gară, trenul plecase deja.</span></article>
+        <article class="card"><strong>Pregătire înainte</strong><span>Rezervaserăm camera cu o săptămână înainte.</span></article>
+        <article class="card"><strong>Experiență terminată</strong><span>Vizitasem castelul înainte să mergem la muzeu.</span></article>
+        <article class="card"><strong>Formă receptivă</strong><span>Nu trebuie să folosești perfect forma, dar trebuie să o recunoști în texte.</span></article>
+        <article class="card"><strong>Secvență</strong><span>Mai întâi am cumpărat biletele, apoi am verificat programul.</span></article>
+        <article class="card"><strong>Relatare</strong><span>După ce văzuserăm grădinile, am intrat în castel.</span></article>
+      </div>
+
+      <h3>B. Secvențierea evenimentelor</h3>
+      <table>
+        <tr><th>Conector</th><th>Exemplu</th><th>Rol</th></tr>
+        <tr><td>mai întâi</td><td>Mai întâi am verificat orarul trenurilor.</td><td>primul pas</td></tr>
+        <tr><td>după aceea</td><td>După aceea am rezervat cazarea.</td><td>următorul pas</td></tr>
+        <tr><td>între timp</td><td>Între timp, prietenii mei au pregătit bagajele.</td><td>acțiune paralelă</td></tr>
+        <tr><td>când am ajuns</td><td>Când am ajuns, ghidul începuse prezentarea.</td><td>moment precis</td></tr>
+        <tr><td>la final</td><td>La final am scris impresiile în jurnal.</td><td>încheiere</td></tr>
+      </table>
+
+      <h3>C. Recunoaște mai-mult-ca-perfectul</h3>
+      <ol>
+        <li>Cumpărasem biletele înainte să plecăm. Forma este: <input class="blank" type="text" autocomplete="off" aria-label="Răspuns"></li>
+        <li>Ei rezervaseră camera la pensiune. Forma este: <input class="blank" type="text" autocomplete="off" aria-label="Răspuns"></li>
+        <li>Ghidul începuse turul când am ajuns. Forma este: <input class="blank" type="text" autocomplete="off" aria-label="Răspuns"></li>
+        <li>Noi vizitaserăm grădinile înainte de prânz. Forma este: <input class="blank" type="text" autocomplete="off" aria-label="Răspuns"></li>
+        <li>Mara scrisese deja câteva impresii. Forma este: <input class="blank" type="text" autocomplete="off" aria-label="Răspuns"></li>
+      </ol>
+
+      <h3>D. Alege conectorul potrivit</h3>
+      <ol>
+        <li><input class="blank" type="text" autocomplete="off" aria-label="Răspuns"> am cumpărat biletele, apoi am rezervat camera. (Mai întâi / La final)</li>
+        <li>Am lăsat bagajele la pensiune. <input class="blank" type="text" autocomplete="off" aria-label="Răspuns"> am plecat spre castel. (După aceea / Între timp)</li>
+        <li>Noi cumpăram apă. <input class="blank" type="text" autocomplete="off" aria-label="Răspuns">, ghidul pregătea grupul. (Între timp / La final)</li>
+        <li><input class="blank" type="text" autocomplete="off" aria-label="Răspuns">, am scris impresiile în jurnal. (La final / Mai întâi)</li>
+        <li><input class="blank" type="text" autocomplete="off" aria-label="Răspuns"> am ajuns, turul începuse deja. (Când / După aceea)</li>
+      </ol>
+
+      <h3>E. Pune evenimentele în ordine</h3>
+      <ol>
+        <li>Am vizitat castelul.</li>
+        <li>Am cumpărat biletele de tren.</li>
+        <li>Am scris impresiile în jurnal.</li>
+        <li>Am rezervat cazarea.</li>
+        <li>Am ajuns în Sinaia.</li>
+      </ol>
+
+      <h3>F. Derivare de vocabular</h3>
+      <table>
+        <tr><th>Cuvânt de bază</th><th>Completează propoziția</th></tr>
+        <tr><td>a rezerva</td><td>Am primit confirmarea pentru <input class="blank" type="text" autocomplete="off" aria-label="Răspuns"> camerei.</td></tr>
+        <tr><td>a călători</td><td><input class="blank" type="text" autocomplete="off" aria-label="Răspuns"> cu trenul a fost confortabilă.</td></tr>
+        <tr><td>turist</td><td>Castelul Peleș este un obiectiv <input class="blank" type="text" autocomplete="off" aria-label="Răspuns"> important.</td></tr>
+        <tr><td>a vizita</td><td><input class="blank" type="text" autocomplete="off" aria-label="Răspuns"> castelului a durat două ore.</td></tr>
+        <tr><td>a recomanda</td><td>Ghidul ne-a făcut o <input class="blank" type="text" autocomplete="off" aria-label="Răspuns"> foarte bună.</td></tr>
+      </table>
+
+      <h3>G. Construiește propoziții</h3>
+      <p>Scrie cinci propoziții despre o călătorie. Folosește: 1) <em>mai întâi</em>, 2) <em>după aceea</em>, 3) <em>între timp</em>, 4) o formă la mai-mult-ca-perfect, 5) <em>la final</em>.</p>
+
+      <details>
+        <summary>Cheie orientativă</summary>
+        <p>C: cumpărasem, rezervaseră, începuse, vizitaserăm, scrisese. D: Mai întâi, După aceea, Între timp, La final, Când. E: bilete, cazare, ajuns, vizitat, jurnal. F: rezervarea, călătoria, turistic, vizitarea, recomandare.</p>
+      </details>
+    </section>
+
+    <section class="section" id="scriere">
+      <div class="section-head">
+        <h2>III. Exprimare scrisă</h2>
+        <span class="score">jurnal de călătorie</span>
+      </div>
+      <div class="prompt">
+        <div class="task-box">
+          <h3>A. Jurnal de călătorie</h3>
+          <p>Scrie un jurnal de 120-150 de cuvinte despre o excursie reală sau imaginară. Include destinația, transportul, cazarea, două obiective turistice, o problemă și o impresie finală.</p>
+        </div>
+        <div class="task-box">
+          <h3>B. Email către pensiune</h3>
+          <p>Scrie un email pentru a cere informații despre cazare: disponibilitate, preț, mic dejun, parcare, ora de check-in și distanța până la obiective.</p>
+        </div>
+        <div class="task-box">
+          <h3>C. Itinerar</h3>
+          <p>Planifică o excursie de o zi la Sinaia. Notează orele, transportul, locurile vizitate, pauzele și bugetul aproximativ.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="ascultare">
+      <div class="section-head">
+        <h2>IV. Ascultare</h2>
+        <span class="score">la recepție</span>
+      </div>
+      <div class="audio-card">
+        <p>Ascultă textul citit de profesor sau folosește transcrierea pentru exercițiu.</p>
+        <button class="audio-button" type="button" aria-expanded="false" aria-controls="audioText" onclick="toggleAudioText(this)">Vezi textul audio</button>
+        <div class="audio-text" id="audioText">
+          <div class="text-box">
+            <p>La recepție, turistul spune că rezervase o cameră dublă pentru două nopți. Recepționera verifică sistemul și confirmă rezervarea. Ea explică faptul că micul dejun este inclus, parcarea este gratuită, iar camera va fi disponibilă după ora trei. Turistul întreabă cum poate ajunge la Castelul Peleș. Recepționera îi recomandă să meargă pe jos prin parc, deoarece traseul este plăcut și durează aproximativ douăzeci de minute.</p>
+          </div>
+        </div>
+      </div>
+      <ol>
+        <li>Turistul rezervase o cameră <input class="blank" type="text" autocomplete="off" aria-label="Răspuns">.</li>
+        <li>Rezervarea este pentru două <input class="blank" type="text" autocomplete="off" aria-label="Răspuns">.</li>
+        <li>Micul dejun este <input class="blank" type="text" autocomplete="off" aria-label="Răspuns">.</li>
+        <li>Camera va fi disponibilă după ora <input class="blank" type="text" autocomplete="off" aria-label="Răspuns">.</li>
+        <li>Drumul până la Peleș durează aproximativ douăzeci de <input class="blank" type="text" autocomplete="off" aria-label="Răspuns">.</li>
+      </ol>
+      <details>
+        <summary>Cheie orientativă</summary>
+        <p>dublă, nopți, inclus, trei, minute.</p>
+      </details>
+    </section>
+
+    <section class="section" id="oral">
+      <div class="section-head">
+        <h2>V. Exprimare orală</h2>
+        <span class="score">model examen B1</span>
+      </div>
+      <div class="prompt">
+        <div class="task-box">
+          <h3>A. Conversație dirijată</h3>
+          <p>Răspunde la întrebări: Unde îți place să călătorești? Cum planifici o vacanță? Ce tip de cazare preferi? Ce obiectiv turistic ai recomanda?</p>
+        </div>
+        <div class="task-box">
+          <h3>B. Monolog</h3>
+          <p>Vorbește 2 minute despre o călătorie memorabilă. Include destinația, transportul, cazarea, ce vizitaseși înainte, ce ai făcut acolo și ce ai recomanda.</p>
+        </div>
+        <div class="task-box">
+          <h3>C. Joc de rol</h3>
+          <p>Studentul A este turistul, iar Studentul B este recepționerul. Discutați despre rezervare, cameră, mic dejun, parcare, traseu și obiective turistice.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="subiecte">
+      <div class="section-head">
+        <h2>Subiecte posibile</h2>
+      </div>
+      <div class="grid">
+        <article class="card"><strong>Peleș</strong><span>De ce este Castelul Peleș un obiectiv turistic important?</span></article>
+        <article class="card"><strong>Planificare</strong><span>Ce este mai important: cazarea, transportul sau bugetul?</span></article>
+        <article class="card"><strong>Vacanță</strong><span>Preferi o vacanță planificată sau spontană?</span></article>
+        <article class="card"><strong>Transport</strong><span>Cu ce preferi să călătorești și de ce?</span></article>
+        <article class="card"><strong>Jurnal</strong><span>Ce detalii merită notate într-un jurnal de călătorie?</span></article>
+        <article class="card"><strong>Recomandare</strong><span>Ce loc din România ai recomanda unui turist străin?</span></article>
+      </div>
+    </section>
+
+    <nav class="footer-nav" aria-label="Navigare lecții">
+      <a href="tehnologie-si-comunicare-digitala.html">Lecția anterioară</a>
+      <a href="../../index.html#lectii">Înapoi la lecții</a>
+    </nav>
+  </main>
+
+<script>
+  function toggleAudioText(button) {
+    var audioText = document.getElementById('audioText');
+    var isVisible = audioText.classList.toggle('is-visible');
+    if (button) {
+      button.textContent = isVisible ? 'Ascunde textul audio' : 'Vezi textul audio';
+      button.setAttribute('aria-expanded', String(isVisible));
+    }
+  }
+</script>
+</body>
+</html>
