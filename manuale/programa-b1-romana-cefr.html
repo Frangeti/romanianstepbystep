@@ -40,13 +40,13 @@
     position: sticky;
     top: 0;
     z-index: 20;
-    min-height: 72px;
+    min-height: 76px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 1rem;
     padding: 0 clamp(1.1rem, 3vw, 3.5rem);
-    border-bottom: 1px solid rgba(210, 210, 215, .72);
+    border-bottom: 1px solid rgba(220, 230, 237, .9);
     background: rgba(255, 255, 255, .94);
     box-shadow: 0 10px 28px rgba(0, 0, 0, .07);
     backdrop-filter: blur(14px);
@@ -80,6 +80,8 @@
     border-radius: 8px;
     background: transparent;
     color: var(--navy);
+    cursor: pointer;
+    font-family: inherit;
     font-size: 13px;
     transition: background .18s, border-color .18s, transform .18s;
   }
@@ -96,19 +98,42 @@
     color: #fff;
   }
 
-  .login-button {
+  .manual-nav-dropdown {
+    position: relative;
     display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 40px;
-    padding: 8px 14px;
-    border: 1px solid var(--blue);
+  }
+
+  .manual-menu-button::after {
+    content: "⌄";
+    margin-left: .45rem;
+    font-size: 12px;
+    line-height: 1;
+  }
+
+  .manual-nav-dropdown-menu {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    z-index: 30;
+    min-width: 190px;
+    display: none;
+    padding: 6px;
+    border: 1px solid rgba(210, 210, 215, .9);
     border-radius: 8px;
-    background: var(--blue);
-    color: #fff;
-    cursor: pointer;
-    font-family: inherit;
-    font-size: 13px;
+    background: rgba(255, 255, 255, .96);
+    box-shadow: 0 18px 44px rgba(0, 0, 0, .12);
+    backdrop-filter: blur(14px);
+  }
+
+  .manual-nav-dropdown:hover .manual-nav-dropdown-menu,
+  .manual-nav-dropdown:focus-within .manual-nav-dropdown-menu {
+    display: grid;
+    gap: 3px;
+  }
+
+  .manual-dropdown-link {
+    width: 100%;
+    justify-content: flex-start;
   }
 
   .book {
@@ -328,6 +353,18 @@
       margin-left: 0;
     }
 
+    .manual-nav-dropdown {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .manual-nav-dropdown-menu {
+      position: static;
+      width: 100%;
+      margin-top: .35rem;
+      box-shadow: none;
+    }
+
     .book {
       width: min(100% - 1rem, 1180px);
       margin-top: .5rem;
@@ -381,13 +418,22 @@
 </head>
 <body>
   <header class="topbar">
-    <a class="brand" href="../index.html#b1">Romanian <span>Step by Step</span></a>
+    <a class="brand" href="../index.html">Romanian <span>Step by Step</span></a>
     <nav class="manual-nav" aria-label="Meniu principal">
-      <a class="manual-nav-link active" href="../index.html#b1">Română</a>
-      <a class="manual-nav-link" href="../index.html#a1-germana">Germană</a>
-      <a class="manual-nav-link" href="../index.html#a1-engleza">Engleză</a>
+      <a class="manual-nav-link" href="../index.html#acasa">Home</a>
+      <div class="manual-nav-dropdown">
+        <button class="manual-nav-link manual-menu-button active" type="button" aria-haspopup="true">Lessons</button>
+        <div class="manual-nav-dropdown-menu" aria-label="Lessons languages">
+          <a class="manual-nav-link manual-dropdown-link" href="../index.html#lectii">Romanian</a>
+          <a class="manual-nav-link manual-dropdown-link" href="../index.html#a1-germana">German</a>
+          <a class="manual-nav-link manual-dropdown-link" href="../index.html#a1-engleza">English</a>
+        </div>
+      </div>
       <a class="manual-nav-link" href="../flashcards.html">Flashcards</a>
-      <button class="login-button" type="button">Sign in</button>
+      <a class="manual-nav-link" href="../index.html#romana-a1-incepator">Books</a>
+      <a class="manual-nav-link" href="../index.html#romana-lectii">Classes</a>
+      <a class="manual-nav-link" href="../index.html#contact">Contact</a>
+      <button class="manual-nav-link" type="button">Sign in</button>
     </nav>
   </header>
 

@@ -202,17 +202,25 @@
   function createTopbar() {
     if (document.querySelector('.lesson-site-topbar')) return;
 
-    var activeLanguage = getActiveLanguage();
     var topbar = document.createElement('header');
     topbar.className = 'lesson-site-topbar';
     topbar.innerHTML = [
       '<a class="lesson-site-logo" href="../../index.html">Romanian <span>Step by Step</span></a>',
       '<nav class="lesson-site-nav" aria-label="Meniu principal">',
-      '<a class="lesson-site-link' + activeClass('romana', activeLanguage) + '" href="../../index.html#acasa">Română</a>',
-      '<a class="lesson-site-link' + activeClass('germana', activeLanguage) + '" href="../../index.html#a1-germana">Germană</a>',
-      '<a class="lesson-site-link' + activeClass('engleza', activeLanguage) + '" href="../../index.html#a1-engleza">Engleză</a>',
-      '<a class="lesson-site-link' + activeClass('spaniola', activeLanguage) + '" href="../../index.html#a1-spaniola">Spaniolă</a>',
-      '<button class="lesson-login-link" type="button">Login</button>',
+      '<a class="lesson-site-link" href="../../index.html#acasa">Home</a>',
+      '<div class="lesson-nav-dropdown">',
+      '<button class="lesson-site-link lesson-menu-button is-active" type="button" aria-haspopup="true">Lessons</button>',
+      '<div class="lesson-nav-dropdown-menu" aria-label="Lessons languages">',
+      '<a class="lesson-site-link lesson-dropdown-link" href="../../index.html#lectii">Romanian</a>',
+      '<a class="lesson-site-link lesson-dropdown-link" href="../../index.html#a1-germana">German</a>',
+      '<a class="lesson-site-link lesson-dropdown-link" href="../../index.html#a1-engleza">English</a>',
+      '</div>',
+      '</div>',
+      '<a class="lesson-site-link" href="../../flashcards.html">Flashcards</a>',
+      '<a class="lesson-site-link" href="../../index.html#romana-a1-incepator">Books</a>',
+      '<a class="lesson-site-link" href="../../index.html#romana-lectii">Classes</a>',
+      '<a class="lesson-site-link" href="../../index.html#contact">Contact</a>',
+      '<button class="lesson-site-link" type="button">Sign in</button>',
       '</nav>'
     ].join('');
 

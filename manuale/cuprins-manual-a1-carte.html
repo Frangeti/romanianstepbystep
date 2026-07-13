@@ -15,10 +15,17 @@
   html { scroll-behavior:smooth; }
   body { margin:0; background:linear-gradient(90deg,#efe3d0 0,#fbf7ef 9%,#fbf7ef 91%,#efe3d0 100%); color:var(--ink); font-family:'Atkinson Hyperlegible', Arial, sans-serif; line-height:1.55; }
   a { color:inherit; text-decoration:none; }
-  .topbar { min-height:58px; padding:0 clamp(1rem,4vw,4rem); display:flex; align-items:center; justify-content:space-between; background:#263d52; color:white; border-bottom:4px solid var(--gold); }
-  .logo { font-weight:700; letter-spacing:.02em; } .logo span { color:#d9c18c; }
-  .top-actions { display:flex; align-items:center; gap:8px; flex-wrap:wrap; justify-content:flex-end; }
-  .back { border:1px solid rgba(255,255,255,.28); border-radius:999px; padding:7px 12px; background:transparent; font:inherit; font-size:12px; color:rgba(255,255,255,.86); cursor:pointer; }
+  .topbar { position:sticky; top:0; z-index:20; min-height:76px; padding:0 clamp(1.1rem,3vw,3.5rem); display:flex; align-items:center; justify-content:space-between; gap:1rem; background:rgba(255,255,255,.94); color:#1d1d1f; border-bottom:1px solid rgba(220,230,237,.9); box-shadow:0 10px 28px rgba(0,0,0,.07); backdrop-filter:blur(14px); }
+  .logo { color:#1d1d1f; font-family:'Atkinson Hyperlegible', Arial, sans-serif; font-size:clamp(20px,2vw,25px); font-weight:400; line-height:1.2; white-space:nowrap; } .logo span { color:#0071e3; }
+  .top-actions { display:flex; flex:1; align-items:center; justify-content:flex-end; gap:5px; margin-left:auto; flex-wrap:wrap; }
+  .back { display:inline-flex; align-items:center; justify-content:center; min-height:36px; padding:7px 11px; border:1px solid transparent; border-radius:8px; background:transparent; color:#1d1d1f; font:inherit; font-size:13px; line-height:1.2; cursor:pointer; transition:background .18s,border-color .18s,color .18s,transform .18s; }
+  .back:hover { border-color:#d2d2d7; background:#f5f5f7; transform:translateY(-1px); }
+  .back.active { background:#1d1d1f; border-color:#1d1d1f; color:#fff; }
+  .manual-nav-dropdown { position:relative; display:inline-flex; }
+  .manual-menu-button::after { content:"⌄"; margin-left:.45rem; font-size:12px; line-height:1; }
+  .manual-nav-dropdown-menu { position:absolute; top:calc(100% + 8px); left:0; z-index:30; min-width:190px; display:none; padding:6px; border:1px solid rgba(210,210,215,.9); border-radius:8px; background:rgba(255,255,255,.96); box-shadow:0 18px 44px rgba(0,0,0,.12); backdrop-filter:blur(14px); }
+  .manual-nav-dropdown:hover .manual-nav-dropdown-menu, .manual-nav-dropdown:focus-within .manual-nav-dropdown-menu { display:grid; gap:3px; }
+  .manual-dropdown-link { width:100%; justify-content:flex-start; }
   .book-wrap { max-width:1060px; margin:36px auto 70px; padding:0 18px; }
   .cover { position:relative; overflow:hidden; min-height:560px; padding:58px clamp(34px,6vw,78px); background:var(--paper); border:1px solid var(--line); box-shadow:var(--shadow); display:grid; grid-template-columns:1.1fr .7fr; gap:36px; align-items:center; }
   .cover:before { content:""; position:absolute; inset:18px; border:1px solid #e7d6bb; pointer-events:none; }
@@ -65,7 +72,7 @@
   .editorial-note strong { color:var(--navy); }
   footer { max-width:1060px; margin:0 auto 42px; padding:14px 18px; color:#7b7063; text-align:center; font-size:12px; }
   @media(max-width:900px) { .cover { grid-template-columns:1fr; min-height:auto; } .overview { grid-template-columns:repeat(2,1fr); } .principles,.appendix-grid { grid-template-columns:1fr; } .unit-grid { grid-template-columns:repeat(2,1fr); } }
-  @media(max-width:650px) { .book-wrap { margin:0; padding:0; } .cover,.page { border-left:0; border-right:0; } .unit { grid-template-columns:1fr; } .unit-no { flex-direction:row; align-items:center; } .unit-grid { grid-template-columns:1fr; } .review { grid-template-columns:1fr; } .section-head { flex-direction:column; align-items:flex-start; } }
+  @media(max-width:650px) { .topbar { position:static; align-items:flex-start; flex-direction:column; padding-block:1rem; } .top-actions { justify-content:flex-start; margin-left:0; } .manual-nav-dropdown { flex-direction:column; align-items:flex-start; } .manual-nav-dropdown-menu { position:static; width:100%; margin-top:.35rem; box-shadow:none; } .book-wrap { margin:0; padding:0; } .cover,.page { border-left:0; border-right:0; } .unit { grid-template-columns:1fr; } .unit-no { flex-direction:row; align-items:center; } .unit-grid { grid-template-columns:1fr; } .review { grid-template-columns:1fr; } .section-head { flex-direction:column; align-items:flex-start; } }
   @media print {
     @page { size:A4; margin:16mm 14mm; }
     body { background:white; } .topbar, footer { display:none; } .book-wrap { max-width:none; margin:0; padding:0; }
@@ -78,11 +85,22 @@
 <body>
 <header class="topbar">
   <a class="logo" href="../index.html">Romanian <span>Step by Step</span></a>
-  <div class="top-actions">
-    <a class="back" href="../index.html#a1">Înapoi la A1</a>
+  <nav class="top-actions" aria-label="Meniu principal">
+    <a class="back" href="../index.html#acasa">Home</a>
+    <div class="manual-nav-dropdown">
+      <button class="back manual-menu-button active" type="button" aria-haspopup="true">Lessons</button>
+      <div class="manual-nav-dropdown-menu" aria-label="Lessons languages">
+        <a class="back manual-dropdown-link" href="../index.html#lectii">Romanian</a>
+        <a class="back manual-dropdown-link" href="../index.html#a1-germana">German</a>
+        <a class="back manual-dropdown-link" href="../index.html#a1-engleza">English</a>
+      </div>
+    </div>
     <a class="back" href="../flashcards.html">Flashcards</a>
+    <a class="back" href="../index.html#romana-a1-incepator">Books</a>
+    <a class="back" href="../index.html#romana-lectii">Classes</a>
+    <a class="back" href="../index.html#contact">Contact</a>
     <button class="back" type="button">Sign in</button>
-  </div>
+  </nav>
 </header>
 <div class="book-wrap">
   <section class="cover">
