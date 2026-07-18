@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>B1 · Cultura română</title>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&amp;family=DM+Mono&amp;display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f5f5f7;
+    --paper: #ffffff;
+    --ink: #1d1d1f;
+    --muted: #6e6e73;
+    --blue: #0071e3;
+    --line: #d2d2d7;
+    --level-b1: rgba(217, 162, 37, .68);
+    --soft: #fbfbfd;
+    --accent: #8b6a16;
+    --radius: 8px;
+    --shadow: 0 18px 46px rgba(0, 0, 0, .06);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    min-height: 100vh;
+    background: linear-gradient(180deg, #ffffff 0, var(--bg) 380px, #ececef 100%);
+    color: var(--ink);
+    font-family: 'Atkinson Hyperlegible', Arial, sans-serif;
+    font-size: 18px;
+    line-height: 1.6;
+  }
+
+  a { color: inherit; text-decoration: none; }
+
+  .topbar {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    min-height: 76px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0 clamp(1.1rem, 3vw, 3.5rem);
+    border-bottom: 1px solid rgba(220, 230, 237, .9);
+    background: rgba(255, 255, 255, .94);
+    box-shadow: 0 10px 28px rgba(0, 0, 0, .07);
+    backdrop-filter: blur(14px);
+  }
+
+  .brand { font-size: clamp(20px, 2vw, 25px); white-space: nowrap; }
+  .brand span { color: var(--blue); }
+
+  .nav {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 5px;
+    flex-wrap: wrap;
+  }
+
+  .nav a,
+  .nav button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 36px;
+    padding: 7px 11px;
+    border: 1px solid transparent;
+    border-radius: var(--radius);
+    background: transparent;
+    color: var(--ink);
+    font: inherit;
+    font-size: 13px;
+    cursor: pointer;
+  }
+
+  .nav a.active,
+  .nav button.active {
+    background: var(--ink);
+    color: #fff;
+  }
+
+  .lessons-menu-button::after {
+    content: "⌄";
+    margin-left: .45rem;
+    font-size: 12px;
+    line-height: 1;
+  }
+
+  .nav-dropdown {
+    position: relative;
+    display: inline-flex;
+  }
+
+  .nav-dropdown-menu {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    z-index: 30;
+    min-width: 190px;
+    display: none;
+    padding: 6px;
+    border: 1px solid rgba(210, 210, 215, .9);
+    border-radius: var(--radius);
+    background: rgba(255, 255, 255, .96);
+    box-shadow: 0 18px 44px rgba(0, 0, 0, .12);
+    backdrop-filter: blur(14px);
+  }
+
+  .nav-dropdown:hover .nav-dropdown-menu,
+  .nav-dropdown:focus-within .nav-dropdown-menu {
+    display: grid;
+    gap: 3px;
+  }
+
+  .lesson-dropdown-link {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .book {
+    width: min(1120px, calc(100% - 2rem));
+    margin: 2rem auto 4rem;
+  }
+
+  .hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(260px, 44%);
+    align-items: center;
+    gap: clamp(1rem, 2.5vw, 2rem);
+    padding: clamp(1rem, 2.2vw, 1.6rem);
+    border: 1px solid rgba(210, 210, 215, .88);
+    border-radius: var(--radius);
+    background:
+      linear-gradient(145deg, rgba(255, 255, 255, .94), rgba(245, 245, 247, .78)),
+      linear-gradient(145deg, color-mix(in srgb, var(--level-b1) 22%, transparent), rgba(255, 255, 255, .92));
+    box-shadow: var(--shadow);
+  }
+
+  .hero-title { min-width: 0; }
+
+  .lesson-number {
+    flex: 0 0 auto;
+    color: var(--level-b1);
+    font: inherit;
+    line-height: inherit;
+    font-weight: 400;
+    letter-spacing: .12em;
+    vertical-align: middle;
+  }
+
+  .hero-photo {
+    overflow: hidden;
+    min-height: 210px;
+    aspect-ratio: 16 / 9;
+    border: 1px solid rgba(210, 210, 215, .82);
+    border-radius: var(--radius);
+    background: #f5f5f7;
+    box-shadow: 0 18px 34px rgba(0, 0, 0, .12);
+  }
+
+  .hero-photo img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .eyebrow {
+    width: fit-content;
+    padding: 5px 10px;
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--level-b1) 24%, white);
+    color: color-mix(in srgb, var(--level-b1) 70%, var(--ink));
+    font-size: 13px;
+  }
+
+  h1 {
+    max-width: 820px;
+    display: flex;
+    align-items: flex-start;
+    gap: .7rem;
+    white-space: normal;
+    color: var(--ink);
+    font-size: clamp(29px, 3.1vw, 44px);
+    font-weight: 400;
+    line-height: 1.08;
+  }
+
+  .hero-title-text {
+    display: block;
+    min-width: 0;
+    max-width: 14ch;
+  }
+
+  .lead {
+    max-width: 780px;
+    color: var(--muted);
+    font-size: clamp(19px, 2vw, 23px);
+    line-height: 1.38;
+  }
+
+  .quick-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .5rem;
+    margin-top: .5rem;
+  }
+
+  .quick-nav a {
+    padding: 7px 11px;
+    border: 1px solid rgba(210, 210, 215, .82);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, .72);
+    color: var(--muted);
+    font-size: 14px;
+  }
+
+  .section {
+    margin-top: 1rem;
+    padding: clamp(1.2rem, 2.4vw, 1.8rem);
+    border: 1px solid rgba(210, 210, 215, .88);
+    border-radius: var(--radius);
+    background: var(--paper);
+    box-shadow: 0 12px 36px rgba(0, 0, 0, .045);
+  }
+
+  .section-head {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    padding-bottom: .75rem;
+    border-bottom: 1px solid rgba(210, 210, 215, .7);
+  }
+
+  h2 {
+    color: var(--ink);
+    font-size: clamp(25px, 2.3vw, 34px);
+    font-weight: 400;
+    line-height: 1.15;
+  }
+
+  .score {
+    flex: 0 0 auto;
+    padding: 5px 10px;
+    border-radius: 999px;
+    background: #eaf3ff;
+    color: var(--blue);
+    font-size: 13px;
+  }
+
+  h3 {
+    margin: 1rem 0 .45rem;
+    color: color-mix(in srgb, var(--level-b1) 72%, var(--ink));
+    font-size: 20px;
+    font-weight: 400;
+  }
+
+  p + p { margin-top: .65rem; }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: .75rem;
+  }
+
+  .card,
+  .text-box,
+  .task-box {
+    padding: .9rem 1rem;
+    border: 1px solid rgba(210, 210, 215, .7);
+    border-radius: var(--radius);
+    background: var(--soft);
+  }
+
+  .card strong {
+    display: block;
+    margin-bottom: .2rem;
+    color: var(--ink);
+    font-weight: 400;
+  }
+
+  .slim-grid {
+    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+    gap: .55rem;
+  }
+
+  .slim-card { padding: .62rem .72rem; }
+
+  .slim-card strong {
+    margin-bottom: .1rem;
+    font-size: 15px;
+    line-height: 1.2;
+  }
+
+  .slim-card span {
+    display: block;
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.35;
+  }
+
+  #vocabular .card strong {
+    color: color-mix(in srgb, var(--level-b1) 78%, var(--ink));
+  }
+
+  .card span,
+  .task-box p,
+  .text-box {
+    color: var(--muted);
+    font-size: 16px;
+  }
+
+  .text-box {
+    border-left: 5px solid color-mix(in srgb, var(--level-b1) 72%, white);
+    background:
+      linear-gradient(145deg, rgba(255, 255, 255, .96), rgba(245, 245, 247, .82));
+    color: var(--ink);
+  }
+
+  ol,
+  ul { margin-left: 1.2rem; }
+
+  li + li { margin-top: .35rem; }
+
+  table {
+    width: 100%;
+    margin-top: .8rem;
+    border-collapse: collapse;
+    overflow: hidden;
+    border-radius: var(--radius);
+    font-size: 16px;
+  }
+
+  th,
+  td {
+    padding: .7rem .75rem;
+    border: 1px solid rgba(210, 210, 215, .78);
+    vertical-align: top;
+    text-align: left;
+  }
+
+  th {
+    background: color-mix(in srgb, var(--level-b1) 18%, white);
+    color: var(--ink);
+    font-weight: 400;
+  }
+
+  .blank {
+    display: inline-block;
+    min-width: 8ch;
+    width: max(8ch, 90px);
+    border: none;
+    border-bottom: 1.5px dotted #86868b;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    line-height: inherit;
+    padding: 0 0 2px;
+    outline: none;
+    vertical-align: text-bottom;
+  }
+
+  .blank::placeholder { color: rgba(110, 110, 115, .7); }
+
+  .answer {
+    margin-top: .8rem;
+    padding: .75rem .85rem;
+    border-left: 3px solid var(--level-b1);
+    background: #fffaf0;
+    color: #514015;
+    font-size: 16px;
+  }
+
+  details {
+    margin-top: .9rem;
+    padding: .8rem .9rem;
+    border: 1px solid rgba(210, 210, 215, .72);
+    border-radius: var(--radius);
+    background: #fff;
+  }
+
+  summary {
+    cursor: pointer;
+    color: var(--blue);
+  }
+
+  .prompt,
+  .audio-card {
+    display: grid;
+    gap: .75rem;
+    margin-top: .75rem;
+  }
+
+  .audio-card {
+    padding: 1rem;
+    border: 1px solid rgba(0, 113, 227, .18);
+    border-radius: var(--radius);
+    background: #f4f9ff;
+  }
+
+  .audio-button,
+  .footer-nav a {
+    width: fit-content;
+    border: 0;
+    border-radius: var(--radius);
+    background: var(--blue);
+    color: #fff;
+    font: inherit;
+    font-size: 15px;
+    cursor: pointer;
+    padding: .55rem .85rem;
+  }
+
+  .audio-text { display: none; }
+  .audio-text.is-visible { display: block; }
+
+  .footer-nav {
+    display: flex;
+    justify-content: space-between;
+    gap: .75rem;
+    margin-top: 1rem;
+  }
+
+  @media (max-width: 780px) {
+    .topbar { align-items: flex-start; flex-direction: column; padding: .8rem 1rem; }
+    .nav { justify-content: flex-start; }
+    .nav-dropdown {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .nav-dropdown-menu {
+      position: static;
+      width: 100%;
+      margin-top: .35rem;
+      box-shadow: none;
+    }
+    .hero { grid-template-columns: 1fr; }
+    h1 { white-space: normal; font-size: clamp(32px, 11vw, 44px); }
+    .section-head { align-items: flex-start; flex-direction: column; }
+    .footer-nav { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="../../index.html">Romanian <span>Step by Step</span></a>
+    <nav class="nav" aria-label="Meniu principal">
+      <a href="../../index.html#acasa">Home</a>
+      <div class="nav-dropdown">
+        <button class="lessons-menu-button active" type="button" aria-haspopup="true">Lessons</button>
+        <div class="nav-dropdown-menu" aria-label="Lessons languages">
+          <a class="lesson-dropdown-link" href="../../index.html#lectii">Romanian</a>
+          <a class="lesson-dropdown-link" href="../../index.html#a1-germana">German</a>
+          <a class="lesson-dropdown-link" href="../../index.html#a1-engleza">English</a>
+        </div>
+      </div>
+      <a href="../../flashcards.html">Flashcards</a>
+      <a href="../../index.html#romana-a1-incepator">Books</a>
+      <a href="../../index.html#romana-lectii">Classes</a>
+      <a href="../../index.html#contact">Contact</a>
+      <button type="button">Sign in</button>
+    </nav>
+  </header>
+
+  <main class="book">
+    <section class="hero">
+      <div class="hero-title">
+        <h1><span class="lesson-number">08.</span><span class="hero-title-text">Cultura română</span></h1>
+      </div>
+      <figure class="hero-photo">
+        <img src="../../assets/images/brancusi-cultura-romana-b1.png" alt="Portret artistic cu Constantin Brâncuși în atelier, lângă forme sculpturale moderne.">
+      </figure>
+    </section>
+
+    <section class="section" id="obiective">
+      <div class="section-head">
+        <h2>La sfârșitul lecției vei ști</h2>
+      </div>
+      <div class="grid slim-grid">
+        <div class="card slim-card"><strong>Să descrii</strong><span>tradiții, sărbători, obiceiuri și elemente importante din cultura română.</span></div>
+        <div class="card slim-card"><strong>Să compari</strong><span>cultura română cu alte culturi, folosind exemple clare și respectuoase.</span></div>
+        <div class="card slim-card"><strong>Să folosești</strong><span>comparativul, superlativul și pronumele relative în descrieri culturale.</span></div>
+        <div class="card slim-card"><strong>Să pregătești</strong><span>o prezentare culturală despre o personalitate, o tradiție sau un obicei.</span></div>
+      </div>
+    </section>
+
+    <section class="section" id="vocabular">
+      <div class="section-head">
+        <h2>Vocabular tematic</h2>
+      </div>
+      <div class="grid slim-grid">
+        <article class="card slim-card"><strong>Sărbători</strong><span>Crăciun, Paște, Mărțișor, Ziua Națională, hram, festival, ceremonie</span></article>
+        <article class="card slim-card"><strong>Tradiții</strong><span>colinde, ouă încondeiate, ie, dans popular, port popular, meșteșug</span></article>
+        <article class="card slim-card"><strong>Gastronomie</strong><span>sarmale, cozonac, mămăligă, ciorbă, papanași, plăcinte, produse locale</span></article>
+        <article class="card slim-card"><strong>Artă</strong><span>sculptură, atelier, artist, operă, muzeu, patrimoniu, simbol cultural</span></article>
+        <article class="card slim-card"><strong>Comparații</strong><span>mai vechi, mai cunoscut, la fel de important, cel mai reprezentativ</span></article>
+        <article class="card slim-card"><strong>Prezentare</strong><span>în primul rând, de exemplu, care, pe care, unde, în concluzie</span></article>
+      </div>
+    </section>
+
+    <section class="section" id="citire">
+      <div class="section-head">
+        <h2>I. Comprehensiune de lectură</h2>
+        <span class="score">model B1</span>
+      </div>
+      <h3>A. Citește textul</h3>
+      <div class="text-box">
+        <p><strong>Brâncuși și cultura română</strong></p>
+        <p>Când vorbim despre cultura română, ne gândim adesea la tradiții, sărbători, gastronomie și artă. Cultura nu înseamnă doar trecut, ci și felul în care oamenii păstrează, schimbă și transmit valorile lor. Unele obiceiuri sunt foarte vechi, iar altele sunt mai noi, dar toate arată ceva despre comunitate.</p>
+        <p>Un exemplu important este Constantin Brâncuși, artistul care a devenit unul dintre cei mai cunoscuți sculptori români în lume. El s-a născut în Oltenia, într-un spațiu în care lemnul, piatra și formele simple erau prezente în viața satului. Mai târziu, la Paris, a creat opere moderne care au schimbat felul în care oamenii priveau sculptura.</p>
+        <p>Operele lui Brâncuși sunt mai simple decât sculpturile clasice, dar nu sunt mai sărace în sens. Dimpotrivă, ele transmit idei puternice prin forme clare. „Coloana fără sfârșit”, de exemplu, este o lucrare care poate fi văzută ca simbol al urcării, al memoriei și al legăturii dintre pământ și cer.</p>
+        <p>Cultura română este vizibilă și în sărbători. De Mărțișor, oamenii oferă un mic simbol alb-roșu, care marchează începutul primăverii. De Paște, multe familii vopsesc ouă și pregătesc mâncăruri tradiționale. Comparativ cu alte culturi, tradițiile românești pun mult accent pe familie, ospitalitate și legătura cu natura.</p>
+      </div>
+
+      <h3>B. Adevărat sau fals</h3>
+      <ol>
+        <li>Cultura înseamnă numai trecut, nu și prezent. <input class="blank" type="text" autocomplete="off" aria-label="Răspuns"></li>
+        <li>Constantin Brâncuși este un sculptor român cunoscut în lume. <input class="blank" type="text" autocomplete="off" aria-label="Răspuns"></li>
+        <li>Brâncuși a creat numai sculpturi clasice, foarte complicate. <input class="blank" type="text" autocomplete="off" aria-label="Răspuns"></li>
+        <li>Mărțișorul marchează începutul primăverii. <input class="blank" type="text" autocomplete="off" aria-label="Răspuns"></li>
+        <li>Textul spune că tradițiile românești pun accent pe familie și ospitalitate. <input class="blank" type="text" autocomplete="off" aria-label="Răspuns"></li>
+      </ol>
+
+      <h3>C. Răspunde la întrebări</h3>
+      <ol>
+        <li>Ce elemente intră în cultura română, conform textului? <input class="blank" type="text" autocomplete="off" aria-label="Răspuns"></li>
+        <li>Unde s-a născut Constantin Brâncuși? <input class="blank" type="text" autocomplete="off" aria-label="Răspuns"></li>
+        <li>Ce a schimbat Brâncuși prin operele sale? <input class="blank" type="text" autocomplete="off" aria-label="Răspuns"></li>
+        <li>Ce poate simboliza „Coloana fără sfârșit”? <input class="blank" type="text" autocomplete="off" aria-label="Răspuns"></li>
+        <li>Ce fac multe familii de Paște? <input class="blank" type="text" autocomplete="off" aria-label="Răspuns"></li>
+      </ol>
+
+      <h3>D. Găsește în text</h3>
+      <ol>
+        <li>Două domenii ale culturii: <input class="blank" type="text" autocomplete="off" aria-label="Răspuns"> și <input class="blank" type="text" autocomplete="off" aria-label="Răspuns">.</li>
+        <li>Două materiale sau forme asociate cu Brâncuși: <input class="blank" type="text" autocomplete="off" aria-label="Răspuns"> și <input class="blank" type="text" autocomplete="off" aria-label="Răspuns">.</li>
+        <li>O sărbătoare românească: <input class="blank" type="text" autocomplete="off" aria-label="Răspuns">.</li>
+        <li>Două valori asociate tradițiilor românești: <input class="blank" type="text" autocomplete="off" aria-label="Răspuns"> și <input class="blank" type="text" autocomplete="off" aria-label="Răspuns">.</li>
+      </ol>
+
+      <details>
+        <summary>Cheie orientativă</summary>
+        <p>A/F: 1-F, 2-A, 3-F, 4-A, 5-A. C: tradiții, sărbători, gastronomie, artă; în Oltenia; felul în care oamenii priveau sculptura; urcarea, memoria, legătura dintre pământ și cer; vopsesc ouă și pregătesc mâncăruri tradiționale.</p>
+      </details>
+    </section>
+
+    <section class="section" id="gramatica">
+      <div class="section-head">
+        <h2>II. Gramatică și vocabular</h2>
+        <span class="score">comparativ · pronume relative</span>
+      </div>
+
+      <h3>A. Teorie: comparativ și superlativ</h3>
+      <div class="grid">
+        <article class="card"><strong>Mai + adjectiv + decât</strong><span>Mărțișorul este mai cunoscut în România decât în alte țări.</span></article>
+        <article class="card"><strong>La fel de + adjectiv + ca</strong><span>Ospitalitatea este la fel de importantă ca tradiția.</span></article>
+        <article class="card"><strong>Mai puțin + adjectiv + decât</strong><span>Unele obiceiuri sunt mai puțin vizibile decât înainte.</span></article>
+        <article class="card"><strong>Cel mai / cea mai</strong><span>Brâncuși este unul dintre cei mai cunoscuți artiști români.</span></article>
+        <article class="card"><strong>Foarte / extrem de</strong><span>Portul popular este foarte expresiv.</span></article>
+        <article class="card"><strong>Comparație culturală</strong><span>În cultura mea, sărbătorile sunt mai liniștite decât în România.</span></article>
+      </div>
+
+      <h3>B. Pronume relative</h3>
+      <table>
+        <tr><th>Pronume</th><th>Exemplu</th><th>Utilizare</th></tr>
+        <tr><td>care</td><td>Brâncuși este artistul care a schimbat sculptura modernă.</td><td>subiect</td></tr>
+        <tr><td>pe care</td><td>Opera pe care o admir cel mai mult este „Coloana fără sfârșit”.</td><td>complement direct</td></tr>
+        <tr><td>unde</td><td>Târgu Jiu este orașul unde se află ansamblul sculptural.</td><td>loc</td></tr>
+        <tr><td>când</td><td>Mărțișorul este momentul când începe primăvara simbolic.</td><td>timp</td></tr>
+        <tr><td>ce</td><td>Îmi place ce transmite această tradiție.</td><td>idee / lucru general</td></tr>
+      </table>
+
+      <h3>C. Completează comparațiile</h3>
+      <ol>
+        <li>Brâncuși este unul dintre cei mai <input class="blank" type="text" autocomplete="off" aria-label="Răspuns"> artiști români.</li>
+        <li>Unele tradiții sunt mai vechi <input class="blank" type="text" autocomplete="off" aria-label="Răspuns"> altele.</li>
+        <li>Mărțișorul este la fel de important <input class="blank" type="text" autocomplete="off" aria-label="Răspuns"> alte simboluri de primăvară.</li>
+        <li>Obiceiurile rurale sunt mai puțin vizibile <input class="blank" type="text" autocomplete="off" aria-label="Răspuns"> înainte.</li>
+        <li>Cea mai <input class="blank" type="text" autocomplete="off" aria-label="Răspuns"> tradiție pentru mine este...</li>
+      </ol>
+
+      <h3>D. Alege pronumele relativ potrivit</h3>
+      <ol>
+        <li>Brâncuși este artistul <input class="blank" type="text" autocomplete="off" aria-label="Răspuns"> a creat forme moderne simple. (care / unde)</li>
+        <li>Tradiția <input class="blank" type="text" autocomplete="off" aria-label="Răspuns"> o admir cel mai mult este Mărțișorul. (pe care / când)</li>
+        <li>Târgu Jiu este orașul <input class="blank" type="text" autocomplete="off" aria-label="Răspuns"> se află „Coloana fără sfârșit”. (unde / care)</li>
+        <li>Ziua <input class="blank" type="text" autocomplete="off" aria-label="Răspuns"> se oferă mărțișoare este 1 martie. (când / pe care)</li>
+        <li>Îmi place <input class="blank" type="text" autocomplete="off" aria-label="Răspuns"> transmite această operă. (ce / unde)</li>
+      </ol>
+
+      <h3>E. Unește propozițiile</h3>
+      <ol>
+        <li>Brâncuși este un sculptor. Sculptorul este cunoscut în lume. → Brâncuși este sculptorul care...</li>
+        <li>Am văzut o expoziție. Expoziția mi-a plăcut mult. → Expoziția pe care...</li>
+        <li>Am vizitat un sat. În sat se păstrează portul popular. → Am vizitat satul unde...</li>
+        <li>Există o sărbătoare. Atunci oamenii oferă mărțișoare. → Există o sărbătoare când...</li>
+        <li>Mi-a plăcut o idee. Ideea era despre ospitalitate. → Mi-a plăcut ce...</li>
+      </ol>
+
+      <h3>F. Derivare de vocabular</h3>
+      <table>
+        <tr><th>Cuvânt de bază</th><th>Completează propoziția</th></tr>
+        <tr><td>cultură</td><td>Brâncuși este un simbol <input class="blank" type="text" autocomplete="off" aria-label="Răspuns"> important.</td></tr>
+        <tr><td>tradiție</td><td>Mărțișorul este o sărbătoare <input class="blank" type="text" autocomplete="off" aria-label="Răspuns">.</td></tr>
+        <tr><td>a sculpta</td><td><input class="blank" type="text" autocomplete="off" aria-label="Răspuns"> lui Brâncuși este modernă și simplă.</td></tr>
+        <tr><td>a ospăta</td><td><input class="blank" type="text" autocomplete="off" aria-label="Răspuns"> este o valoare importantă în multe comunități.</td></tr>
+        <tr><td>simbol</td><td>Coloana este o operă <input class="blank" type="text" autocomplete="off" aria-label="Răspuns">.</td></tr>
+      </table>
+
+      <h3>G. Construiește propoziții</h3>
+      <p>Scrie cinci propoziții despre cultura română sau cultura ta. Folosește: 1) <em>mai... decât</em>, 2) <em>cel mai / cea mai</em>, 3) <em>care</em>, 4) <em>pe care</em>, 5) <em>unde</em>.</p>
+
+      <details>
+        <summary>Cheie orientativă</summary>
+        <p>C: cunoscuți, decât, ca, decât, importantă/frumoasă. D: care, pe care, unde, când, ce. F: cultural, tradițională, sculptura, ospitalitatea, simbolică.</p>
+      </details>
+    </section>
+
+    <section class="section" id="scriere">
+      <div class="section-head">
+        <h2>III. Exprimare scrisă</h2>
+        <span class="score">prezentare culturală</span>
+      </div>
+      <div class="prompt">
+        <div class="task-box">
+          <h3>A. Prezentare culturală</h3>
+          <p>Scrie o prezentare de 120-150 de cuvinte despre o tradiție, o sărbătoare, un artist sau un obicei românesc. Include originea, importanța, un exemplu și o comparație cu altă cultură.</p>
+        </div>
+        <div class="task-box">
+          <h3>B. Brâncuși pe scurt</h3>
+          <p>Scrie un text scurt despre Constantin Brâncuși pentru un coleg străin. Explică cine a fost, de ce este important și ce operă ai recomanda.</p>
+        </div>
+        <div class="task-box">
+          <h3>C. Comparație culturală</h3>
+          <p>Compară o sărbătoare românească cu o sărbătoare din altă țară. Folosește minimum trei comparative și un pronume relativ.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="ascultare">
+      <div class="section-head">
+        <h2>IV. Ascultare</h2>
+        <span class="score">prezentare audio</span>
+      </div>
+      <div class="audio-card">
+        <p>Ascultă textul citit de profesor sau folosește transcrierea pentru exercițiu.</p>
+        <button class="audio-button" type="button" aria-expanded="false" aria-controls="audioText" onclick="toggleAudioText(this)">Vezi textul audio</button>
+        <div class="audio-text" id="audioText">
+          <div class="text-box">
+            <p>La un curs de cultură română, profesoara prezintă trei simboluri importante: Mărțișorul, ia tradițională și opera lui Constantin Brâncuși. Ea explică faptul că Mărțișorul este un obicei care marchează începutul primăverii, iar ia este o piesă de port popular pe care mulți români o consideră foarte expresivă. Despre Brâncuși spune că este unul dintre cei mai cunoscuți artiști români și că operele lui sunt admirate în muzee din multe țări.</p>
+          </div>
+        </div>
+      </div>
+      <ol>
+        <li>Profesoara prezintă trei simboluri ale culturii <input class="blank" type="text" autocomplete="off" aria-label="Răspuns">.</li>
+        <li>Mărțișorul marchează începutul <input class="blank" type="text" autocomplete="off" aria-label="Răspuns">.</li>
+        <li>Ia este o piesă de port <input class="blank" type="text" autocomplete="off" aria-label="Răspuns">.</li>
+        <li>Brâncuși este unul dintre cei mai cunoscuți <input class="blank" type="text" autocomplete="off" aria-label="Răspuns"> români.</li>
+        <li>Operele lui sunt admirate în <input class="blank" type="text" autocomplete="off" aria-label="Răspuns"> din multe țări.</li>
+      </ol>
+      <details>
+        <summary>Cheie orientativă</summary>
+        <p>române, primăverii, popular, artiști, muzee.</p>
+      </details>
+    </section>
+
+    <section class="section" id="oral">
+      <div class="section-head">
+        <h2>V. Exprimare orală</h2>
+        <span class="score">model examen B1</span>
+      </div>
+      <div class="prompt">
+        <div class="task-box">
+          <h3>A. Conversație dirijată</h3>
+          <p>Răspunde la întrebări: Ce tradiție românească ți se pare interesantă? Ce știi despre Brâncuși? Ce mâncare tradițională ai recomanda? Ce sărbătoare este importantă în cultura ta?</p>
+        </div>
+        <div class="task-box">
+          <h3>B. Monolog</h3>
+          <p>Vorbește 2 minute despre un simbol cultural. Include originea, semnificația, unde poate fi văzut, de ce este important și cu ce îl poți compara.</p>
+        </div>
+        <div class="task-box">
+          <h3>C. Joc de rol</h3>
+          <p>Studentul A este ghid cultural, iar Studentul B este vizitator. Discutați despre o tradiție, un artist, o mâncare și un muzeu recomandat.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="subiecte">
+      <div class="section-head">
+        <h2>Subiecte posibile</h2>
+      </div>
+      <div class="grid">
+        <article class="card"><strong>Brâncuși</strong><span>De ce este Constantin Brâncuși important pentru cultura română?</span></article>
+        <article class="card"><strong>Mărțișor</strong><span>Cum ai explica această tradiție unui prieten străin?</span></article>
+        <article class="card"><strong>Gastronomie</strong><span>Ce mâncare tradițională reprezintă cel mai bine România?</span></article>
+        <article class="card"><strong>Port popular</strong><span>Ce transmite ia despre identitate și tradiție?</span></article>
+        <article class="card"><strong>Comparații</strong><span>Ce asemănări există între cultura română și cultura ta?</span></article>
+        <article class="card"><strong>Patrimoniu</strong><span>Ce ar trebui protejat mai mult: tradițiile, limba sau monumentele?</span></article>
+      </div>
+    </section>
+
+    <nav class="footer-nav" aria-label="Navigare lecții">
+      <a href="calatorii-si-turism.html">Lecția anterioară</a>
+      <a href="../../index.html#lectii">Înapoi la lecții</a>
+    </nav>
+  </main>
+
+<script>
+  function toggleAudioText(button) {
+    var audioText = document.getElementById('audioText');
+    var isVisible = audioText.classList.toggle('is-visible');
+    if (button) {
+      button.textContent = isVisible ? 'Ascunde textul audio' : 'Vezi textul audio';
+      button.setAttribute('aria-expanded', String(isVisible));
+    }
+  }
+</script>
+</body>
+</html>
