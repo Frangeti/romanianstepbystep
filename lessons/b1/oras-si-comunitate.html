@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>B1 · Oraș și comunitate</title>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&amp;family=DM+Mono&amp;display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f5f5f7;
+    --paper: #ffffff;
+    --ink: #1d1d1f;
+    --muted: #6e6e73;
+    --blue: #0071e3;
+    --line: #d2d2d7;
+    --level-b1: rgba(217, 162, 37, .68);
+    --soft: #fbfbfd;
+    --accent: #8b6a16;
+    --radius: 8px;
+    --shadow: 0 18px 46px rgba(0, 0, 0, .06);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    min-height: 100vh;
+    background: linear-gradient(180deg, #ffffff 0, var(--bg) 380px, #ececef 100%);
+    color: var(--ink);
+    font-family: 'Atkinson Hyperlegible', Arial, sans-serif;
+    font-size: 18px;
+    line-height: 1.6;
+  }
+
+  a { color: inherit; text-decoration: none; }
+
+  .topbar {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    min-height: 76px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0 clamp(1.1rem, 3vw, 3.5rem);
+    border-bottom: 1px solid rgba(220, 230, 237, .9);
+    background: rgba(255, 255, 255, .94);
+    box-shadow: 0 10px 28px rgba(0, 0, 0, .07);
+    backdrop-filter: blur(14px);
+  }
+
+  .brand { font-size: clamp(20px, 2vw, 25px); white-space: nowrap; }
+  .brand span { color: var(--blue); }
+
+  .nav {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 5px;
+    flex-wrap: wrap;
+  }
+
+  .nav a,
+  .nav button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 36px;
+    padding: 7px 11px;
+    border: 1px solid transparent;
+    border-radius: var(--radius);
+    background: transparent;
+    color: var(--ink);
+    font: inherit;
+    font-size: 13px;
+    cursor: pointer;
+  }
+
+  .nav a.active,
+  .nav button.active {
+    background: var(--ink);
+    color: #fff;
+  }
+
+  .lessons-menu-button::after {
+    content: "⌄";
+    margin-left: .45rem;
+    font-size: 12px;
+    line-height: 1;
+  }
+
+  .nav-dropdown {
+    position: relative;
+    display: inline-flex;
+  }
+
+  .nav-dropdown-menu {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    z-index: 30;
+    min-width: 190px;
+    display: none;
+    padding: 6px;
+    border: 1px solid rgba(210, 210, 215, .9);
+    border-radius: var(--radius);
+    background: rgba(255, 255, 255, .96);
+    box-shadow: 0 18px 44px rgba(0, 0, 0, .12);
+    backdrop-filter: blur(14px);
+  }
+
+  .nav-dropdown:hover .nav-dropdown-menu,
+  .nav-dropdown:focus-within .nav-dropdown-menu {
+    display: grid;
+    gap: 3px;
+  }
+
+  .lesson-dropdown-link {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .book {
+    width: min(1120px, calc(100% - 2rem));
+    margin: 2rem auto 4rem;
+  }
+
+  .hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(260px, 44%);
+    align-items: center;
+    gap: clamp(1rem, 2.5vw, 2rem);
+    padding: clamp(1rem, 2.2vw, 1.6rem);
+    border: 1px solid rgba(210, 210, 215, .88);
+    border-radius: var(--radius);
+    background:
+      linear-gradient(145deg, rgba(255, 255, 255, .94), rgba(245, 245, 247, .78)),
+      linear-gradient(145deg, color-mix(in srgb, var(--level-b1) 22%, transparent), rgba(255, 255, 255, .92));
+    box-shadow: var(--shadow);
+  }
+
+  .hero-title { min-width: 0; }
+
+  .lesson-number {
+    flex: 0 0 auto;
+    color: var(--level-b1);
+    font: inherit;
+    line-height: inherit;
+    font-weight: 400;
+    letter-spacing: .12em;
+    vertical-align: middle;
+  }
+
+  .hero-photo {
+    overflow: hidden;
+    min-height: 210px;
+    aspect-ratio: 16 / 9;
+    border: 1px solid rgba(210, 210, 215, .82);
+    border-radius: var(--radius);
+    background: #f5f5f7;
+    box-shadow: 0 18px 34px rgba(0, 0, 0, .12);
+  }
+
+  .hero-photo img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .eyebrow {
+    width: fit-content;
+    padding: 5px 10px;
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--level-b1) 24%, white);
+    color: color-mix(in srgb, var(--level-b1) 70%, var(--ink));
+    font-size: 13px;
+  }
+
+  h1 {
+    max-width: 820px;
+    display: flex;
+    align-items: flex-start;
+    gap: .7rem;
+    white-space: normal;
+    color: var(--ink);
+    font-size: clamp(29px, 3.1vw, 44px);
+    font-weight: 400;
+    line-height: 1.08;
+  }
+
+  .hero-title-text {
+    display: block;
+    min-width: 0;
+    max-width: none;
+  }
+
+  .lead {
+    max-width: 780px;
+    color: var(--muted);
+    font-size: clamp(19px, 2vw, 23px);
+    line-height: 1.38;
+  }
+
+  .quick-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .5rem;
+    margin-top: .5rem;
+  }
+
+  .quick-nav a {
+    padding: 7px 11px;
+    border: 1px solid rgba(210, 210, 215, .82);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, .72);
+    color: var(--muted);
+    font-size: 14px;
+  }
+
+  .section {
+    margin-top: 1rem;
+    padding: clamp(1.2rem, 2.4vw, 1.8rem);
+    border: 1px solid rgba(210, 210, 215, .88);
+    border-radius: var(--radius);
+    background: var(--paper);
+    box-shadow: 0 12px 36px rgba(0, 0, 0, .045);
+  }
+
+  .section-head {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    padding-bottom: .75rem;
+    border-bottom: 1px solid rgba(210, 210, 215, .7);
+  }
+
+  h2 {
+    color: var(--ink);
+    font-size: clamp(25px, 2.3vw, 34px);
+    font-weight: 400;
+    line-height: 1.15;
+  }
+
+  .score {
+    flex: 0 0 auto;
+    padding: 5px 10px;
+    border-radius: 999px;
+    background: #eaf3ff;
+    color: var(--blue);
+    font-size: 13px;
+  }
+
+  h3 {
+    margin: 1rem 0 .45rem;
+    color: color-mix(in srgb, var(--level-b1) 72%, var(--ink));
+    font-size: 20px;
+    font-weight: 400;
+  }
+
+  p + p { margin-top: .65rem; }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: .75rem;
+  }
+
+  .card,
+  .text-box,
+  .task-box {
+    padding: .9rem 1rem;
+    border: 1px solid rgba(210, 210, 215, .7);
+    border-radius: var(--radius);
+    background: var(--soft);
+  }
+
+  .card strong {
+    display: block;
+    margin-bottom: .2rem;
+    color: var(--ink);
+    font-weight: 400;
+  }
+
+  .slim-grid {
+    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+    gap: .55rem;
+  }
+
+  .slim-card { padding: .62rem .72rem; }
+
+  .slim-card strong {
+    margin-bottom: .1rem;
+    font-size: 15px;
+    line-height: 1.2;
+  }
+
+  .slim-card span {
+    display: block;
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.35;
+  }
+
+  #vocabular .card strong {
+    color: color-mix(in srgb, var(--level-b1) 78%, var(--ink));
+  }
+
+  .card span,
+  .task-box p,
+  .text-box {
+    color: var(--muted);
+    font-size: 16px;
+  }
+
+  .text-box {
+    border-left: 5px solid color-mix(in srgb, var(--level-b1) 72%, white);
+    background:
+      linear-gradient(145deg, rgba(255, 255, 255, .96), rgba(245, 245, 247, .82));
+    color: var(--ink);
+  }
+
+  ol,
+  ul { margin-left: 1.2rem; }
+
+  li + li { margin-top: .35rem; }
+
+  table {
+    width: 100%;
+    margin-top: .8rem;
+    border-collapse: collapse;
+    overflow: hidden;
+    border-radius: var(--radius);
+    font-size: 16px;
+  }
+
+  th,
+  td {
+    padding: .7rem .75rem;
+    border: 1px solid rgba(210, 210, 215, .78);
+    vertical-align: top;
+    text-align: left;
+  }
+
+  th {
+    background: color-mix(in srgb, var(--level-b1) 18%, white);
+    color: var(--ink);
+    font-weight: 400;
+  }
+
+  .blank {
+    display: inline-block;
+    min-width: 8ch;
+    width: max(8ch, 90px);
+    border: none;
+    border-bottom: 1.5px dotted #86868b;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    line-height: inherit;
+    padding: 0 0 2px;
+    outline: none;
+    vertical-align: text-bottom;
+  }
+
+  .blank::placeholder { color: rgba(110, 110, 115, .7); }
+
+  .answer {
+    margin-top: .8rem;
+    padding: .75rem .85rem;
+    border-left: 3px solid var(--level-b1);
+    background: #fffaf0;
+    color: #514015;
+    font-size: 16px;
+  }
+
+  details {
+    margin-top: .9rem;
+    padding: .8rem .9rem;
+    border: 1px solid rgba(210, 210, 215, .72);
+    border-radius: var(--radius);
+    background: #fff;
+  }
+
+  summary {
+    cursor: pointer;
+    color: var(--blue);
+  }
+
+  .prompt,
+  .audio-card {
+    display: grid;
+    gap: .75rem;
+    margin-top: .75rem;
+  }
+
+  .audio-card {
+    padding: 1rem;
+    border: 1px solid rgba(0, 113, 227, .18);
+    border-radius: var(--radius);
+    background: #f4f9ff;
+  }
+
+  .audio-button,
+  .footer-nav a {
+    width: fit-content;
+    border: 0;
+    border-radius: var(--radius);
+    background: var(--blue);
+    color: #fff;
+    font: inherit;
+    font-size: 15px;
+    cursor: pointer;
+    padding: .55rem .85rem;
+  }
+
+  .audio-text { display: none; }
+  .audio-text.is-visible { display: block; }
+
+  .footer-nav {
+    display: flex;
+    justify-content: space-between;
+    gap: .75rem;
+    margin-top: 1rem;
+  }
+
+  @media (max-width: 780px) {
+    .topbar { align-items: flex-start; flex-direction: column; padding: .8rem 1rem; }
+    .nav { justify-content: flex-start; }
+    .nav-dropdown {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .nav-dropdown-menu {
+      position: static;
+      width: 100%;
+      margin-top: .35rem;
+      box-shadow: none;
+    }
+    .hero { grid-template-columns: 1fr; }
+    h1 { white-space: normal; font-size: clamp(32px, 11vw, 44px); }
+    .section-head { align-items: flex-start; flex-direction: column; }
+    .footer-nav { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="../../index.html">Romanian <span>Step by Step</span></a>
+    <nav class="nav" aria-label="Meniu principal">
+      <a href="../../index.html#acasa">Home</a>
+      <div class="nav-dropdown">
+        <button class="lessons-menu-button active" type="button" aria-haspopup="true">Lessons</button>
+        <div class="nav-dropdown-menu" aria-label="Lessons languages">
+          <a class="lesson-dropdown-link" href="../../index.html#lectii">Romanian</a>
+          <a class="lesson-dropdown-link" href="../../index.html#a1-germana">German</a>
+          <a class="lesson-dropdown-link" href="../../index.html#a1-engleza">English</a>
+        </div>
+      </div>
+      <a href="../../flashcards.html">Flashcards</a>
+      <a href="../../index.html#romana-a1-incepator">Books</a>
+      <a href="../../index.html#romana-lectii">Classes</a>
+      <a href="../../index.html#contact">Contact</a>
+      <button type="button">Sign in</button>
+    </nav>
+  </header>
+
+  <main class="book">
+    <section class="hero">
+      <div class="hero-title">
+        <h1><span class="lesson-number">09.</span><span class="hero-title-text">Oraș și comunitate</span></h1>
+      </div>
+      <figure class="hero-photo">
+        <img src="../../assets/images/oras-si-comunitate-b1.png" alt="Cartier european cu blocuri, parc amenajat, biciclete, bănci și spații pentru reciclare.">
+      </figure>
+    </section>
+
+    <section class="section" id="obiective">
+      <div class="section-head">
+        <h2>La sfârșitul lecției vei ști</h2>
+      </div>
+      <div class="grid slim-grid">
+        <div class="card slim-card"><strong>Să descrii</strong><span>un cartier de locuințe, un parc amenajat și spațiile comune.</span></div>
+        <div class="card slim-card"><strong>Să discuți</strong><span>probleme cu vecinii, parcările, gunoiul, reciclarea și zgomotul.</span></div>
+        <div class="card slim-card"><strong>Să folosești</strong><span>pasivul frecvent și structuri impersonale în contexte administrative.</span></div>
+        <div class="card slim-card"><strong>Să redactezi</strong><span>o sesizare despre salubritate, parcare, zgomot sau amenajarea cartierului.</span></div>
+      </div>
+    </section>
+
+    <section class="section" id="vocabular">
+      <div class="section-head">
+        <h2>Vocabular tematic</h2>
+      </div>
+      <div class="grid slim-grid">
+        <article class="card slim-card"><strong>Cartier de locuințe</strong><span>bloc, scară, curte interioară, alee, trotuar, spațiu comun</span></article>
+        <article class="card slim-card"><strong>Parc amenajat</strong><span>bănci, alei, loc de joacă, gazon, copaci, iluminat, coșuri de gunoi</span></article>
+        <article class="card slim-card"><strong>Vecini</strong><span>locatari, asociație de proprietari, administrator, reguli, program de liniște</span></article>
+        <article class="card slim-card"><strong>Parcări</strong><span>loc de parcare, mașini parcate neregulamentar, trotuar blocat, garaj, acces</span></article>
+        <article class="card slim-card"><strong>Gunoi și reciclare</strong><span>salubritate, containere, colectare selectivă, hârtie, plastic, sticlă, deșeuri</span></article>
+        <article class="card slim-card"><strong>Zgomot</strong><span>muzică tare, lucrări în apartament, claxoane, motoare, trafic, liniște</span></article>
+      </div>
+
+      <h3>Vocabular important · Română - Engleză</h3>
+      <table>
+        <tr><th>Română</th><th>English</th></tr>
+        <tr><td>cartier de locuințe</td><td>residential neighborhood</td></tr>
+        <tr><td>bloc</td><td>apartment building</td></tr>
+        <tr><td>scară</td><td>building entrance / stairwell</td></tr>
+        <tr><td>curte interioară</td><td>inner courtyard</td></tr>
+        <tr><td>alee</td><td>path / walkway</td></tr>
+        <tr><td>trotuar</td><td>sidewalk</td></tr>
+        <tr><td>spațiu comun</td><td>shared space</td></tr>
+        <tr><td>parc amenajat</td><td>landscaped park</td></tr>
+        <tr><td>bancă</td><td>bench</td></tr>
+        <tr><td>loc de joacă</td><td>playground</td></tr>
+        <tr><td>gazon</td><td>lawn</td></tr>
+        <tr><td>iluminat public</td><td>street lighting / public lighting</td></tr>
+        <tr><td>coș de gunoi</td><td>trash bin</td></tr>
+        <tr><td>salubritate</td><td>sanitation / waste management</td></tr>
+        <tr><td>container</td><td>container / dumpster</td></tr>
+        <tr><td>colectare selectivă</td><td>selective waste collection</td></tr>
+        <tr><td>reciclare</td><td>recycling</td></tr>
+        <tr><td>deșeuri</td><td>waste</td></tr>
+        <tr><td>parcare</td><td>parking</td></tr>
+        <tr><td>loc de parcare</td><td>parking space</td></tr>
+        <tr><td>mașină parcată neregulamentar</td><td>illegally parked car</td></tr>
+        <tr><td>trotuar blocat</td><td>blocked sidewalk</td></tr>
+        <tr><td>vecini</td><td>neighbors</td></tr>
+        <tr><td>locatari</td><td>residents / tenants</td></tr>
+        <tr><td>asociație de proprietari</td><td>homeowners association</td></tr>
+        <tr><td>administrator</td><td>building administrator</td></tr>
+        <tr><td>program de liniște</td><td>quiet hours</td></tr>
+        <tr><td>zgomot</td><td>noise</td></tr>
+        <tr><td>muzică tare</td><td>loud music</td></tr>
+        <tr><td>claxon</td><td>car horn</td></tr>
+        <tr><td>trafic aglomerat</td><td>heavy traffic</td></tr>
+        <tr><td>a depune o sesizare</td><td>to file a complaint</td></tr>
+        <tr><td>a respecta regulile</td><td>to follow the rules</td></tr>
+        <tr><td>a arunca gunoiul</td><td>to throw away garbage</td></tr>
+        <tr><td>a recicla</td><td>to recycle</td></tr>
+        <tr><td>a bloca accesul</td><td>to block access</td></tr>
+        <tr><td>este necesar să...</td><td>it is necessary to...</td></tr>
+        <tr><td>se recomandă...</td><td>it is recommended...</td></tr>
+        <tr><td>ar trebui să...</td><td>should / it should...</td></tr>
+      </table>
+    </section>
+
+    <section class="section" id="citire">
+      <div class="section-head">
+        <h2>I. Comprehensiune de lectură</h2>
+        <span class="score">model B1</span>
+      </div>
+      <h3>A. Citește textul</h3>
+      <div class="text-box">
+        <p><strong>Cartierul dintre blocuri</strong></p>
+        <p>Cartierul Dacia este un cartier de locuințe cu multe blocuri, alei pietonale și un parc mic între clădiri. Parcul este amenajat cu bănci, copaci, un loc de joacă și câteva coșuri de gunoi. Seara, aleile sunt luminate, iar mulți locatari ies la plimbare sau stau pe bancă.</p>
+        <p>Totuși, cartierul are și probleme. În fiecare dimineață, parcările sunt pline, iar unele mașini sunt parcate pe trotuar sau în fața intrării în bloc. Accesul este blocat, iar pietonii trebuie să meargă pe carosabil. În weekend, zgomotul mașinilor și claxoanele se aud până târziu.</p>
+        <p>O altă problemă este gunoiul. Containerele sunt uneori prea pline, iar sacii sunt lăsați lângă platformă. Colectarea selectivă nu este respectată întotdeauna: plasticul, hârtia și sticla sunt aruncate în același container. Din această cauză, zona miroase neplăcut, iar parcul pare neîngrijit.</p>
+        <p>Mai mulți locatari au discutat cu administratorul blocului și au pregătit o sesizare către primărie și firma de salubritate. În sesizare se cere ridicarea mai frecventă a gunoiului, montarea unor containere pentru reciclare, marcarea clară a locurilor de parcare și respectarea programului de liniște.</p>
+      </div>
+
+      <h3>B. Adevărat sau fals</h3>
+      <ol>
+        <li>Cartierul Dacia are blocuri, alei și un parc mic. <input class="blank" type="text" autocomplete="off" aria-label="Răspuns"></li>
+        <li>Parcul nu are bănci și nu are copaci. <input class="blank" type="text" autocomplete="off" aria-label="Răspuns"></li>
+        <li>Unele mașini sunt parcate pe trotuar sau în fața intrării. <input class="blank" type="text" autocomplete="off" aria-label="Răspuns"></li>
+        <li>Colectarea selectivă este respectată întotdeauna. <input class="blank" type="text" autocomplete="off" aria-label="Răspuns"></li>
+        <li>Locatarii cer containere pentru reciclare și marcarea locurilor de parcare. <input class="blank" type="text" autocomplete="off" aria-label="Răspuns"></li>
+      </ol>
+
+      <h3>C. Răspunde la întrebări</h3>
+      <ol>
+        <li>Cum este amenajat parcul dintre blocuri? <input class="blank" type="text" autocomplete="off" aria-label="Răspuns"></li>
+        <li>Ce probleme apar la parcări? <input class="blank" type="text" autocomplete="off" aria-label="Răspuns"></li>
+        <li>Ce probleme apar la platforma de gunoi? <input class="blank" type="text" autocomplete="off" aria-label="Răspuns"></li>
+        <li>Ce tipuri de deșeuri sunt menționate în text? <input class="blank" type="text" autocomplete="off" aria-label="Răspuns"></li>
+        <li>Ce se cere în sesizare? <input class="blank" type="text" autocomplete="off" aria-label="Răspuns"></li>
+      </ol>
+
+      <h3>D. Găsește în text</h3>
+      <ol>
+        <li>Două elemente din parc: <input class="blank" type="text" autocomplete="off" aria-label="Răspuns"> și <input class="blank" type="text" autocomplete="off" aria-label="Răspuns">.</li>
+        <li>Două probleme cu parcarea: <input class="blank" type="text" autocomplete="off" aria-label="Răspuns"> și <input class="blank" type="text" autocomplete="off" aria-label="Răspuns">.</li>
+        <li>Două probleme cu gunoiul: <input class="blank" type="text" autocomplete="off" aria-label="Răspuns"> și <input class="blank" type="text" autocomplete="off" aria-label="Răspuns">.</li>
+        <li>Două surse de zgomot: <input class="blank" type="text" autocomplete="off" aria-label="Răspuns"> și <input class="blank" type="text" autocomplete="off" aria-label="Răspuns">.</li>
+      </ol>
+
+      <details>
+        <summary>Cheie orientativă</summary>
+        <p>A/F: 1-A, 2-F, 3-A, 4-F, 5-A. C: parcul are bănci, copaci, loc de joacă și coșuri de gunoi; mașinile sunt parcate pe trotuar sau la intrare; containerele sunt pline, iar sacii sunt lăsați lângă platformă; plastic, hârtie și sticlă; ridicarea mai frecventă a gunoiului, containere pentru reciclare, locuri de parcare marcate și program de liniște respectat.</p>
+      </details>
+    </section>
+
+    <section class="section" id="gramatica">
+      <div class="section-head">
+        <h2>II. Gramatică și vocabular</h2>
+        <span class="score">pasiv · impersonal</span>
+      </div>
+
+      <h3>A. Teorie: pasivul frecvent</h3>
+      <div class="grid">
+        <article class="card"><strong>a fi + participiu</strong><span>Containerele sunt golite dimineața. Parcul este curățat de firma de salubritate.</span></article>
+        <article class="card"><strong>Rezultatul contează</strong><span>Au fost montate coșuri noi. Au fost marcate locurile de parcare.</span></article>
+        <article class="card"><strong>Cu autor</strong><span>Trotuarele vor fi reparate de administrația locală.</span></article>
+        <article class="card"><strong>Fără autor</strong><span>Se repară aleile. Se instalează camere de supraveghere.</span></article>
+        <article class="card"><strong>Participii frecvente</strong><span>amenajat, reparat, montat, instalat, marcat, curățat, ridicat, reciclat</span></article>
+        <article class="card"><strong>Atenție la acord</strong><span>un parc amenajat, o parcare marcată, două alei reparate</span></article>
+      </div>
+
+      <h3>B. Structuri impersonale utile</h3>
+      <table>
+        <tr><th>Structură</th><th>Exemplu</th><th>Când o folosim</th></tr>
+        <tr><td>se + verb</td><td>Se respectă programul de liniște.</td><td>regulă generală</td></tr>
+        <tr><td>se poate + infinitiv</td><td>Se poate repara parcul în două etape.</td><td>posibilitate</td></tr>
+        <tr><td>este necesar să</td><td>Este necesar să fie reparate trotuarele.</td><td>nevoie importantă</td></tr>
+        <tr><td>ar trebui să</td><td>Ar trebui să se instaleze mai multe coșuri.</td><td>recomandare</td></tr>
+        <tr><td>se recomandă</td><td>Se recomandă colectarea selectivă a deșeurilor.</td><td>sfat oficial sau neutru</td></tr>
+      </table>
+
+      <h3>C. Transformă la pasiv</h3>
+      <ol>
+        <li>Primăria repară trotuarele. → Trotuarele <input class="blank" type="text" autocomplete="off" aria-label="Răspuns"> de primărie.</li>
+        <li>Firma de salubritate golește containerele. → Containerele <input class="blank" type="text" autocomplete="off" aria-label="Răspuns"> de firma de salubritate.</li>
+        <li>Administrația a montat bănci noi. → Bănci noi <input class="blank" type="text" autocomplete="off" aria-label="Răspuns">.</li>
+        <li>Locatarii au trimis o sesizare. → O sesizare <input class="blank" type="text" autocomplete="off" aria-label="Răspuns"> de locatari.</li>
+        <li>Primăria va marca locurile de parcare. → Locurile de parcare <input class="blank" type="text" autocomplete="off" aria-label="Răspuns"> de primărie.</li>
+      </ol>
+
+      <h3>D. Alege structura impersonală potrivită</h3>
+      <ol>
+        <li><input class="blank" type="text" autocomplete="off" aria-label="Răspuns"> containere pentru reciclare lângă bloc. (Se montează / Sunt monta)</li>
+        <li><input class="blank" type="text" autocomplete="off" aria-label="Răspuns"> să fie respectat programul de liniște. (Este necesar / Sunt necesari)</li>
+        <li><input class="blank" type="text" autocomplete="off" aria-label="Răspuns"> colectarea selectivă a deșeurilor. (Se recomandă / Se recomand)</li>
+        <li><input class="blank" type="text" autocomplete="off" aria-label="Răspuns"> marca locurile de parcare. (Se pot / Se sunt)</li>
+        <li><input class="blank" type="text" autocomplete="off" aria-label="Răspuns"> mai multe lămpi în parc. (Ar trebui instalate / Ar trebui instalați)</li>
+      </ol>
+
+      <h3>E. Rescrie impersonal</h3>
+      <ol>
+        <li>Firma trebuie să ridice gunoiul mai des. → Este necesar să...</li>
+        <li>Primăria poate marca locurile de parcare. → Se pot...</li>
+        <li>Administratorul recomandă reciclarea hârtiei și plasticului. → Se recomandă...</li>
+        <li>Vecinii trebuie să respecte programul de liniște. → Ar trebui să...</li>
+        <li>Administrația amenajează o parcare nouă. → Se amenajează...</li>
+      </ol>
+
+      <h3>F. Derivare de vocabular</h3>
+      <table>
+        <tr><th>Cuvânt de bază</th><th>Completează propoziția</th></tr>
+        <tr><td>a administra</td><td><input class="blank" type="text" autocomplete="off" aria-label="Răspuns"> locală a răspuns la sesizare.</td></tr>
+        <tr><td>salubru</td><td><input class="blank" type="text" autocomplete="off" aria-label="Răspuns"> cartierului depinde de ridicarea gunoiului.</td></tr>
+        <tr><td>a recicla</td><td><input class="blank" type="text" autocomplete="off" aria-label="Răspuns"> este obligatorie pentru hârtie, plastic și sticlă.</td></tr>
+        <tr><td>sigur</td><td><input class="blank" type="text" autocomplete="off" aria-label="Răspuns"> pietonilor este importantă.</td></tr>
+        <tr><td>a polua</td><td>Traficul produce multă <input class="blank" type="text" autocomplete="off" aria-label="Răspuns">.</td></tr>
+      </table>
+
+      <h3>G. Construiește propoziții</h3>
+      <p>Scrie cinci propoziții despre cartierul tău. Folosește: 1) <em>se respectă</em>, 2) <em>se recomandă</em>, 3) <em>este necesar să</em>, 4) <em>ar trebui să</em>, 5) un pasiv cu <em>a fi + participiu</em>.</p>
+
+      <details>
+        <summary>Cheie orientativă</summary>
+        <p>C: sunt reparate, sunt golite, au fost montate, a fost trimisă, vor fi marcate. D: Se montează, Este necesar, Se recomandă, Se pot, Ar trebui instalate. F: administrația, salubritatea, reciclarea, siguranța, poluare.</p>
+      </details>
+    </section>
+
+    <section class="section" id="scriere">
+      <div class="section-head">
+        <h2>III. Exprimare scrisă</h2>
+        <span class="score">sesizare de cartier</span>
+      </div>
+      <div class="prompt">
+        <div class="task-box">
+          <h3>A. Sesizare către primărie</h3>
+          <p>Scrie o sesizare de 120-150 de cuvinte despre parcări, gunoi, salubritate, reciclare sau zgomot. Prezintă problema și două soluții. Folosește cel puțin două structuri impersonale.</p>
+        </div>
+        <div class="task-box">
+          <h3>B. Mesaj către vecini</h3>
+          <p>Scrie un mesaj către vecini despre regulile de parcare, programul de liniște și colectarea selectivă. Folosește un ton politicos, dar ferm.</p>
+        </div>
+        <div class="task-box">
+          <h3>C. Plan de îmbunătățire</h3>
+          <p>Scrie cinci idei pentru un cartier mai bine amenajat: parc, alei, bănci, parcări, containere de reciclare și reducerea zgomotului.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="ascultare">
+      <div class="section-head">
+        <h2>IV. Ascultare</h2>
+        <span class="score">anunț administrativ</span>
+      </div>
+      <div class="audio-card">
+        <p>Ascultă textul citit de profesor sau folosește transcrierea pentru exercițiu.</p>
+        <button class="audio-button" type="button" aria-expanded="false" aria-controls="audioText" onclick="toggleAudioText(this)">Vezi textul audio</button>
+        <div class="audio-text" id="audioText">
+          <div class="text-box">
+            <p>Asociația de proprietari anunță că, de luni, containerele pentru hârtie, plastic și sticlă vor fi mutate lângă platforma principală de gunoi. Firma de salubritate va ridica deșeurile de trei ori pe săptămână. Locatarii sunt rugați să nu lase sacii lângă containere și să respecte programul de liniște între orele 22:00 și 8:00. Mașinile parcate pe trotuar vor fi raportate administrației locale.</p>
+          </div>
+        </div>
+      </div>
+      <ol>
+        <li>Containerele sunt pentru hârtie, plastic și <input class="blank" type="text" autocomplete="off" aria-label="Răspuns">.</li>
+        <li>Firma de salubritate va ridica deșeurile de <input class="blank" type="text" autocomplete="off" aria-label="Răspuns"> ori pe săptămână.</li>
+        <li>Locatarii nu trebuie să lase sacii lângă <input class="blank" type="text" autocomplete="off" aria-label="Răspuns">.</li>
+        <li>Programul de liniște este între orele 22:00 și <input class="blank" type="text" autocomplete="off" aria-label="Răspuns">.</li>
+        <li>Mașinile parcate pe trotuar vor fi raportate administrației <input class="blank" type="text" autocomplete="off" aria-label="Răspuns">.</li>
+      </ol>
+      <details>
+        <summary>Cheie orientativă</summary>
+        <p>sticlă, trei, containere, 8:00, locale.</p>
+      </details>
+    </section>
+
+    <section class="section" id="oral">
+      <div class="section-head">
+        <h2>V. Exprimare orală</h2>
+        <span class="score">model examen B1</span>
+      </div>
+      <div class="prompt">
+        <div class="task-box">
+          <h3>A. Conversație dirijată</h3>
+          <p>Răspunde la întrebări: Cum este amenajat cartierul tău? Există parc? Sunt suficiente parcări? Cum se colectează gunoiul? Vecinii respectă programul de liniște?</p>
+        </div>
+        <div class="task-box">
+          <h3>B. Monolog</h3>
+          <p>Vorbește 2 minute despre o problemă din cartier: parcări, gunoi, reciclare sau zgomot. Prezintă două soluții și folosește cel puțin o structură impersonală.</p>
+        </div>
+        <div class="task-box">
+          <h3>C. Joc de rol</h3>
+          <p>Studentul A este administratorul blocului, iar Studentul B este locatar. Discutați despre parcări, containere, salubritate, reciclare și zgomotul vecinilor.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="subiecte">
+      <div class="section-head">
+        <h2>Subiecte posibile</h2>
+      </div>
+      <div class="grid">
+        <article class="card"><strong>Cartier amenajat</strong><span>Cum arată un cartier bine organizat între blocuri?</span></article>
+        <article class="card"><strong>Parc</strong><span>Ce trebuie să existe într-un parc plăcut și sigur?</span></article>
+        <article class="card"><strong>Parcări</strong><span>Ce probleme apar când mașinile sunt parcate pe trotuar?</span></article>
+        <article class="card"><strong>Gunoi</strong><span>Cum trebuie organizată platforma de gunoi?</span></article>
+        <article class="card"><strong>Reciclare</strong><span>Ce se poate face pentru colectarea selectivă?</span></article>
+        <article class="card"><strong>Zgomot</strong><span>Cum se poate reduce zgomotul vecinilor și al mașinilor?</span></article>
+      </div>
+    </section>
+
+    <nav class="footer-nav" aria-label="Navigare lecții">
+      <a href="cultura-romana.html">Lecția anterioară</a>
+      <a href="../../index.html#lectii">Înapoi la lecții</a>
+    </nav>
+  </main>
+
+<script>
+  function toggleAudioText(button) {
+    var audioText = document.getElementById('audioText');
+    var isVisible = audioText.classList.toggle('is-visible');
+    if (button) {
+      button.textContent = isVisible ? 'Ascunde textul audio' : 'Vezi textul audio';
+      button.setAttribute('aria-expanded', String(isVisible));
+    }
+  }
+</script>
+</body>
+</html>
