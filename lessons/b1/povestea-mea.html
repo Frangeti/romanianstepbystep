@@ -435,6 +435,54 @@
       box-shadow: none;
     }
   }
+
+  @media print {
+    @page { size: A4; margin: 13mm; }
+    body {
+      background: #fff;
+      color: #1d1d1f;
+      font-size: 10.5pt;
+      line-height: 1.42;
+      print-color-adjust: exact;
+      -webkit-print-color-adjust: exact;
+    }
+    .topbar,
+    .footer-nav,
+    .toggle-audio-text {
+      display: none !important;
+    }
+    .book {
+      width: auto;
+      margin: 0;
+    }
+    .hero {
+      grid-template-columns: minmax(0, 1fr) 42%;
+      padding: 12px;
+      box-shadow: none;
+      break-inside: avoid;
+    }
+    .hero-photo { min-height: 150px; }
+    .section {
+      margin-top: 9px;
+      padding: 13px 15px;
+      box-shadow: none;
+      break-inside: auto;
+    }
+    .section-head,
+    h3 {
+      break-after: avoid;
+    }
+    .card,
+    .task-box,
+    .text-box,
+    table,
+    details {
+      break-inside: avoid;
+    }
+    input.blank {
+      background: transparent;
+    }
+  }
 </style>
 </head>
 <body>
@@ -454,6 +502,7 @@
       <a href="../../index.html#romana-a1-incepator">Books</a>
       <a href="../../index.html#romana-lectii">Classes</a>
       <a href="../../index.html#contact">Contact</a>
+      <a href="../../pdf/lectie-b1-povestea-mea.pdf" download>Descarcă PDF</a>
       <button type="button">Sign in</button>
     </nav>
   </header>
@@ -598,12 +647,7 @@
         <h2>IV. Ascultare</h2>
         <span class="score">simulare</span>
       </div>
-      <button type="button" class="toggle-audio-text" aria-expanded="false" aria-controls="audio-text">Vezi textul audio</button>
-      <div id="audio-text" class="audio-text hidden">
-        <div class="text-box">
-          <p>Mihai povestește că s-a născut într-o familie numeroasă. Când era mic, locuia într-un apartament cu părinții și sora lui. În weekend mergeau des la bunici, unde el se juca în curte și asculta povești despre viața de altădată. Când a intrat la liceu, a devenit mai independent și a început să ia singur decizii. Spune că cea mai importantă lecție primită de la familie a fost să nu renunțe ușor.</p>
-        </div>
-      </div>
+      <p>Ascultă înregistrarea de două ori, apoi completează propozițiile.</p>
       <ol>
         <li>Mihai s-a născut într-o familie <input class="blank" type="text" autocomplete="off" aria-label="Răspuns">.</li>
         <li>În weekend mergea des la <input class="blank" type="text" autocomplete="off" aria-label="Răspuns">.</li>
@@ -652,17 +696,5 @@
       <a href="../../index.html#lectii">Lecția următoare</a>
     </nav>
   </main>
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      var toggle = document.querySelector('.toggle-audio-text');
-      var audioText = document.getElementById('audio-text');
-      if (!toggle || !audioText) return;
-      toggle.addEventListener('click', function() {
-        var isHidden = audioText.classList.toggle('hidden');
-        toggle.textContent = isHidden ? 'Vezi textul audio' : 'Ascunde textul audio';
-        toggle.setAttribute('aria-expanded', String(!isHidden));
-      });
-    });
-  </script>
 </body>
 </html>
