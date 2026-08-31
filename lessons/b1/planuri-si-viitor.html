@@ -980,7 +980,13 @@
 
     <section class="section" id="ascultare">
       <div class="section-head"><h2>IV. Ascultare</h2><span class="score">planuri profesionale</span></div>
-      <p>Ascultă înregistrarea de două ori, apoi completează propozițiile. Textul nu este afișat.</p>
+      <div class="audio-card">
+        <p>Ascultă înregistrarea de două ori, apoi completează propozițiile. Verifică transcriptul numai după ce ai terminat exercițiul.</p>
+        <button class="audio-button" type="button" aria-expanded="false" aria-controls="audioTextPlanuri" onclick="toggleAudioText(this)">Afișează transcriptul</button>
+        <div class="audio-text text-box" id="audioTextPlanuri">
+          <p>În prezent lucrez în domeniul marketingului, dar vreau să avansez profesional. Anul viitor voi începe un curs de management. Până atunci, voi economisi bani timp de șase luni și îmi voi organiza mai bine programul. După terminarea cursului, sper să lucrez într-o echipă internațională, unde voi putea folosi limbi străine și voi participa la proiecte interesante. Peste cinci ani îmi doresc să am mai multă experiență, dar și mai mult echilibru între muncă și viața personală.</p>
+        </div>
+      </div>
       <ol><li>Vorbitorul lucrează acum în domeniul <input class="blank" type="text" autocomplete="off" aria-label="Răspuns">.</li><li>Anul viitor va începe un curs de <input class="blank" type="text" autocomplete="off" aria-label="Răspuns">.</li><li>Va economisi bani timp de <input class="blank" type="text" autocomplete="off" aria-label="Răspuns"> luni.</li><li>Își dorește să lucreze într-o echipă <input class="blank" type="text" autocomplete="off" aria-label="Răspuns">.</li><li>Peste cinci ani speră să aibă mai mult <input class="blank" type="text" autocomplete="off" aria-label="Răspuns">.</li></ol>
       <details><summary>Cheie pentru profesor</summary><p>marketing, management, șase, internațională, echilibru.</p></details>
     </section>
@@ -1002,6 +1008,14 @@
   </main>
 
 <script>
+  function toggleAudioText(button) {
+    const textId = button.getAttribute('aria-controls');
+    const transcript = document.getElementById(textId);
+    if (!transcript) return;
+    const isVisible = transcript.classList.toggle('is-visible');
+    button.setAttribute('aria-expanded', String(isVisible));
+    button.textContent = isVisible ? 'Ascunde transcriptul' : 'Afișează transcriptul';
+  }
 </script>
 </body>
 </html>
