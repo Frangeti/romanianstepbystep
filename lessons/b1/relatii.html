@@ -451,6 +451,52 @@
     .section-head { align-items: flex-start; flex-direction: column; }
     .footer-nav { flex-direction: column; }
   }
+
+  @media print {
+    @page { size: A4; margin: 13mm; }
+    body {
+      background: #fff;
+      color: #1d1d1f;
+      font-size: 10.5pt;
+      line-height: 1.42;
+      print-color-adjust: exact;
+      -webkit-print-color-adjust: exact;
+    }
+    .topbar,
+    .footer-nav,
+    .audio-button {
+      display: none !important;
+    }
+    .book {
+      width: auto;
+      margin: 0;
+    }
+    .hero {
+      grid-template-columns: minmax(0, 1fr) 42%;
+      padding: 12px;
+      box-shadow: none;
+      break-inside: avoid;
+    }
+    .hero-photo { min-height: 150px; }
+    .section {
+      margin-top: 9px;
+      padding: 13px 15px;
+      box-shadow: none;
+      break-inside: auto;
+    }
+    .section-head,
+    h3 {
+      break-after: avoid;
+    }
+    .card,
+    .task-box,
+    .text-box,
+    table,
+    details {
+      break-inside: avoid;
+    }
+    input.blank { background: transparent; }
+  }
 </style>
 </head>
 <body>
@@ -672,15 +718,7 @@
         <h2>IV. Ascultare</h2>
         <span class="score">simulare</span>
       </div>
-      <div class="audio-card">
-        <p>Ascultă textul citit de profesor sau folosește transcrierea pentru exercițiu.</p>
-        <button class="audio-button" type="button" aria-expanded="false" aria-controls="audioText" onclick="toggleAudioText(this)">Vezi textul audio</button>
-        <div class="audio-text" id="audioText">
-          <div class="text-box">
-            <p>Irina vorbește cu fratele ei, care a avut un conflict cu un coleg. Fratele ei este supărat pentru că a simțit că munca lui nu a fost apreciată. Irina îi spune că îl înțelege, dar îl sfătuiește să nu reacționeze imediat. Îi recomandă să se calmeze, să pregătească două idei clare și să discute cu acel coleg a doua zi. Ea crede că o conversație sinceră, fără reproșuri, poate rezolva multe neînțelegeri. La final, fratele ei spune că va încerca să vorbească mai calm și să explice ce l-a deranjat.</p>
-          </div>
-        </div>
-      </div>
+      <p>Ascultă înregistrarea de două ori, apoi completează propozițiile. Textul nu este afișat.</p>
       <ol>
         <li>Fratele Irinei a avut un conflict cu un <input class="blank" type="text" autocomplete="off" aria-label="Răspuns">.</li>
         <li>El este supărat pentru că munca lui nu a fost <input class="blank" type="text" autocomplete="off" aria-label="Răspuns">.</li>
@@ -735,15 +773,5 @@
     </nav>
   </main>
 
-<script>
-  function toggleAudioText(button) {
-    var audioText = document.getElementById('audioText');
-    var isVisible = audioText.classList.toggle('is-visible');
-    if (button) {
-      button.textContent = isVisible ? 'Ascunde textul audio' : 'Vezi textul audio';
-      button.setAttribute('aria-expanded', String(isVisible));
-    }
-  }
-</script>
 </body>
 </html>
