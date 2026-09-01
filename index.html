@@ -3350,10 +3350,10 @@
 
         <section id="romana-lectii">
           <div class="section-title">
-            <h2>Classes</h2>
+            <h2>Română A1 · Lecții</h2>
           </div>
-          <div class="resource-grid">
-            <article class="resource-card soon-card"><h3>În curând</h3></article>
+          <div class="lesson-category" id="a1-romana-lectii">
+            <div class="lesson-grid" data-a1-romanian-lessons></div>
           </div>
         </section>
 
@@ -4824,6 +4824,16 @@
     const selectedPlan = document.querySelector('[data-selected-plan]');
     const selectedPrice = document.querySelector('[data-selected-price]');
     const paymentBack = document.querySelector('[data-payment-back]');
+
+    const a1RomanianLessonsTarget = document.querySelector('[data-a1-romanian-lessons]');
+    const a1RomanianProgramCategory = document.querySelector('#a1-romana');
+    if (a1RomanianLessonsTarget && a1RomanianProgramCategory) {
+      a1RomanianProgramCategory.querySelectorAll('.lesson-card[data-lesson-no]').forEach(card => {
+        if (/^\d{2}$/.test(card.dataset.lessonNo || '')) {
+          a1RomanianLessonsTarget.appendChild(card);
+        }
+      });
+    }
 
     function syncIntroWithSidebar() {
       const intro = document.querySelector('.intro');
