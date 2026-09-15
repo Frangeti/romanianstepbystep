@@ -1,0 +1,426 @@
+<!doctype html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<style>
+.brancusi-gallery{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem;margin:1rem 0 1.25rem}.brancusi-art{margin:0;overflow:hidden;border:1px solid var(--line);border-radius:12px;background:var(--card)}.brancusi-art img{width:100%;height:250px;object-fit:cover;background:#ececec}.brancusi-art figcaption{padding:.8rem 1rem;font-size:15px}.brancusi-art figcaption strong{display:block;margin-bottom:.2rem}.brancusi-art figcaption a{color:var(--blue);font-size:13px}.image-prompts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.7rem 1rem;margin:0;padding-left:1.3rem}.image-prompts li{padding-left:.2rem}@media (max-width:760px){.brancusi-gallery,.image-prompts{grid-template-columns:1fr}.brancusi-art img{height:280px}}
+</style>
+<title>Brâncuși și operele sale · Română B2 pentru vorbitori de germană</title>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink:#1d1d1f;
+  --muted:#6e6e73;
+  --line:#d2d2d7;
+  --bg:#f5f5f7;
+  --paper:#fff;
+  --blue:#0071e3;
+  --green:#315f45;
+  --lime:#8fab35;
+  --soft:#edf6e7;
+  --card:#f9fafb;
+  --shadow:0 24px 70px rgba(0,0,0,.08);
+}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:92px}body{margin:0;background:linear-gradient(#fff 0,#f5f5f7 520px);color:var(--ink);font:17px/1.58 'Atkinson Hyperlegible',Arial,sans-serif}
+a{text-decoration:none;color:inherit}img{display:block;max-width:100%}.topbar{position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;gap:1rem;min-height:76px;padding:0 clamp(1rem,3vw,3.5rem);background:rgba(255,255,255,.95);border-bottom:1px solid var(--line);box-shadow:0 8px 25px rgba(0,0,0,.05)}.brand{font-size:24px;color:var(--ink);white-space:nowrap}.brand span{color:var(--blue)}.nav{display:flex;align-items:center;gap:4px;flex-wrap:wrap}.nav a{padding:8px 11px;border-radius:8px;color:var(--ink);font-size:13px}.nav a.active{background:var(--ink);color:#fff}.page{width:min(1180px,calc(100% - 2rem));margin:2rem auto 4rem}.hero{overflow:hidden;border:1px solid var(--line);border-radius:16px;background:var(--paper);box-shadow:var(--shadow)}.hero img{width:100%;height:420px;object-fit:cover;background:#ececec}.hero-copy{padding:clamp(1.4rem,4vw,3rem)}.eyebrow{display:inline-block;padding:5px 11px;border-radius:99px;background:var(--soft);color:var(--green);font-size:12px;font-weight:700;letter-spacing:.08em}.hero h1{margin:.7rem 0 .35rem;font-size:clamp(34px,5vw,58px);font-weight:400;line-height:1.04}.hero p{margin:.35rem 0;color:var(--muted);font-size:20px}.meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:1.1rem}.meta span{padding:5px 9px;border-radius:6px;background:var(--bg);font-size:13px}.layout{display:grid;grid-template-columns:235px minmax(0,1fr);gap:1.3rem;margin-top:1.3rem}.side{position:sticky;top:96px;align-self:start;padding:12px;border:1px solid var(--line);border-radius:12px;background:#fff}.side strong{display:block;padding:7px 10px;color:var(--ink);font-size:13px}.side a{display:block;padding:8px 10px;border-radius:8px;color:var(--muted);font-size:15px}.side a:hover{background:#f7f7f9;color:var(--ink)}.section{margin-top:1.3rem;padding:clamp(1.1rem,2vw,1.6rem);border:1px solid var(--line);border-radius:14px;background:var(--paper);box-shadow:0 12px 30px rgba(0,0,0,.025)}.section h2{margin:0 0 .8rem;font-size:clamp(24px,2vw,34px);font-weight:400;line-height:1.15}.lead{margin:0 0 1rem;color:var(--muted);font-size:18px}.goals{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.goal{padding:14px;border:1px solid var(--line);border-left:4px solid var(--lime);border-radius:10px;background:var(--card);font-size:16px}.photo-task{display:grid;grid-template-columns:1.15fr .85fr;gap:1rem;align-items:center}.photo-task img{border-radius:10px;border:1px solid var(--line);height:300px;object-fit:cover}.photo-task ol{margin:0;padding-left:1.2rem;color:var(--ink)}.photo-task li{margin:0 0 .45rem}.label{margin:0 0 .5rem;color:var(--green);font-weight:700;letter-spacing:.04em;text-transform:uppercase;font-size:12px}.note{margin-top:1rem;padding:12px;border-radius:10px;background:var(--soft);border:1px solid rgba(49,95,69,.2);color:var(--ink)}.vocab-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.term{padding:12px;border:1px solid var(--line);border-radius:10px;background:var(--card)}.term strong{display:block;color:var(--ink);font-size:17px}.term small{display:block;margin-top:4px;color:var(--muted);font-size:13px}.term em{display:block;margin-top:8px;font-style:normal;color:var(--green);font-size:14px}.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}.chip{display:inline-block;padding:6px 10px;border-radius:999px;border:1px solid var(--line);background:var(--bg);color:var(--ink);font-size:14px}.passage{padding:1rem;border:1px solid var(--line);border-radius:12px;background:linear-gradient(180deg,#fff,#fafbfb)}.passage p{margin:0 0 1rem}.passage p:last-child{margin-bottom:0}.question{margin-top:1rem;padding:1rem;border:1px solid var(--line);border-radius:10px;background:var(--card)}.question strong{display:block;margin-bottom:.6rem}.question select,.question textarea{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:8px;background:#fff;color:var(--ink);font:inherit}.question textarea{min-height:120px;resize:vertical}.question p{margin:.4rem 0}.buttons{display:flex;flex-wrap:wrap;gap:8px;margin-top:.8rem}.btn{padding:10px 14px;border:1px solid var(--blue);border-radius:8px;background:var(--blue);color:#fff;font:inherit;cursor:pointer}.btn.alt{background:#fff;color:var(--ink)}.feedback{margin-top:.8rem;color:var(--green);font-weight:700}.correct{border-color:rgba(49,95,69,.6)!important;background:#f1faf3!important}.wrong{border-color:rgba(180,35,24,.5)!important;background:#fff3f2!important}.model,.transcript{margin-top:.7rem;padding:12px;border-radius:8px;background:#f3f7ff;border:1px solid #d9e7ff;color:var(--ink)}[hidden]{display:none}.table-wrap{overflow-x:auto}.table-wrap table{width:100%;border-collapse:collapse;min-width:720px}.table-wrap th,.table-wrap td{padding:10px 12px;border:1px solid var(--line);vertical-align:top;text-align:left}.table-wrap th{background:#f7f7f9}.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.card{padding:1rem;border:1px solid var(--line);border-radius:10px;background:var(--card)}.card h3{margin:0 0 .5rem}.rubric{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:1rem}.rubric div{padding:12px;border-top:3px solid var(--lime);background:#f7f7f9;border-radius:8px}.final{margin-bottom:2rem}.@media (max-width: 900px){.layout{grid-template-columns:1fr}.side{position:static}.goals,.vocab-grid,.grid2,.rubric{grid-template-columns:1fr}.photo-task{grid-template-columns:1fr}}@media (max-width: 620px){.nav{display:none}.hero img{height:300px}}</style>
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="../../index.html">Romanian <span>Step by Step</span></a>
+  <nav class="nav" aria-label="Meniu principal">
+    <a href="../../index.html">Home</a>
+    <a class="active" href="../../index.html#b2-germana">Lessons</a>
+    <a href="../../flashcards.html">Flashcards</a>
+    <a href="../../manuale/programa-b2-romana-limba-straina.html">Books</a>
+    <a href="../../index.html#contact">Contact</a>
+  </nav>
+</header>
+
+<div class="page">
+  <section class="hero">
+    <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1200&q=80" alt="Sculptură abstractă modernă într-o galerie de artă">
+    <div class="hero-copy">
+      <span class="eyebrow">B2 · Rumänisch für Deutschsprachige</span>
+      <h1>Brâncuși și operele sale</h1>
+      <p>Arta, forma, simplificarea și impactul unui sculptor revoluționar</p>
+      <div class="meta">
+        <span>Lesen</span>
+        <span>Wortschatz</span>
+        <span>Vergleiche</span>
+        <span>Superlative</span>
+        <span>Schreiben</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="layout">
+    <nav class="side" aria-label="Lektionsmenü">
+      <strong>LEKTIONSMENÜ</strong>
+      <a href="#obiective">Lernziele</a>
+      <a href="#incalzire">1. Einstieg</a>
+      <a href="#vocabular">2. Wortschatz</a>
+      <a href="#citire">3. Lesen</a>
+      <a href="#intelegere">4. Leseverstehen</a>
+      <a href="#gramatica">5. Grammatik</a>
+      <a href="#exercitii">6. Übungen</a>
+      <a href="#comunicare">7. Sprechen</a>
+      <a href="#scriere">8. Schreiben</a>
+      <a href="#test">9. Abschlusstest</a>
+    </nav>
+
+    <main>
+      <section class="section" id="obiective">
+        <h2>Lernziele</h2>
+        <p class="lead de">Nach dieser Lektion können Sie über Kunst, Stil und Bedeutung von Brâncuși auf Rumänisch sprechen, zentrale Ideen in einem Text erfassen und Vergleiche sowie Superlative korrekt nutzen.</p>
+        <div class="goals">
+          <div class="goal">Wissen, welche Werke Brâncuși als ikonisch betrachtet und warum sie stilbildend waren.</div>
+          <div class="goal">Wortschatz zu Kunst, Form, Material und Bedeutung erweitern.</div>
+          <div class="goal">Vergleiche und Superlative in argumentativen und beschreibenden Sätzen anwenden.</div>
+          <div class="goal">Eine kurze persönliche Stellungnahme zu Kunst und Schönheit formulieren.</div>
+        </div>
+      </section>
+
+      <section class="section" id="incalzire">
+        <h2>1. Einstieg · Ce simți la prima vedere?</h2>
+        <div class="photo-task">
+          <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80" alt="Sculptură abstractă în galerie modernă">
+          <div>
+            <p class="label">Vor dem Lesen</p>
+            <ol>
+              <li>Ce te atrage în prima vedere la o sculptură abstractă?</li>
+              <li>Este importantă forma sau conținutul?</li>
+              <li>Poți spune că o operă este „mai frumoasă” decât alta?</li>
+              <li>Care este diferența dintre artistic și decorativ?</li>
+            </ol>
+          </div>
+        </div>
+        <div class="note"><strong>Redemittel:</strong> <em>Din punctul meu de vedere… / Cea mai importantă caracteristică este… / O operă pare mai expresivă decât alta, deoarece… / Arta modernă este mai provocatoare decât arta tradițională.</em></div>
+      </section>
+
+      <section class="section" id="vocabular">
+        <h2>2. Wortschatz · Vocabular simplu</h2>
+        <p class="lead de">Învață doar cuvintele principale din lecție. Repetă-le și folosește-le în propoziții scurte.</p>
+        <div class="vocab-grid">
+          <div class="term"><strong>sculptura</strong><small>die Skulptur</small><em>o sculptură frumoasă</em></div>
+          <div class="term"><strong>forma</strong><small>die Form</small><em>forma este simplă</em></div>
+          <div class="term"><strong>linia</strong><small>die Linie</small><em>o linie clară</em></div>
+          <div class="term"><strong>marmura</strong><small>der Marmor</small><em>o sculptură din marmură</em></div>
+          <div class="term"><strong>piatra</strong><small>der Stein</small><em>o piatră grea</em></div>
+          <div class="term"><strong>bronzul</strong><small>die Bronze</small><em>o piesă din bronz</em></div>
+          <div class="term"><strong>simplu</strong><small>einfach</small><em>e foarte simplu</em></div>
+          <div class="term"><strong>puternic</strong><small>stark</small><em>o idee puternică</em></div>
+          <div class="term"><strong>expresiv</strong><small>ausdrucksstark</small><em>o formă expresivă</em></div>
+          <div class="term"><strong>abstract</strong><small>abstrakt</small><em>stil abstract</em></div>
+          <div class="term"><strong>a crea</strong><small>schaffen</small><em>a crea o operă</em></div>
+          <div class="term"><strong>a transmite</strong><small>übermitteln</small><em>a transmite o emoție</em></div>
+          <div class="term"><strong>a arăta</strong><small>zeigen</small><em>a arăta sensul</em></div>
+          <div class="term"><strong>frumos</strong><small>schön</small><em>mai frumos decât</em></div>
+          <div class="term"><strong>important</strong><small>wichtig</small><em>cel mai important</em></div>
+        </div>
+        <div class="chips">
+          <span class="chip">mai simplu</span>
+          <span class="chip">mai puternic</span>
+          <span class="chip">cel mai important</span>
+          <span class="chip">în comparație cu</span>
+          <span class="chip">mai frumos</span>
+          <span class="chip">a transmite sens</span>
+          <span class="chip">forme simple</span>
+          <span class="chip">o idee clară</span>
+        </div>
+      </section>
+
+      <section class="section" id="citire">
+        <h2>3. Lesen · Brâncuși și sculpturile sale</h2>
+        <div class="passage">
+          <p><strong>Brâncuși a fost un sculptor important.</strong> El nu a vrut să copieze realitatea exact. El a vrut să arate esența lucrurilor. De aceea, formele sale sunt simple, dar puternice.</p>
+          <p>O sculptură a lui Brâncuși poate părea simplă la prima vedere. Dar este clară și expresivă. O linie sau o formă poate spune foarte mult. Asta este ideea lui: mai puține detalii, dar mai mult sens.</p>
+          <p><em>Maiastra</em> este o lucrare cunoscută. Este mai austeră decât multe sculpturi tradiționale. Totuși, transmite putere și calm. Este una dintre cele mai importante opere ale sale.</p>
+          <p><em>Coloana Infinitului</em> este una dintre cele mai cunoscute opere ale lui Brâncuși. Ea face parte din Ansamblul Monumental de la Târgu Jiu, dedicat eroilor din Primul Război Mondial. Coloana este formată din module care se repetă și pare că urcă spre cer. Nu este importantă numai prin înălțime, ci și prin ideea de continuitate și eternitate.</p>
+          <p>Brâncuși a folosit marmură, piatră și bronz. El a făcut din material un mod de a transmite emoții. În concluzie, Brâncuși este important pentru că a făcut arta mai simplă, dar mai profundă.</p>
+        </div>
+      </section>
+
+      <section class="section" id="intelegere">
+        <h2>4. Fixare · Întrebări simple</h2>
+
+        <div class="question">
+          <strong>A. Alege răspunsul corect.</strong>
+          <p>1. Brâncuși a vrut să:</p>
+          <select data-answer="arate esența lucrurilor"><option value="">—</option><option>copieze exact realitatea</option><option>arate esența lucrurilor</option><option>facă lucrurile mai complicate</option></select>
+          <p>2. Maiastra este:</p>
+          <select data-answer="mai austeră decât multe sculpturi tradiționale"><option value="">—</option><option>mai austeră decât multe sculpturi tradiționale</option><option>mai puțin expresivă</option><option>o clădire mare</option></select>
+          <p>3. Coloana Infinitului este importantă pentru că:</p>
+          <select data-answer="arată ideea de eternitate"><option value="">—</option><option>arată ideea de eternitate</option><option>este făcută din lemn</option><option>are multe detalii</option></select>
+          <div class="buttons"><button class="btn" onclick="check(this)">Verifică</button></div>
+          <div class="feedback"></div>
+        </div>
+
+        <div class="question">
+          <strong>B. Răspunde cu adevărat / fals.</strong>
+          <p>1. Brâncuși a folosit multe detalii în operele sale.</p>
+          <select data-answer="Fals"><option value="">—</option><option>Adevărat</option><option>Fals</option></select>
+          <p>2. Sculpturile lui Brâncuși sunt mai simple, dar mai puternice.</p>
+          <select data-answer="Adevărat"><option value="">—</option><option>Adevărat</option><option>Fals</option></select>
+          <p>3. Maiastra transmite doar veselie.</p>
+          <select data-answer="Fals"><option value="">—</option><option>Adevărat</option><option>Fals</option></select>
+          <p>4. Brâncuși folosea materiale ca marmura și bronzul.</p>
+          <select data-answer="Adevărat"><option value="">—</option><option>Adevărat</option><option>Fals</option></select>
+          <div class="buttons"><button class="btn" onclick="check(this)">Verifică</button><button class="btn alt" onclick="clearAnswers(this)">Șterge</button></div>
+          <div class="feedback"></div>
+        </div>
+
+        <div class="question">
+          <strong>C. Completează propozițiile.</strong>
+          <p>1. Brâncuși a vrut să arate _______ lucrurilor.</p>
+          <textarea></textarea>
+          <p>2. O sculptură poate fi ___ simplă, dar ___ puternică.</p>
+          <textarea></textarea>
+          <p>3. Coloana Infinitului este ___ importantă decât multe clădiri.</p>
+          <textarea></textarea>
+        </div>
+      </section>
+
+      <section class="section" id="gramatica">
+        <h2>5. Grammatik · Comparativ și superlativ</h2>
+        <p class="lead de">Aici sunt doar regulile de bază. În B2 poți folosi aceste forme ușor.</p>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Tip</th>
+                <th>Formă</th>
+                <th>Exemplu</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Comparativ</td>
+                <td>mai ... decât</td>
+                <td>Forma este <strong>mai simplă decât</strong> în alte opere.</td>
+              </tr>
+              <tr>
+                <td>La fel de ... ca</td>
+                <td>la fel de ... ca</td>
+                <td>Opera este <strong>la fel de puternică ca</strong> cea anterioară.</td>
+              </tr>
+              <tr>
+                <td>Superlativ</td>
+                <td>cel mai / cea mai</td>
+                <td>Aceasta este <strong>cea mai importantă</strong> lucrare.</td>
+              </tr>
+              <tr>
+                <td>Foarte</td>
+                <td>foarte / extrem de</td>
+                <td>Este <strong>foarte simplă</strong>, dar foarte bună.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="section" id="exercitii">
+        <h2>6. Exerciții de fixare</h2>
+
+        <div class="question">
+          <strong>A. Alege varianta corectă.</strong>
+          <p>1. Sculptura este ___ simplă decât opera tradițională.</p>
+          <select data-answer="mai"><option value="">—</option><option>mai</option><option>cel mai</option><option>foarte</option></select>
+          <p>2. Aceasta este ___ importantă lucrare a artistului.</p>
+          <select data-answer="cea mai"><option value="">—</option><option>mai</option><option>cea mai</option><option>la fel de</option></select>
+          <p>3. Opera este ___ clară ca și cea veche.</p>
+          <select data-answer="la fel de"><option value="">—</option><option>mai</option><option>la fel de</option><option>cel mai</option></select>
+          <p>4. Brâncuși a făcut lucruri ___ puternice.</p>
+          <select data-answer="foarte"><option value="">—</option><option>mai</option><option>cel mai</option><option>foarte</option></select>
+          <div class="buttons"><button class="btn" onclick="check(this)">Verifică</button></div>
+          <div class="feedback"></div>
+        </div>
+
+        <div class="question">
+          <strong>B. Pune cuvântul potrivit.</strong>
+          <p>1. Forma este ___ clară decât în alte lucrări.</p>
+          <textarea></textarea>
+          <p>2. Aceasta este ___ expresivă operă.</p>
+          <textarea></textarea>
+          <p>3. Opera este ___ de clară ca cealaltă.</p>
+          <textarea></textarea>
+          <p>4. Sculptura este ___ frumoasă.</p>
+          <textarea></textarea>
+        </div>
+
+        <div class="question">
+          <strong>C. Traduceți în română.</strong>
+          <ol>
+            <li>Die Form ist einfacher als bei anderen Werken.</li>
+            <li>Das ist die wichtigste Arbeit des Künstlers.</li>
+            <li>Die Skulptur ist genauso stark wie die ältere.</li>
+            <li>Die Idee ist sehr klar.</li>
+          </ol>
+          <textarea></textarea>
+          <button class="btn alt" onclick="toggleModel(this)">Arată modelul</button>
+          <div class="model" hidden>
+            1. Forma este mai simplă decât la alte lucrări. 2. Aceasta este cea mai importantă lucrare a artistului. 3. Sculptura este la fel de puternică ca cea veche. 4. Ideea este foarte clară.
+          </div>
+        </div>
+
+        <div class="question">
+          <strong>D. Găsește antonimul / răspunsul corect.</strong>
+          <p>1. simplu = ______</p>
+          <textarea></textarea>
+          <p>2. puternic = ______</p>
+          <textarea></textarea>
+          <p>3. important = ______</p>
+          <textarea></textarea>
+          <p>4. frumos = ______</p>
+          <textarea></textarea>
+        </div>
+
+        <div class="question">
+          <strong>E. Completează propozițiile cu un comparativ bun.</strong>
+          <p>1. Maiastra este _______ decât multe sculpturi tradiționale.</p>
+          <textarea></textarea>
+          <p>2. Forma lui Brâncuși este _______ decât forma realistă.</p>
+          <textarea></textarea>
+          <p>3. Aceasta este _______ lucrare a sa.</p>
+          <textarea></textarea>
+          <p>4. Opera este _______ puternică.</p>
+          <textarea></textarea>
+        </div>
+      </section>
+
+      <section class="section" id="comunicare">
+        <h2>7. Sprechen · O operă, o interpretare</h2>
+        <div class="note"><strong>Privește imaginile și comentează:</strong> descrie forma, materialul și impresia ta. Nu există un singur răspuns corect.</div>
+        <div class="brancusi-gallery">
+          <figure class="brancusi-art">
+            <img src="https://commons.wikimedia.org/wiki/Special:FilePath/RO%20GJ%20Tg%20Jiu%20park%20featuring%20Endless%20Column.jpg?width=1000" alt="Coloana Infinitului de Constantin Brâncuși" loading="lazy">
+            <figcaption><strong>Coloana Infinitului</strong> · Târgu Jiu<br><a href="https://commons.wikimedia.org/wiki/Category:Endless_Column" target="_blank" rel="noopener">Sursa foto: Wikimedia Commons</a></figcaption>
+          </figure>
+          <figure class="brancusi-art">
+            <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Bird%20in%20Space.jpg?width=1000" alt="Pasărea în văzduh de Constantin Brâncuși" loading="lazy">
+            <figcaption><strong>Pasărea în văzduh</strong><br><a href="https://commons.wikimedia.org/wiki/Category:Bird_in_Space" target="_blank" rel="noopener">Sursa foto: Wikimedia Commons</a></figcaption>
+          </figure>
+          <figure class="brancusi-art">
+            <img src="https://commons.wikimedia.org/wiki/Special:FilePath/The%20Kiss%20LCCN93511527.jpg?width=1000" alt="Sărutul de Constantin Brâncuși" loading="lazy">
+            <figcaption><strong>Sărutul</strong><br><a href="https://commons.wikimedia.org/wiki/Category:The_Kiss_by_Constantin_Br%C3%A2ncu%C8%99i" target="_blank" rel="noopener">Sursa foto: Wikimedia Commons</a></figcaption>
+          </figure>
+        </div>
+        <ol class="image-prompts">
+          <li>Care operă are forma cea mai simplă?</li>
+          <li>Ce operă pare mai înaltă sau mai dinamică?</li>
+          <li>Ce material crezi că a fost folosit?</li>
+          <li>Ce emoție transmite fiecare operă?</li>
+          <li>Care operă este mai expresivă decât celelalte? De ce?</li>
+          <li>Folosește în răspuns cel puțin două comparații.</li>
+        </ol>
+        <div class="grid2">
+          <div class="card">
+            <h3>Rol A</h3>
+            <p>Spuneți ce vă atrage la o operă de artă modernă: liniile, spațiul, materialul sau emoția. Comparați cu o operă clasică.</p>
+          </div>
+          <div class="card">
+            <h3>Rol B</h3>
+            <p>Argumentați de ce o formă simplă poate fi mai puternică decât o formă realistă. Folosiți comparații și superlative.</p>
+          </div>
+        </div>
+
+        <h3>Redemittel</h3>
+        <table>
+          <thead>
+            <tr><th>Rumänisch</th><th>Deutsch</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>Din punctul meu de vedere,…</strong></td><td>Aus meiner Sicht …</td></tr>
+            <tr><td><strong>Forma este mai clară decât…</strong></td><td>Die Form ist klarer als …</td></tr>
+            <tr><td><strong>Cel mai important este că…</strong></td><td>Am wichtigsten ist, dass …</td></tr>
+            <tr><td><strong>În comparație cu…</strong></td><td>Im Vergleich zu …</td></tr>
+            <tr><td><strong>Aceasta transmite mai multă energie decât…</strong></td><td>Das vermittelt mehr Energie als …</td></tr>
+            <tr><td><strong>Este mai puțin decorativă, dar mai profundă.</strong></td><td>Sie ist weniger dekorativ, aber tiefer.</td></tr>
+          </tbody>
+        </table>
+
+        <div class="question">
+          <strong>Diskussion:</strong>
+          <p>„Este mai interesantă o operă simplă, dar puternică, decât una complexă, dar banală?” Formulați două argumente, un contraargument și o concluzie.</p>
+        </div>
+      </section>
+
+      <section class="section" id="scriere">
+        <h2>8. Schreiben · O analiză scurtă</h2>
+        <p><strong>Sarcină B2 (180–220 de cuvinte):</strong> Scrieți un scurt text despre o operă a lui Brâncuși pe care o considerați importantă. Explicați ce face lucrarea specială, ce sentiment transmite și de ce este mai puternică decât o operă tradițională. Folosiți cel puțin 6 cuvinte din vocabular și 4 structuri cu comparație sau superlativ.</p>
+        <textarea id="essay" oninput="countWords(this)" placeholder="În opinia mea, opera ... este importantă pentru că..."></textarea>
+        <p><strong><span id="wordCount">0</span> / 180–220 cuvinte</strong></p>
+        <div class="rubric">
+          <div><strong>Conținut</strong><br>opera + explicația</div>
+          <div><strong>Structură</strong><br>introducere, analiză, concluzie</div>
+          <div><strong>Limbă</strong><br>comparative + vocabular</div>
+          <div><strong>Registru</strong><br>formal, clar și argumentat</div>
+        </div>
+      </section>
+
+      <section class="section final" id="test">
+        <h2>9. Abschlusstest</h2>
+        <div class="question">
+          <p>1. „die Form ist klarer als…” în română este:</p>
+          <select data-answer="Forma este mai clară decât…"><option value="">—</option><option>Forma este mai clară decât…</option><option>Forma este la fel de clară ca…</option><option>Forma este extrem de clară.</option></select>
+          <p>2. „cel mai important” este:</p>
+          <select data-answer="cel mai important"><option value="">—</option><option>mai important</option><option>cel mai important</option><option>la fel de important</option></select>
+          <p>3. „Maiastra” este ___ austeră decât o sculptură academică.</p>
+          <select data-answer="mai"><option value="">—</option><option>mai</option><option>cea mai</option><option>foarte</option></select>
+          <p>4. Ce concept este central pentru Brâncuși?</p>
+          <select data-answer="esența formelor"><option value="">—</option><option>copierea perfectă a realității</option><option>esența formelor</option><option>decorarea rapidă a spațiului</option></select>
+          <p>5. Care frază exprimă un superlativ corect?</p>
+          <select data-answer="Aceasta este cea mai puternică operă a sa."><option value="">—</option><option>Aceasta este puternică.</option><option>Aceasta este cea mai puternică operă a sa.</option><option>Aceasta este mai puternică ca decât cealaltă.</option></select>
+          <div class="buttons"><button class="btn" onclick="check(this)">Test prüfen</button><button class="btn alt" onclick="clearAnswers(this)">Neu starten</button></div>
+          <div class="feedback"></div>
+        </div>
+        <h3>Selbsteinschätzung</h3>
+        <p>□ Pot descrie o operă de artă. &nbsp; □ Pot compara două lucrări. &nbsp; □ Pot folosi superlative în contexte reale. &nbsp; □ Pot formula o opinie artistică în română.</p>
+      </section>
+    </main>
+  </div>
+</div>
+
+<script>
+const norm = s => (s || '').trim().toLocaleLowerCase('ro-RO').normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[.!?]/g, '').replace(/\s+/g, ' ');
+
+function check(btn) {
+  const box = btn.closest('.question');
+  const fields = [...box.querySelectorAll('[data-answer]')];
+  let score = 0;
+  fields.forEach(f => {
+    const ok = f.dataset.answer.split('|').map(norm).includes(norm(f.value));
+    f.classList.toggle('correct', ok);
+    f.classList.toggle('wrong', !ok);
+    if (ok) score++;
+  });
+  const out = box.querySelector('.feedback');
+  if (out) {
+    out.textContent = score === fields.length ? 'Sehr gut! Toate răspunsurile sunt corecte.' : `${score} din ${fields.length} răspunsuri corecte.`;
+  }
+}
+
+function clearAnswers(btn) {
+  const box = btn.closest('.question');
+  box.querySelectorAll('input,select,textarea').forEach(f => {
+    if (f.tagName === 'SELECT' || f.tagName === 'INPUT') f.value = '';
+    if (f.tagName === 'TEXTAREA') f.value = '';
+    f.classList.remove('correct', 'wrong');
+  });
+  const out = box.querySelector('.feedback');
+  if (out) out.textContent = '';
+}
+
+function toggleModel(btn) {
+  const model = btn.parentElement.querySelector('.model');
+  model.hidden = !model.hidden;
+  btn.textContent = model.hidden ? 'Musterlösung anzeigen' : 'Musterlösung ausblenden';
+}
+
+function countWords(el) {
+  const count = el.value.trim() ? el.value.trim().split(/\s+/).length : 0;
+  document.getElementById('wordCount').textContent = count;
+}
+</script>
+</body>
+</html>
