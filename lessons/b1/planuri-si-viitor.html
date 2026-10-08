@@ -225,6 +225,16 @@
     font-size: 14px;
   }
 
+  .pdf-download {
+    display: table;
+    margin: 1rem 0 0 auto;
+    padding: 10px 16px;
+    border-radius: var(--radius);
+    background: var(--ink);
+    color: #fff;
+    font-weight: 700;
+  }
+
   .section {
     margin-top: 1rem;
     padding: clamp(1.2rem, 2.4vw, 1.8rem);
@@ -464,7 +474,8 @@
     }
     .topbar,
     .footer-nav,
-    .audio-button {
+    .audio-button,
+    .pdf-download {
       display: none !important;
     }
     .book {
@@ -476,9 +487,10 @@
       gap: 12px;
       padding: 10px;
       box-shadow: none;
-      break-inside: avoid;
+      break-inside: auto;
     }
-    .hero-photo { min-height: 138px; }
+    .hero-photo { min-height: 138px; max-height: 180px; }
+    .hero-photo img { object-fit: contain; object-position: center; }
     h1 {
       display: grid;
       grid-template-columns: auto minmax(0, 1fr);
@@ -506,15 +518,15 @@
     }
     .card,
     .task-box,
-    details {
-      break-inside: avoid;
-    }
+    details { break-inside: auto; }
     .text-box,
     table { break-inside: auto; }
     .text-box p,
     tr { break-inside: avoid; }
-    #citire { break-before: page; }
     input.blank { background: transparent; }
+    .audio-text { display: block !important; }
+    [hidden] { display: none !important; }
+    p, li { orphans: 2; widows: 2; }
   }
 </style>
 </head>
@@ -548,6 +560,8 @@
         <img src="../../assets/images/planuri-si-viitor-b1.png" alt="O persoană privește un oraș super-modern cu arhitectură verde și transport electric și își notează planurile de viitor.">
       </figure>
     </section>
+
+    <a class="pdf-download" href="../../pdf/lectia-12-b1-planuri-si-viitor.pdf" download>Descarcă lecția completă PDF ↓</a>
 
     <section class="section" id="obiective">
       <div class="section-head">
@@ -936,11 +950,11 @@
       </div>
       <h3>B. Adevărat sau fals</h3>
       <ol>
-        <li>Elena dorește să renunțe la arhitectură. <input class="blank" type="text" autocomplete="off" aria-label="Răspuns"></li>
-        <li>Va începe un curs internațional în toamnă. <input class="blank" type="text" autocomplete="off" aria-label="Răspuns"></li>
-        <li>Nu vrea să participe la proiecte de voluntariat. <input class="blank" type="text" autocomplete="off" aria-label="Răspuns"></li>
-        <li>După experiența internațională, se va întoarce în România. <input class="blank" type="text" autocomplete="off" aria-label="Răspuns"></li>
-        <li>Elena își dorește și echilibru personal. <input class="blank" type="text" autocomplete="off" aria-label="Răspuns"></li>
+        <li>Elena dorește să renunțe la arhitectură. <input class="blank" type="text" autocomplete="off" aria-label="Răspuns"> (Adevărat / Fals)</li>
+        <li>Va începe un curs internațional în toamnă. <input class="blank" type="text" autocomplete="off" aria-label="Răspuns"> (Adevărat / Fals)</li>
+        <li>Nu vrea să participe la proiecte de voluntariat. <input class="blank" type="text" autocomplete="off" aria-label="Răspuns"> (Adevărat / Fals)</li>
+        <li>După experiența internațională, se va întoarce în România. <input class="blank" type="text" autocomplete="off" aria-label="Răspuns"> (Adevărat / Fals)</li>
+        <li>Elena își dorește și echilibru personal. <input class="blank" type="text" autocomplete="off" aria-label="Răspuns"> (Adevărat / Fals)</li>
       </ol>
       <h3>C. Răspunde la întrebări</h3>
       <ol><li>În ce domeniu vrea să se specializeze Elena?</li><li>Ce va face înainte de începerea cursului?</li><li>De ce vrea o experiență într-un oraș modern?</li><li>Cât de des își va verifica progresul?</li><li>Cum se vede Elena peste cinci ani?</li></ol>
